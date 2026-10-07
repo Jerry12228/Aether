@@ -102,3 +102,7 @@ Task2发现Android minSdk21对照Flutter API24差异并增加第四项冲突/220
 ## Self-Check: PASSED
 
 交付文件与任务提交存在；80项全套、28项最终doctor及真实严格全基线门禁通过，四项人审决定已有用户证据。
+
+## Final review correction
+
+阶段标准审阅发现环境catalog/矩阵将部分Windows、Android和macOS后续责任指向不对应的平台阶段。已依据已批准ROADMAP修正：Windows2/10–16/19/21–22、Android2/14/28–29、macOS2/30–31、iOS2/32–33；机器、Apple executor及构建gap责任同步，不更改能力或最低范围决定。修正后doctor28/28（2.106秒）、637项features严格映射及真实全包人审门禁再次PASS。
