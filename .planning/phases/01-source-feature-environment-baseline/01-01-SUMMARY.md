@@ -3,9 +3,7 @@ phase: 01-source-feature-environment-baseline
 plan: "01"
 subsystem: infra
 tags: [source-audit, git-objects, licensing, distribution, node-test]
-status: halted
-checkpoint: "Task 3 — blocking-human license/reuse and distribution decision"
-checkpoint_at: "2026-10-07T07:50:30Z"
+status: complete
 requires: []
 provides:
   - Fixed-object source audit and offline recovery verification for nine upstream repositories
@@ -18,7 +16,7 @@ key-files:
   created: [scripts/validate-baseline.cjs, tests/baseline-sources.test.cjs, docs/baseline/sources.json, docs/SOURCE-AUDIT.md]
   modified: [scripts/sync-upstream.ps1, references/UPSTREAM.md]
 key-decisions:
-  - "Human license/reuse and distribution decisions remain pending; no default was selected."
+  - "User selected compatible-open-source and deferred distribution via retain-candidates; production clearance remains blocked."
   - "All upstream files remain research-only; production clearance lists are empty."
 requirements-completed: []
 requirements-pending: [BASE-02]
@@ -48,12 +46,12 @@ coverage:
     requirement: BASE-02
     verification: []
     human_judgment: true
-    rationale: "Task 3 requires the user's explicit choice; two decision records remain pending."
+    rationale: "Both actual human choices are recorded with confirmation text/time and retained blockers."
 ---
 
 # Phase 1 / Plan 01 — Source audit decision checkpoint
 
-**Tasks 1 and 2 are committed and technically verified; Task 3 awaits the required human decision. This plan and BASE-02 are not complete.**
+**Tasks 1–3 complete. Human route choices are recorded; BASE-02 remains pending the shared final review in 01-03. This is source evidence and route intent, not production reuse authorization.**
 
 ## Accomplishments
 
@@ -70,7 +68,7 @@ coverage:
 | 1 tracer/recovery | `d4f4b9b` | Fixed-object tracer, CLI and offline recovery verification |
 | 2 RED route coverage | `2e403a5` | Actual missing-platform-route failure; accepted RED evidence |
 | 2 full audit | `5fadbf4` | Nine-tree inventory, curated evidence and distribution review package |
-| 3 human decision | Pending | No user answer, selected option or legal clearance recorded |
+| 3 human decision | `c8029be` | compatible-open-source + retain-candidates; retained blockers, no production clearance |
 
 ## Verification
 
@@ -89,17 +87,18 @@ coverage:
 - The full source suite exceeded the planning target of 30 seconds (actual 62.45 seconds). The quick targeted check remains 6.23 seconds; feature and doctor suites do not exist yet, so phase-wide runtime and Nyquist compliance remain unverified.
 - Apple build/toolchain evidence and Apple hardware evidence remain separate under the approved project scope. This audit establishes neither.
 
-## Pending Human Decision / Resume
+## Confirmed Human Decision / Handoff
 
-Read `docs/SOURCE-AUDIT.md` sections `project-reuse-policy` and `distribution-intent` before responding.
+User response already recorded: “compatible-open-source；暂不考虑发行”, confirmed by user at `2026-10-07T07:59:36.360Z`.
 
-1. `project-reuse-policy`: `compatible-open-source` (Aether GPL-3.0-or-later candidate, conditional per-file reuse), `independent-implementation` (Aether Apache-2.0 candidate, separately audited dependencies), or `research-only` (evidence only; defer project LICENSE, block production reuse).
-2. `distribution-intent`: `direct-plus-apple-beta` (direct desktop/Android packages, macOS Developer ID/notarization, iOS TestFlight→App Store candidate, Windows device signing evaluation), or `retain-candidates` (retain all fourteen comparisons without selecting channels yet).
+- Project reuse policy: compatible-open-source; GPL-3.0-or-later candidate intent. Specific production dependency/license obligations remain open.
+- Distribution: retain-candidates; no channel selected.
+- Retained blockers: project-license, external-build-scope, apple-foss-channel and distribution-accounts; all other source/package/signing blockers remain.
+- Resume verification: `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` PASS, checked=4296, pendingDecisions=0, productionReuseApproved=false. `node scripts/validate-planning.cjs` PASS.
+- Report matches rendered machine data. No product source, driver or dependency installation performed. Full fixtures were not rerun because only human-choice metadata changed; prior 31/31 results remain historical evidence.
 
-Current recommendation: `research-only + retain-candidates`. This recommendation has **not** been selected for the user. All unresolved licensing/signing/channel blockers remain in either route.
-
-Resume at Task 3, not Task 1. Record only the actual human answer in the two existing source deliverables with selected/confirmedBy/confirmedAt and retained blockers, regenerate and validate the report, then replace this halted summary with the completed plan summary. Only then may 01-02 and subsequently 01-03 execute. Do not mark BASE-02 or Phase 1 complete before the gate.
+Next: 01-02 platform feature inventory, then 01-03 environment and full human review. BASE-02 is shared with 01-03 and remains Pending until that plan completes.
 
 ## Self-Check
 
-**PASSED for committed Tasks 1/2; HALTED at the designed blocking-human Task 3.** Deliverable files and task commits exist. No requirement, plan, phase, legal permission or platform support is claimed complete by this checkpoint record.
+**PASSED.** All deliverables and task commits exist; both recorded choices match available options. Source structure/route intent verified; production clearance, platform support and Phase 1 completion are not claimed.
