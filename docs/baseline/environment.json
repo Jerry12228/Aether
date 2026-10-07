@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-10-07T10:33:00.821Z",
+  "capturedAt": "2026-10-07T10:48:33.255Z",
   "purpose": "Read-only local tool and machine observation; no product support or performance claim",
   "mode": "Quick",
   "budget": {
     "budgetMs": 25000,
-    "durationMs": 1323,
+    "durationMs": 1406,
     "perProbeMs": 5000,
     "maxBytesPerStream": 65536
   },
@@ -80,7 +80,7 @@
       "version": "36.1.0",
       "exitCode": 0,
       "durationMs": 0,
-      "stdout": "{\"available\":true,\"reason\":\"Android platform, build-tools and SDK tools not all verified\",\"version\":\"36.1.0\",\"platforms\":[\"android-10\",\"android-11\",\"android-19\",\"android-35\",\"android-36\"],\"buildTools\":[\"35.0.0\",\"36.0.0\",\"36.1.0\"]}",
+      "stdout": "{\"available\":true,\"version\":\"36.1.0\",\"platforms\":[\"android-10\",\"android-11\",\"android-19\",\"android-35\",\"android-36\"],\"buildTools\":[\"35.0.0\",\"36.0.0\",\"36.1.0\"]}",
       "stderr": "",
       "truncated": false,
       "redactions": 0,
@@ -92,7 +92,6 @@
       "evidenceType": "sdk-components",
       "metadata": {
         "available": true,
-        "reason": "Android platform, build-tools and SDK tools not all verified",
         "version": "36.1.0",
         "platforms": [
           "android-10",
@@ -121,7 +120,7 @@
       "status": "available",
       "version": "4.4.3",
       "exitCode": 0,
-      "durationMs": 87,
+      "durationMs": 82,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -142,7 +141,7 @@
       "status": "available",
       "version": "3.12.0",
       "exitCode": 0,
-      "durationMs": 43,
+      "durationMs": 42,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -159,7 +158,7 @@
       "version": "3.44.0",
       "exitCode": 0,
       "durationMs": 0,
-      "stdout": "{\"available\":true,\"version\":\"3.44.0\",\"frameworkRevision\":\"559ffa3f75e7402d65a8def9c28389a9b2e6fe42\",\"dartSdkVersion\":\"3.12.0\",\"source\":\"D:\\\\Program\\\\FlutterSDK\\\\flutter\\\\bin\\\\cache\\\\flutter.version.json\",\"reason\":\"Cached Dart executable absent\"}",
+      "stdout": "{\"available\":true,\"version\":\"3.44.0\",\"frameworkRevision\":\"559ffa3f75e7402d65a8def9c28389a9b2e6fe42\",\"dartSdkVersion\":\"3.12.0\",\"source\":\"D:\\\\Program\\\\FlutterSDK\\\\flutter\\\\bin\\\\cache\\\\flutter.version.json\"}",
       "stderr": "",
       "truncated": false,
       "redactions": 0,
@@ -173,8 +172,7 @@
         "version": "3.44.0",
         "frameworkRevision": "559ffa3f75e7402d65a8def9c28389a9b2e6fe42",
         "dartSdkVersion": "3.12.0",
-        "source": "D:\\Program\\FlutterSDK\\flutter\\bin\\cache\\flutter.version.json",
-        "reason": "Cached Dart executable absent"
+        "source": "D:\\Program\\FlutterSDK\\flutter\\bin\\cache\\flutter.version.json"
       }
     },
     {
@@ -190,7 +188,7 @@
       "status": "available",
       "version": "2.54.0",
       "exitCode": 0,
-      "durationMs": 60,
+      "durationMs": 57,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -211,7 +209,7 @@
       "status": "available",
       "version": "17.0.2",
       "exitCode": 0,
-      "durationMs": 81,
+      "durationMs": 82,
       "truncated": false,
       "redactions": 2,
       "requiredByPhases": [
@@ -278,7 +276,7 @@
       "status": "available",
       "version": "7.6.3",
       "exitCode": 0,
-      "durationMs": 216,
+      "durationMs": 229,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -297,15 +295,17 @@
         "-requires",
         "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
         "-format",
-        "json"
+        "json",
+        "-property",
+        "installationVersion"
       ],
-      "stdout": "[\r\n  {\r\n    \"instanceId\": \"a0822303\",\r\n    \"installDate\": \"2026-09-15T14:21:39Z\",\r\n    \"installationName\": \"VisualStudio/18.10.0+12201.205\",\r\n    \"installationPath\": \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\",\r\n    \"installationVersion\": \"18.10.12201.205\",\r\n    \"productId\": \"Microsoft.VisualStudio.Product.Enterprise\",\r\n    \"productPath\": \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\\\\Common7\\\\IDE\\\\devenv.exe\",\r\n    \"state\": 4294967295,\r\n    \"isComplete\": true,\r\n    \"isLaunchable\": true,\r\n    \"isPrerelease\": false,\r\n    \"isRebootRequired\": false,\r\n    \"displayName\": \"Visual Studio Enterprise 2026\",\r\n    \"description\": \"Built for scale, security, and speed – the IDE for complex, high-impact development.\",\r\n    \"channelId\": \"VisualStudio.18.Release\",\r\n    \"channelUri\": \"https://aka.ms/vs/18/stable/channel\",\r\n    \"enginePath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\Installer\\\\resources\\\\app\\\\ServiceHub\\\\Services\\\\Microsoft.VisualStudio.Setup.Service\",\r\n    \"expirationDate\": \"2027-02-28T17:00:00+00:00\",\r\n    \"installedChannelId\": \"VisualStudio.18.Release\",\r\n    \"installedChannelUri\": \"https://aka.ms/vs/18/stable/channel\",\r\n    \"releaseNotes\": \"https://docs.microsoft.com/en-us/visualstudio/releases/18/release-notes-v18.10#18.10.0\",\r\n    \"resolvedInstallationPath\": \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\",\r\n    \"thirdPartyNotices\": \"https://go.microsoft.com/fwlink/?LinkId=661480\",\r\n    \"updateDate\": \"2026-09-15T14:21:39.1043472Z\",\r\n    \"catalog\": {\r\n      \"buildBranch\": \"stable\",\r\n      \"buildVersion\": \"18.10.12201.205\",\r\n      \"featureReleaseMonth\": \"09\",\r\n      \"featureReleaseYear\": \"2026\",\r\n      \"id\": \"VisualStudio/18.10.0+12201.205\",\r\n      \"includeBuildVersionInDisplayVersion\": \"False\",\r\n      \"localBuild\": \"build-lab\",\r\n      \"manifestName\": \"VisualStudio\",\r\n      \"manifestType\": \"installer\",\r\n      \"productDisplayVersion\": \"18.10.0\",\r\n      \"productLine\": \"Dev18\",\r\n      \"productLineVersion\": \"18\",\r\n      \"productMilestone\": \"RTW\",\r\n      \"productMilestoneIsPreRelease\": \"False\",\r\n      \"productName\": \"Visual Studio\",\r\n      \"productPatchVersion\": \"0\",\r\n      \"productPreReleaseMilestoneSuffix\": \"4.0\",\r\n      \"productRelease\": \"RTW\",\r\n      \"productSemanticVersion\": \"18.10.0+12201.205\",\r\n      \"requiredEngineVersion\": \"4.10.30.62513\"\r\n    },\r\n    \"properties\": {\r\n      \"campaignId\": \"\",\r\n      \"channelManifestId\": \"VisualStudio.18.Release/18.10.0+12201.205\",\r\n      \"includeRecommended\": \"1\",\r\n      \"nickname\": \"\",\r\n      \"setupEngineFilePath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\Installer\\\\setup.exe\"\r\n    }\r\n  },\r\n  {\r\n    \"instanceId\": \"bab79233\",\r\n    \"installDate\": \"2025-05-03T13:08:05Z\",\r\n    \"installationName\": \"VisualStudio/17.14.40+37628.2\",\r\n    \"installationPath\": \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Enterprise\",\r\n    \"installationVersion\": \"17.14.37628.2\",\r\n    \"productId\": \"Microsoft.VisualStudio.Product.Enterprise\",\r\n    \"productPath\": \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Enterprise\\\\Common7\\\\IDE\\\\devenv.exe\",\r\n    \"state\": 4294967295,\r\n    \"isComplete\": true,\r\n    \"isLaunchable\": true,\r\n    \"isPrerelease\": false,\r\n    \"isRebootRequired\": false,\r\n    \"displayName\": \"Visual Studio Enterprise 2022\",\r\n    \"description\": \"Scalable, end-to-end solution for teams of any size\",\r\n    \"channelId\": \"VisualStudio.17.Release\",\r\n    \"channelUri\": \"https://aka.ms/vs/17/release/channel\",\r\n    \"enginePath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\Installer\\\\resources\\\\app\\\\ServiceHub\\\\Services\\\\Microsoft.VisualStudio.Setup.Service\",\r\n    \"installedChannelId\": \"VisualStudio.17.Release\",\r\n    \"installedChannelUri\": \"https://aka.ms/vs/17/release/channel\",\r\n    \"releaseNotes\": \"https://docs.microsoft.com/en-us/visualstudio/releases/2022/release-notes-v17.14#17.14.40\",\r\n    \"resolvedInstallationPath\": \"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Enterprise\",\r\n    \"thirdPartyNotices\": \"https://go.microsoft.com/fwlink/?LinkId=661288\",\r\n    \"updateDate\": \"2026-09-15T14:28:46.3002305Z\",\r\n    \"catalog\": {\r\n      \"buildBranch\": \"d17.14\",\r\n      \"buildVersion\": \"17.14.37628.2\",\r\n      \"id\": \"VisualStudio/17.14.40+37628.2\",\r\n      \"localBuild\": \"build-lab\",\r\n      \"manifestName\": \"VisualStudio\",\r\n      \"manifestType\": \"installer\",\r\n      \"productDisplayVersion\": \"17.14.40\",\r\n      \"productLine\": \"Dev17\",\r\n      \"productLineVersion\": \"2022\",\r\n      \"productMilestone\": \"RTW\",\r\n      \"productMilestoneIsPreRelease\": \"False\",\r\n      \"productName\": \"Visual Studio\",\r\n      \"productPatchVersion\": \"40\",\r\n      \"productPreReleaseMilestoneSuffix\": \"1.0\",\r\n      \"productSemanticVersion\": \"17.14.40+37628.2\",\r\n      \"requiredEngineVersion\": \"3.14.2094.42856\"\r\n    },\r\n    \"properties\": {\r\n      \"appLocalWPF\": \"false\",\r\n      \"campaignId\": \"2030:fbc56f233732460ba2d1622a5633347c\",\r\n      \"channelManifestId\": \"VisualStudio.17.Release/17.14.40+37628.2\",\r\n      \"includeRecommended\": \"1\",\r\n      \"nickname\": \"\",\r\n      \"setupEngineFilePath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\Installer\\\\setup.exe\"\r\n    }\r\n  },\r\n  {\r\n    \"instanceId\": \"dfa1372b\",\r\n    \"installDate\": \"2026-06-21T13:12:58Z\",\r\n    \"installationName\": \"VisualStudio/16.11.60+37627.13\",\r\n    \"installationPath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\2019\\\\Community\",\r\n    \"installationVersion\": \"16.11.37627.13\",\r\n    \"productId\": \"Microsoft.VisualStudio.Product.Community\",\r\n    \"productPath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\2019\\\\Community\\\\Common7\\\\IDE\\\\devenv.exe\",\r\n    \"state\": 4294967295,\r\n    \"isComplete\": true,\r\n    \"isLaunchable\": true,\r\n    \"isPrerelease\": false,\r\n    \"isRebootRequired\": false,\r\n    \"displayName\": \"Visual Studio Community 2019\",\r\n    \"description\": \"Powerful IDE, free for students, open-source contributors, and individuals\",\r\n    \"channelId\": \"VisualStudio.16.Release\",\r\n    \"channelUri\": \"https://aka.ms/vs/16/release/channel\",\r\n    \"enginePath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\Installer\\\\resources\\\\app\\\\ServiceHub\\\\Services\\\\Microsoft.VisualStudio.Setup.Service\",\r\n    \"installedChannelId\": \"VisualStudio.16.Release\",\r\n    \"installedChannelUri\": \"https://aka.ms/vs/16/release/channel\",\r\n    \"releaseNotes\": \"https://docs.microsoft.com/en-us/visualstudio/releases/2019/release-notes-v16.11#16.11.60\",\r\n    \"resolvedInstallationPath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\2019\\\\Community\",\r\n    \"thirdPartyNotices\": \"https://go.microsoft.com/fwlink/?LinkId=660909\",\r\n    \"updateDate\": \"2026-09-15T14:29:46.8403811Z\",\r\n    \"catalog\": {\r\n      \"buildBranch\": \"d16.11\",\r\n      \"buildVersion\": \"16.11.37627.13\",\r\n      \"id\": \"VisualStudio/16.11.60+37627.13\",\r\n      \"localBuild\": \"build-lab\",\r\n      \"manifestName\": \"VisualStudio\",\r\n      \"manifestType\": \"installer\",\r\n      \"productDisplayVersion\": \"16.11.60\",\r\n      \"productLine\": \"Dev16\",\r\n      \"productLineVersion\": \"2019\",\r\n      \"productMilestone\": \"RTW\",\r\n      \"productMilestoneIsPreRelease\": \"False\",\r\n      \"productName\": \"Visual Studio\",\r\n      \"productPatchVersion\": \"60\",\r\n      \"productPreReleaseMilestoneSuffix\": \"1.0\",\r\n      \"productSemanticVersion\": \"16.11.60+37627.13\",\r\n      \"requiredEngineVersion\": \"2.11.72.18200\"\r\n    },\r\n    \"properties\": {\r\n      \"campaignId\": \"Unity3d_Unity\",\r\n      \"channelManifestId\": \"VisualStudio.16.Release/16.11.60+37627.13\",\r\n      \"includeRecommended\": \"0\",\r\n      \"nickname\": \"\",\r\n      \"setupEngineFilePath\": \"C:\\\\Program Files (x86)\\\\Microsoft Visual Studio\\\\Installer\\\\setup.exe\"\r\n    }\r\n  }\r\n]\r\n",
+      "stdout": "[\r\n  {\r\n    \"installationVersion\": \"18.10.12201.205\"\r\n  },\r\n  {\r\n    \"installationVersion\": \"17.14.37628.2\"\r\n  },\r\n  {\r\n    \"installationVersion\": \"16.11.37627.13\"\r\n  }\r\n]\r\n",
       "stderr": "",
       "error": null,
       "status": "available",
-      "version": "18.10.0+12201.205",
+      "version": "18.10.12201.205",
       "exitCode": 0,
-      "durationMs": 55,
+      "durationMs": 47,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -329,9 +329,9 @@
       "stderr": "",
       "error": null,
       "status": "available",
-      "version": "0.22.37.632",
+      "version": null,
       "exitCode": 0,
-      "durationMs": 663,
+      "durationMs": 745,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -340,7 +340,7 @@
         4,
         5
       ],
-      "evidenceType": "executed"
+      "evidenceType": "os-query"
     },
     {
       "id": "windows-sdk",
@@ -351,7 +351,7 @@
       "version": "10.0.26100.0",
       "exitCode": 0,
       "durationMs": 0,
-      "stdout": "{\"available\":true,\"version\":\"10.0.26100.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"candidates\":[{\"version\":\"10.0.19041.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.22621.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.26100.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true}],\"reason\":\"No matching headers, libraries and tools verified together\"}",
+      "stdout": "{\"available\":true,\"version\":\"10.0.26100.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"candidates\":[{\"version\":\"10.0.19041.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.22621.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.26100.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true}]}",
       "stderr": "",
       "truncated": false,
       "redactions": 0,
@@ -404,8 +404,7 @@
             },
             "available": true
           }
-        ],
-        "reason": "No matching headers, libraries and tools verified together"
+        ]
       }
     },
     {
@@ -473,12 +472,865 @@
       }
     }
   ],
-  "platforms": [],
-  "machines": [],
-  "gaps": [],
-  "scenarios": [],
-  "measurementContract": {},
-  "decisions": [],
+  "platforms": [
+    {
+      "id": "helios-windows10",
+      "framework": {
+        "version": "native-host / Flutter N/A",
+        "source": "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+        "capturedAt": "2026-10-07",
+        "os": "not applicable: native host",
+        "architectures": [
+          "x64 proposed; native validation pending"
+        ],
+        "statementVersion": "3.44.0"
+      },
+      "nativeConstraints": [
+        "Build floor, IddCx/virtual mic/Win10 camera require Phase3–5 prototypes; source APIs are not support evidence."
+      ],
+      "minimum": {
+        "status": "pending-prototype",
+        "os": "Windows 10",
+        "architectures": [
+          "x64"
+        ],
+        "evidence": [
+          "PROJECT hard requirement Win10/11; build floor deliberately unconfirmed",
+          "Framework statement is separate from native backend and target-build evidence"
+        ]
+      },
+      "buildEvidence": [],
+      "hardwareEvidence": [],
+      "hardwareTodoId": null,
+      "gapIds": [
+        "native-build",
+        "windows10-machine",
+        "windows-wdk",
+        "host-floor"
+      ]
+    },
+    {
+      "id": "helios-windows11",
+      "framework": {
+        "version": "native-host / Flutter N/A",
+        "source": "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+        "capturedAt": "2026-10-07",
+        "os": "not applicable: native host",
+        "architectures": [
+          "x64 proposed; native validation pending"
+        ],
+        "statementVersion": "3.44.0"
+      },
+      "nativeConstraints": [
+        "MFCreateVirtualCamera requires build22000 for that route only; host floor stays pending Phase3–5."
+      ],
+      "minimum": {
+        "status": "pending-prototype",
+        "os": "Windows 11",
+        "architectures": [
+          "x64"
+        ],
+        "evidence": [
+          "PROJECT hard requirement Win10/11; build floor deliberately unconfirmed",
+          "Framework statement is separate from native backend and target-build evidence"
+        ]
+      },
+      "buildEvidence": [],
+      "hardwareEvidence": [],
+      "hardwareTodoId": null,
+      "gapIds": [
+        "native-build",
+        "windows-wdk",
+        "host-floor"
+      ]
+    },
+    {
+      "id": "selene-windows",
+      "framework": {
+        "version": "3.44.0",
+        "source": "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+        "capturedAt": "2026-10-07",
+        "os": "Windows 10/11",
+        "architectures": [
+          "x64",
+          "arm64"
+        ],
+        "statementVersion": "3.44.0"
+      },
+      "nativeConstraints": [
+        "Native decoder/render/input/capture and Windows ARM64 dependency builds await Phase2/12/23/30."
+      ],
+      "minimum": {
+        "status": "proposed",
+        "os": "Windows 10/11",
+        "architectures": [
+          "x64",
+          "arm64"
+        ],
+        "evidence": [
+          "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+          "Framework statement is separate from native backend and target-build evidence"
+        ]
+      },
+      "buildEvidence": [],
+      "hardwareEvidence": [],
+      "hardwareTodoId": null,
+      "gapIds": [
+        "native-build",
+        "client-machines"
+      ]
+    },
+    {
+      "id": "selene-macos",
+      "framework": {
+        "version": "3.44.0",
+        "source": "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+        "capturedAt": "2026-10-07",
+        "os": "macOS 10.15–26",
+        "architectures": [
+          "x64",
+          "arm64"
+        ],
+        "statementVersion": "3.44.0"
+      },
+      "nativeConstraints": [
+        "Framework deployment floor only; native media/Metal/HDR/input and x64+arm64 target builds await Phase2/33."
+      ],
+      "minimum": {
+        "status": "proposed",
+        "os": "macOS 10.15",
+        "architectures": [
+          "x64",
+          "arm64"
+        ],
+        "evidence": [
+          "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+          "Framework statement is separate from native backend and target-build evidence"
+        ]
+      },
+      "buildEvidence": [],
+      "hardwareEvidence": [],
+      "hardwareTodoId": "VFY-02",
+      "gapIds": [
+        "apple-toolchain",
+        "apple-hardware"
+      ]
+    },
+    {
+      "id": "selene-ios-ipados",
+      "framework": {
+        "version": "3.44.0",
+        "source": "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+        "capturedAt": "2026-10-07",
+        "os": "iOS 13–26",
+        "architectures": [
+          "arm64"
+        ],
+        "statementVersion": "3.44.0"
+      },
+      "nativeConstraints": [
+        "Framework floor only; AVSampleBufferDisplayLayer/Metal, controllers, capture and external display await Phase2/32. x64 simulator is not shipping hardware."
+      ],
+      "minimum": {
+        "status": "proposed",
+        "os": "iOS/iPadOS 13",
+        "architectures": [
+          "arm64"
+        ],
+        "evidence": [
+          "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+          "Framework statement is separate from native backend and target-build evidence"
+        ]
+      },
+      "buildEvidence": [],
+      "hardwareEvidence": [],
+      "hardwareTodoId": "VFY-01",
+      "gapIds": [
+        "apple-toolchain",
+        "apple-hardware"
+      ]
+    },
+    {
+      "id": "selene-android",
+      "framework": {
+        "version": "3.44.0",
+        "source": "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+        "capturedAt": "2026-10-07",
+        "os": "Android API24–36",
+        "architectures": [
+          "arm32",
+          "arm64",
+          "x64"
+        ],
+        "statementVersion": "3.44.0"
+      },
+      "nativeConstraints": [
+        "MediaCodec/Surface codec+HDR, camera/audio permissions and lifecycle require Phase14/24/31 target checks."
+      ],
+      "minimum": {
+        "status": "proposed",
+        "os": "Android API24 (7.0)",
+        "architectures": [
+          "arm32",
+          "arm64",
+          "x64"
+        ],
+        "evidence": [
+          "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+          "Framework statement is separate from native backend and target-build evidence"
+        ]
+      },
+      "buildEvidence": [],
+      "hardwareEvidence": [],
+      "hardwareTodoId": null,
+      "gapIds": [
+        "native-build",
+        "client-machines",
+        "android-api21-23"
+      ]
+    },
+    {
+      "id": "selene-linux",
+      "framework": {
+        "version": "3.44.0",
+        "source": "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+        "capturedAt": "2026-10-07",
+        "os": "Debian10–13; Ubuntu20.04–24.04 LTS",
+        "architectures": [
+          "x64",
+          "arm64"
+        ],
+        "statementVersion": "3.44.0"
+      },
+      "nativeConstraints": [
+        "Wayland/X11, VAAPI/Vulkan/audio/input dependencies await Phase34–35. Qt ARM32/RISC-V and board-specific paths remain v1 differences; Flutter matrix does not prove them."
+      ],
+      "minimum": {
+        "status": "proposed",
+        "os": "Debian10 / Ubuntu20.04 LTS",
+        "architectures": [
+          "x64",
+          "arm64"
+        ],
+        "evidence": [
+          "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
+          "Framework statement is separate from native backend and target-build evidence"
+        ]
+      },
+      "buildEvidence": [],
+      "hardwareEvidence": [],
+      "hardwareTodoId": null,
+      "gapIds": [
+        "linux-toolchain",
+        "client-machines",
+        "linux-extra-architectures"
+      ]
+    }
+  ],
+  "machines": [
+    {
+      "id": "android-client",
+      "role": "client",
+      "os": "Android API24+",
+      "architecture": "arm32/arm64/x64",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "unconfirmed",
+      "evidence": [
+        "SDK metadata only; no phone/tablet test"
+      ],
+      "requiredByPhases": [
+        14,
+        24,
+        31
+      ]
+    },
+    {
+      "id": "apple-build-executor",
+      "role": "build/automation",
+      "os": "macOS/Xcode",
+      "architecture": "x64/arm64",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "unconfirmed",
+      "evidence": [
+        "No macOS executor or CI verified"
+      ],
+      "requiredByPhases": [
+        2,
+        32,
+        33
+      ]
+    },
+    {
+      "id": "intel-gpu-target",
+      "role": "GPU coverage",
+      "os": "Windows 10/11",
+      "architecture": "x64",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "unconfirmed",
+      "evidence": [
+        "No Intel GPU verified"
+      ],
+      "requiredByPhases": [
+        10,
+        12,
+        13
+      ]
+    },
+    {
+      "id": "ios-hardware",
+      "role": "physical client",
+      "os": "iOS/iPadOS13+",
+      "architecture": "arm64",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "todo",
+      "evidence": [
+        "Approved VFY-01; builds remain mandatory"
+      ],
+      "requiredByPhases": [
+        32,
+        42
+      ]
+    },
+    {
+      "id": "linux-client",
+      "role": "client",
+      "os": "Debian10+/Ubuntu20.04+",
+      "architecture": "x64/arm64; extra architectures pending",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "unconfirmed",
+      "evidence": [
+        "No Linux executor/device query"
+      ],
+      "requiredByPhases": [
+        34,
+        35
+      ]
+    },
+    {
+      "id": "local-gpu-0",
+      "role": "GPU device enumeration",
+      "os": "Microsoft Windows 11 企业版 LTSC",
+      "architecture": "64-bit",
+      "gpuVendor": "NVIDIA",
+      "gpuModel": "NVIDIA GeForce RTX 5080",
+      "driver": "32.0.15.9579",
+      "availability": "verified",
+      "evidence": [
+        "CIM device/driver enumeration only; codec/session/HDR/power tests unperformed"
+      ],
+      "requiredByPhases": [
+        10,
+        12,
+        13
+      ]
+    },
+    {
+      "id": "local-gpu-1",
+      "role": "GPU device enumeration",
+      "os": "Microsoft Windows 11 企业版 LTSC",
+      "architecture": "64-bit",
+      "gpuVendor": "Advanced Micro Devices, Inc.",
+      "gpuModel": "AMD Radeon(TM) Graphics",
+      "driver": "32.0.13036.4",
+      "availability": "verified",
+      "evidence": [
+        "CIM device/driver enumeration only; codec/session/HDR/power tests unperformed"
+      ],
+      "requiredByPhases": [
+        10,
+        12,
+        13
+      ]
+    },
+    {
+      "id": "local-windows11",
+      "role": "host/development",
+      "os": "Microsoft Windows 11 企业版 LTSC",
+      "architecture": "64-bit",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "verified",
+      "evidence": [
+        "OS/tool query only; no product runtime validated"
+      ],
+      "requiredByPhases": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "mac-hardware",
+      "role": "physical client",
+      "os": "macOS10.15+",
+      "architecture": "x64/arm64",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "todo",
+      "evidence": [
+        "Approved VFY-02; builds remain mandatory"
+      ],
+      "requiredByPhases": [
+        33,
+        42
+      ]
+    },
+    {
+      "id": "windows-client",
+      "role": "client",
+      "os": "Windows 10/11",
+      "architecture": "x64/arm64",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "unconfirmed",
+      "evidence": [
+        "No separate client E2E or ARM64 device evidence"
+      ],
+      "requiredByPhases": [
+        12,
+        30
+      ]
+    },
+    {
+      "id": "windows10-target",
+      "role": "host",
+      "os": "Windows 10",
+      "architecture": "x64",
+      "gpuVendor": "unconfirmed",
+      "gpuModel": "unconfirmed",
+      "driver": "unconfirmed",
+      "availability": "unconfirmed",
+      "evidence": [
+        "No independent Win10 device queried"
+      ],
+      "requiredByPhases": [
+        3,
+        4,
+        5,
+        12,
+        38
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "id": "android-api21-23",
+      "component": "Original Android API21–23 vs Flutter API24",
+      "purpose": "Preserve original Android deployment difference",
+      "evidence": [
+        "Fixed moonlight-android app/build.gradle minSdk21; official Flutter3.44 starts API24"
+      ],
+      "status": "open",
+      "followupPhases": [
+        2,
+        14,
+        31
+      ],
+      "resolutionNeeded": "Keep v1 difference; prototype lower-API Flutter/native viability before confirming support or proposing precise small phase adaptation"
+    },
+    {
+      "id": "apple-hardware",
+      "component": "Mac/iPhone/iPad",
+      "purpose": "Physical feature/performance/install verification",
+      "evidence": [
+        "User-approved absence of Apple physical devices"
+      ],
+      "status": "todo",
+      "followupPhases": [
+        32,
+        33,
+        42
+      ],
+      "resolutionNeeded": "Collect VFY-01/VFY-02 later; keep all Apple implementation and build obligations"
+    },
+    {
+      "id": "apple-toolchain",
+      "component": "macOS/Xcode/Apple SDK or CI",
+      "purpose": "Mandatory Apple implementation/build/automation",
+      "evidence": [
+        "Windows host; no accessible Apple build executor verified"
+      ],
+      "status": "open",
+      "followupPhases": [
+        2,
+        32,
+        33
+      ],
+      "resolutionNeeded": "Arrange macOS/Xcode target executor or CI; pin supported Xcode/SDK and build both Apple targets"
+    },
+    {
+      "id": "client-machines",
+      "component": "Windows/Android/Linux target devices and Intel GPU",
+      "purpose": "Client end-to-end and three GPU vendors",
+      "evidence": [
+        "No client test or Intel device verified; local NVIDIA/AMD only enumerated"
+      ],
+      "status": "open",
+      "followupPhases": [
+        6,
+        10,
+        12,
+        14,
+        30,
+        31,
+        34,
+        35
+      ],
+      "resolutionNeeded": "Inventory separate target devices/architectures then collect E2E/codec/HDR/capture/driver evidence"
+    },
+    {
+      "id": "host-floor",
+      "component": "Windows minimum build",
+      "purpose": "Win10 and Win11 full host function floors",
+      "evidence": [
+        "No display/mic/camera prototype evidence yet"
+      ],
+      "status": "open",
+      "followupPhases": [
+        3,
+        4,
+        5
+      ],
+      "resolutionNeeded": "Lock actual minimum builds using prototypes without replacing Win10 with Win11"
+    },
+    {
+      "id": "linux-extra-architectures",
+      "component": "ARM32/RISC-V/board-specific original Linux paths",
+      "purpose": "Preserve original user abilities and explain framework gap",
+      "evidence": [
+        "Fixed Qt README vs Flutter3.44 x64/arm64 statement"
+      ],
+      "status": "open",
+      "followupPhases": [
+        2,
+        34,
+        35
+      ],
+      "resolutionNeeded": "Keep in v1 differences; prototype Flutter/native feasibility then propose specific small phase split if needed"
+    },
+    {
+      "id": "linux-toolchain",
+      "component": "Linux compiler/Flutter desktop/media SDK",
+      "purpose": "Linux x64/arm64 builds and Wayland/X11 backends",
+      "evidence": [
+        "No Linux executor queried"
+      ],
+      "status": "open",
+      "followupPhases": [
+        2,
+        34,
+        35
+      ],
+      "resolutionNeeded": "Verify toolchain/native packages on Linux build executor and GPU device"
+    },
+    {
+      "id": "measurement-instruments",
+      "component": "Reference binary and calibrated measurement instruments",
+      "purpose": "Comparable performance observations",
+      "evidence": [
+        "No source-matched binary digest, high speed camera, instrument accuracy or calibration measured"
+      ],
+      "status": "open",
+      "followupPhases": [
+        6,
+        10
+      ],
+      "resolutionNeeded": "Build/select source-matched reference and record SHA256; collect raw logs and calibrate or mark unavailable"
+    },
+    {
+      "id": "native-build",
+      "component": "Native/toolchain integration",
+      "purpose": "All five target builds and dependency pinning",
+      "evidence": [
+        "Version queries/cache components only; no Aether binary exists"
+      ],
+      "status": "open",
+      "followupPhases": [
+        2,
+        12,
+        14,
+        30,
+        31
+      ],
+      "resolutionNeeded": "Pin versions and perform target smoke build; request exact official dependencies if missing"
+    },
+    {
+      "id": "windows-wdk",
+      "component": "SDK/WDK driver toolchain",
+      "purpose": "IDD/audio/camera prototypes",
+      "evidence": [
+        "missing"
+      ],
+      "status": "open",
+      "followupPhases": [
+        3,
+        4,
+        5
+      ],
+      "resolutionNeeded": "Verify matching WDK/VS integration and signing tools from Microsoft before prototyping; no installation performed"
+    },
+    {
+      "id": "windows10-machine",
+      "component": "Win10 machine",
+      "purpose": "Independent Win10 OS/driver/media tests",
+      "evidence": [
+        "Current machine CIM is Win11; registry name is not Win10 evidence"
+      ],
+      "status": "open",
+      "followupPhases": [
+        3,
+        4,
+        5,
+        12,
+        38
+      ],
+      "resolutionNeeded": "Prepare separate Win10 target; GPU functionality requires physical device"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "lan-desktop",
+      "description": "Wired LAN,1080p60 desktop; same host/client/codec/audio/HDR params"
+    },
+    {
+      "id": "wifi-jitter",
+      "description": "Wi-Fi repeat runs; record channel/link quality and jitter, do not change system settings"
+    },
+    {
+      "id": "controlled-impairment",
+      "description": "Isolated lab network/device with authorized loss/RTT/bandwidth profile; record exact profile, no workstation NIC modification"
+    },
+    {
+      "id": "high-fps-game",
+      "description": "Source-supported high-fps game at actual display/codec limits; record achieved rather than requested fps"
+    },
+    {
+      "id": "hdr",
+      "description": "Known HDR pattern/content, record metadata/output capability and SDR fallback"
+    },
+    {
+      "id": "dual-display",
+      "description": "At least two independent changing displays, separate frame IDs and sync"
+    },
+    {
+      "id": "resource-limit",
+      "description": "Increase independent streams to negotiated encode/decode/VRAM/bandwidth limits; explain rejection"
+    },
+    {
+      "id": "hotplug",
+      "description": "Physical output/input device unplug/replug under active session, capability changes"
+    },
+    {
+      "id": "sleep-wake",
+      "description": "Host/client suspend+resume, reconnect and lease/instance/display persistence"
+    },
+    {
+      "id": "long-run",
+      "description": "Proposed 8-hour stability run after baseline capture; record failures/thermal/resource drift, not an approved SLO"
+    },
+    {
+      "id": "instance-persistence",
+      "description": "Start A/B/C, control A, switch B, disconnect all, reconnect C; confirm apps/displays persist; explicitly stop B, A/C survive"
+    },
+    {
+      "id": "lease-race",
+      "description": "Two authorized clients race lease; reject second controller and stale input; authorized read-only join independent of control"
+    }
+  ],
+  "measurementContract": {
+    "metrics": {
+      "overlay-estimate": "ms",
+      "decode-duration": "ms",
+      "network-rtt": "ms",
+      "glass-to-glass": "ms",
+      "frame-drop": "%",
+      "jitter": "ms",
+      "cpu": "%",
+      "gpu": "%",
+      "vram": "MiB",
+      "power": "W"
+    },
+    "method": {
+      "warmupSeconds": 30,
+      "windowSeconds": 60,
+      "repeats": 3,
+      "status": "proposed-method-not-SLO"
+    },
+    "clockRequirement": "Same-clock RTT/decode durations only. Cross-machine timestamp differences require documented calibration, uncertainty and capture date; glass-to-glass uses one camera/clock observing both physical displays.",
+    "collection": {
+      "overlay-estimate": "Record reference client overlay statistics with capture time; estimate only, preserve definition and update period.",
+      "decode-duration": "Instrument decoder submit-to-output on one monotonic clock; record actual hardware/software path and frame IDs.",
+      "network-rtt": "One endpoint monotonic send/echo timing; preserve probe cadence and loss.",
+      "glass-to-glass": "High-speed camera sees host+client physical event/display together; count frames, record camera fps/exposure and resolution ±1 frame or measured uncertainty.",
+      "frame-drop": "Count missing/dropped frame IDs against expected frames over recorded window; preserve denominator.",
+      "jitter": "Record inter-arrival variation on one receiving monotonic clock with exact definition/interval.",
+      "cpu": "OS process CPU sampled every second; record normalization to whole machine vs one core.",
+      "gpu": "GPU engine utilization counter per process/adapter and cadence; absence unavailable.",
+      "vram": "Per-process/adapter dedicated allocation counter in MiB; shared memory separate.",
+      "power": "External wattmeter preferred, record host/client/system boundary and calibrated accuracy; driver estimate explicitly identified."
+    },
+    "recordFields": [
+      "schemaVersion",
+      "scenarioId",
+      "reference{repo,commit,binaryDigest}",
+      "hostId",
+      "clientId",
+      "osGpuDriver",
+      "network",
+      "resolution",
+      "fps",
+      "codec",
+      "hdr",
+      "audio",
+      "sampling{warmupSeconds,windowSeconds,repeats,clockMethod,instrument,accuracy}",
+      "samples[{metric,unit,value,timestamp,origin}]",
+      "failures[{reason,timestamp}]"
+    ],
+    "productMeasurements": [],
+    "unavailableMetrics": [
+      {
+        "metric": "overlay-estimate",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "decode-duration",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "network-rtt",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "glass-to-glass",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "frame-drop",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "jitter",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "cpu",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "gpu",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "vram",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      },
+      {
+        "metric": "power",
+        "reason": "No source-matched reference run or calibrated instrument evidence yet"
+      }
+    ]
+  },
+  "decisions": [
+    {
+      "id": "original-scope-observers",
+      "question": "确认全部原能力/ORIG01–10与Apollo授权只读加入路线",
+      "status": "pending",
+      "selected": null,
+      "recommendation": "retain-evidence",
+      "options": [
+        {
+          "id": "retain-evidence",
+          "description": "保留全部原能力；授权只读观察者可加入，禁止输入/设备上行/会话变更，独立协商资源，主机仍唯一控制租约",
+          "benefits": "保留全部适用原能力及真实证据边界",
+          "costs": "确认后修订SESSION-MODEL观察者段落；Phase6/20/37验证授权、隔离和资源拒绝"
+        },
+        {
+          "id": "revise",
+          "description": "指出具体行/范围/方法，修订后再确认",
+          "benefits": "产品实施前纠正基线",
+          "costs": "相关门禁须重跑；不自动删能力或转TODO"
+        }
+      ]
+    },
+    {
+      "id": "client-minimum-architectures",
+      "question": "确认Flutter3.44最低OS/架构候选及原目标差异的验证路线",
+      "status": "pending",
+      "selected": null,
+      "recommendation": "retain-evidence",
+      "options": [
+        {
+          "id": "retain-evidence",
+          "description": "Windows10/11 x64+arm64；macOS10.15 x64+arm64；iOS13 arm64；AndroidAPI24 arm32+arm64+x64；Debian10/Ubuntu20.04 x64+arm64。原生限制未证实；AndroidAPI21–23及LinuxARM32/RISC-V/板卡保留v1差异",
+          "benefits": "保留全部适用原能力及真实证据边界",
+          "costs": "Phase2原型验证更低AndroidAPI、额外架构与原生最低范围；需要时提出具体小阶段拆分，当前不宣称支持"
+        },
+        {
+          "id": "revise",
+          "description": "指出具体行/范围/方法，修订后再确认",
+          "benefits": "产品实施前纠正基线",
+          "costs": "相关门禁须重跑；不自动删能力或转TODO"
+        }
+      ]
+    },
+    {
+      "id": "environment-gaps-host-floor",
+      "question": "确认实际工具/OS结果与保留机器及构建缺口",
+      "status": "pending",
+      "selected": null,
+      "recommendation": "retain-evidence",
+      "options": [
+        {
+          "id": "retain-evidence",
+          "description": "Win10/11主机build待Phase3–5原型；保留WDK/原生构建/目标设备/Apple构建缺口，只有Apple实机验收VFY01/02延期",
+          "benefits": "保留全部适用原能力及真实证据边界",
+          "costs": "在责任阶段准备明确依赖、构建执行器和设备；本阶段不安装"
+        },
+        {
+          "id": "revise",
+          "description": "指出具体行/范围/方法，修订后再确认",
+          "benefits": "产品实施前纠正基线",
+          "costs": "相关门禁须重跑；不自动删能力或转TODO"
+        }
+      ]
+    },
+    {
+      "id": "measurement-method",
+      "question": "确认可复现测量方法，真实基线后再定产品目标",
+      "status": "pending",
+      "selected": null,
+      "recommendation": "retain-evidence",
+      "options": [
+        {
+          "id": "retain-evidence",
+          "description": "30秒预热/60秒采样/3轮；按metric/unit计算nearest-rank p50/p95；依文档记录场景、仪器与精度，缺指标写unavailable",
+          "benefits": "保留全部适用原能力及真实证据边界",
+          "costs": "仪器/精度/时钟校准尚未实测；无产品性能保证；Phase6/10实测后定阈值"
+        },
+        {
+          "id": "revise",
+          "description": "指出具体行/范围/方法，修订后再确认",
+          "benefits": "产品实施前纠正基线",
+          "costs": "相关门禁须重跑；不自动删能力或转TODO"
+        }
+      ]
+    }
+  ],
   "review": {
     "status": "pending",
     "confirmedBy": null,

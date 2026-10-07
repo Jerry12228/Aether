@@ -72494,6 +72494,32 @@
       ],
       "status": "open",
       "decisionEvidence": null
+    },
+    {
+      "id": "android-api21-23-framework-floor",
+      "description": "固定 Android 原构建 minSdk21；Flutter3.44 官方声明从 API24 开始，不能静默删除原 API21–23 用户范围，也不能宣称 Flutter 已支持",
+      "affectedConstraint": "Flutter单一Selene app与原能力保留；具体最低客户端范围须人审及原型",
+      "featureIds": [
+        "selene-android-apk-abis"
+      ],
+      "sourceEvidence": [
+        {
+          "repo": "moonlight-android",
+          "commit": "b48494cb96bff23d8886c4775cc4f39a1075495d",
+          "path": "app/build.gradle",
+          "blob": "c9cc3e47ac3bf92be15af67385828ec0d0d770f0",
+          "symbol": "defaultConfig",
+          "startLine": 10,
+          "endLine": 12,
+          "excerpt": "    defaultConfig {\n        minSdk 21\n        targetSdk 36"
+        }
+      ],
+      "status": "open",
+      "options": [
+        "推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/31验证更低API适配与原生路径，未证明前不宣称支持",
+        "修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO"
+      ],
+      "decisionEvidence": null
     }
   ]
 }

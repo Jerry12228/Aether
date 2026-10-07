@@ -1,6 +1,27 @@
 # 平台与验证矩阵
 
-所有单元格描述目标或待验证路径，不表示功能已完成。最低客户端 OS/CPU 架构在 Phase 1 冻结，参考 [Flutter 支持平台](https://docs.flutter.dev/reference/supported-platforms)，同时审查所选媒体 SDK 的限制。
+所有单元格描述目标或待验证路径，不表示功能已完成。Phase 1 提出最低客户端 OS/CPU 架构候选供完整人审；框架声明、原生限制、目标构建与实机证据分开记录，具体媒体路径仍须后续原型验证。
+
+## 版本化最低范围候选
+
+本机缓存 Flutter 3.44.0 / Dart 3.12.0；采用 [Flutter 3.44 官方历史矩阵](https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1)，不将 [当前官网 3.47](https://docs.flutter.dev/reference/supported-platforms) 的 iOS15/macOS12 下限套给本机3.44。未来升级需重新审阅范围。
+
+| 平台 | 3.44框架声明 / 候选最低 OS | 架构候选 | 原生/构建/硬件证据与责任 |
+|---|---|---|---|
+| Windows 客户端 | Windows 10/11 | x64、arm64 | Phase2/12/23/30 后端与双架构构建；无产品构建/实机证据 |
+| macOS 客户端 | 10.15；框架范围至26 | x64、arm64 | Phase2/33 媒体/Metal/输入与目标构建；无构建执行器，硬件VFY-02 |
+| iOS/iPadOS 客户端 | 13；框架范围至26 | arm64 | 固定Moonlight app构建target为15，不能证明Aether原生路径在13工作；Phase2/32验证；构建执行器缺口，硬件VFY-01 |
+| Android 客户端 | API24；框架范围24–36 | arm32、arm64、x64 | 原Moonlight minSdk21：API21–23仍为v1差异，Phase2/14/31原型适配，未证实前不宣称支持 |
+| Linux 客户端 | Debian10 / Ubuntu20.04 LTS；框架范围Debian10–13、Ubuntu20.04–24.04LTS | x64、arm64 | Phase2/34–35验证native工具链/VAAPI/窗口系统；原ARM32/实验RISC-V/板卡保留v1差异，不能因框架表没有就删掉 |
+| Windows 10/11 主机 | 硬要求保留两代OS；具体最低build pending-prototype | x64候选，原生依赖待验证 | Phase3–5驱动/麦克风/摄像头验证后锁build；不能借Win11摄像头API或参考上游提高Win10下限 |
+
+架构列指CPU指令集，性能级别、内存门槛和各codec/HDR最低硬件未实测。历史来源是官方框架范围声明，不是Aether端到端支持；最低候选不授权删除较旧原用户范围。原Qt Windows manifest的7/8/8.1兼容标签也不等于已验证其最低版本。本次平台差异必须在 [全基线审阅](BASELINE-REVIEW.md) 明确处理。
+
+## 当前环境与机器缺口
+
+[environment.json](baseline/environment.json) 记录14项只读查询、7个平台、11个机器/GPU条目及明确缺口；所有平台 buildEvidence/hardwareEvidence 为空。Quick约1.3秒完成，Node24.14/Git2.54/pwsh7.6.3/CMake4.4.3/Ninja1.12、VC组件、缓存Flutter/Dart、JDK17及AndroidSDK/NDK可查询；SDK19041/22621/26100同版本headers/libs/tools配套存在，WDK配套未验证。以上不是完成目标构建或许可审计。
+
+原始注册表 ProductName 为Windows10 Enterprise LTSC2024，CurrentBuild26100，独立CIM Caption为Windows11企业版LTSC；保留诊断，当前机器不算Win10实机。NVIDIA RTX5080与AMD Radeon及驱动已枚举；虚拟适配器另保留原字段，没有编码/解码/三厂GPU验证。Win10目标、独立Windows/Android/Linux客户端、IntelGPU及ARM目标仍unconfirmed；macOS/Xcode/CI构建缺口独立于Apple硬件TODO。准备用途和责任阶段见环境台账，本阶段不安装缺失依赖。
 
 | 角色/平台 | 首版 | 原生职责 | 构建/验收环境 |
 |------------|------|----------|--------------|
