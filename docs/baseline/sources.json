@@ -116295,10 +116295,14 @@
         }
       ],
       "recommendation": "retain-candidates",
-      "selected": null,
-      "status": "pending",
-      "confirmedBy": null,
-      "confirmedAt": null
+      "selected": "retain-candidates",
+      "status": "selected",
+      "confirmedBy": "user",
+      "confirmedAt": "2026-10-07T07:59:36.360Z",
+      "confirmationText": "compatible-open-source；暂不考虑发行",
+      "retainedBlockers": [
+        "distribution-accounts"
+      ]
     },
     {
       "id": "project-reuse-policy",
@@ -116351,10 +116355,16 @@
         }
       ],
       "recommendation": "research-only（当前证据完成但所有生产清单/渠道尚未闭合）；若已确定开源意图，可选前两条并保留阻碍。",
-      "selected": null,
-      "status": "pending",
-      "confirmedBy": null,
-      "confirmedAt": null
+      "selected": "compatible-open-source",
+      "status": "selected",
+      "confirmedBy": "user",
+      "confirmedAt": "2026-10-07T07:59:36.360Z",
+      "confirmationText": "compatible-open-source；暂不考虑发行",
+      "retainedBlockers": [
+        "project-license",
+        "external-build-scope",
+        "apple-foss-channel"
+      ]
     }
   ],
   "blockers": [
@@ -132862,7 +132872,12 @@
     "flags": [
       "BASE-02 unclassified/unresolved",
       "根许可/缺依赖prohibitions flagged-unverified"
-    ]
+    ],
+    "humanRouteDecision": {
+      "text": "用户选择 compatible-open-source；发行暂不考虑，映射 retain-candidates。项目 GPL-3.0-or-later 候选意图已确认，生产复制/链接清单仍为空；未知许可、签名和渠道兼容保持 blocked。",
+      "confirmedBy": "user",
+      "confirmedAt": "2026-10-07T07:59:36.360Z"
+    }
   },
   "manualFindings": [
     {

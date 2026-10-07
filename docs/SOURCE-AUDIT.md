@@ -387,7 +387,7 @@
 - **direct-plus-apple-beta**：Windows主机/客户端直接包；macOS Developer ID+公证；Linux直接包；Android APK；iOS TestFlight→App Store候选；Windows设备WHCP/HLK生产评估。。收益：优先直接发行路线，保留五端与正式设备交付。代价：Apple组合/账户、公证、驱动认证与所有源码义务待核验；商店候选均未获批准。阻碍：apple-foss-channel, driver-production-signing, distribution-accounts。
 - **retain-candidates**：保留14条比较，所有渠道暂不选定；在交付阶段决定。。收益：不提前锁尚无实际产物的发行路径。代价：交付阶段必须重新核对条款与账号，不改变五端v1义务。阻碍：distribution-accounts。
 
-推荐：retain-candidates；状态：pending；选择：待用户决定；确认：无 / 无。
+推荐：retain-candidates；状态：selected；选择：retain-candidates；确认：user / 2026-10-07T07:59:36.360Z。
 
 ### project-reuse-policy
 
@@ -397,7 +397,7 @@
 - **independent-implementation**：独立实现 Aether，自写代码以 Apache-2.0 为候选；只研究现有行为，媒体/驱动依赖另审。。收益：明确自写实现范围与依赖边界。代价：协议行为仍基于GameStream；需要更多实现与核验工作；独立意图不是已取得法律结论，不能搬代码后改许可。阻碍：project-license, external-build-scope。
 - **research-only**：本阶段只确认来源证据；暂不锁项目LICENSE，禁止生产复制/链接/再分发，继续原能力和环境审计。。收益：可立即推进01-02/03证据工作，未知授权保持阻断。代价：Phase2或首个生产依赖前必须闭合具体许可/复用问题。阻碍：project-license, external-build-scope。
 
-推荐：research-only（当前证据完成但所有生产清单/渠道尚未闭合）；若已确定开源意图，可选前两条并保留阻碍。；状态：pending；选择：待用户决定；确认：无 / 无。
+推荐：research-only（当前证据完成但所有生产清单/渠道尚未闭合）；若已确定开源意图，可选前两条并保留阻碍。；状态：selected；选择：compatible-open-source；确认：user / 2026-10-07T07:59:36.360Z。
 
 ## 未决阻碍
 
