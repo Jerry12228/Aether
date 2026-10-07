@@ -8,10 +8,10 @@
 
 | 平台 | 3.44框架声明 / 候选最低 OS | 架构候选 | 原生/构建/硬件证据与责任 |
 |---|---|---|---|
-| Windows 客户端 | Windows 10/11 | x64、arm64 | Phase2/12/23/30 后端与双架构构建；无产品构建/实机证据 |
-| macOS 客户端 | 10.15；框架范围至26 | x64、arm64 | Phase2/33 媒体/Metal/输入与目标构建；无构建执行器，硬件VFY-02 |
-| iOS/iPadOS 客户端 | 13；框架范围至26 | arm64 | 固定Moonlight app构建target为15，不能证明Aether原生路径在13工作；Phase2/32验证；构建执行器缺口，硬件VFY-01 |
-| Android 客户端 | API24；框架范围24–36 | arm32、arm64、x64 | 原Moonlight minSdk21：API21–23仍为v1差异，Phase2/14/31原型适配，未证实前不宣称支持 |
+| Windows 客户端 | Windows 10/11 | x64、arm64 | Phase2/10–16/19/21–22 后端与双架构构建；无产品构建/实机证据 |
+| macOS 客户端 | 10.15；框架范围至26 | x64、arm64 | Phase2/30–31 媒体/Metal/输入与目标构建；无构建执行器，硬件VFY-02 |
+| iOS/iPadOS 客户端 | 13；框架范围至26 | arm64 | 固定Moonlight app构建target为15，不能证明Aether原生路径在13工作；Phase2/32–33验证；构建执行器缺口，硬件VFY-01 |
+| Android 客户端 | API24；框架范围24–36 | arm32、arm64、x64 | 原Moonlight minSdk21：API21–23仍为v1差异，Phase2/14/28–29原型适配，未证实前不宣称支持 |
 | Linux 客户端 | Debian10 / Ubuntu20.04 LTS；框架范围Debian10–13、Ubuntu20.04–24.04LTS | x64、arm64 | Phase2/34–35验证native工具链/VAAPI/窗口系统；原ARM32/实验RISC-V/板卡保留v1差异，不能因框架表没有就删掉 |
 | Windows 10/11 主机 | 硬要求保留两代OS；具体最低build pending-prototype | x64候选，原生依赖待验证 | Phase3–5驱动/麦克风/摄像头验证后锁build；不能借Win11摄像头API或参考上游提高Win10下限 |
 

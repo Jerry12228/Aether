@@ -20,9 +20,9 @@
 - **helios-windows10-apollo-read-only**（decided）：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
 - **helios-windows11-apollo-read-only**（decided）：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
 - **qt-linux-extra-architectures**（decided）：Qt README列出Linux ARM32/ARM64、实验RISC-V及特定板卡；Flutter目标声明和可用原生后端未证明同等构建范围，不能静默丢失这些用户目标。选项：推荐：逐架构保留能力/构建差异并在Phase2/34–35验证，暂不宣称支持；需用户明确范围：若确需额外架构，提出具体适配/工具链验证阶段。
-- **android-api21-23-framework-floor**（decided）：固定 Android 原构建 minSdk21；Flutter3.44 官方声明从 API24 开始，不能静默删除原 API21–23 用户范围，也不能宣称 Flutter 已支持。选项：推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/31验证更低API适配与原生路径，未证明前不宣称支持；修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO。
+- **android-api21-23-framework-floor**（decided）：固定 Android 原构建 minSdk21；Flutter3.44 官方声明从 API24 开始，不能静默删除原 API21–23 用户范围，也不能宣称 Flutter 已支持。选项：推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/28–29验证更低API适配与原生路径，未证明前不宣称支持；修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO。
 
-经人审确认的路线保留 Apollo 经授权的只读加入能力：观察者禁止输入、设备上行及会话变更，无第二控制租约；每条读流独立协商 GPU/显存/带宽预算，超限解释拒绝。已依据确认修订 SESSION-MODEL 的观察者及断连边界段落，Phase 6/20/37 验证。原 Android API21–23（固定 minSdk21 对照 Flutter API24）及额外 Linux ARM32/RISC-V/板卡能力留在 v1 差异账本，Phase 2 先验证 Flutter/原生适配可行性，Android Phase 14/31、Linux Phase 34–35 构建；若需要超过单一子系统的新工作，在 Phase 2 提出具体阶段拆分，不把原能力自动挪入 TODO。
+经人审确认的路线保留 Apollo 经授权的只读加入能力：观察者禁止输入、设备上行及会话变更，无第二控制租约；每条读流独立协商 GPU/显存/带宽预算，超限解释拒绝。已依据确认修订 SESSION-MODEL 的观察者及断连边界段落，Phase 6/20/37 验证。原 Android API21–23（固定 minSdk21 对照 Flutter API24）及额外 Linux ARM32/RISC-V/板卡能力留在 v1 差异账本，Phase 2 先验证 Flutter/原生适配可行性，Android Phase 14/28–29、Linux Phase 34–35 构建；若需要超过单一子系统的新工作，在 Phase 2 提出具体阶段拆分，不把原能力自动挪入 TODO。
 
 ## 实际环境与证据边界
 
@@ -60,10 +60,10 @@ GPU 原字段仅表示设备与驱动被枚举，包含虚拟适配器，不表�
 |---|---|---|---|---|
 | helios-windows10 | native-host / Flutter N/A / not applicable: native host / x64 proposed; native validation pending | Windows 10 / x64 / pending-prototype | Build floor, IddCx/virtual mic/Win10 camera require Phase3–5 prototypes; source APIs are not support evidence. | 0 / 0 / 无 |
 | helios-windows11 | native-host / Flutter N/A / not applicable: native host / x64 proposed; native validation pending | Windows 11 / x64 / pending-prototype | MFCreateVirtualCamera requires build22000 for that route only; host floor stays pending Phase3–5. | 0 / 0 / 无 |
-| selene-windows | 3.44.0 / Windows 10/11 / x64, arm64 | Windows 10/11 / x64, arm64 / proposed | Native decoder/render/input/capture and Windows ARM64 dependency builds await Phase2/12/23/30. | 0 / 0 / 无 |
-| selene-macos | 3.44.0 / macOS 10.15–26 / x64, arm64 | macOS 10.15 / x64, arm64 / proposed | Framework deployment floor only; native media/Metal/HDR/input and x64+arm64 target builds await Phase2/33. | 0 / 0 / VFY-02 |
-| selene-ios-ipados | 3.44.0 / iOS 13–26 / arm64 | iOS/iPadOS 13 / arm64 / proposed | Framework floor only; AVSampleBufferDisplayLayer/Metal, controllers, capture and external display await Phase2/32. x64 simulator is not shipping hardware. | 0 / 0 / VFY-01 |
-| selene-android | 3.44.0 / Android API24–36 / arm32, arm64, x64 | Android API24 (7.0) / arm32, arm64, x64 / proposed | MediaCodec/Surface codec+HDR, camera/audio permissions and lifecycle require Phase14/24/31 target checks. | 0 / 0 / 无 |
+| selene-windows | 3.44.0 / Windows 10/11 / x64, arm64 | Windows 10/11 / x64, arm64 / proposed | Native decoder/render/input/capture and Windows ARM64 dependency builds await Phase2/10–16/19/21–22. | 0 / 0 / 无 |
+| selene-macos | 3.44.0 / macOS 10.15–26 / x64, arm64 | macOS 10.15 / x64, arm64 / proposed | Framework deployment floor only; native media/Metal/HDR/input and x64+arm64 target builds await Phase2/30–31. | 0 / 0 / VFY-02 |
+| selene-ios-ipados | 3.44.0 / iOS 13–26 / arm64 | iOS/iPadOS 13 / arm64 / proposed | Framework floor only; AVSampleBufferDisplayLayer/Metal, controllers, capture and external display await Phase2/32–33. x64 simulator is not shipping hardware. | 0 / 0 / VFY-01 |
+| selene-android | 3.44.0 / Android API24–36 / arm32, arm64, x64 | Android API24 (7.0) / arm32, arm64, x64 / proposed | MediaCodec/Surface codec+HDR, camera/audio permissions and lifecycle require Phase14/28–29 target checks. | 0 / 0 / 无 |
 | selene-linux | 3.44.0 / Debian10–13; Ubuntu20.04–24.04 LTS / x64, arm64 | Debian10 / Ubuntu20.04 LTS / x64, arm64 / proposed | Wayland/X11, VAAPI/Vulkan/audio/input dependencies await Phase34–35. Qt ARM32/RISC-V and board-specific paths remain v1 differences; Flutter matrix does not prove them. | 0 / 0 / 无 |
 
 版本化官方来源：[官方历史矩阵](https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1)。最低 CPU 列是指令集架构，性能级别/内存门槛没有实测，留待 Phase 6/10。Win10/11 主机具体 build **pending-prototype**，Phase 3–5 验证；Win11 MF 摄像头 API 的 build22000 不允许抬高 Win10 下限。Apple 仅硬件验收进入 VFY-01/VFY-02，实现与目标工具链构建仍必须完成。
@@ -72,29 +72,29 @@ GPU 原字段仅表示设备与驱动被枚举，包含虚拟适配器，不表�
 
 | 机器 / 用途 | OS / 架构 | GPU / 驱动 | 可用证据状态 | 责任阶段 |
 |---|---|---|---|---|
-| android-client / client | Android API24+ / arm32/arm64/x64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / SDK metadata only; no phone/tablet test | 14, 24, 31 |
-| apple-build-executor / build/automation | macOS/Xcode / x64/arm64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / No macOS executor or CI verified | 2, 32, 33 |
-| intel-gpu-target / GPU coverage | Windows 10/11 / x64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / No Intel GPU verified | 10, 12, 13 |
-| ios-hardware / physical client | iOS/iPadOS13+ / arm64 | unconfirmed / unconfirmed / unconfirmed | todo / Approved VFY-01; builds remain mandatory | 32, 42 |
+| android-client / client | Android API24+ / arm32/arm64/x64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / SDK metadata only; no phone/tablet test | 14, 28, 29 |
+| apple-build-executor / build/automation | macOS/Xcode / x64/arm64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / No macOS executor or CI verified | 2, 30, 31, 32, 33 |
+| intel-gpu-target / GPU coverage | Windows 10/11 / x64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / No Intel GPU verified | 10, 13, 14, 15 |
+| ios-hardware / physical client | iOS/iPadOS13+ / arm64 | unconfirmed / unconfirmed / unconfirmed | todo / Approved VFY-01; builds remain mandatory | 32, 33, 42 |
 | linux-client / client | Debian10+/Ubuntu20.04+ / x64/arm64; extra architectures pending | unconfirmed / unconfirmed / unconfirmed | unconfirmed / No Linux executor/device query | 34, 35 |
 | local-gpu-0 / GPU device enumeration | Microsoft Windows 11 企业版 LTSC / 64-bit | NVIDIA / NVIDIA GeForce RTX 5080 / 32.0.15.9579 | verified / CIM device/driver enumeration only; codec/session/HDR/power tests unperformed | 10, 12, 13 |
 | local-gpu-1 / GPU device enumeration | Microsoft Windows 11 企业版 LTSC / 64-bit | Advanced Micro Devices, Inc. / AMD Radeon(TM) Graphics / 32.0.13036.4 | verified / CIM device/driver enumeration only; codec/session/HDR/power tests unperformed | 10, 12, 13 |
 | local-windows11 / host/development | Microsoft Windows 11 企业版 LTSC / 64-bit | unconfirmed / unconfirmed / unconfirmed | verified / OS/tool query only; no product runtime validated | 1, 2, 3, 4, 5 |
-| mac-hardware / physical client | macOS10.15+ / x64/arm64 | unconfirmed / unconfirmed / unconfirmed | todo / Approved VFY-02; builds remain mandatory | 33, 42 |
-| windows-client / client | Windows 10/11 / x64/arm64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / No separate client E2E or ARM64 device evidence | 12, 30 |
+| mac-hardware / physical client | macOS10.15+ / x64/arm64 | unconfirmed / unconfirmed / unconfirmed | todo / Approved VFY-02; builds remain mandatory | 30, 31, 42 |
+| windows-client / client | Windows 10/11 / x64/arm64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / No separate client E2E or ARM64 device evidence | 10, 11, 12, 15, 16, 19, 21, 22 |
 | windows10-target / host | Windows 10 / x64 | unconfirmed / unconfirmed / unconfirmed | unconfirmed / No independent Win10 device queried | 3, 4, 5, 12, 38 |
 
 | 缺口 ID / 组件 | 用途 / 证据 | 状态 / 后续阶段 | 闭合动作 |
 |---|---|---|---|
-| android-api21-23 / Original Android API21–23 vs Flutter API24 | Preserve original Android deployment difference / Fixed moonlight-android app/build.gradle minSdk21; official Flutter3.44 starts API24 | open / 2, 14, 31 | Keep v1 difference; prototype lower-API Flutter/native viability before confirming support or proposing precise small phase adaptation |
-| apple-hardware / Mac/iPhone/iPad | Physical feature/performance/install verification / User-approved absence of Apple physical devices | todo / 32, 33, 42 | Collect VFY-01/VFY-02 later; keep all Apple implementation and build obligations |
-| apple-toolchain / macOS/Xcode/Apple SDK or CI | Mandatory Apple implementation/build/automation / Windows host; no accessible Apple build executor verified | open / 2, 32, 33 | Arrange macOS/Xcode target executor or CI; pin supported Xcode/SDK and build both Apple targets |
-| client-machines / Windows/Android/Linux target devices and Intel GPU | Client end-to-end and three GPU vendors / No client test or Intel device verified; local NVIDIA/AMD only enumerated | open / 6, 10, 12, 14, 30, 31, 34, 35 | Inventory separate target devices/architectures then collect E2E/codec/HDR/capture/driver evidence |
+| android-api21-23 / Original Android API21–23 vs Flutter API24 | Preserve original Android deployment difference / Fixed moonlight-android app/build.gradle minSdk21; official Flutter3.44 starts API24 | open / 2, 14, 28, 29 | Keep v1 difference; prototype lower-API Flutter/native viability before confirming support or proposing precise small phase adaptation |
+| apple-hardware / Mac/iPhone/iPad | Physical feature/performance/install verification / User-approved absence of Apple physical devices | todo / 30, 31, 32, 33, 42 | Collect VFY-01/VFY-02 later; keep all Apple implementation and build obligations |
+| apple-toolchain / macOS/Xcode/Apple SDK or CI | Mandatory Apple implementation/build/automation / Windows host; no accessible Apple build executor verified | open / 2, 30, 31, 32, 33 | Arrange macOS/Xcode target executor or CI; pin supported Xcode/SDK and build both Apple targets |
+| client-machines / Windows/Android/Linux target devices and Intel GPU | Client end-to-end and three GPU vendors / No client test or Intel device verified; local NVIDIA/AMD only enumerated | open / 6, 10, 14, 28, 29, 34, 35 | Inventory separate target devices/architectures then collect E2E/codec/HDR/capture/driver evidence |
 | host-floor / Windows minimum build | Win10 and Win11 full host function floors / No display/mic/camera prototype evidence yet | open / 3, 4, 5 | Lock actual minimum builds using prototypes without replacing Win10 with Win11 |
 | linux-extra-architectures / ARM32/RISC-V/board-specific original Linux paths | Preserve original user abilities and explain framework gap / Fixed Qt README vs Flutter3.44 x64/arm64 statement | open / 2, 34, 35 | Keep in v1 differences; prototype Flutter/native feasibility then propose specific small phase split if needed |
 | linux-toolchain / Linux compiler/Flutter desktop/media SDK | Linux x64/arm64 builds and Wayland/X11 backends / No Linux executor queried | open / 2, 34, 35 | Verify toolchain/native packages on Linux build executor and GPU device |
 | measurement-instruments / Reference binary and calibrated measurement instruments | Comparable performance observations / No source-matched binary digest, high speed camera, instrument accuracy or calibration measured | open / 6, 10 | Build/select source-matched reference and record SHA256; collect raw logs and calibrate or mark unavailable |
-| native-build / Native/toolchain integration | All five target builds and dependency pinning / Version queries/cache components only; no Aether binary exists | open / 2, 12, 14, 30, 31 | Pin versions and perform target smoke build; request exact official dependencies if missing |
+| native-build / Native/toolchain integration | All five target builds and dependency pinning / Version queries/cache components only; no Aether binary exists | open / 2, 10, 14, 28, 29, 30, 31, 32, 33, 34, 35 | Pin versions and perform target smoke build; request exact official dependencies if missing |
 | windows-wdk / Installed SDK/WDK and Visual Studio integration files | Installation evidence only; target driver build belongs to native-build / WDK 10.0.28000.0 paired headers/libs/tools; VS 2026 kernel/user toolset props/targets present | resolved / 3, 4, 5 | Installation verified; Phase3–5 still pin exact kit/toolchain versions and validate target builds/signing; no installation request needed |
 | windows10-machine / Win10 machine | Independent Win10 OS/driver/media tests / Current machine CIM is Win11; registry name is not Win10 evidence | open / 3, 4, 5, 12, 38 | Prepare separate Win10 target; GPU functionality requires physical device |
 
