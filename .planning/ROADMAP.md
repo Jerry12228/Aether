@@ -223,11 +223,13 @@
 
 **Goal:** Helios 可使用 NVIDIA/AMD/Intel 可用的硬编码后端
 **Depends on:** Phase 9
-**Requirements:** ENC-01, ENC-02, ENC-03
+**Requirements:** ENC-01, ENC-02, ENC-03, ORIG-10
 **Success Criteria**:
 
 1. 三厂商各有实机或可追溯测试证据，无支持设备时明确未验证。
 2. 编码失败/设备重置可解释回退，不静默改变实例或控制连接。
+
+3. 原功能补充验收：ORIG-10 用户能配置适用硬编码后端的质量/码控/预设及软件编码参数，无法应用时给出可解释状态。
 
 **Plans:** TBD（规划时拆为1–3个小计划）
 
@@ -247,11 +249,13 @@
 
 **Goal:** 保留原高质量视频能力且输出内容正确
 **Depends on:** Phase 14
-**Requirements:** COLOR-01, COLOR-02
+**Requirements:** COLOR-01, COLOR-02, ORIG-09
 **Success Criteria**:
 
 1. HDR与SDR切换、色阶/亮度、4:4:4测试内容通过；记录虚拟/物理屏限制。
 2. 原生呈现方案满足颜色条件，不能以 UI 开关存在作为支持证据。
+
+3. 原功能补充验收：ORIG-09 用户能配置可用色彩范围与原 HDR/4:4:4 呈现，协商结果和实际输出一致。
 
 **Plans:** TBD（规划时拆为1–3个小计划）
 
@@ -259,11 +263,13 @@
 
 **Goal:** 保留游戏及触摸输入能力并追踪平台扩展
 **Depends on:** Phase 11
-**Requirements:** GAME-01, GAME-02
+**Requirements:** GAME-01, GAME-02, ORIG-04
 **Success Criteria**:
 
 1. 手柄类型/数量、回传反馈、断连清零、触摸和笔逐项验证。
 2. Windows 虚拟 HID provider 许可/签名/维护路径明确，未验证扩展不假称完成。
+
+3. 原功能补充验收：ORIG-04 用户能配置手柄死区、按钮交换/屏幕布局、手柄鼠标模拟/设备忽略，并使用可用电池、LED、运动、触摸板与分级震动反馈。
 
 **Plans:** TBD（规划时拆为1–3个小计划）
 
@@ -307,11 +313,13 @@
 
 **Goal:** 任意并发客户端操作下整机最多一个实例被控
 **Depends on:** Phase 8, Phase 11, Phase 16, Phase 17, Phase 19
-**Requirements:** LEASE-01, LEASE-02, LEASE-03
+**Requirements:** LEASE-01, LEASE-02, LEASE-03, ORIG-07, ORIG-08
 **Success Criteria**:
 
 1. A/B/C切换、同时争用、断连/重连、租约超时及协调器异常验证不变量。
 2. 旧按键/手柄状态释放；显式 Stop 与 Disconnect 操作明显分开。
+
+3. 原功能补充验收：ORIG-07 用户能使用 Apollo 原有纯输入能力，在唯一有效控制租约内注入输入而不消费音视频，保持实例与显示组生命周期。；ORIG-08 保留并明确授权原有只读加入已有串流的能力；是否并行观察及其资源/外设权限边界须在实施前按 Phase1 冲突决定，不产生第二控制租约。
 
 **Plans:** TBD（规划时拆为1–3个小计划）
 
@@ -391,11 +399,13 @@
 
 **Goal:** 保留原主机管理和应用配置能力
 **Depends on:** Phase 8, Phase 7
-**Requirements:** ADMIN-01, ADMIN-02, ADMIN-03
+**Requirements:** ADMIN-01, ADMIN-02, ADMIN-03, ORIG-01, ORIG-02, ORIG-06
 **Success Criteria**:
 
 1. 原配置/应用管理基线条目逐项对应新入口，脚本绑定正确实例。
 2. 非管理客户端不能任意改配置或执行命令，停止清理不影响其他实例。
+
+3. 原功能补充验收：ORIG-01 用户能选择界面语言、应用封面/列表呈现偏好与警告呈现，保留各端可用的无障碍/本地化入口。；ORIG-02 用户能通过受鉴权且遵循实例生命周期的命令入口配对、列应用、启动/恢复、断开和显式停止，并配置串流偏好。；ORIG-06 用户能配置游戏优化与连接/断连准备清理钩子；Aether 钩子不得在普通断连或切换时隐式停止实例/移除显示组。
 
 **Plans:** TBD（规划时拆为1–3个小计划）
 
@@ -415,11 +425,13 @@
 
 **Goal:** Android 支持全部新增功能及可用平台高级能力
 **Depends on:** Phase 28, Phase 19, Phase 20, Phase 21, Phase 22, Phase 24, Phase 26
-**Requirements:** ANDROID-03, ANDROID-04
+**Requirements:** ANDROID-03, ANDROID-04, ORIG-03
 **Success Criteria**:
 
 1. Android新增功能逐项端到端，权限撤销与后台限制明确。
 2. 外屏和多Display在支持实机验证，不支持设备给出能力状态。
+
+3. 原功能补充验收：ORIG-03 Android 用户能在系统允许时启用画中画，保留串流与输入权限边界，并在前后台变化时恢复。
 
 **Plans:** TBD（规划时拆为1–3个小计划）
 
@@ -499,11 +511,13 @@
 
 **Goal:** 保留跨网络连接能力并提供可定位故障的信息
 **Depends on:** Phase 7, Phase 24, Phase 29, Phase 31, Phase 33, Phase 35
-**Requirements:** OPS-01, OPS-02
+**Requirements:** OPS-01, OPS-02, ORIG-05
 **Success Criteria**:
 
 1. LAN/IPv6/互联网直连/已配置外部VPN网络测试，WoL条件说明与结果一致。
 2. 诊断和配置输出脱敏；内置VPN/TURN服务不被误报已实现。
+
+3. 原功能补充验收：ORIG-05 用户能选择串流期间保持设备唤醒、游戏活动展示与连接诊断提示，系统或第三方不可用时明确说明。
 
 **Plans:** TBD（规划时拆为1–3个小计划）
 

@@ -230,6 +230,19 @@
 - [ ] **RELEASE-02**: 维护者能从主仓库复现正式构建和验证，用户能获取安装、权限、兼容、故障恢复及TODO说明。
 - [ ] **RELEASE-03**: 全部 v1 需求有可追溯的本版验收证据且用户确认发布，Apple 实机验证延后状态、未实现 TODO 与能力限制明确。
 
+### Phase 1 发现的原能力补充（v1，待实现）
+
+- [ ] **ORIG-01**: 用户能选择界面语言、应用封面/列表呈现偏好与警告呈现，保留各端可用的无障碍/本地化入口。
+- [ ] **ORIG-02**: 用户能通过受鉴权且遵循实例生命周期的命令入口配对、列应用、启动/恢复、断开和显式停止，并配置串流偏好。
+- [ ] **ORIG-03**: Android 用户能在系统允许时启用画中画，保留串流与输入权限边界，并在前后台变化时恢复。
+- [ ] **ORIG-04**: 用户能配置手柄死区、按钮交换/屏幕布局、手柄鼠标模拟/设备忽略，并使用可用电池、LED、运动、触摸板与分级震动反馈。
+- [ ] **ORIG-05**: 用户能选择串流期间保持设备唤醒、游戏活动展示与连接诊断提示，系统或第三方不可用时明确说明。
+- [ ] **ORIG-06**: 用户能配置游戏优化与连接/断连准备清理钩子；Aether 钩子不得在普通断连或切换时隐式停止实例/移除显示组。
+- [ ] **ORIG-07**: 用户能使用 Apollo 原有纯输入能力，在唯一有效控制租约内注入输入而不消费音视频，保持实例与显示组生命周期。
+- [ ] **ORIG-08**: 保留并明确授权原有只读加入已有串流的能力；是否并行观察及其资源/外设权限边界须在实施前按 Phase1 冲突决定，不产生第二控制租约。
+- [ ] **ORIG-09**: 用户能配置可用色彩范围与原 HDR/4:4:4 呈现，协商结果和实际输出一致。
+- [ ] **ORIG-10**: 用户能配置适用硬编码后端的质量/码控/预设及软件编码参数，无法应用时给出可解释状态。
+
 ## v2 Requirements / TODO
 
 - **VPN-01**: Helios/Selene 内置 WireGuard。
@@ -357,10 +370,20 @@
 | RELEASE-01 | Phase 42 | Pending |
 | RELEASE-02 | Phase 42 | Pending |
 | RELEASE-03 | Phase 42 | Pending |
+| ORIG-01 | Phase 27 | Pending |
+| ORIG-02 | Phase 27 | Pending |
+| ORIG-03 | Phase 29 | Pending |
+| ORIG-04 | Phase 16 | Pending |
+| ORIG-05 | Phase 36 | Pending |
+| ORIG-06 | Phase 27 | Pending |
+| ORIG-07 | Phase 20 | Pending |
+| ORIG-08 | Phase 20 | Pending |
+| ORIG-09 | Phase 15 | Pending |
+| ORIG-10 | Phase 13 | Pending |
 
 **Coverage:**
-- v1 requirements: 95
-- Mapped to exactly one phase: 95
+- v1 requirements: 105
+- Mapped to exactly one phase: 105
 - Unmapped: 0
 
-*Last updated: 2026-10-07 after initial research and user clarification*
+*Last updated: 2026-10-07 after Phase 1 source feature inventory (ORIG-01–10 added; all product requirements remain Pending)*

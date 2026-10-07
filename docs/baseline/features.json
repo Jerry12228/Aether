@@ -207,9 +207,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-amd-coder"
       ],
@@ -262,9 +264,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-amd-enforce-hrd"
       ],
@@ -317,9 +321,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-amd-max-au-size"
       ],
@@ -372,9 +378,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-amd-preanalysis"
       ],
@@ -427,9 +435,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-amd-quality"
       ],
@@ -482,9 +492,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-amd-rc"
       ],
@@ -537,9 +549,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-amd-usage"
       ],
@@ -592,9 +606,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-amd-vbaq"
       ],
@@ -1147,9 +1163,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-connection-hooks"
       ],
@@ -2394,9 +2412,11 @@
         "hardware": "Windows交互登录桌面及适用provider；驱动/签名仍未核验"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-global-prep-cmd"
       ],
@@ -2581,9 +2601,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-host-battery-consume"
       ],
@@ -2674,9 +2696,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-07"
+      ],
       "primaryPhase": 20,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-input-only"
       ],
@@ -3097,9 +3121,11 @@
         "hardware": "Windows交互登录桌面及适用provider；驱动/签名仍未核验"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-locale"
       ],
@@ -3664,9 +3690,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-h264-cavlc"
       ],
@@ -3719,9 +3747,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-latency-over-power"
       ],
@@ -3774,9 +3804,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-opengl-vulkan-on-dxgi"
       ],
@@ -3833,9 +3865,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-preset"
       ],
@@ -3888,9 +3922,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-realtime-hags"
       ],
@@ -3943,9 +3979,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-spatial-aq"
       ],
@@ -3998,9 +4036,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-split-encode"
       ],
@@ -4053,9 +4093,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-twopass"
       ],
@@ -4108,9 +4150,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-nvenc-vbv-increase"
       ],
@@ -4649,9 +4693,11 @@
         "hardware": "分别需要 Intel 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-qsv-coder"
       ],
@@ -4704,9 +4750,11 @@
         "hardware": "分别需要 Intel 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-qsv-preset"
       ],
@@ -4759,9 +4807,11 @@
         "hardware": "分别需要 Intel 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-qsv-slow-hevc"
       ],
@@ -4822,9 +4872,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-08"
+      ],
       "primaryPhase": 20,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-read-stream"
       ],
@@ -5021,9 +5073,11 @@
         "hardware": "Windows交互登录桌面及适用provider；驱动/签名仍未核验"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-sw-preset"
       ],
@@ -5076,9 +5130,11 @@
         "hardware": "Windows交互登录桌面及适用provider；驱动/签名仍未核验"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows10-sw-tune"
       ],
@@ -5687,9 +5743,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-amd-coder"
       ],
@@ -5742,9 +5800,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-amd-enforce-hrd"
       ],
@@ -5797,9 +5857,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-amd-max-au-size"
       ],
@@ -5852,9 +5914,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-amd-preanalysis"
       ],
@@ -5907,9 +5971,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-amd-quality"
       ],
@@ -5962,9 +6028,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-amd-rc"
       ],
@@ -6017,9 +6085,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-amd-usage"
       ],
@@ -6072,9 +6142,11 @@
         "hardware": "分别需要 AMD 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-amd-vbaq"
       ],
@@ -6627,9 +6699,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-connection-hooks"
       ],
@@ -7874,9 +7948,11 @@
         "hardware": "Windows交互登录桌面及适用provider；驱动/签名仍未核验"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-global-prep-cmd"
       ],
@@ -8061,9 +8137,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-host-battery-consume"
       ],
@@ -8154,9 +8232,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-07"
+      ],
       "primaryPhase": 20,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-input-only"
       ],
@@ -8577,9 +8657,11 @@
         "hardware": "Windows交互登录桌面及适用provider；驱动/签名仍未核验"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-locale"
       ],
@@ -9144,9 +9226,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-h264-cavlc"
       ],
@@ -9199,9 +9283,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-latency-over-power"
       ],
@@ -9254,9 +9340,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-opengl-vulkan-on-dxgi"
       ],
@@ -9313,9 +9401,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-preset"
       ],
@@ -9368,9 +9458,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-realtime-hags"
       ],
@@ -9423,9 +9515,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-spatial-aq"
       ],
@@ -9478,9 +9572,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-split-encode"
       ],
@@ -9533,9 +9629,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-twopass"
       ],
@@ -9588,9 +9686,11 @@
         "hardware": "分别需要 NVIDIA 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-nvenc-vbv-increase"
       ],
@@ -10129,9 +10229,11 @@
         "hardware": "分别需要 Intel 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-qsv-coder"
       ],
@@ -10184,9 +10286,11 @@
         "hardware": "分别需要 Intel 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-qsv-preset"
       ],
@@ -10239,9 +10343,11 @@
         "hardware": "分别需要 Intel 硬件/驱动/编码会话；可用参数待目标设备实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-qsv-slow-hevc"
       ],
@@ -10302,9 +10408,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-08"
+      ],
       "primaryPhase": 20,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-read-stream"
       ],
@@ -10501,9 +10609,11 @@
         "hardware": "Windows交互登录桌面及适用provider；驱动/签名仍未核验"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-sw-preset"
       ],
@@ -10556,9 +10666,11 @@
         "hardware": "Windows交互登录桌面及适用provider；驱动/签名仍未核验"
       },
       "ownerTier": "host-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-10"
+      ],
       "primaryPhase": 13,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-helios-windows11-sw-tune"
       ],
@@ -11011,9 +11123,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-analog-scrolling"
       ],
@@ -11214,9 +11328,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-battery"
       ],
@@ -11321,9 +11437,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-disable-warnings"
       ],
@@ -11532,9 +11650,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-03"
+      ],
       "primaryPhase": 29,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-enable-pip"
       ],
@@ -11639,9 +11759,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-enable-sops"
       ],
@@ -11694,9 +11816,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-flip-face-buttons"
       ],
@@ -11749,9 +11873,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-09"
+      ],
       "primaryPhase": 15,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-full-range"
       ],
@@ -11804,9 +11930,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-gamepad-motion-fallback"
       ],
@@ -11911,9 +12039,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-gamepad-touchpad-as-mouse"
       ],
@@ -12018,9 +12148,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-mouse-emulation"
       ],
@@ -12177,9 +12309,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-only-show-l3r3"
       ],
@@ -12284,9 +12418,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-show-guide-button"
       ],
@@ -12391,9 +12527,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-small-icon-mode"
       ],
@@ -12706,9 +12844,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-vibrate-fallback"
       ],
@@ -12761,9 +12901,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-checkbox-vibrate-osc"
       ],
@@ -13052,9 +13194,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-list-languages"
       ],
@@ -13307,9 +13451,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-osc-layout"
       ],
@@ -13350,9 +13496,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-osc-reset"
       ],
@@ -13617,9 +13765,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-seekbar-deadzone"
       ],
@@ -13672,9 +13822,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-seekbar-osc-opacity"
       ],
@@ -13727,9 +13879,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-seekbar-vibrate-fallback-strength"
       ],
@@ -13770,9 +13924,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-android-shortcut"
       ],
@@ -14129,9 +14285,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-ios-ipados-battery"
       ],
@@ -14868,9 +15026,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-ios-ipados-optimizegames"
       ],
@@ -15319,9 +15479,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-ios-ipados-swapabxybuttons"
       ],
@@ -15690,9 +15852,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-action-list"
       ],
@@ -15733,9 +15897,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-action-pair"
       ],
@@ -15776,9 +15942,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-action-quit"
       ],
@@ -15819,9 +15987,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-action-stream"
       ],
@@ -16018,9 +16188,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-backgroundgamepad"
       ],
@@ -16205,9 +16377,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-1080"
       ],
@@ -16248,9 +16422,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-1440"
       ],
@@ -16291,9 +16467,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-4k"
       ],
@@ -16334,9 +16512,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-720"
       ],
@@ -16377,9 +16557,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-absolute-mouse"
       ],
@@ -16420,9 +16602,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-audio-config"
       ],
@@ -16463,9 +16647,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-audio-on-host"
       ],
@@ -16506,9 +16692,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-background-gamepad"
       ],
@@ -16549,9 +16737,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-bitrate"
       ],
@@ -16592,9 +16782,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-capture-system-keys"
       ],
@@ -16635,9 +16827,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-csv"
       ],
@@ -16678,9 +16872,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-display-mode"
       ],
@@ -16721,9 +16917,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-fps"
       ],
@@ -16764,9 +16962,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-frame-pacing"
       ],
@@ -16807,9 +17007,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-game-optimization"
       ],
@@ -16850,9 +17052,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-hdr"
       ],
@@ -16893,9 +17097,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-keep-awake"
       ],
@@ -16936,9 +17142,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-mouse-buttons-swap"
       ],
@@ -16979,9 +17187,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-multi-controller"
       ],
@@ -17022,9 +17232,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-mute-on-focus-loss"
       ],
@@ -17065,9 +17277,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-packet-size"
       ],
@@ -17108,9 +17322,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-performance-overlay"
       ],
@@ -17151,9 +17367,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-pin"
       ],
@@ -17194,9 +17412,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-quit-after"
       ],
@@ -17237,9 +17457,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-resolution"
       ],
@@ -17280,9 +17502,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-reverse-scroll-direction"
       ],
@@ -17323,9 +17547,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-swap-gamepad-buttons"
       ],
@@ -17366,9 +17592,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-touchscreen-trackpad"
       ],
@@ -17409,9 +17637,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-verbose"
       ],
@@ -17452,9 +17682,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-video-codec"
       ],
@@ -17495,9 +17727,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-video-decoder"
       ],
@@ -17538,9 +17772,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-vsync"
       ],
@@ -17581,9 +17817,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-cli-yuv444"
       ],
@@ -17636,9 +17874,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-configurationwarnings"
       ],
@@ -17731,9 +17971,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-controller-battery"
       ],
@@ -18390,9 +18632,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-gameoptimizations"
       ],
@@ -18445,9 +18689,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-gamepadmouse"
       ],
@@ -18672,9 +18918,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-05"
+      ],
       "primaryPhase": 36,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-keepawake"
       ],
@@ -19167,9 +19415,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-language"
       ],
@@ -19762,9 +20012,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-rgb-led"
       ],
@@ -19817,9 +20069,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-05"
+      ],
       "primaryPhase": 36,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-richpresence"
       ],
@@ -20004,9 +20258,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-swapfacebuttons"
       ],
@@ -20099,9 +20355,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-trigger-rumble"
       ],
@@ -20154,9 +20412,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-linux-uidisplaymode"
       ],
@@ -20721,9 +20981,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-action-list"
       ],
@@ -20764,9 +21026,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-action-pair"
       ],
@@ -20807,9 +21071,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-action-quit"
       ],
@@ -20850,9 +21116,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-action-stream"
       ],
@@ -21049,9 +21317,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-backgroundgamepad"
       ],
@@ -21236,9 +21506,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-1080"
       ],
@@ -21279,9 +21551,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-1440"
       ],
@@ -21322,9 +21596,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-4k"
       ],
@@ -21365,9 +21641,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-720"
       ],
@@ -21408,9 +21686,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-absolute-mouse"
       ],
@@ -21451,9 +21731,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-audio-config"
       ],
@@ -21494,9 +21776,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-audio-on-host"
       ],
@@ -21537,9 +21821,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-background-gamepad"
       ],
@@ -21580,9 +21866,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-bitrate"
       ],
@@ -21623,9 +21911,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-capture-system-keys"
       ],
@@ -21666,9 +21956,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-csv"
       ],
@@ -21709,9 +22001,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-display-mode"
       ],
@@ -21752,9 +22046,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-fps"
       ],
@@ -21795,9 +22091,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-frame-pacing"
       ],
@@ -21838,9 +22136,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-game-optimization"
       ],
@@ -21881,9 +22181,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-hdr"
       ],
@@ -21924,9 +22226,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-keep-awake"
       ],
@@ -21967,9 +22271,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-mouse-buttons-swap"
       ],
@@ -22010,9 +22316,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-multi-controller"
       ],
@@ -22053,9 +22361,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-mute-on-focus-loss"
       ],
@@ -22096,9 +22406,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-packet-size"
       ],
@@ -22139,9 +22451,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-performance-overlay"
       ],
@@ -22182,9 +22496,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-pin"
       ],
@@ -22225,9 +22541,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-quit-after"
       ],
@@ -22268,9 +22586,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-resolution"
       ],
@@ -22311,9 +22631,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-reverse-scroll-direction"
       ],
@@ -22354,9 +22676,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-swap-gamepad-buttons"
       ],
@@ -22397,9 +22721,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-touchscreen-trackpad"
       ],
@@ -22440,9 +22766,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-verbose"
       ],
@@ -22483,9 +22811,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-video-codec"
       ],
@@ -22526,9 +22856,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-video-decoder"
       ],
@@ -22569,9 +22901,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-vsync"
       ],
@@ -22612,9 +22946,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-cli-yuv444"
       ],
@@ -22667,9 +23003,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-configurationwarnings"
       ],
@@ -22762,9 +23100,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-controller-battery"
       ],
@@ -23421,9 +23761,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-gameoptimizations"
       ],
@@ -23476,9 +23818,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-gamepadmouse"
       ],
@@ -23703,9 +24047,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-05"
+      ],
       "primaryPhase": 36,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-keepawake"
       ],
@@ -24198,9 +24544,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-language"
       ],
@@ -24833,9 +25181,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-rgb-led"
       ],
@@ -24888,9 +25238,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-05"
+      ],
       "primaryPhase": 36,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-richpresence"
       ],
@@ -25075,9 +25427,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-swapfacebuttons"
       ],
@@ -25170,9 +25524,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-trigger-rumble"
       ],
@@ -25225,9 +25581,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-macos-uidisplaymode"
       ],
@@ -25712,9 +26070,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-action-list"
       ],
@@ -25755,9 +26115,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-action-pair"
       ],
@@ -25798,9 +26160,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-action-quit"
       ],
@@ -25841,9 +26205,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-action-stream"
       ],
@@ -26040,9 +26406,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-backgroundgamepad"
       ],
@@ -26227,9 +26595,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-1080"
       ],
@@ -26270,9 +26640,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-1440"
       ],
@@ -26313,9 +26685,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-4k"
       ],
@@ -26356,9 +26730,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-720"
       ],
@@ -26399,9 +26775,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-absolute-mouse"
       ],
@@ -26442,9 +26820,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-audio-config"
       ],
@@ -26485,9 +26865,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-audio-on-host"
       ],
@@ -26528,9 +26910,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-background-gamepad"
       ],
@@ -26571,9 +26955,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-bitrate"
       ],
@@ -26614,9 +27000,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-capture-system-keys"
       ],
@@ -26657,9 +27045,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-csv"
       ],
@@ -26700,9 +27090,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-display-mode"
       ],
@@ -26743,9 +27135,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-fps"
       ],
@@ -26786,9 +27180,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-frame-pacing"
       ],
@@ -26829,9 +27225,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-game-optimization"
       ],
@@ -26872,9 +27270,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-hdr"
       ],
@@ -26915,9 +27315,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-keep-awake"
       ],
@@ -26958,9 +27360,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-mouse-buttons-swap"
       ],
@@ -27001,9 +27405,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-multi-controller"
       ],
@@ -27044,9 +27450,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-mute-on-focus-loss"
       ],
@@ -27087,9 +27495,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-packet-size"
       ],
@@ -27130,9 +27540,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-performance-overlay"
       ],
@@ -27173,9 +27585,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-pin"
       ],
@@ -27216,9 +27630,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-quit-after"
       ],
@@ -27259,9 +27675,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-resolution"
       ],
@@ -27302,9 +27720,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-reverse-scroll-direction"
       ],
@@ -27345,9 +27765,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-swap-gamepad-buttons"
       ],
@@ -27388,9 +27810,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-touchscreen-trackpad"
       ],
@@ -27431,9 +27855,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-verbose"
       ],
@@ -27474,9 +27900,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-video-codec"
       ],
@@ -27517,9 +27945,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-video-decoder"
       ],
@@ -27560,9 +27990,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-vsync"
       ],
@@ -27603,9 +28035,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-02"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-cli-yuv444"
       ],
@@ -27658,9 +28092,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-configurationwarnings"
       ],
@@ -27753,9 +28189,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-controller-battery"
       ],
@@ -28412,9 +28850,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-06"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-gameoptimizations"
       ],
@@ -28467,9 +28907,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-gamepadmouse"
       ],
@@ -28694,9 +29136,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-05"
+      ],
       "primaryPhase": 36,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-keepawake"
       ],
@@ -29189,9 +29633,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-language"
       ],
@@ -29784,9 +30230,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-rgb-led"
       ],
@@ -29839,9 +30287,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-05"
+      ],
       "primaryPhase": 36,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-richpresence"
       ],
@@ -30026,9 +30476,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "shared-native",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-swapfacebuttons"
       ],
@@ -30121,9 +30573,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "platform-adapter",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-04"
+      ],
       "primaryPhase": 16,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-trigger-rumble"
       ],
@@ -30176,9 +30630,11 @@
         "hardware": "依赖实际 OS/API、设备和原生后端能力；尚未产品实测"
       },
       "ownerTier": "flutter-ui",
-      "requirementIds": [],
+      "requirementIds": [
+        "ORIG-01"
+      ],
       "primaryPhase": 27,
-      "mappingState": "needs-requirement",
+      "mappingState": "mapped",
       "caseIds": [
         "case-selene-windows-uidisplaymode"
       ],
