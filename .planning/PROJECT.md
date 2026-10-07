@@ -12,7 +12,9 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 
 ### Validated
 
-无。已完成参考源码下载及文档初始化，不代表任何产品功能已实现。
+- ✓ BASE-01/02/03：固定来源与逐文件许可/渠道审计、七平台原功能与独立计划案例、真实环境及测量方法、两个人审检查点 — Phase 1。
+
+这是基线审计交付；所有产品功能仍未实现，生产复用许可、目标构建、硬件和性能支持尚无批准或实测结果。
 
 ### Active
 
@@ -71,11 +73,15 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 | 先 Windows 垂直闭环，五端均为 v1 必须项 | 降低前期集成风险，不缩小最终范围 | 已确认 |
 | iOS/iPadOS、macOS 仅实机验证延后 | 用户无实机；两端实现、构建和可运行的自动化检查保留，真实硬件结果不冒充完成 | 已确认 |
 | 原生核心候选 C++20 + C ABI | 参考实现和 Windows/媒体 SDK 复用成本低 | 建议；Phase 2 锁定 |
-| GameStream 重构细节、驱动供应、项目许可证 | 协议基础已确定；具体通道、安全与扩展方案需跨平台原型和来源证据 | 待 Phase 1/3–6 决定 |
+| GameStream 重构细节、驱动供应、具体生产许可证/渠道 | 协议基础已确定；Phase1已提供来源证据及路线意向，实际通道/驱动/生产选用仍待原型和清单核验 | 待 Phase 2–6及生产选用前决定 |
+| compatible-open-source与retain-candidates | 用户选择兼容开源复用路线、暂不考虑发行；GPL-3.0-or-later仍候选，未知许可/签名/渠道阻碍保留 | Phase1已确认意向，未批准具体生产复用 |
+| 经授权只读观察者、唯一控制租约 | 保留Apollo适用原能力；观察者不输入/上行/改变会话，预算独立协商，断连仅释放本流 | Phase1人审确认；Phase6/20/37实施验证 |
+| 最低客户端候选与额外原目标 | Flutter3.44范围仅候选，AndroidAPI21–23及Linux额外架构保留v1差异；Win10/11主机build待原型 | Phase1人审确认候选，原生支持未验证 |
+| VS2026集成WDK已安装、测量方法已审阅 | 本机WDK28000同版本组件与集成文件核验；零产品测量，性能SLO待Phase6/10实测 | Phase1安装证据已核验，构建/硬件/精度仍待验证 |
 
 ## Evolution
 
 每个阶段完成后更新已验证需求、阶段证据、关键决策和阻碍；不能把源码研究当作产品验证。里程碑结束时完整审视范围和原功能对照。新增差异必须同时更新需求、路线图、能力矩阵及测试，TODO 进入 docs/BACKLOG.md。
 
 ---
-*Last updated: 2026-10-07 after user deferred only iOS/macOS hardware validation*
+*Last updated: 2026-10-07 after Phase 1 baseline execution and final human review*

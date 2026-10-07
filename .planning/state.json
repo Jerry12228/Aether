@@ -1,0 +1,223 @@
+{
+  "contract": "1.0.0",
+  "flavor": "core",
+  "milestone": null,
+  "phases": [
+    {
+      "number": "1",
+      "name": "来源、原功能与环境基线",
+      "status": "complete"
+    },
+    {
+      "number": "2",
+      "name": "Monorepo 与 Flutter/原生骨架",
+      "status": "pending"
+    },
+    {
+      "number": "3",
+      "name": "虚拟显示器可行性",
+      "status": "pending"
+    },
+    {
+      "number": "4",
+      "name": "系统虚拟麦克风可行性",
+      "status": "pending"
+    },
+    {
+      "number": "5",
+      "name": "Win10/11 系统摄像头可行性",
+      "status": "pending"
+    },
+    {
+      "number": "6",
+      "name": "GameStream 协议重构与扩展",
+      "status": "pending"
+    },
+    {
+      "number": "7",
+      "name": "配对、发现与设备权限",
+      "status": "pending"
+    },
+    {
+      "number": "8",
+      "name": "持久实例登记与应用生命周期",
+      "status": "pending"
+    },
+    {
+      "number": "9",
+      "name": "Windows 捕获与 H.264 基础流",
+      "status": "pending"
+    },
+    {
+      "number": "10",
+      "name": "Selene Windows 原生播放闭环",
+      "status": "pending"
+    },
+    {
+      "number": "11",
+      "name": "桌面和游戏键鼠输入",
+      "status": "pending"
+    },
+    {
+      "number": "12",
+      "name": "下行系统音频",
+      "status": "pending"
+    },
+    {
+      "number": "13",
+      "name": "Windows 三厂商硬编码",
+      "status": "pending"
+    },
+    {
+      "number": "14",
+      "name": "HEVC/AV1 与编解码能力协商",
+      "status": "pending"
+    },
+    {
+      "number": "15",
+      "name": "HDR、4:4:4 与色彩呈现",
+      "status": "pending"
+    },
+    {
+      "number": "16",
+      "name": "游戏手柄、触摸与高级输入",
+      "status": "pending"
+    },
+    {
+      "number": "17",
+      "name": "实例显示器组生产生命周期",
+      "status": "pending"
+    },
+    {
+      "number": "18",
+      "name": "Helios 多显示器与多流资源预算",
+      "status": "pending"
+    },
+    {
+      "number": "19",
+      "name": "Selene 多显示器呈现与映射",
+      "status": "pending"
+    },
+    {
+      "number": "20",
+      "name": "主机控制权仲裁与无停止切换",
+      "status": "pending"
+    },
+    {
+      "number": "21",
+      "name": "真实客户端麦克风上行",
+      "status": "pending"
+    },
+    {
+      "number": "22",
+      "name": "真实客户端摄像头上行",
+      "status": "pending"
+    },
+    {
+      "number": "23",
+      "name": "连接内手动码率修改",
+      "status": "pending"
+    },
+    {
+      "number": "24",
+      "name": "可选自动码率与多流分配",
+      "status": "pending"
+    },
+    {
+      "number": "25",
+      "name": "文本剪切板同步",
+      "status": "pending"
+    },
+    {
+      "number": "26",
+      "name": "富文本与图片剪切板",
+      "status": "pending"
+    },
+    {
+      "number": "27",
+      "name": "应用管理与 Helios 管理入口",
+      "status": "pending"
+    },
+    {
+      "number": "28",
+      "name": "Android 播放与交互",
+      "status": "pending"
+    },
+    {
+      "number": "29",
+      "name": "Android 外设、多屏与系统集成",
+      "status": "pending"
+    },
+    {
+      "number": "30",
+      "name": "macOS 播放与交互",
+      "status": "pending"
+    },
+    {
+      "number": "31",
+      "name": "macOS 外设、多屏与系统集成",
+      "status": "pending"
+    },
+    {
+      "number": "32",
+      "name": "iOS/iPadOS 播放与交互",
+      "status": "pending"
+    },
+    {
+      "number": "33",
+      "name": "iOS/iPadOS 外设、外屏与系统集成",
+      "status": "pending"
+    },
+    {
+      "number": "34",
+      "name": "Linux 播放与交互",
+      "status": "pending"
+    },
+    {
+      "number": "35",
+      "name": "Linux 外设、多屏与系统集成",
+      "status": "pending"
+    },
+    {
+      "number": "36",
+      "name": "网络、唤醒与诊断",
+      "status": "pending"
+    },
+    {
+      "number": "37",
+      "name": "原功能全量对照复审",
+      "status": "pending"
+    },
+    {
+      "number": "38",
+      "name": "故障恢复与性能收敛",
+      "status": "pending"
+    },
+    {
+      "number": "39",
+      "name": "Windows 产品与虚拟设备交付",
+      "status": "pending"
+    },
+    {
+      "number": "40",
+      "name": "macOS 与 Linux 桌面客户端交付",
+      "status": "pending"
+    },
+    {
+      "number": "41",
+      "name": "Android 与 iOS/Pad 客户端交付",
+      "status": "pending"
+    },
+    {
+      "number": "42",
+      "name": "完整版本端到端验收与文档",
+      "status": "pending"
+    }
+  ],
+  "next": {
+    "command": "/gsd:progress --next",
+    "label": "Advance to the next step (plan phase 2)",
+    "reason": "Phase 2 of 42 — needs a plan"
+  },
+  "updated_at": "2026-10-07T14:05:15.244Z"
+}

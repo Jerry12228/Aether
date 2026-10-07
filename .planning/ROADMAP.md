@@ -18,7 +18,7 @@
 
 ## Phases
 
-- [ ] **Phase 1: 来源、原功能与环境基线** - 建立可追溯的原功能全集和真实工具/平台验证矩阵
+- [x] **Phase 1: 来源、原功能与环境基线** - 建立可追溯的原功能全集和真实工具/平台验证矩阵 (completed 2026-10-07)
 - [ ] **Phase 2: Monorepo 与 Flutter/原生骨架** - 从一个主仓库构建 Helios 和 Selene Windows 骨架
 - [ ] **Phase 3: 虚拟显示器可行性** - 在 Win10/11 验证可生产接入的多组虚拟屏 provider
 - [ ] **Phase 4: 系统虚拟麦克风可行性** - 证明 PCM 可注入 Win10/11 普通软件的 capture endpoint
@@ -73,7 +73,7 @@
 1. 原功能表覆盖各端设置/媒体/输入/管理，遗漏能力补入 v1 需求，不自动延后。
 2. 工具探测和来源审计有可复现记录；性能数值明确为待基线测量后确认。
 
-**Plans:** 2/3 plans executed（01-01/02 已完成；01-03 Task1/2通过，Task3全基线人审待答复）
+**Plans:** 3/3 plans complete（来源、原功能、环境与完整人审已完成；目标验证10/10，产品支持/生产复用仍未批准）
 
 **Wave 1**
 
@@ -85,7 +85,7 @@
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 01-03-PLAN.md — 有界环境/测量与全包已提交；最终 blocking-human 审阅待答复
+- [x] 01-03-PLAN.md — 有界环境/测量、WDK与VS2026安装核验及最终blocking-human审阅完成
 
 ### Phase 2: Monorepo 与 Flutter/原生骨架
 
@@ -597,7 +597,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. 来源、原功能与环境基线 | 2/3 | In Progress|  |
+| 1. 来源、原功能与环境基线 | 3/3 | Complete    | 2026-10-07 |
 | 2. Monorepo 与 Flutter/原生骨架 | 0/TBD | Not started | - |
 | 3. 虚拟显示器可行性 | 0/TBD | Not started | - |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |

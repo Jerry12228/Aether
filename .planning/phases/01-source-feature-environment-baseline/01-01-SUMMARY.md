@@ -18,8 +18,8 @@ key-files:
 key-decisions:
   - "User selected compatible-open-source and deferred distribution via retain-candidates; production clearance remains blocked."
   - "All upstream files remain research-only; production clearance lists are empty."
-requirements-completed: []
-requirements-pending: [BASE-02]
+requirements-completed: [BASE-02]
+requirements-pending: []
 coverage:
   - id: source-identity
     description: Fixed URL/HEAD/blob and offline recovery verification with failure fixtures
@@ -44,14 +44,17 @@ coverage:
   - id: reuse-distribution-decision
     description: Concrete project license/reuse choices and fourteen platform/device distribution candidates
     requirement: BASE-02
-    verification: []
+    verification:
+      - kind: human
+        ref: "sources.decisions: user confirmed compatible-open-source and retain-candidates; 01-03 final review confirmed"
+        status: pass
     human_judgment: true
     rationale: "Both actual human choices are recorded with confirmation text/time and retained blockers."
 ---
 
 # Phase 1 / Plan 01 — Source audit decision checkpoint
 
-**Tasks 1–3 complete. Human route choices are recorded; BASE-02 remains pending the shared final review in 01-03. This is source evidence and route intent, not production reuse authorization.**
+**Tasks 1–3 complete. Human route choices are recorded; BASE-02 completed after the shared final review in 01-03. This is source evidence and route intent, not production reuse authorization.**
 
 ## Accomplishments
 
@@ -76,7 +79,7 @@ coverage:
 - After final evidence guards: targeted tracer, omitted-binary and GPL-template checks **3/3 passed**, **6.23 seconds**; the real nine-tree source audit passed again.
 - Full real source audit: `status=PASS`, `checked=4296`, repositories=9, files=2964, externals=1332, anchors=1698, pendingDecisions=2, productionReuseApproved=false.
 - `pwsh -NoProfile -File scripts/sync-upstream.ps1 -VerifyOnly`: nine repositories passed.
-- `node scripts/validate-planning.cjs`: PASS, unmapped=0, localLinks=valid.
+- node scripts/validate-planning.cjs: PASS, unmapped=0, localLinks=valid.
 - Automated PASS proves the stated structural checks. It does not prove legal permission, exhaustive legal interpretation, platform builds, signing or hardware support.
 
 ## Deviations and Limits
@@ -94,7 +97,7 @@ User response already recorded: “compatible-open-source；暂不考虑发行�
 - Project reuse policy: compatible-open-source; GPL-3.0-or-later candidate intent. Specific production dependency/license obligations remain open.
 - Distribution: retain-candidates; no channel selected.
 - Retained blockers: project-license, external-build-scope, apple-foss-channel and distribution-accounts; all other source/package/signing blockers remain.
-- Resume verification: `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` PASS, checked=4296, pendingDecisions=0, productionReuseApproved=false. `node scripts/validate-planning.cjs` PASS.
+- Resume verification: node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md PASS, checked=4296, pendingDecisions=0, productionReuseApproved=false. node scripts/validate-planning.cjs PASS.
 - Report matches rendered machine data. No product source, driver or dependency installation performed. Full fixtures were not rerun because only human-choice metadata changed; prior 31/31 results remain historical evidence.
 
 Next: 01-02 platform feature inventory, then 01-03 environment and full human review. BASE-02 is shared with 01-03 and remains Pending until that plan completes.
@@ -102,3 +105,7 @@ Next: 01-02 platform feature inventory, then 01-03 environment and full human re
 ## Self-Check
 
 **PASSED.** All deliverables and task commits exist; both recorded choices match available options. Source structure/route intent verified; production clearance, platform support and Phase 1 completion are not claimed.
+
+## Shared final review resolved — 2026-10-07
+
+01-03已收到真实用户四项答复与VS2026/WDK补充，严格全包人审PASS。上述pending、三冲突和2208锚点描述为本计划完成时的历史状态；最终四冲突均decided、2209功能锚点。BASE-02审计交付已满足最终人审，生产复用/支持仍未批准，未知阻碍保留。

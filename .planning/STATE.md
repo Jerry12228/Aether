@@ -1,18 +1,19 @@
 ---
 gsd_state_version: "1.0"
-current_phase: 01
-current_phase_name: 来源、原功能与环境基线
-status: awaiting-review
-stopped_at: 01-03 Task1/2 已提交；Task3 blocking-human 全基线审阅待明确答复。
-last_updated: "2026-10-07T10:54:55.280Z"
+current_phase: 2
+current_phase_name: Monorepo 与 Flutter/原生骨架
+status: planning
+stopped_at: Phase 1 complete, ready to plan Phase 2
+last_updated: "2026-10-07T14:05:15.171Z"
 last_activity: 2026-10-07
-last_activity_desc: Phase 01 full baseline prepared; final review pending
+last_activity_desc: Phase 1 complete, transitioned to Phase 2
+state_head: 04b9efb1e9ef00522fdd00c77d09d3c3ff8f8b2b
 progress:
   total_phases: 42
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
-  completed_plans: 2
-  percent: 0
+  completed_plans: 3
+  percent: 2
 ---
 
 # Project State
@@ -22,22 +23,21 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-07)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 01 — 来源、原功能与环境基线
+**Current focus:** Phase 02 — Monorepo 与 Flutter/原生骨架（ready to plan；尚未启动）
 
 ## Current Position
 
-Phase: 01 (来源、原功能与环境基线) — AWAITING REVIEW
-Plan: 01-03 of 3; 01-01/02 complete
-Status: Awaiting 01-03 Task3 blocking-human review
-Last activity: 2026-10-07 — 01-03 Task1/2 verified and committed; full review pending
+Phase: 2 — Monorepo 与 Flutter/原生骨架
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-10-07 — Phase 1 complete, transitioned to Phase 2
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [░░░░░░░░░░] 2%
 
 ## Performance Metrics
 
-Total plans completed: 2
-01-01 source fixtures: 31/31 passed in 62.45 seconds; final targeted check 3/3 passed in 6.23 seconds.
-Full baseline suite 78/78 passed in 56.84 seconds; final doctor subset 27/27 in 1.84 seconds. Quick snapshot 1.406s/25s. No product performance measurements; all BASE requirements await final review.
+Total plans completed: 3; completed phases: 1/42.
+Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning fixture1/1。Quick真实快照1.523s/25s，15查询。Phase1目标10/10、BASE01/02/03已完成；零产品性能测量或产品功能验证。完整套件超过30秒反馈目标，针对性反馈约2秒。
 
 ## Accumulated Context
 
@@ -55,13 +55,17 @@ Full baseline suite 78/78 passed in 56.84 seconds; final doctor subset 27/27 in 
 - 01-01 来源数据已完成技术核验，全部参考文件仍 research-only，生产复制/链接/再分发清单为空。
 - 2026-10-07 恢复发现已记录用户答复“compatible-open-source；暂不考虑发行”（确认时间 2026-10-07T07:59:36.360Z）：项目许可/复用意向 compatible-open-source，发行 retain-candidates。两项均 selected；GPL-3.0-or-later 仍为项目候选，具体生产清单与许可/渠道阻碍仍保留。决定已提交 c8029be，完成摘要已提交 957cc0f。
 
+- 2026-10-07 Phase1最终人审：授权只读观察者（无输入/设备上行/会话变更）、唯一ControlLease及独立读流预算；SESSION-MODEL已同步。
+- Flutter3.44最低候选/原Android与Linux差异保留v1；测量30秒预热/60秒窗口/3轮获确认，精度及SLO仍待实测。
+- 用户纠正WDK已安装且VS26集成；只关闭安装缺口，未将组件存在写成目标构建证据。
+
 ### Pending Todos
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
 
 ### Blockers/Concerns
 
-既有许可/发行决定已记录，无需重选；01-01/02 完成。01-03 Task1/2及全包已提交，Task3人审 pending；四个原行为冲突 open（Win10/11 Apollo只读加入、Linux额外架构、AndroidAPI21–23差异），11环境缺口明列。缺失子模块内部源码、二进制对应来源、具体项目许可/生产清单、驱动签名及渠道兼容未知仍阻止相关生产复用。保留阻碍见 docs/SOURCE-AUDIT.md。后续实施还需解决Win10驱动/摄像头build原型、WDK、原生构建、Apple工具链/CI及独立客户端/IntelGPU/架构测试环境。原功能637平台记录/637计划案例已映射，尚未实现或实机验证。Apple实机缺口已批准转TODO，不阻塞v1；参考clone无递归子模块，仅研究用途。
+[Phase1] 两个人审检查点均已答复、四原行为冲突已decided；VS2026与WDK28000同版本组件及集成文件存在，安装缺口resolved。保留9项open环境gap与1项Apple实机TODO：原生构建、独立Win10/客户端/架构/GPU环境、主机build下限、Apple/Linux executor、AndroidAPI21–23/Linux额外架构及测量仪器。来源1261阻碍条目含未决子模块、外部包/二进制来源、具体生产许可、驱动签名和渠道，阻断对应后续生产选用；全部research-only、生产清单空。637平台记录及637计划案例已映射，尚未实现或实机验证。Apple只有VFY01/02实机延期，构建义务仍保留。三个分类flag/六条无描述符prohibitions原状态保留，不伪造自动引擎通过。
 
 ## Deferred Items
 
@@ -70,6 +74,6 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 ## Session Continuity
 
 Last session: 2026-10-07 (Asia/Singapore)
-Stopped at: 01-03 Task3 awaiting explicit human review; Task1/2 commits b291686/9b75ab6, halted summary e91f3e5.
-Resume file: .planning/phases/01-source-feature-environment-baseline/01-03-SUMMARY.md (halted; Tasks1/2 done)
-Next action: 用户明确答复 docs/BASELINE-REVIEW.md 的四项决定后，记录冲突/人审证据并运行 --require-review，再完成01-03及Phase1验证。不自动进入Phase2。
+Stopped at: Phase 1 complete, ready to plan Phase 2
+Resume file: None
+Next action: $gsd-plan-phase 2。先确认小范围Monorepo/Flutter原生骨架计划，携带Phase1原目标差异与构建缺口；不自动开始Phase2。

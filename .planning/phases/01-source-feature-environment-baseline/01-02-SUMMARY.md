@@ -20,8 +20,8 @@ key-decisions:
   - Newly found original capabilities stay in v1; no new TODO or roadmap phase was introduced.
   - Apollo view-only joining and Qt Linux extra architectures remain open conflicts for 01-03 human review.
   - Product implementation/build/automation/hardware arrays remain empty; all cases are planned.
-requirements-completed: []
-requirements-pending: [BASE-01]
+requirements-completed: [BASE-01]
+requirements-pending: []
 coverage:
   - id: fixed-feature-tracer
     description: Fixed settings/consumer anchors and CLI/report with rejection tests
@@ -57,7 +57,7 @@ metrics:
 
 # Phase 1 Plan 02 — 原能力、独立案例与本版映射
 
-已完成来源锚点到功能数据、报告、需求/阶段及案例的可复现链；BASE-01 仍待 01-03 的共享最终人审，不宣称产品能力已实现。
+已完成来源锚点到功能数据、报告、需求/阶段及案例的可复现链；BASE-01 已通过 01-03 的共享最终人审，不宣称产品能力已实现。
 
 ## Accomplishments
 
@@ -79,7 +79,7 @@ metrics:
 ## Verification
 
 - 功能套件20/20通过；扩展后一次实测10.36秒。包含真实临时Git对象与CLI、错误blob/原文、重复ID、无设置覆盖/案例/条件、错误阶段、擅自TODO、Apple伪实机证据及失败不覆盖报告。
-- 最终 `--features --report docs/FEATURE-PARITY.md` PASS：checked=637，anchors=2208，unmapped=[]，开放冲突3。
+- 最终 --features --report docs/FEATURE-PARITY.md PASS：checked=637，anchors=2208，unmapped=[]，开放冲突3。
 - `validate-planning.cjs` PASS：42 phases，105 v1 requirements，mapped=105，unmapped=0，localLinks=valid。
 - 来源fixture全套不在本计划重复运行；CLI/验证器的跨链回归由01-03最终全套检查覆盖。
 
@@ -97,3 +97,7 @@ metrics:
 **PASSED for the implemented structural audit chain.** Deliverables, real task commits, strict mapping/report and rejection cases exist. Semantic completeness, platform support and Phase1 completion await the final human review.
 
 Next: 01-03 bounded environment doctor, four evidence layers, comparable measurement records and concrete full review package.
+
+## Shared final review resolved — 2026-10-07
+
+01-03已收到真实用户四项答复与VS2026/WDK补充，严格全包人审PASS。上述pending、三冲突和2208锚点描述为本计划完成时的历史状态；最终四冲突均decided、2209功能锚点。BASE-01审计交付已满足最终人审，生产复用/支持仍未批准，未知阻碍保留。

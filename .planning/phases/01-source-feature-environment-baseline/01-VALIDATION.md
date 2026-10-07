@@ -1,15 +1,15 @@
 ---
 phase: "1"
 slug: "source-feature-environment-baseline"
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: validated
+nyquist_compliant: true
+wave_0_complete: true
 created: "2026-10-07"
 ---
 
 # Phase 1 — Validation Strategy
 
-这是执行时的验证契约。01-01 Task 1/2 已验证，其余任务及人工签署 pending。自动检查证明结构、引用与失败处理；源码能力穷尽性、生产复用许可和发布渠道结论仍需人工审阅。
+九项任务及两个人审检查点均完成。完整套件80/80（61.712秒）；最终doctor28/28（2.106秒），planning fixture1/1；严格真实全包人审PASS。自动检查证明结构、引用与失败处理；源码能力穷尽性、生产复用许可和发布渠道结论仍需人工审阅。
 
 ## Test Infrastructure
 
@@ -18,8 +18,8 @@ created: "2026-10-07"
 | Framework | Node 内置 node:test 与 node:assert/strict；PowerShell 有界本机探测 |
 | Config file | 无外部测试依赖；现有 scripts/validate-planning.cjs |
 | Quick run command | `node scripts/validate-planning.cjs` 加当前任务的针对性验证 |
-| Full suite command | 分别运行 `node --test tests/baseline-sources.test.cjs tests/baseline-features.test.cjs tests/doctor.test.cjs`、`node scripts/validate-baseline.cjs --review --report docs/BASELINE-REVIEW.md`、`node scripts/validate-planning.cjs`，每个命令独立检查退出码和非空摘要 |
-| Estimated runtime | 目标 30 秒；来源全套 31 项实测 62.45 秒，最终针对性 3 项 6.23 秒；feature/doctor 尚未实现，完整阶段耗时待测 |
+| Full suite command | 分别运行 `node --test tests/baseline-sources.test.cjs tests/baseline-features.test.cjs tests/doctor.test.cjs tests/planning.test.cjs`、`node scripts/validate-baseline.cjs --review --report docs/BASELINE-REVIEW.md`、`node scripts/validate-planning.cjs`，每个命令独立检查退出码和非空摘要 |
+| Estimated runtime | 针对性反馈约2秒；完整80项61.712秒，超过30秒目标，作为实际耗时保留。Quick快照1.523秒/25秒预算 |
 
 ## Sampling Rate
 
@@ -31,19 +31,19 @@ created: "2026-10-07"
 
 ## Per-Task Verification Map
 
-任务编号与三个最终 PLAN 对齐。三波顺序执行；01-01和01-03各有具体blocking-human决定。W0表示由该链首个tracer创建后运行，并非已经存在或测试通过。
+任务编号与三个最终 PLAN 对齐。三波顺序执行；01-01和01-03各有具体blocking-human决定。W0入口均已由各链首个tracer创建并执行；本表命令记录各任务执行证据。已确认doctor快照拒绝自动覆盖，后续复测须显式重开审阅。
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|--------|
 | 01-01-01 | 01 | 1 | BASE-02 | T-01-01,02,04,SC | common-c真对象tracer、参数/真实路径、dirty/SHA/remote负例 | Git fixture + CLI | `node --test tests/baseline-sources.test.cjs`；独立运行`node scripts/validate-baseline.cjs --sources --scope moonlight-common-c --report docs/SOURCE-AUDIT.md` | yes | pass — committed tracer/full fixtures |
-| 01-01-02 | 01 | 1 | BASE-02 | T-01-01,02,03,04,SC | 九仓逐文件、gitlink/资产/驱动及五端发行，未知保持blocked | 数据/引用 | `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` | yes | pass — structural audit; human decision pending |
-| 01-01-03 | 01 | 1 | BASE-02 | T-01-03 | 先展示具体许可/复用/渠道选项再记录明确选择 | 决定前后门禁 | `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` | W0 | pending |
-| 01-02-01 | 02 | 2 | BASE-01 | T-01-05,06,07,SC | Qt Windows真能力tracer，固定锚点与错映射负例 | 数据/CLI | `node --test tests/baseline-features.test.cjs`；独立运行`node scripts/validate-baseline.cjs --features --scope qt-windows --report docs/FEATURE-PARITY.md` | W0 | pending |
-| 01-02-02 | 02 | 2 | BASE-01 | T-01-05,06,07,SC | 五端/主机设置和非设置覆盖；未映射明确显示，Apple证据诚实 | 数据/引用 | `node scripts/validate-baseline.cjs --features --allow-unmapped --report docs/FEATURE-PARITY.md` | W0 | pending |
-| 01-02-03 | 02 | 2 | BASE-01 | T-01-06,07 | 新发现原能力进入本版需求，唯一实施阶段与案例 | 严格映射门禁 | `node scripts/validate-baseline.cjs --features --report docs/FEATURE-PARITY.md` | W0 | pending |
-| 01-03-01 | 03 | 3 | BASE-03 | T-01-08,09,10,SC | 真实doctor tracer，有界launcher/树取消/脱敏及诚实失败 | Runner负例 + smoke | `node --test --test-name-pattern="doctor runner" tests/doctor.test.cjs`；独立运行`pwsh -NoProfile -File scripts/doctor.ps1 -Mode Quick -Output docs/baseline/environment.json` | W0 | pending |
-| 01-03-02 | 03 | 3 | BASE-03 | T-01-08,09,10,11,SC | 版本化平台/机器、测量单位/时钟/可比性负例及完整报告 | 全套/全基线 | `node --test tests/baseline-sources.test.cjs tests/baseline-features.test.cjs tests/doctor.test.cjs`；独立运行`node scripts/validate-baseline.cjs --review --report docs/BASELINE-REVIEW.md` | W0 | pending |
-| 01-03-03 | 03 | 3 | BASE-01, BASE-02, BASE-03 | T-01-03,06,07,11 | 全包人审、具体范围/方法决定、flags与阻碍保留 | 人审后自动门禁 | `node scripts/validate-baseline.cjs --review --require-review --report docs/BASELINE-REVIEW.md` | W0 | pending |
+| 01-01-02 | 01 | 1 | BASE-02 | T-01-01,02,03,04,SC | 九仓逐文件、gitlink/资产/驱动及五端发行，未知保持blocked | 数据/引用 | `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` | yes | pass — audit and actual human choice confirmed |
+| 01-01-03 | 01 | 1 | BASE-02 | T-01-03 | 先展示具体许可/复用/渠道选项再记录明确选择 | 决定前后门禁 | `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` | yes | pass |
+| 01-02-01 | 02 | 2 | BASE-01 | T-01-05,06,07,SC | Qt Windows真能力tracer，固定锚点与错映射负例 | 数据/CLI | `node --test tests/baseline-features.test.cjs`；独立运行`node scripts/validate-baseline.cjs --features --scope qt-windows --report docs/FEATURE-PARITY.md` | yes | pass |
+| 01-02-02 | 02 | 2 | BASE-01 | T-01-05,06,07,SC | 五端/主机设置和非设置覆盖；未映射明确显示，Apple证据诚实 | 数据/引用 | `node scripts/validate-baseline.cjs --features --allow-unmapped --report docs/FEATURE-PARITY.md` | yes | pass |
+| 01-02-03 | 02 | 2 | BASE-01 | T-01-06,07 | 新发现原能力进入本版需求，唯一实施阶段与案例 | 严格映射门禁 | `node scripts/validate-baseline.cjs --features --report docs/FEATURE-PARITY.md` | yes | pass |
+| 01-03-01 | 03 | 3 | BASE-03 | T-01-08,09,10,SC | 真实doctor tracer，有界launcher/树取消/脱敏及诚实失败 | Runner负例 + smoke | `node --test --test-name-pattern="doctor runner" tests/doctor.test.cjs`；独立运行`pwsh -NoProfile -File scripts/doctor.ps1 -Mode Quick -Output docs/baseline/environment.json` | yes | pass |
+| 01-03-02 | 03 | 3 | BASE-03 | T-01-08,09,10,11,SC | 版本化平台/机器、测量单位/时钟/可比性负例及完整报告 | 全套/全基线 | `node --test tests/baseline-sources.test.cjs tests/baseline-features.test.cjs tests/doctor.test.cjs tests/planning.test.cjs`；独立运行`node scripts/validate-baseline.cjs --review --report docs/BASELINE-REVIEW.md` | yes | pass |
+| 01-03-03 | 03 | 3 | BASE-01, BASE-02, BASE-03 | T-01-03,06,07,11 | 全包人审、具体范围/方法决定、flags与阻碍保留 | 人审后自动门禁 | `node scripts/validate-baseline.cjs --review --require-review --report docs/BASELINE-REVIEW.md` | yes | pass |
 
 ## Wave 0 Requirements
 
@@ -66,19 +66,23 @@ created: "2026-10-07"
 
 ## Flagged Assumptions and Security
 
-- BASE-01、BASE-02、BASE-03的spec-less edge结果均为unclassified/unresolved；三条计划显式保留，未声称自动解决。RESEARCH A1测量精度/时钟假设保留具体审阅。
+- BASE-01、BASE-02、BASE-03的spec-less edge结果均为unclassified/unresolved；三条计划显式保留，未声称自动解决。RESEARCH A1测量方法已获用户确认；仪器精度/跨机校准实测仍为Phase6/10缺口。
 - 六条bespoke prohibitions经projectProhibitions投影，无check_*描述符，仍flagged-unverified；人工判断与结构PASS分开。通用injection/path-traversal威胁交各计划threat_model及后续secure-phase，不伪造wired checks。
 - ASVS5.0.0 L1；阻断阈值high。T-01-01至T-01-11各自唯一；T-01-SC为各计划共有保留ID。所有安装任务均不在范围，新增安装必须重新合法性审计。
 - 许可决定在01-01证据完成后；完整功能/平台/测量决定在01-03完整报告后。缺工具/机器可作为后续阶段gap，不自动使BASE失败或伪称平台通过。
 
 ## Validation Sign-Off
 
-- [ ] 每任务有自动验证或显式前序验证入口创建依赖
-- [ ] 不连续三个任务缺少自动验证
-- [ ] Wave 0 覆盖所有新入口
-- [ ] 无 watch 模式，探测均有界
-- [ ] 快速反馈时间经过执行验证
-- [ ] 威胁引用与最终计划对应
-- [ ] 全套检查及具体人工审阅通过后再更新验证状态
+- [x] 每任务有自动验证或显式前序验证入口创建依赖
+- [x] 不连续三个任务缺少自动验证
+- [x] Wave 0 覆盖所有新入口
+- [x] 无 watch 模式，探测均有界
+- [x] 快速反馈时间经过执行验证
+- [x] 威胁引用与最终计划对应
+- [x] 全套检查及具体人工审阅通过后再更新验证状态
 
-**Approval:** pending；规划不代表执行完成或 nyquist 合规已验证。
+**Approval:** validated 2026-10-07T14:02:28.544Z；用户最终人审记录见environment.review。Nyquist仅覆盖本阶段审计工具与明确人工判断，不是产品测试覆盖率。
+
+## Final coverage audit
+
+每任务至少一个可运行自动入口，两项blocking-human决定在具体报告完成后已有真实答复。RED/GREEN、CLI非零和报告不覆写、固定对象/字节身份、遗漏/许可/Apple证据负例、实际进程子树及保留未知环境均受测试覆盖。新增planning fixture确保完成需求仍被计数。无需新增产品测试；目前没有产品实现。六条无描述符prohibitions与中文spec-less分类flag保留，安全登记由01-SECURITY另行核验，未伪造分类引擎结果。

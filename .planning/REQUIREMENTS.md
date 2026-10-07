@@ -11,9 +11,9 @@
 
 ### 来源、原功能与环境基线
 
-- [ ] **BASE-01**: 维护者能查阅指定平台原功能逐项清单，每项有源码或设置锚点、需求与验收映射。
-- [ ] **BASE-02**: 维护者能复现固定 SHA 参考源码，并查阅逐文件来源、生产复用许可与各端分发审计结论。
-- [ ] **BASE-03**: 维护者能运行环境探测，得到缺失依赖、最低 OS/架构、测试机器与性能测量方案。
+- [x] **BASE-01**: 维护者能查阅指定平台原功能逐项清单，每项有源码或设置锚点、需求与验收映射。
+- [x] **BASE-02**: 维护者能复现固定 SHA 参考源码，并查阅逐文件来源、生产复用许可与各端分发审计结论。
+- [x] **BASE-03**: 维护者能运行环境探测，得到缺失依赖、最低 OS/架构、测试机器与性能测量方案。
 
 ### Monorepo 与 Flutter/原生骨架
 
@@ -275,9 +275,9 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BASE-01 | Phase 1 | Pending |
-| BASE-02 | Phase 1 | Pending |
-| BASE-03 | Phase 1 | Pending |
+| BASE-01 | Phase 1 | Complete |
+| BASE-02 | Phase 1 | Complete |
+| BASE-03 | Phase 1 | Complete |
 | CORE-01 | Phase 2 | Pending |
 | CORE-02 | Phase 2 | Pending |
 | CORE-03 | Phase 2 | Pending |
