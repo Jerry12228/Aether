@@ -23,6 +23,7 @@ function fixture(t) {
   git(repo,'add','LICENSE.txt','core.c','.gitmodules'); git(repo,'commit','-qm','fixture');
   const dependency = git(repo,'rev-parse','HEAD'); git(repo,'update-index','--add','--cacheinfo',`160000,${dependency},enet`);
   git(repo,'commit','-qm','gitlink');
+  fs.mkdirSync(path.join(repo,'enet'));
   const commit = git(repo,'rev-parse','HEAD');
   const lock = {schemaVersion:1,capturedAt:'2026-10-07',purpose:'fixture',repositories:[{name:'moonlight-common-c',url,commit,path:'references/upstream/moonlight-common-c',licenseFile:'LICENSE.txt'}]};
   fs.writeFileSync(path.join(root,'references/upstream-lock.json'),JSON.stringify(lock));

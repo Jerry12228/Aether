@@ -1,0 +1,953 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-07T07:21:36.613Z",
+  "purpose": "Fixed source evidence; structure PASS is not production authorization",
+  "scope": {
+    "repoIds": [
+      "moonlight-common-c"
+    ],
+    "complete": false
+  },
+  "repositories": [
+    {
+      "name": "moonlight-common-c",
+      "url": "https://github.com/moonlight-stream/moonlight-common-c.git",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "head": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "remote": "https://github.com/moonlight-stream/moonlight-common-c.git",
+      "checkoutState": "clean",
+      "statusEvidence": {
+        "command": "git status --porcelain=v1 --untracked-files=all",
+        "output": ""
+      },
+      "gitlinkIds": [
+        "moonlight-common-c:gitlink:enet",
+        "moonlight-common-c:gitlink:nanors"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "id": "moonlight-common-c:.github/dependabot.yml",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": ".github/dependabot.yml",
+      "blob": "90277d495f8d2c0ebf0cfec18a28dc2cb5b12095",
+      "mode": "100644",
+      "kind": "build",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:.github/workflows/ci.yml",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": ".github/workflows/ci.yml",
+      "blob": "59abe74b5f94f4c38f004004d460b8500383a31c",
+      "mode": "100644",
+      "kind": "build",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:.github/workflows/codeql.yml",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": ".github/workflows/codeql.yml",
+      "blob": "8b5bc86179fc0df6cfc76b5846b5dd9215ab565e",
+      "mode": "100644",
+      "kind": "build",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:.gitignore",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": ".gitignore",
+      "blob": "275532a60c98bbe7bc7e257fc0971260fb6d5275",
+      "mode": "100644",
+      "kind": "generated",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:.gitmodules",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": ".gitmodules",
+      "blob": "85bc355650aabffd01cec6ffc956d9a18f9cf44d",
+      "mode": "100644",
+      "kind": "generated",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:CMakeLists.txt",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "CMakeLists.txt",
+      "blob": "ebdd722afcbd085fe9ee2597b92bf27e0fdcec13",
+      "mode": "100644",
+      "kind": "build",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:LICENSE.txt",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "LICENSE.txt",
+      "blob": "03dfa3ef8f18c254968ccccd2df010f74d6344eb",
+      "mode": "100644",
+      "kind": "license",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:README.md",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "README.md",
+      "blob": "63d5788bdcd0f599a268b7b31f4004830b83e8ea",
+      "mode": "100644",
+      "kind": "docs",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:cmake/FindMbedTLS.cmake",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "cmake/FindMbedTLS.cmake",
+      "blob": "db5867a1ef6a2e3887562bb5ce2e3dadc035563d",
+      "mode": "100644",
+      "kind": "build",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/AudioStream.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/AudioStream.c",
+      "blob": "2fcc1f0e6a4750e0877293b7b7252b2f9e3cc2b7",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/ByteBuffer.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/ByteBuffer.c",
+      "blob": "79e172b29df9419cd9add620bb0f5923ce26112d",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/ByteBuffer.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/ByteBuffer.h",
+      "blob": "96bc4b28f2d760cb2480d508f58376150f70dec0",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Connection.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Connection.c",
+      "blob": "bac9a6e787a806b53e6e5b1f538058d0e58ad3d5",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/ConnectionTester.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/ConnectionTester.c",
+      "blob": "d993834fc3eedab530e223d4986da458fab2d23a",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/ControlStream.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/ControlStream.c",
+      "blob": "2b5182ed3fe68bba61fabe051f3134fbbde27ff4",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/FakeCallbacks.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/FakeCallbacks.c",
+      "blob": "29fdf18f915dd46645a0d968e9f93e17e3f0cf1e",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Input.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Input.h",
+      "blob": "1c5166d53fed2633309de7141df85124222a90f7",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/InputStream.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/InputStream.c",
+      "blob": "3b56098a3ae962d67e0e28bad7b5aa9e13779d8e",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Limelight-internal.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Limelight-internal.h",
+      "blob": "e1314c5c618b8114c31a8bc6f61c0f5c114466cf",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Limelight.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Limelight.h",
+      "blob": "22bee469ad8f8a95e2b0c75db2a7414bf26a7e51",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/LinkedBlockingQueue.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/LinkedBlockingQueue.c",
+      "blob": "5d7f9a7575209f4c3bfa5242244b12afa2cc84ec",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/LinkedBlockingQueue.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/LinkedBlockingQueue.h",
+      "blob": "426f43d26615e97a6c25024b84a2445814b534dc",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Misc.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Misc.c",
+      "blob": "e3cd6b0f61d6da5805adccccae3cb7eae20e8183",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Platform.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Platform.c",
+      "blob": "458fd980e4033508e3de364c4441c25fb2ff1667",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Platform.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Platform.h",
+      "blob": "f2198649b8424f72b826ac0b6920339b0439b70b",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/PlatformCrypto.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/PlatformCrypto.c",
+      "blob": "7cad833ca3fbfdefe1dfab70810802d8ca66736b",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/PlatformCrypto.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/PlatformCrypto.h",
+      "blob": "ddbb568f98f3370abc63039b6c27cb17c4396bc5",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/PlatformSockets.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/PlatformSockets.c",
+      "blob": "cec96f395dd2b9a8be81dd754abcab62d9c8b9f8",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/PlatformSockets.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/PlatformSockets.h",
+      "blob": "4bac8bd18f97957d53cf9e43e48e6dcc6b18d391",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/PlatformThreads.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/PlatformThreads.h",
+      "blob": "822b90bd0639e6df100dfdcbc2b5ba8276d9c71d",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/RecorderCallbacks.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/RecorderCallbacks.c",
+      "blob": "840ac194b28542f7620a36b0c3a26cd0be1ebc80",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/RtpAudioQueue.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/RtpAudioQueue.c",
+      "blob": "d9ef7f1deb2ca5795577031ccb60da8636bbe4f2",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/RtpAudioQueue.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/RtpAudioQueue.h",
+      "blob": "2a73ab22fe2298e1cf1a8007e93653dcd3a9067f",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/RtpVideoQueue.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/RtpVideoQueue.c",
+      "blob": "a4e022ee6f4eff1f411fe3ea8512a635c9d4fd75",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/RtpVideoQueue.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/RtpVideoQueue.h",
+      "blob": "c9bce6f10b2a2813b2be9abf1ac5a5f467f13cb7",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Rtsp.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Rtsp.h",
+      "blob": "062b1c181398c7e8e5e8543362307ade9eefceb4",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/RtspConnection.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/RtspConnection.c",
+      "blob": "e95810165b5ba52f572e39366c9a71f398f62d8c",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/RtspParser.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/RtspParser.c",
+      "blob": "208d8533cd041ef93c84d9aaf160ee3522d7c80a",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/SdpGenerator.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/SdpGenerator.c",
+      "blob": "22467c06e060001612acfd9f088789fcc24114b6",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/SimpleStun.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/SimpleStun.c",
+      "blob": "64a93ef5ba0f90ae75ba84621b788d6f987b0c69",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/Video.h",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/Video.h",
+      "blob": "737d23c7e4f9066bbc28424bed66413b19417791",
+      "mode": "100644",
+      "kind": "header",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/VideoDepacketizer.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/VideoDepacketizer.c",
+      "blob": "5baa1d5d3d6662d17edb4cfc92d179dddf4ceb21",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    },
+    {
+      "id": "moonlight-common-c:src/VideoStream.c",
+      "repo": "moonlight-common-c",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "src/VideoStream.c",
+      "blob": "402b0566d319e71680081dac0d9191fe413313b7",
+      "mode": "100644",
+      "kind": "source",
+      "licenseEvidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "copyright": [],
+      "exceptionEvidenceIds": [],
+      "reuseIntent": "research-only",
+      "auditState": "blocked",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    }
+  ],
+  "externals": [
+    {
+      "id": "moonlight-common-c:gitlink:enet",
+      "parentRepo": "moonlight-common-c",
+      "kind": "gitlink",
+      "path": "enet",
+      "url": "https://github.com/cgutman/enet.git",
+      "commit": "aca87840b57f045a1f7f9299e4b1b9b8e2a5e2f1",
+      "digest": null,
+      "materialization": "absent",
+      "licenseEvidenceIds": [],
+      "blockerIds": [
+        "moonlight-common-c:gitlink:enet:unverified"
+      ],
+      "requiredByPhases": [
+        2
+      ]
+    },
+    {
+      "id": "moonlight-common-c:gitlink:nanors",
+      "parentRepo": "moonlight-common-c",
+      "kind": "gitlink",
+      "path": "nanors",
+      "url": "https://github.com/sleepybishop/nanors.git",
+      "commit": "b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a",
+      "digest": null,
+      "materialization": "absent",
+      "licenseEvidenceIds": [],
+      "blockerIds": [
+        "moonlight-common-c:gitlink:nanors:unverified"
+      ],
+      "requiredByPhases": [
+        2
+      ]
+    }
+  ],
+  "licenseEvidence": [
+    {
+      "id": "moonlight-common-c:root-license",
+      "anchor": {
+        "repo": "moonlight-common-c",
+        "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+        "path": "LICENSE.txt",
+        "blob": "03dfa3ef8f18c254968ccccd2df010f74d6344eb",
+        "symbol": "license evidence",
+        "startLine": 1,
+        "endLine": 8,
+        "excerpt": "                    GNU GENERAL PUBLIC LICENSE\n                       Version 3, 29 June 2007\n\n Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>\n Everyone is permitted to copy and distribute verbatim copies\n of this license document, but changing it is not allowed.\n\n                            Preamble"
+      },
+      "scopePaths": [
+        "** (candidate only; exceptions require review)"
+      ],
+      "spdxExpression": "GPL-3.0-or-later",
+      "obligations": [
+        "保留版权与许可；复核对应源码/组合发行义务及范围。"
+      ],
+      "reviewState": "unresolved",
+      "blockerIds": [
+        "moonlight-common-c:license-scope"
+      ]
+    }
+  ],
+  "routes": [],
+  "decisions": [],
+  "blockers": [
+    {
+      "id": "moonlight-common-c:gitlink:enet:unverified",
+      "description": "enet gitlink 已识别；内部文件/许可尚未审计，未默认初始化或下载。",
+      "evidenceIds": [
+        "moonlight-common-c:gitlink:enet"
+      ],
+      "affectedRouteIds": [],
+      "requiredByPhases": [
+        2
+      ],
+      "resolutionNeeded": "显式获取固定提交并另审源码、许可与资产。",
+      "status": "open"
+    },
+    {
+      "id": "moonlight-common-c:gitlink:nanors:unverified",
+      "description": "nanors gitlink 已识别；内部文件/许可尚未审计，未默认初始化或下载。",
+      "evidenceIds": [
+        "moonlight-common-c:gitlink:nanors"
+      ],
+      "affectedRouteIds": [],
+      "requiredByPhases": [
+        2
+      ],
+      "resolutionNeeded": "显式获取固定提交并另审源码、许可与资产。",
+      "status": "open"
+    },
+    {
+      "id": "moonlight-common-c:license-scope",
+      "description": "根许可是候选依据；文件继承范围、例外、组合发行及人类复用决定尚未批准。",
+      "evidenceIds": [
+        "moonlight-common-c:root-license"
+      ],
+      "affectedRouteIds": [],
+      "requiredByPhases": [
+        2
+      ],
+      "resolutionNeeded": "按实际复制/链接清单核对逐文件许可及渠道兼容；保留 research-only。",
+      "status": "open"
+    }
+  ]
+}
