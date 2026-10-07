@@ -236,7 +236,9 @@ function inventoryKeys(text,kind){
   if(kind==='qt-properties')return [...text.matchAll(/Q_PROPERTY\(\w+\s+(\w+)/g)].map(m=>m[1]);
   if(kind==='android-preferences')return [...text.matchAll(/android:key="([^"]+)"/g)].map(m=>m[1]);
   if(kind==='objc-properties')return [...text.matchAll(/@property[^;]*\s(\w+)\s*;/g)].map(m=>m[1]);
-  if(kind==='json-config')return Object.keys(JSON.parse(text));
+  if(kind==='json-config')return JSON.parse(text).flatMap(tab=>Object.keys(tab.options));
+  if(kind==='qt-cli')return [...text.matchAll(/parser\.add(?:Flag|Value|Toggle|Choice)Option\("([^"]+)"/g)].map(m=>m[1]);
+  if(kind==='qt-shortcuts')return [...new Set([...text.matchAll(/m_SpecialKeyCombos\[(\w+)\]\.keyCode/g)].map(m=>m[1]))];
   return null;
 }
 function validateFeatures({root=ROOT,data,sources,scope,allowUnmapped=false,gitRunner=gitRun}){
@@ -247,6 +249,15 @@ function validateFeatures({root=ROOT,data,sources,scope,allowUnmapped=false,gitR
     if(scope&&scope!=='qt-windows')throw Error('unknown feature scope');
     if(scope&&data.scope.complete)errors.push('complete platform scope cannot use tracer scope');
     if(!scope&&(!data.scope.complete||FEATURE_PLATFORMS.some(p=>!data.scope.platforms?.includes(p)||!data.features.some(f=>f.platform===p))))errors.push('full feature platform coverage missing');
+    if(!scope){
+      for(const p of FEATURE_PLATFORMS){
+        const required=p.startsWith('helios')?['setting','input','media','network','management','packaging']:['setting','input','media','network','management','packaging'];
+        for(const kind of required)if(!data.surfaces.some(s=>s.platform===p&&s.kind===kind))errors.push(`missing full source surface ${p}/${kind}`);
+        const repo=p.startsWith('helios')?'sunshine':p==='selene-android'?'moonlight-android':p==='selene-ios-ipados'?'moonlight-ios':'moonlight-qt';
+        const settingPath=repo==='sunshine'?'src_assets/common/assets/web/configs/config_tabs.json':repo==='moonlight-android'?'app/src/main/res/xml/preferences.xml':repo==='moonlight-ios'?'Limelight/Database/TemporarySettings.h':'app/settings/streamingpreferences.h';
+        if(!data.surfaces.some(s=>s.platform===p&&s.repo===repo&&s.path===settingPath&&s.extractor))errors.push(`missing complete settings inventory ${p}`);
+      }
+    }
     if(data.scope.platforms?.some(p=>!FEATURE_PLATFORMS.includes(p)))errors.push('unknown scope platform');
     const lock=readLock(root),contexts=new Map(),anchorSeen=new Set();
     const anchor=a=>{
