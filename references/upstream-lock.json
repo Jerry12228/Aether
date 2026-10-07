@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-07",
+  "purpose": "Local source research; not production dependencies",
+  "repositories": [
+    {
+      "name": "apollo",
+      "url": "https://github.com/ClassicOldSong/Apollo.git",
+      "commit": "adc5c5a0bd80831ce495434bb16aee2cd4175fb8",
+      "path": "references/upstream/apollo",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE",
+      "licenseLabel": "GPL-3.0-family; file-level audit pending"
+    },
+    {
+      "name": "moonlight-android",
+      "url": "https://github.com/moonlight-stream/moonlight-android.git",
+      "commit": "b48494cb96bff23d8886c4775cc4f39a1075495d",
+      "path": "references/upstream/moonlight-android",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE.txt",
+      "licenseLabel": "GPL-3.0-family; file-level audit pending"
+    },
+    {
+      "name": "moonlight-common-c",
+      "url": "https://github.com/moonlight-stream/moonlight-common-c.git",
+      "commit": "f900dd4767759c7b9d0e93bcea666b55c69ea62f",
+      "path": "references/upstream/moonlight-common-c",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE.txt",
+      "licenseLabel": "GPL-3.0-family; file-level audit pending"
+    },
+    {
+      "name": "moonlight-ios",
+      "url": "https://github.com/moonlight-stream/moonlight-ios.git",
+      "commit": "02dc9780496eeeac6d01c8bbdccb8b6fe71ef28a",
+      "path": "references/upstream/moonlight-ios",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE.txt",
+      "licenseLabel": "GPL-3.0-family; file-level audit pending"
+    },
+    {
+      "name": "moonlight-qt",
+      "url": "https://github.com/moonlight-stream/moonlight-qt.git",
+      "commit": "de2467e433821664cdd2224aad8c89a625be1ad9",
+      "path": "references/upstream/moonlight-qt",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE",
+      "licenseLabel": "GPL-3.0-family; file-level audit pending"
+    },
+    {
+      "name": "sunshine",
+      "url": "https://github.com/LizardByte/Sunshine.git",
+      "commit": "7c23c32925d26c3ee7c33b25b2b0db75e35d561b",
+      "path": "references/upstream/sunshine",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE",
+      "licenseLabel": "GPL-3.0-family; file-level audit pending"
+    },
+    {
+      "name": "virtual-audio-driver",
+      "url": "https://github.com/VirtualDrivers/Virtual-Audio-Driver.git",
+      "commit": "bb34fba15faf569a6ae9bdea360bc1cf4821354e",
+      "path": "references/upstream/virtual-audio-driver",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE",
+      "licenseLabel": "MIT; file-level audit pending"
+    },
+    {
+      "name": "virtual-display-driver",
+      "url": "https://github.com/itsmikethetech/Virtual-Display-Driver.git",
+      "commit": "d7244969b2aa8bb38e76d79505eda217996cefea",
+      "path": "references/upstream/virtual-display-driver",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE",
+      "licenseLabel": "MIT; file-level audit pending"
+    },
+    {
+      "name": "windows-camera",
+      "url": "https://github.com/microsoft/Windows-Camera.git",
+      "commit": "626f8b19c5f367602f2e89c6b314573d3776c9df",
+      "path": "references/upstream/windows-camera",
+      "shallow": true,
+      "submodulesInitialized": false,
+      "licenseFile": "LICENSE",
+      "licenseLabel": "MIT; file-level audit pending"
+    }
+  ]
+}

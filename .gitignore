@@ -1,0 +1,11 @@
+# Local reference checkouts are not Aether production dependencies or submodules.
+/references/upstream/
+/build/
+/.dart_tool/
+**/.dart_tool/
+**/build/
+.env
+.env.*
+!.env.example
+*.user
+*.log
