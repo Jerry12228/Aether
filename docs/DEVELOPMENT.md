@@ -8,6 +8,21 @@
 
 ## 分阶段依赖
 
+## 有界只读 doctor
+
+```powershell
+pwsh -NoProfile -File scripts/doctor.ps1 -Mode Quick -Output docs/baseline/environment.json
+# Deep 扩大总预算，不安装、联网修复或执行 Flutter bootstrap。
+pwsh -NoProfile -File scripts/doctor.ps1 -Mode Deep -Output docs/baseline/environment.json
+node --test --test-name-pattern="doctor runner" tests/doctor.test.cjs
+```
+
+Quick 总预算 25 秒，Deep 45 秒，单项最多 5 秒，每个输出流最多保存 64 KiB；后续项超预算记为 not-probed。超时只取消本次启动的进程树。可执行文件使用绝对路径和参数数组；cmd/bat 仅允许白名单固定版本参数，支持带空格路径并拒绝 shell 元字符。环境变量仅用于白名单工具路径解析，不转储环境；用户名目录及凭据脱敏后才保存。
+
+available 是具体查询或缓存证据可用，missing/failed/timeout/empty/not-probed 均保留原诊断；发现 PATH 命令不等于可用。Flutter 只读已有缓存版本和运行已有 Dart，不运行可能下载的 wrapper。VC 使用 vswhere 的 C++ 组件过滤；SDK/WDK 检查同版本 headers、libs 和 tools，headers 单独存在不算完整。工具检查不是目标构建或实机功能证明。已确认环境快照禁止被 doctor 自动覆盖，须先明确重开审阅。
+
+## 分阶段依赖（准备要求）
+
 | 用途 | 需要 |
 |------|------|
 | 文档/参考管理 | Git、Node 或 Python |
