@@ -14,6 +14,18 @@
 | virtual-display-driver | [upstream](https://github.com/itsmikethetech/Virtual-Display-Driver) | d7244969b2aa8bb38e76d79505eda217996cefea | MIT; file-level audit pending |
 | windows-camera | [upstream](https://github.com/microsoft/Windows-Camera) | 626f8b19c5f367602f2e89c6b314573d3776c9df | MIT; file-level audit pending |
 
-生产复用前在 Phase 1 逐文件确认来源、许可和渠道分发条件。Aether 当前仅文档，项目许可证待来源与复用方案确定。Apollo 内 SudoVDA 接口和打包资产不能作为完整驱动源码或独立授权的证据。
+Phase 1 已生成 [逐文件来源与许可候选](../docs/baseline/sources.json) 和 [来源/发行审计](../docs/SOURCE-AUDIT.md)。固定树共 2,964 个 blob 文件及 42 个 gitlink；索引完整不等于内部依赖或生产授权完整。每个文件有固定 commit/blob、候选许可或明确阻碍；嵌入二进制有 SHA256，未初始化子模块没有虚构内部文件证据。
 
-这些嵌套 Git checkout 已由根 .gitignore 排除；planning.sub_repos 保持空，产品代码只在 Aether 主仓库维护。恢复使用 scripts/sync-upstream.ps1，它检查现有 SHA，不覆盖已有改动；需要构建参考工程时再初始化其所需子模块。
+Aether 项目许可证与生产复用/发行意图待用户具体决定；当前所有上游文件均 research-only，没有生产复制、链接或再分发批准。Qt LGPL 目录、WiX 主题、OpenSSL/FFmpeg 静态库、图片/商标及动态下载分别留有审查记录。Apollo SudoVDA 的固定 INF 引用 DLL，但该 DLL 及完整驱动源码/独立授权未在固定树中核实；CAT/CER 并不等于已验证生产签名。三个虚拟设备候选的包、签名和默认配置安装分别在 Phase 3–5/39 关闭。
+
+这些嵌套 Git checkout 已由根 .gitignore 排除；planning.sub_repos 保持空，产品代码只在 Aether 主仓库维护。[sync-upstream.ps1](../scripts/sync-upstream.ps1) 检查现有 URL、HEAD、独立 checkout 与 dirty 状态，拒绝重解析路径，Git 查询每项限时 15 秒；不覆盖用户改动。没有递归子模块恢复或隐式安装。
+
+从 Aether 根执行离线核验：
+
+```powershell
+pwsh -NoProfile -File scripts/sync-upstream.ps1 -VerifyOnly
+node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md
+node --test tests/baseline-sources.test.cjs
+```
+
+`-VerifyOnly` 缺仓库、dirty 或 URL/SHA 不符均非零，绝不联网恢复。需要恢复缺失顶层 checkout 时显式执行 `pwsh -NoProfile -File scripts/sync-upstream.ps1 -RepositoryName moonlight-common-c`；原九个 URL/SHA 保持不变。重新索引固定对象使用 `node scripts/validate-baseline.cjs --index-sources --sources --report docs/SOURCE-AUDIT.md`，保留人工注释/决定与手工未决证据；陈旧锚点会使验证失败，失败不覆盖已有报告。默认无参数全基线入口须等 01-03 完成，当前使用 `--sources`。
