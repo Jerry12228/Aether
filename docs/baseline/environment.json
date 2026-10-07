@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-10-07T10:48:33.255Z",
+  "capturedAt": "2026-10-07T13:45:38.938Z",
   "purpose": "Read-only local tool and machine observation; no product support or performance claim",
   "mode": "Quick",
   "budget": {
     "budgetMs": 25000,
-    "durationMs": 1406,
+    "durationMs": 1523,
     "perProbeMs": 5000,
     "maxBytesPerStream": 65536
   },
@@ -120,7 +120,7 @@
       "status": "available",
       "version": "4.4.3",
       "exitCode": 0,
-      "durationMs": 82,
+      "durationMs": 89,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -141,7 +141,7 @@
       "status": "available",
       "version": "3.12.0",
       "exitCode": 0,
-      "durationMs": 42,
+      "durationMs": 44,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -188,7 +188,7 @@
       "status": "available",
       "version": "2.54.0",
       "exitCode": 0,
-      "durationMs": 57,
+      "durationMs": 59,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -209,7 +209,7 @@
       "status": "available",
       "version": "17.0.2",
       "exitCode": 0,
-      "durationMs": 82,
+      "durationMs": 71,
       "truncated": false,
       "redactions": 2,
       "requiredByPhases": [
@@ -231,7 +231,7 @@
       "status": "available",
       "version": "1.12.0",
       "exitCode": 0,
-      "durationMs": 25,
+      "durationMs": 26,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -252,7 +252,7 @@
       "status": "available",
       "version": "24.14.0",
       "exitCode": 0,
-      "durationMs": 65,
+      "durationMs": 63,
       "truncated": false,
       "redactions": 2,
       "requiredByPhases": [
@@ -276,7 +276,7 @@
       "status": "available",
       "version": "7.6.3",
       "exitCode": 0,
-      "durationMs": 229,
+      "durationMs": 255,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -305,7 +305,7 @@
       "status": "available",
       "version": "18.10.12201.205",
       "exitCode": 0,
-      "durationMs": 47,
+      "durationMs": 49,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -315,6 +315,48 @@
         5
       ],
       "evidenceType": "executed"
+    },
+    {
+      "id": "visual-wdk-integration",
+      "resolvedExecutable": null,
+      "launcher": null,
+      "args": [],
+      "status": "available",
+      "version": "2026",
+      "exitCode": 0,
+      "durationMs": 0,
+      "stdout": "{\"available\":true,\"version\":\"2026\",\"candidates\":[{\"visualStudio\":\"2026\",\"edition\":\"Enterprise\",\"vc\":\"v180\",\"root\":\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\",\"evidence\":[\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\\\\MSBuild\\\\Microsoft\\\\VC\\\\v180\\\\Platforms\\\\x64\\\\ImportBefore\\\\Default\\\\Microsoft.Cpp.WDK.props\",\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\\\\MSBuild\\\\Microsoft\\\\VC\\\\v180\\\\Platforms\\\\x64\\\\ImportAfter\\\\Microsoft.Cpp.WDK.targets\",\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\\\\MSBuild\\\\Microsoft\\\\VC\\\\v180\\\\Platforms\\\\x64\\\\PlatformToolsets\\\\WindowsKernelModeDriver10.0\\\\Toolset.props\",\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\\\\MSBuild\\\\Microsoft\\\\VC\\\\v180\\\\Platforms\\\\x64\\\\PlatformToolsets\\\\WindowsKernelModeDriver10.0\\\\Toolset.targets\",\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\\\\MSBuild\\\\Microsoft\\\\VC\\\\v180\\\\Platforms\\\\x64\\\\PlatformToolsets\\\\WindowsUserModeDriver10.0\\\\Toolset.props\",\"C:\\\\Program Files\\\\Microsoft Visual Studio\\\\18\\\\Enterprise\\\\MSBuild\\\\Microsoft\\\\VC\\\\v180\\\\Platforms\\\\x64\\\\PlatformToolsets\\\\WindowsUserModeDriver10.0\\\\Toolset.targets\"],\"evidenceState\":\"installed-integration-files; not a build test\"}]}",
+      "stderr": "",
+      "truncated": false,
+      "redactions": 0,
+      "error": null,
+      "requiredByPhases": [
+        3,
+        4,
+        5
+      ],
+      "evidenceType": "installed-integration-files",
+      "metadata": {
+        "available": true,
+        "version": "2026",
+        "candidates": [
+          {
+            "visualStudio": "2026",
+            "edition": "Enterprise",
+            "vc": "v180",
+            "root": "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise",
+            "evidence": [
+              "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\MSBuild\\Microsoft\\VC\\v180\\Platforms\\x64\\ImportBefore\\Default\\Microsoft.Cpp.WDK.props",
+              "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\MSBuild\\Microsoft\\VC\\v180\\Platforms\\x64\\ImportAfter\\Microsoft.Cpp.WDK.targets",
+              "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\MSBuild\\Microsoft\\VC\\v180\\Platforms\\x64\\PlatformToolsets\\WindowsKernelModeDriver10.0\\Toolset.props",
+              "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\MSBuild\\Microsoft\\VC\\v180\\Platforms\\x64\\PlatformToolsets\\WindowsKernelModeDriver10.0\\Toolset.targets",
+              "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\MSBuild\\Microsoft\\VC\\v180\\Platforms\\x64\\PlatformToolsets\\WindowsUserModeDriver10.0\\Toolset.props",
+              "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\MSBuild\\Microsoft\\VC\\v180\\Platforms\\x64\\PlatformToolsets\\WindowsUserModeDriver10.0\\Toolset.targets"
+            ],
+            "evidenceState": "installed-integration-files; not a build test"
+          }
+        ]
+      }
     },
     {
       "id": "windows-host",
@@ -331,7 +373,7 @@
       "status": "available",
       "version": null,
       "exitCode": 0,
-      "durationMs": 745,
+      "durationMs": 833,
       "truncated": false,
       "redactions": 0,
       "requiredByPhases": [
@@ -348,10 +390,10 @@
       "launcher": null,
       "args": [],
       "status": "available",
-      "version": "10.0.26100.0",
+      "version": "10.0.28000.0",
       "exitCode": 0,
       "durationMs": 0,
-      "stdout": "{\"available\":true,\"version\":\"10.0.26100.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"candidates\":[{\"version\":\"10.0.19041.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.22621.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.26100.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true}]}",
+      "stdout": "{\"available\":true,\"version\":\"10.0.28000.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"candidates\":[{\"version\":\"10.0.19041.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.22621.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.26100.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true},{\"version\":\"10.0.28000.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"available\":true}]}",
       "stderr": "",
       "truncated": false,
       "redactions": 0,
@@ -370,7 +412,7 @@
       },
       "metadata": {
         "available": true,
-        "version": "10.0.26100.0",
+        "version": "10.0.28000.0",
         "components": {
           "headers": true,
           "libs": true,
@@ -403,6 +445,15 @@
               "tools": true
             },
             "available": true
+          },
+          {
+            "version": "10.0.28000.0",
+            "components": {
+              "headers": true,
+              "libs": true,
+              "tools": true
+            },
+            "available": true
           }
         ]
       }
@@ -412,33 +463,38 @@
       "resolvedExecutable": null,
       "launcher": null,
       "args": [],
-      "status": "missing",
-      "version": null,
-      "exitCode": null,
+      "status": "available",
+      "version": "10.0.28000.0",
+      "exitCode": 0,
       "durationMs": 0,
-      "stdout": "{\"available\":false,\"version\":null,\"components\":{\"headers\":false,\"libs\":false,\"tools\":false},\"candidates\":[{\"version\":\"10.0.19041.0\",\"components\":{\"headers\":false,\"libs\":false,\"tools\":false},\"available\":false},{\"version\":\"10.0.22621.0\",\"components\":{\"headers\":false,\"libs\":false,\"tools\":false},\"available\":false},{\"version\":\"10.0.26100.0\",\"components\":{\"headers\":false,\"libs\":false,\"tools\":false},\"available\":false}],\"reason\":\"No matching headers, libraries and tools verified together\"}",
+      "stdout": "{\"available\":true,\"version\":\"10.0.28000.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"toolArchitectures\":{\"stampinf\":\"x64\",\"inf2cat\":\"x86\"},\"iddcxVersion\":\"1.11\",\"candidates\":[{\"version\":\"10.0.19041.0\",\"components\":{\"headers\":false,\"libs\":false,\"tools\":false},\"toolArchitectures\":{\"stampinf\":null,\"inf2cat\":null},\"iddcxVersion\":null,\"available\":false},{\"version\":\"10.0.22621.0\",\"components\":{\"headers\":false,\"libs\":false,\"tools\":false},\"toolArchitectures\":{\"stampinf\":null,\"inf2cat\":null},\"iddcxVersion\":null,\"available\":false},{\"version\":\"10.0.26100.0\",\"components\":{\"headers\":false,\"libs\":false,\"tools\":false},\"toolArchitectures\":{\"stampinf\":null,\"inf2cat\":null},\"iddcxVersion\":null,\"available\":false},{\"version\":\"10.0.28000.0\",\"components\":{\"headers\":true,\"libs\":true,\"tools\":true},\"toolArchitectures\":{\"stampinf\":\"x64\",\"inf2cat\":\"x86\"},\"iddcxVersion\":\"1.11\",\"available\":true}]}",
       "stderr": "",
       "truncated": false,
       "redactions": 0,
-      "error": "No matching headers, libraries and tools verified together",
+      "error": null,
       "requiredByPhases": [
         3,
         4
       ],
       "evidenceType": "sdk-components",
       "components": {
-        "headers": false,
-        "libs": false,
-        "tools": false
+        "headers": true,
+        "libs": true,
+        "tools": true
       },
       "metadata": {
-        "available": false,
-        "version": null,
+        "available": true,
+        "version": "10.0.28000.0",
         "components": {
-          "headers": false,
-          "libs": false,
-          "tools": false
+          "headers": true,
+          "libs": true,
+          "tools": true
         },
+        "toolArchitectures": {
+          "stampinf": "x64",
+          "inf2cat": "x86"
+        },
+        "iddcxVersion": "1.11",
         "candidates": [
           {
             "version": "10.0.19041.0",
@@ -447,6 +503,11 @@
               "libs": false,
               "tools": false
             },
+            "toolArchitectures": {
+              "stampinf": null,
+              "inf2cat": null
+            },
+            "iddcxVersion": null,
             "available": false
           },
           {
@@ -456,6 +517,11 @@
               "libs": false,
               "tools": false
             },
+            "toolArchitectures": {
+              "stampinf": null,
+              "inf2cat": null
+            },
+            "iddcxVersion": null,
             "available": false
           },
           {
@@ -465,10 +531,28 @@
               "libs": false,
               "tools": false
             },
+            "toolArchitectures": {
+              "stampinf": null,
+              "inf2cat": null
+            },
+            "iddcxVersion": null,
             "available": false
+          },
+          {
+            "version": "10.0.28000.0",
+            "components": {
+              "headers": true,
+              "libs": true,
+              "tools": true
+            },
+            "toolArchitectures": {
+              "stampinf": "x64",
+              "inf2cat": "x86"
+            },
+            "iddcxVersion": "1.11",
+            "available": true
           }
-        ],
-        "reason": "No matching headers, libraries and tools verified together"
+        ]
       }
     }
   ],
@@ -570,7 +654,10 @@
         "evidence": [
           "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
           "Framework statement is separate from native backend and target-build evidence"
-        ]
+        ],
+        "candidateConfirmedBy": "user",
+        "candidateConfirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationMeaning": "Framework candidate adopted; native backend/target builds/hardware still unverified"
       },
       "buildEvidence": [],
       "hardwareEvidence": [],
@@ -606,7 +693,10 @@
         "evidence": [
           "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
           "Framework statement is separate from native backend and target-build evidence"
-        ]
+        ],
+        "candidateConfirmedBy": "user",
+        "candidateConfirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationMeaning": "Framework candidate adopted; native backend/target builds/hardware still unverified"
       },
       "buildEvidence": [],
       "hardwareEvidence": [],
@@ -640,7 +730,10 @@
         "evidence": [
           "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
           "Framework statement is separate from native backend and target-build evidence"
-        ]
+        ],
+        "candidateConfirmedBy": "user",
+        "candidateConfirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationMeaning": "Framework candidate adopted; native backend/target builds/hardware still unverified"
       },
       "buildEvidence": [],
       "hardwareEvidence": [],
@@ -678,7 +771,10 @@
         "evidence": [
           "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
           "Framework statement is separate from native backend and target-build evidence"
-        ]
+        ],
+        "candidateConfirmedBy": "user",
+        "candidateConfirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationMeaning": "Framework candidate adopted; native backend/target builds/hardware still unverified"
       },
       "buildEvidence": [],
       "hardwareEvidence": [],
@@ -715,7 +811,10 @@
         "evidence": [
           "https://github.com/flutter/website/commit/a43b0e7d3092b64db4933397aaddaed41f333ba1",
           "Framework statement is separate from native backend and target-build evidence"
-        ]
+        ],
+        "candidateConfirmedBy": "user",
+        "candidateConfirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationMeaning": "Framework candidate adopted; native backend/target builds/hardware still unverified"
       },
       "buildEvidence": [],
       "hardwareEvidence": [],
@@ -1071,18 +1170,18 @@
     },
     {
       "id": "windows-wdk",
-      "component": "SDK/WDK driver toolchain",
-      "purpose": "IDD/audio/camera prototypes",
+      "component": "Installed SDK/WDK and Visual Studio integration files",
+      "purpose": "Installation evidence only; target driver build belongs to native-build",
       "evidence": [
-        "missing"
+        "WDK 10.0.28000.0 paired headers/libs/tools; VS 2026 kernel/user toolset props/targets present"
       ],
-      "status": "open",
+      "status": "resolved",
       "followupPhases": [
         3,
         4,
         5
       ],
-      "resolutionNeeded": "Verify matching WDK/VS integration and signing tools from Microsoft before prototyping; no installation performed"
+      "resolutionNeeded": "Installation verified; Phase3–5 still pin exact kit/toolchain versions and validate target builds/signing; no installation request needed"
     },
     {
       "id": "windows10-machine",
@@ -1169,7 +1268,7 @@
       "warmupSeconds": 30,
       "windowSeconds": 60,
       "repeats": 3,
-      "status": "proposed-method-not-SLO"
+      "status": "confirmed-method-not-SLO"
     },
     "clockRequirement": "Same-clock RTT/decode durations only. Cross-machine timestamp differences require documented calibration, uncertainty and capture date; glass-to-glass uses one camera/clock observing both physical displays.",
     "collection": {
@@ -1249,8 +1348,8 @@
     {
       "id": "original-scope-observers",
       "question": "确认全部原能力/ORIG01–10与Apollo授权只读加入路线",
-      "status": "pending",
-      "selected": null,
+      "status": "selected",
+      "selected": "retain-evidence",
       "recommendation": "retain-evidence",
       "options": [
         {
@@ -1265,13 +1364,16 @@
           "benefits": "产品实施前纠正基线",
           "costs": "相关门禁须重跑；不自动删能力或转TODO"
         }
-      ]
+      ],
+      "confirmedBy": "user",
+      "confirmedAt": "2026-10-07T13:45:39.459Z",
+      "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。"
     },
     {
       "id": "client-minimum-architectures",
       "question": "确认Flutter3.44最低OS/架构候选及原目标差异的验证路线",
-      "status": "pending",
-      "selected": null,
+      "status": "selected",
+      "selected": "retain-evidence",
       "recommendation": "retain-evidence",
       "options": [
         {
@@ -1286,18 +1388,21 @@
           "benefits": "产品实施前纠正基线",
           "costs": "相关门禁须重跑；不自动删能力或转TODO"
         }
-      ]
+      ],
+      "confirmedBy": "user",
+      "confirmedAt": "2026-10-07T13:45:39.459Z",
+      "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。"
     },
     {
       "id": "environment-gaps-host-floor",
       "question": "确认实际工具/OS结果与保留机器及构建缺口",
-      "status": "pending",
-      "selected": null,
+      "status": "selected",
+      "selected": "retain-evidence",
       "recommendation": "retain-evidence",
       "options": [
         {
           "id": "retain-evidence",
-          "description": "Win10/11主机build待Phase3–5原型；保留WDK/原生构建/目标设备/Apple构建缺口，只有Apple实机验收VFY01/02延期",
+          "description": "Win10/11主机build待Phase3–5原型；WDK与VS2026集成已安装并经文件核验；保留原生构建、目标设备和Apple构建缺口，只有Apple实机验收VFY01/02延期",
           "benefits": "保留全部适用原能力及真实证据边界",
           "costs": "在责任阶段准备明确依赖、构建执行器和设备；本阶段不安装"
         },
@@ -1307,13 +1412,25 @@
           "benefits": "产品实施前纠正基线",
           "costs": "相关门禁须重跑；不自动删能力或转TODO"
         }
-      ]
+      ],
+      "confirmedBy": "user",
+      "confirmedAt": "2026-10-07T13:45:39.459Z",
+      "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。",
+      "correction": {
+        "reportedBy": "user",
+        "text": "wdk已安装；vs26 已集成wdk",
+        "verifiedBy": [
+          "windows-wdk",
+          "visual-wdk-integration"
+        ],
+        "status": "installed-components-verified; target builds remain pending"
+      }
     },
     {
       "id": "measurement-method",
       "question": "确认可复现测量方法，真实基线后再定产品目标",
-      "status": "pending",
-      "selected": null,
+      "status": "selected",
+      "selected": "retain-evidence",
       "recommendation": "retain-evidence",
       "options": [
         {
@@ -1328,14 +1445,44 @@
           "benefits": "产品实施前纠正基线",
           "costs": "相关门禁须重跑；不自动删能力或转TODO"
         }
-      ]
+      ],
+      "confirmedBy": "user",
+      "confirmedAt": "2026-10-07T13:45:39.459Z",
+      "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。"
     }
   ],
   "review": {
-    "status": "pending",
-    "confirmedBy": null,
-    "confirmedAt": null,
-    "decisions": [],
-    "retainedBlockers": []
+    "status": "confirmed",
+    "confirmedBy": "user",
+    "confirmedAt": "2026-10-07T13:45:39.459Z",
+    "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。",
+    "decisions": [
+      "original-scope-observers",
+      "client-minimum-architectures",
+      "environment-gaps-host-floor",
+      "measurement-method"
+    ],
+    "retainedBlockers": [
+      "android-api21-23",
+      "apple-toolchain",
+      "client-machines",
+      "host-floor",
+      "linux-extra-architectures",
+      "linux-toolchain",
+      "measurement-instruments",
+      "native-build",
+      "windows10-machine"
+    ],
+    "retainedTodos": [
+      "apple-hardware"
+    ],
+    "retainedSourceBlockers": [
+      "project-license",
+      "external-build-scope",
+      "apple-foss-channel",
+      "driver-production-signing",
+      "distribution-accounts"
+    ],
+    "scope": "Phase1 baseline and method review; no product support or production reuse approval"
   }
 }

@@ -1,6 +1,6 @@
 # Phase 1 全基线审阅包
 
-日期：2026-10-07T10:48:33.255Z。结构门禁 PASS；人审 pending。所有产品实现、目标构建、硬件与性能证据仍未建立。不得将此 PASS 当成生产许可或平台支持结论。
+日期：2026-10-07T13:45:38.938Z。结构门禁 PASS；人审 confirmed。所有产品实现、目标构建、硬件与性能证据仍未建立。不得将此 PASS 当成生产许可或平台支持结论。
 
 ## 已确认的许可与发行意图
 
@@ -15,18 +15,18 @@
 
 设置声明/持久化/解析证据覆盖不等于每个动态消费分支已实测；后续主要阶段及 Phase 37/42 按独立案例收集运行证据。保留唯一控制租约、GameStream 基础、Flutter/native 边界和切换/断连保活，显式停 B 不影响 A/C。
 
-### 需要明确处理的 4 个冲突
+### 已登记的 4 项冲突及当前处理状态
 
-- **helios-windows10-apollo-read-only**（open）：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
-- **helios-windows11-apollo-read-only**（open）：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
-- **qt-linux-extra-architectures**（open）：Qt README列出Linux ARM32/ARM64、实验RISC-V及特定板卡；Flutter目标声明和可用原生后端未证明同等构建范围，不能静默丢失这些用户目标。选项：推荐：逐架构保留能力/构建差异并在Phase2/34–35验证，暂不宣称支持；需用户明确范围：若确需额外架构，提出具体适配/工具链验证阶段。
-- **android-api21-23-framework-floor**（open）：固定 Android 原构建 minSdk21；Flutter3.44 官方声明从 API24 开始，不能静默删除原 API21–23 用户范围，也不能宣称 Flutter 已支持。选项：推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/31验证更低API适配与原生路径，未证明前不宣称支持；修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO。
+- **helios-windows10-apollo-read-only**（decided）：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
+- **helios-windows11-apollo-read-only**（decided）：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
+- **qt-linux-extra-architectures**（decided）：Qt README列出Linux ARM32/ARM64、实验RISC-V及特定板卡；Flutter目标声明和可用原生后端未证明同等构建范围，不能静默丢失这些用户目标。选项：推荐：逐架构保留能力/构建差异并在Phase2/34–35验证，暂不宣称支持；需用户明确范围：若确需额外架构，提出具体适配/工具链验证阶段。
+- **android-api21-23-framework-floor**（decided）：固定 Android 原构建 minSdk21；Flutter3.44 官方声明从 API24 开始，不能静默删除原 API21–23 用户范围，也不能宣称 Flutter 已支持。选项：推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/31验证更低API适配与原生路径，未证明前不宣称支持；修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO。
 
-推荐保留 Apollo 经授权的只读加入能力：观察者禁止输入、设备上行及会话变更，无第二控制租约；每条读流独立协商 GPU/显存/带宽预算，超限解释拒绝。需明确修订现有 SESSION-MODEL 的不引入并行观察者段落，Phase 6/20/37 验证。原 Android API21–23（固定 minSdk21 对照 Flutter API24）及额外 Linux ARM32/RISC-V/板卡能力留在 v1 差异账本，Phase 2 先验证 Flutter/原生适配可行性，Android Phase 14/31、Linux Phase 34–35 构建；若需要超过单一子系统的新工作，在 Phase 2 提出具体阶段拆分，不把原能力自动挪入 TODO。
+经人审确认的路线保留 Apollo 经授权的只读加入能力：观察者禁止输入、设备上行及会话变更，无第二控制租约；每条读流独立协商 GPU/显存/带宽预算，超限解释拒绝。已依据确认修订 SESSION-MODEL 的观察者及断连边界段落，Phase 6/20/37 验证。原 Android API21–23（固定 minSdk21 对照 Flutter API24）及额外 Linux ARM32/RISC-V/板卡能力留在 v1 差异账本，Phase 2 先验证 Flutter/原生适配可行性，Android Phase 14/31、Linux Phase 34–35 构建；若需要超过单一子系统的新工作，在 Phase 2 提出具体阶段拆分，不把原能力自动挪入 TODO。
 
 ## 实际环境与证据边界
 
-Quick/Deep：Quick；总耗时 1406ms / 25000ms，单项最多 5 秒、每流 64KiB。
+Quick/Deep：Quick；总耗时 1523ms / 25000ms，单项最多 5 秒、每流 64KiB。
 
 | 查询 | 状态 | 版本 | 证据类型 / 诊断 |
 |---|---|---|---|
@@ -41,9 +41,10 @@ Quick/Deep：Quick；总耗时 1406ms / 25000ms，单项最多 5 秒、每流 64
 | node | available | 24.14.0 | executed / 查询/元数据证据，不是构建 |
 | powershell | available | 7.6.3 | executed / 查询/元数据证据，不是构建 |
 | visual-cpp | available | 18.10.12201.205 | executed / 查询/元数据证据，不是构建 |
+| visual-wdk-integration | available | 2026 | installed-integration-files / 查询/元数据证据，不是构建 |
 | windows-host | available | 无版本结论 | os-query / 查询/元数据证据，不是构建 |
-| windows-sdk | available | 10.0.26100.0 | sdk-components / 查询/元数据证据，不是构建 |
-| windows-wdk | missing | 无版本结论 | sdk-components / No matching headers, libraries and tools verified together |
+| windows-sdk | available | 10.0.28000.0 | sdk-components / 查询/元数据证据，不是构建 |
+| windows-wdk | available | 10.0.28000.0 | sdk-components / 查询/元数据证据，不是构建 |
 
 原始 OS：ProductName=Windows 10 Enterprise LTSC 2024；DisplayVersion=24H2；CurrentBuild=26100；UBR=9168；独立 CIM Caption=Microsoft Windows 11 企业版 LTSC；OSArchitecture=64-bit；ProcessArchitecture=X64。
 
@@ -94,7 +95,7 @@ GPU 原字段仅表示设备与驱动被枚举，包含虚拟适配器，不表�
 | linux-toolchain / Linux compiler/Flutter desktop/media SDK | Linux x64/arm64 builds and Wayland/X11 backends / No Linux executor queried | open / 2, 34, 35 | Verify toolchain/native packages on Linux build executor and GPU device |
 | measurement-instruments / Reference binary and calibrated measurement instruments | Comparable performance observations / No source-matched binary digest, high speed camera, instrument accuracy or calibration measured | open / 6, 10 | Build/select source-matched reference and record SHA256; collect raw logs and calibrate or mark unavailable |
 | native-build / Native/toolchain integration | All five target builds and dependency pinning / Version queries/cache components only; no Aether binary exists | open / 2, 12, 14, 30, 31 | Pin versions and perform target smoke build; request exact official dependencies if missing |
-| windows-wdk / SDK/WDK driver toolchain | IDD/audio/camera prototypes / missing | open / 3, 4, 5 | Verify matching WDK/VS integration and signing tools from Microsoft before prototyping; no installation performed |
+| windows-wdk / Installed SDK/WDK and Visual Studio integration files | Installation evidence only; target driver build belongs to native-build / WDK 10.0.28000.0 paired headers/libs/tools; VS 2026 kernel/user toolset props/targets present | resolved / 3, 4, 5 | Installation verified; Phase3–5 still pin exact kit/toolchain versions and validate target builds/signing; no installation request needed |
 | windows10-machine / Win10 machine | Independent Win10 OS/driver/media tests / Current machine CIM is Win11; registry name is not Win10 evidence | open / 3, 4, 5, 12, 38 | Prepare separate Win10 target; GPU functionality requires physical device |
 
 本阶段不要求安装依赖、驱动、限速工具或修改安全/网卡配置；后续依赖请求必须明确组件、用途、版本和官方来源。
@@ -135,44 +136,44 @@ Same-clock RTT/decode durations only. Cross-machine timestamp differences requir
 
 ## 决策选项与建议
 
-### original-scope-observers（pending）
+### original-scope-observers（selected）
 
 确认全部原能力/ORIG01–10与Apollo授权只读加入路线
 
 - **retain-evidence**：保留全部原能力；授权只读观察者可加入，禁止输入/设备上行/会话变更，独立协商资源，主机仍唯一控制租约；收益 保留全部适用原能力及真实证据边界；代价 确认后修订SESSION-MODEL观察者段落；Phase6/20/37验证授权、隔离和资源拒绝。
 - **revise**：指出具体行/范围/方法，修订后再确认；收益 产品实施前纠正基线；代价 相关门禁须重跑；不自动删能力或转TODO。
 
-推荐：retain-evidence。当前选择：pending。
+推荐：retain-evidence。当前选择：retain-evidence。
 
-### client-minimum-architectures（pending）
+### client-minimum-architectures（selected）
 
 确认Flutter3.44最低OS/架构候选及原目标差异的验证路线
 
 - **retain-evidence**：Windows10/11 x64+arm64；macOS10.15 x64+arm64；iOS13 arm64；AndroidAPI24 arm32+arm64+x64；Debian10/Ubuntu20.04 x64+arm64。原生限制未证实；AndroidAPI21–23及LinuxARM32/RISC-V/板卡保留v1差异；收益 保留全部适用原能力及真实证据边界；代价 Phase2原型验证更低AndroidAPI、额外架构与原生最低范围；需要时提出具体小阶段拆分，当前不宣称支持。
 - **revise**：指出具体行/范围/方法，修订后再确认；收益 产品实施前纠正基线；代价 相关门禁须重跑；不自动删能力或转TODO。
 
-推荐：retain-evidence。当前选择：pending。
+推荐：retain-evidence。当前选择：retain-evidence。
 
-### environment-gaps-host-floor（pending）
+### environment-gaps-host-floor（selected）
 
 确认实际工具/OS结果与保留机器及构建缺口
 
-- **retain-evidence**：Win10/11主机build待Phase3–5原型；保留WDK/原生构建/目标设备/Apple构建缺口，只有Apple实机验收VFY01/02延期；收益 保留全部适用原能力及真实证据边界；代价 在责任阶段准备明确依赖、构建执行器和设备；本阶段不安装。
+- **retain-evidence**：Win10/11主机build待Phase3–5原型；WDK与VS2026集成已安装并经文件核验；保留原生构建、目标设备和Apple构建缺口，只有Apple实机验收VFY01/02延期；收益 保留全部适用原能力及真实证据边界；代价 在责任阶段准备明确依赖、构建执行器和设备；本阶段不安装。
 - **revise**：指出具体行/范围/方法，修订后再确认；收益 产品实施前纠正基线；代价 相关门禁须重跑；不自动删能力或转TODO。
 
-推荐：retain-evidence。当前选择：pending。
+推荐：retain-evidence。当前选择：retain-evidence。
 
-### measurement-method（pending）
+### measurement-method（selected）
 
 确认可复现测量方法，真实基线后再定产品目标
 
 - **retain-evidence**：30秒预热/60秒采样/3轮；按metric/unit计算nearest-rank p50/p95；依文档记录场景、仪器与精度，缺指标写unavailable；收益 保留全部适用原能力及真实证据边界；代价 仪器/精度/时钟校准尚未实测；无产品性能保证；Phase6/10实测后定阈值。
 - **revise**：指出具体行/范围/方法，修订后再确认；收益 产品实施前纠正基线；代价 相关门禁须重跑；不自动删能力或转TODO。
 
-推荐：retain-evidence。当前选择：pending。
+推荐：retain-evidence。当前选择：retain-evidence。
 
 ## 仍保留的审计 flags
 
 BASE-01、BASE-02、BASE-03 均为 spec-less 分类 **unclassified/unresolved**；RESEARCH A1 的仪器精度/跨机时钟校准无实测。descriptor-less prohibitions 仍 **flagged-unverified**：工具/API/目录/构建不得伪装硬件支持，不得通过提高 Windows 下限避开 Win10，Apple 构建不能豁免。另外保留来源根许可证/FFI/上架声明不得冒充生产授权，缺子模块/驱动/二进制/签名不得冒充可发行，新增原能力不得默删或擅自转TODO，共有能力族/设置数量不得代替各端全集及独立案例；与前述两条环境 prohibitions 合计六条。人工审阅不会伪装自动分类引擎已经解决。
 
-人审记录：{"status":"pending","confirmedBy":null,"confirmedAt":null,"decisions":[],"retainedBlockers":[]}。保留阻碍详见来源数据及本报告缺口。最终 --require-review 必须等明确人类答复，所有冲突决定和开放环境缺口可引用后才能通过。Phase 1 只交付基线，不自动启动 Phase 2 或全部产品实现。
+人审记录：{"status":"confirmed","confirmedBy":"user","confirmedAt":"2026-10-07T13:45:39.459Z","confirmationText":"1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。","decisions":["original-scope-observers","client-minimum-architectures","environment-gaps-host-floor","measurement-method"],"retainedBlockers":["android-api21-23","apple-toolchain","client-machines","host-floor","linux-extra-architectures","linux-toolchain","measurement-instruments","native-build","windows10-machine"],"retainedTodos":["apple-hardware"],"retainedSourceBlockers":["project-license","external-build-scope","apple-foss-channel","driver-production-signing","distribution-accounts"],"scope":"Phase1 baseline and method review; no product support or production reuse approval"}。保留阻碍详见来源数据及本报告缺口。最终 --require-review 检查明确人类答复、冲突决定和所有开放环境缺口引用，本次人审已确认。Phase 1 只交付基线，不自动启动 Phase 2 或全部产品实现。

@@ -72420,8 +72420,19 @@
         "推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约",
         "修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO"
       ],
-      "status": "open",
-      "decisionEvidence": null
+      "status": "decided",
+      "decisionEvidence": {
+        "confirmedBy": "user",
+        "confirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。",
+        "selectedOption": 0,
+        "decision": "保留获授权只读观察者，无输入/设备上行/实例变更、唯一控制租约及独立资源预算；SESSION-MODEL已修订。",
+        "followupPhases": [
+          6,
+          20,
+          37
+        ]
+      }
     },
     {
       "id": "helios-windows11-apollo-read-only",
@@ -72466,8 +72477,19 @@
         "推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约",
         "修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO"
       ],
-      "status": "open",
-      "decisionEvidence": null
+      "status": "decided",
+      "decisionEvidence": {
+        "confirmedBy": "user",
+        "confirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。",
+        "selectedOption": 0,
+        "decision": "保留获授权只读观察者，无输入/设备上行/实例变更、唯一控制租约及独立资源预算；SESSION-MODEL已修订。",
+        "followupPhases": [
+          6,
+          20,
+          37
+        ]
+      }
     },
     {
       "id": "qt-linux-extra-architectures",
@@ -72492,8 +72514,19 @@
         "推荐：逐架构保留能力/构建差异并在Phase2/34–35验证，暂不宣称支持",
         "需用户明确范围：若确需额外架构，提出具体适配/工具链验证阶段"
       ],
-      "status": "open",
-      "decisionEvidence": null
+      "status": "decided",
+      "decisionEvidence": {
+        "confirmedBy": "user",
+        "confirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。",
+        "selectedOption": 0,
+        "decision": "保留原目标差异于v1，采用官方框架候选同时原型验证额外架构或更低API；不自动删除、不转TODO、不宣称支持。",
+        "followupPhases": [
+          2,
+          34,
+          35
+        ]
+      }
     },
     {
       "id": "android-api21-23-framework-floor",
@@ -72514,12 +72547,23 @@
           "excerpt": "    defaultConfig {\n        minSdk 21\n        targetSdk 36"
         }
       ],
-      "status": "open",
+      "status": "decided",
       "options": [
         "推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/31验证更低API适配与原生路径，未证明前不宣称支持",
         "修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO"
       ],
-      "decisionEvidence": null
+      "decisionEvidence": {
+        "confirmedBy": "user",
+        "confirmedAt": "2026-10-07T13:45:39.459Z",
+        "confirmationText": "1. 确认；2. 确认；3. wdk已安装；4. 确认。后续补充：vs26 已集成wdk。",
+        "selectedOption": 0,
+        "decision": "保留原目标差异于v1，采用官方框架候选同时原型验证额外架构或更低API；不自动删除、不转TODO、不宣称支持。",
+        "followupPhases": [
+          2,
+          14,
+          31
+        ]
+      }
     }
   ]
 }

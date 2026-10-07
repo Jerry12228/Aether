@@ -8,7 +8,7 @@ iOS/iPadOS、macOS 仅实机验收分别延后 VFY-01/VFY-02；实现、构建�
 
 ## 覆盖摘要
 
-能力 637，入口 117，独立案例 637；未映射 0，开放冲突 4。
+能力 637，入口 117，独立案例 637；未映射 0，开放冲突 0。
 
 ## 平台原子能力
 
@@ -8516,9 +8516,9 @@ moonlight-qt / selene-windows / packaging / `README.md`；reviewed=true；invent
 
 ## 原行为与约束冲突
 
-- **helios-windows10-apollo-read-only** (open)：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。约束：主机全局至多一个ControlLease；首版原文无并行观察者；新增缺失原能力默认进入v1；选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
-- **helios-windows11-apollo-read-only** (open)：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。约束：主机全局至多一个ControlLease；首版原文无并行观察者；新增缺失原能力默认进入v1；选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
-- **qt-linux-extra-architectures** (open)：Qt README列出Linux ARM32/ARM64、实验RISC-V及特定板卡；Flutter目标声明和可用原生后端未证明同等构建范围，不能静默丢失这些用户目标。约束：五客户端范围与原功能保留；框架支持不等于原生或板卡支持；选项：推荐：逐架构保留能力/构建差异并在Phase2/34–35验证，暂不宣称支持；需用户明确范围：若确需额外架构，提出具体适配/工具链验证阶段。
-- **android-api21-23-framework-floor** (open)：固定 Android 原构建 minSdk21；Flutter3.44 官方声明从 API24 开始，不能静默删除原 API21–23 用户范围，也不能宣称 Flutter 已支持。约束：Flutter单一Selene app与原能力保留；具体最低客户端范围须人审及原型；选项：推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/31验证更低API适配与原生路径，未证明前不宣称支持；修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO。
+- **helios-windows10-apollo-read-only** (decided)：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。约束：主机全局至多一个ControlLease；首版原文无并行观察者；新增缺失原能力默认进入v1；选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
+- **helios-windows11-apollo-read-only** (decided)：Apollo固定源码允许view权限客户端加入已有应用会话；Aether现文档不引入并行观察者，原能力保留规则要求具体决定。约束：主机全局至多一个ControlLease；首版原文无并行观察者；新增缺失原能力默认进入v1；选项：推荐：显式只读观察者能力，资源预算独立协商、禁止输入/上行/变更，不增加控制租约；修订：说明具体用户范围与替代方案后重新审阅；不得自动删除或塞TODO。
+- **qt-linux-extra-architectures** (decided)：Qt README列出Linux ARM32/ARM64、实验RISC-V及特定板卡；Flutter目标声明和可用原生后端未证明同等构建范围，不能静默丢失这些用户目标。约束：五客户端范围与原功能保留；框架支持不等于原生或板卡支持；选项：推荐：逐架构保留能力/构建差异并在Phase2/34–35验证，暂不宣称支持；需用户明确范围：若确需额外架构，提出具体适配/工具链验证阶段。
+- **android-api21-23-framework-floor** (decided)：固定 Android 原构建 minSdk21；Flutter3.44 官方声明从 API24 开始，不能静默删除原 API21–23 用户范围，也不能宣称 Flutter 已支持。约束：Flutter单一Selene app与原能力保留；具体最低客户端范围须人审及原型；选项：推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/31验证更低API适配与原生路径，未证明前不宣称支持；修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO。
 
 Phase 37 逐行复审，Phase 42 最终验收。BASE-01 edge flag 仍 unclassified/unresolved；descriptor-less prohibitions 仍 flagged-unverified。结构 PASS 不代替语义穷尽性、人审、构建或硬件验证。

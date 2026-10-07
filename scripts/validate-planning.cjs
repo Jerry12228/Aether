@@ -1,12 +1,12 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const root = path.resolve(__dirname,'..');
+function validatePlanning(root=path.resolve(__dirname,'..')){
 const errors=[];
 const read=p=>fs.readFileSync(path.join(root,p),'utf8');
 const requirements=read('.planning/REQUIREMENTS.md');
 const roadmap=read('.planning/ROADMAP.md');
-const ids=[...requirements.matchAll(/^- \[ \] \*\*([A-Z]+-\d+)\*\*:/gm)].map(m=>m[1]);
-const rows=[...requirements.matchAll(/^\| ([A-Z]+-\d+) \| Phase (\d+) \| Pending \|$/gm)].map(m=>({id:m[1],phase:+m[2]}));
+const ids=[...requirements.matchAll(/^- \[[ x]\] \*\*([A-Z]+-\d+)\*\*:/gm)].map(m=>m[1]);
+const rows=[...requirements.matchAll(/^\| ([A-Z]+-\d+) \| Phase (\d+) \| (?:Pending|In Progress|Complete) \|$/gm)].map(m=>({id:m[1],phase:+m[2]}));
 const phases=[...roadmap.matchAll(/^### Phase (\d+): ([^\n]+)\n([\s\S]*?)(?=^### Phase |^## Progress|$(?![\s\S]))/gm)].map(m=>({n:+m[1],name:m[2],body:m[3]}));
 if(new Set(ids).size!==ids.length) errors.push('duplicate requirement IDs');
 if(!ids.length||!phases.length) errors.push('missing requirements or phases');
@@ -43,5 +43,7 @@ for(const f of files){
   if(!fs.existsSync(resolved))errors.push(`${f} broken link ${target}`);
  }
 }
-if(errors.length){console.error(errors.join('\n'));process.exitCode=1;}
-else console.log(JSON.stringify({status:'PASS',phases:phases.length,v1Requirements:ids.length,mapped:mappings.length,unmapped:0,referenceRepositories:lock.repositories.length,localLinks:'valid'}));
+return {errors,status:errors.length?'FAIL':'PASS',phases:phases.length,v1Requirements:ids.length,mapped:mappings.length,unmapped:ids.filter(id=>mappings.filter(m=>m.id===id).length!==1).length,referenceRepositories:lock.repositories.length,localLinks:errors.some(e=>e.includes('broken link'))?'invalid':'valid'};
+}
+function cli(args=process.argv.slice(2)){if(args.length&&!(args.length===2&&args[0]==='--root'&&args[1]))throw Error('Usage: validate-planning.cjs [--root path]');const result=validatePlanning(args.length?path.resolve(args[1]):undefined);if(result.errors.length){console.error(JSON.stringify(result));process.exitCode=1;}else console.log(JSON.stringify(result));}
+module.exports={validatePlanning,cli};if(require.main===module){try{cli();}catch(e){console.error(JSON.stringify({status:'FAIL',errors:[e.message]}));process.exitCode=1;}}

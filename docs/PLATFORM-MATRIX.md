@@ -1,6 +1,6 @@
 # 平台与验证矩阵
 
-所有单元格描述目标或待验证路径，不表示功能已完成。Phase 1 提出最低客户端 OS/CPU 架构候选供完整人审；框架声明、原生限制、目标构建与实机证据分开记录，具体媒体路径仍须后续原型验证。
+所有单元格描述目标或待验证路径，不表示功能已完成。Phase 1 最低客户端 OS/CPU 架构候选已于2026-10-07经完整人审确认，原生支持仍须验证；框架声明、原生限制、目标构建与实机证据分开记录，具体媒体路径仍须后续原型验证。
 
 ## 版本化最低范围候选
 
@@ -19,7 +19,7 @@
 
 ## 当前环境与机器缺口
 
-[environment.json](baseline/environment.json) 记录14项只读查询、7个平台、11个机器/GPU条目及明确缺口；所有平台 buildEvidence/hardwareEvidence 为空。Quick约1.3秒完成，Node24.14/Git2.54/pwsh7.6.3/CMake4.4.3/Ninja1.12、VC组件、缓存Flutter/Dart、JDK17及AndroidSDK/NDK可查询；SDK19041/22621/26100同版本headers/libs/tools配套存在，WDK配套未验证。以上不是完成目标构建或许可审计。
+[environment.json](baseline/environment.json) 记录15项只读查询、7个平台、11个机器/GPU条目及明确缺口；所有平台 buildEvidence/hardwareEvidence 为空。Quick约1.5秒完成，Node24.14/Git2.54/pwsh7.6.3/CMake4.4.3/Ninja1.12、VC组件、缓存Flutter/Dart、JDK17及AndroidSDK/NDK可查询；SDK19041/22621/26100/28000同版本headers/libs/tools配套存在；WDK10.0.28000.0头文件、x64库、x64 StampInf和同版本x86 Inf2Cat均存在，VS2026 Enterprise的v180内核/用户驱动toolset和WDK导入文件已核验。以上不是完成目标构建或许可审计。
 
 原始注册表 ProductName 为Windows10 Enterprise LTSC2024，CurrentBuild26100，独立CIM Caption为Windows11企业版LTSC；保留诊断，当前机器不算Win10实机。NVIDIA RTX5080与AMD Radeon及驱动已枚举；虚拟适配器另保留原字段，没有编码/解码/三厂GPU验证。Win10目标、独立Windows/Android/Linux客户端、IntelGPU及ARM目标仍unconfirmed；macOS/Xcode/CI构建缺口独立于Apple硬件TODO。准备用途和责任阶段见环境台账，本阶段不安装缺失依赖。
 
@@ -55,3 +55,5 @@ Phase 1 固定同设备、同网络、同分辨率/帧率/codec 的参考测量�
 本版实机性能门禁覆盖 Windows/Android/Linux；iOS/macOS 保留测量接口与上述场景清单，真实性能结果在 VFY TODO 中补齐。
 
 实例不停止验收：启动 A/B/C→控制 A→切 B→全断连→重新连接 C，检查应用继续运行与显示器组身份；显式停 B 后检查 A/C 不受影响。并发抢租约和迟到包必须验证。
+
+用户确认只读观察者、客户端候选/原范围差异与测量方法，补充WDK已安装且VS2026已集成。WDK安装缺口已关闭；Phase3–5实际驱动构建、Win10/11最低build和生产签名仍须验证，不以新工具链提高主机OS下限。官方[WDK/VS支持版本](https://learn.microsoft.com/en-us/windows-hardware/drivers/other-wdk-downloads)用于后续锁定准确工具修订，文件夹版本10.0.28000.0本身不证明特定补丁或构建结果。
