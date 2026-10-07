@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-07",
+  "purpose": "Source-grounded feature evidence; no product implementation or hardware claim",
+  "scope": {
+    "platforms": [
+      "selene-windows"
+    ],
+    "complete": false
+  },
+  "features": [
+    {
+      "id": "qt-windows-reverse-scroll",
+      "capability": "反向滚动",
+      "platform": "selene-windows",
+      "originalBehavior": "启用 reverseScrollDirection 后垂直及水平鼠标滚轮方向反转，精确滚轮保持精度",
+      "anchors": [
+        {
+          "repo": "moonlight-qt",
+          "commit": "de2467e433821664cdd2224aad8c89a625be1ad9",
+          "path": "app/settings/streamingpreferences.h",
+          "blob": "ad611f6a28d1e76aff9b983f20bab8e59b0e9449",
+          "symbol": "reverseScrollDirection",
+          "startLine": 155,
+          "endLine": 155,
+          "excerpt": "    Q_PROPERTY(bool reverseScrollDirection MEMBER reverseScrollDirection NOTIFY reverseScrollDirectionChanged)"
+        },
+        {
+          "repo": "moonlight-qt",
+          "commit": "de2467e433821664cdd2224aad8c89a625be1ad9",
+          "path": "app/streaming/input/input.cpp",
+          "blob": "2597f9989121a6bad6881da3fddd95035aab6ae3",
+          "symbol": "preference consumption",
+          "startLine": 16,
+          "endLine": 16,
+          "excerpt": "      m_ReverseScrollDirection(prefs.reverseScrollDirection),"
+        },
+        {
+          "repo": "moonlight-qt",
+          "commit": "de2467e433821664cdd2224aad8c89a625be1ad9",
+          "path": "app/streaming/input/mouse.cpp",
+          "blob": "c5bd1fdd1c083c18c9e888c02fed0812871fab89",
+          "symbol": "high-resolution reverse wheel",
+          "startLine": 204,
+          "endLine": 214,
+          "excerpt": "        if (m_ReverseScrollDirection) {\n            event->preciseY = -event->preciseY;\n        }\n\n#ifdef Q_OS_DARWIN\n        // HACK: Clamp the scroll values on macOS to prevent OS scroll acceleration\n        // from generating wild scroll deltas when scrolling quickly.\n        event->preciseY = SDL_clamp(event->preciseY, -1.0f, 1.0f);\n#endif\n\n        LiSendHighResScrollEvent((short)(event->preciseY * 120)); // WHEEL_DELTA"
+        }
+      ],
+      "settingIds": [
+        "reverseScrollDirection"
+      ],
+      "conditions": {
+        "os": "Windows；实际最低版本待平台基线",
+        "architecture": "Qt 构建目标；Aether 候选架构待审阅",
+        "hardware": "提供垂直/水平及精确滚轮的鼠标"
+      },
+      "ownerTier": "shared-native",
+      "requirementIds": [
+        "INPUT-01"
+      ],
+      "primaryPhase": 11,
+      "mappingState": "mapped",
+      "caseIds": [
+        "case-qt-windows-reverse-scroll"
+      ],
+      "aetherBehavior": "在唯一有效租约内按偏好发送滚轮；迟到epoch拒绝；断连不停止实例",
+      "implementationEvidence": [],
+      "buildEvidence": [],
+      "automationEvidence": [],
+      "hardwareEvidence": [],
+      "hardwareTodoId": null,
+      "blockerIds": []
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "qt-windows-scroll-setting",
+      "repo": "moonlight-qt",
+      "platform": "selene-windows",
+      "kind": "setting",
+      "path": "app/settings/streamingpreferences.h",
+      "anchors": [
+        {
+          "repo": "moonlight-qt",
+          "commit": "de2467e433821664cdd2224aad8c89a625be1ad9",
+          "path": "app/settings/streamingpreferences.h",
+          "blob": "ad611f6a28d1e76aff9b983f20bab8e59b0e9449",
+          "symbol": "reverseScrollDirection",
+          "startLine": 155,
+          "endLine": 155,
+          "excerpt": "    Q_PROPERTY(bool reverseScrollDirection MEMBER reverseScrollDirection NOTIFY reverseScrollDirectionChanged)"
+        }
+      ],
+      "inventoryKeys": [
+        "reverseScrollDirection"
+      ],
+      "entries": [
+        {
+          "key": "reverseScrollDirection",
+          "featureIds": [
+            "qt-windows-reverse-scroll"
+          ],
+          "disposition": "mapped",
+          "reason": "真实设置经 input.cpp 进入 mouse.cpp 滚轮分支",
+          "anchors": [
+            {
+              "repo": "moonlight-qt",
+              "commit": "de2467e433821664cdd2224aad8c89a625be1ad9",
+              "path": "app/settings/streamingpreferences.h",
+              "blob": "ad611f6a28d1e76aff9b983f20bab8e59b0e9449",
+              "symbol": "reverseScrollDirection",
+              "startLine": 155,
+              "endLine": 155,
+              "excerpt": "    Q_PROPERTY(bool reverseScrollDirection MEMBER reverseScrollDirection NOTIFY reverseScrollDirectionChanged)"
+            },
+            {
+              "repo": "moonlight-qt",
+              "commit": "de2467e433821664cdd2224aad8c89a625be1ad9",
+              "path": "app/streaming/input/input.cpp",
+              "blob": "2597f9989121a6bad6881da3fddd95035aab6ae3",
+              "symbol": "preference consumption",
+              "startLine": 16,
+              "endLine": 16,
+              "excerpt": "      m_ReverseScrollDirection(prefs.reverseScrollDirection),"
+            },
+            {
+              "repo": "moonlight-qt",
+              "commit": "de2467e433821664cdd2224aad8c89a625be1ad9",
+              "path": "app/streaming/input/mouse.cpp",
+              "blob": "c5bd1fdd1c083c18c9e888c02fed0812871fab89",
+              "symbol": "high-resolution reverse wheel",
+              "startLine": 204,
+              "endLine": 214,
+              "excerpt": "        if (m_ReverseScrollDirection) {\n            event->preciseY = -event->preciseY;\n        }\n\n#ifdef Q_OS_DARWIN\n        // HACK: Clamp the scroll values on macOS to prevent OS scroll acceleration\n        // from generating wild scroll deltas when scrolling quickly.\n        event->preciseY = SDL_clamp(event->preciseY, -1.0f, 1.0f);\n#endif\n\n        LiSendHighResScrollEvent((short)(event->preciseY * 120)); // WHEEL_DELTA"
+            }
+          ]
+        }
+      ],
+      "reviewed": true
+    }
+  ],
+  "cases": [
+    {
+      "id": "case-qt-windows-reverse-scroll",
+      "featureIds": [
+        "qt-windows-reverse-scroll"
+      ],
+      "platform": "selene-windows",
+      "preconditions": [
+        "使用具备垂直/水平滚轮的鼠标连接已配对实例并取得租约"
+      ],
+      "steps": [
+        "关闭反向滚动，测试上下/左右及精确滚轮",
+        "开启反向滚动，对同一可滚动桌面应用重复动作",
+        "切换实例后投递旧epoch事件"
+      ],
+      "expectedResults": [
+        "开启后各轴方向与关闭时相反，精确事件保留亚步进精度",
+        "旧epoch事件不影响新实例；原实例继续运行"
+      ],
+      "negativeCases": [
+        "无控制权滚轮拒绝",
+        "断连不触发StopInstance",
+        "不支持精确滚轮的设备明确按整数回退"
+      ],
+      "evidenceRequired": [
+        "原生实现",
+        "Windows构建",
+        "协议输入自动化",
+        "Windows真实鼠标测试"
+      ],
+      "verificationPhase": 11,
+      "status": "planned",
+      "evidence": []
+    }
+  ],
+  "conflicts": []
+}

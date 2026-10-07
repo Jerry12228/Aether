@@ -230,12 +230,84 @@ function renderSourceAudit(data,result){
   const scope=`本次实际核验 ${result.counts.repositories} 个仓库、${result.counts.files} 个文件；${result.counts.repositories===data.repositories.length?'所列来源链均重核。':'仅子集；其余既有索引记录未在本次重核。'}完整数据含 ${data.files.length} 个 blob 文件、${data.externals.length} 个外部来源/定位符、${data.licenseEvidence.length} 条许可/通知候选；${result.blockers.length} 个未决记录。下表展示子模块、库/驱动二进制及重点下载；图片/字体等嵌入内容与全部动态声明仍在 JSON 中，不省略其阻碍。只有固定对象身份、枚举与锚点经机器校验；扫描不是法律批准或动态构建穷尽证明。`;
   return renderSourceAuditDetail({...data,licenseEvidence:evidence,externals:focused},{...result,blockers:important}).replace('## 固定锚点',`${scope}\n\n## 重点审查发现\n\n${findings||'该子集尚无额外人工结论；许可范围保持未决。'}\n\n## 固定锚点`);
 }
-function atomicWrite(root,relative,content){if(!['docs/baseline/sources.json','docs/SOURCE-AUDIT.md'].includes(relative))throw Error('report/index path is not an allowed artifact');const target=guarded(root,relative);fs.mkdirSync(path.dirname(target),{recursive:true});const temp=`${target}.${process.pid}.tmp`;try{fs.writeFileSync(temp,content,{flag:'wx'});fs.renameSync(temp,target);}finally{if(fs.existsSync(temp))fs.unlinkSync(temp);}}
+function atomicWrite(root,relative,content){if(!['docs/baseline/sources.json','docs/SOURCE-AUDIT.md','docs/FEATURE-PARITY.md'].includes(relative))throw Error('report/index path is not an allowed artifact');const target=guarded(root,relative);fs.mkdirSync(path.dirname(target),{recursive:true});const temp=`${target}.${process.pid}.tmp`;try{fs.writeFileSync(temp,content,{flag:'wx'});fs.renameSync(temp,target);}finally{if(fs.existsSync(temp))fs.unlinkSync(temp);}}
+const FEATURE_PLATFORMS=['helios-windows10','helios-windows11','selene-windows','selene-macos','selene-ios-ipados','selene-android','selene-linux'];
+function inventoryKeys(text,kind){
+  if(kind==='qt-properties')return [...text.matchAll(/Q_PROPERTY\(\w+\s+(\w+)/g)].map(m=>m[1]);
+  if(kind==='android-preferences')return [...text.matchAll(/android:key="([^"]+)"/g)].map(m=>m[1]);
+  if(kind==='objc-properties')return [...text.matchAll(/@property[^;]*\s(\w+)\s*;/g)].map(m=>m[1]);
+  if(kind==='json-config')return Object.keys(JSON.parse(text));
+  return null;
+}
+function validateFeatures({root=ROOT,data,sources,scope,allowUnmapped=false,gitRunner=gitRun}){
+  const errors=[],unmapped=[],conflicts=[],counts={features:0,surfaces:0,cases:0,anchors:0,settings:0};
+  try{
+    if(data?.schemaVersion!==1||!data.capturedAt||!data.purpose||!data.scope)throw Error('invalid feature schema');
+    for(const k of ['features','surfaces','cases','conflicts']){if(!Array.isArray(data[k]))throw Error(`missing feature ${k}`);const ids=data[k].map(x=>x.id);if(ids.some(x=>!x)||new Set(ids).size!==ids.length)errors.push(`duplicate/missing ${k} ID`);}
+    if(scope&&scope!=='qt-windows')throw Error('unknown feature scope');
+    if(scope&&data.scope.complete)errors.push('complete platform scope cannot use tracer scope');
+    if(!scope&&(!data.scope.complete||FEATURE_PLATFORMS.some(p=>!data.scope.platforms?.includes(p)||!data.features.some(f=>f.platform===p))))errors.push('full feature platform coverage missing');
+    if(data.scope.platforms?.some(p=>!FEATURE_PLATFORMS.includes(p)))errors.push('unknown scope platform');
+    const lock=readLock(root),contexts=new Map(),anchorSeen=new Set();
+    const anchor=a=>{
+      counts.anchors++;try{
+        if(!a||!sources?.files?.some(f=>f.repo===a.repo&&f.path===a.path&&f.blob===a.blob))throw Error('anchor source/blob not in source inventory');
+        const repo=lock.repositories.find(r=>r.name===a.repo);if(!repo)throw Error('unknown source repository');
+        if(!contexts.has(repo.name))contexts.set(repo.name,context(root,repo,gitRunner));
+        const key=JSON.stringify(a);if(!anchorSeen.has(key)){errors.push(...checkAnchor(contexts.get(repo.name),a).errors.map(e=>`anchor ${a.path}: ${e}`));anchorSeen.add(key);}
+      }catch(e){errors.push(e.message);}
+    };
+    const anchors=(list,where)=>{if(!Array.isArray(list)||!list.length)errors.push(`${where} missing anchor`);else list.forEach(anchor);};
+    const featureMap=new Map(data.features.map(f=>[f.id,f])),caseMap=new Map(data.cases.map(c=>[c.id,c]));
+    const req=fs.readFileSync(guarded(root,'.planning/REQUIREMENTS.md'),'utf8'),road=fs.readFileSync(guarded(root,'.planning/ROADMAP.md'),'utf8');
+    const definitions=[...req.matchAll(/^- \[[ x]\] \*\*([A-Z]+-\d+)\*\*:/gm)].map(m=>m[1]);
+    const mappings=[...req.matchAll(/^\| ([A-Z]+-\d+) \| Phase (\d+) \| (?:Pending|Complete|In Progress) \|$/gm)].map(m=>({id:m[1],phase:+m[2]}));
+    const roadMappings=[];for(const m of road.matchAll(/^### Phase (\d+):[^\n]*\n([\s\S]*?)(?=^### Phase |^## Progress|$(?![\s\S]))/gm)){const line=m[2].match(/^\*\*Requirements:\*\* (.+)$/m);for(const id of line?.[1].split(/,\s*/)||[])roadMappings.push({id,phase:+m[1]});}
+    for(const f of data.features){
+      counts.features++;if(!FEATURE_PLATFORMS.includes(f.platform)||!data.scope.platforms?.includes(f.platform))errors.push(`invalid feature platform ${f.id}`);
+      if(!f.capability||!f.originalBehavior||!f.aetherBehavior)errors.push(`missing feature behavior ${f.id}`);
+      anchors(f.anchors,`feature ${f.id}`);
+      if(!['flutter-ui','shared-native','host-native','platform-adapter','development-tool'].includes(f.ownerTier))errors.push(`invalid owner ${f.id}`);
+      if(!['os','architecture','hardware'].every(k=>typeof f.conditions?.[k]==='string'&&f.conditions[k]))errors.push(`missing conditions ${f.id}`);
+      if(!Array.isArray(f.settingIds)||!Array.isArray(f.blockerIds)||f.blockerIds.some(id=>!sources?.blockers?.some(b=>b.id===id)))errors.push(`invalid setting/blocker references ${f.id}`);
+      if(f.mappingState==='needs-requirement'){unmapped.push(f.id);if(!allowUnmapped)errors.push(`unmapped feature ${f.id}`);}else if(f.mappingState!=='mapped'||!f.requirementIds?.length)errors.push(`missing requirement mapping ${f.id}`);
+      if(!Number.isInteger(f.primaryPhase)||f.primaryPhase<1||f.primaryPhase>42)errors.push(`invalid primary phase ${f.id}`);
+      for(const id of f.requirementIds||[]){const rows=mappings.filter(m=>m.id===id),roads=roadMappings.filter(m=>m.id===id);if(definitions.filter(x=>x===id).length!==1||rows.length!==1||roads.length!==1||rows[0].phase!==f.primaryPhase||roads[0].phase!==f.primaryPhase)errors.push(`requirement phase mapping mismatch ${f.id}/${id}`);}
+      if(!f.caseIds?.length||f.caseIds.some(id=>!caseMap.has(id)||!caseMap.get(id).featureIds?.includes(f.id)||caseMap.get(id).platform!==f.platform||caseMap.get(id).verificationPhase!==f.primaryPhase))errors.push(`missing/mismatched case ${f.id}`);
+      for(const k of ['implementationEvidence','buildEvidence','automationEvidence','hardwareEvidence'])if(!Array.isArray(f[k]))errors.push(`missing evidence array ${f.id}/${k}`);
+      const todo=f.platform==='selene-macos'?'VFY-02':f.platform==='selene-ios-ipados'?'VFY-01':null;
+      if((f.hardwareTodoId??null)!==todo)errors.push(`unapproved/missing hardware TODO ${f.id}`);
+      if(f.hardwareEvidence?.length||f.implementationEvidence?.length||f.buildEvidence?.length||f.automationEvidence?.length)errors.push(`product/hardware evidence not established in baseline ${f.id}`);
+    }
+    for(const s of data.surfaces){
+      counts.surfaces++;if(!s.reviewed)errors.push(`surface not reviewed ${s.id}`);
+      if(!FEATURE_PLATFORMS.includes(s.platform)||!['setting','shortcut','cli','permission','input','media','network','management','packaging'].includes(s.kind))errors.push(`invalid surface platform/kind ${s.id}`);
+      anchors(s.anchors,`surface ${s.id}`);
+      if(!s.inventoryKeys?.length||new Set(s.inventoryKeys).size!==s.inventoryKeys.length)errors.push(`empty/duplicate surface inventory ${s.id}`);
+      const keys=(s.entries||[]).map(e=>e.key);if(new Set(keys).size!==keys.length||keys.length!==s.inventoryKeys?.length||s.inventoryKeys.some(k=>!keys.includes(k)))errors.push(`uncovered surface key coverage ${s.id}`);
+      if(s.extractor){try{const ctx=contexts.get(s.repo);if(!ctx)throw Error('missing surface source context');const actual=inventoryKeys(decodeText(ctx.read(s.path)),s.extractor);if(!actual||JSON.stringify([...new Set(actual)].sort())!==JSON.stringify([...s.inventoryKeys].sort()))errors.push(`surface source inventory mismatch ${s.id}`);}catch(e){errors.push(e.message);}}
+      for(const e of s.entries||[]){if(!e.reason||!['mapped','implementation-detail','deprecated','outside-target'].includes(e.disposition))errors.push(`invalid surface disposition ${s.id}/${e.key}`);anchors(e.anchors,`surface entry ${s.id}/${e.key}`);if(e.disposition==='mapped'&&(!e.featureIds?.length||e.featureIds.some(id=>!featureMap.has(id)||featureMap.get(id).platform!==s.platform)))errors.push(`surface feature coverage mismatch ${s.id}/${e.key}`);if(s.kind==='setting')counts.settings++;}
+    }
+    for(const f of data.features)for(const key of f.settingIds||[])if(!data.surfaces.some(s=>s.platform===f.platform&&s.entries?.some(e=>e.key===key&&e.featureIds?.includes(f.id))))errors.push(`setting coverage missing ${f.id}/${key}`);
+    for(const c of data.cases){counts.cases++;for(const k of ['featureIds','preconditions','steps','expectedResults','negativeCases','evidenceRequired'])if(!c[k]?.length)errors.push(`case missing ${k} ${c.id}`);if(c.featureIds?.some(id=>!featureMap.has(id)||!featureMap.get(id).caseIds?.includes(c.id)))errors.push(`case feature mismatch ${c.id}`);if(!['planned','blocked'].includes(c.status)||c.evidence?.length)errors.push(`case product evidence not established ${c.id}`);}
+    for(const c of data.conflicts){if(!c.description||!c.affectedConstraint||!c.options?.length||!['open','decided'].includes(c.status)||!c.featureIds?.length||c.featureIds.some(id=>!featureMap.has(id)))errors.push(`invalid conflict ${c.id}`);anchors(c.sourceEvidence,`conflict ${c.id}`);if(c.status==='open')conflicts.push(c.id);else if(c.decisionEvidence?.confirmedBy!=='user'||!c.decisionEvidence?.confirmedAt)errors.push(`conflict missing human decision ${c.id}`);}
+  }catch(e){errors.push(e.message);}
+  return {errors,counts,unmapped,conflicts};
+}
+function renderFeatureParity(data,result){
+  return `# 原功能保留基线\n\n基线日期：${data.capturedAt}。${data.scope.complete?'平台盘点已展开，语义穷尽性仍待最终人审':'Qt Windows 单能力 tracer 子集；未完成全平台审计'}。结构校验 ${result.errors.length?'FAIL':'PASS'}；产品功能均未实现/实测。固定来源见 [来源审计](SOURCE-AUDIT.md)，正式数据见 [features.json](baseline/features.json)。\n\n“不砍功能”以指定五平台及 Windows 10/11 服务端的适用原用户能力为边界。保留 GameStream 重构基础、单一 Flutter UI、原生实时路径、主机唯一控制租约；断连/切换保留实例和显示组，只有显式停止才清理。本阶段不批准源码生产复用。\n\niOS/iPadOS、macOS 仅实机验收分别延后 VFY-01/VFY-02；实现、构建与自动化仍属 v1。源码/API存在不等于平台支持；硬件、OS 和架构条件逐项保留。\n\n## 覆盖摘要\n\n能力 ${data.features.length}，入口 ${data.surfaces.length}，独立案例 ${data.cases.length}；未映射 ${result.unmapped.length}，开放冲突 ${result.conflicts.length}。\n\n## 平台原子能力\n\n| ID / 平台 | 原行为 → Aether | 条件 / 责任层 | 需求 / 主要阶段 / 案例 | 固定证据 |\n|---|---|---|---|---|\n${data.features.map(f=>`| ${f.id} / ${f.platform} | ${md(f.originalBehavior)} → ${md(f.aetherBehavior)} | ${md(Object.values(f.conditions).join('；'))} / ${f.ownerTier} | ${f.requirementIds.join(', ')||'needs-requirement'} / ${f.primaryPhase} / ${f.caseIds.join(', ')} | ${f.anchors.map(a=>`\`${a.repo}@${a.commit.slice(0,12)}:${a.path}:${a.startLine} (${a.symbol})\``).join('<br>')} |`).join('\n')}\n\n## 设置与非设置入口覆盖\n\n${data.surfaces.map(s=>`### ${s.id}\n\n${s.repo} / ${s.platform} / ${s.kind} / \`${s.path}\`；reviewed=${s.reviewed}；inventory=${s.inventoryKeys.length}。\n\n| key | 处置 / 能力 | 依据 |\n|---|---|---|\n${s.entries.map(e=>`| ${md(e.key)} | ${e.disposition} / ${e.featureIds.join(', ')} | ${md(e.reason)} |`).join('\n')}`).join('\n\n')}\n\n## 独立验收案例\n\n${data.cases.map(c=>`### ${c.id}\n\n平台 ${c.platform}；Phase ${c.verificationPhase}；${c.status}，未执行。\n\n- 前提：${c.preconditions.map(md).join('；')}\n- 步骤：${c.steps.map(md).join('；')}\n- 期望：${c.expectedResults.map(md).join('；')}\n- 负例：${c.negativeCases.map(md).join('；')}\n- 证据：${c.evidenceRequired.map(md).join('；')}`).join('\n\n')}\n\n## 原行为与约束冲突\n\n${data.conflicts.map(c=>`- **${c.id}** (${c.status})：${md(c.description)}。约束：${md(c.affectedConstraint)}；选项：${c.options.map(o=>md(typeof o==='string'?o:JSON.stringify(o))).join('；')}。`).join('\n')||'当前子集无已登记冲突。'}\n\nPhase 37 逐行复审，Phase 42 最终验收。BASE-01 edge flag 仍 unclassified/unresolved；descriptor-less prohibitions 仍 flagged-unverified。结构 PASS 不代替语义穷尽性、人审、构建或硬件验证。\n`;
+}
 function cli(args=process.argv.slice(2)){
-  const opts={};for(let i=0;i<args.length;i++){const a=args[i];if(['--sources','--index-sources'].includes(a)){if(opts[a])throw Error(`duplicate argument: ${a}`);opts[a]=true;}else if(['--scope','--report','--root'].includes(a)){if(opts[a]||!args[i+1]||args[i+1].startsWith('--'))throw Error(`invalid argument: ${a}`);opts[a]=args[++i];}else throw Error(`unknown argument: ${a}`);}
+  const opts={};for(let i=0;i<args.length;i++){const a=args[i];if(['--sources','--index-sources','--features','--allow-unmapped'].includes(a)){if(opts[a])throw Error(`duplicate argument: ${a}`);opts[a]=true;}else if(['--scope','--report','--root'].includes(a)){if(opts[a]||!args[i+1]||args[i+1].startsWith('--'))throw Error(`invalid argument: ${a}`);opts[a]=args[++i];}else throw Error(`unknown argument: ${a}`);}
+  if(opts['--features']){
+    if(opts['--sources']||opts['--index-sources'])throw Error('conflicting validation flags');if(opts['--report']&&opts['--report']!=='docs/FEATURE-PARITY.md')throw Error('invalid feature report path');
+    const root=path.resolve(opts['--root']||ROOT),read=p=>JSON.parse(fs.readFileSync(guarded(root,p),'utf8')),data=read('docs/baseline/features.json'),sources=read('docs/baseline/sources.json');
+    const r=validateFeatures({root,data,sources,scope:opts['--scope'],allowUnmapped:!!opts['--allow-unmapped']});if(r.errors.length)throw Error(r.errors.join('\n'));if(opts['--report'])atomicWrite(root,opts['--report'],renderFeatureParity(data,r));console.log(JSON.stringify({status:'PASS',scope:opts['--scope']||'features',checked:r.counts.features,counts:r.counts,unmapped:r.unmapped,conflicts:r.conflicts,finalMappingGate:!opts['--allow-unmapped']}));return;
+  }
+  if(opts['--allow-unmapped'])throw Error('--allow-unmapped requires --features');
   if(!opts['--sources']&&!opts['--index-sources'])throw Error('full baseline not yet available; select --sources');if(opts['--report']&&opts['--report']!=='docs/SOURCE-AUDIT.md')throw Error('invalid report path');const root=path.resolve(opts['--root']||ROOT),p=guarded(root,'docs/baseline/sources.json');let data;
   if(opts['--index-sources'])data=indexSources({root,scope:opts['--scope'],data:fs.existsSync(p)?JSON.parse(fs.readFileSync(p,'utf8')):undefined});else data=JSON.parse(fs.readFileSync(p,'utf8'));
   const result=validateSources({root,scope:opts['--scope'],data});if(result.errors.length)throw Error(result.errors.join('\n'));if(opts['--index-sources'])atomicWrite(root,'docs/baseline/sources.json',JSON.stringify(data,null,2)+'\n');if(opts['--report'])atomicWrite(root,opts['--report'],renderSourceAudit(data,result));console.log(JSON.stringify({status:'PASS',scope:opts['--scope']||'sources',checked:result.counts.files+result.counts.externals,counts:result.counts,errors:0,blockers:result.blockers.length,pendingDecisions:data.decisions.filter(d=>d.status==='pending').length,productionReuseApproved:false}));
 }
-module.exports={validateSources,validateAnchor,renderSourceAudit,indexSources,gitRun,guarded,atomicWrite,context,readLock,anchorFor,kindOf,spdx,decodeText,cli};
+module.exports={validateFeatures,renderFeatureParity,inventoryKeys,validateSources,validateAnchor,renderSourceAudit,indexSources,gitRun,guarded,atomicWrite,context,readLock,anchorFor,kindOf,spdx,decodeText,cli};
 if(require.main===module){try{cli();}catch(e){console.error(JSON.stringify({status:'FAIL',errors:[e.message]}));process.exitCode=1;}}
