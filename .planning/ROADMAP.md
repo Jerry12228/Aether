@@ -73,7 +73,19 @@
 1. 原功能表覆盖各端设置/媒体/输入/管理，遗漏能力补入 v1 需求，不自动延后。
 2. 工具探测和来源审计有可复现记录；性能数值明确为待基线测量后确认。
 
-**Plans:** TBD（规划时拆为1–3个小计划）
+**Plans:** 3 plans（研究与独立计划检查已完成；按三波顺序执行）
+
+**Wave 1**
+
+- [ ] 01-01-PLAN.md — 固定源码、逐文件许可与五端发行审计
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 01-02-PLAN.md — 平台原能力全集、需求与验收映射
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
+- [ ] 01-03-PLAN.md — 有界环境诊断、平台测量基线与完整审阅
 
 ### Phase 2: Monorepo 与 Flutter/原生骨架
 
