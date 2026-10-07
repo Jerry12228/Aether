@@ -97,7 +97,19 @@
 1. Windows 双端骨架从干净 checkout 可构建，核心不依赖 Qt 或 Flutter。
 2. 跨边界句柄创建/释放、错误回调和停止均有契约验证，记录 texture/surface 原型结论。
 
-**Plans:** TBD（规划时拆为1–3个小计划）
+**Plans:** 0/3 plans complete（规划与独立检查已通过；待用户启动执行，尚无产品构建/测试证据）
+
+**Wave 1**
+
+- [ ] 02-01-PLAN.md — 共享 C ABI、真实 DLL/Dart 生命周期 tracer 与五平台 adapter 接口
+
+**Wave 2** *(blocked on Wave 1 completion)*
+
+- [ ] 02-02-PLAN.md — 原生 GPU Texture/native surface、验证面板与退出行为
+
+**Wave 3** *(blocked on Wave 2 completion)*
+
+- [ ] 02-03-PLAN.md — 单目标构建、独立验证、干净 Windows CI 与最终人审
 
 ### Phase 3: 虚拟显示器可行性
 
@@ -598,7 +610,7 @@
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. 来源、原功能与环境基线 | 3/3 | Complete    | 2026-10-07 |
-| 2. Monorepo 与 Flutter/原生骨架 | 0/TBD | Not started | - |
+| 2. Monorepo 与 Flutter/原生骨架 | 0/3 | Planned | - |
 | 3. 虚拟显示器可行性 | 0/TBD | Not started | - |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |

@@ -2,16 +2,15 @@
 gsd_state_version: "1.0"
 current_phase: 2
 current_phase_name: Monorepo 与 Flutter/原生骨架
-status: planning
-stopped_at: Phase 2 context gathered, ready to plan
-last_updated: "2026-10-07T14:55:04.119Z"
+status: executing
+stopped_at: Phase 2 planned and checked; ready to execute, product implementation not started
+last_updated: "2026-10-07T15:44:07.891Z"
 last_activity: 2026-10-07
-last_activity_desc: Phase 2 context gathered, ready to plan
-state_head: ed53e10c8d1d119b1867422e58d8c3f2ad9e0030
+last_activity_desc: Phase 2 planned; 3 sequential plans checked, product implementation not started
 progress:
   total_phases: 42
   completed_phases: 1
-  total_plans: 3
+  total_plans: 6
   completed_plans: 3
   percent: 2
 ---
@@ -23,14 +22,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-07)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 02 — Monorepo 与 Flutter/原生骨架（ready to plan；尚未启动）
+**Current focus:** Phase 02 — Monorepo 与 Flutter/原生骨架（规划完成；ready to execute；产品实现尚未启动）
 
 ## Current Position
 
-Phase: 2 — Monorepo 与 Flutter/原生骨架
+Phase: 2 (Monorepo 与 Flutter/原生骨架) — READY TO EXECUTE
 Plan: Not started
-Status: Ready to plan
-Last activity: 2026-10-07 — Phase 2 context gathered, ready to plan
+Status: Ready to execute
+Last activity: 2026-10-07 — Phase 2 planned: 3 sequential plans, research and independent checks passed; product execution not started
 
 Progress: [░░░░░░░░░░] 2%
 
@@ -58,6 +57,7 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 - 2026-10-07 Phase1最终人审：授权只读观察者（无输入/设备上行/会话变更）、唯一ControlLease及独立读流预算；SESSION-MODEL已同步。
 - Flutter3.44最低候选/原Android与Linux差异保留v1；测量30秒预热/60秒窗口/3轮获确认，精度及SLO仍待实测。
 - 用户纠正WDK已安装且VS26集成；只关闭安装缺口，未将组件存在写成目标构建证据。
+- 2026-10-07 Phase 2 规划完成：02-01 真实 C ABI/DLL/Dart 与五端接口；02-02 GPU Texture/native surface、面板/控制台及本地清理；02-03 单目标 build、独立 verify、干净 Windows CI 与最终人审。研究、模式映射和检查已完成；首轮两项 blocker 修订后通过，CORE 三项和 D-01–17 全覆盖。实际 CI 必需检查与最终人审均为执行完成条件；未启动产品实现。
 
 ### Pending Todos
 
@@ -67,13 +67,15 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 [Phase1] 两个人审检查点均已答复、四原行为冲突已decided；VS2026与WDK28000同版本组件及集成文件存在，安装缺口resolved。保留9项open环境gap与1项Apple实机TODO：原生构建、独立Win10/客户端/架构/GPU环境、主机build下限、Apple/Linux executor、AndroidAPI21–23/Linux额外架构及测量仪器。来源1261阻碍条目含未决子模块、外部包/二进制来源、具体生产许可、驱动签名和渠道，阻断对应后续生产选用；全部research-only、生产清单空。637平台记录及637计划案例已映射，尚未实现或实机验证。Apple只有VFY01/02实机延期，构建义务仍保留。三个分类flag/六条无描述符prohibitions原状态保留，不伪造自动引擎通过。
 
+[Phase2 planning] A1–A7 已按任务关闭规划选择，实际依赖/pub审计与 libclang、双端构建、GPU/关闭测量及 CI 执行器仍待执行证据。路径探针不支持此次命令形式，不作为命令可执行证明；23 条失败信号检查通过。3 条未分类 CORE 边缘项、6 条无描述符禁止项仍未验证。Nyquist/wave0 保持 draft/false；Windows 骨架成功不可关闭原平台/Apple 构建义务。
+
 ## Deferred Items
 
 用户明确的TODO见BACKLOG，未把非TODO需求延后。
 
 ## Session Continuity
 
-Last session: 2026-10-07T14:55:04.079Z
-Stopped at: Phase 2 context gathered, ready to plan
-Resume file: .planning/phases/02-monorepo-flutter/02-CONTEXT.md
-Next action: $gsd-plan-phase 2。先确认小范围Monorepo/Flutter原生骨架计划，携带Phase1原目标差异与构建缺口；不自动开始Phase2。
+Last session: 2026-10-07T15:44:07.851Z
+Stopped at: Phase 2 planned and checked; ready to execute, product implementation not started
+Resume file: .planning/phases/02-monorepo-flutter/02-01-PLAN.md
+Next action: $gsd-execute-phase 2。按 02-01 → 02-02 → 02-03 顺序执行；依赖/构建/CI 需真实证据，最后完成人审；不自动开始 Phase 3。
