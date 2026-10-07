@@ -9,7 +9,7 @@ created: "2026-10-07"
 
 # Phase 1 — Validation Strategy
 
-这是执行时的验证契约，尚未实施或签署。自动检查证明结构、引用与失败处理；源码能力穷尽性、生产复用许可和发布渠道结论由阶段末人工审阅。
+这是执行时的验证契约。01-01 Task 1/2 已验证，其余任务及人工签署 pending。自动检查证明结构、引用与失败处理；源码能力穷尽性、生产复用许可和发布渠道结论仍需人工审阅。
 
 ## Test Infrastructure
 
@@ -19,7 +19,7 @@ created: "2026-10-07"
 | Config file | 无外部测试依赖；现有 scripts/validate-planning.cjs |
 | Quick run command | `node scripts/validate-planning.cjs` 加当前任务的针对性验证 |
 | Full suite command | 分别运行 `node --test tests/baseline-sources.test.cjs tests/baseline-features.test.cjs tests/doctor.test.cjs`、`node scripts/validate-baseline.cjs --review --report docs/BASELINE-REVIEW.md`、`node scripts/validate-planning.cjs`，每个命令独立检查退出码和非空摘要 |
-| Estimated runtime | 新增 fixture 套件目标不超过 30 秒，尚未实测；本机 doctor 各探测有截止时间 |
+| Estimated runtime | 目标 30 秒；来源全套 31 项实测 62.45 秒，最终针对性 3 项 6.23 秒；feature/doctor 尚未实现，完整阶段耗时待测 |
 
 ## Sampling Rate
 
@@ -35,8 +35,8 @@ created: "2026-10-07"
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|-------------|--------|--------|
-| 01-01-01 | 01 | 1 | BASE-02 | T-01-01,02,04,SC | common-c真对象tracer、参数/真实路径、dirty/SHA/remote负例 | Git fixture + CLI | `node --test tests/baseline-sources.test.cjs`；独立运行`node scripts/validate-baseline.cjs --sources --scope moonlight-common-c --report docs/SOURCE-AUDIT.md` | W0 | pending |
-| 01-01-02 | 01 | 1 | BASE-02 | T-01-01,02,03,04,SC | 九仓逐文件、gitlink/资产/驱动及五端发行，未知保持blocked | 数据/引用 | `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` | W0 | pending |
+| 01-01-01 | 01 | 1 | BASE-02 | T-01-01,02,04,SC | common-c真对象tracer、参数/真实路径、dirty/SHA/remote负例 | Git fixture + CLI | `node --test tests/baseline-sources.test.cjs`；独立运行`node scripts/validate-baseline.cjs --sources --scope moonlight-common-c --report docs/SOURCE-AUDIT.md` | yes | pass — committed tracer/full fixtures |
+| 01-01-02 | 01 | 1 | BASE-02 | T-01-01,02,03,04,SC | 九仓逐文件、gitlink/资产/驱动及五端发行，未知保持blocked | 数据/引用 | `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` | yes | pass — structural audit; human decision pending |
 | 01-01-03 | 01 | 1 | BASE-02 | T-01-03 | 先展示具体许可/复用/渠道选项再记录明确选择 | 决定前后门禁 | `node scripts/validate-baseline.cjs --sources --report docs/SOURCE-AUDIT.md` | W0 | pending |
 | 01-02-01 | 02 | 2 | BASE-01 | T-01-05,06,07,SC | Qt Windows真能力tracer，固定锚点与错映射负例 | 数据/CLI | `node --test tests/baseline-features.test.cjs`；独立运行`node scripts/validate-baseline.cjs --features --scope qt-windows --report docs/FEATURE-PARITY.md` | W0 | pending |
 | 01-02-02 | 02 | 2 | BASE-01 | T-01-05,06,07,SC | 五端/主机设置和非设置覆盖；未映射明确显示，Apple证据诚实 | 数据/引用 | `node scripts/validate-baseline.cjs --features --allow-unmapped --report docs/FEATURE-PARITY.md` | W0 | pending |

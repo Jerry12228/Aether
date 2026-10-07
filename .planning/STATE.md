@@ -2,11 +2,11 @@
 gsd_state_version: "1.0"
 current_phase: 1
 current_phase_name: 来源、原功能与环境基线
-status: planning
-stopped_at: Phase 1 研究、三个计划及独立计划检查完成，待用户启动执行；尚无产品阶段完成。
-last_updated: "2026-10-07T07:06:37.408Z"
+status: awaiting_checkpoint
+stopped_at: 01-01 Task 1/2 已提交并验证；Task 3 blocking-human 许可/复用与发行决定待用户答复。
+last_updated: "2026-10-07T07:50:30Z"
 last_activity: 2026-10-07
-last_activity_desc: Phase 1 三个顺序计划已通过独立检查，BASE-01/02/03 全覆盖；仅完成规划，执行尚未开始。
+last_activity_desc: 01-01 九仓来源与发行候选审计完成，31 项测试通过；两个明确人类决定 pending，后续计划尚未执行。
 progress:
   total_phases: 42
   completed_phases: 0
@@ -22,21 +22,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-07)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 1 来源、原功能与环境基线，规划完成，待执行。
+**Current focus:** Phase 1 来源、原功能与环境基线，01-01 Task 3 人类决定检查点。
 
 ## Current Position
 
-Phase: 1 of 42 (来源、原功能与环境基线) — READY TO EXECUTE
-Plan: 0 of 3 in current phase
-Status: Ready to execute
-Last activity: 2026-10-07 — Phase 1 研究与三个顺序计划完成，独立检查通过（0 blocker / 0 warning）；产品阶段尚未开始。
+Phase: 1 of 42 (来源、原功能与环境基线) — AWAITING HUMAN DECISION
+Plan: 01-01 of 3 in current phase; Tasks 1/2 complete, Task 3 pending; 0 plans fully complete
+Status: 01-01 halted at designed blocking-human checkpoint; 01-02 and 01-03 depend on its completion
+Last activity: 2026-10-07 — 九仓 2964 blobs / 42 gitlinks 核验与候选发行包已提交；来源结构 PASS 不等于生产许可批准。
 
 Progress: [░░░░░░░░░░] 0%
 
 ## Performance Metrics
 
 Total plans completed: 0
-No execution or performance measurements yet.
+01-01 source fixtures: 31/31 passed in 62.45 seconds; final targeted check 3/3 passed in 6.23 seconds.
+No product performance measurements yet. BASE-02 remains pending human decision.
 
 ## Accumulated Context
 
@@ -51,6 +52,7 @@ No execution or performance measurements yet.
 - 2026-10-07 用户批准当前初始化文档与路线图，下一步规划 Phase 1。
 - 2026-10-07 用户选择无 CONTEXT.md 直接依据已批准约束研究及规划 Phase 1；三个 BASE 需求全部覆盖。
 - 执行检查点：01-01 在来源审计后确认项目许可/复用/发行路线，01-03 在完整基线包后确认原功能、平台条件与测量方法；未知事实仍待验证。
+- 01-01 来源数据已完成技术核验，全部参考文件仍 research-only，生产复制/链接/再分发清单为空；项目许可与发行意向两个决定尚未选择。
 
 ### Pending Todos
 
@@ -58,7 +60,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
-当前文档初始化无阻碍；后续实施需早期解决Win10摄像头、虚拟设备签名/分发、来源许可、原功能盘点、Apple构建工具链/CI及Android/Linux/三GPU测试环境。Apple实机缺口已批准转TODO，不阻塞v1；参考clone无递归子模块，仅研究用途。
+当前需要用户选择 project-reuse-policy 和 distribution-intent 才能完成 01-01 Task 3。具体选项、条款证据和保留阻碍见 docs/SOURCE-AUDIT.md；建议 research-only + retain-candidates，但未代选。缺失子模块内部源码、二进制对应来源、驱动签名及渠道兼容未知仍阻止相关生产复用。后续实施还需解决Win10摄像头、原功能盘点、Apple构建工具链/CI及Android/Linux/三GPU测试环境。Apple实机缺口已批准转TODO，不阻塞v1；参考clone无递归子模块，仅研究用途。
 
 ## Deferred Items
 
@@ -67,6 +69,6 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 ## Session Continuity
 
 Last session: 2026-10-07 (Asia/Singapore)
-Stopped at: Phase 1 研究、三个计划及独立计划检查完成，待用户启动执行；尚无产品阶段完成。
-Resume file: None
-Next action: $gsd-execute-phase 1；按三波顺序执行并保留具体人工决定门禁。
+Stopped at: 01-01 Task 3 blocking-human checkpoint，两个决定 pending。
+Resume file: .planning/phases/01-source-feature-environment-baseline/01-01-SUMMARY.md (status: halted)
+Next action: 收到明确许可/复用和发行意向答复后，仅恢复 01-01 Task 3；在 sources.json/SOURCE-AUDIT.md 记录真实选择、确认人/时间及保留阻碍并验证，更新 halted summary，再顺序执行 01-02/01-03。不要重复已提交 Task 1/2，不自动进入 Phase 2。
