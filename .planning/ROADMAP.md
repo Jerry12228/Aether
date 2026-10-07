@@ -73,7 +73,7 @@
 1. 原功能表覆盖各端设置/媒体/输入/管理，遗漏能力补入 v1 需求，不自动延后。
 2. 工具探测和来源审计有可复现记录；性能数值明确为待基线测量后确认。
 
-**Plans:** 2/3 plans executed（01-01 已完成；按依赖顺序执行 01-02、01-03）
+**Plans:** 2/3 plans executed（01-01/02 已完成；01-03 Task1/2通过，Task3全基线人审待答复）
 
 **Wave 1**
 
@@ -85,7 +85,7 @@
 
 **Wave 3** *(blocked on Wave 2 completion)*
 
-- [ ] 01-03-PLAN.md — 有界环境诊断、平台测量基线与完整审阅
+- [ ] 01-03-PLAN.md — 有界环境/测量与全包已提交；最终 blocking-human 审阅待答复
 
 ### Phase 2: Monorepo 与 Flutter/原生骨架
 

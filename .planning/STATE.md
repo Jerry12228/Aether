@@ -2,11 +2,11 @@
 gsd_state_version: "1.0"
 current_phase: 01
 current_phase_name: 来源、原功能与环境基线
-status: executing
-stopped_at: 01-01/02 已完成；执行 01-03 Task 1 有界环境诊断。
-last_updated: "2026-10-07T10:04:36.518Z"
+status: awaiting-review
+stopped_at: 01-03 Task1/2 已提交；Task3 blocking-human 全基线审阅待明确答复。
+last_updated: "2026-10-07T10:54:55.280Z"
 last_activity: 2026-10-07
-last_activity_desc: Phase 01 execution started
+last_activity_desc: Phase 01 full baseline prepared; final review pending
 progress:
   total_phases: 42
   completed_phases: 0
@@ -26,10 +26,10 @@ See: .planning/PROJECT.md (updated 2026-10-07)
 
 ## Current Position
 
-Phase: 01 (来源、原功能与环境基线) — EXECUTING
+Phase: 01 (来源、原功能与环境基线) — AWAITING REVIEW
 Plan: 01-03 of 3; 01-01/02 complete
-Status: Executing Phase 01
-Last activity: 2026-10-07 — Phase 01 execution started
+Status: Awaiting 01-03 Task3 blocking-human review
+Last activity: 2026-10-07 — 01-03 Task1/2 verified and committed; full review pending
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -37,7 +37,7 @@ Progress: [░░░░░░░░░░] 0%
 
 Total plans completed: 2
 01-01 source fixtures: 31/31 passed in 62.45 seconds; final targeted check 3/3 passed in 6.23 seconds.
-No product performance measurements yet. BASE-02 remains pending the shared 01-03 final review.
+Full baseline suite 78/78 passed in 56.84 seconds; final doctor subset 27/27 in 1.84 seconds. Quick snapshot 1.406s/25s. No product performance measurements; all BASE requirements await final review.
 
 ## Accumulated Context
 
@@ -61,7 +61,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
-用户两个决定已记录，无需再次选择；01-01 已完成；当前执行 01-03。缺失子模块内部源码、二进制对应来源、具体项目许可/生产清单、驱动签名及渠道兼容未知仍阻止相关生产复用。保留阻碍见 docs/SOURCE-AUDIT.md。后续实施还需解决Win10摄像头、原功能盘点、Apple构建工具链/CI及Android/Linux/三GPU测试环境。Apple实机缺口已批准转TODO，不阻塞v1；参考clone无递归子模块，仅研究用途。
+既有许可/发行决定已记录，无需重选；01-01/02 完成。01-03 Task1/2及全包已提交，Task3人审 pending；四个原行为冲突 open（Win10/11 Apollo只读加入、Linux额外架构、AndroidAPI21–23差异），11环境缺口明列。缺失子模块内部源码、二进制对应来源、具体项目许可/生产清单、驱动签名及渠道兼容未知仍阻止相关生产复用。保留阻碍见 docs/SOURCE-AUDIT.md。后续实施还需解决Win10驱动/摄像头build原型、WDK、原生构建、Apple工具链/CI及独立客户端/IntelGPU/架构测试环境。原功能637平台记录/637计划案例已映射，尚未实现或实机验证。Apple实机缺口已批准转TODO，不阻塞v1；参考clone无递归子模块，仅研究用途。
 
 ## Deferred Items
 
@@ -70,6 +70,6 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 ## Session Continuity
 
 Last session: 2026-10-07 (Asia/Singapore)
-Stopped at: 执行 01-03 Task 1；01-01/02 完成摘要已提交。
-Resume file: .planning/phases/01-source-feature-environment-baseline/01-01-SUMMARY.md (complete)
-Next action: 继续 01-03 Task 1/2，最终 blocking-human 全基线审阅前准备完整证据包。不自动进入 Phase 2。
+Stopped at: 01-03 Task3 awaiting explicit human review; Task1/2 commits b291686/9b75ab6, halted summary e91f3e5.
+Resume file: .planning/phases/01-source-feature-environment-baseline/01-03-SUMMARY.md (halted; Tasks1/2 done)
+Next action: 用户明确答复 docs/BASELINE-REVIEW.md 的四项决定后，记录冲突/人审证据并运行 --require-review，再完成01-03及Phase1验证。不自动进入Phase2。
