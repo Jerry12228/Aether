@@ -73,3 +73,19 @@ test('checkout reparse-point escape is rejected before Git is invoked',t=>{
   assert.equal(typeof api.validateSources,'function','source validator must exist');
   const r=api.validateSources({root:f.root,scope:'moonlight-common-c',data:{}}); assert.match(r.errors.join('\n'),/escape|reparse|symlink/i);
 });
+test('full sources reject missing platform distribution routes',t=>{
+  const f=indexed(t);f.data.scope.complete=true;f.data.routes=[];
+  const result=api.validateSources({root:f.root,data:f.data});
+  assert.match(result.errors.join('\n'),/distribution.*route|route.*coverage/i);
+});
+test('sources preserve manual notes while refusing stale legal approval',t=>{
+  const f=indexed(t);f.data.files[0].notes='Human review note';
+  const next=api.indexSources({root:f.root,scope:'moonlight-common-c',data:f.data});assert.equal(next.files[0].notes,'Human review note');
+  next.licenseEvidence[0].reviewState='approved';assert.match(api.validateSources({root:f.root,scope:'moonlight-common-c',data:next}).errors.join('\n'),/approv/i);
+});
+test('sources report injected Git failures and timeouts as errors',t=>{
+  const f=indexed(t);
+  for(const message of ['ETIMEDOUT: Git exceeded 15000ms','Git cat-file failed: nonzero']) {
+    const r=api.validateSources({root:f.root,scope:'moonlight-common-c',data:f.data,gitRunner:()=>{throw Error(message);}});assert.match(r.errors.join('\n'),new RegExp(message.split(':')[0]));
+  }
+});
