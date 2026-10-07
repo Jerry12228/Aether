@@ -73,11 +73,11 @@
 1. 原功能表覆盖各端设置/媒体/输入/管理，遗漏能力补入 v1 需求，不自动延后。
 2. 工具探测和来源审计有可复现记录；性能数值明确为待基线测量后确认。
 
-**Plans:** 3 plans（01-01 Task 1/2 已完成，Task 3 人类许可/发行决定待答复；后两波依赖该决定）
+**Plans:** 1/3 plans executed（01-01 已完成；按依赖顺序执行 01-02、01-03）
 
 **Wave 1**
 
-- [ ] 01-01-PLAN.md — 固定源码、逐文件许可与五端发行审计（技术审计完成，blocking-human 决定 pending）
+- [x] 01-01-PLAN.md — 固定源码、逐文件许可与五端发行审计（决定已记录；未决生产复用阻碍保留）
 
 **Wave 2** *(blocked on Wave 1 completion)*
 
@@ -583,7 +583,7 @@
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. 来源、原功能与环境基线 | 0/3 | In progress — 01-01 human checkpoint | - |
+| 1. 来源、原功能与环境基线 | 1/3 | In Progress|  |
 | 2. Monorepo 与 Flutter/原生骨架 | 0/TBD | Not started | - |
 | 3. 虚拟显示器可行性 | 0/TBD | Not started | - |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
