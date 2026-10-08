@@ -1,8 +1,8 @@
 {
-  "actual": "create returns UNSUPPORTED",
-  "targetTest": "real DLL creates a generation token and delivers the native tracer",
-  "command": "node --test --test-reporter=tap tests/core-tracer.test.cjs",
   "expected": "Native contract returns success",
-  "output": "TAP version 13\r\n# Subtest: tests\\\\core-tracer.test.cjs\r\nnot ok 1 - tests\\\\core-tracer.test.cjs\r\n  ---\r\n  duration_ms: 1.5552\r\n  type: 'test'\r\n  location: 'D:\\\\WorkSpace\\\\Aether\\\\tests\\\\core-tracer.test.cjs:1:1'\r\n  failureType: 'testCodeFailure'\r\n  error: 'spawn EPERM'\r\n  code: 'EPERM'\r\n  stack: |-\r\n    ChildProcess.spawn (node:internal/child_process:421:11)\r\n    spawn (node:child_process:796:9)\r\n    TestContext.<anonymous> (node:internal/test_runner/runner:415:19)\r\n    FileTest.runInAsyncScope (node:async_hooks:228:14)\r\n    FileTest.run (node:internal/test_runner/test:1118:25)\r\n    FileTest.start (node:internal/test_runner/test:1015:17)\r\n    runTestFile (node:internal/test_runner/runner:497:32)\r\n    node:internal/test_runner/runner:809:25\r\n    node:internal/per_context/primordials:561:37\r\n    new Promise (<anonymous>)\r\n  ...\r\n1..1\r\n# tests 1\r\n# suites 0\r\n# pass 0\r\n# fail 1\r\n# cancelled 0\r\n# skipped 0\r\n# todo 0\r\n# duration_ms 5.6693\r\n",
-  "exitCode": 1
+  "actual": "create returns UNSUPPORTED from built DLL",
+  "output": "TAP version 13\r\n# Subtest: real DLL creates a generation token and delivers the native tracer\r\nnot ok 1 - real DLL creates a generation token and delivers the native tracer\r\n  ---\r\n  duration_ms: 36.4029\r\n  type: 'test'\r\n  location: 'D:\\\\WorkSpace\\\\Aether\\\\tests\\\\core-tracer.test.cjs:3:1'\r\n  failureType: 'testCodeFailure'\r\n  error: |-\r\n    FAIL create must initialize the real DLL and return a generation token\r\n    \r\n    \r\n    1 !== 0\r\n    \r\n  code: 'ERR_ASSERTION'\r\n  name: 'AssertionError'\r\n  expected: 0\r\n  actual: 1\r\n  operator: 'strictEqual'\r\n  stack: |-\r\n    TestContext.<anonymous> (D:\\WorkSpace\\Aether\\tests\\core-tracer.test.cjs:7:9)\r\n    Test.runInAsyncScope (node:async_hooks:228:14)\r\n    Test.run (node:internal/test_runner/test:1118:25)\r\n    Test.start (node:internal/test_runner/test:1015:17)\r\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)\r\n  ...\r\n1..1\r\n# tests 1\r\n# suites 0\r\n# pass 0\r\n# fail 1\r\n# cancelled 0\r\n# skipped 0\r\n# todo 0\r\n# duration_ms 100.9963\r\n",
+  "targetTest": "real DLL creates a generation token and delivers the native tracer",
+  "exitCode": 1,
+  "command": "node --test --test-reporter=tap tests/core-tracer.test.cjs"
 }
