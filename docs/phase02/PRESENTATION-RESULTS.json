@@ -1,0 +1,2524 @@
+{
+  "schema": 1,
+  "source": "native D3D11/D2D/DirectWrite 1280x720 BGRA8 static text",
+  "backends": {
+    "gpuTexture": {
+      "outcome": "passed",
+      "rounds": [
+        {
+          "round": 1,
+          "warmupSeconds": 30,
+          "measurementMs": 60261,
+          "before": {
+            "activeRegistrations": 1,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "gpuTexture",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 1,
+            "descriptorReleases": 1,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 1,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 7812500,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 0,
+            "targetWidth": 0,
+            "textureId": 1746066951248,
+            "width": 1280
+          },
+          "after": {
+            "activeRegistrations": 1,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "gpuTexture",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 1,
+            "descriptorReleases": 1,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 1,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 10625000,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 0,
+            "targetWidth": 0,
+            "textureId": 1746066951248,
+            "width": 1280
+          },
+          "samples": [
+            {
+              "elapsedMs": 1002,
+              "cpu100ns": 7812500,
+              "rssBytes": 243617792
+            },
+            {
+              "elapsedMs": 2004,
+              "cpu100ns": 8125000,
+              "rssBytes": 243617792
+            },
+            {
+              "elapsedMs": 3006,
+              "cpu100ns": 8281250,
+              "rssBytes": 243683328
+            },
+            {
+              "elapsedMs": 4008,
+              "cpu100ns": 8281250,
+              "rssBytes": 243683328
+            },
+            {
+              "elapsedMs": 5010,
+              "cpu100ns": 8281250,
+              "rssBytes": 243683328
+            },
+            {
+              "elapsedMs": 6012,
+              "cpu100ns": 8281250,
+              "rssBytes": 243716096
+            },
+            {
+              "elapsedMs": 7014,
+              "cpu100ns": 8437500,
+              "rssBytes": 243757056
+            },
+            {
+              "elapsedMs": 8015,
+              "cpu100ns": 8437500,
+              "rssBytes": 243830784
+            },
+            {
+              "elapsedMs": 9017,
+              "cpu100ns": 8437500,
+              "rssBytes": 243847168
+            },
+            {
+              "elapsedMs": 10020,
+              "cpu100ns": 8437500,
+              "rssBytes": 243924992
+            },
+            {
+              "elapsedMs": 11022,
+              "cpu100ns": 8593750,
+              "rssBytes": 243924992
+            },
+            {
+              "elapsedMs": 12025,
+              "cpu100ns": 8750000,
+              "rssBytes": 243990528
+            },
+            {
+              "elapsedMs": 13027,
+              "cpu100ns": 8750000,
+              "rssBytes": 243990528
+            },
+            {
+              "elapsedMs": 14029,
+              "cpu100ns": 8750000,
+              "rssBytes": 243990528
+            },
+            {
+              "elapsedMs": 15031,
+              "cpu100ns": 9062500,
+              "rssBytes": 244056064
+            },
+            {
+              "elapsedMs": 16033,
+              "cpu100ns": 9062500,
+              "rssBytes": 244056064
+            },
+            {
+              "elapsedMs": 17035,
+              "cpu100ns": 9062500,
+              "rssBytes": 244129792
+            },
+            {
+              "elapsedMs": 18037,
+              "cpu100ns": 9062500,
+              "rssBytes": 244129792
+            },
+            {
+              "elapsedMs": 19039,
+              "cpu100ns": 9062500,
+              "rssBytes": 244199424
+            },
+            {
+              "elapsedMs": 20042,
+              "cpu100ns": 9062500,
+              "rssBytes": 244228096
+            },
+            {
+              "elapsedMs": 21044,
+              "cpu100ns": 9062500,
+              "rssBytes": 244228096
+            },
+            {
+              "elapsedMs": 22046,
+              "cpu100ns": 9062500,
+              "rssBytes": 244293632
+            },
+            {
+              "elapsedMs": 23047,
+              "cpu100ns": 9062500,
+              "rssBytes": 244305920
+            },
+            {
+              "elapsedMs": 24049,
+              "cpu100ns": 9062500,
+              "rssBytes": 244297728
+            },
+            {
+              "elapsedMs": 25051,
+              "cpu100ns": 9062500,
+              "rssBytes": 244338688
+            },
+            {
+              "elapsedMs": 26053,
+              "cpu100ns": 9218750,
+              "rssBytes": 244416512
+            },
+            {
+              "elapsedMs": 27056,
+              "cpu100ns": 9531250,
+              "rssBytes": 244416512
+            },
+            {
+              "elapsedMs": 28058,
+              "cpu100ns": 9531250,
+              "rssBytes": 244482048
+            },
+            {
+              "elapsedMs": 29060,
+              "cpu100ns": 9687500,
+              "rssBytes": 244436992
+            },
+            {
+              "elapsedMs": 30063,
+              "cpu100ns": 9687500,
+              "rssBytes": 244441088
+            },
+            {
+              "elapsedMs": 31064,
+              "cpu100ns": 9687500,
+              "rssBytes": 244506624
+            },
+            {
+              "elapsedMs": 32066,
+              "cpu100ns": 9687500,
+              "rssBytes": 244748288
+            },
+            {
+              "elapsedMs": 33068,
+              "cpu100ns": 9687500,
+              "rssBytes": 244817920
+            },
+            {
+              "elapsedMs": 34070,
+              "cpu100ns": 9687500,
+              "rssBytes": 244817920
+            },
+            {
+              "elapsedMs": 35073,
+              "cpu100ns": 9687500,
+              "rssBytes": 244883456
+            },
+            {
+              "elapsedMs": 36074,
+              "cpu100ns": 9687500,
+              "rssBytes": 244883456
+            },
+            {
+              "elapsedMs": 37076,
+              "cpu100ns": 9687500,
+              "rssBytes": 244916224
+            },
+            {
+              "elapsedMs": 38078,
+              "cpu100ns": 9687500,
+              "rssBytes": 244912128
+            },
+            {
+              "elapsedMs": 39080,
+              "cpu100ns": 9687500,
+              "rssBytes": 244928512
+            },
+            {
+              "elapsedMs": 40082,
+              "cpu100ns": 9687500,
+              "rssBytes": 245264384
+            },
+            {
+              "elapsedMs": 41084,
+              "cpu100ns": 9687500,
+              "rssBytes": 245329920
+            },
+            {
+              "elapsedMs": 42085,
+              "cpu100ns": 9687500,
+              "rssBytes": 245334016
+            },
+            {
+              "elapsedMs": 43087,
+              "cpu100ns": 9843750,
+              "rssBytes": 245399552
+            },
+            {
+              "elapsedMs": 44089,
+              "cpu100ns": 9843750,
+              "rssBytes": 245399552
+            },
+            {
+              "elapsedMs": 45091,
+              "cpu100ns": 9843750,
+              "rssBytes": 245465088
+            },
+            {
+              "elapsedMs": 46093,
+              "cpu100ns": 9843750,
+              "rssBytes": 245465088
+            },
+            {
+              "elapsedMs": 47095,
+              "cpu100ns": 9843750,
+              "rssBytes": 245465088
+            },
+            {
+              "elapsedMs": 48097,
+              "cpu100ns": 9843750,
+              "rssBytes": 245506048
+            },
+            {
+              "elapsedMs": 49099,
+              "cpu100ns": 10000000,
+              "rssBytes": 245522432
+            },
+            {
+              "elapsedMs": 50101,
+              "cpu100ns": 10000000,
+              "rssBytes": 245530624
+            },
+            {
+              "elapsedMs": 51102,
+              "cpu100ns": 10000000,
+              "rssBytes": 245596160
+            },
+            {
+              "elapsedMs": 52104,
+              "cpu100ns": 10000000,
+              "rssBytes": 245600256
+            },
+            {
+              "elapsedMs": 53106,
+              "cpu100ns": 10156250,
+              "rssBytes": 245673984
+            },
+            {
+              "elapsedMs": 54108,
+              "cpu100ns": 10156250,
+              "rssBytes": 245649408
+            },
+            {
+              "elapsedMs": 55110,
+              "cpu100ns": 10156250,
+              "rssBytes": 245714944
+            },
+            {
+              "elapsedMs": 56112,
+              "cpu100ns": 10156250,
+              "rssBytes": 245714944
+            },
+            {
+              "elapsedMs": 57114,
+              "cpu100ns": 10156250,
+              "rssBytes": 245714944
+            },
+            {
+              "elapsedMs": 58116,
+              "cpu100ns": 10312500,
+              "rssBytes": 245780480
+            },
+            {
+              "elapsedMs": 59118,
+              "cpu100ns": 10468750,
+              "rssBytes": 245800960
+            },
+            {
+              "elapsedMs": 60120,
+              "cpu100ns": 10625000,
+              "rssBytes": 245829632
+            }
+          ],
+          "cleanup": {
+            "activeRegistrations": 0,
+            "capabilityBits": 0,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 1,
+            "descriptorReleases": 1,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 1,
+            "height": 720,
+            "liveSources": 0,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 11562500,
+            "processId": 42632,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "width": 1280
+          },
+          "cpuPercentOneLogicalCore": 0.4667139138793101
+        },
+        {
+          "round": 2,
+          "warmupSeconds": 30,
+          "measurementMs": 60200,
+          "before": {
+            "activeRegistrations": 1,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "gpuTexture",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 2,
+            "descriptorReleases": 2,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 2,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 12968750,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 0,
+            "targetWidth": 0,
+            "textureId": 1746066962096,
+            "width": 1280
+          },
+          "after": {
+            "activeRegistrations": 1,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "gpuTexture",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 2,
+            "descriptorReleases": 2,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 2,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 14531250,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 0,
+            "targetWidth": 0,
+            "textureId": 1746066962096,
+            "width": 1280
+          },
+          "samples": [
+            {
+              "elapsedMs": 1000,
+              "cpu100ns": 12968750,
+              "rssBytes": 249249792
+            },
+            {
+              "elapsedMs": 2002,
+              "cpu100ns": 12968750,
+              "rssBytes": 249315328
+            },
+            {
+              "elapsedMs": 3005,
+              "cpu100ns": 12968750,
+              "rssBytes": 249315328
+            },
+            {
+              "elapsedMs": 4007,
+              "cpu100ns": 12968750,
+              "rssBytes": 249380864
+            },
+            {
+              "elapsedMs": 5009,
+              "cpu100ns": 12968750,
+              "rssBytes": 249356288
+            },
+            {
+              "elapsedMs": 6011,
+              "cpu100ns": 12968750,
+              "rssBytes": 249421824
+            },
+            {
+              "elapsedMs": 7013,
+              "cpu100ns": 12968750,
+              "rssBytes": 249421824
+            },
+            {
+              "elapsedMs": 8014,
+              "cpu100ns": 12968750,
+              "rssBytes": 249425920
+            },
+            {
+              "elapsedMs": 9016,
+              "cpu100ns": 13125000,
+              "rssBytes": 249491456
+            },
+            {
+              "elapsedMs": 10019,
+              "cpu100ns": 13125000,
+              "rssBytes": 249495552
+            },
+            {
+              "elapsedMs": 11020,
+              "cpu100ns": 13125000,
+              "rssBytes": 249516032
+            },
+            {
+              "elapsedMs": 12022,
+              "cpu100ns": 13125000,
+              "rssBytes": 249544704
+            },
+            {
+              "elapsedMs": 13024,
+              "cpu100ns": 13125000,
+              "rssBytes": 249614336
+            },
+            {
+              "elapsedMs": 14026,
+              "cpu100ns": 13125000,
+              "rssBytes": 249614336
+            },
+            {
+              "elapsedMs": 15028,
+              "cpu100ns": 13125000,
+              "rssBytes": 249696256
+            },
+            {
+              "elapsedMs": 16030,
+              "cpu100ns": 13125000,
+              "rssBytes": 249700352
+            },
+            {
+              "elapsedMs": 17033,
+              "cpu100ns": 13125000,
+              "rssBytes": 249704448
+            },
+            {
+              "elapsedMs": 18035,
+              "cpu100ns": 13125000,
+              "rssBytes": 249769984
+            },
+            {
+              "elapsedMs": 19037,
+              "cpu100ns": 13281250,
+              "rssBytes": 249769984
+            },
+            {
+              "elapsedMs": 20039,
+              "cpu100ns": 13281250,
+              "rssBytes": 249847808
+            },
+            {
+              "elapsedMs": 21040,
+              "cpu100ns": 13437500,
+              "rssBytes": 250134528
+            },
+            {
+              "elapsedMs": 22042,
+              "cpu100ns": 13437500,
+              "rssBytes": 250200064
+            },
+            {
+              "elapsedMs": 23044,
+              "cpu100ns": 13437500,
+              "rssBytes": 250200064
+            },
+            {
+              "elapsedMs": 24046,
+              "cpu100ns": 13437500,
+              "rssBytes": 250200064
+            },
+            {
+              "elapsedMs": 25048,
+              "cpu100ns": 13437500,
+              "rssBytes": 250331136
+            },
+            {
+              "elapsedMs": 26050,
+              "cpu100ns": 13437500,
+              "rssBytes": 250335232
+            },
+            {
+              "elapsedMs": 27052,
+              "cpu100ns": 13437500,
+              "rssBytes": 250400768
+            },
+            {
+              "elapsedMs": 28054,
+              "cpu100ns": 13437500,
+              "rssBytes": 250400768
+            },
+            {
+              "elapsedMs": 29056,
+              "cpu100ns": 13437500,
+              "rssBytes": 250400768
+            },
+            {
+              "elapsedMs": 30058,
+              "cpu100ns": 13437500,
+              "rssBytes": 250396672
+            },
+            {
+              "elapsedMs": 31059,
+              "cpu100ns": 13437500,
+              "rssBytes": 250425344
+            },
+            {
+              "elapsedMs": 32061,
+              "cpu100ns": 13437500,
+              "rssBytes": 250503168
+            },
+            {
+              "elapsedMs": 33062,
+              "cpu100ns": 13437500,
+              "rssBytes": 250503168
+            },
+            {
+              "elapsedMs": 34064,
+              "cpu100ns": 13437500,
+              "rssBytes": 250568704
+            },
+            {
+              "elapsedMs": 35066,
+              "cpu100ns": 13437500,
+              "rssBytes": 250568704
+            },
+            {
+              "elapsedMs": 36068,
+              "cpu100ns": 13593750,
+              "rssBytes": 250568704
+            },
+            {
+              "elapsedMs": 37070,
+              "cpu100ns": 13593750,
+              "rssBytes": 250634240
+            },
+            {
+              "elapsedMs": 38072,
+              "cpu100ns": 13593750,
+              "rssBytes": 250634240
+            },
+            {
+              "elapsedMs": 39073,
+              "cpu100ns": 13593750,
+              "rssBytes": 250699776
+            },
+            {
+              "elapsedMs": 40075,
+              "cpu100ns": 13593750,
+              "rssBytes": 250699776
+            },
+            {
+              "elapsedMs": 41077,
+              "cpu100ns": 13593750,
+              "rssBytes": 250707968
+            },
+            {
+              "elapsedMs": 42079,
+              "cpu100ns": 13906250,
+              "rssBytes": 250773504
+            },
+            {
+              "elapsedMs": 43081,
+              "cpu100ns": 13906250,
+              "rssBytes": 250773504
+            },
+            {
+              "elapsedMs": 44083,
+              "cpu100ns": 13906250,
+              "rssBytes": 250839040
+            },
+            {
+              "elapsedMs": 45085,
+              "cpu100ns": 13906250,
+              "rssBytes": 250839040
+            },
+            {
+              "elapsedMs": 46087,
+              "cpu100ns": 14062500,
+              "rssBytes": 250855424
+            },
+            {
+              "elapsedMs": 47089,
+              "cpu100ns": 14062500,
+              "rssBytes": 251244544
+            },
+            {
+              "elapsedMs": 48091,
+              "cpu100ns": 14062500,
+              "rssBytes": 251244544
+            },
+            {
+              "elapsedMs": 49093,
+              "cpu100ns": 14062500,
+              "rssBytes": 251256832
+            },
+            {
+              "elapsedMs": 50095,
+              "cpu100ns": 14062500,
+              "rssBytes": 251281408
+            },
+            {
+              "elapsedMs": 51098,
+              "cpu100ns": 14218750,
+              "rssBytes": 251293696
+            },
+            {
+              "elapsedMs": 52099,
+              "cpu100ns": 14375000,
+              "rssBytes": 251359232
+            },
+            {
+              "elapsedMs": 53101,
+              "cpu100ns": 14375000,
+              "rssBytes": 251359232
+            },
+            {
+              "elapsedMs": 54103,
+              "cpu100ns": 14375000,
+              "rssBytes": 251424768
+            },
+            {
+              "elapsedMs": 55104,
+              "cpu100ns": 14375000,
+              "rssBytes": 251437056
+            },
+            {
+              "elapsedMs": 56106,
+              "cpu100ns": 14375000,
+              "rssBytes": 251437056
+            },
+            {
+              "elapsedMs": 57108,
+              "cpu100ns": 14531250,
+              "rssBytes": 251502592
+            },
+            {
+              "elapsedMs": 58109,
+              "cpu100ns": 14531250,
+              "rssBytes": 251502592
+            },
+            {
+              "elapsedMs": 59110,
+              "cpu100ns": 14531250,
+              "rssBytes": 251883520
+            },
+            {
+              "elapsedMs": 60113,
+              "cpu100ns": 14531250,
+              "rssBytes": 251883520
+            }
+          ],
+          "cleanup": {
+            "activeRegistrations": 0,
+            "capabilityBits": 0,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 2,
+            "descriptorReleases": 2,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 2,
+            "height": 720,
+            "liveSources": 0,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 15000000,
+            "processId": 42632,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "width": 1280
+          },
+          "cpuPercentOneLogicalCore": 0.2595508138035119
+        },
+        {
+          "round": 3,
+          "warmupSeconds": 30,
+          "measurementMs": 60184,
+          "before": {
+            "activeRegistrations": 1,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "gpuTexture",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 3,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 17187500,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 0,
+            "targetWidth": 0,
+            "textureId": 1746066977360,
+            "width": 1280
+          },
+          "after": {
+            "activeRegistrations": 1,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "gpuTexture",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 3,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 19218750,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 0,
+            "targetWidth": 0,
+            "textureId": 1746066977360,
+            "width": 1280
+          },
+          "samples": [
+            {
+              "elapsedMs": 1001,
+              "cpu100ns": 17187500,
+              "rssBytes": 246444032
+            },
+            {
+              "elapsedMs": 2003,
+              "cpu100ns": 17187500,
+              "rssBytes": 246444032
+            },
+            {
+              "elapsedMs": 3005,
+              "cpu100ns": 17187500,
+              "rssBytes": 246509568
+            },
+            {
+              "elapsedMs": 4006,
+              "cpu100ns": 17187500,
+              "rssBytes": 246538240
+            },
+            {
+              "elapsedMs": 5008,
+              "cpu100ns": 17187500,
+              "rssBytes": 246538240
+            },
+            {
+              "elapsedMs": 6010,
+              "cpu100ns": 17187500,
+              "rssBytes": 246538240
+            },
+            {
+              "elapsedMs": 7011,
+              "cpu100ns": 17343750,
+              "rssBytes": 246603776
+            },
+            {
+              "elapsedMs": 8013,
+              "cpu100ns": 17656250,
+              "rssBytes": 246603776
+            },
+            {
+              "elapsedMs": 9015,
+              "cpu100ns": 17656250,
+              "rssBytes": 246607872
+            },
+            {
+              "elapsedMs": 10017,
+              "cpu100ns": 17656250,
+              "rssBytes": 246673408
+            },
+            {
+              "elapsedMs": 11018,
+              "cpu100ns": 17656250,
+              "rssBytes": 246673408
+            },
+            {
+              "elapsedMs": 12020,
+              "cpu100ns": 17656250,
+              "rssBytes": 246738944
+            },
+            {
+              "elapsedMs": 13022,
+              "cpu100ns": 17656250,
+              "rssBytes": 246718464
+            },
+            {
+              "elapsedMs": 14025,
+              "cpu100ns": 17656250,
+              "rssBytes": 246718464
+            },
+            {
+              "elapsedMs": 15027,
+              "cpu100ns": 17656250,
+              "rssBytes": 246784000
+            },
+            {
+              "elapsedMs": 16028,
+              "cpu100ns": 17656250,
+              "rssBytes": 246784000
+            },
+            {
+              "elapsedMs": 17030,
+              "cpu100ns": 17656250,
+              "rssBytes": 246849536
+            },
+            {
+              "elapsedMs": 18032,
+              "cpu100ns": 17656250,
+              "rssBytes": 246849536
+            },
+            {
+              "elapsedMs": 19034,
+              "cpu100ns": 17656250,
+              "rssBytes": 246915072
+            },
+            {
+              "elapsedMs": 20036,
+              "cpu100ns": 17656250,
+              "rssBytes": 246915072
+            },
+            {
+              "elapsedMs": 21038,
+              "cpu100ns": 17812500,
+              "rssBytes": 246915072
+            },
+            {
+              "elapsedMs": 22040,
+              "cpu100ns": 17812500,
+              "rssBytes": 246931456
+            },
+            {
+              "elapsedMs": 23042,
+              "cpu100ns": 17968750,
+              "rssBytes": 246956032
+            },
+            {
+              "elapsedMs": 24044,
+              "cpu100ns": 17968750,
+              "rssBytes": 247042048
+            },
+            {
+              "elapsedMs": 25045,
+              "cpu100ns": 17968750,
+              "rssBytes": 247058432
+            },
+            {
+              "elapsedMs": 26047,
+              "cpu100ns": 17968750,
+              "rssBytes": 247070720
+            },
+            {
+              "elapsedMs": 27049,
+              "cpu100ns": 17968750,
+              "rssBytes": 247136256
+            },
+            {
+              "elapsedMs": 28051,
+              "cpu100ns": 17968750,
+              "rssBytes": 247136256
+            },
+            {
+              "elapsedMs": 29053,
+              "cpu100ns": 17968750,
+              "rssBytes": 247201792
+            },
+            {
+              "elapsedMs": 30054,
+              "cpu100ns": 17968750,
+              "rssBytes": 247205888
+            },
+            {
+              "elapsedMs": 31056,
+              "cpu100ns": 17968750,
+              "rssBytes": 247205888
+            },
+            {
+              "elapsedMs": 32058,
+              "cpu100ns": 17968750,
+              "rssBytes": 247271424
+            },
+            {
+              "elapsedMs": 33060,
+              "cpu100ns": 17968750,
+              "rssBytes": 247271424
+            },
+            {
+              "elapsedMs": 34062,
+              "cpu100ns": 17968750,
+              "rssBytes": 247377920
+            },
+            {
+              "elapsedMs": 35064,
+              "cpu100ns": 17968750,
+              "rssBytes": 247377920
+            },
+            {
+              "elapsedMs": 36066,
+              "cpu100ns": 18125000,
+              "rssBytes": 247377920
+            },
+            {
+              "elapsedMs": 37067,
+              "cpu100ns": 18437500,
+              "rssBytes": 247443456
+            },
+            {
+              "elapsedMs": 38070,
+              "cpu100ns": 18437500,
+              "rssBytes": 247443456
+            },
+            {
+              "elapsedMs": 39071,
+              "cpu100ns": 18437500,
+              "rssBytes": 247508992
+            },
+            {
+              "elapsedMs": 40073,
+              "cpu100ns": 18437500,
+              "rssBytes": 247508992
+            },
+            {
+              "elapsedMs": 41075,
+              "cpu100ns": 18437500,
+              "rssBytes": 247508992
+            },
+            {
+              "elapsedMs": 42076,
+              "cpu100ns": 18437500,
+              "rssBytes": 247537664
+            },
+            {
+              "elapsedMs": 43079,
+              "cpu100ns": 18593750,
+              "rssBytes": 247562240
+            },
+            {
+              "elapsedMs": 44081,
+              "cpu100ns": 18750000,
+              "rssBytes": 247640064
+            },
+            {
+              "elapsedMs": 45083,
+              "cpu100ns": 18750000,
+              "rssBytes": 247640064
+            },
+            {
+              "elapsedMs": 46085,
+              "cpu100ns": 18750000,
+              "rssBytes": 247705600
+            },
+            {
+              "elapsedMs": 47086,
+              "cpu100ns": 18750000,
+              "rssBytes": 247705600
+            },
+            {
+              "elapsedMs": 48089,
+              "cpu100ns": 18750000,
+              "rssBytes": 247705600
+            },
+            {
+              "elapsedMs": 49091,
+              "cpu100ns": 18750000,
+              "rssBytes": 247771136
+            },
+            {
+              "elapsedMs": 50092,
+              "cpu100ns": 18750000,
+              "rssBytes": 247771136
+            },
+            {
+              "elapsedMs": 51094,
+              "cpu100ns": 18750000,
+              "rssBytes": 247836672
+            },
+            {
+              "elapsedMs": 52096,
+              "cpu100ns": 18750000,
+              "rssBytes": 247836672
+            },
+            {
+              "elapsedMs": 53097,
+              "cpu100ns": 18750000,
+              "rssBytes": 247836672
+            },
+            {
+              "elapsedMs": 54098,
+              "cpu100ns": 18750000,
+              "rssBytes": 247902208
+            },
+            {
+              "elapsedMs": 55101,
+              "cpu100ns": 18906250,
+              "rssBytes": 247902208
+            },
+            {
+              "elapsedMs": 56103,
+              "cpu100ns": 18906250,
+              "rssBytes": 247955456
+            },
+            {
+              "elapsedMs": 57105,
+              "cpu100ns": 18906250,
+              "rssBytes": 247955456
+            },
+            {
+              "elapsedMs": 58106,
+              "cpu100ns": 18906250,
+              "rssBytes": 247955456
+            },
+            {
+              "elapsedMs": 59109,
+              "cpu100ns": 19062500,
+              "rssBytes": 248020992
+            },
+            {
+              "elapsedMs": 60111,
+              "cpu100ns": 19062500,
+              "rssBytes": 248033280
+            }
+          ],
+          "cleanup": {
+            "activeRegistrations": 0,
+            "capabilityBits": 0,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 3,
+            "height": 720,
+            "liveSources": 0,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 19531250,
+            "processId": 42632,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "width": 1280
+          },
+          "cpuPercentOneLogicalCore": 0.33750134688999056
+        }
+      ],
+      "gpuUtilization": {
+        "available": false,
+        "reason": "No per-process GPU utilization instrument integrated"
+      },
+      "vram": {
+        "available": false,
+        "reason": "DXGI video memory budget instrumentation not implemented; RSS is process memory only"
+      }
+    },
+    "nativeSurface": {
+      "outcome": "passed",
+      "rounds": [
+        {
+          "round": 1,
+          "warmupSeconds": 30,
+          "measurementMs": 60178,
+          "before": {
+            "activeRegistrations": 0,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "nativeSurface",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 4,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 21406250,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 544,
+            "targetWidth": 938,
+            "textureId": -1,
+            "width": 1280
+          },
+          "after": {
+            "activeRegistrations": 0,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "nativeSurface",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 4,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 24218750,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 544,
+            "targetWidth": 938,
+            "textureId": -1,
+            "width": 1280
+          },
+          "samples": [
+            {
+              "elapsedMs": 1001,
+              "cpu100ns": 21406250,
+              "rssBytes": 251932672
+            },
+            {
+              "elapsedMs": 2003,
+              "cpu100ns": 21406250,
+              "rssBytes": 251961344
+            },
+            {
+              "elapsedMs": 3005,
+              "cpu100ns": 21875000,
+              "rssBytes": 252067840
+            },
+            {
+              "elapsedMs": 4007,
+              "cpu100ns": 21875000,
+              "rssBytes": 252338176
+            },
+            {
+              "elapsedMs": 5009,
+              "cpu100ns": 22031250,
+              "rssBytes": 252338176
+            },
+            {
+              "elapsedMs": 6011,
+              "cpu100ns": 22031250,
+              "rssBytes": 252403712
+            },
+            {
+              "elapsedMs": 7012,
+              "cpu100ns": 22031250,
+              "rssBytes": 252403712
+            },
+            {
+              "elapsedMs": 8014,
+              "cpu100ns": 22187500,
+              "rssBytes": 252403712
+            },
+            {
+              "elapsedMs": 9016,
+              "cpu100ns": 22187500,
+              "rssBytes": 252469248
+            },
+            {
+              "elapsedMs": 10018,
+              "cpu100ns": 22187500,
+              "rssBytes": 252444672
+            },
+            {
+              "elapsedMs": 11021,
+              "cpu100ns": 22343750,
+              "rssBytes": 252530688
+            },
+            {
+              "elapsedMs": 12022,
+              "cpu100ns": 22343750,
+              "rssBytes": 252530688
+            },
+            {
+              "elapsedMs": 13023,
+              "cpu100ns": 22343750,
+              "rssBytes": 252530688
+            },
+            {
+              "elapsedMs": 14025,
+              "cpu100ns": 22343750,
+              "rssBytes": 252596224
+            },
+            {
+              "elapsedMs": 15027,
+              "cpu100ns": 22343750,
+              "rssBytes": 252575744
+            },
+            {
+              "elapsedMs": 16029,
+              "cpu100ns": 22343750,
+              "rssBytes": 252641280
+            },
+            {
+              "elapsedMs": 17030,
+              "cpu100ns": 22343750,
+              "rssBytes": 252665856
+            },
+            {
+              "elapsedMs": 18032,
+              "cpu100ns": 22343750,
+              "rssBytes": 252665856
+            },
+            {
+              "elapsedMs": 19034,
+              "cpu100ns": 22343750,
+              "rssBytes": 252731392
+            },
+            {
+              "elapsedMs": 20036,
+              "cpu100ns": 22500000,
+              "rssBytes": 252731392
+            },
+            {
+              "elapsedMs": 21038,
+              "cpu100ns": 22500000,
+              "rssBytes": 252715008
+            },
+            {
+              "elapsedMs": 22040,
+              "cpu100ns": 22500000,
+              "rssBytes": 252743680
+            },
+            {
+              "elapsedMs": 23042,
+              "cpu100ns": 22500000,
+              "rssBytes": 252821504
+            },
+            {
+              "elapsedMs": 24044,
+              "cpu100ns": 22500000,
+              "rssBytes": 252821504
+            },
+            {
+              "elapsedMs": 25046,
+              "cpu100ns": 22812500,
+              "rssBytes": 252821504
+            },
+            {
+              "elapsedMs": 26047,
+              "cpu100ns": 22812500,
+              "rssBytes": 252887040
+            },
+            {
+              "elapsedMs": 27049,
+              "cpu100ns": 22812500,
+              "rssBytes": 252887040
+            },
+            {
+              "elapsedMs": 28050,
+              "cpu100ns": 22812500,
+              "rssBytes": 252956672
+            },
+            {
+              "elapsedMs": 29052,
+              "cpu100ns": 22812500,
+              "rssBytes": 252956672
+            },
+            {
+              "elapsedMs": 30054,
+              "cpu100ns": 22812500,
+              "rssBytes": 253022208
+            },
+            {
+              "elapsedMs": 31056,
+              "cpu100ns": 22812500,
+              "rssBytes": 253022208
+            },
+            {
+              "elapsedMs": 32058,
+              "cpu100ns": 22968750,
+              "rssBytes": 253022208
+            },
+            {
+              "elapsedMs": 33060,
+              "cpu100ns": 23125000,
+              "rssBytes": 253087744
+            },
+            {
+              "elapsedMs": 34062,
+              "cpu100ns": 23281250,
+              "rssBytes": 253087744
+            },
+            {
+              "elapsedMs": 35064,
+              "cpu100ns": 23281250,
+              "rssBytes": 253153280
+            },
+            {
+              "elapsedMs": 36066,
+              "cpu100ns": 23281250,
+              "rssBytes": 253153280
+            },
+            {
+              "elapsedMs": 37068,
+              "cpu100ns": 23281250,
+              "rssBytes": 253116416
+            },
+            {
+              "elapsedMs": 38069,
+              "cpu100ns": 23281250,
+              "rssBytes": 253181952
+            },
+            {
+              "elapsedMs": 39072,
+              "cpu100ns": 23281250,
+              "rssBytes": 253181952
+            },
+            {
+              "elapsedMs": 40074,
+              "cpu100ns": 23281250,
+              "rssBytes": 253190144
+            },
+            {
+              "elapsedMs": 41076,
+              "cpu100ns": 23281250,
+              "rssBytes": 253214720
+            },
+            {
+              "elapsedMs": 42078,
+              "cpu100ns": 23281250,
+              "rssBytes": 253255680
+            },
+            {
+              "elapsedMs": 43080,
+              "cpu100ns": 23437500,
+              "rssBytes": 253333504
+            },
+            {
+              "elapsedMs": 44082,
+              "cpu100ns": 23437500,
+              "rssBytes": 253341696
+            },
+            {
+              "elapsedMs": 45084,
+              "cpu100ns": 23437500,
+              "rssBytes": 253407232
+            },
+            {
+              "elapsedMs": 46086,
+              "cpu100ns": 23437500,
+              "rssBytes": 253407232
+            },
+            {
+              "elapsedMs": 47088,
+              "cpu100ns": 23437500,
+              "rssBytes": 253386752
+            },
+            {
+              "elapsedMs": 48089,
+              "cpu100ns": 23437500,
+              "rssBytes": 253452288
+            },
+            {
+              "elapsedMs": 49091,
+              "cpu100ns": 23593750,
+              "rssBytes": 253452288
+            },
+            {
+              "elapsedMs": 50093,
+              "cpu100ns": 23593750,
+              "rssBytes": 253517824
+            },
+            {
+              "elapsedMs": 51095,
+              "cpu100ns": 23593750,
+              "rssBytes": 253517824
+            },
+            {
+              "elapsedMs": 52097,
+              "cpu100ns": 23593750,
+              "rssBytes": 253517824
+            },
+            {
+              "elapsedMs": 53099,
+              "cpu100ns": 23593750,
+              "rssBytes": 253583360
+            },
+            {
+              "elapsedMs": 54100,
+              "cpu100ns": 23593750,
+              "rssBytes": 253583360
+            },
+            {
+              "elapsedMs": 55102,
+              "cpu100ns": 23593750,
+              "rssBytes": 253648896
+            },
+            {
+              "elapsedMs": 56104,
+              "cpu100ns": 23593750,
+              "rssBytes": 253648896
+            },
+            {
+              "elapsedMs": 57106,
+              "cpu100ns": 23750000,
+              "rssBytes": 253648896
+            },
+            {
+              "elapsedMs": 58108,
+              "cpu100ns": 24062500,
+              "rssBytes": 253730816
+            },
+            {
+              "elapsedMs": 59110,
+              "cpu100ns": 24062500,
+              "rssBytes": 253730816
+            },
+            {
+              "elapsedMs": 60112,
+              "cpu100ns": 24218750,
+              "rssBytes": 253755392
+            }
+          ],
+          "cleanup": {
+            "activeRegistrations": 0,
+            "capabilityBits": 0,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 4,
+            "height": 720,
+            "liveSources": 0,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 24375000,
+            "processId": 42632,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "width": 1280
+          },
+          "cpuPercentOneLogicalCore": 0.4673578966119585
+        },
+        {
+          "round": 2,
+          "warmupSeconds": 30,
+          "measurementMs": 60180,
+          "before": {
+            "activeRegistrations": 0,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "nativeSurface",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 5,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 25937500,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 544,
+            "targetWidth": 938,
+            "textureId": -1,
+            "width": 1280
+          },
+          "after": {
+            "activeRegistrations": 0,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "nativeSurface",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 5,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 29062500,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 544,
+            "targetWidth": 938,
+            "textureId": -1,
+            "width": 1280
+          },
+          "samples": [
+            {
+              "elapsedMs": 1001,
+              "cpu100ns": 25937500,
+              "rssBytes": 250142720
+            },
+            {
+              "elapsedMs": 2003,
+              "cpu100ns": 25937500,
+              "rssBytes": 250142720
+            },
+            {
+              "elapsedMs": 3004,
+              "cpu100ns": 25937500,
+              "rssBytes": 250208256
+            },
+            {
+              "elapsedMs": 4006,
+              "cpu100ns": 25937500,
+              "rssBytes": 250208256
+            },
+            {
+              "elapsedMs": 5008,
+              "cpu100ns": 25937500,
+              "rssBytes": 250208256
+            },
+            {
+              "elapsedMs": 6009,
+              "cpu100ns": 26093750,
+              "rssBytes": 250273792
+            },
+            {
+              "elapsedMs": 7011,
+              "cpu100ns": 26250000,
+              "rssBytes": 250273792
+            },
+            {
+              "elapsedMs": 8013,
+              "cpu100ns": 26250000,
+              "rssBytes": 250302464
+            },
+            {
+              "elapsedMs": 9015,
+              "cpu100ns": 26406250,
+              "rssBytes": 250331136
+            },
+            {
+              "elapsedMs": 10017,
+              "cpu100ns": 26406250,
+              "rssBytes": 250318848
+            },
+            {
+              "elapsedMs": 11019,
+              "cpu100ns": 26562500,
+              "rssBytes": 250384384
+            },
+            {
+              "elapsedMs": 12021,
+              "cpu100ns": 26562500,
+              "rssBytes": 250363904
+            },
+            {
+              "elapsedMs": 13022,
+              "cpu100ns": 26562500,
+              "rssBytes": 250429440
+            },
+            {
+              "elapsedMs": 14023,
+              "cpu100ns": 26562500,
+              "rssBytes": 250429440
+            },
+            {
+              "elapsedMs": 15026,
+              "cpu100ns": 26718750,
+              "rssBytes": 250494976
+            },
+            {
+              "elapsedMs": 16027,
+              "cpu100ns": 26875000,
+              "rssBytes": 250494976
+            },
+            {
+              "elapsedMs": 17030,
+              "cpu100ns": 26875000,
+              "rssBytes": 250503168
+            },
+            {
+              "elapsedMs": 18031,
+              "cpu100ns": 26875000,
+              "rssBytes": 250568704
+            },
+            {
+              "elapsedMs": 19033,
+              "cpu100ns": 26875000,
+              "rssBytes": 250568704
+            },
+            {
+              "elapsedMs": 20036,
+              "cpu100ns": 26875000,
+              "rssBytes": 250634240
+            },
+            {
+              "elapsedMs": 21038,
+              "cpu100ns": 26875000,
+              "rssBytes": 250634240
+            },
+            {
+              "elapsedMs": 22039,
+              "cpu100ns": 26875000,
+              "rssBytes": 250634240
+            },
+            {
+              "elapsedMs": 23040,
+              "cpu100ns": 26875000,
+              "rssBytes": 250699776
+            },
+            {
+              "elapsedMs": 24042,
+              "cpu100ns": 26875000,
+              "rssBytes": 250716160
+            },
+            {
+              "elapsedMs": 25044,
+              "cpu100ns": 27031250,
+              "rssBytes": 250785792
+            },
+            {
+              "elapsedMs": 26046,
+              "cpu100ns": 27031250,
+              "rssBytes": 250785792
+            },
+            {
+              "elapsedMs": 27048,
+              "cpu100ns": 27031250,
+              "rssBytes": 250793984
+            },
+            {
+              "elapsedMs": 28050,
+              "cpu100ns": 27031250,
+              "rssBytes": 250810368
+            },
+            {
+              "elapsedMs": 29052,
+              "cpu100ns": 27031250,
+              "rssBytes": 250839040
+            },
+            {
+              "elapsedMs": 30054,
+              "cpu100ns": 27031250,
+              "rssBytes": 250920960
+            },
+            {
+              "elapsedMs": 31056,
+              "cpu100ns": 27031250,
+              "rssBytes": 250920960
+            },
+            {
+              "elapsedMs": 32058,
+              "cpu100ns": 27031250,
+              "rssBytes": 250925056
+            },
+            {
+              "elapsedMs": 33060,
+              "cpu100ns": 27031250,
+              "rssBytes": 250990592
+            },
+            {
+              "elapsedMs": 34062,
+              "cpu100ns": 27343750,
+              "rssBytes": 250990592
+            },
+            {
+              "elapsedMs": 35064,
+              "cpu100ns": 27656250,
+              "rssBytes": 251031552
+            },
+            {
+              "elapsedMs": 36066,
+              "cpu100ns": 27656250,
+              "rssBytes": 251031552
+            },
+            {
+              "elapsedMs": 37068,
+              "cpu100ns": 27656250,
+              "rssBytes": 251011072
+            },
+            {
+              "elapsedMs": 38070,
+              "cpu100ns": 27656250,
+              "rssBytes": 251076608
+            },
+            {
+              "elapsedMs": 39072,
+              "cpu100ns": 27812500,
+              "rssBytes": 251076608
+            },
+            {
+              "elapsedMs": 40074,
+              "cpu100ns": 28125000,
+              "rssBytes": 251142144
+            },
+            {
+              "elapsedMs": 41075,
+              "cpu100ns": 28125000,
+              "rssBytes": 251142144
+            },
+            {
+              "elapsedMs": 42077,
+              "cpu100ns": 28281250,
+              "rssBytes": 251207680
+            },
+            {
+              "elapsedMs": 43078,
+              "cpu100ns": 28437500,
+              "rssBytes": 251207680
+            },
+            {
+              "elapsedMs": 44080,
+              "cpu100ns": 28437500,
+              "rssBytes": 251273216
+            },
+            {
+              "elapsedMs": 45082,
+              "cpu100ns": 28437500,
+              "rssBytes": 251338752
+            },
+            {
+              "elapsedMs": 46084,
+              "cpu100ns": 28437500,
+              "rssBytes": 251338752
+            },
+            {
+              "elapsedMs": 47085,
+              "cpu100ns": 28437500,
+              "rssBytes": 251351040
+            },
+            {
+              "elapsedMs": 48087,
+              "cpu100ns": 28437500,
+              "rssBytes": 251379712
+            },
+            {
+              "elapsedMs": 49089,
+              "cpu100ns": 28437500,
+              "rssBytes": 251437056
+            },
+            {
+              "elapsedMs": 50091,
+              "cpu100ns": 28437500,
+              "rssBytes": 251510784
+            },
+            {
+              "elapsedMs": 51092,
+              "cpu100ns": 28437500,
+              "rssBytes": 251510784
+            },
+            {
+              "elapsedMs": 52094,
+              "cpu100ns": 28437500,
+              "rssBytes": 251576320
+            },
+            {
+              "elapsedMs": 53096,
+              "cpu100ns": 28437500,
+              "rssBytes": 251576320
+            },
+            {
+              "elapsedMs": 54097,
+              "cpu100ns": 28593750,
+              "rssBytes": 251576320
+            },
+            {
+              "elapsedMs": 55099,
+              "cpu100ns": 28593750,
+              "rssBytes": 251641856
+            },
+            {
+              "elapsedMs": 56101,
+              "cpu100ns": 28906250,
+              "rssBytes": 251641856
+            },
+            {
+              "elapsedMs": 57103,
+              "cpu100ns": 28906250,
+              "rssBytes": 251617280
+            },
+            {
+              "elapsedMs": 58106,
+              "cpu100ns": 28906250,
+              "rssBytes": 251682816
+            },
+            {
+              "elapsedMs": 59108,
+              "cpu100ns": 29062500,
+              "rssBytes": 251682816
+            },
+            {
+              "elapsedMs": 60109,
+              "cpu100ns": 29062500,
+              "rssBytes": 251748352
+            }
+          ],
+          "cleanup": {
+            "activeRegistrations": 0,
+            "capabilityBits": 0,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 5,
+            "height": 720,
+            "liveSources": 0,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 29375000,
+            "processId": 42632,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "width": 1280
+          },
+          "cpuPercentOneLogicalCore": 0.5192703814123204
+        },
+        {
+          "round": 3,
+          "warmupSeconds": 30,
+          "measurementMs": 60177,
+          "before": {
+            "activeRegistrations": 0,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "nativeSurface",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 6,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 31875000,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 544,
+            "targetWidth": 938,
+            "textureId": -1,
+            "width": 1280
+          },
+          "after": {
+            "activeRegistrations": 0,
+            "adapter": "NVIDIA GeForce RTX 5080",
+            "backend": "nativeSurface",
+            "capabilityBits": 2,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 6,
+            "height": 720,
+            "liveSources": 1,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 35625000,
+            "processId": 42632,
+            "softwareAdapter": false,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "targetHeight": 544,
+            "targetWidth": 938,
+            "textureId": -1,
+            "width": 1280
+          },
+          "samples": [
+            {
+              "elapsedMs": 1001,
+              "cpu100ns": 31875000,
+              "rssBytes": 255295488
+            },
+            {
+              "elapsedMs": 2003,
+              "cpu100ns": 32187500,
+              "rssBytes": 255369216
+            },
+            {
+              "elapsedMs": 3005,
+              "cpu100ns": 32500000,
+              "rssBytes": 255369216
+            },
+            {
+              "elapsedMs": 4006,
+              "cpu100ns": 32500000,
+              "rssBytes": 255434752
+            },
+            {
+              "elapsedMs": 5008,
+              "cpu100ns": 32656250,
+              "rssBytes": 255414272
+            },
+            {
+              "elapsedMs": 6010,
+              "cpu100ns": 32812500,
+              "rssBytes": 255414272
+            },
+            {
+              "elapsedMs": 7012,
+              "cpu100ns": 32812500,
+              "rssBytes": 255479808
+            },
+            {
+              "elapsedMs": 8014,
+              "cpu100ns": 33125000,
+              "rssBytes": 255479808
+            },
+            {
+              "elapsedMs": 9015,
+              "cpu100ns": 33125000,
+              "rssBytes": 255479808
+            },
+            {
+              "elapsedMs": 10017,
+              "cpu100ns": 33125000,
+              "rssBytes": 255549440
+            },
+            {
+              "elapsedMs": 11019,
+              "cpu100ns": 33125000,
+              "rssBytes": 255549440
+            },
+            {
+              "elapsedMs": 12021,
+              "cpu100ns": 33125000,
+              "rssBytes": 255635456
+            },
+            {
+              "elapsedMs": 13023,
+              "cpu100ns": 33125000,
+              "rssBytes": 255635456
+            },
+            {
+              "elapsedMs": 14025,
+              "cpu100ns": 33125000,
+              "rssBytes": 255635456
+            },
+            {
+              "elapsedMs": 15028,
+              "cpu100ns": 33281250,
+              "rssBytes": 255700992
+            },
+            {
+              "elapsedMs": 16029,
+              "cpu100ns": 33281250,
+              "rssBytes": 255680512
+            },
+            {
+              "elapsedMs": 17031,
+              "cpu100ns": 33281250,
+              "rssBytes": 255746048
+            },
+            {
+              "elapsedMs": 18032,
+              "cpu100ns": 33281250,
+              "rssBytes": 255746048
+            },
+            {
+              "elapsedMs": 19034,
+              "cpu100ns": 33593750,
+              "rssBytes": 255746048
+            },
+            {
+              "elapsedMs": 20035,
+              "cpu100ns": 33593750,
+              "rssBytes": 255782912
+            },
+            {
+              "elapsedMs": 21037,
+              "cpu100ns": 33593750,
+              "rssBytes": 255836160
+            },
+            {
+              "elapsedMs": 22039,
+              "cpu100ns": 33593750,
+              "rssBytes": 255901696
+            },
+            {
+              "elapsedMs": 23041,
+              "cpu100ns": 33593750,
+              "rssBytes": 255901696
+            },
+            {
+              "elapsedMs": 24042,
+              "cpu100ns": 33593750,
+              "rssBytes": 255967232
+            },
+            {
+              "elapsedMs": 25044,
+              "cpu100ns": 33593750,
+              "rssBytes": 255926272
+            },
+            {
+              "elapsedMs": 26046,
+              "cpu100ns": 33593750,
+              "rssBytes": 255934464
+            },
+            {
+              "elapsedMs": 27048,
+              "cpu100ns": 33593750,
+              "rssBytes": 256000000
+            },
+            {
+              "elapsedMs": 28050,
+              "cpu100ns": 33750000,
+              "rssBytes": 256000000
+            },
+            {
+              "elapsedMs": 29052,
+              "cpu100ns": 33750000,
+              "rssBytes": 256065536
+            },
+            {
+              "elapsedMs": 30054,
+              "cpu100ns": 33750000,
+              "rssBytes": 256065536
+            },
+            {
+              "elapsedMs": 31056,
+              "cpu100ns": 33750000,
+              "rssBytes": 256065536
+            },
+            {
+              "elapsedMs": 32058,
+              "cpu100ns": 33750000,
+              "rssBytes": 256131072
+            },
+            {
+              "elapsedMs": 33060,
+              "cpu100ns": 33906250,
+              "rssBytes": 256131072
+            },
+            {
+              "elapsedMs": 34061,
+              "cpu100ns": 33906250,
+              "rssBytes": 256196608
+            },
+            {
+              "elapsedMs": 35063,
+              "cpu100ns": 33906250,
+              "rssBytes": 256196608
+            },
+            {
+              "elapsedMs": 36065,
+              "cpu100ns": 33906250,
+              "rssBytes": 256196608
+            },
+            {
+              "elapsedMs": 37066,
+              "cpu100ns": 33906250,
+              "rssBytes": 256262144
+            },
+            {
+              "elapsedMs": 38068,
+              "cpu100ns": 33906250,
+              "rssBytes": 256262144
+            },
+            {
+              "elapsedMs": 39070,
+              "cpu100ns": 33906250,
+              "rssBytes": 256270336
+            },
+            {
+              "elapsedMs": 40073,
+              "cpu100ns": 33906250,
+              "rssBytes": 256294912
+            },
+            {
+              "elapsedMs": 41074,
+              "cpu100ns": 33906250,
+              "rssBytes": 256319488
+            },
+            {
+              "elapsedMs": 42077,
+              "cpu100ns": 34375000,
+              "rssBytes": 256401408
+            },
+            {
+              "elapsedMs": 43079,
+              "cpu100ns": 34375000,
+              "rssBytes": 256401408
+            },
+            {
+              "elapsedMs": 44081,
+              "cpu100ns": 34843750,
+              "rssBytes": 256466944
+            },
+            {
+              "elapsedMs": 45083,
+              "cpu100ns": 34843750,
+              "rssBytes": 256466944
+            },
+            {
+              "elapsedMs": 46085,
+              "cpu100ns": 34843750,
+              "rssBytes": 256466944
+            },
+            {
+              "elapsedMs": 47087,
+              "cpu100ns": 34843750,
+              "rssBytes": 256532480
+            },
+            {
+              "elapsedMs": 48089,
+              "cpu100ns": 34843750,
+              "rssBytes": 256532480
+            },
+            {
+              "elapsedMs": 49091,
+              "cpu100ns": 34843750,
+              "rssBytes": 256532480
+            },
+            {
+              "elapsedMs": 50093,
+              "cpu100ns": 34843750,
+              "rssBytes": 256598016
+            },
+            {
+              "elapsedMs": 51095,
+              "cpu100ns": 34843750,
+              "rssBytes": 256598016
+            },
+            {
+              "elapsedMs": 52096,
+              "cpu100ns": 35000000,
+              "rssBytes": 256663552
+            },
+            {
+              "elapsedMs": 53099,
+              "cpu100ns": 35000000,
+              "rssBytes": 256651264
+            },
+            {
+              "elapsedMs": 54101,
+              "cpu100ns": 35000000,
+              "rssBytes": 256651264
+            },
+            {
+              "elapsedMs": 55103,
+              "cpu100ns": 35000000,
+              "rssBytes": 256716800
+            },
+            {
+              "elapsedMs": 56105,
+              "cpu100ns": 35156250,
+              "rssBytes": 256716800
+            },
+            {
+              "elapsedMs": 57107,
+              "cpu100ns": 35156250,
+              "rssBytes": 256782336
+            },
+            {
+              "elapsedMs": 58108,
+              "cpu100ns": 35156250,
+              "rssBytes": 256790528
+            },
+            {
+              "elapsedMs": 59111,
+              "cpu100ns": 35156250,
+              "rssBytes": 256790528
+            },
+            {
+              "elapsedMs": 60113,
+              "cpu100ns": 35625000,
+              "rssBytes": 256815104
+            }
+          ],
+          "cleanup": {
+            "activeRegistrations": 0,
+            "capabilityBits": 0,
+            "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+            "descriptorCalls": 3,
+            "descriptorReleases": 3,
+            "dpi": 144,
+            "format": "BGRA8",
+            "generation": 6,
+            "height": 720,
+            "liveSources": 0,
+            "outstandingDescriptors": 0,
+            "processCpu100ns": 35937500,
+            "processId": 42632,
+            "sourceHeight": 720,
+            "sourceWidth": 1280,
+            "stopping": false,
+            "width": 1280
+          },
+          "cpuPercentOneLogicalCore": 0.6231552941545574
+        }
+      ],
+      "gpuUtilization": {
+        "available": false,
+        "reason": "No per-process GPU utilization instrument integrated"
+      },
+      "vram": {
+        "available": false,
+        "reason": "DXGI video memory budget instrumentation not implemented; RSS is process memory only"
+      }
+    }
+  },
+  "limitations": [
+    "not media decode",
+    "not 60fps",
+    "HDR unverified",
+    "multiwindow unverified",
+    "engine copy/import unmeasured"
+  ],
+  "sourceCommit": "020bfff",
+  "provenance": {
+    "gpu": [
+      {
+        "Name": "SudoMaker Virtual Display Adapter",
+        "DriverVersion": "0.22.37.632"
+      },
+      {
+        "Name": "OrayIddDriver Device",
+        "DriverVersion": "17.50.19.949"
+      },
+      {
+        "Name": "NVIDIA GeForce RTX 5080",
+        "DriverVersion": "32.0.15.9579"
+      },
+      {
+        "Name": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.13036.4"
+      }
+    ],
+    "sources": [
+      {
+        "file": "native/platform/windows/presentation.cpp",
+        "sha256": "9BC1CE6AA49F9C7FCED3B8C9A96396BD1326BA1FF0EBB15A1B8DB969BA9510EB"
+      },
+      {
+        "file": "native/platform/include/aether/presentation.h",
+        "sha256": "5BF2C6C0B10939BA9CEA55598E60A92E1964BD68E843BB88501DAB17CBDAFFB4"
+      },
+      {
+        "file": "packages/selene_native/windows/selene_native_plugin.cpp",
+        "sha256": "F7445FC535E3BE66A84EC8FDA9BE4421AC2394431C8F7160049313EEBAFA2078"
+      },
+      {
+        "file": "apps/selene/integration_test/presentation_measure_test.dart",
+        "sha256": "9BBAEFCF536CD48FF15C7EBAAB9DDC6337652F8CE3AE2FB6482726305CDD31A9"
+      }
+    ],
+    "sdk": {
+      "version": "3.44.0",
+      "frameworkRevision": "559ffa3f75e7402d65a8def9c28389a9b2e6fe42",
+      "engineRevision": "4c525dac5ebe5971c5708ef73558ed8edcf4a362",
+      "engineContentHash": "fcf463a2242790d1fdcd9d044f533080f5022e18",
+      "dart": "3.12.0",
+      "archiveUrl": "https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.44.0-stable.zip",
+      "archiveSha256": "88da00194893bf9543fc47c0bf31e6de978d49ffdb9c2f6e30c46dde0116c768",
+      "archiveStatus": "official-manifest-verified; installed SDK archive not retained",
+      "license": "BSD-3-Clause",
+      "source": "https://github.com/flutter/flutter"
+    },
+    "timestamp": "2026-10-08T01:43:29.5825105Z",
+    "os": "10.0.26100.0",
+    "schema": 1
+  },
+  "rawManifest": [
+    {
+      "file": "engine.log",
+      "sha256": "743B572F8D309A99A3635DD5072D2AB2CEE3FDC20372CDC315D9F8F7C4B631BF"
+    },
+    {
+      "file": "gpu-texture.png",
+      "sha256": "7D6896D2CE1616915E2BD04BEDC71F9E72B5D848FFE9B26D84B2D2F4A3690C2D"
+    },
+    {
+      "file": "gpuTexture-round-1.json",
+      "sha256": "5FEC3A47405F5F23E3FE0C98EFE2ACAAFA74FFEF40F3AB7809825ADB19A57CDD"
+    },
+    {
+      "file": "gpuTexture-round-2.json",
+      "sha256": "0478FE81AE92E4689613521F8459AF507906EF5264E204277C7CB85E50C1A5D1"
+    },
+    {
+      "file": "gpuTexture-round-3.json",
+      "sha256": "BFAE210A48E178BE4B5417D575002D2431C6451669D4390E8A2C1C53992D0AC8"
+    },
+    {
+      "file": "native-source.png",
+      "sha256": "87EA8401058860DC1EC9147D14EC894FF64F782EBCC779351ADE456F13BAC4A0"
+    },
+    {
+      "file": "native-surface.png",
+      "sha256": "9B78AB3D115D92BB2E10DF0BBBFB47116A37FF639D0D922AC5AEE732249D8033"
+    },
+    {
+      "file": "nativeSurface-round-1.json",
+      "sha256": "335F2498CE2FB4A191D28D008ACF07AB43CFDD216F64FF2EFF69140B344A12BC"
+    },
+    {
+      "file": "nativeSurface-round-2.json",
+      "sha256": "151AF0F63F6AB20E5EB832E10986EA17A173D38B5059646741C560DC64820440"
+    },
+    {
+      "file": "nativeSurface-round-3.json",
+      "sha256": "55179283F435FD2F02D14A151A656B9FADD6B339392088FB45AD3FE63C3828FD"
+    },
+    {
+      "file": "provenance.json",
+      "sha256": "692176BFCB1D9546814635DA201D9C1DE4E9ADC2936B3844A179C3A03E406C64"
+    },
+    {
+      "file": "report.json",
+      "sha256": "9F5E5FF51D0A6173845FED6BB42FC00395D4F3661E2108CD92D989CDF2B35968"
+    },
+    {
+      "file": "source-hashes-at-launch.json",
+      "sha256": "77F06FAC0576269AE56260461FA035630D43F4D150261DA39E4DD76933212A3B"
+    }
+  ],
+  "correctness": {
+    "texture": {
+      "activeRegistrations": 1,
+      "adapter": "NVIDIA GeForce RTX 5080",
+      "backend": "gpuTexture",
+      "capabilityBits": 2,
+      "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+      "descriptorCalls": 3,
+      "descriptorReleases": 3,
+      "dpi": 144,
+      "format": "BGRA8",
+      "generation": 1,
+      "height": 720,
+      "liveSources": 1,
+      "outstandingDescriptors": 0,
+      "processCpu100ns": 12500000,
+      "processId": 41376,
+      "softwareAdapter": false,
+      "sourceHeight": 720,
+      "sourceWidth": 1280,
+      "stopping": false,
+      "targetHeight": 0,
+      "targetWidth": 0,
+      "textureId": 2307962109040,
+      "width": 1280
+    },
+    "nativeSurface": {
+      "activeRegistrations": 0,
+      "adapter": "NVIDIA GeForce RTX 5080",
+      "backend": "nativeSurface",
+      "capabilityBits": 2,
+      "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+      "descriptorCalls": 3,
+      "descriptorReleases": 3,
+      "dpi": 144,
+      "format": "BGRA8",
+      "generation": 2,
+      "height": 720,
+      "liveSources": 1,
+      "outstandingDescriptors": 0,
+      "processCpu100ns": 14375000,
+      "processId": 41376,
+      "softwareAdapter": false,
+      "sourceHeight": 720,
+      "sourceWidth": 1280,
+      "stopping": false,
+      "targetHeight": 544,
+      "targetWidth": 938,
+      "textureId": -1,
+      "width": 1280
+    },
+    "final": {
+      "activeRegistrations": 0,
+      "capabilityBits": 0,
+      "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+      "descriptorCalls": 3,
+      "descriptorReleases": 3,
+      "dpi": 144,
+      "format": "BGRA8",
+      "generation": 2,
+      "height": 720,
+      "liveSources": 0,
+      "outstandingDescriptors": 0,
+      "processCpu100ns": 14531250,
+      "processId": 41376,
+      "sourceHeight": 720,
+      "sourceWidth": 1280,
+      "stopping": false,
+      "width": 1280
+    }
+  },
+  "correctnessLogHashes": [
+    {
+      "path": "artifacts/phase02/ui/Panel-engine.log",
+      "sha256": "14FD358771B616329C1142E7A2A1B1D45187D9B381C1F9C2E519E2C294858875"
+    },
+    {
+      "path": "artifacts/phase02/ui/Lifecycle-engine.log",
+      "sha256": "82FF35699FD4DDFA7F4FE3827582F7C8BA2DD5AF115F08ED78D3EC78624F6593"
+    },
+    {
+      "path": "artifacts/phase02/ui/window-close.log",
+      "sha256": "D2D0FC85136A62F9681A27539571E767364B40056C8DDC866A7316AD0BC629D6"
+    },
+    {
+      "path": "artifacts/phase02/helios/ctrl-c-Debug.log",
+      "sha256": "D87DE0C7A3F79FC69B0265DFDDE628E193D0EDB0AC1F29ACF6E0F622BE9EF945"
+    },
+    {
+      "path": "artifacts/phase02/helios/ctrl-c-Release.log",
+      "sha256": "D87DE0C7A3F79FC69B0265DFDDE628E193D0EDB0AC1F29ACF6E0F622BE9EF945"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/phase02/screenshots/gpu-preview.png",
+      "sha256": "51E4396A8CF812EEE416B028B1ECB12E75369A007EE8A5E47F1F9C0EFBF93E70"
+    },
+    {
+      "path": "docs/phase02/screenshots/native-source.png",
+      "sha256": "87EA8401058860DC1EC9147D14EC894FF64F782EBCC779351ADE456F13BAC4A0"
+    },
+    {
+      "path": "docs/phase02/screenshots/native-surface-portrait.png",
+      "sha256": "84B46B17BA30D043EEBCB9227615727638F5C7E5FC1CAA25D54ECE16C831F333"
+    },
+    {
+      "path": "docs/phase02/screenshots/native-surface-wide.png",
+      "sha256": "8DA3C897CDD705B0DC74149E6072367419701AA0682BE52B6530C9C7BB1F59A0"
+    }
+  ],
+  "supersededAttempt": {
+    "path": "artifacts/phase02/presentation",
+    "outcome": "failed descriptor lifetime / black Texture; retained but not accepted"
+  }
+}
