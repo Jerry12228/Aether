@@ -1,4 +1,5 @@
 #include "aether/core.h"
+#include "aether/virtual_display.h"
 #include <windows.h>
 #include <conio.h>
 #include <atomic>
@@ -32,6 +33,7 @@ int Finish(int code, bool automation) {
 }
 }
 int main(int argc,char** argv) {
+ if(argc>1 && std::string(argv[1])=="vdisplay")return aether::vdisplay::RunDisplayCommand(argc,argv);
  bool self_test=false,automation=false,init_error=false;
  std::string ready_event;
  for(int i=1;i<argc;i++) {
