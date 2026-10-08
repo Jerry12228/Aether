@@ -27,6 +27,21 @@ void main() {
     expect(core.callbacksAfterDispose, 0);
   });
   if (suite == 'Lifecycle') {
+    test('Lifecycle: paused external observer cannot block local disposal', () async {
+      final core = SeleneNativeCore();
+      final subscription = core.events.listen((_) {});
+      subscription.pause();
+      core.startProbe(delayMs: 50);
+      try {
+        await core.dispose().timeout(const Duration(seconds: 2));
+        expect(core.disposed, true);
+        expect(core.stats(global: true).liveHandles, 0);
+        expect(core.stats(global: true).liveThreads, 0);
+      } finally {
+        await subscription.cancel();
+        await core.dispose();
+      }
+    });
     test('Lifecycle: wrong ABI and injected init failure allocate no token', () {
       expect(() => SeleneNativeCore(abiVersion: 99), throwsA(isA<CoreException>()));
       expect(() => SeleneNativeCore(injectInitFailure: true), throwsA(isA<CoreException>()));
