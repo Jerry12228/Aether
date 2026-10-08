@@ -19,6 +19,8 @@ add_executable(${BINARY_NAME} WIN32
 # Apply the standard set of build settings. This can be removed for applications
 # that need different build settings.
 apply_standard_settings(${BINARY_NAME})
+get_filename_component(AETHER_RUNNER_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../../.." ABSOLUTE)
+target_include_directories(${BINARY_NAME} PRIVATE "${AETHER_RUNNER_ROOT}/native/core/include" "${AETHER_RUNNER_ROOT}/build/native/generated")
 if("$ENV{AETHER_ENABLE_TEST_HOOKS}" STREQUAL "1")
   target_compile_definitions(${BINARY_NAME} PRIVATE AETHER_ENABLE_TEST_HOOKS)
 endif()

@@ -1,5 +1,50 @@
 # 开发环境与依赖
 
+## Phase 2 根入口（2026-10-08）
+
+```powershell
+pwsh -NoProfile -File scripts/build.ps1 -Target Helios -Configuration Debug
+pwsh -NoProfile -File scripts/build.ps1 -Target Helios -Configuration Release
+pwsh -NoProfile -File scripts/build.ps1 -Target Selene -Configuration Debug
+pwsh -NoProfile -File scripts/build.ps1 -Target Selene -Configuration Release
+pwsh -NoProfile -File scripts/verify.ps1 -Scope Core -Automation
+pwsh -NoProfile -File scripts/verify.ps1 -Scope UI -Automation
+pwsh -NoProfile -File scripts/verify.ps1 -Scope All -Automation
+# 先提交本阶段的明确输入；该入口拒绝未提交/未跟踪的输入。
+pwsh -NoProfile -File scripts/verify.ps1 -Scope All -Automation -CleanCheckout
+```
+
+Target 必填，每次 build 只选择一个产品；共享 DLL 是该目标的依赖。
+build 不调用 verify。默认单目标总预算 900 秒，可用 `-BudgetSeconds 1..3600`
+调整。verify 消费已构建的 Debug/Release 产品，只显式构建独立测试目标；
+Core 检查真实 DLL/FFI，UI 检查实际 Windows engine/窗口关闭/Helios，All 增加
+来源、平台、生成绑定、静态分析、原基线和规划测试。空选择、跳过、失败与超时
+均不能通过。组预算和实际耗时写入 artifacts/phase02/tooling。
+
+Flutter 必须匹配锁定的 framework/engine/Dart。入口解析已安装 SDK 的缓存
+Dart/snapshot，以 native argv 启动；含空格及 shell 元字符的路径不会进入 cmd。
+`prepare-flutter.ps1 -Restore` 创建经目标核验的仓库内 junction，并从 app 执行
+`pub get --enforce-lockfile`。`check-sources.cjs --check` 从锁定 wheel 提取开发用
+libclang DLL，校验 archive/DLL/LICENSE 摘要；不安装 Python 包或执行 wheel hooks。
+生成绑定只写忽略的临时输出，随后比较已审阅快照。
+
+CleanCheckout 从已提交 HEAD 克隆到工作区 build 下含空格的自有目录，不复制
+参考 checkout、缓存或旧产物；恢复锁定依赖、四次显式构建及 All 检查。
+证据复制回 artifacts/phase02/clean 后，核验绝对路径所属关系再用
+PowerShell `Remove-Item -LiteralPath` 清理该临时目录。
+
+Windows Actions 使用 full SHA、contents:read、无子模块/持久凭证的 checkout；
+PR/main/manual 均运行双产品 Debug/Release 和 All，包括实际 GPU engine。
+默认镜像预装 SDK 26100，CI bootstrap 仅允许在临时 github-hosted runner 上通过
+签名有效的 Microsoft VS Installer 添加 SDK 28000；失败/重启需求均非零。
+自托管选项仅供显式手动触发，必须已有 VS2026/SDK28000 和可用 GUI；不自动
+修改自托管系统。bootstrap 的安装与 Actions 实际运行尚待验证，不能据源码声称通过。
+实际 SDK/tool/image、软件/物理 GPU 和 run URL 分别留档。阶段完成仍需真实 CI
+全部通过及最终人审。
+
+目前产品只实现本地原生资源探针；呈现报告是静态 GPU 图案测量，不能代表串流
+延迟、解码/HDR/协议或其他平台支持。平台差异见 phase02/PLATFORM-GAPS.md。
+
 初始化只克隆参考仓库、读取代码并创建文档；没有安装驱动、修改系统启动设置或执行参考项目安装脚本。参考子模块未递归下载，不能把这些 checkout 当作完整可构建上游工程。
 
 ## 当前探测

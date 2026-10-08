@@ -29,6 +29,25 @@ The executable package hooks were not run until their archive/license audit.
 
 ## SDK and generation
 
+The developer libclang source has now been independently reproduced: the exact
+18.1.1 Windows wheel was downloaded from files.pythonhosted.org, its SHA256
+matched the registry record, and only the locked DLL and LICENSE entries were
+extracted. Both entry digests match the recorded existing DLL/license. The full
+Apache-2.0 WITH LLVM-exception and retained LLVM notices are tracked. The wheel
+was not installed and no package hook ran. prepare-generator.ps1 repeats the
+archive/DLL/license checks and resolves VS/UCRT include directories dynamically.
+
+CI pins the official Flutter archive and CMake 4.4.3 zip by independently
+verified release digests, and checkout/upload-artifact by full commit SHA.
+Windows SDK 28000 and VS18 generator are build prerequisites, while local VS
+patch/toolset observations are recorded separately from the actual runner.
+The SDK addition uses the installed, signature-verified Microsoft VS Installer
+and its official component channel; its executable hash, channel and observed
+SDK are recorded at run time. This path has not yet run in Actions.
+Primary source references: [runner image](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-VS2026-Readme.md),
+[CMake release](https://github.com/Kitware/CMake/releases/tag/v4.4.3),
+[Microsoft installer CLI](https://learn.microsoft.com/en-us/visualstudio/install/use-command-line-parameters-to-install-visual-studio?view=visualstudio).
+
 Flutter 3.44.0 / Dart 3.12.0 was verified by executing the installed SDK. The
 official release manifest supplies its archive SHA256; this does not prove the
 installed directory was extracted from that archive. SDK cached metadata,

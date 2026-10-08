@@ -32,5 +32,6 @@ try {
   } finally { Pop-Location }
   if ($testExit -ne 0) { exit $testExit }
   if ((Get-Content -LiteralPath $dartLog -Raw) -notmatch '\+[1-9][0-9]*: All tests passed!') { throw 'Missing/empty Dart test result' }
-  Write-Output "PASS Core/$Suite/$Configuration duration=$($timer.Elapsed.TotalSeconds.ToString('F3'))s DLL=$coreLibrary logs=$logs"
+  $dartCount=[regex]::Match((Get-Content -LiteralPath $dartLog -Raw),'\+([1-9][0-9]*): All tests passed!').Groups[1].Value
+  Write-Output "PASS Core/$Suite/$Configuration tests=$([int]$dartCount+1) native_suites=1 dart_tests=$dartCount duration=$($timer.Elapsed.TotalSeconds.ToString('F3'))s DLL=$coreLibrary logs=$logs"
 } finally { Pop-Location }

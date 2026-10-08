@@ -48,8 +48,13 @@
       "upstream": "https://github.com/llvm/llvm-project",
       "provenance": "existing libclang-18.1.1 wheel metadata; not official LLVM installer",
       "purpose": "development binding generation only; not bundled",
-      "license": "Apache-2.0",
-      "observedParse": "passed"
+      "license": "Apache-2.0 WITH LLVM-exception; retained LLVM notices",
+      "observedParse": "passed",
+      "wheelUrl": "https://files.pythonhosted.org/packages/0b/2d/3f480b1e1d31eb3d6de5e3ef641954e5c67430d5ac93b7fa7e07589576c7/libclang-18.1.1-py2.py3-none-win_amd64.whl",
+      "wheelSha256": "4dd2d3b82fab35e2bf9ca717d7b63ac990a3519c7e312f19fa8e86dcc712f7fb",
+      "wheelDllPath": "libclang-18.1.1.data/platlib/clang/native/libclang.dll",
+      "wheelLicensePath": "libclang-18.1.1.dist-info/LICENSE.TXT",
+      "licenseSha256": "3b6226c32e168c83b891d8d6f0d3c29c2116dc3ef93dc93c307b54f279ecf383"
     }
   },
   "pub": {
@@ -712,5 +717,25 @@
     "appleLinux": "no target build evidence",
     "nativeReleaseBuild": "passed",
     "coreSuites": "Debug and Release tracer/lifecycle/adapters passed"
+  },
+  "ci": {
+    "runnerLabel": "windows-2025-vs2026",
+    "cmakeArchive": {
+      "sha256": "4d52ebab7193a698651639ed80d8d04fd903358843572cf44c7fd234cb7c26ab",
+      "source": "https://github.com/Kitware/CMake/releases/tag/v4.4.3",
+      "url": "https://github.com/Kitware/CMake/releases/download/v4.4.3/cmake-4.4.3-windows-x86_64.zip"
+    },
+    "actions": {
+      "checkout": {
+        "sha": "11d5960a326750d5838078e36cf38b85af677262",
+        "ref": "v4",
+        "source": "https://github.com/actions/checkout"
+      },
+      "uploadArtifact": {
+        "sha": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+        "ref": "v4",
+        "source": "https://github.com/actions/upload-artifact"
+      }
+    }
   }
 }

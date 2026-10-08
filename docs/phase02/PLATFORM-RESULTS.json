@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "linuxExecutor": [
+    {
+      "output": "The operation could not be started because a required feature is not installed. \n\nError code: Wsl/Service/CreateInstance/CreateVm/HCS/HCS_E_SERVICE_NOT_AVAILABLE",
+      "command": "wsl -d Ubuntu --exec uname -a",
+      "exit": -1
+    },
+    {
+      "output": "The operation could not be started because a required feature is not installed. \n\nError code: Wsl/Service/CreateInstance/CreateVm/HCS/HCS_E_SERVICE_NOT_AVAILABLE",
+      "command": "wsl -d Ubuntu --exec which clang++",
+      "exit": -1
+    },
+    {
+      "output": "The operation could not be started because a required feature is not installed. \n\nError code: Wsl/Service/CreateInstance/CreateVm/HCS/HCS_E_SERVICE_NOT_AVAILABLE",
+      "command": "wsl -d Ubuntu --exec which g++",
+      "exit": -1
+    },
+    {
+      "output": "The operation could not be started because a required feature is not installed. \n\nError code: Wsl/Service/CreateInstance/CreateVm/HCS/HCS_E_SERVICE_NOT_AVAILABLE",
+      "command": "wsl -d Ubuntu --exec which arm-linux-gnueabihf-g++",
+      "exit": -1
+    },
+    {
+      "output": "The operation could not be started because a required feature is not installed. \n\nError code: Wsl/Service/CreateInstance/CreateVm/HCS/HCS_E_SERVICE_NOT_AVAILABLE",
+      "command": "wsl -d Ubuntu --exec which riscv64-linux-gnu-g++",
+      "exit": -1
+    },
+    {
+      "output": "The operation could not be started because a required feature is not installed. \n\nError code: Wsl/Service/CreateInstance/CreateVm/HCS/HCS_E_SERVICE_NOT_AVAILABLE",
+      "command": "wsl -d Ubuntu --exec which flutter",
+      "exit": -1
+    }
+  ],
+  "androidNative": [
+    {
+      "flutter": "locked FlutterExtension minSdkVersion=24; no API21-23 UI build claimed",
+      "exit": 0,
+      "api": 21,
+      "target": "armv7a-linux-androideabi21",
+      "runtime": "not tested; no Android device/emulator run",
+      "headers": "ELF Header:\n  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00\n  Class:                             ELF32\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              DYN (Shared object file)\n  Machine:                           ARM\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          52 (bytes into file)\n  Start of section headers:          274672 (bytes into file)\n  Flags:                             0x5000200\n  Size of this header:               52 (bytes)\n  Size of program headers:           32 (bytes)\n  Number of program headers:         10\n  Size of section headers:           40 (bytes)\n  Number of section headers:         29\n  Section header string table index: 27",
+      "architecture": "armv7",
+      "sha256": "56479B7631FE05E4962B16B31999214F03B580624B255609B659D845B7C11959"
+    },
+    {
+      "flutter": "locked FlutterExtension minSdkVersion=24; no API21-23 UI build claimed",
+      "exit": 0,
+      "api": 21,
+      "target": "aarch64-linux-android21",
+      "runtime": "not tested; no Android device/emulator run",
+      "headers": "ELF Header:\n  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00\n  Class:                             ELF64\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              DYN (Shared object file)\n  Machine:                           AArch64\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          64 (bytes into file)\n  Start of section headers:          363392 (bytes into file)\n  Flags:                             0x0\n  Size of this header:               64 (bytes)\n  Size of program headers:           56 (bytes)\n  Number of program headers:         10\n  Size of section headers:           64 (bytes)\n  Number of section headers:         29\n  Section header string table index: 27",
+      "architecture": "arm64",
+      "sha256": "19041A38174BD1B7A21B494927CDA71CA8580AAFC82B3D420FA47693F8DF88A1"
+    },
+    {
+      "flutter": "locked FlutterExtension minSdkVersion=24; no API21-23 UI build claimed",
+      "exit": 0,
+      "api": 22,
+      "target": "armv7a-linux-androideabi22",
+      "runtime": "not tested; no Android device/emulator run",
+      "headers": "ELF Header:\n  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00\n  Class:                             ELF32\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              DYN (Shared object file)\n  Machine:                           ARM\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          52 (bytes into file)\n  Start of section headers:          274672 (bytes into file)\n  Flags:                             0x5000200\n  Size of this header:               52 (bytes)\n  Size of program headers:           32 (bytes)\n  Number of program headers:         10\n  Size of section headers:           40 (bytes)\n  Number of section headers:         29\n  Section header string table index: 27",
+      "architecture": "armv7",
+      "sha256": "F0A9894B08673C64BA451458D482B985B583FBFA6658987FEA14D745DAAD71CC"
+    },
+    {
+      "flutter": "locked FlutterExtension minSdkVersion=24; no API21-23 UI build claimed",
+      "exit": 0,
+      "api": 22,
+      "target": "aarch64-linux-android22",
+      "runtime": "not tested; no Android device/emulator run",
+      "headers": "ELF Header:\n  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00\n  Class:                             ELF64\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              DYN (Shared object file)\n  Machine:                           AArch64\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          64 (bytes into file)\n  Start of section headers:          363392 (bytes into file)\n  Flags:                             0x0\n  Size of this header:               64 (bytes)\n  Size of program headers:           56 (bytes)\n  Number of program headers:         10\n  Size of section headers:           64 (bytes)\n  Number of section headers:         29\n  Section header string table index: 27",
+      "architecture": "arm64",
+      "sha256": "083A240043208FBB508D922F6C58EB591D88F6D5EDA87FAF5FD5EB31FE85B4FA"
+    },
+    {
+      "flutter": "locked FlutterExtension minSdkVersion=24; no API21-23 UI build claimed",
+      "exit": 0,
+      "api": 23,
+      "target": "armv7a-linux-androideabi23",
+      "runtime": "not tested; no Android device/emulator run",
+      "headers": "ELF Header:\n  Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00\n  Class:                             ELF32\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              DYN (Shared object file)\n  Machine:                           ARM\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          52 (bytes into file)\n  Start of section headers:          274356 (bytes into file)\n  Flags:                             0x5000200\n  Size of this header:               52 (bytes)\n  Size of program headers:           32 (bytes)\n  Number of program headers:         10\n  Size of section headers:           40 (bytes)\n  Number of section headers:         28\n  Section header string table index: 26",
+      "architecture": "armv7",
+      "sha256": "1ACCCEA43957A3094BC9410DA6C90BB7C4DE025AC0B142A34B2926EAA768B730"
+    },
+    {
+      "flutter": "locked FlutterExtension minSdkVersion=24; no API21-23 UI build claimed",
+      "exit": 0,
+      "api": 23,
+      "target": "aarch64-linux-android23",
+      "runtime": "not tested; no Android device/emulator run",
+      "headers": "ELF Header:\n  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00\n  Class:                             ELF64\n  Data:                              2's complement, little endian\n  Version:                           1 (current)\n  OS/ABI:                            UNIX - System V\n  ABI Version:                       0\n  Type:                              DYN (Shared object file)\n  Machine:                           AArch64\n  Version:                           0x1\n  Entry point address:               0x0\n  Start of program headers:          64 (bytes into file)\n  Start of section headers:          362952 (bytes into file)\n  Flags:                             0x0\n  Size of this header:               64 (bytes)\n  Size of program headers:           56 (bytes)\n  Number of program headers:         10\n  Size of section headers:           64 (bytes)\n  Number of section headers:         28\n  Section header string table index: 26",
+      "architecture": "arm64",
+      "sha256": "6A16CF1583002B2BFAB50B94C88D2F0E54EEEC1BF65771289F8CE11B86EA0460"
+    }
+  ],
+  "capturedAt": "2026-10-08T02:00:00.6886899Z"
+}

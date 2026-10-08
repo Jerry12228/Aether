@@ -1,0 +1,52 @@
+name: Windows native contract
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      executor:
+        description: GUI-capable Windows executor with VS 2026 and SDK 28000
+        type: choice
+        default: hosted
+        options: [hosted, self-hosted]
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: ${{ github.event_name == 'workflow_dispatch' && inputs.executor == 'self-hosted' && fromJSON('["self-hosted", "Windows", "X64"]') || 'windows-2025-vs2026' }}
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # audited v4
+        with:
+          submodules: false
+          persist-credentials: false
+          fetch-depth: 1
+      - name: Exact SDK and SHA256-locked tools
+        run: ./scripts/bootstrap-ci.ps1 -InstallLockedSdk
+      - name: Build explicit product targets in both configurations
+        run: |
+          foreach ($configuration in @('Debug','Release')) {
+            foreach ($target in @('Helios','Selene')) {
+              ./scripts/build.ps1 -Target $target -Configuration $configuration
+              if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            }
+          }
+      - name: Mandatory real DLL, native GPU engine, shutdown, source and baseline checks
+        run: ./scripts/verify.ps1 -Scope All -Automation
+      - name: Full logs, actual versions, counts and SHA256 evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # audited v4
+        with:
+          name: windows-phase02-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            artifacts/phase02/
+            apps/selene/build/windows/x64/runner/Release/selene.exe
+            apps/selene/build/windows/x64/runner/Release/aether_core.dll
+            build/native/Release/helios.exe
+            build/native/Release/aether_core.dll
