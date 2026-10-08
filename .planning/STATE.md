@@ -2,11 +2,11 @@
 gsd_state_version: "1.0"
 current_phase: 3
 current_phase_name: 虚拟显示器可行性
-status: planning
-stopped_at: Phase 3 planned and checked; ready to execute; no implementation started
-last_updated: "2026-10-08T12:04:14.299Z"
+status: executing
+stopped_at: 03-01 tasks 1/2 committed; blocking-human provider decision 03-01-03 pending; no admitted provider
+last_updated: "2026-10-08T12:53:53Z"
 last_activity: 2026-10-08
-last_activity_desc: Phase 3 three sequential plans passed independent revision check; ready to execute
+last_activity_desc: Phase3 readonly probes and five-candidate dossier verified; waiting provider route decision
 progress:
   total_phases: 42
   completed_phases: 2
@@ -22,20 +22,21 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-08)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 03 — 虚拟显示器可行性（三个顺序计划及独立检查完成；待执行，尚未实现）
+**Current focus:** Phase 03 — 虚拟显示器可行性（03-01前两任务完成；等待03-01-03具体路线决定，无合格provider）
 
 ## Current Position
 
-Phase: 3 (虚拟显示器可行性) — READY TO EXECUTE
-Plan: Not started
-Status: Ready to execute
-Last activity: 2026-10-08 — Phase 3 three sequential plans passed independent revision check; ready to execute
+Phase: 3 (虚拟显示器可行性) — HUMAN DECISION PENDING
+Plan: 03-01 — 2/3 tasks done; SUMMARY status halted
+Status: Waiting at blocking-human provider checkpoint; 03-02/03-03 not started
+Last activity: 2026-10-08 — Readonly Windows probe and five-candidate admission dossier committed and verified
 
 Progress: [█░░░░░░░░░] 5%
 
 ## Performance Metrics
 
 Total plans completed: 6; completed phases: 2/42.
+Phase3 partial: Debug/Release build and readonly probe pass；Release CTest4/4(2.45s)，Helios Debug/Release实际进程回归各2/2，包准入负例7/7(~0.10s)、planning fixture1/1及105需求映射通过。五候选均未准入，VDP01/02未完成；03-01 summary为halted，不计完成计划。
 Phase2: clean08a005c and actual CI9aff292 pass four Helios/Selene Debug/Release builds,19 required groups/142 records, version0.1.0/ABI1, zero resources and matching product/tool/test/lock inputs. Final human exact response “确认”, recorded2026-10-08T08:15:03Z, approves scoped boundary/evidence limits. Six valid static rounds, actual GPU/FFI/isolated-console and negative regressions retained. CORE-01/02/03 Complete. Evidence: docs/phase02/EVIDENCE.md.
 Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning fixture1/1。Quick真实快照1.523s/25s，15查询。Phase1目标10/10、BASE01/02/03已完成；零产品性能测量或产品功能验证。完整套件超过30秒反馈目标，针对性反馈约2秒。
 
@@ -64,6 +65,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 - 2026-10-08 Phase3规划完成：03-01固定provider准入/只读探测与具体路线决定；03-02原生短命令/持久登记事务/四组七屏；03-03显式包安装更新/具体系统授权/Win10与Win11真实矩阵/最终强制人审。首轮2 blocker/4 warning经Revision1全部解决，VDP-01/02及D-01–16全部计划覆盖；21条自动命令有失败方向，路径引擎not_applicable不代表路径已验证。未实施、未安装，VALIDATION仍draft且两项标志false；2条未分类探针与无描述符禁止项不自动解决。
 
+- 2026-10-08 Phase3执行部分完成：03-01-01/02已提交7ff47c6/d08d27f（RED8f620ec/7b4f785），摘要5a652c5为halted。候选决定/系统授权均null或not-authorized，等待用户03-01-03原文。只读枚举发现Win11 26100的1条外来活动路径及既有SudoMaker0.22.37.632/Oray17.50.19.949；本轮无设备操作。VDD25.7.23小包hash及INF/DLL CAT成员审计真实取得；来源/独立许可/接口安全仍未闭合，没有批准provider。工作分支codex/phase-03-virtual-display-feasibility。
+
 ### Pending Todos
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
@@ -76,13 +79,15 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 [Phase3 planned limits] 正式固定包/独立许可/签名、接口与设备ACL、短CLI退出保活、七屏容量与SDR/HDR、Win10/11实机、恢复/更新回滚均待执行证据。已知IddCx Win10 HDR限制不得用降级/五屏假PASS或提高主机下限绕过；03-03-04真实检查点承接补证、替代研究或申请明确规范修订，原请求未经修订前不变。无准入候选保持VDP与阶段未完成。规划研究处置RESOLVED不表示技术事实验证；没有批准任何具体系统操作。
 
+[Phase3 current gate] 五候选无合格provider。SudoVDA缺完整driver/DLL/独立许可，固定CAT本机不受信任，all-users设备ACL+FILE_ANY_ACCESS high未缓解，watchdog/persistence未知。VDD包可信Authenticode及INF/DLL成员事实不关闭源码对应、许可、逐slot/稳定ID/ACL和适用安装政策；/kp失败只记具体诊断。Microsoft/Rust/Parsec无完整固定准入来源。需03-01-03选择no-qualified-provider及具体补证/替代研究下一步；七屏/HDR/Win10实机及03-02/03-03均未完成。档案docs/phase03/PROVIDER-ADMISSION.md，digest fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。
+
 ## Deferred Items
 
 用户明确的TODO见BACKLOG，未把非TODO需求延后。
 
 ## Session Continuity
 
-Last session: 2026-10-08T12:04:14.299Z
-Stopped at: Phase 3 planned and checked; ready to execute; no implementation started
+Last session: 2026-10-08T12:53:53Z
+Stopped at: 03-01-03 blocking-human provider route decision; tasks01/02 done; no admitted candidate
 Resume file: .planning/phases/03-virtual-display-feasibility/03-01-PLAN.md
-Next action: 用户启动 $gsd-execute-phase 3 后顺序执行三个计划；先完成只读准入档案及具体provider决定，安装/更新/reset仍需对应具体系统授权检查点。
+Next action: 收到用户具体路线原文后记录decision/time/dossier hash并核验dossier --require-decision；当前无合格provider时03-02/03-03仍阻断。不要重复执行已提交任务；安装/更新/reset仍需03-03具体系统授权。
