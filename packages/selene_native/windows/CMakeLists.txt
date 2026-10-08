@@ -6,11 +6,16 @@ get_filename_component(AETHER_ROOT "${PLUGIN_REAL_DIR}/../../.." ABSOLUTE)
 set(AETHER_CORE_ONLY ON)
 add_subdirectory("${AETHER_ROOT}" "${CMAKE_CURRENT_BINARY_DIR}/aether")
 add_library(${PLUGIN_NAME} SHARED
+  "${AETHER_ROOT}/native/platform/windows/presentation.cpp"
   include/selene_native/selene_native_plugin_c_api.h
   selene_native_plugin_c_api.cpp selene_native_plugin.cpp selene_native_plugin.h)
 apply_standard_settings(${PLUGIN_NAME})
 set_target_properties(${PLUGIN_NAME} PROPERTIES CXX_VISIBILITY_PRESET hidden)
 target_compile_definitions(${PLUGIN_NAME} PRIVATE FLUTTER_PLUGIN_IMPL)
+if("$ENV{AETHER_ENABLE_TEST_HOOKS}" STREQUAL "1")
+  target_compile_definitions(${PLUGIN_NAME} PRIVATE AETHER_ENABLE_TEST_HOOKS)
+endif()
+target_include_directories(${PLUGIN_NAME} PRIVATE "${AETHER_ROOT}/native/platform/include")
 target_include_directories(${PLUGIN_NAME} INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
-target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin aether_core)
+target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin aether_core d3d11 dxgi d2d1 dwrite d3dcompiler windowscodecs ole32)
 set(selene_native_bundled_libraries "$<TARGET_FILE:aether_core>" PARENT_SCOPE)

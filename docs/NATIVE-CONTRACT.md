@@ -47,12 +47,16 @@ until both native quiescence and ACK hold. Only then does it close the listener
 and stream. TIMEOUT retains safe native/listener references and supports retry;
 it never frees a callback still in use. Consumer code must release local cores
 before process exit. Window-close integration and its five-second aggregate
-budget belong to plan 02-02 and remain pending.
+budget are now implemented by plan 02-02. Dart removes the Texture consumer
+before unregister, awaits registrar completion and concurrently stops/ACKs the
+core; the runner enforces a five-second aggregate close budget. Timeout retains
+unsafe references through completion or process teardown.
 
 ## Capabilities and product boundaries
 
 The same query contains Windows/macOS/iOS/Android/Linux descriptors. Windows
-reports LOCAL_CORE only; presentation is not claimed. The four other adapters
+reports LOCAL_CORE only; the Windows presentation plugin advertises a separate
+runtime PRESENTATION bit only for an initialized active backend. The four other adapters
 report unimplemented with UNSUPPORTED reason. Compiling these descriptors on
 Windows does not establish corresponding target support.
 

@@ -19,6 +19,9 @@ add_executable(${BINARY_NAME} WIN32
 # Apply the standard set of build settings. This can be removed for applications
 # that need different build settings.
 apply_standard_settings(${BINARY_NAME})
+if("$ENV{AETHER_ENABLE_TEST_HOOKS}" STREQUAL "1")
+  target_compile_definitions(${BINARY_NAME} PRIVATE AETHER_ENABLE_TEST_HOOKS)
+endif()
 
 # Add preprocessor definitions for the build version.
 target_compile_definitions(${BINARY_NAME} PRIVATE "FLUTTER_VERSION=\"${FLUTTER_VERSION}\"")

@@ -5,7 +5,7 @@ test('real Windows GPU Texture and native surface present the same native source
  const launcher=resolveTool('flutter');assert.ok(launcher,'Pinned Flutter SDK required');
  const bin=path.dirname(launcher),dart=path.join(bin,'cache/dart-sdk/bin/dart.exe'),snapshot=path.join(bin,'cache/flutter_tools.snapshot');
  const root=path.resolve(__dirname,'..');
- const result=cp.spawnSync(dart,[snapshot,'--suppress-analytics','test','--no-pub','-d','windows','integration_test/native_panel_test.dart','--reporter=expanded'],{cwd:path.join(root,'apps/selene'),encoding:'utf8',timeout:120000,windowsHide:true,maxBuffer:1024*1024});
+ const result=cp.spawnSync(dart,[snapshot,'--suppress-analytics','test','--no-pub','-d','windows','integration_test/native_panel_test.dart','--reporter=expanded'],{cwd:path.join(root,'apps/selene'),env:{...process.env,AETHER_ENABLE_TEST_HOOKS:'1',AETHER_TEST_FAULTS:'1'},encoding:'utf8',timeout:120000,windowsHide:true,maxBuffer:1024*1024});
  fs.mkdirSync(path.join(root,'artifacts/phase02'),{recursive:true});
  fs.writeFileSync(path.join(root,'artifacts/phase02/presentation-tracer.log'),(result.stdout||'')+(result.stderr||''));
  assert.equal(result.status,0,result.stderr||result.stdout||result.error?.message);
