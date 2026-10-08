@@ -5,6 +5,16 @@ const {runGroup,validateTests,flutterCommand,clean}=require('../scripts/tool-run
 const fs=require('node:fs'),os=require('node:os');
 const {parsePub,validatePub,validateCi}=require('../scripts/check-sources.cjs');
 const {requireArtifacts}=require('../scripts/verify.cjs');
+const cp=require('node:child_process');
+test('prepare accepts Flutter trailing and relative local link targets but rejects a foreign target',()=>{
+ const root=path.resolve(__dirname,'..');
+ for(const mode of ['absolute','flutter-trailing-separator','relative','foreign']){
+  const result=cp.spawnSync('pwsh.exe',['-NoProfile','-File',path.join(root,'tests/plugin-link-probe.ps1'),'-Mode',mode],{cwd:root,encoding:'utf8',windowsHide:true,timeout:15000});
+  assert.ifError(result.error);
+  if(mode==='foreign')assert.notEqual(result.status,0,'foreign source target must remain rejected');
+  else assert.equal(result.status,0,mode+' should resolve to the reviewed local package: '+result.stdout+result.stderr);
+ }
+});
 test('Helios target contains only Helios/native build operations',()=>{
  const plan=planBuild({target:'Helios',configuration:'Release',root:path.resolve(__dirname,'..')});
  assert.equal(plan.commands.length,2,'configure then explicit native target build required');
