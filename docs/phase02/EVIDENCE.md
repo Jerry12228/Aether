@@ -1,7 +1,7 @@
 # Phase 2 execution evidence
 
 Local implementation, latest clean checkout and actual Windows Actions passed;
-phase completion is pending only the final human checkpoint. No Phase 3
+final human checkpoint was confirmed with exact reply “确认” on2026-10-08. No Phase 3
 started. Exact commands, durations, counters, binary/log digests and failed attempts
 are preserved in [EVIDENCE-RESULTS.json](EVIDENCE-RESULTS.json).
 
@@ -143,7 +143,9 @@ git diff confirms clean08a005c and CI9aff292 product/tool/test/lock inputs match
 downloaded file hashes; the first failure is not changed to a pass.
 Complete actual counts/outcomes, run metadata and uploaded artifact/file hashes
 are retained. Technical task02-03-02 is complete; final task02-03-03 is now ready.
-CORE-01/02/03 and phase completion remain pending the explicit human response.
+CORE-01/02/03 meet the scoped skeleton requirements. Final human response is
+“确认”, recorded2026-10-08T08:15:03Z, approving the repository/native boundary
+and evidence limits. No new physical keyboard/device observations are claimed.
 
 Final pre-review guard, 2026-10-08: `node scripts/check-sources.cjs --check`
 exited0/PASS, checking49 hosted packages,50 product source files, real
@@ -151,7 +153,7 @@ ffigen21/audited libclang18.1.1 bindings and version/lock/license drift.
 `node scripts/validate-planning.cjs` exited0/PASS, with105/105 v1 requirements
 mapped across42 phases and valid local links. `git diff --check` passed.
 
-Final human checkpoint:
+Final human checkpoint (confirmed; retained review scope):
 patterns/DPI/resize/retry/close, real console Ctrl+C/final key behavior, local-only
 resource boundaries, all five platform duties and the three unclassified CORE
 assumptions plus six descriptor-less prohibitions (still flagged-unverified).

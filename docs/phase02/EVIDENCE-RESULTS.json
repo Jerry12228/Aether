@@ -2,7 +2,7 @@
   "schema": 1,
   "capturedAt": "2026-10-08T07:27:48.051Z",
   "scope": "Phase 2 local repository/native skeleton only",
-  "status": "technical-passed-human-pending",
+  "status": "complete-scoped-phase02",
   "version": {
     "productVersion": "0.1.0",
     "buildNumber": 0,
@@ -1197,8 +1197,12 @@
     "cleanSourceEquivalence": "git diff --quiet verified identical product/tool/test/lock inputs between CI 9aff292 and clean 08a005c; metadata differs only"
   },
   "human": {
-    "status": "awaiting-final-review",
-    "reason": "technical checks and actual CI complete; explicit Phase2 repository/native-boundary confirmation required; earlier 确认 authorized publication only"
+    "status": "confirmed",
+    "response": "确认",
+    "recordedAt": "2026-10-08T08:15:03.000Z",
+    "scope": "Phase2 repository/native boundary and stated evidence limits; no automatic Phase3",
+    "newPhysicalObservations": false,
+    "priorPublicationAuthorization": "separate earlier confirmation"
   },
   "presentation": {
     "record": "docs/phase02/PRESENTATION-RESULTS.json",

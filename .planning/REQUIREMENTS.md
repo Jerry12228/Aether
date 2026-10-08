@@ -17,9 +17,9 @@
 
 ### Monorepo 与 Flutter/原生骨架
 
-- [ ] **CORE-01**: 维护者能从主仓库入口构建 Helios 和唯一 Selene Flutter 应用，共享模块和版本来源。
-- [ ] **CORE-02**: Selene 能通过有所有权/线程/取消契约的 C ABI 获取原生事件和能力，不传递逐帧媒体到 Dart。
-- [ ] **CORE-03**: 维护者能运行共享契约检查及 Windows 构建 CI，查看五平台 adapter 的统一接口。
+- [x] **CORE-01**: 维护者能从主仓库入口构建 Helios 和唯一 Selene Flutter 应用，共享模块和版本来源。
+- [x] **CORE-02**: Selene 能通过有所有权/线程/取消契约的 C ABI 获取原生事件和能力，不传递逐帧媒体到 Dart。
+- [x] **CORE-03**: 维护者能运行共享契约检查及 Windows 构建 CI，查看五平台 adapter 的统一接口。
 
 ### 虚拟显示器可行性
 
@@ -278,9 +278,9 @@
 | BASE-01 | Phase 1 | Complete |
 | BASE-02 | Phase 1 | Complete |
 | BASE-03 | Phase 1 | Complete |
-| CORE-01 | Phase 2 | In Progress |
-| CORE-02 | Phase 2 | In Progress |
-| CORE-03 | Phase 2 | In Progress |
+| CORE-01 | Phase 2 | Complete |
+| CORE-02 | Phase 2 | Complete |
+| CORE-03 | Phase 2 | Complete |
 | VDP-01 | Phase 3 | Pending |
 | VDP-02 | Phase 3 | Pending |
 | MIC-01 | Phase 4 | Pending |

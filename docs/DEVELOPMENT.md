@@ -47,7 +47,7 @@ PR/main/manual 均运行双产品 Debug/Release 和 All，包括实际 GPU engin
 原生路径规范化和软件标识修复后 run 37741148365 已通过四项构建及19组/142条记录；
 实际日志与哈希见 phase02/CI-RESULTS.json。
 实际 SDK/tool/image、软件/物理 GPU 和 run URL 分别留档。阶段完成仍需真实 CI
-全部通过（已取得）及最终人审（待确认）。
+全部通过（已取得）及最终人审（2026-10-08原文“确认”，已完成）。
 
 目前产品只实现本地原生资源探针；呈现报告是静态 GPU 图案测量，不能代表串流
 延迟、解码/HDR/协议或其他平台支持。平台差异见 phase02/PLATFORM-GAPS.md。

@@ -1,7 +1,7 @@
 ---
 phase: 02-monorepo-flutter
 plan: "03"
-status: executing
+status: superseded
 subsystem: repository-tooling-ci
 tags: [CMake, Flutter, Windows, GitHub-Actions, provenance]
 requires:
@@ -162,3 +162,9 @@ Final pre-review checks were rerun on 2026-10-08 after synchronizing the packet:
 version/lock/license checks). `node scripts/validate-planning.cjs` exited0,
 PASS (42 phases,105/105 v1 requirements mapped, valid local links). `git diff
 --check` passed. No canonical02-03-SUMMARY.md exists before the human response.
+
+## Historical record closed
+
+User exact final reply “确认”, recorded 2026-10-08T08:15:03.000Z, completes task02-03-03.
+This file preserves the earlier pending state. Current completion is recorded in
+02-03-SUMMARY.md; pending/open descriptions above are historical.

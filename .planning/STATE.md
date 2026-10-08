@@ -1,42 +1,43 @@
 ---
 gsd_state_version: "1.0"
-current_phase: 2
-current_phase_name: Monorepo 与 Flutter/原生骨架
-status: executing
-stopped_at: 02-03 technical and actual CI checks passed; task 02-03-03 final human checkpoint pending
-last_updated: "2026-10-08T07:47:36.000Z"
+current_phase: 3
+current_phase_name: 虚拟显示器可行性
+status: planning
+stopped_at: Phase 2 complete, ready to plan Phase 3
+last_updated: "2026-10-08T08:20:01.569Z"
 last_activity: 2026-10-08
-last_activity_desc: Phase 2 final clean and actual Windows CI passed four builds and 19 mandatory groups; final human review pending
+last_activity_desc: Phase 2 complete, transitioned to Phase 3
+state_head: fbe35f4fe7de2e71ecf07df325b0e353dc4ac5ea
 progress:
   total_phases: 42
-  completed_phases: 1
+  completed_phases: 2
   total_plans: 6
-  completed_plans: 5
-  percent: 2
+  completed_plans: 6
+  percent: 5
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-10-07)
+See: .planning/PROJECT.md (updated 2026-10-08)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 02 — Monorepo 与 Flutter/原生骨架（02-01/02 已完成；正在执行 02-03）
+**Current focus:** Phase 03 — 虚拟显示器可行性（下一节点讨论/规划；尚未启动）
 
 ## Current Position
 
-Phase: 2 (Monorepo 与 Flutter/原生骨架) — EXECUTING
-Plan: 02-01/02 complete; 02-03 in progress (2/3 complete)
-Status: Executing
-Last activity: 2026-10-08 — 02-01/02 complete; 02-03 technical tasks complete; final clean08a005c and actual Actions9aff292 pass; task02-03-03 awaits human review
+Phase: 3 — 虚拟显示器可行性
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-10-08 — Phase 2 complete, transitioned to Phase 3
 
-Progress: [░░░░░░░░░░] 2%
+Progress: [█░░░░░░░░░] 5%
 
 ## Performance Metrics
 
-Total plans completed: 5; completed phases: 1/42.
-Phase2: final clean source08a005c and actual Actions source9aff292 each build Helios/Selene Debug+Release, version0.1.0/ABI1; 19 required groups and 142 recorded cases/native suites pass. Product/tool/test/lock inputs match across these sources. Actual GPU pixels, six valid static rounds, zero-counter cleanup, real isolated Helios Ctrl+C and disposal/path/software-adapter regressions retained. Final human review remains pending. Evidence: docs/phase02/EVIDENCE.md.
+Total plans completed: 6; completed phases: 2/42.
+Phase2: clean08a005c and actual CI9aff292 pass four Helios/Selene Debug/Release builds,19 required groups/142 records, version0.1.0/ABI1, zero resources and matching product/tool/test/lock inputs. Final human exact response “确认”, recorded2026-10-08T08:15:03Z, approves scoped boundary/evidence limits. Six valid static rounds, actual GPU/FFI/isolated-console and negative regressions retained. CORE-01/02/03 Complete. Evidence: docs/phase02/EVIDENCE.md.
 Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning fixture1/1。Quick真实快照1.523s/25s，15查询。Phase1目标10/10、BASE01/02/03已完成；零产品性能测量或产品功能验证。完整套件超过30秒反馈目标，针对性反馈约2秒。
 
 ## Accumulated Context
@@ -60,6 +61,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 - 用户纠正WDK已安装且VS26集成；只关闭安装缺口，未将组件存在写成目标构建证据。
 - 2026-10-07 Phase 2 规划完成：02-01 真实 C ABI/DLL/Dart 与五端接口；02-02 GPU Texture/native surface、面板/控制台及本地清理；02-03 单目标 build、独立 verify、干净 Windows CI 与最终人审。研究、模式映射和检查已完成；首轮两项 blocker 修订后通过，CORE 三项和 D-01–17 全覆盖。实际 CI 必需检查与最终人审均为执行完成条件；未启动产品实现。
 
+- 2026-10-08 Phase2最终原文“确认”：批准仓库/原生边界与证据限制，不新增物理按键/设备观察。C++20/C ABI/CMake、Dart FFI和薄平台通道获确认；双静态GPU路径通过，不提前锁定完整媒体/HDR路线。安全L1十四项计划控制closed/open0、Nyquist覆盖完成；六条无描述符禁止项及三个未分类机器flag原样保留。Phase3仅处于下一步位置。
+
 ### Pending Todos
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
@@ -68,7 +71,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 [Phase1] 两个人审检查点均已答复、四原行为冲突已decided；VS2026与WDK28000同版本组件及集成文件存在，安装缺口resolved。保留9项open环境gap与1项Apple实机TODO：原生构建、独立Win10/客户端/架构/GPU环境、主机build下限、Apple/Linux executor、AndroidAPI21–23/Linux额外架构及测量仪器。来源1261阻碍条目含未决子模块、外部包/二进制来源、具体生产许可、驱动签名和渠道，阻断对应后续生产选用；全部research-only、生产清单空。637平台记录及637计划案例已映射，尚未实现或实机验证。Apple只有VFY01/02实机延期，构建义务仍保留。三个分类flag/六条无描述符prohibitions原状态保留，不伪造自动引擎通过。
 
-[Phase2 execution] Public origin Jerry12228/Aether main is authorized by user exact reply “确认” and fixes are pushed without force. Actual CI runs 37721726261/37732241885/37734973473 failed; 37734251073 cancelled/superseded. First proved exact hosted SDK28000 installation. Casing-only 8c03b92 did not close aliases; native OS correction9aff292 passed 96 baseline/tool tests. Software flag correction560e1d2 passes actual software-driver identity and both WARP configurations. Latest clean08a005c passed four builds/19 groups/142 records in309.474s, zero resources and safe owned-checkout removal. Fifth actual CI https://github.com/Jerry12228/Aether/actions/runs/37741148365 on9aff292 SUCCESS: all four builds and19 groups/142 records, exact SDK28000, real engine/software-adapter functional checks and zero resources. All four downloaded Release binary hashes match its verify report; clean/CI product/tool/test/lock inputs match. Only final human checkpoint02-03-03 remains. Earlier “确认” is publication authorization, not final Phase2 review. Evidence: docs/phase02/EVIDENCE.md and CI-RESULTS.json. All original platform duties and three unclassified/six descriptorless flags remain; CORE-01/02/03 open, Nyquist/wave0 false, no Phase3.
+[Phase2 retained limits] Final actual run37741148365 and clean08a005c passed; prior CI failures/cancellation retain original outcomes. Final human checkpoint complete, CORE-01/02/03 Complete; Nyquist/wave0 true for scoped phase. Win10 host floor/WindowsARM/other-platform engine and build executors, remote/media/HDR/driver/production-license evidence remain later obligations. Six Android lower-API native cross-compiles do not close Fluttermin24; LinuxWSL failed before compiler; Apple implementation/build remainsv1, only physicalVFY01/02TODO. Three unclassified/six descriptorless machine flags remain unchanged after human boundary approval. No Phase3 started.
 
 ## Deferred Items
 
@@ -76,8 +79,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-08T07:47:36.000Z
-Stopped at: 02-03 technical checks and actual CI run37741148365 passed; task02-03-03 awaiting explicit final human review
-Resume file: .planning/phases/02-monorepo-flutter/02-03-PARTIAL.md (task02-03-03 final human checkpoint)
-Next action: 审阅具体 Phase2 仓库/原生边界和证据限制，记录用户最终确认或具体修改项。确认前不创建02-03-SUMMARY.md或完成阶段；不重跑已通过技术任务，不自动启动 Phase3。
-
+Last session: 2026-10-08T08:20:12.000Z
+Stopped at: Phase 2 complete, ready to plan Phase 3
+Resume file: None
+Next action: 用户显式启动 $gsd-discuss-phase 3 后讨论虚拟显示器可行性，再规划执行；当前仅完成Phase2收尾。

@@ -84,7 +84,7 @@ Do not make direct repo edits outside a GSD workflow unless the user explicitly 
 
 ## Aether Repository Rules
 
-- Start with [.planning/STATE.md](.planning/STATE.md), then the current phase and its directly relevant documents. The user approved the roadmap on 2026-10-07; Phase 1 baseline audit and final human review are complete. Phase 2 is ready to plan; no product implementation phase has run.
+- Start with [.planning/STATE.md](.planning/STATE.md), then the current phase and its directly relevant documents. The user approved the roadmap on 2026-10-07; Phase 1 baseline and Phase 2 Windows local skeleton, actual CI and final human review are complete. Phase 3 is ready to discuss/plan; no virtual-device or full remote-streaming implementation phase has run.
 - Use [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/SESSION-MODEL.md](docs/SESSION-MODEL.md) for design boundaries. This is a greenfield repo, so there are no production code patterns to infer yet.
 - Preserve the entire applicable [original feature matrix](docs/FEATURE-PARITY.md). Newly discovered missing original abilities enter v1, not the TODO backlog by default.
 - Keep Flutter UI and native realtime/system paths separate; one Selene app and shared contracts live in the Aether monorepo.

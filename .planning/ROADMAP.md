@@ -19,7 +19,7 @@
 ## Phases
 
 - [x] **Phase 1: 来源、原功能与环境基线** - 建立可追溯的原功能全集和真实工具/平台验证矩阵 (completed 2026-10-07)
-- [ ] **Phase 2: Monorepo 与 Flutter/原生骨架** - 从一个主仓库构建 Helios 和 Selene Windows 骨架
+- [x] **Phase 2: Monorepo 与 Flutter/原生骨架** - 从一个主仓库构建 Helios 和 Selene Windows 骨架 (completed 2026-10-08)
 - [ ] **Phase 3: 虚拟显示器可行性** - 在 Win10/11 验证可生产接入的多组虚拟屏 provider
 - [ ] **Phase 4: 系统虚拟麦克风可行性** - 证明 PCM 可注入 Win10/11 普通软件的 capture endpoint
 - [ ] **Phase 5: Win10/11 系统摄像头可行性** - 证明两个 Windows 版本上的普通软件能选择虚拟摄像头
@@ -97,7 +97,7 @@
 1. Windows 双端骨架从干净 checkout 可构建，核心不依赖 Qt 或 Flutter。
 2. 跨边界句柄创建/释放、错误回调和停止均有契约验证，记录 texture/surface 原型结论。
 
-**Plans:** 2/3 plans complete（02-01/02 已完成；02-03 最终本地/干净双端检查通过，实际 CI 与最终人审仍待完成）
+**Plans:** 3/3 plans complete（本地/干净双端、实际 Windows CI 和最终人审均完成；CORE-01/02/03 骨架范围满足）
 
 **Wave 1**
 
@@ -107,9 +107,9 @@
 
 - [x] 02-02-PLAN.md — 原生 GPU Texture/native surface、验证面板与退出行为
 
-**Wave 3** *(local checks passed; actual Windows CI and human checkpoint pending)*
+**Wave 3** *(complete: clean/actual Windows CI passed; final human response “确认”)*
 
-- [ ] 02-03-PLAN.md — 单目标构建、独立验证、干净 Windows CI 与最终人审
+- [x] 02-03-PLAN.md — 单目标构建、独立验证、干净 Windows CI 与最终人审
 
 ### Phase 3: 虚拟显示器可行性
 
@@ -610,7 +610,7 @@
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. 来源、原功能与环境基线 | 3/3 | Complete    | 2026-10-07 |
-| 2. Monorepo 与 Flutter/原生骨架 | 2/3 | In Progress | Actual CI and final human review pending |
+| 2. Monorepo 与 Flutter/原生骨架 | 3/3 | Complete    | 2026-10-08 |
 | 3. 虚拟显示器可行性 | 0/TBD | Not started | - |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |

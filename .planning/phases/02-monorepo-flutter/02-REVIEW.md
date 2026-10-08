@@ -98,4 +98,5 @@ No new open finding remains in this source review. Latest clean 08a005c passed
 four builds and all 19 groups / 142 recorded cases, including the new software
 probes. Fifth actual run37741148365 passed four builds and all19 groups/142
 records; uploaded Release hashes and exact clean/CI source equivalence pass.
-Only the final human repository/native-boundary review remains pending.
+Final human reply “确认” now approves the repository/native boundary and
+evidence limits; no new source change or open review finding is introduced.

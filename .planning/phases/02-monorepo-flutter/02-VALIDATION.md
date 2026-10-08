@@ -1,15 +1,15 @@
 ---
 phase: "02"
 slug: "monorepo-flutter"
-status: draft
-nyquist_compliant: false
-wave_0_complete: false
+status: validated
+nyquist_compliant: true
+wave_0_complete: true
 created: "2026-10-07"
 ---
 
 # Phase 02 — Validation Strategy
 
-本文件是执行时验证契约。2026-10-08 本地、最终干净检出与实际 Windows Actions 已通过；最终人审待答复。证据见 docs/phase02/EVIDENCE.md；nyquist_compliant 与 wave_0_complete 在最终必需人审完成前保持 false。
+本文件是执行时验证契约。2026-10-08 本地、最终干净检出与实际 Windows Actions 已通过；最终人审原文“确认”，记录2026-10-08T08:15:03Z。证据见 docs/phase02/EVIDENCE.md；全部本阶段必需技术检查与边界确认完成，nyquist_compliant 与 wave_0_complete 设为 true。
 
 ## Test Infrastructure
 
@@ -56,7 +56,7 @@ created: "2026-10-07"
 | 02-03-02 | 03 | 3 | CORE-01/03 | T-02-13 | 真实planning fixture回归 | Node | `node --test tests/planning.test.cjs` | 测试失败/child-spawn限制被忽略 | ✅ tracked | pass-local |
 | 02-03-03 | 03 | 3 | CORE-01/02/03 | T-02-03/11/13 | 人审前源与已验结果一致 | source check | `node scripts/check-sources.cjs --check` | 审阅来源/绑定/版本/锁漂移 | ✅ tracked | pass-local |
 
-实际 Actions：**PASS**（run37741148365/source9aff292）；最终人审：**awaiting response**。上表 pass-local 表示对应本地命令实际通过；最终 clean source08a005c 和实际 CI 均通过四项产品构建、19个必需组、142条测试/套件记录。失败 clean/CI 与取消历史保持原结果；不存在跳过或空测试记 green。技术任务02-03-02完成，Phase2仍等待02-03-03明确人审。
+实际 Actions：**PASS**（run37741148365/source9aff292）；最终人审：**confirmed**。上表 pass-local 表示对应本地命令实际通过；最终 clean source08a005c 和实际 CI 均通过四项产品构建、19个必需组、142条测试/套件记录。失败 clean/CI 与取消历史保持原结果；不存在跳过或空测试记 green。技术任务02-03-02完成，02-03-03明确人审已完成。
 
 所有命令均在 checkout root 执行；包装器设置真实 DLL 路径并在所属 Flutter workspace package 运行对应测试。Node child-spawn EPERM 必须在可运行环境重跑，不能记通过。Windows CI 还须保存实际 run URL/commit/runner/结果；仅 workflow 文件存在不能当实际 CI 通过。
 
@@ -69,7 +69,7 @@ created: "2026-10-07"
 - [x] 02-03-01 创建 build/verify/source-check 和 tests/build-tools.test.cjs；02-03-02 创建平台 guard/tests 与 Windows CI/证据包。
 - [x] version.json、toolchains.lock.json、pub workspace单锁、单一版本生成和binding drift完整；libclang与精确pub包来源/许可在首次解析前核验。
 
-这是每个对应 tracer/task 的先建测试再实现要求，无独立空目录 Wave 0 计划；所有列出的入口现已创建并实际运行，通过最终 clean 与真实 CI。阶段签署尚待最终必需人审，wave_0_complete 仍 false。
+这是每个对应 tracer/task 的先建测试再实现要求，无独立空目录 Wave 0 计划；所有列出的入口现已创建并实际运行，通过最终 clean 与真实 CI。最终必需人审已确认，wave_0_complete 现为 true。
 
 ## Four-Source Coverage Audit
 
@@ -134,6 +134,18 @@ created: "2026-10-07"
 - [x] 无 watch 模式；快速反馈实际耗时已记录；全量本地与实际 CI 分开记录。
 - [x] 真实 Dart/native 回调与 shutdown 负向证据完成。
 - [x] 五端接口未实现状态、Apple 构建义务与原平台差异均保留。
-- [ ] `nyquist_compliant: true` 仅在执行验证后设置；当前保持 false。
+- [x] `nyquist_compliant: true` 已在实际技术验证和最终人审之后设置；不代表未实现平台/产品能力通过。
 
-**Approval:** pending-human；三次实际 CI 失败与一次取消保留。第五轮 https://github.com/Jerry12228/Aether/actions/runs/37741148365 在9aff292通过四项构建和19组/142条记录；最新 clean08a005c同样通过，产品/工具/测试/锁输入一致，四项上传的Release二进制哈希匹配报告。任务02-03-03已到达，等待具体边界与证据限制的最终确认；CORE-01/02/03仍In Progress，Phase2未完成。
+**Approval:** confirmed — exact reply “确认”, recorded2026-10-08T08:15:03Z；三次实际 CI 失败与一次取消保留。第五轮 https://github.com/Jerry12228/Aether/actions/runs/37741148365 在9aff292通过四项构建和19组/142条记录；最新 clean08a005c同样通过，产品/工具/测试/锁输入一致，四项上传的Release二进制哈希匹配报告。任务02-03-03已明确确认仓库/原生边界与证据限制；CORE-01/02/03满足本阶段骨架范围。未新增物理按键/其他平台观察，未自动启动Phase3。
+
+## Validation Audit 2026-10-08
+
+Inline skill-adapter audit: CORE-01/02/03 COVERED by native real-DLL lifecycle,
+widget/engine/process and root-tool/platform/source checks. Every automated task
+command and its fails_when maps to the final19-group clean/CI result. Missing
+automated coverage0, failing groups0, generated redundant tests0. Four prior-phase
+regression files run green within the96-record baseline/tool group. Manual-only
+visual/console observations remain honestly separated; the final human response
+approves the scoped evidence limits without manufacturing a physical-key result.
+The three unclassified/six descriptor-less flags stay unresolved/null; human
+approval is recorded separately, not converted into a machine enforcement pass.

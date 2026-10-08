@@ -11,7 +11,7 @@
     {
       "number": "2",
       "name": "Monorepo 与 Flutter/原生骨架",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "number": "3",
@@ -215,9 +215,9 @@
     }
   ],
   "next": {
-    "command": "/gsd:execute-phase 2",
-    "label": "Execute Phase 2",
-    "reason": "Phase 2 planned and checked: 3 sequential plans; product execution not started"
+    "command": "/gsd:progress --next",
+    "label": "Advance to the next step (plan phase 3)",
+    "reason": "Phase 3 of 42 — needs a plan"
   },
-  "updated_at": "2026-10-07T15:42:56.839Z"
+  "updated_at": "2026-10-08T08:20:01.624Z"
 }
