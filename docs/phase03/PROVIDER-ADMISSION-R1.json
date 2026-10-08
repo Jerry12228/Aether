@@ -746,7 +746,16 @@
     "status": "no-qualified-candidate",
     "eligibleProviderIds": []
   },
-  "decision": null,
+  "decision": {
+    "status": "no-qualified-provider",
+    "providerId": null,
+    "userText": "1",
+    "choiceContext": "Aether 专属 SudoVDA 派生路线（推荐）：独立设备身份和配置、受限 ACL，先完成许可、构建与签名方案",
+    "recordedAt": "2026-10-08T15:18:55Z",
+    "dossierSha256": "0e2010bd2143013fbbc62d0be3cad622020024594562c8521370ff36bcf0d116",
+    "nextAction": "Prepare the approved limited Aether-derived SudoVDA source/license/build/signing route; admission and machine/system-operation gates remain separate",
+    "routeId": "aether-sudovda-derived-preparation"
+  },
   "machineAuthorization": {
     "status": "not-authorized",
     "machineId": null,
