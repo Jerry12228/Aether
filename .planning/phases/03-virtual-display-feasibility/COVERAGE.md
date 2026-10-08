@@ -20,3 +20,11 @@
 | 捕获/编码/传输/HDR媒体呈现 | OPT-OUT | 已批准Phase9/15/18/19责任；本阶段只验证OS显示状态 |
 
 INTEGRATE是计划范围，不代表已实现。Win10与Win11同一完整基线逐项核验，不沿用另一OS的未验证结论。选定provider如有额外方法必须在准入档案和此表逐项决定，所有OPT-OUT保留具体原因。
+
+## 03-01-02实际接口审计（2026-10-08，尚未选定provider）
+
+SudoVDA固定wrapper完整方法面（sudovda.h）：OpenDevice OPT-OUT（打开需读写且底层副作用未知）；AddVirtualDisplay/RemoveVirtualDisplay INTEGRATE（准入后逐GUID）；SetRenderAdapter OPT-OUT（共享adapter变更）；GetWatchdogTimeout/GetProtocolVersion/isProtocolCompatible/CheckProtocolCompatible/GetAddedDisplayName INTEGRATE（候选合同，当前未调用）；PingDriver OPT-OUT（常驻owner需单独架构决定）。六IOCTL分别ADD/REMOVE/SET_RENDER_ADAPTER/GET_WATCHDOG/DRIVER_PING/GET_PROTOCOL_VERSION，逐项映射上述方法；未遗漏0x802或0x8FF。完整wrapper不表示缺失driver实现已审计。
+
+VDD固定Driver.cpp:2075–2253完整17-command pipe面：IDDCXVERSION/GETASSIGNEDGPU/GETALLGPUS/GETSETTINGS/PING INTEGRATE（只读候选，实际协议/ACL未核验，当前不调用）；RELOAD_DRIVER/SETDISPLAYCOUNT OPT-OUT（全局设备变化不能作为单组删除）；LOG_DEBUG/LOGGING/HDRPLUS/SDR10/CUSTOMEDID/PREVENTSPOOF/CEAOVERRIDE/HARDWARECURSOR/D3DDEVICEGPU/SETGPU OPT-OUT（全局设置不属于逐组短命令，不能隐式修改）。driver内部IddCx DDI不是外部client调用面；如改用自研/修改驱动，须重新审计完整DDI/配置/installer面。
+
+Microsoft样例仅SwDeviceCreate/SetLifetime/Close和IddCx教学候选；MolotovCherry仅未固定README声明；Parsec缺独立接口。三者完整方法面仍为gap，不当作已审计完成。任何provider选定/替换时，重新逐项确认上述INTEGRATE/OPT-OUT；当前JSON逐方法理由和安全门槛见docs/phase03/PROVIDER-ADMISSION.json。生产链接/IOCTL调用为0。
