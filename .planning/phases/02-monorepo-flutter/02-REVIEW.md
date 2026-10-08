@@ -94,5 +94,8 @@ device selection, drawing, lifetime or StopInstance semantics. Actual fourth-run
 software labeling, two WARP configurations and zero source cleanup pass. The
 actual CI-record RED and later same-witness GREEN retain their input hashes;
 initial local WARP GREEN and sandbox load failure are not RED evidence.
-No new open finding remains in this source review; latest clean and fifth-run
-actual complete CI remain pending, independently of final human review.
+No new open finding remains in this source review. Latest clean 08a005c passed
+four builds and all 19 groups / 142 recorded cases, including the new software
+probes. Fifth actual run37741148365 passed four builds and all19 groups/142
+records; uploaded Release hashes and exact clean/CI source equivalence pass.
+Only the final human repository/native-boundary review remains pending.

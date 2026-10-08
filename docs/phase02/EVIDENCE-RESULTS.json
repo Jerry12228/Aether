@@ -1,8 +1,8 @@
 {
   "schema": 1,
-  "capturedAt": "2026-10-08T05:33:43.690Z",
+  "capturedAt": "2026-10-08T07:27:48.051Z",
   "scope": "Phase 2 local repository/native skeleton only",
-  "status": "local-passed-ci-and-human-pending",
+  "status": "technical-passed-human-pending",
   "version": {
     "productVersion": "0.1.0",
     "buildNumber": 0,
@@ -235,16 +235,16 @@
   },
   "clean": {
     "status": "PASS",
-    "commit": "0617a3e6e3d3ce7bc30e2908bda65ea257d3260b",
+    "commit": "08a005ca5a3e2137345e2dbd2f5153bb6c37cade",
     "diffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "source": "tracked committed HEAD only; no ignored inputs",
-    "directory": "build\\clean-checkouts\\Aether clean space 7ZGhCb",
-    "durationMs": 312807,
+    "directory": "build\\clean-checkouts\\Aether clean space AmpqVY",
+    "durationMs": 309474,
     "records": [
       {
         "name": "clone",
         "exitCode": 0,
-        "durationMs": 493,
+        "durationMs": 681,
         "timeout": false,
         "error": null,
         "log": "artifacts\\phase02\\clean\\clone.log"
@@ -252,7 +252,7 @@
       {
         "name": "checkout",
         "exitCode": 0,
-        "durationMs": 307,
+        "durationMs": 341,
         "timeout": false,
         "error": null,
         "log": "artifacts\\phase02\\clean\\checkout.log"
@@ -260,7 +260,7 @@
       {
         "name": "clean-Helios-Debug",
         "exitCode": 0,
-        "durationMs": 7825,
+        "durationMs": 7702,
         "timeout": false,
         "error": null,
         "log": "artifacts\\phase02\\clean\\clean-Helios-Debug.log"
@@ -268,7 +268,7 @@
       {
         "name": "clean-Selene-Debug",
         "exitCode": 0,
-        "durationMs": 27719,
+        "durationMs": 27208,
         "timeout": false,
         "error": null,
         "log": "artifacts\\phase02\\clean\\clean-Selene-Debug.log"
@@ -276,7 +276,7 @@
       {
         "name": "clean-Helios-Release",
         "exitCode": 0,
-        "durationMs": 4194,
+        "durationMs": 4177,
         "timeout": false,
         "error": null,
         "log": "artifacts\\phase02\\clean\\clean-Helios-Release.log"
@@ -284,7 +284,7 @@
       {
         "name": "clean-Selene-Release",
         "exitCode": 0,
-        "durationMs": 29778,
+        "durationMs": 29406,
         "timeout": false,
         "error": null,
         "log": "artifacts\\phase02\\clean\\clean-Selene-Release.log"
@@ -292,7 +292,7 @@
       {
         "name": "clean-verify-All",
         "exitCode": 0,
-        "durationMs": 242432,
+        "durationMs": 239906,
         "timeout": false,
         "error": null,
         "log": "artifacts\\phase02\\clean\\clean-verify-All.log"
@@ -301,62 +301,62 @@
     "digests": [
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Adapters-Debug-dart.log",
-        "sha256": "b38c77cfb0a27f45826df65fb54c99a1dbb632f67b88c5aec6523a0e3ac9c820",
+        "sha256": "b1979619599624fca142d456b113b00e28f3dcfc26e247d13519ad3f62fb7a54",
         "bytes": 389
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Adapters-Debug-native.log",
-        "sha256": "72c050ae8f679a9a887a619bbac1c16d0cff67429c58e8ee9111b23ce510563c",
+        "sha256": "044ba79cc6104eb936b4a3d86b95e3c0537350294044e0ae7a599cb87685e2ec",
         "bytes": 262
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Adapters-Release-dart.log",
-        "sha256": "b38c77cfb0a27f45826df65fb54c99a1dbb632f67b88c5aec6523a0e3ac9c820",
+        "sha256": "b1979619599624fca142d456b113b00e28f3dcfc26e247d13519ad3f62fb7a54",
         "bytes": 389
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Adapters-Release-native.log",
-        "sha256": "91813ccb41cb82b1ab626a836caffca62eac448ed2dc7a1b488c920215cbc422",
+        "sha256": "044ba79cc6104eb936b4a3d86b95e3c0537350294044e0ae7a599cb87685e2ec",
         "bytes": 262
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Lifecycle-Debug-dart.log",
-        "sha256": "22cdc80fd688ec9c18e69fe691eb1d0d1550a8ae8746101a4632d43c077b1c79",
+        "sha256": "c69a8930ae85e980e888b03db0c0dddc63ddb60a7723294782040456da8aa9c9",
         "bytes": 633
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Lifecycle-Debug-native.log",
-        "sha256": "a426a91be9764f444a2e38d1d5f5b8cc50245d7e89f1b90692f9f53bc9ad5d4a",
+        "sha256": "b64bfd0f869c5b60bc01dcb0ac910c085e557f2f91e80a74033476e8c46f71ef",
         "bytes": 263
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Lifecycle-Release-dart.log",
-        "sha256": "22cdc80fd688ec9c18e69fe691eb1d0d1550a8ae8746101a4632d43c077b1c79",
+        "sha256": "c69a8930ae85e980e888b03db0c0dddc63ddb60a7723294782040456da8aa9c9",
         "bytes": 633
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Lifecycle-Release-native.log",
-        "sha256": "aec320eca9d11003a2697dc026f5f14ea7a77ba8936e178baa9bfae6dd3e9e04",
+        "sha256": "c0acd0214312a1380862e2580aee481b4782e75645f738030e3afd53922d6c15",
         "bytes": 263
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Tracer-Debug-dart.log",
-        "sha256": "db0cd32c8b760f026b4a68316ed426f0ab96afe2ef2952e7bd29497b3b7b8c61",
+        "sha256": "474e7b422d5bb095331b20fe3bf7b7d46075c012dbb8264823dfab1f802dab26",
         "bytes": 324
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Tracer-Debug-native.log",
-        "sha256": "b704440e0b46c3d126466063f0a4262a7b03fe2ed37fc814dcdf9894bc3af258",
+        "sha256": "6da6e6d6035b88b78bad5fc964a531681b461f4c4ceadb1dd060dcf68fce7387",
         "bytes": 260
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Tracer-Release-dart.log",
-        "sha256": "db0cd32c8b760f026b4a68316ed426f0ab96afe2ef2952e7bd29497b3b7b8c61",
+        "sha256": "474e7b422d5bb095331b20fe3bf7b7d46075c012dbb8264823dfab1f802dab26",
         "bytes": 324
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Tracer-Release-native.log",
-        "sha256": "b704440e0b46c3d126466063f0a4262a7b03fe2ed37fc814dcdf9894bc3af258",
+        "sha256": "decce3611108484e540adc045732eb358cfd3c0afb68fe9168dfeea786a61318",
         "bytes": 260
       },
       {
@@ -401,152 +401,152 @@
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\presentation-correctness.json",
-        "sha256": "967ced58ee88382acfc222438f5249c8978b44e73aac3175c43adfc47f06c1a9",
-        "bytes": 1569
+        "sha256": "7719c6fd82b5a0c5e467de85c8c50751f5ff7adb472dc5127514cc25254d051c",
+        "bytes": 1663
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\binary-versions.log",
-        "sha256": "bed60575c129c56cda75a6770e5e2acc23601be5e7e623fede511488063440e4",
+        "sha256": "e224c79ed458a6add135ef934221ea0b9a8268edd6b2d1cc030ca0668a3bafe4",
         "bytes": 1119
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\binding-drift.log",
-        "sha256": "52e75fffe15c8a64a5222087f3eb590950cb97cc795e8bff039f8c04ec7adb76",
+        "sha256": "d99325521beae3e5e4a35546d8ca0c7989d7dd9d4e47df5822b2a0102225410b",
         "bytes": 893
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Adapters-Debug.log",
-        "sha256": "cec3153d88be2b04683d43f14c3a80cc15017166fdd5887c216069dfc7134a07",
+        "sha256": "5d9c471f7729cf099063db6e157988bfadfd0643fc4b5ae2bd1d71b1b61571c0",
         "bytes": 1415
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Adapters-Release.log",
-        "sha256": "f834ebdcc71a29a48dfb774d9ed9548802a537f9255453a64093796bcf8e149b",
+        "sha256": "9980fe4db51657a391adf2eae09f185857694368fc7df146bc5d134cecdfcfbe",
         "bytes": 1425
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Lifecycle-Debug.log",
-        "sha256": "272e772d6cadf9217805cf92633e9f08830a2ae8ff41db53bbdc0035c3bdf612",
+        "sha256": "c5a75db159c84b131e727bf8576d233cae21cfa81c31718e51060a4b01bbeb46",
         "bytes": 1664
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Lifecycle-Release.log",
-        "sha256": "0664cb59ab76a387994c20698b68bef683b743cf88359b6f54808ed04b958e45",
+        "sha256": "c0ff67831b41a82849754d44458454fa2572ad6b24e8a0893602b9bcbd9f8eea",
         "bytes": 1674
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Tracer-Debug.log",
-        "sha256": "403e95a62669e06eb98bb988621773cb42d61899c910a480a10062a7139808ce",
+        "sha256": "ac178049261d8875571ca4afbb502f78288534ef3e2d7ec520bd535691c6663d",
         "bytes": 1340
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Tracer-Release.log",
-        "sha256": "d48aeeba961e8b6ac8f766c7b52c2c6f3edd578534d4a3e64164f6bef297fec6",
+        "sha256": "2d8848ef7daab1dac577a141ed90669b7df046ba99f098e9c02cf6a6b40c7cd4",
         "bytes": 1350
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\flutter-analyze.log",
-        "sha256": "9702ad99180f91865de403e8ecc01799566f2d68e2ac1c5ef6f04aac2a9d1f8f",
+        "sha256": "7e2b13cf6fe2fe842bc9e8e407c96d77a33bdd2f9e0a839cba5e89ceb9fd1703",
         "bytes": 565
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Helios-Debug-build.log",
-        "sha256": "2c0c4f791fab585a3800d7d9bb1cb7626b64faa8a77c34379996ba95fd8b1912",
+        "sha256": "d1d28afdd6d82a270d4a5d5bc0e0226aaa1eca1b95c1313cc8f9c7af7553afcb",
         "bytes": 1377
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Helios-Debug-configure.log",
-        "sha256": "bb5b5276adaacfe13be7f134c372063fbf54977c69348a93dcca87a153b338d9",
+        "sha256": "12dafadfbb951531b1c621f9c53b2ee3390141cba339d76fba50c649bf3c7a7b",
         "bytes": 1259
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\helios-Debug.log",
-        "sha256": "f8c4046aea9af5747c1d1d9830d146fadcbee9c65d9f1952e40fe765f8634cd5",
+        "sha256": "fe9b0dde8aeff5c58760f1a3ff82fdcb30f62bd3f1670fde54a4c2190c49eb5b",
         "bytes": 976
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Helios-Release-build.log",
-        "sha256": "1dbb44dd9b2c330504dd571d4f1f2d7ee7cf02c9479ab6f2d4aa937017da212a",
+        "sha256": "70f4516a8292936996273eb3153fa6afb2bf828165897a3a4cdadce0a8d8e5ea",
         "bytes": 1391
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Helios-Release-configure.log",
-        "sha256": "f029e2e57bf48515d30a46f2c0d41ec77bdff709a865645622b5503bbcaaf0a9",
+        "sha256": "96dca709b59dd596c86f81a40e44e9cce7b07fb0ec9031a6b5e9886f613d6bc7",
         "bytes": 558
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\helios-Release.log",
-        "sha256": "e3b8aff3c56ed8bb275c268b9a79c90b5aa8e4d9b2bbf38e9ba12bcef5b3ae12",
-        "bytes": 982
+        "sha256": "c9941ade01eb733eeae684e14ab04e6de86a29f2e08f65ecf9c5360bdea5628a",
+        "bytes": 981
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\native-tracer-fixture.log",
-        "sha256": "d3149780491ff0368c25eb1b4f6a93a08abd87eeff3d450a1e6c15f680e71e5b",
+        "sha256": "81a395f0ac60a650cac4d03ff0215c912e9cfc35976a1f27374eeee278348b6b",
         "bytes": 723
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\planning-check.log",
-        "sha256": "c16c5a4069e94561a111d5c1e34c9d56e59dc6d13aebd82d0d85f893309ceeb8",
+        "sha256": "d05ab5d9506da33601d6eece8491bdcfc02ee4eed5dc97a63bf9438bca51f6a6",
         "bytes": 498
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\platform-check.log",
-        "sha256": "2f6be3b51b169f5717d658ddd7dd4a0c79d3045939146c68f8c9128bc94e4109",
+        "sha256": "233e75fb3ad20a5eba3dfb66c95159f949bc3152a133dc323d4d6d97c12d21a5",
         "bytes": 521
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Selene-Debug-build.log",
-        "sha256": "bebc2b340253301b8f7e1660f9b486e3f3c0a8cccaa709c140830567accb599c",
+        "sha256": "c39a0f50e143277cdba7ffe18c53b36cedb577a4e90731ea056adec4ec445e83",
         "bytes": 619
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Selene-Debug-prepare.log",
-        "sha256": "136451c42aef30519bc113dbc4aa700757173d9b8057f257a2b9f86de727ea6a",
+        "sha256": "25f9a67f6be7ca101651af6a29809386684d660e156627cdcf9a1f400feaf1aa",
         "bytes": 2787
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Selene-Release-build.log",
-        "sha256": "25e17ef781425fe516c8215ef615054b63f2c8502164726a0c8fe4e1eb0903d6",
+        "sha256": "d249a976f16cd846eff05570cce8ab96e63ac9f5ac1f12b66a831db8c59ae71b",
         "bytes": 627
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Selene-Release-prepare.log",
-        "sha256": "561f61253daa41fa7cc6d3f52189fb902d2c25f3a0e490522f0754aab6c78374",
+        "sha256": "e8cda40a5502c87b5e366b39969e0fb41b0d24ffd70f45b1475e0f3f6249b167",
         "bytes": 1527
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\source-check.log",
-        "sha256": "832ad29996b62628fd8f0b930b791182aaa0578a0319c65b1e3a3954ea9ad5f7",
+        "sha256": "daf34fe2b4a7194f2e670ca8d12dc82d8c04584b77a5012a00d4103c2c03d4b5",
         "bytes": 526
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\test-targets-Debug.log",
-        "sha256": "bb5e737f734140889805c1396eadf14d097c8b71af00ff3c31833ecfb30bab50",
-        "bytes": 2264
+        "sha256": "adecd043b1f14db1da0bd03d8a931577ce7ad0d1ad8a71e4470ac106ae8ec29f",
+        "bytes": 2792
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\test-targets-Release.log",
-        "sha256": "ad6d07b16b94e767fc539ed5449a7636cf37cee3550e11edd3109b084329edce",
-        "bytes": 2387
+        "sha256": "2371aa5b4c72b7827e319375dd4344eecb25b2eb896653e6ad078359805dcd61",
+        "bytes": 2917
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\tool-baseline-tests.log",
-        "sha256": "1e74de34b284912744474e085b1705d8acbac71bb2edca296f2b2b1e37f21da5",
-        "bytes": 17323
+        "sha256": "b5044c2b69c587e84e674cc8318005a552a342f8af4070a8e40f2b303374c77d",
+        "bytes": 17774
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\ui-Lifecycle.log",
-        "sha256": "6548036bb619f7ad366a6604183dbcc66682c05ffeca8797e5e1d530c4e765ed",
+        "sha256": "79e229017e1913470ccccd95ed909a1fd1bceed8e10bd483f58625c8c39e995d",
         "bytes": 1026
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\ui-Panel.log",
-        "sha256": "a122886311928779a3d0623a1ab4ed1064b6a94da9eb595a57079ef049819edb",
-        "bytes": 710
+        "sha256": "294db9a4e84e497fdf5d9ad6fb906db55ad2e03b38d9f44a120b7def25b889e4",
+        "bytes": 856
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\verify-All.json",
-        "sha256": "59d59cfa02de335cbbcb37c695af817d653bfa1a1c86124e3cc85f0d75e2ade3",
+        "sha256": "fd86acf4e48044703fda1702971edfee06a5288fb02a756aa0613e8251a16bae",
         "bytes": 6233
       },
       {
@@ -556,32 +556,32 @@
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\gpu-view.png",
-        "sha256": "96486d1f7b67999aaadb6473b43757982a916cbd2bb13bdcbaba4e27d5e68b4e",
-        "bytes": 112465
+        "sha256": "f7d05da61edfa3bc7f5c188619731f6b46e5e93a2525a32a313236046eb00b2d",
+        "bytes": 112463
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-build.log",
-        "sha256": "37e746451dc039a780d2d1f0eb6bcfe020b6c69bb585d7ac77705e434894a8bf",
+        "sha256": "a57454014006a17b62256907019d851e358cbf96ae37695a13bfa90d5862bb5f",
         "bytes": 607
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-close-build.log",
-        "sha256": "68aa37fc86573f3fbdb3c79e500715a198359b49a3ccae79f2c6832ccc415ce5",
+        "sha256": "65cd76453c3e61c64e1ff283c2a91f5e9acfbbdfcea8cf423188cca24f038d49",
         "bytes": 659
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-engine.log",
-        "sha256": "a796811827890131512d263bd4726cf2cd3d02349e73a94f79c183e5878f531f",
+        "sha256": "9b598736a5f287246faf712b803150c7d9b077147d71a894f8a45734434051ae",
         "bytes": 1111
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-restore-normal.log",
-        "sha256": "098794d914c9e9ea41d5f9ccdda1be937e9b4edf714db8c62e6c81d0e45bd0a6",
+        "sha256": "c647a99e6dfdff22bec557f1b2c3e286db954bdeebc15e3258b2066d536c732c",
         "bytes": 625
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-widget.log",
-        "sha256": "dc5e639063c3ef026317162e4838c8ad20fd95601a278c989619007b55f17762",
+        "sha256": "b6d03b41813210585e2ade2988e41a78643de133a06b713a823f218dfd326d4e",
         "bytes": 823
       },
       {
@@ -606,57 +606,67 @@
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Panel-build.log",
-        "sha256": "06f457fd1c204bbd9893f88130a407fac5f0fa5b1fb604a99fc20d65843e23d0",
+        "sha256": "d5e1c9021e55f7709eeb076d98e9130903d1c0a82f31b4beac799a0b28f31b3a",
         "bytes": 600
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Panel-engine.log",
-        "sha256": "c44d199a3676b0190f21d7359a43f99c97db03d5559f8f3ab0c9a1c4987b0427",
-        "bytes": 2756
+        "sha256": "baf5e9d9c725163d93139f6ee3f68396164c120cea97bcb70b1b715245ba87c3",
+        "bytes": 1103
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Panel-widget.log",
-        "sha256": "a4e7929d81379d24dad6876f4f415a085b6ebce91e1bbba5566d04b4f95e09fb",
+        "sha256": "b576911b50e0135eefec560703a8a24abd0edf872ac98069a7b8a69950030419",
         "bytes": 815
       },
       {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\software-adapter-Debug.log",
+        "sha256": "3573ce76f5c96c506e4168fbcb5b4e6a3656334281d62df535f0cf1ae3555f2f",
+        "bytes": 546
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\software-adapter-Release.log",
+        "sha256": "19deedb76fbcab16a759d5a19b28a6377a4d1fa6906b2b634a2d9650b5080796",
+        "bytes": 552
+      },
+      {
         "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\window-close.log",
-        "sha256": "aca9f6bcde34581f3ed37dacc26d82ab8427bb055b37a9d9d0edc83a0eb2a939",
+        "sha256": "c3ae7f6a2b5ef2dd21041848a3223ac5bd379f683f385171b7c13395e0954981",
         "bytes": 913
       },
       {
         "file": "artifacts\\phase02\\clean\\checkout.log",
-        "sha256": "4f438159f2d930f87fe2eb54de0614199709facc74009e30a7ea1724572915da",
-        "bytes": 441
+        "sha256": "6e9faab82f7b8f26ba7ab16e8434b58f6cc55d82e8f446699f63cf7d46281874",
+        "bytes": 448
       },
       {
         "file": "artifacts\\phase02\\clean\\clean-Helios-Debug.log",
-        "sha256": "f533837e0fc2fbe7f09bc106d4091c1147571ec4fccc274cec00eec696016b12",
+        "sha256": "0032a4be6f6184195c697b23c7a073d41d4a60a1b5a7aa3c0d08d4b92a8e1daf",
         "bytes": 1183
       },
       {
         "file": "artifacts\\phase02\\clean\\clean-Helios-Release.log",
-        "sha256": "07b16c0f0f9611728864a8f694534b91de8e849911d5a5293a0e9f067af0875d",
+        "sha256": "a2a9a8c0be5ec4dd85f47cff8d15338764a65a658ad7f3fd8db191a805a79a34",
         "bytes": 1202
       },
       {
         "file": "artifacts\\phase02\\clean\\clean-Selene-Debug.log",
-        "sha256": "e6fb3abbda8b1ad2720168194332d23e72294448a671d13f4b0262f8d411e7cb",
+        "sha256": "be4b90d53affcb261417dab8b9b5ca113cc2786e38b7875247be61fa1bde6cf2",
         "bytes": 1238
       },
       {
         "file": "artifacts\\phase02\\clean\\clean-Selene-Release.log",
-        "sha256": "02749765657205990ae51e9d3c97c4eca75ae69eafbb2badf9cbd80b6ba74648",
+        "sha256": "da9e3a258ed2fd55d8224947b6e98419229c089da55a6072b0db1140357806ae",
         "bytes": 1258
       },
       {
         "file": "artifacts\\phase02\\clean\\clean-verify-All.log",
-        "sha256": "c3accf6f1ad6a93075190ba32ce26b605ee002ae7a8ce1dcc44f57c66b139a29",
+        "sha256": "217a2453e365a98d4ca37b270c2224a64fbee35c1ed004b09442874820409a2c",
         "bytes": 6889
       },
       {
         "file": "artifacts\\phase02\\clean\\clone.log",
-        "sha256": "78925aa7aedc9541ae5e13bcc7512c7ffbb4d3936596b2108a02872b8cf2a6a0",
+        "sha256": "07e5e8d694cbc89e11b3adeaedc71692ebe8704d97e1d7c3d3c6b6cdad15de04",
         "bytes": 465
       }
     ],
@@ -669,12 +679,12 @@
         "buildNumber": 0,
         "abiVersion": 1
       },
-      "durationMs": 242359,
+      "durationMs": 239834,
       "results": [
         {
           "name": "source-check",
           "exitCode": 0,
-          "durationMs": 5024,
+          "durationMs": 4675,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\source-check.log",
@@ -684,7 +694,7 @@
         {
           "name": "platform-check",
           "exitCode": 0,
-          "durationMs": 65,
+          "durationMs": 64,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\platform-check.log",
@@ -694,7 +704,7 @@
         {
           "name": "planning-check",
           "exitCode": 0,
-          "durationMs": 77,
+          "durationMs": 75,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\planning-check.log",
@@ -704,17 +714,17 @@
         {
           "name": "tool-baseline-tests",
           "exitCode": 0,
-          "durationMs": 48345,
+          "durationMs": 46983,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\tool-baseline-tests.log",
-          "tests": 94,
+          "tests": 96,
           "guardError": null
         },
         {
           "name": "flutter-analyze",
           "exitCode": 0,
-          "durationMs": 3607,
+          "durationMs": 3837,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\flutter-analyze.log",
@@ -724,7 +734,7 @@
         {
           "name": "test-targets-Debug",
           "exitCode": 0,
-          "durationMs": 7343,
+          "durationMs": 8728,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\test-targets-Debug.log",
@@ -734,7 +744,7 @@
         {
           "name": "test-targets-Release",
           "exitCode": 0,
-          "durationMs": 7530,
+          "durationMs": 8532,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\test-targets-Release.log",
@@ -744,7 +754,7 @@
         {
           "name": "native-tracer-fixture",
           "exitCode": 0,
-          "durationMs": 166,
+          "durationMs": 173,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\native-tracer-fixture.log",
@@ -754,7 +764,7 @@
         {
           "name": "core-Tracer-Debug",
           "exitCode": 0,
-          "durationMs": 5683,
+          "durationMs": 5464,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\core-Tracer-Debug.log",
@@ -764,7 +774,7 @@
         {
           "name": "core-Lifecycle-Debug",
           "exitCode": 0,
-          "durationMs": 4781,
+          "durationMs": 4565,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\core-Lifecycle-Debug.log",
@@ -774,7 +784,7 @@
         {
           "name": "core-Adapters-Debug",
           "exitCode": 0,
-          "durationMs": 2343,
+          "durationMs": 2245,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\core-Adapters-Debug.log",
@@ -784,7 +794,7 @@
         {
           "name": "core-Tracer-Release",
           "exitCode": 0,
-          "durationMs": 2227,
+          "durationMs": 2190,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\core-Tracer-Release.log",
@@ -794,7 +804,7 @@
         {
           "name": "core-Lifecycle-Release",
           "exitCode": 0,
-          "durationMs": 4678,
+          "durationMs": 4658,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\core-Lifecycle-Release.log",
@@ -804,7 +814,7 @@
         {
           "name": "core-Adapters-Release",
           "exitCode": 0,
-          "durationMs": 2314,
+          "durationMs": 2350,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\core-Adapters-Release.log",
@@ -814,17 +824,17 @@
         {
           "name": "ui-Panel",
           "exitCode": 0,
-          "durationMs": 66702,
+          "durationMs": 64595,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\ui-Panel.log",
-          "tests": 5,
+          "tests": 7,
           "guardError": null
         },
         {
           "name": "ui-Lifecycle",
           "exitCode": 0,
-          "durationMs": 79660,
+          "durationMs": 78876,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\ui-Lifecycle.log",
@@ -834,7 +844,7 @@
         {
           "name": "helios-Debug",
           "exitCode": 0,
-          "durationMs": 774,
+          "durationMs": 755,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\helios-Debug.log",
@@ -844,7 +854,7 @@
         {
           "name": "helios-Release",
           "exitCode": 0,
-          "durationMs": 736,
+          "durationMs": 768,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\helios-Release.log",
@@ -854,7 +864,7 @@
         {
           "name": "binary-versions",
           "exitCode": 0,
-          "durationMs": 280,
+          "durationMs": 284,
           "timeout": false,
           "error": null,
           "log": "artifacts\\phase02\\tooling\\binary-versions.log",
@@ -865,35 +875,35 @@
       "artifacts": [
         {
           "file": "build/native/Debug/aether_core.dll",
-          "sha256": "279a1d9a1b9c5c8f508e8de9840d53c913909d800417e12574466eee3d2f3a94"
+          "sha256": "4a2c268f354c285874011e7eab00ab5b466d8e011c42a30ad66b791ef66f3ad6"
         },
         {
           "file": "build/native/Release/aether_core.dll",
-          "sha256": "922f42ccb30affef54541e00ae1d95a3a936a066fd3a26166483558cb04aced0"
+          "sha256": "5d3ef5cd8441815add3990f708f0b6467026181ee1477d66a7886073f868fae6"
         },
         {
           "file": "build/native/Debug/helios.exe",
-          "sha256": "1b004ed1e8a61375fa0705fcca6ed0eeefcc83f11b763fbbed77d01947c41954"
+          "sha256": "8d5a8f82c1b42e60328347a76724e8738292fde882bda80df623bf4adfbc0e05"
         },
         {
           "file": "build/native/Release/helios.exe",
-          "sha256": "77c1a988c84112b2b5693cd32f110ed16024e7a7f245341ad8090c1ea23f3070"
+          "sha256": "af297d7ff9e2d8af9eb31b5b18d6f56637f0e37939113139a300747c0d63f6f2"
         },
         {
           "file": "apps/selene/build/windows/x64/runner/Debug/selene.exe",
-          "sha256": "298222ceeb7a1132326317026d19ceb59193d94b9cd5f9623da677b93d1a4cf8"
+          "sha256": "9e262f851c68a3a0c7b4c858a3d704fd6d332daa1991b559d886a44fec2b0bdc"
         },
         {
           "file": "apps/selene/build/windows/x64/runner/Debug/aether_core.dll",
-          "sha256": "efcc3c97bbe8ef915bf471f7bd14ac7010fa17e5adf35d27aa25b67af19ca2da"
+          "sha256": "a1043db4eb6b80db80e8ac93372262ef74067c7d1e406e7d3aac43d0f59ec662"
         },
         {
           "file": "apps/selene/build/windows/x64/runner/Release/selene.exe",
-          "sha256": "1bcc89bc4680db53f8569b90edf6d85035d2677cf3fcba2c673617e8a38e4015"
+          "sha256": "3a5739f57cfad372bd30eda083de5c7cfcb6630bb1618bc69967d0839c4b7e74"
         },
         {
           "file": "apps/selene/build/windows/x64/runner/Release/aether_core.dll",
-          "sha256": "4b6cc5cb94fe0e9e988c4fc5dd0d31c1466af1138d6390f18d875c975062e036"
+          "sha256": "c83ba614dd0cebc7a999841fdd8f46a8782fea0f7148632303ca5b5e4b62b4e4"
         }
       ]
     },
@@ -961,6 +971,14 @@
       "durationMs": 304585,
       "reportSha256": "242d9bdffa13c1f0cf66261d744159d22d035f611a16715f9110477c9b24f72c",
       "reason": "passed post-observer-fix HEAD; superseded by link-fix clean pass; prior report and checkout-artifacts retained"
+    },
+    {
+      "folder": "clean-history/0617a3e6e3d3ce7bc30e2908bda65ea257d3260b",
+      "status": "PASS",
+      "commit": "0617a3e6e3d3ce7bc30e2908bda65ea257d3260b",
+      "durationMs": 312807,
+      "reportSha256": "dab2a460687ee7f48ebb4f596ad5e83301095a61cf9afe423abe48fcb11c4f97",
+      "reason": "passed post-observer-fix HEAD; superseded by link-fix clean pass; prior report and checkout-artifacts retained"
     }
   ],
   "normalSharedTools": {
@@ -994,7 +1012,7 @@
     }
   },
   "ci": {
-    "status": "in-progress",
+    "status": "PASS",
     "candidate": "https://github.com/Jerry12228/Aether",
     "candidateEvidence": "connected GitHub repository search: empty public repository, default main, authenticated admin/push access",
     "remoteConfigured": true,
@@ -1002,16 +1020,185 @@
     "runUrl": "https://github.com/Jerry12228/Aether/actions/runs/37741148365",
     "runCommit": "9aff29216833d786b7fc0877ab544fb4df68ce5f",
     "failedRuns": [
-      37721726261, 37732241885, 37734973473
+      37721726261,
+      37732241885,
+      37734973473
     ],
-    "cancelledRuns": [37734251073],
+    "cancelledRuns": [
+      37734251073
+    ],
     "ledger": "docs/phase02/CI-RESULTS.json",
-    "runnerSdkAddition": "actual hosted SDK28000 additions succeeded; fifth full run in progress",
-    "completionRule": "both products and every mandatory check must pass in a real Actions run; local results or human approval cannot substitute"
+    "runnerSdkAddition": "actual exact SDK28000 installation passed on hosted runner; all mandatory CI passed",
+    "completionRule": "both products and every mandatory check must pass in a real Actions run; local results or human approval cannot substitute",
+    "recordedCases": 142,
+    "requiredGroups": 19,
+    "builds": [
+      {
+        "status": "PASS",
+        "target": "Helios",
+        "configuration": "Debug",
+        "durationMs": 20099,
+        "version": {
+          "productVersion": "0.1.0",
+          "buildNumber": 0,
+          "abiVersion": 1
+        },
+        "artifacts": [
+          "D:\\a\\Aether\\Aether\\build\\native\\Debug\\helios.exe",
+          "D:\\a\\Aether\\Aether\\build\\native\\Debug\\aether_core.dll"
+        ],
+        "commands": [
+          {
+            "name": "Helios-Debug-configure",
+            "exitCode": 0,
+            "durationMs": 11379,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\Helios-Debug-configure.log"
+          },
+          {
+            "name": "Helios-Debug-build",
+            "exitCode": 0,
+            "durationMs": 8689,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\Helios-Debug-build.log"
+          }
+        ]
+      },
+      {
+        "status": "PASS",
+        "target": "Selene",
+        "configuration": "Debug",
+        "durationMs": 128180,
+        "version": {
+          "productVersion": "0.1.0",
+          "buildNumber": 0,
+          "abiVersion": 1
+        },
+        "artifacts": [
+          "D:\\a\\Aether\\Aether\\apps\\selene\\build\\windows\\x64\\runner\\Debug\\selene.exe",
+          "D:\\a\\Aether\\Aether\\apps\\selene\\build\\windows\\x64\\runner\\Debug\\aether_core.dll"
+        ],
+        "commands": [
+          {
+            "name": "Selene-Debug-prepare",
+            "exitCode": 0,
+            "durationMs": 43432,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\Selene-Debug-prepare.log"
+          },
+          {
+            "name": "Selene-Debug-build",
+            "exitCode": 0,
+            "durationMs": 84745,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\Selene-Debug-build.log"
+          }
+        ]
+      },
+      {
+        "status": "PASS",
+        "target": "Helios",
+        "configuration": "Release",
+        "durationMs": 8132,
+        "version": {
+          "productVersion": "0.1.0",
+          "buildNumber": 0,
+          "abiVersion": 1
+        },
+        "artifacts": [
+          "D:\\a\\Aether\\Aether\\build\\native\\Release\\helios.exe",
+          "D:\\a\\Aether\\Aether\\build\\native\\Release\\aether_core.dll"
+        ],
+        "commands": [
+          {
+            "name": "Helios-Release-configure",
+            "exitCode": 0,
+            "durationMs": 265,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\Helios-Release-configure.log"
+          },
+          {
+            "name": "Helios-Release-build",
+            "exitCode": 0,
+            "durationMs": 7865,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\Helios-Release-build.log"
+          }
+        ]
+      },
+      {
+        "status": "PASS",
+        "target": "Selene",
+        "configuration": "Release",
+        "durationMs": 58028,
+        "version": {
+          "productVersion": "0.1.0",
+          "buildNumber": 0,
+          "abiVersion": 1
+        },
+        "artifacts": [
+          "D:\\a\\Aether\\Aether\\apps\\selene\\build\\windows\\x64\\runner\\Release\\selene.exe",
+          "D:\\a\\Aether\\Aether\\apps\\selene\\build\\windows\\x64\\runner\\Release\\aether_core.dll"
+        ],
+        "commands": [
+          {
+            "name": "Selene-Release-prepare",
+            "exitCode": 0,
+            "durationMs": 1116,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\Selene-Release-prepare.log"
+          },
+          {
+            "name": "Selene-Release-build",
+            "exitCode": 0,
+            "durationMs": 56909,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\Selene-Release-build.log"
+          }
+        ]
+      }
+    ],
+    "uploadedBinaryHashes": [
+      {
+        "file": "build/native/Release/helios.exe",
+        "sha256": "f1b01403d5d620a28cbaa30e2a2054626b648480dee96f1388a5bb40baa30ecb"
+      },
+      {
+        "file": "build/native/Release/aether_core.dll",
+        "sha256": "6fd79a72ee8a6b78cda2dd69458b96948af5297af96eba374cf7c7dad9b8826b"
+      },
+      {
+        "file": "apps/selene/build/windows/x64/runner/Release/selene.exe",
+        "sha256": "ed0789f515b04523ef232d65328733f423b92cc837d0f37553475fb1ece4da18"
+      },
+      {
+        "file": "apps/selene/build/windows/x64/runner/Release/aether_core.dll",
+        "sha256": "e2160df9d96dd083463b6d1a2363135f108ea8363fdea11cada4c058ab9f4da7"
+      }
+    ],
+    "artifacts": [
+      {
+        "id": 11534761493,
+        "name": "windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f",
+        "digest": "sha256:fac207958cbe0aa8515858223babd5256a670de916cde83236e39034edc9a8f7",
+        "sizeBytes": 398103,
+        "expired": false,
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/37741148365/artifacts/11534761493"
+      }
+    ],
+    "cleanSourceEquivalence": "git diff --quiet verified identical product/tool/test/lock inputs between CI 9aff292 and clean 08a005c; metadata differs only"
   },
   "human": {
-    "status": "not-reached",
-    "reason": "actual passing mandatory CI required first"
+    "status": "awaiting-final-review",
+    "reason": "technical checks and actual CI complete; explicit Phase2 repository/native-boundary confirmation required; earlier 确认 authorized publication only"
   },
   "presentation": {
     "record": "docs/phase02/PRESENTATION-RESULTS.json",

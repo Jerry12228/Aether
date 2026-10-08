@@ -9,7 +9,7 @@ created: "2026-10-07"
 
 # Phase 02 — Validation Strategy
 
-本文件是执行时验证契约。2026-10-08 本地与最终干净检出已通过；实际 Windows Actions 和最终人审仍待完成。证据见 docs/phase02/EVIDENCE.md；nyquist_compliant 与 wave_0_complete 按必需 CI 条件保持 false。
+本文件是执行时验证契约。2026-10-08 本地、最终干净检出与实际 Windows Actions 已通过；最终人审待答复。证据见 docs/phase02/EVIDENCE.md；nyquist_compliant 与 wave_0_complete 在最终必需人审完成前保持 false。
 
 ## Test Infrastructure
 
@@ -56,20 +56,20 @@ created: "2026-10-07"
 | 02-03-02 | 03 | 3 | CORE-01/03 | T-02-13 | 真实planning fixture回归 | Node | `node --test tests/planning.test.cjs` | 测试失败/child-spawn限制被忽略 | ✅ tracked | pass-local |
 | 02-03-03 | 03 | 3 | CORE-01/02/03 | T-02-03/11/13 | 人审前源与已验结果一致 | source check | `node scripts/check-sources.cjs --check` | 审阅来源/绑定/版本/锁漂移 | ✅ tracked | pass-local |
 
-实际 Actions：**pending**；最终人审：**not reached**。上表 pass-local 仅表示列出的本地命令实际通过，不能完成 02-03-02 或 Phase 2。最终 clean source4a718df 的四次产品构建、19个必需组和137个测试/套件记录通过，两个失败 clean attempts 保留；不存在跳过或空测试记 green。
+实际 Actions：**PASS**（run37741148365/source9aff292）；最终人审：**awaiting response**。上表 pass-local 表示对应本地命令实际通过；最终 clean source08a005c 和实际 CI 均通过四项产品构建、19个必需组、142条测试/套件记录。失败 clean/CI 与取消历史保持原结果；不存在跳过或空测试记 green。技术任务02-03-02完成，Phase2仍等待02-03-03明确人审。
 
 所有命令均在 checkout root 执行；包装器设置真实 DLL 路径并在所属 Flutter workspace package 运行对应测试。Node child-spawn EPERM 必须在可运行环境重跑，不能记通过。Windows CI 还须保存实际 run URL/commit/runner/结果；仅 workflow 文件存在不能当实际 CI 通过。
 
 ## Wave 0 Requirements
 
-- [ ] 02-01-01 创建 CMakePresets.json 的 windows-core / windows-core-debug / windows-core-release；CTest 测试名 core_tracer/core_lifecycle/core_adapters；Release 检查不用可被 NDEBUG 移除的 assert。
-- [ ] 02-01-01 创建 scripts/check-core.ps1、C头、programmatic ffigen 配置、实际 DLL fixture 与 packages/selene_native/test/core_contract_test.dart；02-01-02 加完整 ownership/ACK/cancel/stop/destroy 反例。
-- [ ] 02-02-01 创建唯一 app/plugin、apps/selene/test/native_panel_test.dart、apps/selene/integration_test/native_panel_test.dart 和 scripts/check-ui.ps1；02-02-02 加 close/故障注入/资源计数。
-- [ ] 02-02-02 创建 tests/helios-process.test.cjs 和 scripts/check-helios.ps1；02-02-03 创建 measure-presentation.ps1/报告及真实测量引用。
-- [ ] 02-03-01 创建 build/verify/source-check 和 tests/build-tools.test.cjs；02-03-02 创建平台 guard/tests 与 Windows CI/证据包。
-- [ ] version.json、toolchains.lock.json、pub workspace单锁、单一版本生成和binding drift完整；libclang与精确pub包来源/许可在首次解析前核验。
+- [x] 02-01-01 创建 CMakePresets.json 的 windows-core / windows-core-debug / windows-core-release；CTest 测试名 core_tracer/core_lifecycle/core_adapters；Release 检查不用可被 NDEBUG 移除的 assert。
+- [x] 02-01-01 创建 scripts/check-core.ps1、C头、programmatic ffigen 配置、实际 DLL fixture 与 packages/selene_native/test/core_contract_test.dart；02-01-02 加完整 ownership/ACK/cancel/stop/destroy 反例。
+- [x] 02-02-01 创建唯一 app/plugin、apps/selene/test/native_panel_test.dart、apps/selene/integration_test/native_panel_test.dart 和 scripts/check-ui.ps1；02-02-02 加 close/故障注入/资源计数。
+- [x] 02-02-02 创建 tests/helios-process.test.cjs 和 scripts/check-helios.ps1；02-02-03 创建 measure-presentation.ps1/报告及真实测量引用。
+- [x] 02-03-01 创建 build/verify/source-check 和 tests/build-tools.test.cjs；02-03-02 创建平台 guard/tests 与 Windows CI/证据包。
+- [x] version.json、toolchains.lock.json、pub workspace单锁、单一版本生成和binding drift完整；libclang与精确pub包来源/许可在首次解析前核验。
 
-这是每个对应 tracer/task 的先建测试再实现要求，无独立空目录 Wave 0 计划；当前所有新增入口均未创建、未执行，wave_0_complete 仍 false。
+这是每个对应 tracer/task 的先建测试再实现要求，无独立空目录 Wave 0 计划；所有列出的入口现已创建并实际运行，通过最终 clean 与真实 CI。阶段签署尚待最终必需人审，wave_0_complete 仍 false。
 
 ## Four-Source Coverage Audit
 
@@ -128,12 +128,12 @@ created: "2026-10-07"
 
 ## Validation Sign-Off
 
-- [ ] 所有任务有自动检查或明确 Wave 0 前提，且每个 runnable command 有 fails_when。
+- [x] 所有任务有自动检查或明确 Wave 0 前提，且每个 runnable command 有 fails_when。
 - [x] 无连续三个任务缺自动验证；没有空测试通过或未运行记 green。
-- [ ] Wave 0 创建所有计划引用的测试入口，最终命令与本文件一致。
-- [x] 无 watch 模式；快速反馈实际耗时已记录；全量本地与待执行 CI 分开记录。
+- [x] Wave 0 创建所有计划引用的测试入口，最终命令与本文件一致。
+- [x] 无 watch 模式；快速反馈实际耗时已记录；全量本地与实际 CI 分开记录。
 - [x] 真实 Dart/native 回调与 shutdown 负向证据完成。
 - [x] 五端接口未实现状态、Apple 构建义务与原平台差异均保留。
 - [ ] `nyquist_compliant: true` 仅在执行验证后设置；当前保持 false。
 
-**Approval:** pending；已保留三次实际 CI 失败与一次取消；原生路径/软件标识修复后，第五轮 run 37741148365 正在执行，完整通过结果与最新 clean 待定。最后人审未到达，CORE-01/02/03 仍 In Progress，Phase 2 未完成。
+**Approval:** pending-human；三次实际 CI 失败与一次取消保留。第五轮 https://github.com/Jerry12228/Aether/actions/runs/37741148365 在9aff292通过四项构建和19组/142条记录；最新 clean08a005c同样通过，产品/工具/测试/锁输入一致，四项上传的Release二进制哈希匹配报告。任务02-03-03已到达，等待具体边界与证据限制的最终确认；CORE-01/02/03仍In Progress，Phase2未完成。

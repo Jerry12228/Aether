@@ -1990,7 +1990,875 @@
           "sha256": "ef795d22736a026be4407cd551bc1f3e27267114cc92eee90a81268698cc316d"
         }
       ]
+    },
+    {
+      "runId": 37741148365,
+      "url": "https://github.com/Jerry12228/Aether/actions/runs/37741148365",
+      "commit": "9aff29216833d786b7fc0877ab544fb4df68ce5f",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-08T07:03:46Z",
+      "updatedAt": "2026-10-08T07:21:14Z",
+      "jobs": [
+        {
+          "id": 113191911481,
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/37741148365/job/113191911481",
+          "name": "windows",
+          "status": "completed",
+          "conclusion": "success",
+          "runnerName": "GitHub Actions 1000000005",
+          "labels": [
+            "windows-2025-vs2026"
+          ],
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-08T07:03:52Z",
+              "completed_at": "2026-10-08T07:03:53Z"
+            },
+            {
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-08T07:03:53Z",
+              "completed_at": "2026-10-08T07:04:00Z"
+            },
+            {
+              "name": "Exact SDK and SHA256-locked tools",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-08T07:04:00Z",
+              "completed_at": "2026-10-08T07:11:43Z"
+            },
+            {
+              "name": "Build explicit product targets in both configurations",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 4,
+              "started_at": "2026-10-08T07:11:43Z",
+              "completed_at": "2026-10-08T07:15:28Z"
+            },
+            {
+              "name": "Mandatory real DLL, native GPU engine, shutdown, source and baseline checks",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 5,
+              "started_at": "2026-10-08T07:15:28Z",
+              "completed_at": "2026-10-08T07:21:04Z"
+            },
+            {
+              "name": "Full logs, actual versions, counts and SHA256 evidence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6,
+              "started_at": "2026-10-08T07:21:04Z",
+              "completed_at": "2026-10-08T07:21:09Z"
+            },
+            {
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12,
+              "started_at": "2026-10-08T07:21:09Z",
+              "completed_at": "2026-10-08T07:21:12Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13,
+              "started_at": "2026-10-08T07:21:12Z",
+              "completed_at": "2026-10-08T07:21:12Z"
+            }
+          ]
+        }
+      ],
+      "bootstrap": {
+        "imageVersion": "20260925.250.1",
+        "flutterArchiveSha256": "88da00194893bf9543fc47c0bf31e6de978d49ffdb9c2f6e30c46dde0116c768",
+        "imageOS": "win25-vs2026",
+        "runUrl": "https://github.com/Jerry12228/Aether/actions/runs/37741148365",
+        "commit": "9aff29216833d786b7fc0877ab544fb4df68ce5f",
+        "msvcTools": "14.51.36231",
+        "cmakeArchiveSha256": "4d52ebab7193a698651639ed80d8d04fd903358843572cf44c7fd234cb7c26ab",
+        "visualStudio": "18.10.12217.157",
+        "sdkPresent": true,
+        "flutterBundledCmake": "cmake version 4.3.1-msvc1",
+        "installerSha256": "f63840dda38637614aa982b94b1d544f0b54026f465c22f78d30765a130a2b73",
+        "channelId": "VisualStudio.18.Release",
+        "flutter": {
+          "frameworkVersion": "3.44.0",
+          "channel": "stable",
+          "repositoryUrl": "https://github.com/flutter/flutter.git",
+          "frameworkRevision": "559ffa3f75e7402d65a8def9c28389a9b2e6fe42",
+          "frameworkCommitDate": "2026-05-15 14:13:13 -0700",
+          "engineRevision": "4c525dac5ebe5971c5708ef73558ed8edcf4a362",
+          "engineCommitDate": "2026-05-15 19:00:04.000Z",
+          "engineContentHash": "fcf463a2242790d1fdcd9d044f533080f5022e18",
+          "engineBuildDate": "2026-05-15 12:35:11.586",
+          "dartSdkVersion": "3.12.0",
+          "devToolsVersion": "2.57.0",
+          "flutterVersion": "3.44.0"
+        },
+        "sdkInstalledVersion": "10.0.28000.0",
+        "sdkInstall": "exit=0 via signed Microsoft VS Installer; component Windows11SDK.28000",
+        "actions": {
+          "checkout": {
+            "sha": "11d5960a326750d5838078e36cf38b85af677262",
+            "ref": "v4",
+            "source": "https://github.com/actions/checkout"
+          },
+          "uploadArtifact": {
+            "sha": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "ref": "v4",
+            "source": "https://github.com/actions/upload-artifact"
+          }
+        },
+        "requestedSdk": "10.0.28000.0",
+        "runnerEnvironment": "github-hosted",
+        "cmake": "cmake version 4.4.3"
+      },
+      "verify": {
+        "status": "PASS",
+        "scope": "All",
+        "automation": true,
+        "version": {
+          "productVersion": "0.1.0",
+          "buildNumber": 0,
+          "abiVersion": 1
+        },
+        "durationMs": 335214,
+        "results": [
+          {
+            "name": "source-check",
+            "exitCode": 0,
+            "durationMs": 5312,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\source-check.log",
+            "tests": null,
+            "guardError": null
+          },
+          {
+            "name": "platform-check",
+            "exitCode": 0,
+            "durationMs": 65,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\platform-check.log",
+            "tests": null,
+            "guardError": null
+          },
+          {
+            "name": "planning-check",
+            "exitCode": 0,
+            "durationMs": 122,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\planning-check.log",
+            "tests": null,
+            "guardError": null
+          },
+          {
+            "name": "tool-baseline-tests",
+            "exitCode": 0,
+            "durationMs": 57596,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\tool-baseline-tests.log",
+            "tests": 96,
+            "guardError": null
+          },
+          {
+            "name": "flutter-analyze",
+            "exitCode": 0,
+            "durationMs": 9580,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\flutter-analyze.log",
+            "tests": null,
+            "guardError": null
+          },
+          {
+            "name": "test-targets-Debug",
+            "exitCode": 0,
+            "durationMs": 16136,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\test-targets-Debug.log",
+            "tests": null,
+            "guardError": null
+          },
+          {
+            "name": "test-targets-Release",
+            "exitCode": 0,
+            "durationMs": 16812,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\test-targets-Release.log",
+            "tests": null,
+            "guardError": null
+          },
+          {
+            "name": "native-tracer-fixture",
+            "exitCode": 0,
+            "durationMs": 460,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\native-tracer-fixture.log",
+            "tests": 1,
+            "guardError": null
+          },
+          {
+            "name": "core-Tracer-Debug",
+            "exitCode": 0,
+            "durationMs": 10753,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\core-Tracer-Debug.log",
+            "tests": 3,
+            "guardError": null
+          },
+          {
+            "name": "core-Lifecycle-Debug",
+            "exitCode": 0,
+            "durationMs": 5863,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\core-Lifecycle-Debug.log",
+            "tests": 7,
+            "guardError": null
+          },
+          {
+            "name": "core-Adapters-Debug",
+            "exitCode": 0,
+            "durationMs": 3518,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\core-Adapters-Debug.log",
+            "tests": 4,
+            "guardError": null
+          },
+          {
+            "name": "core-Tracer-Release",
+            "exitCode": 0,
+            "durationMs": 3426,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\core-Tracer-Release.log",
+            "tests": 3,
+            "guardError": null
+          },
+          {
+            "name": "core-Lifecycle-Release",
+            "exitCode": 0,
+            "durationMs": 6621,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\core-Lifecycle-Release.log",
+            "tests": 7,
+            "guardError": null
+          },
+          {
+            "name": "core-Adapters-Release",
+            "exitCode": 0,
+            "durationMs": 3995,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\core-Adapters-Release.log",
+            "tests": 4,
+            "guardError": null
+          },
+          {
+            "name": "ui-Panel",
+            "exitCode": 0,
+            "durationMs": 90540,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\ui-Panel.log",
+            "tests": 7,
+            "guardError": null
+          },
+          {
+            "name": "ui-Lifecycle",
+            "exitCode": 0,
+            "durationMs": 102262,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\ui-Lifecycle.log",
+            "tests": 6,
+            "guardError": null
+          },
+          {
+            "name": "helios-Debug",
+            "exitCode": 0,
+            "durationMs": 931,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\helios-Debug.log",
+            "tests": 2,
+            "guardError": null
+          },
+          {
+            "name": "helios-Release",
+            "exitCode": 0,
+            "durationMs": 915,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\helios-Release.log",
+            "tests": 2,
+            "guardError": null
+          },
+          {
+            "name": "binary-versions",
+            "exitCode": 0,
+            "durationMs": 286,
+            "timeout": false,
+            "error": null,
+            "log": "artifacts\\phase02\\tooling\\binary-versions.log",
+            "tests": null,
+            "guardError": null
+          }
+        ],
+        "artifacts": [
+          {
+            "file": "build/native/Debug/aether_core.dll",
+            "sha256": "9b8893a253f1516b5ec8ba73097f702bd2670be8072dd0f19e46f7fbc7838c52"
+          },
+          {
+            "file": "build/native/Release/aether_core.dll",
+            "sha256": "6fd79a72ee8a6b78cda2dd69458b96948af5297af96eba374cf7c7dad9b8826b"
+          },
+          {
+            "file": "build/native/Debug/helios.exe",
+            "sha256": "482edd0a4d118dc44be03d01ec5049cc9b9eefad50baea523e9751ba91fb35f8"
+          },
+          {
+            "file": "build/native/Release/helios.exe",
+            "sha256": "f1b01403d5d620a28cbaa30e2a2054626b648480dee96f1388a5bb40baa30ecb"
+          },
+          {
+            "file": "apps/selene/build/windows/x64/runner/Debug/selene.exe",
+            "sha256": "b2197196434de67d2b736847950e310b33b7038b709ad73956105a17336486ca"
+          },
+          {
+            "file": "apps/selene/build/windows/x64/runner/Debug/aether_core.dll",
+            "sha256": "afcfd332377ab9261a9458434381c558551ef006cf9dad1e95475f2c91e824bb"
+          },
+          {
+            "file": "apps/selene/build/windows/x64/runner/Release/selene.exe",
+            "sha256": "ed0789f515b04523ef232d65328733f423b92cc837d0f37553475fb1ece4da18"
+          },
+          {
+            "file": "apps/selene/build/windows/x64/runner/Release/aether_core.dll",
+            "sha256": "e2160df9d96dd083463b6d1a2363135f108ea8363fdea11cada4c058ab9f4da7"
+          }
+        ]
+      },
+      "presentation": {
+        "texture": {
+          "activeRegistrations": 1,
+          "adapter": "Microsoft Basic Render Driver",
+          "adapterDeviceId": 140,
+          "adapterVendorId": 5140,
+          "backend": "gpuTexture",
+          "capabilityBits": 2,
+          "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+          "descriptorCalls": 3,
+          "descriptorReleases": 3,
+          "dpi": 96,
+          "format": "BGRA8",
+          "generation": 1,
+          "height": 720,
+          "liveSources": 1,
+          "outstandingDescriptors": 0,
+          "processCpu100ns": 23437500,
+          "processId": 5280,
+          "softwareAdapter": true,
+          "sourceHeight": 720,
+          "sourceWidth": 1280,
+          "stopping": false,
+          "targetHeight": 0,
+          "targetWidth": 0,
+          "textureId": 2578416958880,
+          "width": 1280
+        },
+        "nativeSurface": {
+          "activeRegistrations": 0,
+          "adapter": "Microsoft Basic Render Driver",
+          "adapterDeviceId": 140,
+          "adapterVendorId": 5140,
+          "backend": "nativeSurface",
+          "capabilityBits": 2,
+          "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+          "descriptorCalls": 3,
+          "descriptorReleases": 3,
+          "dpi": 96,
+          "format": "BGRA8",
+          "generation": 2,
+          "height": 720,
+          "liveSources": 1,
+          "outstandingDescriptors": 0,
+          "processCpu100ns": 26406250,
+          "processId": 5280,
+          "softwareAdapter": true,
+          "sourceHeight": 720,
+          "sourceWidth": 1280,
+          "stopping": false,
+          "targetHeight": 561,
+          "targetWidth": 944,
+          "textureId": -1,
+          "width": 1280
+        },
+        "final": {
+          "activeRegistrations": 0,
+          "capabilityBits": 0,
+          "copyPath": "D2D GPU render; immutable DXGI shared texture; engine import unmeasured; native surface GPU shader sample",
+          "descriptorCalls": 3,
+          "descriptorReleases": 3,
+          "dpi": 96,
+          "format": "BGRA8",
+          "generation": 2,
+          "height": 720,
+          "liveSources": 0,
+          "outstandingDescriptors": 0,
+          "processCpu100ns": 27500000,
+          "processId": 5280,
+          "sourceHeight": 720,
+          "sourceWidth": 1280,
+          "stopping": false,
+          "width": 1280
+        }
+      },
+      "binaryVersions": {
+        "status": "PASS",
+        "version": {
+          "productVersion": "0.1.0",
+          "buildNumber": 0,
+          "abiVersion": 1
+        },
+        "records": [
+          {
+            "product": "Helios",
+            "config": "Debug",
+            "version": "Helios 0.1.0 ABI 1\r\ninitialized local_core <redacted-credential> capability=1\r\ncleanup handles=0 threads=0 stop=0 ack=0 destroy=0 final_sequence=2 signal_received=0 duration_ms=0\r\nresult=PASS exit=0"
+          },
+          {
+            "product": "Selene",
+            "config": "Debug",
+            "version": "Selene 0.1.0 ABI 1"
+          },
+          {
+            "product": "Helios",
+            "config": "Release",
+            "version": "Helios 0.1.0 ABI 1\r\ninitialized local_core <redacted-credential> capability=1\r\ncleanup handles=0 threads=0 stop=0 ack=0 destroy=0 final_sequence=2 signal_received=0 duration_ms=0\r\nresult=PASS exit=0"
+          },
+          {
+            "product": "Selene",
+            "config": "Release",
+            "version": "Selene 0.1.0 ABI 1"
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "id": 11534761493,
+          "name": "windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f",
+          "digest": "sha256:fac207958cbe0aa8515858223babd5256a670de916cde83236e39034edc9a8f7",
+          "sizeBytes": 398103,
+          "expired": false,
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/37741148365/artifacts/11534761493"
+        }
+      ],
+      "downloadedFiles": [
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/artifacts.json",
+          "sizeBytes": 750,
+          "sha256": "805f988d6e675fddaf82890edc3937b895d2f80b07f86cb398d117a985c6bb30"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/jobs.json",
+          "sizeBytes": 2414,
+          "sha256": "f32a12863215b8dced616faa61753f84bcccaa11997f94377e69981bda8e7ab5"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/run.json",
+          "sizeBytes": 11952,
+          "sha256": "be5be17c730219eef36272e8c1b38ca4f4d533624daf30b594e4fa1c3526234a"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/run.log",
+          "sizeBytes": 38290,
+          "sha256": "d3e75a04abf1771b733d0ad784c1e3b3967829347f3aab0c9bf20cb4b30c6198"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/apps/selene/build/windows/x64/runner/Release/aether_core.dll",
+          "sizeBytes": 41984,
+          "sha256": "e2160df9d96dd083463b6d1a2363135f108ea8363fdea11cada4c058ab9f4da7"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/apps/selene/build/windows/x64/runner/Release/selene.exe",
+          "sizeBytes": 137216,
+          "sha256": "ed0789f515b04523ef232d65328733f423b92cc837d0f37553475fb1ece4da18"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ci/bootstrap.json",
+          "sizeBytes": 1887,
+          "sha256": "3fd183838e30536592bdc7638fd20cec4ba1ee693d1f02712d3b8ca233c62aca"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Adapters-Debug-dart.log",
+          "sizeBytes": 340,
+          "sha256": "5e347b18d9a5743cdb819a6e4676861581d4553a496bd069b3caaec6e70a41bd"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Adapters-Debug-native.log",
+          "sizeBytes": 213,
+          "sha256": "4b2df3e7fd3fd1c4277462e926c74b416ecfd97c34140c468b882a637efac477"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Adapters-Release-dart.log",
+          "sizeBytes": 340,
+          "sha256": "5e347b18d9a5743cdb819a6e4676861581d4553a496bd069b3caaec6e70a41bd"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Adapters-Release-native.log",
+          "sizeBytes": 213,
+          "sha256": "4b2df3e7fd3fd1c4277462e926c74b416ecfd97c34140c468b882a637efac477"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Lifecycle-Debug-dart.log",
+          "sizeBytes": 584,
+          "sha256": "836af7d71adcc752fb0fffb3161763aed28eda1542e43f98044014fddd92eebc"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Lifecycle-Debug-native.log",
+          "sizeBytes": 214,
+          "sha256": "179337e063d641fe63f03d520d9e3662a10f39bb145119a8e351c0c609edf9c2"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Lifecycle-Release-dart.log",
+          "sizeBytes": 584,
+          "sha256": "836af7d71adcc752fb0fffb3161763aed28eda1542e43f98044014fddd92eebc"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Lifecycle-Release-native.log",
+          "sizeBytes": 214,
+          "sha256": "9671dfe3e7bd404678da453350789c6df2c58bdd1d9a2a174dd67aa85a58fdfd"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Tracer-Debug-dart.log",
+          "sizeBytes": 275,
+          "sha256": "c3f2435a6f2c3aabdd045e7e3e919b3c453e4e3abd3f8317f3fce7de813eff62"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Tracer-Debug-native.log",
+          "sizeBytes": 211,
+          "sha256": "f13c038269926d0525c6900d183ffc95a05d166f6b383bf21468ce10b3c53908"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Tracer-Release-dart.log",
+          "sizeBytes": 275,
+          "sha256": "c3f2435a6f2c3aabdd045e7e3e919b3c453e4e3abd3f8317f3fce7de813eff62"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/core-Tracer-Release-native.log",
+          "sizeBytes": 211,
+          "sha256": "364928e6a2764cc115934163745ea8a61b289aadacb46fd3fd1b960312341208"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/helios/automation-Debug.log",
+          "sizeBytes": 195,
+          "sha256": "ac16fe45cf078143415d091ef59dc714be6f08c15182f4316b9260c58f91ba99"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/helios/automation-Release.log",
+          "sizeBytes": 195,
+          "sha256": "ac16fe45cf078143415d091ef59dc714be6f08c15182f4316b9260c58f91ba99"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/helios/ctrl-c-Debug.log",
+          "sizeBytes": 284,
+          "sha256": "d87de0c7a3f79fc69b0265dfdde628e193d0edb0ac1f29acf6e0f622be9ef945"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/helios/ctrl-c-Release.log",
+          "sizeBytes": 284,
+          "sha256": "d87de0c7a3f79fc69b0265dfdde628e193d0edb0ac1f29acf6e0f622be9ef945"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/helios/init-failure-Debug.log",
+          "sizeBytes": 54,
+          "sha256": "75144436fb722502ece707d27d3c0e26d028e54dc67248344bf4c283aecbcf7e"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/helios/init-failure-Release.log",
+          "sizeBytes": 54,
+          "sha256": "75144436fb722502ece707d27d3c0e26d028e54dc67248344bf4c283aecbcf7e"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/helios/redirected-Debug.log",
+          "sizeBytes": 195,
+          "sha256": "ac16fe45cf078143415d091ef59dc714be6f08c15182f4316b9260c58f91ba99"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/helios/redirected-Release.log",
+          "sizeBytes": 195,
+          "sha256": "ac16fe45cf078143415d091ef59dc714be6f08c15182f4316b9260c58f91ba99"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/presentation-correctness.json",
+          "sizeBytes": 1663,
+          "sha256": "48bd7d9515d3724096a5f7156872359dfaad865b0e2504b2dc8472b775702b3e"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/binary-versions.log",
+          "sizeBytes": 1040,
+          "sha256": "ae227565979bfb996e463e5fbcb49437c2dafd33fb1c12a9b603fa7b1e39d39b"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/binding-drift.log",
+          "sizeBytes": 651,
+          "sha256": "1115d12f3ff2c10ceed3c3bf86255f365bd8d68e96c6394599de02135bc47fac"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/core-Adapters-Debug.log",
+          "sizeBytes": 1117,
+          "sha256": "cd50ce4597edc7efd01f05dc1116082562096a7af3d058f9abafbb24fce691a1"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/core-Adapters-Release.log",
+          "sizeBytes": 1127,
+          "sha256": "ad9a06ddbcde34384c64dcf68757e0e2b122d39b72a22e211da1032c08f4a550"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/core-Lifecycle-Debug.log",
+          "sizeBytes": 1366,
+          "sha256": "dbe1231189504696ad1a3041f55fb40b5652e723bfe77632c4782517a2f30e8d"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/core-Lifecycle-Release.log",
+          "sizeBytes": 1376,
+          "sha256": "919a2c065d64aff609cd3f4c7cbea1cdfd4c12fe9c50221e37cd2f4477eadd08"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/core-Tracer-Debug.log",
+          "sizeBytes": 1044,
+          "sha256": "4d9bf972dddd0b63f934b2d220e006d8a7146965849872ff85b5d5a4d7a35d34"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/core-Tracer-Release.log",
+          "sizeBytes": 1052,
+          "sha256": "a40d59bc920c015937ebc272016734cb96795bba4bebd7b4f2d3ea6f42387a19"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/flutter-analyze.log",
+          "sizeBytes": 544,
+          "sha256": "2e04bef4ee184bb35fc663d16c5528eb127388b2f01c01347e4781f178fff340"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/Helios-Debug-build.log",
+          "sizeBytes": 1077,
+          "sha256": "061288bdc52c5ca4547028094bff9b9a681ba51399c3ac23982d8b0bbc06ca0d"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/Helios-Debug-configure.log",
+          "sizeBytes": 1203,
+          "sha256": "1957ba80e008906c5603da29d48a487d9553df1e7c3acf7ee1bfc12a9e03d6cc"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/helios-Debug.log",
+          "sizeBytes": 874,
+          "sha256": "7c5430849e4fd54b6530534a754bdcf0f77310da35a575f62eb22a9e7b5904dc"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/Helios-Release-build.log",
+          "sizeBytes": 1091,
+          "sha256": "3325a10f4f9fa0ab7978d1de6d94f756ec6a27285021b76b72f9c0a684b107e6"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/Helios-Release-configure.log",
+          "sizeBytes": 500,
+          "sha256": "e7e8afb24ffd91c90b4abab29a47570ec7614bb7c62136da582ba9819b12d925"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/helios-Release.log",
+          "sizeBytes": 879,
+          "sha256": "d6bb0e96cb21ef3efdc501f0bae234856b84b366efcb27c8e98c65159ac36cb1"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/native-tracer-fixture.log",
+          "sizeBytes": 646,
+          "sha256": "cf948562c5e219fc831e23d3eed26bdfbc526542417505777585f0f5f4d2c457"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/planning-check.log",
+          "sizeBytes": 420,
+          "sha256": "5982e6dade974bbed9e33a73dd8581df07187bbf096037a0d63027350455361d"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/platform-check.log",
+          "sizeBytes": 442,
+          "sha256": "6057e64fa3030a6afdddd9232c6f3512312d681378d1f622beef0fe4f313ab2f"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/Selene-Debug-build.log",
+          "sizeBytes": 598,
+          "sha256": "bec341d85cfedae1a0b7a0f022aa36b34f1be46f08ea64ffd18cdfdfdffac31d"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/Selene-Debug-prepare.log",
+          "sizeBytes": 1324,
+          "sha256": "4c180afb9d81ef96ce985319ebbf1af524a0b3d51da25ee9a5636b71e519e874"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/Selene-Release-build.log",
+          "sizeBytes": 606,
+          "sha256": "fc83f3fc7f5eb8c5018d5e81bff65a396a3c88b474b5e485ba41966e4c7ba321"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/Selene-Release-prepare.log",
+          "sizeBytes": 1327,
+          "sha256": "61be2250a733b2526ea253ae6ae59ef1d96cd97e95bf5d8c6e0e495b891283f4"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/source-check.log",
+          "sizeBytes": 447,
+          "sha256": "25430ab79e5576cf020570059fc0ef81f16bfc4f311208f89f1b1be5fddc688b"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/test-targets-Debug.log",
+          "sizeBytes": 2245,
+          "sha256": "2d9c16863aa4c3810699414cc8981dbff95c81237f4fa83e8b361336c06410be"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/test-targets-Release.log",
+          "sizeBytes": 2324,
+          "sha256": "0617c5acc538679ecff7356ea7c3660876677994898f90595955f3fc49597d06"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/tool-baseline-tests.log",
+          "sizeBytes": 17702,
+          "sha256": "24c774d030e44766b3bf5218cf911dd937e8948f8c3cfa3a828d82f3d27047b3"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/ui-Lifecycle.log",
+          "sizeBytes": 927,
+          "sha256": "27543de0fbce2bc082f76aaee7df39a089136cd49f24444cd7a604fc83dcbe2b"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/ui-Panel.log",
+          "sizeBytes": 755,
+          "sha256": "ef611bb5c0f2b40a6cd2bc54c3d11ef6981660e84f26ff747839536135cebc0b"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/tooling/verify-All.json",
+          "sizeBytes": 6238,
+          "sha256": "04c235cc734e01381ede7215f5075ddd5f31ddc4f86f1ffe921b750f16004118"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/gpu-preview.png",
+          "sizeBytes": 28685,
+          "sha256": "5bacfaed019b93852b233ee6e2cad9c23c764149984e479c0500f7bc5fa3d409"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/gpu-view.png",
+          "sizeBytes": 59510,
+          "sha256": "341597086482865dd44ffd96256915c7ce13ac3fa0297b5910d287d1e88d34ee"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/Lifecycle-build.log",
+          "sizeBytes": 587,
+          "sha256": "de56ed6d151620db9e1697b5484e6f9b0c78b7aaf93cad957436f1fd2046bd0b"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/Lifecycle-close-build.log",
+          "sizeBytes": 638,
+          "sha256": "780a4f1c8eab9e1e73d1239bfe2aef403aeee994a0339f387528b4817f6665eb"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/Lifecycle-engine.log",
+          "sizeBytes": 1041,
+          "sha256": "177108539e7144216e80c2885d1dfcb3cad8ecf40e2d305ed919a31c16db3550"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/Lifecycle-restore-normal.log",
+          "sizeBytes": 605,
+          "sha256": "7d32b049a1414fa1d11a510c6e5b5e2c7adba3127cdfe72e390e92db708b05d5"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/Lifecycle-widget.log",
+          "sizeBytes": 753,
+          "sha256": "18323e4ef675d69ff3d106100c8f187874e767047d61c6bff157d1fd0bbb9def"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/native-source.png",
+          "sizeBytes": 40716,
+          "sha256": "87ea8401058860dc1ec9147d14ec894ff64f782ebcc779351ade456f13bac4a0"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/native-surface-portrait.png",
+          "sizeBytes": 31054,
+          "sha256": "aca5a762b4152913f23cf636a0af224982cc20729a378d59273fc1a6fb13940a"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/native-surface-wide.png",
+          "sizeBytes": 61014,
+          "sha256": "ff60cc7ab55171a3270846dbb9da36e069c7d41856ca09f440183629e695f6aa"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/native-surface.png",
+          "sizeBytes": 61014,
+          "sha256": "ff60cc7ab55171a3270846dbb9da36e069c7d41856ca09f440183629e695f6aa"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/Panel-build.log",
+          "sizeBytes": 579,
+          "sha256": "b7d6e0ee98b93ea5bd426adf2895345aa9e5ea63acae14467fb3c402d7224a7a"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/Panel-engine.log",
+          "sizeBytes": 1033,
+          "sha256": "448a47e7a7b1f2dd7ae94c5841e52d1f181a1343ff507df8fb241d4e9dc2d8bf"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/Panel-widget.log",
+          "sizeBytes": 746,
+          "sha256": "936494013b529726d2ecf19b8164a0755096f914a2a4e9552d9cd5b9a0dfb3cf"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/software-adapter-Debug.log",
+          "sizeBytes": 444,
+          "sha256": "e8f6c1eb0a26081f53dd47565d14a4b19f65479020cb3cb6b7e6c320c33b4e31"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/software-adapter-Release.log",
+          "sizeBytes": 450,
+          "sha256": "ef6b148cea45b350438684f4ba5e733585a95d25db1d49c24f9639bd8ca60bf9"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/artifacts/phase02/ui/window-close.log",
+          "sizeBytes": 809,
+          "sha256": "6782039f155fb898886f980b28f091ec60c6f9458f333979a16aa08817933fe5"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/build/native/Release/aether_core.dll",
+          "sizeBytes": 41984,
+          "sha256": "6fd79a72ee8a6b78cda2dd69458b96948af5297af96eba374cf7c7dad9b8826b"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37741148365/windows-phase02-9aff29216833d786b7fc0877ab544fb4df68ce5f/build/native/Release/helios.exe",
+          "sizeBytes": 21504,
+          "sha256": "f1b01403d5d620a28cbaa30e2a2054626b648480dee96f1388a5bb40baa30ecb"
+        }
+      ]
     }
   ],
-  "capturedAt": "2026-10-08T06:57:59.051Z"
+  "capturedAt": "2026-10-08T07:24:07.791Z"
 }

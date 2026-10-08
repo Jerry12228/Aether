@@ -43,7 +43,10 @@ hosted runner using the signature-verified Microsoft installer, then checks the
 actual SDK. First Actions run 37721726261 installed SDK28000 successfully, then
 failed the fourth build's plugin-link validation. The correction is running in
 37741148365. Runs 37732241885/37734973473 passed four builds and 18/19 checks,
-but baseline checkout identity failed; fifth complete outcome is pending. Actual
+but baseline checkout identity failed. Fifth run37741148365 passed all four builds
+and all19 required groups/142 records, including software GPU pixels, WARP and
+cleanup. This is Windows Server2025 software functional evidence, not a Win10
+floor, other-platform or physical GPU performance claim. Actual
 metadata, failed-run logs and hashes are in CI-RESULTS.json. A trusted manually selected
 self-hosted Windows x64 GUI executor with existing VS2026/SDK28000 is the alternative;
 it also must execute the real workflow, and is not automatically installed/registered.

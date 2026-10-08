@@ -11,12 +11,12 @@ provides:
   - Explicit single-product build and independent mandatory verification
   - Final committed clean checkout with four product builds and 19 passing groups
   - Audited source/lock/license/binding checks and five-platform duty ledger
-  - Full-SHA minimal-permission Windows workflow prepared for actual execution
+  - Actual passing full-SHA minimal-permission Windows Actions evidence
 affects: [Phase-2-final-human-checkpoint, Phase-3]
 requirements-completed: []
 requirements-progress: [CORE-01, CORE-02, CORE-03]
-blocker: actual required Windows Actions run in progress; passing CI and final human checkpoint pending
-tested_source_commit: 4a718df4972a59842814140678a5c86f584c7ed8
+blocker: technical checks and actual CI passed; explicit final human checkpoint pending
+tested_source_commit: 08a005ca5a3e2137345e2dbd2f5153bb6c37cade
 key-files:
   created:
     - scripts/build.ps1
@@ -57,22 +57,21 @@ coverage:
     requirement: CORE-03
     verification:
       - kind: ci
-        ref: .github/workflows/windows.yml
-        status: pending
+        ref: https://github.com/Jerry12228/Aether/actions/runs/37741148365
+        status: pass
     human_judgment: false
 ---
 
-# Plan 02-03 — partial execution record, actual CI in progress
+# Plan 02-03 — technical execution complete, final human checkpoint pending
 
-Task 02-03-01 is complete locally. Task 02-03-02 has its implementation, platform
-attempts and final clean verification, but remains incomplete without actual
-Windows Actions evidence. Task 02-03-03 is not reached; a human approval cannot
-replace that missing required run. This partial record deliberately uses a
+Task 02-03-01/02 are complete with actual local/clean/Windows Actions evidence.
+Task 02-03-03 is reached and awaits explicit final human confirmation. The earlier
+reply “确认” authorized public publication only. This partial record uses a
 noncanonical filename: the installed GSD runtime counts the existence of
 02-03-SUMMARY.md as completion even with status: blocked. A final canonical
-summary must not exist until CI and the human gate pass. CORE-01/02/03 remain
-open and Phase 3 has not started. Resume task 02-03-02; task 02-03-01 is already
-implemented, committed and validated, so do not restart its implementation.
+summary must not exist until the human gate passes. CORE-01/02/03 remain open
+and Phase 3 has not started. Resume task 02-03-03 human review; implementation
+and technical execution are complete, so do not restart the finished tasks.
 
 ## Executed evidence
 
@@ -140,14 +139,26 @@ witness received RED_EVIDENCE_OK; 560e1d2 combines known software identity/flags
 adds vendor/device diagnostics, two real WARP tests and an engine assertion.
 Fourth-run actual adapter vendor5140/device140/label=true, both GPU paths, cleanup
 and the same witness pass. Its overall failed status remains unchanged.
-The latest clean rerun is pending. Fifth actual run
+The latest clean rerun 08a005c passed four explicit product builds, all 19 groups
+and 142 recorded cases/native suites (309.474s), versions0.1.0/ABI1 and safe owned
+checkout removal after copying evidence. Fifth actual run
 https://github.com/Jerry12228/Aether/actions/runs/37741148365 on source
-9aff29216833d786b7fc0877ab544fb4df68ce5f is in progress. Resolve any remaining
-failure and retain actual mandatory outcomes/counts and uploaded evidence.
-Local results or human approval cannot waive a failed/missing mandatory CI check.
+9aff29216833d786b7fc0877ab544fb4df68ce5f passed all four explicit builds and all
+19 required groups / 142 recorded cases, actual version0.1.0/ABI1. Exact runner
+and tools, software adapter identity, zero resource counters, logs and uploaded
+archive digest are retained. Four downloaded Release binary hashes match verify;
+git diff proves clean/CI product, tooling, tests and locks are identical.
+No required check is missing/skipped. Actual task02-03-02 is complete.
 
-Only after actual CI passes may the final human checkpoint review patterns,
+The final human checkpoint can now review patterns,
 scaling/DPI/close/retry, real interactive console final-key behavior, local-only
 resource boundaries and remaining target duties. Three unclassified CORE assumptions
 and all six descriptor-less prohibitions remain flagged-unverified, unchanged.
 Record the user's exact final response then stop at Phase 2; do not auto-start Phase 3.
+
+Final pre-review checks were rerun on 2026-10-08 after synchronizing the packet:
+`node scripts/check-sources.cjs --check` exited0, PASS (49 hosted packages,
+50 product source files, real ffigen21/audited libclang18.1.1 generation and
+version/lock/license checks). `node scripts/validate-planning.cjs` exited0,
+PASS (42 phases,105/105 v1 requirements mapped, valid local links). `git diff
+--check` passed. No canonical02-03-SUMMARY.md exists before the human response.
