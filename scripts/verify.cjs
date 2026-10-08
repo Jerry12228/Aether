@@ -23,7 +23,7 @@ function groups(scope,root=ROOT){
   result.push({name:'flutter-analyze',...flutterCommand(root,['analyze','--no-pub']),timeoutMs:180000});
  }
  // Explicit test-only targets consume the already-built DLL/product configs.
- for(const config of ['Debug','Release'])result.push({name:`test-targets-${config}`,exe:resolveNative('cmake'),args:['--build','--preset',`windows-core-${config.toLowerCase()}`,'--target',...(scope==='UI'?[]:['aether_core_contract']),...(scope==='Core'?[]:['aether_helios_test','aether_helios_signal'])],cwd:root,timeoutMs:180000});
+ for(const config of ['Debug','Release'])result.push({name:`test-targets-${config}`,exe:resolveNative('cmake'),args:['--build','--preset',`windows-core-${config.toLowerCase()}`,'--target',...(scope==='UI'?[]:['aether_core_contract']),...(scope==='Core'?[]:['aether_helios_test','aether_helios_signal','aether_presentation_contract'])],cwd:root,timeoutMs:180000});
  if(scope==='All')result.push(node('native-tracer-fixture',['--test','--test-reporter=tap','tests/core-tracer.test.cjs'],true));
  if(scope!=='UI')for(const config of ['Debug','Release'])for(const suite of ['Tracer','Lifecycle','Adapters'])result.push(ps(`core-${suite}-${config}`,'check-core.ps1',['-Suite',suite,'-Configuration',config],true));
  if(scope!=='Core'){

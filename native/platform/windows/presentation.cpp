@@ -34,10 +34,16 @@ Source::Source(IDXGIAdapter* preferred) {
   char utf8[512]{};
   WideCharToMultiByte(CP_UTF8, 0, description.Description, -1, utf8, 512, nullptr, nullptr);
   adapter = utf8;
+  adapter_vendor_id = description.VendorId;
+  adapter_device_id = description.DeviceId;
+  // Microsoft documents Basic Render Driver as software. Some legacy adapter
+  // interfaces report zero Flags, so do not overwrite its known identity.
+  // https://learn.microsoft.com/windows/win32/direct3ddxgi/d3d10-graphics-programming-guide-dxgi
+  software_adapter = (adapter_vendor_id == 0x1414 && adapter_device_id == 0x8c) || adapter == "Microsoft Basic Render Driver";
   ComPtr<IDXGIAdapter1> adapter1;
   if (SUCCEEDED(dxgi_adapter.As(&adapter1))) {
     DXGI_ADAPTER_DESC1 description1{};
-    if (SUCCEEDED(adapter1->GetDesc1(&description1))) software_adapter=(description1.Flags & DXGI_ADAPTER_FLAG_SOFTWARE)!=0;
+    if (SUCCEEDED(adapter1->GetDesc1(&description1))) software_adapter |= (description1.Flags & DXGI_ADAPTER_FLAG_SOFTWARE)!=0;
   }
   ++live_sources;
 }

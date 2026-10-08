@@ -30,6 +30,7 @@ class Source {
   void Present();
   void SaveCapture(const std::wstring& path, bool native_surface);
   std::string adapter;
+  unsigned adapter_vendor_id = 0, adapter_device_id = 0;
   bool software_adapter = false;
   unsigned target_width = 0, target_height = 0;
   static std::atomic<unsigned> live_sources;

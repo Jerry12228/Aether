@@ -139,6 +139,8 @@ EncodableMap SeleneNativePlugin::Diagnostics() const {
     map[EncodableValue("backend")] = EncodableValue(state_->backend);
     map[EncodableValue("textureId")] = EncodableValue(state_->id);
     map[EncodableValue("adapter")] = EncodableValue(state_->source->adapter);
+    map[EncodableValue("adapterVendorId")] = EncodableValue(static_cast<int64_t>(state_->source->adapter_vendor_id));
+    map[EncodableValue("adapterDeviceId")] = EncodableValue(static_cast<int64_t>(state_->source->adapter_device_id));
     map[EncodableValue("softwareAdapter")] = EncodableValue(state_->source->software_adapter);
     map[EncodableValue("targetWidth")] = EncodableValue(static_cast<int32_t>(state_->source->target_width));
     map[EncodableValue("targetHeight")] = EncodableValue(static_cast<int32_t>(state_->source->target_height));

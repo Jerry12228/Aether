@@ -16,6 +16,12 @@ async function run(name,args,timeoutMs=120000){
  console.log(`PASS ${suite}/${name} duration_ms=${result.durationMs} log=${result.log}`);
 }
 async function main(){
+if(suite==='Panel')for(const config of ['Debug','Release']){
+ const probe=await runGroup({name:`software-adapter-${config}`,exe:path.join(root,'build/native',config,'aether_presentation_contract.exe'),args:[],cwd:root,timeoutMs:15000},{root,logDirectory:'artifacts/phase02/ui'});
+ if(probe.exitCode!==0||!probe.output.includes('PASS actual software adapter classification'))throw Error('Actual WARP adapter probe failed: '+probe.output);
+ count++;
+ console.log(`PASS actual software adapter ${config}; native draw and zero source cleanup`);
+}
 await run('build',['build','windows','--debug','--no-pub']);
 await run('widget',['test','--no-pub','test/native_panel_test.dart','--reporter=expanded']);
 await run('engine',['test','--no-pub','-d','windows','integration_test/native_panel_test.dart','--reporter=expanded']);

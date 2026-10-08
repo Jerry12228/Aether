@@ -30,6 +30,13 @@ void main() {
             'Real native GPU start must be implemented by the registered plugin',
       );
       expect(result['backend'], 'gpuTexture');
+      if (result['adapter'] == 'Microsoft Basic Render Driver') {
+        expect(
+          result['softwareAdapter'],
+          true,
+          reason: 'Microsoft Basic Render Driver is software rendering',
+        );
+      }
       expect(result['textureId'], greaterThan(0));
       expect(result['sourceWidth'], 1280);
       expect(result['sourceHeight'], 720);
