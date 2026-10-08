@@ -25,6 +25,8 @@ Flutter 必须匹配锁定的 framework/engine/Dart。入口解析已安装 SDK 
 Dart/snapshot，以 native argv 启动；含空格及 shell 元字符的路径不会进入 cmd。
 `prepare-flutter.ps1 -Restore` 创建经目标核验的仓库内 junction，并从 app 执行
 `pub get --enforce-lockfile`。`check-sources.cjs --check` 从锁定 wheel 提取开发用
+首次 restore 若因 SDK 重建链接而出现其明确的权限诊断，入口核验实际生成的
+单插件 metadata，重建同一个 junction 后只重试一次；其他失败直接非零。
 libclang DLL，校验 archive/DLL/LICENSE 摘要；不安装 Python 包或执行 wheel hooks。
 生成绑定只写忽略的临时输出，随后比较已审阅快照。
 

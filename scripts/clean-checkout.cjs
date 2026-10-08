@@ -26,7 +26,7 @@ async function run(root){
  const evidenceDirectory=path.join(root,'artifacts','phase02','clean','checkout-artifacts');
  if(fs.existsSync(path.join(destination,'artifacts','phase02')))fs.cpSync(path.join(destination,'artifacts','phase02'),evidenceDirectory,{recursive:true});
  const digests=[];
- function inventory(directory){if(!fs.existsSync(directory))return;for(const entry of fs.readdirSync(directory,{withFileTypes:true})){const file=path.join(directory,entry.name);if(entry.isDirectory())inventory(file);else if(entry.isFile())digests.push({file:path.relative(root,file),sha256:hash(file),bytes:fs.statSync(file).size});}}
+ function inventory(directory){if(!fs.existsSync(directory))return;for(const entry of fs.readdirSync(directory,{withFileTypes:true})){const file=path.join(directory,entry.name);if(entry.isDirectory())inventory(file);else if(entry.isFile()&&file!==path.join(root,'artifacts','phase02','clean','report.json'))digests.push({file:path.relative(root,file),sha256:hash(file),bytes:fs.statSync(file).size});}}
  inventory(path.join(root,'artifacts','phase02','clean'));
  const report={status:success?'PASS':'FAIL',commit,diffSha256:crypto.createHash('sha256').update('').digest('hex'),source:'tracked committed HEAD only; no ignored inputs',directory:path.relative(root,destination),durationMs:Date.now()-started,records,digests,actualVerification:success?JSON.parse(fs.readFileSync(path.join(evidenceDirectory,'tooling','verify-All.json'),'utf8')):null};
  const safe=owned(parent,destination);
