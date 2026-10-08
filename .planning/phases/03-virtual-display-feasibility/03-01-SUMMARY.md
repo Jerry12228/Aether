@@ -25,7 +25,7 @@ requirements-planned: [VDP-01, VDP-02]
 requirements-completed: []
 actuals:
   tasks: 3
-  commits: 5
+  commits: 7
 duration: 23 min measured between first RED commit and checkpoint; preflight not timed
 completed: "2026-10-08"
 halted_at: "2026-10-08T12:53:53Z"
@@ -51,13 +51,15 @@ coverage:
     description: Choose exact admitted provider or no-qualified-provider with concrete next research/evidence action
     verification:
       - kind: other
-        ref: node scripts/check-virtual-display-admission.cjs --stage dossier --require-decision
+        ref: node scripts/check-virtual-display-admission.cjs --stage dossier --require-decision --file docs/phase03/PROVIDER-ADMISSION.json
         status: pass
     human_judgment: true
     rationale: User response 2 recorded with original dossier hash; no-qualified-provider intentionally blocks dependent implementation
 ---
 
 # Phase 03 Plan 01 — read-only probe and provider admission checkpoint
+
+**R1续行当前状态：** 用户“继续，需求已更新”已执行R1准入补证；新schema2档案/官方包审计/精确刷新率校验通过，具体派生源码/上游路线仍待决定。旧人审证据保留；status: halted仍阻断03-02/03-03。
 
 **真实Windows枚举、五候选档案及03-01-03路线决定已完成；用户选择2补SudoVDA证据，无合格provider，后续实施仍暂停。**
 
@@ -99,6 +101,15 @@ T-03-01/02/SC通过**拒绝未准入接入**约束当前边界；没有把上游
 
 未扩张架构、未引入常驻owner或安装器。`requirements-completed`保持空（需求仍未完成），避免按模板复制VDP数组制造已完成结论；原计划覆盖保存在requirements-planned。
 
+## R1 continuation evidence
+
+- RED `58b524a`：两个R1测试因缺平台schema/精确刷新率API真实断言失败；首次默认沙箱EPERM不算RED。原始日志artifacts/phase03/r1-red.log。
+- GREEN `29bbff1`：校验器默认schema2 R1档案，绑定批准文档hash；Win10七屏SDR/Win11 D2 HDR与精确60/1请求。等价刷新率整数交叉比较接受60000/1000，拒绝59.94近似、零分母、越界和非法值。schema1仍保留原严格请求，旧决定hash不能批准新档案。
+- 实际回归包9项+planning1项，10/10无skip，296.7ms；新dossier、历史显式--file决定和42阶段/105映射通过。未修改native，不重复之前native/机器测试。
+- Apollo v0.4.6 archive17529901bytes/28.741s，官方asset SHA256匹配；提取六确定文件，DLL83216bytes，其他五文件逐字节匹配固定参考。INF/DLL /pa /c均退出1（untrusted root，无timestamp），成员/政策不标verified；设备ACL仍high。
+- 固定微软/EDID工具许可入口和独立派生范围已准备；没有生产源码复制、构建/安装driver、导入证书或系统配置/拓扑动作。实际资产在忽略artifacts，持久摘要在docs/phase03/SUDOVDA-R1-AUDIT.json。
+- 新档案hash `0e2010bd2143013fbbc62d0be3cad622020024594562c8521370ff36bcf0d116`；proposalEvidence绑定SUDOVDA-R1-ROUTE.md内容。decision=null，不将“继续”当作已审新路线。具体派生准备路线或继续上游补证需03-01-03人审；VDP与阶段未完成。
+
 ## Checkpoint and resume
 
 **Gate answered:** 03-01-03 / checkpoint:decision / blocking-human。用户原文 `2`，记录时间2026-10-08T13:55:18Z，绑定原档案hash；选择no-qualified-provider和SudoVDA补证。来源补证完成，仍无合格候选。
@@ -107,4 +118,4 @@ T-03-01/02/SC通过**拒绝未准入接入**约束当前边界；没有把上游
 
 ## Self-check
 
-**PASSED for readonly/dossier/decision scope.** 三任务证据齐备，实际答复已记录，来源/未知状态未虚构。**Plan intentionally HALTED on no-qualified-provider branch; Phase3 NOT COMPLETE.** 保留status: halted使依赖引擎阻断03-02/03-03，不因人类决定已答复而打开未准入实施。
+**PASSED for original readonly/dossier/decision and R1 checker/audit scope.** 原三任务证据和用户`2`保留；R1真实包审计/校验完成，新的派生路线决定尚待答复。**Plan intentionally HALTED on no-qualified-provider branch; Phase3 NOT COMPLETE.** 保留status: halted使依赖引擎阻断03-02/03-03，不因历史决定已答复而打开未准入实施。

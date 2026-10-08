@@ -3,10 +3,10 @@ gsd_state_version: "1.0"
 current_phase: 3
 current_phase_name: 虚拟显示器可行性
 status: executing
-stopped_at: 03-01-03 response 2 recorded; SudoVDA followup complete; no-qualified-provider blocks 03-02/03-03
-last_updated: "2026-10-08T14:18:22Z"
+stopped_at: R1 admission audit verified; awaiting concrete SudoVDA derived-source route decision; no admitted provider
+last_updated: "2026-10-08T14:38:38.623Z"
 last_activity: 2026-10-08
-last_activity_desc: Side-chat requirement R1 removes Win10 HDR; SudoVDA preferred; source/package/license/ACL and machine gates remain
+last_activity_desc: R1 checker and official Apollo driver bytes verified; signature/ACL/license still block; scoped derived route prepared
 progress:
   total_phases: 42
   completed_phases: 2
@@ -22,14 +22,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-08)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 03 — 虚拟显示器可行性（03-01路线决定与SudoVDA补证完成；仍无合格provider）
+**Current focus:** Phase 03 — 虚拟显示器可行性（R1准入档案与包审计完成；等待具体派生/上游路线决定，无合格provider）
 
 ## Current Position
 
 Phase: 3 (虚拟显示器可行性) — NO QUALIFIED PROVIDER
-Plan: 03-01 — 3/3 task evidence done; SUMMARY status halted on no-qualified-provider branch
-Status: Provider checkpoint answered; admission unresolved; 03-02/03-03 not started
-Last activity: 2026-10-08 — Side-chat R1 removes Win10 HDR requirement, preserves Win11 HDR and seven displays; no phase implementation resumed
+Plan: 03-01 — prior 3/3 checkpoint evidence retained; R1 revised route decision pending; SUMMARY halted
+Status: R1 source/package audit done; derived-driver preparation route pending; 03-02/03-03 not started
+Last activity: 2026-10-08 — R1 checker GREEN; actual Apollo INF/DLL/CAT audit; 10/10 tests and proposal prepared
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -83,7 +83,11 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 [Phase3 planned limits] 正式固定包/独立许可/签名、接口与设备ACL、短CLI退出保活、七屏容量与SDR/HDR、Win10/11实机、恢复/更新回滚均待执行证据。已知IddCx Win10 HDR限制不得用降级/五屏假PASS或提高主机下限绕过；03-03-04真实检查点承接补证、替代研究或申请明确规范修订，原请求未经修订前不变。无准入候选保持VDP与阶段未完成。规划研究处置RESOLVED不表示技术事实验证；没有批准任何具体系统操作。
 
-[Phase3 current gate] 五候选无合格provider。用户选2，已取得SudoMaker/SudoVDA固定源码a4b09fa；作者修改许可声明已定位，但正式DLL/CAT对应、继承许可/notices和正式信任链仍缺。all-users设备ACL+FILE_ANY_ACCESS high未缓解；默认watchdog移除全部屏，协议查询也重置倒计时。启动前watchdog=0选项未在对应包实测；上游明确Win10不支持HDR。VDD包可信Authenticode及INF/DLL成员事实不关闭源码对应、许可、逐slot/稳定ID/ACL和适用安装政策；/kp失败只记具体诊断。Microsoft/Rust/Parsec无完整固定准入来源。03-01-03已选no-qualified-provider和SudoVDA补证，结果见docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md；七屏/HDR/Win10实机及03-02/03-03均未完成。档案docs/phase03/PROVIDER-ADMISSION.md，digest fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。
+[Phase3 current gate] R1新档案docs/phase03/PROVIDER-ADMISSION-R1.json，hash 0e2010bd2143013fbbc62d0be3cad622020024594562c8521370ff36bcf0d116。schema2绑定R1文档并按Win10七屏SDR/Win11 D2 HDR校验；旧档案与决定原样保留。实际取得Apollo v0.4.6包及SudoVDA DLL，INF/CAT/CER/两个脚本匹配固定参考；signtool INF/DLL /pa /c均untrusted root退出1，无时间戳，ACL未修复。固定微软MS-PL与EDID工具GPLv3许可入口已定位，继承/notices和对应构建仍缺。已准备docs/phase03/SUDOVDA-R1-ROUTE.md的独立身份/配置/受限ACL派生方案，尚未批准；当前纯查询产品未新增driver操作。10/10测试296.7ms，新档案/历史决定/42阶段105映射通过。VDP与Phase3未完成，03-02/03-03仍阻断。
+
+[Phase3 pre-R1 historical gate] 五候选无合格provider。用户选2，已取得SudoMaker/SudoVDA固定源码a4b09fa；作者修改许可声明已定位，但正式DLL/CAT对应、继承许可/notices和正式信任链仍缺。all-users设备ACL+FILE_ANY_ACCESS high未缓解；默认watchdog移除全部屏，协议查询也重置倒计时。启动前watchdog=0选项未在对应包实测；上游明确Win10不支持HDR。VDD包可信Authenticode及INF/DLL成员事实不关闭源码对应、许可、逐slot/稳定ID/ACL和适用安装政策；/kp失败只记具体诊断。Microsoft/Rust/Parsec无完整固定准入来源。03-01-03已选no-qualified-provider和SudoVDA补证，结果见docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md；七屏/HDR/Win10实机及03-02/03-03均未完成。档案docs/phase03/PROVIDER-ADMISSION.md，digest fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。
+
+- 2026-10-08 用户“继续，需求已更新”恢复R1准入工作；未将其解释为批准新摘要或自有driver路线。R1新增两个RED目标真实失败（58b524a）后GREEN（29bbff1）；新档案默认入口，历史显式--file仍有效。只读审计下载预算20MiB/30秒，实际17.53MB/28.741秒；未执行安装器、导入证书或修改设备/配置。
 
 ### Quick Tasks Completed
 
@@ -97,7 +101,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-08T13:55:18Z
-Stopped at: 03-01-03 answered; followup source evidence complete; no admitted candidate
+Last session: 2026-10-08T14:38:38.623Z
+Stopped at: R1 dossier and package audit done; concrete derived route proposal awaits user decision
 Resume file: .planning/phases/03-virtual-display-feasibility/03-01-PLAN.md
-Next action: 按用户需求修订R1准备SudoVDA对应正式包/继承许可/受限ACL/保活及Win11 HDR证据，生成区分Win10七屏SDR与Win11 D2 HDR的新准入档案并重审。Win10 HDR不再必需；不要重复请求选项2或重跑已完成只读任务。无合格provider时03-02/03-03仍阻断，VDP与Phase3未完成。安装/更新/reset仍需03-03具体系统授权；本侧聊仅修订文档。
+Next action: 审阅SUDOVDA-R1-ROUTE.md并选择Aether专属SudoVDA派生准备路线或继续上游补证；实际答复绑定R1新档案摘要，仍不标记provider已准入。Win10 HDR不再必需，不重复询问旧选项2。先关闭对应源码/继承许可/签名/ACL门槛；无合格provider时03-02/03-03仍阻断，安装/更新/config/reset另需03-03具体系统授权。

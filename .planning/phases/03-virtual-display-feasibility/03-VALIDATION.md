@@ -8,7 +8,7 @@ created: "2026-10-08"
 ---
 
 # Phase 03 — Validation Strategy
-**需求修订优先级（2026-10-08）：** [SudoVDA需求修订R1](../../../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)覆盖旧Win10 HDR必需场景；Win10七屏全SDR，Win11 D2 HDR。SudoVDA是优先候选，允许受控watchdog=0配置与精确60Hz有理数约分核验；许可/签名/ACL/实机门槛仍有效，本次不恢复实施。
+**需求修订优先级（2026-10-08）：** [SudoVDA需求修订R1](../../../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)覆盖旧Win10 HDR必需场景；Win10七屏全SDR，Win11 D2 HDR。SudoVDA是优先候选，允许受控watchdog=0配置与精确60Hz有理数约分核验；许可/签名/ACL/实机门槛仍有效。用户续行后R1准入补证完成，未解锁03-02/03-03系统接入。
 
 
 本文件是执行时的验证合同。03-01-01/02只读路径与准入档案已实现并通过针对性验证；03-01-03已记录选项2与hash，SudoVDA补证完成仍无provider获准接入。尚无七屏/HDR/driver生命周期实机通过证据，VDP-01/02仍未完成；status/draft与两个false标志保留。
@@ -40,8 +40,8 @@ created: "2026-10-08"
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---|---|---|---|---|---|---|---|---|---|
 | 03-01-01 | 01 | 1 | VDP-01/02 | T-03-03 | 真实只读OS查询，拒绝未知/访问错误推断支持 | native+CLI | `ctest --test-dir build/native -C Debug -R "^virtual_display_probe$" --output-on-failure --no-tests=error` | ✅ 已创建 | passed Debug/Release只读范围 |
-| 03-01-02 | 01 | 1 | VDP-01/02 | T-03-01/02/SC | 固定包/成员签名/许可/设备ACL，分层门禁无循环 | package | `node --test tests/virtual-display-package.test.cjs`；`node scripts/check-virtual-display-admission.cjs --stage dossier` | ✅ 已创建 | passed 7/7及dossier；五候选admission按预期拒绝 |
-| 03-01-03 | 01 | 1 | VDP-01/02 | T-03-01/02 | 具体路线或无候选决定；无系统操作授权 | decision | `node scripts/check-virtual-display-admission.cjs --stage dossier --require-decision` | ✅ 01-02已创建 | passed dossier --require-decision；no-qualified-provider阻断后续实施 |
+| 03-01-02 | 01 | 1 | VDP-01/02 | T-03-01/02/SC | 固定包/成员签名/许可/设备ACL，分层门禁无循环 | package | `node --test tests/virtual-display-package.test.cjs`；`node scripts/check-virtual-display-admission.cjs --stage dossier` | ✅ 已创建 | passed 包9/9及R1 dossier；原candidate准入仍拒绝 |
+| 03-01-03 | 01 | 1 | VDP-01/02 | T-03-01/02 | 具体路线或无候选决定；无系统操作授权 | decision | `node scripts/check-virtual-display-admission.cjs --stage dossier --require-decision` | ✅ 01-02已创建 | 历史决定显式--file通过；R1新路线decision pending，默认require-decision按预期拒绝 |
 | 03-02-01 | 02 | 2 | VDP-01/02 | T-03-04/05/06/07 | 跨CLI稳定ID/OS caller/锁/journal/last-success/拥有资源 | native+child-process | `ctest --test-dir build/native -C Debug -R "^virtual_display_(tracer\|registry)$" --output-on-failure --no-tests=error` | ❌ 本任务创建 | pending |
 | 03-02-02 | 02 | 2 | VDP-01/02 | T-03-06/08/09 | 七slot/严格60/1/HDR/物理布局/手动恢复/窗口独立 | native+CLI | `node --test tests/virtual-display-contract.test.cjs`；计划内5项精确CTest | ❌ 本任务创建 | pending |
 | 03-03-01 | 03 | 3 | VDP-01/02 | T-03-10/11/12/SC | 无副作用install plan、仅显式更新、旧包回滚/手动重启 | package+CLI | `node --test tests/virtual-display-package.test.cjs`；`pwsh -NoProfile -File scripts/check-virtual-display.ps1 -Mode Contract -Configuration Release` | ❌ 本任务扩展/创建 | pending |
