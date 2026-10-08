@@ -1,5 +1,7 @@
 # 原功能保留基线
 
+2026-10-08明确范围例外：[用户需求修订R1](phase03/SUDOVDA-REQUIREMENTS-REVISION.md)取消Win10主机HDR必需项，Win11与客户端HDR能力仍保留。以下固定原行为和历史case不改写为不存在；涉及Win10 HDR的case应记录not-required-by-R1与原因，不能记成已通过。其余原能力仍适用。
+
 基线日期：2026-10-07。平台盘点已展开，语义穷尽性仍待最终人审。结构校验 PASS；产品功能均未实现/实测。固定来源见 [来源审计](SOURCE-AUDIT.md)，正式数据见 [features.json](baseline/features.json)。
 
 “不砍功能”以指定五平台及 Windows 10/11 服务端的适用原用户能力为边界。保留 GameStream 重构基础、单一 Flutter UI、原生实时路径、主机唯一控制租约；断连/切换保留实例和显示组，只有显式停止才清理。本阶段不批准源码生产复用。

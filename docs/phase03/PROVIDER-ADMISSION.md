@@ -1,5 +1,7 @@
 # Phase 03 provider 准入审阅
 
+2026-10-08后续[用户需求修订R1](SUDOVDA-REQUIREMENTS-REVISION.md)已取消Win10 HDR必需项，改为Win10七屏SDR/Win11 D2 HDR；以下JSON/hash与原候选事实仍为修订前快照，不能据此推断新的平台验收或provider准入。其余来源/许可/ACL/签名/保活门槛仍开放。
+
 2026-10-08。状态：**没有合格候选；03-01-03 已确认选项 2，补证完成但准入仍阻断**。来源/接口审计、具体路线决定、具体系统操作授权、生产/实机验证为四个不同门槛。完整字段见 [PROVIDER-ADMISSION.json](PROVIDER-ADMISSION.json)。用户原文 `2` 与记录时间/原档案 hash 已写入 decision；`selectedProviderId=null`。补充结论见 [SUDOVDA-EVIDENCE-FOLLOWUP.md](SUDOVDA-EVIDENCE-FOLLOWUP.md)；原候选行保留为检查点前快照，公开源码现已取得。
 
 ## 已完成的只读路径

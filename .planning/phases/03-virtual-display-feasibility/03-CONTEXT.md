@@ -1,7 +1,7 @@
 # Phase 3: 虚拟显示器可行性 - Context
 
 **Gathered:** 2026-10-08 (Asia/Singapore)
-**Status:** Ready for planning
+**Status:** Requirement revision R1 recorded; provider admission still blocked
 **Requirements:** VDP-01, VDP-02
 
 <domain>
@@ -17,6 +17,8 @@
 
 <decisions>
 ## Implementation Decisions
+
+2026-10-08用户[需求修订R1](../../../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)覆盖本文件及旧研究/计划中的Win10 HDR必需项；SudoVDA是优先适配候选，允许受控显式配置watchdog=0，许可/签名/ACL及实机门槛仍保留。
 
 ### 原型操作入口
 
@@ -38,7 +40,7 @@
 | C | 1 | 1920×1080 | 60 Hz | SDR |
 | C | 2 | 1920×1080 | 60 Hz | SDR |
 | D | 1 | 1920×1080 | 60 Hz | SDR |
-| D | 2 | 1920×1080 | 60 Hz | HDR |
+| D | 2 | 1920×1080 | 60 Hz | Win10 SDR；Win11 HDR |
 
 - **D-07:** A/B/C/D 各占一行，组内横向排列；存在物理屏时，虚拟屏放在其右侧，保留现有物理屏布局。坐标计算及无物理屏时的锚点由研究/规划确定。
 - **D-08:** 分别记录请求规格和实际生效结果。HDR 需核验实际显示状态和 provider/OS/GPU 条件，不能仅凭请求被接受或测试图出现判定生效；本阶段证据不替代后续 HDR 捕获、编码、传输和呈现证据。

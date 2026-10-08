@@ -8,6 +8,8 @@ created: "2026-10-08"
 ---
 
 # Phase 03 — Validation Strategy
+**需求修订优先级（2026-10-08）：** [SudoVDA需求修订R1](../../../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)覆盖旧Win10 HDR必需场景；Win10七屏全SDR，Win11 D2 HDR。SudoVDA是优先候选，允许受控watchdog=0配置与精确60Hz有理数约分核验；许可/签名/ACL/实机门槛仍有效，本次不恢复实施。
+
 
 本文件是执行时的验证合同。03-01-01/02只读路径与准入档案已实现并通过针对性验证；03-01-03已记录选项2与hash，SudoVDA补证完成仍无provider获准接入。尚无七屏/HDR/driver生命周期实机通过证据，VDP-01/02仍未完成；status/draft与两个false标志保留。
 
@@ -62,10 +64,10 @@ T-03-SC唯一规范登记位于03-01-PLAN.md；03-02/03-03 threat_model明确引
 | Behavior | Requirement | Why Manual | Test Instructions |
 |---|---|---|---|
 | 正式包/默认安全配置安装、更新/回滚 | VDP-02；D-13–16 | 管理员系统动作需具体方案和实际包 | 先审阅来源/签名/许可/影响/回滚范围并获准；需要重启时退出，由用户手动重启并运行 check |
-| 四组七屏独立内容与 SDR/HDR 共存 | VDP-01；D-05–08 | OS/GPU/provider 条件不能由 fixture 证明 | Win10/11 分开记录 A1 1080p、A2 1440p、B1/C1/C2/D1/D2 1080p，全部 60/1；D2 HDR，其余 SDR；查询实际颜色并观察独立图 |
-| CLI 全退出后保活、删除 B 保留 A/C/D | VDP-01/02；D-02/09/12 | 持久驱动行为/共享故障需要观察 | 关闭所有 CLI/Ping owner 后超过实际 watchdog 周期，再从新 CLI 查询；删除 B 前后比对身份、配置、内容和物理布局 |
+| 四组七屏独立内容与 SDR/HDR 共存 | VDP-01；D-05–08 | OS/GPU/provider 条件不能由 fixture 证明 | Win10/11 分开记录 A1 1080p、A2 1440p、B1/C1/C2/D1/D2 1080p，全部 60/1；Win10 D2 SDR、Win11 D2 HDR，其余 SDR；原始refresh约分后须为60/1，查询实际颜色并观察独立图 |
+| CLI 全退出后保活、删除 B 保留 A/C/D | VDP-01/02；D-02/09/12 | 持久驱动行为/共享故障需要观察 | 关闭所有 CLI/Ping owner 后超过实际 watchdog 周期，再从新 CLI 查询；已获准watchdog=0需记录禁用、配置回读、owner退出与明确有界观察窗口；删除 B 前后比对身份、配置、内容和物理布局 |
 | 驱动重置与显式恢复 | VDP-02；D-11 | 故障会影响共享设备，须受控授权 | 保存最后成功状态；故障后查询差异，只按指定组恢复；记录逻辑/系统身份和布局变化及实际故障范围 |
-| 最终生产可行性/支持条件人审 | VDP-01/02 | 签名/许可/Win10/11 功能证据需具体决定 | supported/unsupported/environment-unavailable 分列；不减少屏数或将 HDR 改 SDR冒充通过；缺门槛保持需求未完成 |
+| 最终生产可行性/支持条件人审 | VDP-01/02 | 签名/许可/Win10/11 功能证据需具体决定 | supported/unsupported/environment-unavailable 分列；按R1区分Win10七屏SDR和Win11 D2 HDR，不减少屏数或将显式HDR请求改SDR冒充通过；缺门槛保持需求未完成 |
 
 ## Validation Sign-Off
 
