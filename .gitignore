@@ -9,3 +9,8 @@
 !.env.example
 *.user
 *.log
+/artifacts/
+**/ephemeral/
+**/.flutter-plugins-dependencies
+**/.idea/
+**/*.iml

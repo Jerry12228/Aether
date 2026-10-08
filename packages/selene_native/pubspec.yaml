@@ -1,0 +1,19 @@
+name: selene_native
+description: Local C ABI and platform presentation bridge for Selene.
+publish_to: none
+version: 0.1.0+0
+resolution: workspace
+environment:
+  sdk: '>=3.12.0 <3.13.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  ffi: 2.2.0
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  plugin:
+    platforms:
+      windows:
+        pluginClass: SeleneNativePluginCApi

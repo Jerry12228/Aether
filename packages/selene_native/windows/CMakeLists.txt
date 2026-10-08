@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.31)
+project(selene_native LANGUAGES CXX)
+set(PLUGIN_NAME "selene_native_plugin")
+get_filename_component(PLUGIN_REAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}" REALPATH)
+get_filename_component(AETHER_ROOT "${PLUGIN_REAL_DIR}/../../.." ABSOLUTE)
+set(AETHER_CORE_ONLY ON)
+add_subdirectory("${AETHER_ROOT}" "${CMAKE_CURRENT_BINARY_DIR}/aether")
+add_library(${PLUGIN_NAME} SHARED
+  include/selene_native/selene_native_plugin_c_api.h
+  selene_native_plugin_c_api.cpp selene_native_plugin.cpp selene_native_plugin.h)
+apply_standard_settings(${PLUGIN_NAME})
+set_target_properties(${PLUGIN_NAME} PROPERTIES CXX_VISIBILITY_PRESET hidden)
+target_compile_definitions(${PLUGIN_NAME} PRIVATE FLUTTER_PLUGIN_IMPL)
+target_include_directories(${PLUGIN_NAME} INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+target_link_libraries(${PLUGIN_NAME} PRIVATE flutter flutter_wrapper_plugin aether_core)
+set(selene_native_bundled_libraries "$<TARGET_FILE:aether_core>" PARENT_SCOPE)

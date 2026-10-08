@@ -1,0 +1,19 @@
+name: selene
+description: Aether client and local native verification panel.
+publish_to: none
+version: 0.1.0+0
+resolution: workspace
+environment:
+  sdk: '>=3.12.0 <3.13.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  selene_native:
+    path: ../../packages/selene_native
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true

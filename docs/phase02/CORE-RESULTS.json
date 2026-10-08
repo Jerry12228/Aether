@@ -1,0 +1,14 @@
+[
+  {
+    "output": "PASS tracer checks=16",
+    "suite": "tracer"
+  },
+  {
+    "output": "PASS lifecycle checks=1895",
+    "suite": "lifecycle"
+  },
+  {
+    "output": "PASS adapters checks=25",
+    "suite": "adapters"
+  }
+]

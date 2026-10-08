@@ -1,0 +1,6 @@
+{
+ "version":6,
+ "configurePresets":[{"name":"windows-core","generator":"Visual Studio 18 2026","architecture":"x64","binaryDir":"${sourceDir}/build/native","cacheVariables":{"CMAKE_SYSTEM_VERSION":"10.0.28000.0","BUILD_TESTING":"ON"}}],
+ "buildPresets":[{"name":"windows-core-debug","configurePreset":"windows-core","configuration":"Debug"},{"name":"windows-core-release","configurePreset":"windows-core","configuration":"Release"}],
+ "testPresets":[{"name":"windows-core-debug","configurePreset":"windows-core","configuration":"Debug","output":{"outputOnFailure":true},"execution":{"noTestsAction":"error"}},{"name":"windows-core-release","configurePreset":"windows-core","configuration":"Release","output":{"outputOnFailure":true},"execution":{"noTestsAction":"error"}}]
+}
