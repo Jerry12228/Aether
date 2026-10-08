@@ -33,6 +33,20 @@ function indexed(t) {
   const f=fixture(t); assert.equal(typeof api.indexSources,'function','source indexer must exist');
   f.data=api.indexSources({root:f.root,scope:'moonlight-common-c'}); return f;
 }
+test('independent checkout accepts Windows drive casing but rejects a parent repository',t=>{
+  const f=fixture(t),record=f.lock.repositories[0];
+  const spelling=(cwd,args,input)=>{
+    const output=api.gitRun(cwd,args,input);
+    if(args.join(' ')==='rev-parse --show-toplevel'&&process.platform==='win32'){
+      const actual=output.toString().trim();
+      const changed=actual[0]===actual[0].toUpperCase()?actual[0].toLowerCase():actual[0].toUpperCase();
+      return Buffer.from(changed+actual.slice(1)+'\n');
+    }
+    return output;
+  };
+  assert.doesNotThrow(()=>api.context(f.root,record,spelling),'same Windows checkout identity must survive drive-letter casing');
+  assert.throws(()=>api.context(f.root,record,(cwd,args,input)=>args.join(' ')==='rev-parse --show-toplevel'?Buffer.from(f.root+'\n'):api.gitRun(cwd,args,input)),/not an independent checkout/);
+});
 test('source tracer indexes fixed blobs and missing gitlink evidence, then renders via CLI',t=>{
   const f=indexed(t); assert.equal(f.data.files.length,3); assert.equal(f.data.externals.filter(x=>x.kind==='gitlink').length,1);
   assert.equal(f.data.externals[0].materialization,'absent');
