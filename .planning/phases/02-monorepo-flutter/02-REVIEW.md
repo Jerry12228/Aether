@@ -44,7 +44,7 @@ status: clean
 ### WR-01 — WARNING (fixed): paused external observers can prevent dispose completion
 
 File: packages/selene_native/lib/src/core.dart, final `await _events.close()` in
-`_dispose` (line 174 at reviewed commit). After stop, ACK, native destroy and
+`_dispose` (line 179 at reviewed commit). After stop, ACK, native destroy and
 listener closure, StreamController.close still waits for a paused subscriber to
 consume its done notification. An external observer can therefore prevent the
 public local dispose Future completing indefinitely even though native counters
@@ -61,7 +61,8 @@ the actual TAP witness as RED_EVIDENCE_OK. The implementation now initiates
 controller closure without awaiting externally paused done delivery, and uses
 Stopwatch for the drain budget. Actual Debug and Release Lifecycle suites pass
 (six Dart cases plus one native suite per configuration), and the TAP witness
-passes after the fix. Final clean rerun remains required in execution evidence.
+passes after the fix. The final clean rerun of 4a718df passed all 19 mandatory
+groups and includes this regression; evidence records its exact source/hash.
 No open finding remains in this review scope. This report is the focused review
 of authored lifecycle/source/tooling boundaries; generated non-Windows runners
 retain inventory/source checks and unsupported statuses. It is not a target

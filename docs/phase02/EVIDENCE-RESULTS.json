@@ -1,0 +1,989 @@
+{
+  "schema": 1,
+  "capturedAt": "2026-10-08T02:41:38.498Z",
+  "scope": "Phase 2 local repository/native skeleton only",
+  "status": "local-passed-ci-and-human-pending",
+  "version": {
+    "productVersion": "0.1.0",
+    "buildNumber": 0,
+    "abiVersion": 1
+  },
+  "localFirstAll": {
+    "status": "PASS",
+    "scope": "All",
+    "automation": true,
+    "version": {
+      "productVersion": "0.1.0",
+      "buildNumber": 0,
+      "abiVersion": 1
+    },
+    "durationMs": 219746,
+    "results": [
+      {
+        "name": "source-check",
+        "exitCode": 0,
+        "durationMs": 3499,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\source-check.log",
+        "tests": null,
+        "guardError": null
+      },
+      {
+        "name": "platform-check",
+        "exitCode": 0,
+        "durationMs": 63,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\platform-check.log",
+        "tests": null,
+        "guardError": null
+      },
+      {
+        "name": "planning-check",
+        "exitCode": 0,
+        "durationMs": 73,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\planning-check.log",
+        "tests": null,
+        "guardError": null
+      },
+      {
+        "name": "tool-baseline-tests",
+        "exitCode": 0,
+        "durationMs": 46208,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\tool-baseline-tests.log",
+        "tests": 92,
+        "guardError": null
+      },
+      {
+        "name": "flutter-analyze",
+        "exitCode": 0,
+        "durationMs": 3487,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\flutter-analyze.log",
+        "tests": null,
+        "guardError": null
+      },
+      {
+        "name": "test-targets-Debug",
+        "exitCode": 0,
+        "durationMs": 4485,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\test-targets-Debug.log",
+        "tests": null,
+        "guardError": null
+      },
+      {
+        "name": "test-targets-Release",
+        "exitCode": 0,
+        "durationMs": 4419,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\test-targets-Release.log",
+        "tests": null,
+        "guardError": null
+      },
+      {
+        "name": "native-tracer-fixture",
+        "exitCode": 0,
+        "durationMs": 152,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\native-tracer-fixture.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "core-Tracer-Debug",
+        "exitCode": 0,
+        "durationMs": 2482,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\core-Tracer-Debug.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "core-Lifecycle-Debug",
+        "exitCode": 0,
+        "durationMs": 4632,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\core-Lifecycle-Debug.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "core-Adapters-Debug",
+        "exitCode": 0,
+        "durationMs": 2263,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\core-Adapters-Debug.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "core-Tracer-Release",
+        "exitCode": 0,
+        "durationMs": 2222,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\core-Tracer-Release.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "core-Lifecycle-Release",
+        "exitCode": 0,
+        "durationMs": 4564,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\core-Lifecycle-Release.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "core-Adapters-Release",
+        "exitCode": 0,
+        "durationMs": 2201,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\core-Adapters-Release.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "ui-Panel",
+        "exitCode": 0,
+        "durationMs": 60388,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\ui-Panel.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "ui-Lifecycle",
+        "exitCode": 0,
+        "durationMs": 76590,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\ui-Lifecycle.log",
+        "tests": 1,
+        "guardError": null
+      },
+      {
+        "name": "helios-Debug",
+        "exitCode": 0,
+        "durationMs": 748,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\helios-Debug.log",
+        "tests": 2,
+        "guardError": null
+      },
+      {
+        "name": "helios-Release",
+        "exitCode": 0,
+        "durationMs": 785,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\helios-Release.log",
+        "tests": 2,
+        "guardError": null
+      },
+      {
+        "name": "binary-versions",
+        "exitCode": 0,
+        "durationMs": 465,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\tooling\\binary-versions.log",
+        "tests": null,
+        "guardError": null
+      }
+    ],
+    "artifacts": [
+      {
+        "file": "build/native/Debug/aether_core.dll",
+        "sha256": "92e47a2ac677ef4da2ae2bcbf7f8710317e2f81522f25b8c45aacd342ed3fe58"
+      },
+      {
+        "file": "build/native/Release/aether_core.dll",
+        "sha256": "deb331e6bcf433bdd73514be6285e15db8f11156a6ec0da51a26a17e97cde48f"
+      },
+      {
+        "file": "build/native/Debug/helios.exe",
+        "sha256": "89324d3748757fdcb70080fb88aa9645e9745ad65d67137ef82eba5d9e5cf07b"
+      },
+      {
+        "file": "build/native/Release/helios.exe",
+        "sha256": "d2c3f6d485be06936b07b8f0408aa074f79b045eb014f19576ada15cb848d825"
+      },
+      {
+        "file": "apps/selene/build/windows/x64/runner/Release/selene.exe",
+        "sha256": "48e7aff86b23506c1ec9d2346e81478ed7a7097325fb1a95023d4b1e28791ce4"
+      }
+    ]
+  },
+  "clean": {
+    "status": "PASS",
+    "commit": "4a718df4972a59842814140678a5c86f584c7ed8",
+    "diffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source": "tracked committed HEAD only; no ignored inputs",
+    "directory": "build\\clean-checkouts\\Aether clean space FjrxlY",
+    "durationMs": 304585,
+    "records": [
+      {
+        "name": "clone",
+        "exitCode": 0,
+        "durationMs": 432,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\clean\\clone.log"
+      },
+      {
+        "name": "checkout",
+        "exitCode": 0,
+        "durationMs": 318,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\clean\\checkout.log"
+      },
+      {
+        "name": "clean-Helios-Debug",
+        "exitCode": 0,
+        "durationMs": 7121,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\clean\\clean-Helios-Debug.log"
+      },
+      {
+        "name": "clean-Selene-Debug",
+        "exitCode": 0,
+        "durationMs": 26771,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\clean\\clean-Selene-Debug.log"
+      },
+      {
+        "name": "clean-Helios-Release",
+        "exitCode": 0,
+        "durationMs": 4079,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\clean\\clean-Helios-Release.log"
+      },
+      {
+        "name": "clean-Selene-Release",
+        "exitCode": 0,
+        "durationMs": 29648,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\clean\\clean-Selene-Release.log"
+      },
+      {
+        "name": "clean-verify-All",
+        "exitCode": 0,
+        "durationMs": 236168,
+        "timeout": false,
+        "error": null,
+        "log": "artifacts\\phase02\\clean\\clean-verify-All.log"
+      }
+    ],
+    "digests": [
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Adapters-Debug-dart.log",
+        "sha256": "dc808685169843f660d92bb5e8a72001b1f17486e94893751d87c1c91a61983b",
+        "bytes": 389
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Adapters-Debug-native.log",
+        "sha256": "241206d9e56f23b3b2a771a33d6c163597db2329adbbb44200fcd6fdc02270aa",
+        "bytes": 262
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Adapters-Release-dart.log",
+        "sha256": "dc808685169843f660d92bb5e8a72001b1f17486e94893751d87c1c91a61983b",
+        "bytes": 389
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Adapters-Release-native.log",
+        "sha256": "0f491a486952018ea9bc004f2bc4a3d1fe27b7e3968f64d336534384eba5706c",
+        "bytes": 262
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Lifecycle-Debug-dart.log",
+        "sha256": "46f2354ff4520799b64924dd9c17877dbe675e7f65876143f10494d9b86bc105",
+        "bytes": 633
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Lifecycle-Debug-native.log",
+        "sha256": "a93402f653f7ad5ab7b1a84244b37a42651c15185b81bdadf22d1bc7db3fca8d",
+        "bytes": 263
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Lifecycle-Release-dart.log",
+        "sha256": "46f2354ff4520799b64924dd9c17877dbe675e7f65876143f10494d9b86bc105",
+        "bytes": 633
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Lifecycle-Release-native.log",
+        "sha256": "1264f95ddeaa7c04172afff87ab0609a449e2b229eaf527324c8653c176f39b7",
+        "bytes": 263
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Tracer-Debug-dart.log",
+        "sha256": "ae3285fb3b2b2abbcb0302a3760fc96a5c167bcab88f4c3f883beb5df0bd5e36",
+        "bytes": 324
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Tracer-Debug-native.log",
+        "sha256": "54e240808325532744e10a27b0325ea2b2c9346628e724458b25b9dbdcb22be7",
+        "bytes": 260
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Tracer-Release-dart.log",
+        "sha256": "ae3285fb3b2b2abbcb0302a3760fc96a5c167bcab88f4c3f883beb5df0bd5e36",
+        "bytes": 324
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\core-Tracer-Release-native.log",
+        "sha256": "55db304f010f5dc7146b3eaecd448c650cfdc08bdcdc3b615e45dc3a641fe2ca",
+        "bytes": 260
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\helios\\automation-Debug.log",
+        "sha256": "ac16fe45cf078143415d091ef59dc714be6f08c15182f4316b9260c58f91ba99",
+        "bytes": 195
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\helios\\automation-Release.log",
+        "sha256": "ac16fe45cf078143415d091ef59dc714be6f08c15182f4316b9260c58f91ba99",
+        "bytes": 195
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\helios\\ctrl-c-Debug.log",
+        "sha256": "d87de0c7a3f79fc69b0265dfdde628e193d0edb0ac1f29acf6e0f622be9ef945",
+        "bytes": 284
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\helios\\ctrl-c-Release.log",
+        "sha256": "d87de0c7a3f79fc69b0265dfdde628e193d0edb0ac1f29acf6e0f622be9ef945",
+        "bytes": 284
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\helios\\init-failure-Debug.log",
+        "sha256": "75144436fb722502ece707d27d3c0e26d028e54dc67248344bf4c283aecbcf7e",
+        "bytes": 54
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\helios\\init-failure-Release.log",
+        "sha256": "75144436fb722502ece707d27d3c0e26d028e54dc67248344bf4c283aecbcf7e",
+        "bytes": 54
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\helios\\redirected-Debug.log",
+        "sha256": "ac16fe45cf078143415d091ef59dc714be6f08c15182f4316b9260c58f91ba99",
+        "bytes": 195
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\helios\\redirected-Release.log",
+        "sha256": "ac16fe45cf078143415d091ef59dc714be6f08c15182f4316b9260c58f91ba99",
+        "bytes": 195
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\presentation-correctness.json",
+        "sha256": "35be191e22472fcfb210690be871c9cad445698366ec6d23f847b1696f318330",
+        "bytes": 1569
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\binary-versions.log",
+        "sha256": "0401b367bf588345c76b2aab98416960f9c4c8907934d616a130e7ee4108cc2a",
+        "bytes": 1119
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\binding-drift.log",
+        "sha256": "4119e962ad7de798a1db67f8e73ce1a816f7da239690fa37229db1be2d1bbb35",
+        "bytes": 893
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Adapters-Debug.log",
+        "sha256": "01f29b804d7e2f7aef9e2591980e8f560b39e31f54ea45e0c56c5f1d1944d524",
+        "bytes": 1415
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Adapters-Release.log",
+        "sha256": "9393067da7b5d21de0745725e489ffae4af6823a4a0d53fdea7808077fb13540",
+        "bytes": 1425
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Lifecycle-Debug.log",
+        "sha256": "ab7f1dd7e191aa581330abb3bfc72bb3c79929c392e1b8eee4197ddd3ff6c0db",
+        "bytes": 1664
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Lifecycle-Release.log",
+        "sha256": "b04d7d5cdc1fa7376f871f11217d8b20d58d216ebffcd9bfd2cb9ceef0fae3b2",
+        "bytes": 1674
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Tracer-Debug.log",
+        "sha256": "5071023ee4b6b53b7a204999dd93befa3c4f6308dd70a6c97dce1f9494c90970",
+        "bytes": 1340
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\core-Tracer-Release.log",
+        "sha256": "3b6a96da6cefc75d843017778e6b8879f638bf32aad023642c0d5dcc20eec71c",
+        "bytes": 1350
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\flutter-analyze.log",
+        "sha256": "a907bbcb8f2a5633581017ba57731d9d2efa4c44805ce9853e81b818f4bdb3b8",
+        "bytes": 565
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Helios-Debug-build.log",
+        "sha256": "c8eed7db8400ee96f393facb2cea63aea5c34aa281e6137f86435072c9a10b62",
+        "bytes": 1377
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Helios-Debug-configure.log",
+        "sha256": "92e71d06a005345d91ce7802c76284bf441dba4e16b1f3a640af73d65c782c70",
+        "bytes": 1259
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\helios-Debug.log",
+        "sha256": "bb21d0150e78c002bcb5500aeec537c2c3944110ea991f3e1074eb6d4e4573ea",
+        "bytes": 974
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Helios-Release-build.log",
+        "sha256": "403d36c27e070e088e7102ec62565decf597b8db996d44e7fc4aeb64f3aa0ed8",
+        "bytes": 1391
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Helios-Release-configure.log",
+        "sha256": "3338ba500f0ec8c63531394d36016dfd32da60390c4b8dca62aef3103b7a68cc",
+        "bytes": 558
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\helios-Release.log",
+        "sha256": "93002ea7d9320c659e808ff99d1d605603a6592ecc962b4f08f82f4e02cccf41",
+        "bytes": 979
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\native-tracer-fixture.log",
+        "sha256": "36bf7832e5892fd10704f4e3be26f4ba68f43bd7db766bda2858745177041739",
+        "bytes": 724
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\planning-check.log",
+        "sha256": "8f26d81b854bf5bbe028571ca6cc3fbad0d66ca08ee76becfc23512ebdb51a34",
+        "bytes": 498
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\platform-check.log",
+        "sha256": "1ccb9fe88cc713123ba45504313ed8b25c9784d48c42c0b6c74852dd5a4515ee",
+        "bytes": 521
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Selene-Debug-build.log",
+        "sha256": "39a21ccc652ab9e7da5ea62264fae4c8402b204507e2b21c05a45eeceeedde97",
+        "bytes": 619
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Selene-Debug-prepare.log",
+        "sha256": "6b549fe0db15e836a6f6ce4dd23a0d8ee9aa1dab0572fbcd34c6b97e3af033f3",
+        "bytes": 2787
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Selene-Release-build.log",
+        "sha256": "02f8e0cd84d523143fe0d73327f6bce2d1678d2a756439c9fd565ff8b51c4ed7",
+        "bytes": 627
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\Selene-Release-prepare.log",
+        "sha256": "084ad152f8c2f1108dd688ba41333663eed35594a5395495f67cfc174101d37b",
+        "bytes": 1527
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\source-check.log",
+        "sha256": "d45539304acec1c618cf70904f74f10a303ab8251066a2d57636418db1ea5135",
+        "bytes": 526
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\test-targets-Debug.log",
+        "sha256": "15ed66d38d9a7ac3c47308c55b6507339344efd2043cfaa768792a891e72ff78",
+        "bytes": 2264
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\test-targets-Release.log",
+        "sha256": "1380db8a4440bc0e4015dbd4b884de850163a38813ac6f47c5fd91e3967ea0d7",
+        "bytes": 2387
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\tool-baseline-tests.log",
+        "sha256": "6e488a998ecc35b7235db75324fb82acee5f691873cda186f311d86baa0cd53c",
+        "bytes": 17058
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\ui-Lifecycle.log",
+        "sha256": "30f28d1cd75fb961d6c50164384719f69579226fe3b03b76e0b886902846983b",
+        "bytes": 1026
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\ui-Panel.log",
+        "sha256": "1238d98fb94318602f56f993ba73a5d16f9c1498e6a6f9088a7c6de0495c3592",
+        "bytes": 710
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\tooling\\verify-All.json",
+        "sha256": "78b0283226bbb6e9daa840db955f301731d152617b56c9d1b1c09cef75642a44",
+        "bytes": 6233
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\gpu-preview.png",
+        "sha256": "51e4396a8cf812eee416b028b1ecb12e75369a007ee8a5e47f1f9c0efbf93e70",
+        "bytes": 29957
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\gpu-view.png",
+        "sha256": "96486d1f7b67999aaadb6473b43757982a916cbd2bb13bdcbaba4e27d5e68b4e",
+        "bytes": 112465
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-build.log",
+        "sha256": "66ca85c8403f6e224424d4507107a70809dcd6af55cb75ae2d4b497a85f29dc5",
+        "bytes": 607
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-close-build.log",
+        "sha256": "25993760f9475ae562440b10e5dc7060a51c14b775a70a5979ebcc272cda4fcf",
+        "bytes": 659
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-engine.log",
+        "sha256": "3cb2d9486f22ee73a03130473510a5420ecd4d027a4b539d642f9231ba1a00a0",
+        "bytes": 1111
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-restore-normal.log",
+        "sha256": "4b0315ee8096150f594761fae71efab8dd4c9b44b033e281eec6a05df501dd8c",
+        "bytes": 625
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Lifecycle-widget.log",
+        "sha256": "f18b7a67dcc958aaade37b9f9192ce4db26d2f934f39065fcab84da521a24be0",
+        "bytes": 823
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\native-source.png",
+        "sha256": "87ea8401058860dc1ec9147d14ec894ff64f782ebcc779351ade456f13bac4a0",
+        "bytes": 40716
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\native-surface-portrait.png",
+        "sha256": "84b46b17ba30d043eebcb9227615727638f5c7e5fc1caa25d54ece16c831f333",
+        "bytes": 30803
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\native-surface-wide.png",
+        "sha256": "8da3c897cdd705b0dc74149e6072367419701aa0682be52b6530c9c7bb1f59a0",
+        "bytes": 59412
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\native-surface.png",
+        "sha256": "8da3c897cdd705b0dc74149e6072367419701aa0682be52b6530c9c7bb1f59a0",
+        "bytes": 59412
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Panel-build.log",
+        "sha256": "2ec3de44d8971588750c2290f56c523dfae65b9e62c1e5af89e829e243a1208f",
+        "bytes": 600
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Panel-engine.log",
+        "sha256": "090046f0fa50297e9f69bf22a33d212c956faee8163afe0922f28fbde1da6ac4",
+        "bytes": 1103
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\Panel-widget.log",
+        "sha256": "83dabf072931f73d59c721dd0a5c511cee68aed9db44ac8206df6bfb04a5e5eb",
+        "bytes": 815
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout-artifacts\\ui\\window-close.log",
+        "sha256": "54eb2ef72b85182695b727e03158cda5b85823da94d732dbdece4b5a40c52fca",
+        "bytes": 913
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\checkout.log",
+        "sha256": "45bde62910d9e3b1c9e27826316b7e78d2edd30e705183b382f5a546242d33f8",
+        "bytes": 455
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\clean-Helios-Debug.log",
+        "sha256": "c917b95a2f06f063d01f6a52d36535adc278be1c548d74eb73775c854bbdc18d",
+        "bytes": 1183
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\clean-Helios-Release.log",
+        "sha256": "3535b551e85089770d16bf624e109029f0940dada3e65db6429d312348e04afb",
+        "bytes": 1202
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\clean-Selene-Debug.log",
+        "sha256": "e6dedb2d8214e3d4bce721f5b69beab14cf5e47425a7b68a96c885a336b58df3",
+        "bytes": 1238
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\clean-Selene-Release.log",
+        "sha256": "84a6a79243446834edbb1910b391339f788cd93518b3f303c3517bd875f9a453",
+        "bytes": 1258
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\clean-verify-All.log",
+        "sha256": "aa196f35152d0fb0afb0722d5b712404c1a884982d17ca403977dddf11514aca",
+        "bytes": 6889
+      },
+      {
+        "file": "artifacts\\phase02\\clean\\clone.log",
+        "sha256": "13adcd6e2dda9682a76684afc5e607fd1d2575c9c77faa74a32e555edc98aacb",
+        "bytes": 465
+      }
+    ],
+    "actualVerification": {
+      "status": "PASS",
+      "scope": "All",
+      "automation": true,
+      "version": {
+        "productVersion": "0.1.0",
+        "buildNumber": 0,
+        "abiVersion": 1
+      },
+      "durationMs": 236097,
+      "results": [
+        {
+          "name": "source-check",
+          "exitCode": 0,
+          "durationMs": 5161,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\source-check.log",
+          "tests": null,
+          "guardError": null
+        },
+        {
+          "name": "platform-check",
+          "exitCode": 0,
+          "durationMs": 62,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\platform-check.log",
+          "tests": null,
+          "guardError": null
+        },
+        {
+          "name": "planning-check",
+          "exitCode": 0,
+          "durationMs": 71,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\planning-check.log",
+          "tests": null,
+          "guardError": null
+        },
+        {
+          "name": "tool-baseline-tests",
+          "exitCode": 0,
+          "durationMs": 46288,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\tool-baseline-tests.log",
+          "tests": 93,
+          "guardError": null
+        },
+        {
+          "name": "flutter-analyze",
+          "exitCode": 0,
+          "durationMs": 3382,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\flutter-analyze.log",
+          "tests": null,
+          "guardError": null
+        },
+        {
+          "name": "test-targets-Debug",
+          "exitCode": 0,
+          "durationMs": 7177,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\test-targets-Debug.log",
+          "tests": null,
+          "guardError": null
+        },
+        {
+          "name": "test-targets-Release",
+          "exitCode": 0,
+          "durationMs": 7041,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\test-targets-Release.log",
+          "tests": null,
+          "guardError": null
+        },
+        {
+          "name": "native-tracer-fixture",
+          "exitCode": 0,
+          "durationMs": 166,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\native-tracer-fixture.log",
+          "tests": 1,
+          "guardError": null
+        },
+        {
+          "name": "core-Tracer-Debug",
+          "exitCode": 0,
+          "durationMs": 5454,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\core-Tracer-Debug.log",
+          "tests": 3,
+          "guardError": null
+        },
+        {
+          "name": "core-Lifecycle-Debug",
+          "exitCode": 0,
+          "durationMs": 4685,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\core-Lifecycle-Debug.log",
+          "tests": 7,
+          "guardError": null
+        },
+        {
+          "name": "core-Adapters-Debug",
+          "exitCode": 0,
+          "durationMs": 2233,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\core-Adapters-Debug.log",
+          "tests": 4,
+          "guardError": null
+        },
+        {
+          "name": "core-Tracer-Release",
+          "exitCode": 0,
+          "durationMs": 2267,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\core-Tracer-Release.log",
+          "tests": 3,
+          "guardError": null
+        },
+        {
+          "name": "core-Lifecycle-Release",
+          "exitCode": 0,
+          "durationMs": 4620,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\core-Lifecycle-Release.log",
+          "tests": 7,
+          "guardError": null
+        },
+        {
+          "name": "core-Adapters-Release",
+          "exitCode": 0,
+          "durationMs": 2276,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\core-Adapters-Release.log",
+          "tests": 4,
+          "guardError": null
+        },
+        {
+          "name": "ui-Panel",
+          "exitCode": 0,
+          "durationMs": 64866,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\ui-Panel.log",
+          "tests": 5,
+          "guardError": null
+        },
+        {
+          "name": "ui-Lifecycle",
+          "exitCode": 0,
+          "durationMs": 78492,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\ui-Lifecycle.log",
+          "tests": 6,
+          "guardError": null
+        },
+        {
+          "name": "helios-Debug",
+          "exitCode": 0,
+          "durationMs": 766,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\helios-Debug.log",
+          "tests": 2,
+          "guardError": null
+        },
+        {
+          "name": "helios-Release",
+          "exitCode": 0,
+          "durationMs": 773,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\helios-Release.log",
+          "tests": 2,
+          "guardError": null
+        },
+        {
+          "name": "binary-versions",
+          "exitCode": 0,
+          "durationMs": 296,
+          "timeout": false,
+          "error": null,
+          "log": "artifacts\\phase02\\tooling\\binary-versions.log",
+          "tests": null,
+          "guardError": null
+        }
+      ],
+      "artifacts": [
+        {
+          "file": "build/native/Debug/aether_core.dll",
+          "sha256": "a8f194dbd5854afe6759ff353714f12f7c2fb08ee00a5311187deb862a39f979"
+        },
+        {
+          "file": "build/native/Release/aether_core.dll",
+          "sha256": "c6237e4dcd823e2bcd3fe8de422f98576301e8fa2ee03ba3dafb6c94fe781abd"
+        },
+        {
+          "file": "build/native/Debug/helios.exe",
+          "sha256": "48a634d21fee0fbf79ffcb1445432180c9bccab43eae0a924d35c6988391207e"
+        },
+        {
+          "file": "build/native/Release/helios.exe",
+          "sha256": "128191c65b631fc92dc65892564c14aabb4f02ee32e4cd7f236331a294ea4975"
+        },
+        {
+          "file": "apps/selene/build/windows/x64/runner/Debug/selene.exe",
+          "sha256": "9724980d2ebd9111859bbc220549aa7aa25052b535c6faa971421153763af202"
+        },
+        {
+          "file": "apps/selene/build/windows/x64/runner/Debug/aether_core.dll",
+          "sha256": "210c01a93bd2a7ce943abbe2a7dd05121296b8b74789a3861f770059a6da706b"
+        },
+        {
+          "file": "apps/selene/build/windows/x64/runner/Release/selene.exe",
+          "sha256": "cefb2795b108f20b23f3648fc7217174ddf23ddcba49f1f24b93287f2f5fcb43"
+        },
+        {
+          "file": "apps/selene/build/windows/x64/runner/Release/aether_core.dll",
+          "sha256": "96d3e92aaa73674caec8c53a0f017b884811dbc6cf6aca008197429931c3d745"
+        }
+      ]
+    },
+    "cleanup": "deleted verified task-owned checkout after evidence copy"
+  },
+  "attempts": [
+    {
+      "folder": "clean-attempt-1",
+      "status": "FAIL",
+      "commit": "29d03e6aea1e386e1663648188903444d532a8a4",
+      "durationMs": 9164,
+      "reportSha256": "35be7ad7660f1ad7956415a966cc1345b4034c33dcc95971e5f1abfad46d2f34",
+      "reason": "Flutter first restore recreates plugin links; privilege failure"
+    },
+    {
+      "folder": "clean-attempt-2",
+      "status": "FAIL",
+      "commit": "efe6618af0a8bea2fc8d52ad2b073d9d84fe26d4",
+      "durationMs": 300697,
+      "reportSha256": "ceb9467ff9a61f6140ac71f00048d13e32f23737c209062edf47be23289fa495",
+      "reason": "Retained license-copy digest differed from archive/Git bytes; source and fixture guards failed"
+    },
+    {
+      "folder": "clean-attempt-3-before-review-fix",
+      "status": "PASS",
+      "commit": "eed530d5a3b7c7edc79487fa4e6f8d088a8a49f1",
+      "durationMs": 304867,
+      "reportSha256": "9a3ebddd92b5d330ada50849837f1b484b8339a829ed4aec7a8cfb0bea4bc7fe",
+      "reason": "passed old HEAD before paused-observer review fix; superseded by final pass"
+    }
+  ],
+  "normalSharedTools": {
+    "flutter": {
+      "version": "3.44.0",
+      "frameworkRevision": "559ffa3f75e7402d65a8def9c28389a9b2e6fe42",
+      "engineRevision": "4c525dac5ebe5971c5708ef73558ed8edcf4a362",
+      "engineContentHash": "fcf463a2242790d1fdcd9d044f533080f5022e18",
+      "dart": "3.12.0",
+      "archiveUrl": "https://storage.googleapis.com/flutter_infra_release/releases/stable/windows/flutter_windows_3.44.0-stable.zip",
+      "archiveSha256": "88da00194893bf9543fc47c0bf31e6de978d49ffdb9c2f6e30c46dde0116c768",
+      "archiveStatus": "official-manifest-verified; installed SDK archive not retained",
+      "license": "BSD-3-Clause",
+      "source": "https://github.com/flutter/flutter"
+    },
+    "windows": {
+      "architecture": "x64",
+      "generator": "Visual Studio 18 2026",
+      "visualStudio": "18.10.12201.205",
+      "msvcTools": "14.51.36231",
+      "compiler": "19.51.36257.0",
+      "cmake": "4.4.3",
+      "flutterBundledCmake": "4.3.1-msvc1",
+      "sdk": "10.0.28000.0",
+      "hostMinimumBuild": "pending Phases 3-5; no Win10 runtime evidence"
+    },
+    "libclang": {
+      "version": "18.1.1",
+      "sha256": "b13ec96d9a036d6c6c36dd09e00415ead7acc7fcfd40e721bf33ea86b3490f9d",
+      "provenance": "existing audited external developer DLL; hash checked; no ignored product artifact reused"
+    }
+  },
+  "ci": {
+    "status": "not-run",
+    "candidate": "https://github.com/Jerry12228/Aether",
+    "candidateEvidence": "connected GitHub repository search: empty public repository, default main, authenticated admin/push access",
+    "remoteConfigured": false,
+    "pushAuthorization": "pending",
+    "runUrl": null,
+    "runnerSdkAddition": "implemented for ephemeral hosted runner; not executed in Actions",
+    "completionRule": "both products and every mandatory check must pass in a real Actions run; local results or human approval cannot substitute"
+  },
+  "human": {
+    "status": "not-reached",
+    "reason": "actual passing mandatory CI required first"
+  },
+  "presentation": {
+    "record": "docs/phase02/PRESENTATION-RESULTS.json",
+    "sha256": "4831d1970f8b63dc1f6849217cc893170433f2b5bef3e630e572103ea6fa420b",
+    "sourceCommit": "020bfff",
+    "method": "actual pixels, 30s warmup, 60s sampling, three rounds/backend",
+    "scope": "static BGRA8 patterns; no stream, HDR, zero-copy or physical other-platform claim"
+  },
+  "flags": {
+    "unclassifiedCoreAssumptions": 3,
+    "descriptorlessProhibitions": 6,
+    "status": "flagged-unverified; unchanged"
+  },
+  "review": {
+    "path": ".planning/phases/02-monorepo-flutter/02-REVIEW.md",
+    "openFindings": 0,
+    "resolvedPausedObserver": 1
+  }
+}

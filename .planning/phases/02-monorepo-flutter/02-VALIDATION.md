@@ -9,7 +9,7 @@ created: "2026-10-07"
 
 # Phase 02 — Validation Strategy
 
-本文件是执行时验证契约；当前尚无产品代码、构建结果或测量证据。命令由计划创建对应入口后运行，planner 须同步最终路径与任务编号。
+本文件是执行时验证契约。2026-10-08 本地与最终干净检出已通过；实际 Windows Actions 和最终人审仍待完成。证据见 docs/phase02/EVIDENCE.md；nyquist_compliant 与 wave_0_complete 按必需 CI 条件保持 false。
 
 ## Test Infrastructure
 
@@ -19,42 +19,44 @@ created: "2026-10-07"
 | Config file | CMakePresets.json、根 pubspec.yaml/pubspec.lock（02-01 tracer 创建） |
 | Quick run command | `pwsh -NoProfile -File scripts/check-core.ps1 -Suite Lifecycle -Configuration Debug`；fails_when: native/真实 DLL 生命周期测试失败、未发现测试或停机越界 |
 | Full suite command | `pwsh -NoProfile -File scripts/verify.ps1 -Scope All -Automation -CleanCheckout`；fails_when: 任一双端 clean build 或必需检查失败/跳过/无证据 |
-| Estimated runtime | 未测；快速组目标 <30s，全量构建/GUI/既有基线套件单独计时 |
+| Estimated runtime | 已测：Lifecycle 单配置约4.3s；最终 clean checkout 全程见 EVIDENCE-RESULTS.json；全量 GUI/baseline 分组单独计时 |
 
 ## Sampling Rate
 
 - 每个任务提交前运行其 native / Dart / widget / CLI 相关检查；不以 mock 替代真实 DLL 测试。
 - 每个 wave 完成后执行该 wave 已提供的完整检查；最终 wave 运行双端 clean checkout 构建与全部必需检查。
 - verify-work 前保存实际命令、退出码、测试计数、耗时、工具链和日志路径。
-- 快速反馈目标 <30s 尚未验证；全量 CI 允许更长且必须记录实际时间，无 watch 模式。
+- Lifecycle 快速组约4.3s；工具 guard13项约0.7s。冷构建、GUI/完整基线与实际 CI 分开计时，无 watch 模式。
 
 ## Per-Task Verification Map
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | fails_when | File Exists | Status |
 |---------|------|------|-------------|------------|-----------------|-----------|-------------------|------------|-------------|--------|
-| 02-01-01 | 01 | 1 | CORE-01/02/03 | T-02-01/03 | 核心独立于 Flutter/Qt/研究目录 | configure | `cmake --preset windows-core` | 配置失败或引入研究/框架依赖 | ❌ 02-01 创建 | pending |
-| 02-01-01 | 01 | 1 | CORE-01/02/03 | T-02-01/03 | 实际 DLL/Helios/contract 编译 | build | `cmake --build --preset windows-core-debug` | 编译/链接失败或产物缺失 | ❌ 02-01 创建 | pending |
-| 02-01-01 | 01 | 1 | CORE-01/02/03 | T-02-01/02/03 | worker→creator isolate、真实停止销毁 | native + real FFI | `pwsh -NoProfile -File scripts/check-core.ps1 -Suite Tracer -Configuration Debug` | 无真实 DLL 测试、版本/线程错误或资源泄漏 | ❌ 02-01 创建 | pending |
-| 02-01-02 | 01 | 1 | CORE-02 | T-02-01/02 | 当前生命周期代码进入被测二进制 | build | `cmake --build --preset windows-core-debug` | 变更源码或 native test 未成功重建 | ❌ 02-01 创建 | pending |
-| 02-01-02 | 01 | 1 | CORE-02 | T-02-01/02 | ABI/所有权、cancel/stop、ACK/队列界限 | native + real FFI | `pwsh -NoProfile -File scripts/check-core.ps1 -Suite Lifecycle -Configuration Debug` | 迟到回调、缺/重复 terminal、无界排队、stale访问或停机越界无安全TIMEOUT | ❌ 02-01 创建 | pending |
-| 02-01-03 | 01 | 1 | CORE-03 | T-02-04 | 五平台共用接口编译 | build | `cmake --build --preset windows-core-debug` | descriptor/interface 编译失败 | ❌ 02-01 创建 | pending |
-| 02-01-03 | 01 | 1 | CORE-03 | T-02-04 | unsupported 原因与无分配 | native + FFI | `pwsh -NoProfile -File scripts/check-core.ps1 -Suite Adapters -Configuration Debug` | 缺平台、虚称实现、unsupported 分配或 ABI 泄漏 OS 类型 | ❌ 02-01 创建 | pending |
-| 02-01-03 | 01 | 1 | CORE-01/03 | T-02-03 | 已有文档/参考锁回归 | Node | `node scripts/validate-planning.cjs` | 既有需求/阶段/引用校验非零 | ✅ tracked | pending |
-| 02-02-01 | 02 | 2 | CORE-01/02/03 | T-02-05 | GPU/真实 surface、回滚保留 core | widget + Windows engine | `pwsh -NoProfile -File scripts/check-ui.ps1 -Suite Panel -Automation` | engine skipped/失败、CPU冒充GPU、自动启动画面、比例或core回滚错误 | ❌ 02-02 创建 | pending |
-| 02-02-02 | 02 | 2 | CORE-01/02 | T-02-06 | Helios 新代码实际重建 | build | `cmake --build --preset windows-core-debug` | 编译失败/测试仍用旧产物 | ❌ 02-01 创建 | pending |
-| 02-02-02 | 02 | 2 | CORE-01 | T-02-06/07 | automation非零失败、stdin不等、signal cleanup | real process | `pwsh -NoProfile -File scripts/check-helios.ps1 -Automation` | stdin挂起/错误零退出/前台提前退出/停机超时/伪造signal证据 | ❌ 02-02 创建 | pending |
-| 02-02-02 | 02 | 2 | CORE-02 | T-02-05/06/07 | in-flight关闭、异步unregister、无销毁后callback | Windows engine | `pwsh -NoProfile -File scripts/check-ui.ps1 -Suite Lifecycle -Automation` | UAF/泄漏/迟到callback/GPU早释放/诊断丢失 | ❌ 02-02 创建 | pending |
-| 02-02-03 | 02 | 2 | CORE-02 | T-02-08 | 双真实路径原始证据/限制 | report check | `pwsh -NoProfile -File scripts/measure-presentation.ps1 -CheckReport -Output artifacts/phase02/presentation` | 缺backend真实结果/原因或日志，合成数据/虚称支持 | ❌ 02-02 创建 | pending |
-| 02-03-01 | 03 | 3 | CORE-01/03 | T-02-09/10/12 | Target白名单、shell参数、owned tree、失败传播 | Node | `node --test tests/build-tools.test.cjs` | dispatch/quoting/timeout/missing-test guard失败 | ❌ 02-03 创建 | pending |
-| 02-03-01 | 03 | 3 | CORE-01 | T-02-09/11 | 只构建Helios/core | real build | `pwsh -NoProfile -File scripts/build.ps1 -Target Helios -Configuration Release` | 失败/隐式另一端/缺版本日志产物 | ❌ 02-03 创建 | pending |
-| 02-03-01 | 03 | 3 | CORE-01 | T-02-09/11 | 只构建Selene/plugin/core | real build | `pwsh -NoProfile -File scripts/build.ps1 -Target Selene -Configuration Release` | 失败/隐式Helios/版本不同 | ❌ 02-03 创建 | pending |
-| 02-03-01 | 03 | 3 | CORE-01/02/03 | T-02-03/11 | source/lock/hash/generator drift门禁 | source check | `node scripts/check-sources.cjs --check` | 任一来源/锁/许可/散列/版本/绑定漂移，或研究链接 | ❌ 02-03 创建 | pending |
-| 02-03-02 | 03 | 3 | CORE-03 | T-02-13 | 不抹掉五端/Apple构建/原目标差异 | Node | `node --test tests/platform-contract.test.cjs` | 平台状态/差异/证据语义guard失败 | ❌ 02-03 创建 | pending |
-| 02-03-02 | 03 | 3 | CORE-03 | T-02-13 | viability真实结果或具体executor缺口 | platform check | `node scripts/check-platforms.cjs --check` | 缺尝试/原因/前提/责任/后续阶段，或未实现记支持 | ❌ 02-03 创建 | pending |
-| 02-03-02 | 03 | 3 | CORE-01/02/03 | T-02-09/11/12/13 | 无reference clean双端与完整必需检查 | clean build + full suite | `pwsh -NoProfile -File scripts/verify.ps1 -Scope All -Automation -CleanCheckout` | 任一双端build/必需检查失败跳过/缺证据/使用研究树 | ❌ 02-03 创建 | pending |
-| 02-03-02 | 03 | 3 | CORE-01/03 | T-02-13 | 文档/要求既有回归 | Node | `node scripts/validate-planning.cjs` | 既有规划校验失败 | ✅ tracked | pending |
-| 02-03-02 | 03 | 3 | CORE-01/03 | T-02-13 | 真实planning fixture回归 | Node | `node --test tests/planning.test.cjs` | 测试失败/child-spawn限制被忽略 | ✅ tracked | pending |
-| 02-03-03 | 03 | 3 | CORE-01/02/03 | T-02-03/11/13 | 人审前源与已验结果一致 | source check | `node scripts/check-sources.cjs --check` | 审阅来源/绑定/版本/锁漂移 | ❌ 02-03 创建 | pending |
+| 02-01-01 | 01 | 1 | CORE-01/02/03 | T-02-01/03 | 核心独立于 Flutter/Qt/研究目录 | configure | `cmake --preset windows-core` | 配置失败或引入研究/框架依赖 | ✅ tracked | pass-local |
+| 02-01-01 | 01 | 1 | CORE-01/02/03 | T-02-01/03 | 实际 DLL/Helios/contract 编译 | build | `cmake --build --preset windows-core-debug` | 编译/链接失败或产物缺失 | ✅ tracked | pass-local |
+| 02-01-01 | 01 | 1 | CORE-01/02/03 | T-02-01/02/03 | worker→creator isolate、真实停止销毁 | native + real FFI | `pwsh -NoProfile -File scripts/check-core.ps1 -Suite Tracer -Configuration Debug` | 无真实 DLL 测试、版本/线程错误或资源泄漏 | ✅ tracked | pass-local |
+| 02-01-02 | 01 | 1 | CORE-02 | T-02-01/02 | 当前生命周期代码进入被测二进制 | build | `cmake --build --preset windows-core-debug` | 变更源码或 native test 未成功重建 | ✅ tracked | pass-local |
+| 02-01-02 | 01 | 1 | CORE-02 | T-02-01/02 | ABI/所有权、cancel/stop、ACK/队列界限 | native + real FFI | `pwsh -NoProfile -File scripts/check-core.ps1 -Suite Lifecycle -Configuration Debug` | 迟到回调、缺/重复 terminal、无界排队、stale访问或停机越界无安全TIMEOUT | ✅ tracked | pass-local |
+| 02-01-03 | 01 | 1 | CORE-03 | T-02-04 | 五平台共用接口编译 | build | `cmake --build --preset windows-core-debug` | descriptor/interface 编译失败 | ✅ tracked | pass-local |
+| 02-01-03 | 01 | 1 | CORE-03 | T-02-04 | unsupported 原因与无分配 | native + FFI | `pwsh -NoProfile -File scripts/check-core.ps1 -Suite Adapters -Configuration Debug` | 缺平台、虚称实现、unsupported 分配或 ABI 泄漏 OS 类型 | ✅ tracked | pass-local |
+| 02-01-03 | 01 | 1 | CORE-01/03 | T-02-03 | 已有文档/参考锁回归 | Node | `node scripts/validate-planning.cjs` | 既有需求/阶段/引用校验非零 | ✅ tracked | pass-local |
+| 02-02-01 | 02 | 2 | CORE-01/02/03 | T-02-05 | GPU/真实 surface、回滚保留 core | widget + Windows engine | `pwsh -NoProfile -File scripts/check-ui.ps1 -Suite Panel -Automation` | engine skipped/失败、CPU冒充GPU、自动启动画面、比例或core回滚错误 | ✅ tracked | pass-local |
+| 02-02-02 | 02 | 2 | CORE-01/02 | T-02-06 | Helios 新代码实际重建 | build | `cmake --build --preset windows-core-debug` | 编译失败/测试仍用旧产物 | ✅ tracked | pass-local |
+| 02-02-02 | 02 | 2 | CORE-01 | T-02-06/07 | automation非零失败、stdin不等、signal cleanup | real process | `pwsh -NoProfile -File scripts/check-helios.ps1 -Automation` | stdin挂起/错误零退出/前台提前退出/停机超时/伪造signal证据 | ✅ tracked | pass-local |
+| 02-02-02 | 02 | 2 | CORE-02 | T-02-05/06/07 | in-flight关闭、异步unregister、无销毁后callback | Windows engine | `pwsh -NoProfile -File scripts/check-ui.ps1 -Suite Lifecycle -Automation` | UAF/泄漏/迟到callback/GPU早释放/诊断丢失 | ✅ tracked | pass-local |
+| 02-02-03 | 02 | 2 | CORE-02 | T-02-08 | 双真实路径原始证据/限制 | report check | `pwsh -NoProfile -File scripts/measure-presentation.ps1 -CheckReport -Output artifacts/phase02/presentation-final` | 缺backend真实结果/原因或日志，合成数据/虚称支持 | ✅ tracked | pass-local |
+| 02-03-01 | 03 | 3 | CORE-01/03 | T-02-09/10/12 | Target白名单、shell参数、owned tree、失败传播 | Node | `node --test tests/build-tools.test.cjs` | dispatch/quoting/timeout/missing-test guard失败 | ✅ tracked | pass-local |
+| 02-03-01 | 03 | 3 | CORE-01 | T-02-09/11 | 只构建Helios/core | real build | `pwsh -NoProfile -File scripts/build.ps1 -Target Helios -Configuration Release` | 失败/隐式另一端/缺版本日志产物 | ✅ tracked | pass-local |
+| 02-03-01 | 03 | 3 | CORE-01 | T-02-09/11 | 只构建Selene/plugin/core | real build | `pwsh -NoProfile -File scripts/build.ps1 -Target Selene -Configuration Release` | 失败/隐式Helios/版本不同 | ✅ tracked | pass-local |
+| 02-03-01 | 03 | 3 | CORE-01/02/03 | T-02-03/11 | source/lock/hash/generator drift门禁 | source check | `node scripts/check-sources.cjs --check` | 任一来源/锁/许可/散列/版本/绑定漂移，或研究链接 | ✅ tracked | pass-local |
+| 02-03-02 | 03 | 3 | CORE-03 | T-02-13 | 不抹掉五端/Apple构建/原目标差异 | Node | `node --test tests/platform-contract.test.cjs` | 平台状态/差异/证据语义guard失败 | ✅ tracked | pass-local |
+| 02-03-02 | 03 | 3 | CORE-03 | T-02-13 | viability真实结果或具体executor缺口 | platform check | `node scripts/check-platforms.cjs --check` | 缺尝试/原因/前提/责任/后续阶段，或未实现记支持 | ✅ tracked | pass-local |
+| 02-03-02 | 03 | 3 | CORE-01/02/03 | T-02-09/11/12/13 | 无reference clean双端与完整必需检查 | clean build + full suite | `pwsh -NoProfile -File scripts/verify.ps1 -Scope All -Automation -CleanCheckout` | 任一双端build/必需检查失败跳过/缺证据/使用研究树 | ✅ tracked | pass-local |
+| 02-03-02 | 03 | 3 | CORE-01/03 | T-02-13 | 文档/要求既有回归 | Node | `node scripts/validate-planning.cjs` | 既有规划校验失败 | ✅ tracked | pass-local |
+| 02-03-02 | 03 | 3 | CORE-01/03 | T-02-13 | 真实planning fixture回归 | Node | `node --test tests/planning.test.cjs` | 测试失败/child-spawn限制被忽略 | ✅ tracked | pass-local |
+| 02-03-03 | 03 | 3 | CORE-01/02/03 | T-02-03/11/13 | 人审前源与已验结果一致 | source check | `node scripts/check-sources.cjs --check` | 审阅来源/绑定/版本/锁漂移 | ✅ tracked | pass-local |
+
+实际 Actions：**pending**；最终人审：**not reached**。上表 pass-local 仅表示列出的本地命令实际通过，不能完成 02-03-02 或 Phase 2。最终 clean source4a718df 的四次产品构建、19个必需组和137个测试/套件记录通过，两个失败 clean attempts 保留；不存在跳过或空测试记 green。
 
 所有命令均在 checkout root 执行；包装器设置真实 DLL 路径并在所属 Flutter workspace package 运行对应测试。Node child-spawn EPERM 必须在可运行环境重跑，不能记通过。Windows CI 还须保存实际 run URL/commit/runner/结果；仅 workflow 文件存在不能当实际 CI 通过。
 
@@ -127,11 +129,11 @@ created: "2026-10-07"
 ## Validation Sign-Off
 
 - [ ] 所有任务有自动检查或明确 Wave 0 前提，且每个 runnable command 有 fails_when。
-- [ ] 无连续三个任务缺自动验证；没有空测试通过或未运行记 green。
+- [x] 无连续三个任务缺自动验证；没有空测试通过或未运行记 green。
 - [ ] Wave 0 创建所有计划引用的测试入口，最终命令与本文件一致。
-- [ ] 无 watch 模式；快速反馈实际耗时与全量 CI 耗时分开记录。
-- [ ] 真实 Dart/native 回调与 shutdown 负向证据完成。
-- [ ] 五端接口未实现状态、Apple 构建义务与原平台差异均保留。
+- [x] 无 watch 模式；快速反馈实际耗时已记录；全量本地与待执行 CI 分开记录。
+- [x] 真实 Dart/native 回调与 shutdown 负向证据完成。
+- [x] 五端接口未实现状态、Apple 构建义务与原平台差异均保留。
 - [ ] `nyquist_compliant: true` 仅在执行验证后设置；当前保持 false。
 
-**Approval:** pending；本次规划没有执行产品验证。
+**Approval:** pending；本地执行已验证，但实际 CI 尚未执行，最终人审未到达。CORE-01/02/03 仍为 In Progress，Phase 2 未完成。

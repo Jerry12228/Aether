@@ -278,9 +278,9 @@
 | BASE-01 | Phase 1 | Complete |
 | BASE-02 | Phase 1 | Complete |
 | BASE-03 | Phase 1 | Complete |
-| CORE-01 | Phase 2 | Pending |
-| CORE-02 | Phase 2 | Pending |
-| CORE-03 | Phase 2 | Pending |
+| CORE-01 | Phase 2 | In Progress |
+| CORE-02 | Phase 2 | In Progress |
+| CORE-03 | Phase 2 | In Progress |
 | VDP-01 | Phase 3 | Pending |
 | VDP-02 | Phase 3 | Pending |
 | MIC-01 | Phase 4 | Pending |
