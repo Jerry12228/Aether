@@ -122,24 +122,29 @@ invalid/superseded as recorded in 02-02, with six valid replacement rounds retai
 
 ## Exact resumption gate
 
-The user authorized public publication with exact reply “确认” on 2026-10-08.
-Origin https://github.com/Jerry12228/Aether was configured; reviewed committed
-HEAD 2d0e5e18935d8334f9c81e7bce6036b034a51cee was pushed without force to main.
-First actual run https://github.com/Jerry12228/Aether/actions/runs/37721726261
-installed SDK28000 and passed three builds, then failed Selene Release plugin link
-validation. Trailing-separator failure reproduced and RED_EVIDENCE_OK; 22a31fc
-tests, 6d59a78 fix. Twelve tooling tests and two sequential restores pass locally.
-Second actual run https://github.com/Jerry12228/Aether/actions/runs/37732241885
-is in progress on 6d59a78734a457f2cdb1b6d11c399c344f45775e.
-Actual failed-run evidence and hashes are in docs/phase02/CI-RESULTS.json.
-
-Continue the Windows workflow, resolve any SDK/GUI failures, and record the actual
-run URL/commit/image/tool versions, mandatory counts/outcomes and uploaded artifacts.
-The hosted image currently lacks SDK28000; signed Microsoft-installer addition is
-implemented only for ephemeral hosted runners; the first actual installation passed.
-Alternatively use an explicitly chosen trusted GUI-capable self-hosted Windows x64
-executor already providing VS2026/SDK28000. Missing/failed/skipped required checks
-remain blockers; local results and human approval cannot waive them.
+The user authorized public publication with exact reply “确认” on 2026-10-08;
+origin Jerry12228/Aether main is configured and fixes were pushed without force.
+Actual runs 37721726261 / 37732241885 / 37734973473 failed and remain failed;
+37734251073 was cancelled to include a software-label correction. Actual API,
+image/tools, log and artifact hashes are in docs/phase02/CI-RESULTS.json.
+First run proved hosted SDK28000 installation and exposed Flutter link spelling.
+Link fix 6d59a78 passed the later local clean 0617a3e (four builds, 19 groups,
+138 recorded cases); its raw report/checkout artifacts are retained in clean-history.
+Second/fourth runs passed four builds and 18/19 groups; baseline temp-checkout
+identity failed. Casing-only fix 8c03b92 reproduced a real defect but did not close
+hosted aliases. Native OS canonicalization 9aff292 passed its actual namespace
+regression and the full 96 baseline/tool tests locally.
+Actual second-run Basic Render Driver softwareAdapter=false was incorrect.
+The initial local WARP probe was GREEN, not RED. A hash-verified real CI-record
+witness received RED_EVIDENCE_OK; 560e1d2 combines known software identity/flags,
+adds vendor/device diagnostics, two real WARP tests and an engine assertion.
+Fourth-run actual adapter vendor5140/device140/label=true, both GPU paths, cleanup
+and the same witness pass. Its overall failed status remains unchanged.
+The latest clean rerun is pending. Fifth actual run
+https://github.com/Jerry12228/Aether/actions/runs/37741148365 on source
+9aff29216833d786b7fc0877ab544fb4df68ce5f is in progress. Resolve any remaining
+failure and retain actual mandatory outcomes/counts and uploaded evidence.
+Local results or human approval cannot waive a failed/missing mandatory CI check.
 
 Only after actual CI passes may the final human checkpoint review patterns,
 scaling/DPI/close/retry, real interactive console final-key behavior, local-only
