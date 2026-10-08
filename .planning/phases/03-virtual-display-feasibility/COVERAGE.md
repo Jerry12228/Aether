@@ -23,7 +23,9 @@ INTEGRATE是计划范围，不代表已实现。Win10与Win11同一完整基线�
 
 ## 03-01-02实际接口审计（2026-10-08，尚未选定provider）
 
-SudoVDA固定wrapper完整方法面（sudovda.h）：OpenDevice OPT-OUT（打开需读写且底层副作用未知）；AddVirtualDisplay/RemoveVirtualDisplay INTEGRATE（准入后逐GUID）；SetRenderAdapter OPT-OUT（共享adapter变更）；GetWatchdogTimeout/GetProtocolVersion/isProtocolCompatible/CheckProtocolCompatible/GetAddedDisplayName INTEGRATE（候选合同，当前未调用）；PingDriver OPT-OUT（常驻owner需单独架构决定）。六IOCTL分别ADD/REMOVE/SET_RENDER_ADAPTER/GET_WATCHDOG/DRIVER_PING/GET_PROTOCOL_VERSION，逐项映射上述方法；未遗漏0x802或0x8FF。完整wrapper不表示缺失driver实现已审计。
+SudoVDA固定wrapper完整方法面（sudovda.h）：OpenDevice OPT-OUT（打开需读写且底层副作用未知）；AddVirtualDisplay/RemoveVirtualDisplay INTEGRATE（准入后逐GUID）；SetRenderAdapter OPT-OUT（共享adapter变更）；GetWatchdogTimeout/GetProtocolVersion/isProtocolCompatible/CheckProtocolCompatible/GetAddedDisplayName INTEGRATE（候选合同，当前未调用）；PingDriver OPT-OUT（常驻owner需单独架构决定）。六IOCTL分别ADD/REMOVE/SET_RENDER_ADAPTER/GET_WATCHDOG/DRIVER_PING/GET_PROTOCOL_VERSION，逐项映射上述方法；未遗漏0x802或0x8FF。
+
+选项2补证已固定SudoMaker/SudoVDA源码a4b09fa2aa731a964d0cb5d139cb1e6240e4da12；对应Apollo正式包关系未证明。handler除GET_WATCHDOG外均重置watchdog，包括GET_PROTOCOL_VERSION；涉及它的wrapper不能作无副作用探测。默认3秒超时移除全表；启动前watchdog=0仅为待准入/待实测配置依据。逐GUID add/remove源码存在，但WD读写ACL/FILE_ANY_ACCESS high未缓解，INTEGRATE只表示候选方向。详见[补证](../../../docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md)，当前产品仍零provider IOCTL。
 
 VDD固定Driver.cpp:2075–2253完整17-command pipe面：IDDCXVERSION/GETASSIGNEDGPU/GETALLGPUS/GETSETTINGS/PING INTEGRATE（只读候选，实际协议/ACL未核验，当前不调用）；RELOAD_DRIVER/SETDISPLAYCOUNT OPT-OUT（全局设备变化不能作为单组删除）；LOG_DEBUG/LOGGING/HDRPLUS/SDR10/CUSTOMEDID/PREVENTSPOOF/CEAOVERRIDE/HARDWARECURSOR/D3DDEVICEGPU/SETGPU OPT-OUT（全局设置不属于逐组短命令，不能隐式修改）。driver内部IddCx DDI不是外部client调用面；如改用自研/修改驱动，须重新审计完整DDI/配置/installer面。
 

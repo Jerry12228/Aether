@@ -3,10 +3,10 @@ gsd_state_version: "1.0"
 current_phase: 3
 current_phase_name: 虚拟显示器可行性
 status: executing
-stopped_at: 03-01 tasks 1/2 committed; blocking-human provider decision 03-01-03 pending; no admitted provider
-last_updated: "2026-10-08T12:53:53Z"
+stopped_at: 03-01-03 response 2 recorded; SudoVDA followup complete; no-qualified-provider blocks 03-02/03-03
+last_updated: "2026-10-08T13:55:18Z"
 last_activity: 2026-10-08
-last_activity_desc: Phase3 readonly probes and five-candidate dossier verified; waiting provider route decision
+last_activity_desc: User chose SudoVDA evidence followup; source acquired; ACL/package/Win10 HDR still block admission
 progress:
   total_phases: 42
   completed_phases: 2
@@ -22,14 +22,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-08)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 03 — 虚拟显示器可行性（03-01前两任务完成；等待03-01-03具体路线决定，无合格provider）
+**Current focus:** Phase 03 — 虚拟显示器可行性（03-01路线决定与SudoVDA补证完成；仍无合格provider）
 
 ## Current Position
 
-Phase: 3 (虚拟显示器可行性) — HUMAN DECISION PENDING
-Plan: 03-01 — 2/3 tasks done; SUMMARY status halted
-Status: Waiting at blocking-human provider checkpoint; 03-02/03-03 not started
-Last activity: 2026-10-08 — Readonly Windows probe and five-candidate admission dossier committed and verified
+Phase: 3 (虚拟显示器可行性) — NO QUALIFIED PROVIDER
+Plan: 03-01 — 3/3 task evidence done; SUMMARY status halted on no-qualified-provider branch
+Status: Provider checkpoint answered; admission unresolved; 03-02/03-03 not started
+Last activity: 2026-10-08 — Response 2 recorded; fixed SudoMaker driver source audited; no system mutation
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -67,6 +67,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 - 2026-10-08 Phase3执行部分完成：03-01-01/02已提交7ff47c6/d08d27f（RED8f620ec/7b4f785），摘要5a652c5为halted。候选决定/系统授权均null或not-authorized，等待用户03-01-03原文。只读枚举发现Win11 26100的1条外来活动路径及既有SudoMaker0.22.37.632/Oray17.50.19.949；本轮无设备操作。VDD25.7.23小包hash及INF/DLL CAT成员审计真实取得；来源/独立许可/接口安全仍未闭合，没有批准provider。工作分支codex/phase-03-virtual-display-feasibility。
 
+- 2026-10-08 用户原文“2”：确认当前no-qualified-provider，选择补SudoVDA来源/独立许可/ACL/持久性证据；recordedAt=2026-10-08T13:55:18Z，绑定原档案fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。公开驱动源码与作者修改许可声明已获得；对应包、继承许可、安全、短命令机器证据及Win10 HDR未闭合。未新增系统操作或修改driver授权。
+
 ### Pending Todos
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
@@ -79,7 +81,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 [Phase3 planned limits] 正式固定包/独立许可/签名、接口与设备ACL、短CLI退出保活、七屏容量与SDR/HDR、Win10/11实机、恢复/更新回滚均待执行证据。已知IddCx Win10 HDR限制不得用降级/五屏假PASS或提高主机下限绕过；03-03-04真实检查点承接补证、替代研究或申请明确规范修订，原请求未经修订前不变。无准入候选保持VDP与阶段未完成。规划研究处置RESOLVED不表示技术事实验证；没有批准任何具体系统操作。
 
-[Phase3 current gate] 五候选无合格provider。SudoVDA缺完整driver/DLL/独立许可，固定CAT本机不受信任，all-users设备ACL+FILE_ANY_ACCESS high未缓解，watchdog/persistence未知。VDD包可信Authenticode及INF/DLL成员事实不关闭源码对应、许可、逐slot/稳定ID/ACL和适用安装政策；/kp失败只记具体诊断。Microsoft/Rust/Parsec无完整固定准入来源。需03-01-03选择no-qualified-provider及具体补证/替代研究下一步；七屏/HDR/Win10实机及03-02/03-03均未完成。档案docs/phase03/PROVIDER-ADMISSION.md，digest fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。
+[Phase3 current gate] 五候选无合格provider。用户选2，已取得SudoMaker/SudoVDA固定源码a4b09fa；作者修改许可声明已定位，但正式DLL/CAT对应、继承许可/notices和正式信任链仍缺。all-users设备ACL+FILE_ANY_ACCESS high未缓解；默认watchdog移除全部屏，协议查询也重置倒计时。启动前watchdog=0选项未在对应包实测；上游明确Win10不支持HDR。VDD包可信Authenticode及INF/DLL成员事实不关闭源码对应、许可、逐slot/稳定ID/ACL和适用安装政策；/kp失败只记具体诊断。Microsoft/Rust/Parsec无完整固定准入来源。03-01-03已选no-qualified-provider和SudoVDA补证，结果见docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md；七屏/HDR/Win10实机及03-02/03-03均未完成。档案docs/phase03/PROVIDER-ADMISSION.md，digest fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。
 
 ## Deferred Items
 
@@ -87,7 +89,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-08T12:53:53Z
-Stopped at: 03-01-03 blocking-human provider route decision; tasks01/02 done; no admitted candidate
+Last session: 2026-10-08T13:55:18Z
+Stopped at: 03-01-03 answered; followup source evidence complete; no admitted candidate
 Resume file: .planning/phases/03-virtual-display-feasibility/03-01-PLAN.md
-Next action: 收到用户具体路线原文后记录decision/time/dossier hash并核验dossier --require-decision；当前无合格provider时03-02/03-03仍阻断。不要重复执行已提交任务；安装/更新/reset仍需03-03具体系统授权。
+Next action: 待对应正式包/继承许可/受限ACL/保活及Win10 HDR方案等新具体材料，生成新准入档案并重审。不要重复请求选项2或重跑已完成只读任务；无合格provider时03-02/03-03仍阻断，VDP与Phase3未完成。安装/更新/reset仍需03-03具体系统授权。

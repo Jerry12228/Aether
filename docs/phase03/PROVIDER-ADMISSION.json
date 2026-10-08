@@ -786,7 +786,16 @@
     "status": "no-qualified-candidate",
     "eligibleProviderIds": []
   },
-  "decision": null,
+  "decision": {
+    "status": "no-qualified-provider",
+    "providerId": null,
+    "userText": "2",
+    "choiceContext": "2. 无合格 provider；补 SudoVDA 来源、独立许可、ACL 与持久性证据",
+    "recordedAt": "2026-10-08T13:55:18Z",
+    "dossierSha256": "fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8",
+    "nextAction": "固定审计 SudoMaker/SudoVDA 实现来源、独立许可、设备 ACL 与无需常驻 Ping 的持久性；对应正式包、安全和 Win10 HDR 缺口未闭合时保持不准入",
+    "followup": "docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md"
+  },
   "machineAuthorization": {
     "status": "not-authorized",
     "machineId": null,

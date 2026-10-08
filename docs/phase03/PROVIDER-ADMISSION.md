@@ -1,6 +1,6 @@
 # Phase 03 provider 准入审阅
 
-2026-10-08。状态：**没有合格候选；03-01-03 等待用户决定**。来源/接口审计、具体路线决定、具体系统操作授权、生产/实机验证为四个不同门槛。完整字段见 [PROVIDER-ADMISSION.json](PROVIDER-ADMISSION.json)。`decision=null`，`selectedProviderId=null`；本文件不代替用户答复。
+2026-10-08。状态：**没有合格候选；03-01-03 已确认选项 2，补证完成但准入仍阻断**。来源/接口审计、具体路线决定、具体系统操作授权、生产/实机验证为四个不同门槛。完整字段见 [PROVIDER-ADMISSION.json](PROVIDER-ADMISSION.json)。用户原文 `2` 与记录时间/原档案 hash 已写入 decision；`selectedProviderId=null`。补充结论见 [SUDOVDA-EVIDENCE-FOLLOWUP.md](SUDOVDA-EVIDENCE-FOLLOWUP.md)；原候选行保留为检查点前快照，公开源码现已取得。
 
 ## 已完成的只读路径
 
@@ -44,8 +44,8 @@ JSON及[COVERAGE.md](../../.planning/phases/03-virtual-display-feasibility/COVER
 
 ## 分层门禁与待决定项
 
-`node scripts/check-virtual-display-admission.cjs --stage dossier`通过：档案完整，null均有gap。`--stage admission --provider <ID>`分别对五候选非零：来源/包/独立许可/签名/安全/接口仍有缺口。admission不要求尚未授权执行的七屏机器结果，避免先安装后准入的循环；仍要求完整来源接口合同证据。fixture不能通过真实准入。`--require-decision`现在非零，因为尚无用户原文/时间/dossier hash。authorization还必须绑定确切机器、场景、systemPlan hash和用户原文。
+`node scripts/check-virtual-display-admission.cjs --stage dossier`通过：档案完整，null均有gap。`--stage admission --provider <ID>`分别对五候选非零：来源/包/独立许可/签名/安全/接口仍有缺口。admission不要求尚未授权执行的七屏机器结果，避免先安装后准入的循环；仍要求完整来源接口合同证据。fixture不能通过真实准入。`--stage dossier --require-decision`现通过，绑定用户原文 `2` / 2026-10-08T13:55:18Z / 原档案 hash；这仅关闭路线决定门槛。authorization还必须绑定确切机器、场景、systemPlan hash和用户原文。
 
-推荐当前记录**no-qualified-provider**，保留阶段与VDP-01/02未完成。下一步需要用户选择：补SudoVDA完整driver来源/独立许可/受限ACL及无需常驻Ping的持久性证据，或继续固定审计可替换的公开源码provider（必要时提出驱动修改/自研的具体架构与签名方案）。该决定仅授权下一段研究/路线工作；系统操作仍经03-03-02。没有准入候选，03-02/03-03不得接入或安装。
+已记录**no-qualified-provider**与选项 2：固定审计 SudoVDA 来源、独立许可、ACL 和持久性。公开实现及作者修改许可声明已取得；源码/正式包对应、继承许可、受限 ACL、对应包的 watchdog=0 保活和 Win10 HDR 仍未闭合。补证详见上述文件，阶段与 VDP-01/02 保持未完成，03-02/03-03 保持阻断；系统操作仍经03-03-02。取得完整新输入后须重新审阅，不泛化本次选择。
 
 证据来源：[固定Apollo接口](https://github.com/ClassicOldSong/Apollo/blob/adc5c5a0bd80831ce495434bb16aee2cd4175fb8/third-party/sudovda/sudovda.h)、[固定INF](https://github.com/ClassicOldSong/Apollo/blob/adc5c5a0bd80831ce495434bb16aee2cd4175fb8/src_assets/windows/drivers/sudovda/SudoVDA.inf)、[固定VDD Driver](https://github.com/VirtualDrivers/Virtual-Display-Driver/blob/d7244969b2aa8bb38e76d79505eda217996cefea/Virtual%20Display%20Driver%20%28HDR%29/MttVDD/Driver.cpp)、[CCD官方合同](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-querydisplayconfig)、[IddCx1.10官方更新](https://learn.microsoft.com/en-us/windows-hardware/drivers/display/iddcx1.10-updates)、[软件设备生命周期](https://learn.microsoft.com/en-us/windows/win32/api/swdevice/nf-swdevice-swdevicesetlifetime)。运行事实以上述实际命令/成员哈希为准。

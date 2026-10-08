@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "scope": "research-only; no source/binary correspondence or admission asserted",
+  "recordedAt": "2026-10-08T13:55:18Z",
+  "officialRepository": "https://github.com/SudoMaker/SudoVDA",
+  "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+  "commitTime": "2025-04-14T16:21:36Z",
+  "verification": "All listed fixed-URL source bytes matched official Git tree blob SHA-1; independent SHA-256 and length recorded",
+  "files": [
+    {
+      "path": "Common/Include/AdapterOption.h",
+      "length": 3281,
+      "gitBlob": "6b78e0e6ae7b27fc03864eb28cb272ae114592c7",
+      "sha256": "5948e1cceb8d2e659328a056ada1ef7be7732dc65f845dd6ce96fcba0e8baa75",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Common/Include/AdapterOption.h"
+    },
+    {
+      "path": "Common/Include/sudovda-ioctl.h",
+      "length": 2454,
+      "gitBlob": "849c87f39c8a4f4390cf5a6ab2b7ebc87fcc45be",
+      "sha256": "dd924c9bd3918f75bdc1c1153ed16f23ae1658fde890d76f5f4f35397062dd73",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Common/Include/sudovda-ioctl.h"
+    },
+    {
+      "path": "README.md",
+      "length": 3663,
+      "gitBlob": "23187b6171425597e82bcac4b547ca4f673404d7",
+      "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/README.md"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+      "length": 384,
+      "gitBlob": "93b1af711db311350c8c145fac6c99ab690e58e5",
+      "sha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/8K240HzHDR.edid"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA.sln",
+      "length": 1731,
+      "gitBlob": "0eba42872efc9d3737932bf26f1e0a8c4f5b726c",
+      "sha256": "012f97c290c69b9e5cbed0e086b53b35f919029d84d548dbeb037b3dc5ad9dc1",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/SudoVDA.sln"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+      "length": 49736,
+      "gitBlob": "8e906a76827032e3054e8348c00d0a1818c3d1fb",
+      "sha256": "10a555cd3acd83ddd3deda51e321b8514b296b238df43e8a1249af4b0f458e48",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/SudoVDA/Driver.cpp"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+      "length": 2931,
+      "gitBlob": "b071923f495fe70ffbc019a6ae3f2654f726e727",
+      "sha256": "41b9fb6b227a43ca988af8ade5b420efa6093ca85f52444b479fe7c8a4e853d9",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/SudoVDA/Driver.h"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+      "length": 1610,
+      "gitBlob": "c2ba39df36a8d60578eaa78cff58b2ec9466a09d",
+      "sha256": "69ac02df77374edf50832f97464c6781cdd74938699c1dd114821e5c2990f0ca",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/SudoVDA/SudoVDA.filters"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.inf",
+      "length": 3714,
+      "gitBlob": "77a07b6dd627c5292ba5f663d4ef69ecafdc8123",
+      "sha256": "78247e9455fccca65fa1745664fc60dfb76eb3d59737b71cb1b8b3007bd41817",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/SudoVDA/SudoVDA.inf"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+      "length": 10459,
+      "gitBlob": "3b2b0fc04785b15dfbccd40638e442e015246a2c",
+      "sha256": "3a80623d503632f06e28e22cbe3bdc3c7227b1e84142ad27727086f354594822",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/SudoVDA/SudoVDA.vcxproj"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+      "length": 1959,
+      "gitBlob": "c16559013ad9c26f9295936375cf4ef93aa447c5",
+      "sha256": "3eca4dd904e24723e6c47546d91a7eb91f2c3e06323fb5a152c74174acd0f2d1",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/SudoVDA/Trace.h"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/edid.h",
+      "length": 3342,
+      "gitBlob": "91c05170369f4f41319af6146d9ec79fc0d13a3d",
+      "sha256": "41993d6c0365b4b6f6dd97fa6d57d3687d3b399ff9e263e3fceb1b8be9b1df0e",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/SudoVDA/edid.h"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/option.txt",
+      "length": 1132,
+      "gitBlob": "7bc082db42db48d4231a6e7636b1dbc8e98e6af3",
+      "sha256": "67ebdd5ebcbd0f8b8ff5c7deff0811dcaf2c8fe40fff88b036de57fac2fd80b4",
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12/Virtual%20Display%20Driver%20(HDR)/option.txt"
+    }
+  ],
+  "observations": {
+    "releaseQuery": {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/releases",
+      "httpStatus": 200,
+      "releaseCount": 0,
+      "scope": "Observation in this followup; not proof of absence in other channels"
+    },
+    "license": "README changes-only grant; inherited sources/notices/package rights remain unresolved",
+    "packageCorrespondence": "not-proven",
+    "acl": "high-unmitigated",
+    "persistence": "default-watchdog-removes-all; pre-load-disable-config-not-machine-verified",
+    "win10Hdr": "upstream-states-unsupported"
+  },
+  "productReuse": [],
+  "admission": "not-admitted"
+}

@@ -125,7 +125,7 @@
 
 **Wave 1**
 
-- [ ] 03-01-PLAN.md — 固定provider准入、真实只读状态与具体候选决定（前两任务完成；03-01-03人类决定待答，halted）
+- [ ] 03-01-PLAN.md — 固定provider准入、真实只读状态与具体候选决定（三任务证据完成；用户选2补证仍无合格provider，halted）
 
 **Wave 2** *(depends on 03-01)*
 
@@ -623,7 +623,7 @@
 |-------|----------------|--------|-----------|
 | 1. 来源、原功能与环境基线 | 3/3 | Complete    | 2026-10-07 |
 | 2. Monorepo 与 Flutter/原生骨架 | 3/3 | Complete    | 2026-10-08 |
-| 3. 虚拟显示器可行性 | 0/3 | In progress — provider decision pending | - |
+| 3. 虚拟显示器可行性 | 0/3 | Halted — no qualified provider; SudoVDA followup recorded | - |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
 | 6. GameStream 协议重构与扩展 | 0/TBD | Not started | - |

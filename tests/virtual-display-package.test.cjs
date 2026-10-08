@@ -22,7 +22,7 @@ test('fixture cannot enter real admission even if all declared gates are true',(
  const {validate}=api();const d=dossier();const c=d.candidates[0];c.fixture=true;c.admission.status='admitted';assert.equal(validate(d,{stage:'admission',providerId:c.providerId}).ok,false);
 });
 test('selection, authorization and no-qualified decision have distinct gates and bound hashes',()=>{
- const {validate,dossierHash}=api();const d=dossier();assert.equal(validate(d,{stage:'dossier',requireDecision:true}).ok,false);
+ const {validate,dossierHash}=api();const d=dossier();d.decision=null;assert.equal(validate(d,{stage:'dossier',requireDecision:true}).ok,false);
  d.decision={status:'no-qualified-provider',providerId:null,userText:'no-qualified-provider; research replacement',recordedAt:'2026-10-08T13:00:00Z',dossierSha256:dossierHash(d),nextAction:'research replacement'};
  assert.equal(validate(d,{stage:'dossier',requireDecision:true}).ok,true);
  assert.equal(validate(d,{stage:'admission',requireDecision:true}).ok,false);
