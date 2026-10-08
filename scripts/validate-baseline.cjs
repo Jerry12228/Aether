@@ -27,7 +27,10 @@ function selectRepos(lock,scope){const repos=scope?lock.repositories.filter(r=>r
 function context(root,repo,runner=gitRun){
   const cwd=guarded(root,repo.path);if(!fs.existsSync(cwd))throw Error(`missing checkout: ${repo.name}; restore explicitly`);
   const run=(args,input)=>{const out=runner(cwd,args,input);return Buffer.isBuffer(out)?out:Buffer.from(out);};
-  if(fs.realpathSync(run(['rev-parse','--show-toplevel']).toString().trim())!==fs.realpathSync(cwd))throw Error(`not an independent checkout: ${repo.name}`);
+  const actualRoot=fs.realpathSync(run(['rev-parse','--show-toplevel']).toString().trim()),expectedRoot=fs.realpathSync(cwd);
+  // Windows paths are case-insensitive (including Git's drive spelling), while
+  // path.relative keeps POSIX comparisons case-sensitive. Both paths are real.
+  if(path.relative(actualRoot,expectedRoot)!=='')throw Error(`not an independent checkout: ${repo.name}; actual=${actualRoot}; expected=${expectedRoot}`);
   const head=run(['rev-parse','HEAD']).toString().trim();if(head!==repo.commit)throw Error(`HEAD SHA mismatch: ${repo.name}`);
   const remote=run(['remote','get-url','origin']).toString().trim();if(remote!==repo.url)throw Error(`remote mismatch: ${repo.name}`);
   const status=run(['status','--porcelain=v1','--untracked-files=all']).toString();if(status.trim())throw Error(`dirty checkout: ${repo.name}; retained changes`);
