@@ -1,0 +1,8 @@
+{
+  "exitCode": 1,
+  "output": "TAP version 13\n# Subtest: platform report retains five clients and legacy Android/Linux build duties\nnot ok 1 - platform report retains five clients and legacy Android/Linux build duties\n  ---\n  duration_ms: 0.6461\n  type: 'test'\n  location: 'D:\\\\WorkSpace\\\\Aether\\\\tests\\\\platform-contract.test.cjs:4:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    all five client interfaces must remain represented\n    \n    0 !== 5\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 5\n  actual: 0\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (D:\\WorkSpace\\Aether\\tests\\platform-contract.test.cjs:5:41)\n    Test.runInAsyncScope (node:async_hooks:228:14)\n    Test.run (node:internal/test_runner/test:1118:25)\n    Test.start (node:internal/test_runner/test:1015:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 65.1432",
+  "targetTest": "platform report retains five clients and legacy Android/Linux build duties",
+  "actual": "Unimplemented platform guard has zero rows",
+  "expected": "Five explicit client interface/target duty rows",
+  "command": "node --test --test-reporter=tap tests/platform-contract.test.cjs"
+}
