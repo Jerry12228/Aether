@@ -215,9 +215,9 @@
     }
   ],
   "next": {
-    "command": "/gsd:progress --next",
-    "label": "Advance to the next step (plan phase 3)",
-    "reason": "Phase 3 of 42 — needs a plan"
+    "command": "/gsd:execute-phase 3",
+    "label": "Execute Phase 3 — 3 sequential plans",
+    "reason": "Phase 3 planned and independently checked; implementation has not started"
   },
-  "updated_at": "2026-10-08T08:20:01.624Z"
+  "updated_at": "2026-10-08T12:04:14.309Z"
 }

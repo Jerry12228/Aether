@@ -1,0 +1,179 @@
+{
+  "status": "ok",
+  "commands": [
+    {
+      "command": "cmake --preset windows-core",
+      "statement": "非零退出，或配置读取 references/upstream。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-01-PLAN.md",
+      "task": "03-01-01：贯通一次真实只读驱动/显示状态查询"
+    },
+    {
+      "command": "cmake --build --preset windows-core-debug",
+      "statement": "非零退出或 Helios/新增合同 executable 缺失。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-01-PLAN.md",
+      "task": "03-01-01：贯通一次真实只读驱动/显示状态查询"
+    },
+    {
+      "command": "ctest --test-dir build/native -C Debug -R \"^virtual_display_probe$\" --output-on-failure --no-tests=error",
+      "statement": "非零退出、发现测试不是1项，或 CLI 未实际调用 OS 枚举/超过 deadline。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-01-PLAN.md",
+      "task": "03-01-01：贯通一次真实只读驱动/显示状态查询"
+    },
+    {
+      "command": "node --test tests/virtual-display-package.test.cjs",
+      "statement": "非零退出、tests=0、任何必需负例 skip，或 fixture 可通过真实准入。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-01-PLAN.md",
+      "task": "03-01-02：完成分层 provider 准入与可审阅系统方案"
+    },
+    {
+      "command": "node scripts/check-virtual-display-admission.cjs --stage dossier",
+      "statement": "非零退出、候选/门槛/gap 无记录，或未知事实被填写为已验证。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-01-PLAN.md",
+      "task": "03-01-02：完成分层 provider 准入与可审阅系统方案"
+    },
+    {
+      "command": "node scripts/check-virtual-display-admission.cjs --stage dossier --require-decision",
+      "statement": "非零退出、决定缺用户原文/时间/hash，或选择的 provider 未通过 admission。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-01-PLAN.md",
+      "task": "03-01-03：决定可接入 provider 或记录无合格候选"
+    },
+    {
+      "command": "node scripts/check-virtual-display-admission.cjs --stage admission --require-decision",
+      "statement": "非零退出、选择缺失或有未缓解high provider风险。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-02-PLAN.md",
+      "task": "03-02-01：贯通A组一次创建、进程退出和新命令查询"
+    },
+    {
+      "command": "cmake --build --preset windows-core-debug",
+      "statement": "非零退出或产品/测试目标无法链接新的登记和adapter。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-02-PLAN.md",
+      "task": "03-02-01：贯通A组一次创建、进程退出和新命令查询"
+    },
+    {
+      "command": "ctest --test-dir build/native -C Debug -R \"^virtual_display_(tracer|registry)$\" --output-on-failure --no-tests=error",
+      "statement": "非零退出、发现测试不是2项，或独立进程不能保持身份/正确拒绝重复名称。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-02-PLAN.md",
+      "task": "03-02-01：贯通A组一次创建、进程退出和新命令查询"
+    },
+    {
+      "command": "cmake --build --preset windows-core-debug",
+      "statement": "非零退出或原生拓扑/窗口合同目标缺失。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-02-PLAN.md",
+      "task": "03-02-02：扩展四组七屏严格布局、显式恢复与独立测试画面"
+    },
+    {
+      "command": "ctest --test-dir build/native -C Debug -R \"^virtual_display_(topology|failure|recovery|pattern|security)$\" --output-on-failure --no-tests=error",
+      "statement": "非零退出、发现测试不是5项，或任一模式/身份/恢复/所有权负例未运行。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-02-PLAN.md",
+      "task": "03-02-02：扩展四组七屏严格布局、显式恢复与独立测试画面"
+    },
+    {
+      "command": "node --test tests/virtual-display-contract.test.cjs",
+      "statement": "非零退出、tests=0、skip必需场景，或进程/窗口退出改变持久组。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-02-PLAN.md",
+      "task": "03-02-02：扩展四组七屏严格布局、显式恢复与独立测试画面"
+    },
+    {
+      "command": "pwsh -NoProfile -File scripts/build.ps1 -Target Helios -Configuration Release",
+      "statement": "非零退出或Helios/driver模块未构建；构建不得执行安装。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-01：贯通显式安装plan与固定包验证的无副作用路径"
+    },
+    {
+      "command": "node --test tests/virtual-display-package.test.cjs",
+      "statement": "非零退出、tests=0或负例skip；任何验证失败仍调用安装器。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-01：贯通显式安装plan与固定包验证的无副作用路径"
+    },
+    {
+      "command": "pwsh -NoProfile -File scripts/check-virtual-display.ps1 -Mode Contract -Configuration Release",
+      "statement": "非零退出、无真实CLI plan记录或Contract模式产生系统变更。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-01：贯通显式安装plan与固定包验证的无副作用路径"
+    },
+    {
+      "command": "node scripts/check-virtual-display-admission.cjs --stage authorization --require-decision",
+      "statement": "非零退出、machine/场景/plan hash不匹配、用户具体授权缺失或admission不成立。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-02：授权具体测试机器与系统操作清单"
+    },
+    {
+      "command": "node --test tests/virtual-display-evidence.test.cjs",
+      "statement": "非零退出、tests=0或缺证据/假machine/五屏/HDR降级负例被接受为complete。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-03：执行Win10/11受控矩阵并形成完整或未完成证据"
+    },
+    {
+      "command": "node scripts/check-virtual-display-evidence.cjs --allow-incomplete",
+      "statement": "非零退出、结果分类/日志/身份/请求与actual缺失，或机器结果不是实际采集。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-03：执行Win10/11受控矩阵并形成完整或未完成证据"
+    },
+    {
+      "command": "pwsh -NoProfile -File scripts/verify.ps1 -Scope All -Automation -CleanCheckout",
+      "statement": "非零退出、缺必需原有回归、测试发现0或输入与干净checkout不一致。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-03：执行Win10/11受控矩阵并形成完整或未完成证据"
+    },
+    {
+      "command": "node scripts/check-virtual-display-evidence.cjs --allow-incomplete --require-review",
+      "statement": "非零退出、真实用户原文/时间/hash/具体decision缺失，或阻碍分支没有具体下一步。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-04：最终强制人审与能力阻碍具体决定"
+    },
+    {
+      "command": "node scripts/check-virtual-display-evidence.cjs --require-complete",
+      "statement": "非零退出、任何mandatory来源/机器/七屏/恢复/安全/humanReview缺失，或不支持/不可测被算PASS；此时保留阶段未完成并按具体决定返回。",
+      "status": "ok",
+      "severity": "none",
+      "plan": "03-03-PLAN.md",
+      "task": "03-03-04：最终强制人审与能力阻碍具体决定"
+    }
+  ],
+  "counts": {
+    "blocker": 0,
+    "warning": 0,
+    "total": 21
+  },
+  "readError": null
+}
