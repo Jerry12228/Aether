@@ -158,4 +158,3 @@
 
 *Phase: 03-virtual-display-feasibility*
 *Context gathered: 2026-10-08*
-
