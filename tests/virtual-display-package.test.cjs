@@ -7,10 +7,13 @@ function revisedDossier(){const d=dossier(),crypto=require('node:crypto');d.sche
 
 test('R1 binds the actual revision and distinguishes Win10 SDR from Win11 HDR',()=>{
  const {validate}=api(),d=revisedDossier();assert.equal(validate(d,{stage:'dossier'}).ok,true,'approved R1 platform requests must validate');
+ const recorded=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../docs/phase03/PROVIDER-ADMISSION-R1.json'),'utf8'));assert.equal(validate(recorded,{stage:'dossier'}).ok,true);assert.equal(validate(recorded,{stage:'dossier',requireDecision:true}).ok,false,'continue is not a review of the newly changed dossier');
+ const changedProposal=structuredClone(recorded);changedProposal.recommendation.proposalEvidence.sha256='f'.repeat(64);assert.equal(validate(changedProposal,{stage:'dossier'}).ok,false,'changed route cannot retain its approval digest');
  for(const mutate of [x=>x.requirementRevision.sha256='a'.repeat(64),x=>x.requirementRevision.fixture=true,x=>x.requirementRevision.path='docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md',x=>x.requestedByPlatform.windows10.at(-1).color='HDR',x=>x.requestedByPlatform.windows11.at(-1).color='SDR',x=>x.requestedByPlatform.windows10.pop(),x=>x.requestedByPlatform.windows11[0].refresh={numerator:60000,denominator:1001},x=>x.requested=[],x=>delete x.requirementRevision]){const changed=structuredClone(d);mutate(changed);assert.equal(validate(changed,{stage:'dossier'}).ok,false);}
  assert.equal(validate(d,{stage:'admission',providerId:'apollo-sudovda'}).ok,false);
  assert.equal(validate(d,{stage:'authorization'}).ok,false);
  const old=dossier();old.requested.at(-1).color='SDR';assert.equal(validate(old,{stage:'dossier'}).ok,false,'R1 cannot silently rewrite legacy history');
+ const stale=structuredClone(recorded);stale.decision=dossier().decision;assert.equal(validate(stale,{stage:'dossier',requireDecision:true}).ok,false,'old decision hash cannot approve R1');
 });
 test('R1 refresh comparison accepts exact rationals and rejects 59.94 or invalid values',()=>{
  const {equivalentRefresh}=api();assert.equal(typeof equivalentRefresh,'function','exact refresh comparator must exist');

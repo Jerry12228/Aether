@@ -6,6 +6,9 @@ const fixedSources={'apollo-sudovda':'apollo','virtualdrivers-vdd':'virtual-disp
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const digest=/^[a-f0-9]{64}$/i,commit=/^[a-f0-9]{40}$/i;
 const requested=[['A',1,1920,1080,'SDR'],['A',2,2560,1440,'SDR'],['B',1,1920,1080,'SDR'],['C',1,1920,1080,'SDR'],['C',2,1920,1080,'SDR'],['D',1,1920,1080,'SDR'],['D',2,1920,1080,'HDR']].map(([group,slot,width,height,color])=>({group,slot,width,height,refresh:{numerator:60,denominator:1},color}));
+const requestedByPlatform={windows10:requested.map(r=>({...r,refresh:{...r.refresh},color:'SDR'})),windows11:structuredClone(requested)};
+const revisionPath='docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md';
+function equivalentRefresh(actual,expected){const valid=r=>r&&[r.numerator,r.denominator].every(n=>Number.isSafeInteger(n)&&n>0&&n<=0xffffffff);return Boolean(valid(actual)&&valid(expected)&&BigInt(actual.numerator)*BigInt(expected.denominator)===BigInt(expected.numerator)*BigInt(actual.denominator));}
 function canonical(value){if(Array.isArray(value))return value.map(canonical);if(value&&typeof value==='object')return Object.fromEntries(Object.keys(value).sort().map(k=>[k,canonical(value[k])]));return value;}
 function dossierHash(d){const copy=structuredClone(d);delete copy.decision;return sha(JSON.stringify(canonical(copy)));}
 function localFile(relative){if(typeof relative!=='string'||path.isAbsolute(relative))throw Error('relative evidence path required');const p=fs.realpathSync(path.resolve(root,relative));const rel=path.relative(root,p);if(rel.startsWith('..')||path.isAbsolute(rel))throw Error('evidence outside repository');return p;}
@@ -42,8 +45,16 @@ function admission(c){
 function validate(d,{stage='dossier',requireDecision=false,providerId}={}){
  const errors=[],bad=(condition,message)=>{if(!condition)errors.push(message);};
  if(!d || typeof d!=='object')return {ok:false,stage,errors:['dossier object required']};
- bad(['dossier','admission','authorization'].includes(stage),'unknown stage');bad(d.schemaVersion===1,'schemaVersion 1 required');
- bad(JSON.stringify(d.requested)===JSON.stringify(requested),'original four groups seven slots exact 60/1 SDR/HDR requests required');
+ bad(['dossier','admission','authorization'].includes(stage),'unknown stage');bad([1,2].includes(d.schemaVersion),'schemaVersion 1 or 2 required');
+ if(d.schemaVersion===2){
+  bad(d.requirementRevision?.id==='R1'&&d.requirementRevision?.path===revisionPath&&evidence(d.requirementRevision),'R1 requirement revision must bind actual approved document hash');
+  if(d.recommendation?.proposal)bad(d.recommendation.proposalEvidence?.path===d.recommendation.proposal&&evidence(d.recommendation.proposalEvidence),'R1 route proposal must bind actual review document hash');
+  bad(!Object.hasOwn(d,'requested'),'R1 uses platform requests only; ambiguous legacy requested field refused');
+  bad(JSON.stringify(canonical(d.requestedByPlatform))===JSON.stringify(canonical(requestedByPlatform)),'R1 requires Win10 seven SDR slots and Win11 D2 HDR at exact requested 60/1');
+ }else{
+  bad(!Object.hasOwn(d,'requestedByPlatform')&&!Object.hasOwn(d,'requirementRevision'),'legacy schema cannot assert revised platform requirements');
+  bad(JSON.stringify(d.requested)===JSON.stringify(requested),'original four groups seven slots exact 60/1 SDR/HDR requests required');
+ }
  bad(d.constraints?.strictNoDowngrade===true && d.constraints?.windows10And11===true,'original constraints required');
  bad(Array.isArray(d.candidates)&&d.candidates.length>=5,'all five researched candidates required');
  const ids=new Set();for(const c of d.candidates||[]){
@@ -71,5 +82,5 @@ function validate(d,{stage='dossier',requireDecision=false,providerId}={}){
  if(stage==='authorization'){const a=d.machineAuthorization;bad(a?.status==='authorized'&&a?.providerId===d.selectedProviderId && typeof a?.machineId==='string'&&a.machineId.length>0 && Array.isArray(a?.scenarios)&&a.scenarios.length>0 && digest.test(a?.planSha256||'') && a.planSha256===sha(JSON.stringify(canonical(d.systemPlan))) && typeof a?.userText==='string'&&a.userText.length>0 && Number.isFinite(Date.parse(a?.recordedAt)),'machineAuthorization requires concrete machine scenarios plan hash user text and time');bad(d.decision?.status==='admitted-provider','authorization needs admitted-provider decision');}
  return {ok:errors.length===0,stage,selectedProviderId:selected?.providerId||null,errors,dossierSha256:dossierHash(d)};
 }
-if(require.main===module){try{const args=process.argv.slice(2);let stage='dossier',requireDecision=false,file='docs/phase03/PROVIDER-ADMISSION.json',providerId;for(let i=0;i<args.length;i++){if(args[i]==='--stage')stage=args[++i];else if(args[i]==='--require-decision')requireDecision=true;else if(args[i]==='--file')file=args[++i];else if(args[i]==='--provider')providerId=args[++i];else throw Error('Unknown argument');}const result=validate(JSON.parse(fs.readFileSync(path.resolve(root,file),'utf8')),{stage,requireDecision,providerId});console.log(JSON.stringify(result,null,2));process.exitCode=result.ok?0:1;}catch(e){console.error(JSON.stringify({ok:false,error:e.message}));process.exitCode=1;}}
-module.exports={validate,dossierHash,admission,requested};
+if(require.main===module){try{const args=process.argv.slice(2);let stage='dossier',requireDecision=false,file='docs/phase03/PROVIDER-ADMISSION-R1.json',providerId;for(let i=0;i<args.length;i++){if(args[i]==='--stage')stage=args[++i];else if(args[i]==='--require-decision')requireDecision=true;else if(args[i]==='--file')file=args[++i];else if(args[i]==='--provider')providerId=args[++i];else throw Error('Unknown argument');}const result=validate(JSON.parse(fs.readFileSync(path.resolve(root,file),'utf8')),{stage,requireDecision,providerId});console.log(JSON.stringify(result,null,2));process.exitCode=result.ok?0:1;}catch(e){console.error(JSON.stringify({ok:false,error:e.message}));process.exitCode=1;}}
+module.exports={validate,dossierHash,admission,requested,requestedByPlatform,equivalentRefresh};
