@@ -3,6 +3,22 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const checker=path.resolve(__dirname,'../scripts/check-virtual-display-admission.cjs');
 function api(){assert.ok(fs.existsSync(checker),'provider dossier validator must exist');return require(checker);}
 function dossier(){return JSON.parse(fs.readFileSync(path.resolve(__dirname,'../docs/phase03/PROVIDER-ADMISSION.json'),'utf8'));}
+function revisedDossier(){const d=dossier(),crypto=require('node:crypto');d.schemaVersion=2;d.decision=null;d.requirementRevision={id:'R1',path:'docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md',sha256:crypto.createHash('sha256').update(fs.readFileSync(path.resolve(__dirname,'..','docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md'))).digest('hex'),fixture:false};d.requestedByPlatform={windows10:structuredClone(d.requested),windows11:structuredClone(d.requested)};d.requestedByPlatform.windows10.at(-1).color='SDR';delete d.requested;return d;}
+
+test('R1 binds the actual revision and distinguishes Win10 SDR from Win11 HDR',()=>{
+ const {validate}=api(),d=revisedDossier();assert.equal(validate(d,{stage:'dossier'}).ok,true,'approved R1 platform requests must validate');
+ for(const mutate of [x=>x.requirementRevision.sha256='a'.repeat(64),x=>x.requirementRevision.fixture=true,x=>x.requirementRevision.path='docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md',x=>x.requestedByPlatform.windows10.at(-1).color='HDR',x=>x.requestedByPlatform.windows11.at(-1).color='SDR',x=>x.requestedByPlatform.windows10.pop(),x=>x.requestedByPlatform.windows11[0].refresh={numerator:60000,denominator:1001},x=>x.requested=[],x=>delete x.requirementRevision]){const changed=structuredClone(d);mutate(changed);assert.equal(validate(changed,{stage:'dossier'}).ok,false);}
+ assert.equal(validate(d,{stage:'admission',providerId:'apollo-sudovda'}).ok,false);
+ assert.equal(validate(d,{stage:'authorization'}).ok,false);
+ const old=dossier();old.requested.at(-1).color='SDR';assert.equal(validate(old,{stage:'dossier'}).ok,false,'R1 cannot silently rewrite legacy history');
+});
+test('R1 refresh comparison accepts exact rationals and rejects 59.94 or invalid values',()=>{
+ const {equivalentRefresh}=api();assert.equal(typeof equivalentRefresh,'function','exact refresh comparator must exist');
+ assert.equal(equivalentRefresh({numerator:60000,denominator:1000},{numerator:60,denominator:1}),true);
+ assert.equal(equivalentRefresh({numerator:4294967295,denominator:4294967295},{numerator:1,denominator:1}),true);
+ for(const actual of [{numerator:60000,denominator:1001},{numerator:60,denominator:0},{numerator:0,denominator:1},{numerator:60.01,denominator:1},{numerator:4294967296,denominator:1},{numerator:'60',denominator:1},null])assert.equal(equivalentRefresh(actual,{numerator:60,denominator:1}),false);
+ assert.equal(equivalentRefresh({numerator:60,denominator:1},{numerator:60,denominator:0}),false);
+});
 test('dossier preserves honest unknown evidence and explicit gaps',()=>{const {validate}=api();assert.equal(validate(dossier(),{stage:'dossier'}).ok,true);});
 test('dossier rejects erased topology, unexplained nulls and false machine PASS',()=>{
  const {validate}=api();for(const mutate of [d=>d.requested.pop(),d=>d.candidates[0].gaps=[],d=>d.productionEvidence.status='passed',d=>d.candidates[0].interfaceEvidence.sevenSlotCapacity.status='verified']){const d=dossier();mutate(d);assert.equal(validate(d,{stage:'dossier'}).ok,false);}
