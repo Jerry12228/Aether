@@ -13,6 +13,8 @@ created: "2026-10-08"
 
 本文件是执行时的验证合同。03-01-01/02只读路径与准入档案已实现并通过针对性验证；03-01-03已记录选项2与hash，SudoVDA补证完成仍无provider获准接入。尚无七屏/HDR/driver生命周期实机通过证据，VDP-01/02仍未完成；status/draft与两个false标志保留。
 
+R1后续用户 `1` 已批准独立派生准备并绑定新档案hash；[准备结果](../../../docs/phase03/HELIOS-DISPLAY-PREPARATION.md)记录真实Release x64 unsigned构建、INF2084 warning、许可与签名方案。11/11针对性测试通过，默认require-decision已通过；准入和system authorization仍拒绝。用户严禁重启/关闭开发机，需要此类操作的实机检查保持未执行；不自动请求重复路线批准或重启。
+
 ## Test Infrastructure
 
 | Property | Value |
@@ -41,7 +43,7 @@ created: "2026-10-08"
 |---|---|---|---|---|---|---|---|---|---|
 | 03-01-01 | 01 | 1 | VDP-01/02 | T-03-03 | 真实只读OS查询，拒绝未知/访问错误推断支持 | native+CLI | `ctest --test-dir build/native -C Debug -R "^virtual_display_probe$" --output-on-failure --no-tests=error` | ✅ 已创建 | passed Debug/Release只读范围 |
 | 03-01-02 | 01 | 1 | VDP-01/02 | T-03-01/02/SC | 固定包/成员签名/许可/设备ACL，分层门禁无循环 | package | `node --test tests/virtual-display-package.test.cjs`；`node scripts/check-virtual-display-admission.cjs --stage dossier` | ✅ 已创建 | passed 包9/9及R1 dossier；原candidate准入仍拒绝 |
-| 03-01-03 | 01 | 1 | VDP-01/02 | T-03-01/02 | 具体路线或无候选决定；无系统操作授权 | decision | `node scripts/check-virtual-display-admission.cjs --stage dossier --require-decision` | ✅ 01-02已创建 | 历史决定显式--file通过；R1新路线decision pending，默认require-decision按预期拒绝 |
+| 03-01-03 | 01 | 1 | VDP-01/02 | T-03-01/02 | 具体路线或无候选决定；无系统操作授权 | decision | `node scripts/check-virtual-display-admission.cjs --stage dossier --require-decision` | ✅ 01-02已创建 | 历史决定与R1用户1均通过；派生研究准备完成，仍无合格provider或系统授权 |
 | 03-02-01 | 02 | 2 | VDP-01/02 | T-03-04/05/06/07 | 跨CLI稳定ID/OS caller/锁/journal/last-success/拥有资源 | native+child-process | `ctest --test-dir build/native -C Debug -R "^virtual_display_(tracer\|registry)$" --output-on-failure --no-tests=error` | ❌ 本任务创建 | pending |
 | 03-02-02 | 02 | 2 | VDP-01/02 | T-03-06/08/09 | 七slot/严格60/1/HDR/物理布局/手动恢复/窗口独立 | native+CLI | `node --test tests/virtual-display-contract.test.cjs`；计划内5项精确CTest | ❌ 本任务创建 | pending |
 | 03-03-01 | 03 | 3 | VDP-01/02 | T-03-10/11/12/SC | 无副作用install plan、仅显式更新、旧包回滚/手动重启 | package+CLI | `node --test tests/virtual-display-package.test.cjs`；`pwsh -NoProfile -File scripts/check-virtual-display.ps1 -Mode Contract -Configuration Release` | ❌ 本任务扩展/创建 | pending |
@@ -63,7 +65,7 @@ T-03-SC唯一规范登记位于03-01-PLAN.md；03-02/03-03 threat_model明确引
 
 | Behavior | Requirement | Why Manual | Test Instructions |
 |---|---|---|---|
-| 正式包/默认安全配置安装、更新/回滚 | VDP-02；D-13–16 | 管理员系统动作需具体方案和实际包 | 先审阅来源/签名/许可/影响/回滚范围并获准；需要重启时退出，由用户手动重启并运行 check |
+| 正式包/默认安全配置安装、更新/回滚 | VDP-02；D-13–16 | 管理员系统动作需具体方案和实际包 | 先审阅来源/签名/许可/影响/回滚范围并获准；用户严禁重启/关闭开发机，开发机需要这些操作时退出并记录未执行；其他测试环境须单独授权 |
 | 四组七屏独立内容与 SDR/HDR 共存 | VDP-01；D-05–08 | OS/GPU/provider 条件不能由 fixture 证明 | Win10/11 分开记录 A1 1080p、A2 1440p、B1/C1/C2/D1/D2 1080p，全部 60/1；Win10 D2 SDR、Win11 D2 HDR，其余 SDR；原始refresh约分后须为60/1，查询实际颜色并观察独立图 |
 | CLI 全退出后保活、删除 B 保留 A/C/D | VDP-01/02；D-02/09/12 | 持久驱动行为/共享故障需要观察 | 关闭所有 CLI/Ping owner 后超过实际 watchdog 周期，再从新 CLI 查询；已获准watchdog=0需记录禁用、配置回读、owner退出与明确有界观察窗口；删除 B 前后比对身份、配置、内容和物理布局 |
 | 驱动重置与显式恢复 | VDP-02；D-11 | 故障会影响共享设备，须受控授权 | 保存最后成功状态；故障后查询差异，只按指定组恢复；记录逻辑/系统身份和布局变化及实际故障范围 |

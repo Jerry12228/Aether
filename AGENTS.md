@@ -92,4 +92,5 @@ Do not make direct repo edits outside a GSD workflow unless the user explicitly 
 - Reference checkouts under references/upstream are ignored research material. Do not commit them as submodules, edit them as product code, or route GSD product commits to them.
 - All virtual display groups and instances persist across disconnect/switch until explicit stop; host control lease is globally unique in the shared Windows login desktop.
 - Work in small phases and request only concrete critical decisions. Current workflow is interactive, sequential, with research, plan checks and verification enabled; do not automatically start all phases or spawn agents without applicable authorization.
+- User explicitly forbids restarting or shutting down the development machine. Do not execute or schedule either operation; record checks that require them as unperformed.
 - Keep candidate technologies distinguishable from user-confirmed constraints and tested outcomes. Do not mark a platform/driver supported solely because an API exists or a Flutter skeleton runs.

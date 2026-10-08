@@ -59,7 +59,7 @@ coverage:
 
 # Phase 03 Plan 01 — read-only probe and provider admission checkpoint
 
-**R1续行当前状态：** 用户“继续，需求已更新”已执行R1准入补证；新schema2档案/官方包审计/精确刷新率校验通过，具体派生源码/上游路线仍待决定。旧人审证据保留；status: halted仍阻断03-02/03-03。
+**R1续行当前状态：** 用户 `1` 已批准独立派生准备并绑定R1档案；固定源研究树、独立身份/配置/ACL声明、Release x64 unsigned构建、逐文件许可清单和签名方案已完成。provider仍未准入；status: halted仍阻断03-02/03-03。用户明确禁止重启/关闭开发机。
 
 **真实Windows枚举、五候选档案及03-01-03路线决定已完成；用户选择2补SudoVDA证据，无合格provider，后续实施仍暂停。**
 
@@ -112,10 +112,12 @@ T-03-01/02/SC通过**拒绝未准入接入**约束当前边界；没有把上游
 
 ## Checkpoint and resume
 
+**R1 gate answered:** 用户原文 `1`，2026-10-08T15:18:55Z，绑定R1档案摘要 `0e2010bd2143013fbbc62d0be3cad622020024594562c8521370ff36bcf0d116`；只批准准备，不批准安装或系统变更。决定提交 `d515499`，准备提交 `2079041`。13个原源核验、五文件研究变换、真实未签名Release x64编译和目录生成通过；保留原失败日志与INF2084 warning。DLL/CAT NotSigned；INF无signer且UnknownError，不冒充签名PASS。编译保留/WX与/analyze；Departure前保存connector，避免成功移除后读取可能已销毁context。微软共享文本与EDID/贡献者许可缺口逐文件记录，生产复用清单仍空；最终11/11针对性测试364.90ms、47摘要与11本地链接核验通过。详情见[派生准备结果](../../../docs/phase03/HELIOS-DISPLAY-PREPARATION.md)。开发机禁重启/关机已记录，当前及后续需要这些动作的检查不执行。
+
 **Gate answered:** 03-01-03 / checkpoint:decision / blocking-human。用户原文 `2`，记录时间2026-10-08T13:55:18Z，绑定原档案hash；选择no-qualified-provider和SudoVDA补证。来源补证完成，仍无合格候选。
 
 实际答复/时间/hash已记录，`--stage dossier --require-decision`已通过。无合格候选时保持03-02/03-03阻断与VDP/Phase3未完成；不要把本SUMMARY存在解释为已获得准入或批准安装。若后来出现合格provider，必须通过真实admission并重新审阅具体路线，才可重写halted状态。
 
 ## Self-check
 
-**PASSED for original readonly/dossier/decision and R1 checker/audit scope.** 原三任务证据和用户`2`保留；R1真实包审计/校验完成，新的派生路线决定尚待答复。**Plan intentionally HALTED on no-qualified-provider branch; Phase3 NOT COMPLETE.** 保留status: halted使依赖引擎阻断03-02/03-03，不因历史决定已答复而打开未准入实施。
+**PASSED for original readonly/dossier/decision, R1 checker/audit and approved private derived preparation scope.** 原三任务证据和用户`2`保留；新的用户`1`路线决定和准备结果已经记录，不再等待该批准。**Plan intentionally HALTED on no-qualified-provider branch; Phase3 NOT COMPLETE.** 保留status: halted使依赖引擎阻断03-02/03-03，不因研究构建通过而打开未准入实施。
