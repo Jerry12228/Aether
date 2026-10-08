@@ -12,6 +12,13 @@ All 49 hosted packages in the single root pubspec.lock were fetched from officia
 pub.dev archives, compared to the registry SHA256 and checked for a nonempty root
 LICENSE. Registry publisher/repository, SDK constraint and LICENSE digest are
 retained in the lock. Exact texts are under [phase02/dependency-licenses](phase02/dependency-licenses).
+Clean-checkout verification exposed a byte-audit error: the first extraction
+added or converted the final newline to CRLF before hashing each retained text. All 49 original
+archives were rechecked against the official package digest, then each LICENSE
+was extracted directly as bytes. Notice bodies match after newline normalization;
+the corrected licenseSha256 now hashes actual archive bytes. Prior retained
+digests and the comparison are preserved in LICENSE-BYTE-AUDIT.json and the lock.
+Git's no-text attribute preserves those exact bytes on every checkout.
 The selected licenses are BSD-3-Clause, BSD-2-Clause, MIT or Apache-2.0;
 license notices must accompany redistribution of the corresponding components.
 The executable package hooks were not run until their archive/license audit.

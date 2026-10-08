@@ -1,0 +1,447 @@
+{
+  "status": "verified-correction",
+  "archives": 49,
+  "comparison": [
+    {
+      "name": "analyzer",
+      "archiveLicenseSha256": "7e124af6a556f045cb3a20cafbdaa31602ac2c82cbcb3c3b15faaaf514b06028",
+      "retainedLicenseSha256": "e1358c97358c15123db2febf405e28331572eb65c768e7c7a4c37c7dc5b047b4",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "args",
+      "archiveLicenseSha256": "dfb09c74e29386cd3e2719f32d4995d59526179753931d31840757c77fbf2791",
+      "retainedLicenseSha256": "b4267e82c08c197ca43fd161c3cb7bb9824def5ae91f165dc5cb78c7b8078f8c",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "async",
+      "archiveLicenseSha256": "ff15faa32a2e638107b7789592b14426162a75ba620044ee2340a20ec6ce5e73",
+      "retainedLicenseSha256": "c21def99916cb5d608f9fc720d6bafad2e2076e58caee5491e01a06f2243e7d1",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "boolean_selector",
+      "archiveLicenseSha256": "b71519245009a3b8f126196a5408ec031e216e8e0d985085958c6543f82a8a2a",
+      "retainedLicenseSha256": "5a4a4ef5580be9ece73c9038b1dd37fe1c85d2d8ccf78ab4649943ef8f5f0cfa",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "characters",
+      "archiveLicenseSha256": "0371d1da6a57fb791db29d29b95333429205f51f3cb2eb3a0c12d91838a38744",
+      "retainedLicenseSha256": "d549cc7501dfb758cbf172879aacd7e34c7e3c583dfdc8392217da47f530df39",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "cli_util",
+      "archiveLicenseSha256": "ff15faa32a2e638107b7789592b14426162a75ba620044ee2340a20ec6ce5e73",
+      "retainedLicenseSha256": "c21def99916cb5d608f9fc720d6bafad2e2076e58caee5491e01a06f2243e7d1",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "clock",
+      "archiveLicenseSha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+      "retainedLicenseSha256": "b378beae25275395ef3381a8ec5988c7c3bc12117e8f9126452a39cd772c4a48",
+      "same": false,
+      "archiveBytes": 11357,
+      "retainedBytes": 11359,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "code_assets",
+      "archiveLicenseSha256": "21ae23b0b9ff67a2dc75ab085d1e8db8ac548c5faf370af17f28dd2ef3b52b7b",
+      "retainedLicenseSha256": "d04a13138e730030a083d9061e359ac2a01cb59a75260f57886b4ce43d691080",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "collection",
+      "archiveLicenseSha256": "ff15faa32a2e638107b7789592b14426162a75ba620044ee2340a20ec6ce5e73",
+      "retainedLicenseSha256": "c21def99916cb5d608f9fc720d6bafad2e2076e58caee5491e01a06f2243e7d1",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "convert",
+      "archiveLicenseSha256": "ad6a71997da90924b2cfb1fb47ec46537f70faf469efe016168794ae45ed6888",
+      "retainedLicenseSha256": "ce8d659cd65d1a6af0650e710afa50c0f24a56caa11662285bd7e564a9648474",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "crypto",
+      "archiveLicenseSha256": "ad6a71997da90924b2cfb1fb47ec46537f70faf469efe016168794ae45ed6888",
+      "retainedLicenseSha256": "ce8d659cd65d1a6af0650e710afa50c0f24a56caa11662285bd7e564a9648474",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "dart_style",
+      "archiveLicenseSha256": "3c32b53167c7dae9190c38dab5dd9fe1789c53623ebc7d1babcb29914c5b3f16",
+      "retainedLicenseSha256": "44df1895d9f0e5e766e83d6b7fa9389af52120f4ee2d7796a92a3f01bdeded5f",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "fake_async",
+      "archiveLicenseSha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+      "retainedLicenseSha256": "b378beae25275395ef3381a8ec5988c7c3bc12117e8f9126452a39cd772c4a48",
+      "same": false,
+      "archiveBytes": 11357,
+      "retainedBytes": 11359,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "ffi",
+      "archiveLicenseSha256": "0371d1da6a57fb791db29d29b95333429205f51f3cb2eb3a0c12d91838a38744",
+      "retainedLicenseSha256": "d549cc7501dfb758cbf172879aacd7e34c7e3c583dfdc8392217da47f530df39",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "ffigen",
+      "archiveLicenseSha256": "7b0f62043efeab7b541af55c5261069eaef37ca3d2683ff0d4cfa787a26fafc3",
+      "retainedLicenseSha256": "c6b660a5318679f8fdf627824b1d84373c8c09ab77f2821ff929bebfa26f017b",
+      "same": false,
+      "archiveBytes": 1594,
+      "retainedBytes": 1595,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "file",
+      "archiveLicenseSha256": "f6df86b1412172537273e8e80ee2fb8a66aa7307ce0b39ea5ddab47ca41b8c49",
+      "retainedLicenseSha256": "aaab94f7dc82e01957e08181db619392080eb6a51c0565a9a35f1b821adeb9a0",
+      "same": false,
+      "archiveBytes": 1523,
+      "retainedBytes": 1525,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "glob",
+      "archiveLicenseSha256": "3c32b53167c7dae9190c38dab5dd9fe1789c53623ebc7d1babcb29914c5b3f16",
+      "retainedLicenseSha256": "44df1895d9f0e5e766e83d6b7fa9389af52120f4ee2d7796a92a3f01bdeded5f",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "hooks",
+      "archiveLicenseSha256": "21ae23b0b9ff67a2dc75ab085d1e8db8ac548c5faf370af17f28dd2ef3b52b7b",
+      "retainedLicenseSha256": "d04a13138e730030a083d9061e359ac2a01cb59a75260f57886b4ce43d691080",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "leak_tracker",
+      "archiveLicenseSha256": "08a004aa8956c3cf3b24f7f69c966247233953e18e6afaa61191ea47b7eb70f6",
+      "retainedLicenseSha256": "9293e211f6fe1e4c77f5c1e9d7927acbef8a0ef49b2d2ed9c4335af92d024d47",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "leak_tracker_flutter_testing",
+      "archiveLicenseSha256": "08a004aa8956c3cf3b24f7f69c966247233953e18e6afaa61191ea47b7eb70f6",
+      "retainedLicenseSha256": "9293e211f6fe1e4c77f5c1e9d7927acbef8a0ef49b2d2ed9c4335af92d024d47",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "leak_tracker_testing",
+      "archiveLicenseSha256": "08a004aa8956c3cf3b24f7f69c966247233953e18e6afaa61191ea47b7eb70f6",
+      "retainedLicenseSha256": "9293e211f6fe1e4c77f5c1e9d7927acbef8a0ef49b2d2ed9c4335af92d024d47",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "logging",
+      "archiveLicenseSha256": "dfb09c74e29386cd3e2719f32d4995d59526179753931d31840757c77fbf2791",
+      "retainedLicenseSha256": "b4267e82c08c197ca43fd161c3cb7bb9824def5ae91f165dc5cb78c7b8078f8c",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "matcher",
+      "archiveLicenseSha256": "3c32b53167c7dae9190c38dab5dd9fe1789c53623ebc7d1babcb29914c5b3f16",
+      "retainedLicenseSha256": "44df1895d9f0e5e766e83d6b7fa9389af52120f4ee2d7796a92a3f01bdeded5f",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "material_color_utilities",
+      "archiveLicenseSha256": "d103f246ef4c18dab8af0c1dcf6a8af884e5cff554da7261a48ac43c17d98f2e",
+      "retainedLicenseSha256": "090033845ed5647201d10eea2decbed03dd83a06c81a74df92b2a7d2e369563a",
+      "same": false,
+      "archiveBytes": 11317,
+      "retainedBytes": 11318,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "meta",
+      "archiveLicenseSha256": "b71519245009a3b8f126196a5408ec031e216e8e0d985085958c6543f82a8a2a",
+      "retainedLicenseSha256": "5a4a4ef5580be9ece73c9038b1dd37fe1c85d2d8ccf78ab4649943ef8f5f0cfa",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "native_toolchain_c",
+      "archiveLicenseSha256": "aa81abb1ac43e40d2f5a606385edd37e974a5858d4109f7f439dd43d964487a7",
+      "retainedLicenseSha256": "9825eb4707bc23051ab40756fb5bff558855b0d7977b98f169d9e4479a976814",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "package_config",
+      "archiveLicenseSha256": "0371d1da6a57fb791db29d29b95333429205f51f3cb2eb3a0c12d91838a38744",
+      "retainedLicenseSha256": "d549cc7501dfb758cbf172879aacd7e34c7e3c583dfdc8392217da47f530df39",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "path",
+      "archiveLicenseSha256": "3c32b53167c7dae9190c38dab5dd9fe1789c53623ebc7d1babcb29914c5b3f16",
+      "retainedLicenseSha256": "44df1895d9f0e5e766e83d6b7fa9389af52120f4ee2d7796a92a3f01bdeded5f",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "platform",
+      "archiveLicenseSha256": "143839f62c9b7f88143ea9f688361c27050888acde7696b34e04414bd254fafc",
+      "retainedLicenseSha256": "aaab94f7dc82e01957e08181db619392080eb6a51c0565a9a35f1b821adeb9a0",
+      "same": false,
+      "archiveBytes": 1524,
+      "retainedBytes": 1525,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "process",
+      "archiveLicenseSha256": "5f018bbc25a55406d7a4e1d3229135439e315210b0050ca56dbb367a4934e85d",
+      "retainedLicenseSha256": "e1358c97358c15123db2febf405e28331572eb65c768e7c7a4c37c7dc5b047b4",
+      "same": false,
+      "archiveBytes": 1502,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "pub_semver",
+      "archiveLicenseSha256": "3c32b53167c7dae9190c38dab5dd9fe1789c53623ebc7d1babcb29914c5b3f16",
+      "retainedLicenseSha256": "44df1895d9f0e5e766e83d6b7fa9389af52120f4ee2d7796a92a3f01bdeded5f",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "quiver",
+      "archiveLicenseSha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+      "retainedLicenseSha256": "b378beae25275395ef3381a8ec5988c7c3bc12117e8f9126452a39cd772c4a48",
+      "same": false,
+      "archiveBytes": 11357,
+      "retainedBytes": 11359,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "record_use",
+      "archiveLicenseSha256": "1cda25a8de6880c5338de0b4a06ee89e8537c213eb1379c16a4c035bfd198b5c",
+      "retainedLicenseSha256": "a3901afe5e6af0a8995a6efe79af09f3d33e90b6c6be9d003cb37addd1479ca3",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "source_span",
+      "archiveLicenseSha256": "3c32b53167c7dae9190c38dab5dd9fe1789c53623ebc7d1babcb29914c5b3f16",
+      "retainedLicenseSha256": "44df1895d9f0e5e766e83d6b7fa9389af52120f4ee2d7796a92a3f01bdeded5f",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "stack_trace",
+      "archiveLicenseSha256": "ff0b91d4f3c32b25cb6ec84985e8da89b0ba2a2b2f7eef353cda5e5423a20390",
+      "retainedLicenseSha256": "506579361db486103ddbc13f8cef7c2222e61034516d05f262864ecef3e5d842",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "stream_channel",
+      "archiveLicenseSha256": "ff15faa32a2e638107b7789592b14426162a75ba620044ee2340a20ec6ce5e73",
+      "retainedLicenseSha256": "c21def99916cb5d608f9fc720d6bafad2e2076e58caee5491e01a06f2243e7d1",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "string_scanner",
+      "archiveLicenseSha256": "3c32b53167c7dae9190c38dab5dd9fe1789c53623ebc7d1babcb29914c5b3f16",
+      "retainedLicenseSha256": "44df1895d9f0e5e766e83d6b7fa9389af52120f4ee2d7796a92a3f01bdeded5f",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "sync_http",
+      "archiveLicenseSha256": "b9b748d4dd6f725387bf69e96df4e4ebff167ae83547954242a731504d037644",
+      "retainedLicenseSha256": "b97bd0af4e62d453e70312432d00a8135ada386847b873a2f6fc986c92694bad",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "term_glyph",
+      "archiveLicenseSha256": "ea97a7558a7bd7cee4e2355f7529e3cbebb0dcbb546ddb9a90f10c9eb6b08da5",
+      "retainedLicenseSha256": "5eff7703ea000b25a14215c401acb00c2e814dc7d2d9b9a43337ef9c092df52e",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "test_api",
+      "archiveLicenseSha256": "ff1b9f0df9036c04be424b1e3ce12789bea880ad5ffc3a48e069ae2d40a087a4",
+      "retainedLicenseSha256": "6a9ba00f1268b6a0274189370ebcd53c6b3277c8f98075dc995fc9293c2d2027",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "typed_data",
+      "archiveLicenseSha256": "ff15faa32a2e638107b7789592b14426162a75ba620044ee2340a20ec6ce5e73",
+      "retainedLicenseSha256": "c21def99916cb5d608f9fc720d6bafad2e2076e58caee5491e01a06f2243e7d1",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "vector_math",
+      "archiveLicenseSha256": "b5d856a1e27e9ebea4957fc3526f1c65782a04894b113c6b3b0fb1321dbdec55",
+      "retainedLicenseSha256": "0b257e0314e5b2d874ae841c1b380bf6b7e7b50823a86fcb722876ecc66297f6",
+      "same": false,
+      "archiveBytes": 2327,
+      "retainedBytes": 2328,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "vm_service",
+      "archiveLicenseSha256": "ad6a71997da90924b2cfb1fb47ec46537f70faf469efe016168794ae45ed6888",
+      "retainedLicenseSha256": "ce8d659cd65d1a6af0650e710afa50c0f24a56caa11662285bd7e564a9648474",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "watcher",
+      "archiveLicenseSha256": "3c32b53167c7dae9190c38dab5dd9fe1789c53623ebc7d1babcb29914c5b3f16",
+      "retainedLicenseSha256": "44df1895d9f0e5e766e83d6b7fa9389af52120f4ee2d7796a92a3f01bdeded5f",
+      "same": false,
+      "archiveBytes": 1504,
+      "retainedBytes": 1505,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "web",
+      "archiveLicenseSha256": "aa913ff50d7542eb8cc35b9f48a80928ac6819ba9057f85d424655e3e8dc271c",
+      "retainedLicenseSha256": "07d8e66aa5923d020b65e6411acc402e8c11f856a79569b92080c05c861268d8",
+      "same": false,
+      "archiveBytes": 1502,
+      "retainedBytes": 1503,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "webdriver",
+      "archiveLicenseSha256": "74cb46b123c9fa918ea8e0a0f5be736a1cd661edf145ccc723dc7ce30324ebab",
+      "retainedLicenseSha256": "13a2f3184375025b95d91ae543a17cf2506a25e501cbeaaba7f53494a976580f",
+      "same": false,
+      "archiveBytes": 11340,
+      "retainedBytes": 11341,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "yaml",
+      "archiveLicenseSha256": "d47b93335401b052d79a2f5a3710e4cf7b5aed782faedf84d40fbdd6eb934ec7",
+      "retainedLicenseSha256": "9f2ea2fc462c59bf3621965b4813a2319900cfdc27638a935c99fcfefbcdd898",
+      "same": false,
+      "archiveBytes": 1106,
+      "retainedBytes": 1107,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "yaml_edit",
+      "archiveLicenseSha256": "021c41b9b081664f6ee181aaf4e03602c51591204dabe9ac8c8d736f0965b851",
+      "retainedLicenseSha256": "9f0273086fb2054824804d227941c4c57059fc124afb9d70d83b6ab293f971ce",
+      "same": false,
+      "archiveBytes": 1502,
+      "retainedBytes": 1503,
+      "bodyUnchanged": true
+    },
+    {
+      "name": "_fe_analyzer_shared",
+      "archiveLicenseSha256": "efa31b5ac790016736fa9761642b0af16d37cd4fb483de2905adb5258cb89722",
+      "retainedLicenseSha256": "94176a83ed7b429bc67b87a7f2473ecb55738141b66278a0672986084af5efc5",
+      "same": false,
+      "archiveBytes": 1503,
+      "retainedBytes": 1504,
+      "bodyUnchanged": true
+    }
+  ]
+}
