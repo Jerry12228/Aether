@@ -21,8 +21,8 @@ Required completion gates remain unmet:
 
 | Gate | Result | Evidence / resumption |
 |---|---|---|
-| Actual Windows Actions dual builds and every mandatory check | NOT RUN | Repository selection/public push authorization pending; no run URL/outcome exists |
-| Required exact SDK/GUI execution in Actions | NOT VERIFIED | Hosted SDK28000 bootstrap prepared; actual installation/engine run must succeed |
+| Actual Windows Actions dual builds and every mandatory check | IN PROGRESS | User authorized public push; first run 37721726261 failed after three builds; fix 6d59a78 is executing in run 37732241885; complete passing outcome pending |
+| Required exact SDK/GUI execution in Actions | NOT VERIFIED | Actual first hosted SDK28000 installation passed; second-run engine checks still pending |
 | Final Phase2 human checkpoint | NOT REACHED | Must follow actual CI; inspect concrete evidence/interactive console/visual boundaries |
 | Three unclassified CORE edge rows and six descriptor-less prohibitions | FLAGGED-UNVERIFIED | Original states unchanged; no automatic backstop/engine green fabricated |
 

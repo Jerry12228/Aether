@@ -1,0 +1,224 @@
+{
+  "schema": 1,
+  "scope": "Actual Windows Actions; hosted software/virtual GPU is not local physical performance evidence",
+  "runs": [
+    {
+      "runId": 37721726261,
+      "url": "https://github.com/Jerry12228/Aether/actions/runs/37721726261",
+      "commit": "2d0e5e18935d8334f9c81e7bce6036b034a51cee",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAt": "2026-10-08T03:13:50Z",
+      "updatedAt": "2026-10-08T03:25:55Z",
+      "jobs": [
+        {
+          "id": 113130668649,
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/37721726261/job/113130668649",
+          "name": "windows",
+          "status": "completed",
+          "conclusion": "failure",
+          "runnerName": "GitHub Actions 1000000001",
+          "labels": [
+            "windows-2025-vs2026"
+          ],
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 1,
+              "started_at": "2026-10-08T03:13:53Z",
+              "completed_at": "2026-10-08T03:13:54Z"
+            },
+            {
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 2,
+              "started_at": "2026-10-08T03:13:54Z",
+              "completed_at": "2026-10-08T03:14:03Z"
+            },
+            {
+              "name": "Exact SDK and SHA256-locked tools",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 3,
+              "started_at": "2026-10-08T03:14:03Z",
+              "completed_at": "2026-10-08T03:22:18Z"
+            },
+            {
+              "name": "Build explicit product targets in both configurations",
+              "status": "completed",
+              "conclusion": "failure",
+              "number": 4,
+              "started_at": "2026-10-08T03:22:18Z",
+              "completed_at": "2026-10-08T03:25:37Z"
+            },
+            {
+              "name": "Mandatory real DLL, native GPU engine, shutdown, source and baseline checks",
+              "status": "completed",
+              "conclusion": "skipped",
+              "number": 5,
+              "started_at": "2026-10-08T03:25:37Z",
+              "completed_at": "2026-10-08T03:25:37Z"
+            },
+            {
+              "name": "Full logs, actual versions, counts and SHA256 evidence",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 6,
+              "started_at": "2026-10-08T03:25:37Z",
+              "completed_at": "2026-10-08T03:25:47Z"
+            },
+            {
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 12,
+              "started_at": "2026-10-08T03:25:47Z",
+              "completed_at": "2026-10-08T03:25:52Z"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success",
+              "number": 13,
+              "started_at": "2026-10-08T03:25:52Z",
+              "completed_at": "2026-10-08T03:25:53Z"
+            }
+          ]
+        }
+      ],
+      "bootstrap": {
+        "sdkInstall": "exit=0 via signed Microsoft VS Installer; component Windows11SDK.28000",
+        "visualStudio": "18.10.12217.157",
+        "channelId": "VisualStudio.18.Release",
+        "imageOS": "win25-vs2026",
+        "runUrl": "https://github.com/Jerry12228/Aether/actions/runs/37721726261",
+        "runnerEnvironment": "github-hosted",
+        "cmake": "cmake version 4.4.3",
+        "commit": "2d0e5e18935d8334f9c81e7bce6036b034a51cee",
+        "imageVersion": "20260925.250.1",
+        "requestedSdk": "10.0.28000.0",
+        "actions": {
+          "checkout": {
+            "sha": "11d5960a326750d5838078e36cf38b85af677262",
+            "ref": "v4",
+            "source": "https://github.com/actions/checkout"
+          },
+          "uploadArtifact": {
+            "sha": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+            "ref": "v4",
+            "source": "https://github.com/actions/upload-artifact"
+          }
+        },
+        "sdkInstalledVersion": "10.0.28000.0",
+        "msvcTools": "14.51.36231",
+        "sdkPresent": true,
+        "installerSha256": "f63840dda38637614aa982b94b1d544f0b54026f465c22f78d30765a130a2b73",
+        "cmakeArchiveSha256": "4d52ebab7193a698651639ed80d8d04fd903358843572cf44c7fd234cb7c26ab",
+        "flutter": {
+          "frameworkVersion": "3.44.0",
+          "channel": "stable",
+          "repositoryUrl": "https://github.com/flutter/flutter.git",
+          "frameworkRevision": "559ffa3f75e7402d65a8def9c28389a9b2e6fe42",
+          "frameworkCommitDate": "2026-05-15 14:13:13 -0700",
+          "engineRevision": "4c525dac5ebe5971c5708ef73558ed8edcf4a362",
+          "engineCommitDate": "2026-05-15 19:00:04.000Z",
+          "engineContentHash": "fcf463a2242790d1fdcd9d044f533080f5022e18",
+          "engineBuildDate": "2026-05-15 12:35:11.586",
+          "dartSdkVersion": "3.12.0",
+          "devToolsVersion": "2.57.0",
+          "flutterVersion": "3.44.0"
+        },
+        "flutterArchiveSha256": "88da00194893bf9543fc47c0bf31e6de978d49ffdb9c2f6e30c46dde0116c768",
+        "flutterBundledCmake": "cmake version 4.3.1-msvc1"
+      },
+      "verify": null,
+      "artifacts": [
+        {
+          "id": 11526502635,
+          "name": "windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee",
+          "digest": "sha256:1a8e7216783ca0c20a82aa4703a2992845dd52c7c822baddb0998a392c2b0c63",
+          "sizeBytes": 35793,
+          "expired": false,
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/37721726261/artifacts/11526502635"
+        }
+      ],
+      "downloadedFiles": [
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/artifacts.json",
+          "sizeBytes": 749,
+          "sha256": "4935dd50baed8ded1474673d82700702a10e1de5c590726a525a7c032c53632e"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/jobs.json",
+          "sizeBytes": 2414,
+          "sha256": "51b3ccb06d5505b5839f320662817e90c2c977f592623389b3348a577fc959d5"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/run.json",
+          "sizeBytes": 11956,
+          "sha256": "abd77676ec00bc181f2d9db23270dd290f7c77f8a2a1882edd6c646b1304aee7"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/run.log",
+          "sizeBytes": 20438,
+          "sha256": "251393c1a2f48889d52ced612729a938b01ffd987b6c253bf6a182fba0cde419"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/artifacts/phase02/ci/bootstrap.json",
+          "sizeBytes": 1887,
+          "sha256": "76a666ee6425f99775668124c7e8405d294aac03164c306c7da06024cae97562"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/artifacts/phase02/tooling/Helios-Debug-build.log",
+          "sizeBytes": 1078,
+          "sha256": "a4f27f866d12b99bfe8d7c324dcba1f71543b2a7727aea31c466aebcf38aae95"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/artifacts/phase02/tooling/Helios-Debug-configure.log",
+          "sizeBytes": 1203,
+          "sha256": "9e66a66b9a355cb503d29dc2f1364bb12221c09f87da79c23349e95e0048c727"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/artifacts/phase02/tooling/Helios-Release-build.log",
+          "sizeBytes": 1091,
+          "sha256": "d27cc26ceebec36a9f50d5427bf016271b93071687d4b64779dc7fefe17a8485"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/artifacts/phase02/tooling/Helios-Release-configure.log",
+          "sizeBytes": 500,
+          "sha256": "b18ab39689379ef0c40dc8e2503d83f671f7e7dc32af4e9e585d3cc5b42d59e0"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/artifacts/phase02/tooling/Selene-Debug-build.log",
+          "sizeBytes": 598,
+          "sha256": "2d5b2679882d6333b35b0fd4cf9d386c47aac59a87aee405e56c75d3acc3fea8"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/artifacts/phase02/tooling/Selene-Debug-prepare.log",
+          "sizeBytes": 1324,
+          "sha256": "36f3250649fb262639adf676b3e55663e97df9abd920f62e8bb53af2ba490e31"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/artifacts/phase02/tooling/Selene-Release-prepare.log",
+          "sizeBytes": 873,
+          "sha256": "18457d5ab90b7977468bf791d7252fc178de864a11c5d9b5e254032dfba98475"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/build/native/Release/aether_core.dll",
+          "sizeBytes": 41984,
+          "sha256": "29983a39d30d8886f5614a8d8809bf310cfa1469c556c33e0dcae3d5a6d6ebf1"
+        },
+        {
+          "path": "artifacts/phase02/ci-runs/37721726261/windows-phase02-2d0e5e18935d8334f9c81e7bce6036b034a51cee/build/native/Release/helios.exe",
+          "sizeBytes": 21504,
+          "sha256": "f5a65640d4644e9a8307181ff8a511df2455b8192ecf79ea864f3760493e4a06"
+        }
+      ]
+    }
+  ],
+  "capturedAt": "2026-10-08T05:25:54.125Z"
+}

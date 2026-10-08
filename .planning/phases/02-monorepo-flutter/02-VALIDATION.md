@@ -136,4 +136,4 @@ created: "2026-10-07"
 - [x] 五端接口未实现状态、Apple 构建义务与原平台差异均保留。
 - [ ] `nyquist_compliant: true` 仅在执行验证后设置；当前保持 false。
 
-**Approval:** pending；本地执行已验证，但实际 CI 尚未执行，最终人审未到达。CORE-01/02/03 仍为 In Progress，Phase 2 未完成。
+**Approval:** pending；本地执行已验证；用户“确认”授权公开推送，首轮 CI 37721726261 已失败并保留证据，链接修复后实际 CI run 37732241885 正在执行、完整通过结果待定，最终人审未到达。CORE-01/02/03 仍为 In Progress，Phase 2 未完成。

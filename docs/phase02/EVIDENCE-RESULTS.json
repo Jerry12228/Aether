@@ -956,13 +956,16 @@
     }
   },
   "ci": {
-    "status": "not-run",
+    "status": "in-progress",
     "candidate": "https://github.com/Jerry12228/Aether",
     "candidateEvidence": "connected GitHub repository search: empty public repository, default main, authenticated admin/push access",
-    "remoteConfigured": false,
-    "pushAuthorization": "pending",
-    "runUrl": null,
-    "runnerSdkAddition": "implemented for ephemeral hosted runner; not executed in Actions",
+    "remoteConfigured": true,
+    "pushAuthorization": "2026-10-08 user exact reply: 确认; public Jerry12228/Aether main publication authorized",
+    "runUrl": "https://github.com/Jerry12228/Aether/actions/runs/37732241885",
+    "runCommit": "6d59a78734a457f2cdb1b6d11c399c344f45775e",
+    "failedRuns": [37721726261],
+    "ledger": "docs/phase02/CI-RESULTS.json",
+    "runnerSdkAddition": "first actual hosted run installed exact SDK28000 successfully; second run in progress",
     "completionRule": "both products and every mandatory check must pass in a real Actions run; local results or human approval cannot substitute"
   },
   "human": {

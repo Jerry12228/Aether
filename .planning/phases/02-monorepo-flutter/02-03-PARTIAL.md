@@ -1,7 +1,7 @@
 ---
 phase: 02-monorepo-flutter
 plan: "03"
-status: blocked
+status: executing
 subsystem: repository-tooling-ci
 tags: [CMake, Flutter, Windows, GitHub-Actions, provenance]
 requires:
@@ -15,7 +15,7 @@ provides:
 affects: [Phase-2-final-human-checkpoint, Phase-3]
 requirements-completed: []
 requirements-progress: [CORE-01, CORE-02, CORE-03]
-blocker: actual required Windows Actions run has not executed; public push destination/authorization pending
+blocker: actual required Windows Actions run in progress; passing CI and final human checkpoint pending
 tested_source_commit: 4a718df4972a59842814140678a5c86f584c7ed8
 key-files:
   created:
@@ -62,7 +62,7 @@ coverage:
     human_judgment: false
 ---
 
-# Plan 02-03 — partial execution record, actual CI blocked
+# Plan 02-03 — partial execution record, actual CI in progress
 
 Task 02-03-01 is complete locally. Task 02-03-02 has its implementation, platform
 attempts and final clean verification, but remains incomplete without actual
@@ -122,16 +122,21 @@ invalid/superseded as recorded in 02-02, with six valid replacement rounds retai
 
 ## Exact resumption gate
 
-The local repository has no configured remote. Connected GitHub inventory found
-empty public https://github.com/Jerry12228/Aether with default main and account
-admin/push access. Its selection and public publication authorization are pending;
-an async question presents that concrete destination. No push was attempted.
+The user authorized public publication with exact reply “确认” on 2026-10-08.
+Origin https://github.com/Jerry12228/Aether was configured; reviewed committed
+HEAD 2d0e5e18935d8334f9c81e7bce6036b034a51cee was pushed without force to main.
+First actual run https://github.com/Jerry12228/Aether/actions/runs/37721726261
+installed SDK28000 and passed three builds, then failed Selene Release plugin link
+validation. Trailing-separator failure reproduced and RED_EVIDENCE_OK; 22a31fc
+tests, 6d59a78 fix. Twelve tooling tests and two sequential restores pass locally.
+Second actual run https://github.com/Jerry12228/Aether/actions/runs/37732241885
+is in progress on 6d59a78734a457f2cdb1b6d11c399c344f45775e.
+Actual failed-run evidence and hashes are in docs/phase02/CI-RESULTS.json.
 
-After authorization, configure the chosen remote, push the reviewed commits,
-execute the Windows workflow, resolve any SDK/GUI failures, and record the actual
+Continue the Windows workflow, resolve any SDK/GUI failures, and record the actual
 run URL/commit/image/tool versions, mandatory counts/outcomes and uploaded artifacts.
 The hosted image currently lacks SDK28000; signed Microsoft-installer addition is
-implemented only for ephemeral hosted runners but has not executed in Actions.
+implemented only for ephemeral hosted runners; the first actual installation passed.
 Alternatively use an explicitly chosen trusted GUI-capable self-hosted Windows x64
 executor already providing VS2026/SDK28000. Missing/failed/skipped required checks
 remain blockers; local results and human approval cannot waive them.

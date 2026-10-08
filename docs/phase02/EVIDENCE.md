@@ -101,15 +101,25 @@ full-SHA actions, contents:read, no submodules/persistent credentials, four expl
 builds, All including mandatory real Windows engine tests, and always-uploaded logs.
 The audited image has SDK26100; bootstrap adds exact SDK28000 only on an ephemeral
 hosted runner through the signed Microsoft installer and checks its outcome.
-This installation and the workflow have not run in Actions. A manual trusted
+The first actual Actions run installed exact SDK28000 successfully. A manual trusted
 self-hosted Windows x64 GUI executor must already supply VS2026/SDK28000.
 Software adapters must remain labeled and cannot become physical performance evidence.
 
-The local repository has no remote. Connected GitHub inventory found an empty
-public [Jerry12228/Aether](https://github.com/Jerry12228/Aether) repository; its
-selection and permission to publish these commits are pending. Actual run URL,
-commit/image/tool versions, complete counts/outcomes and uploaded log/artifact
-links are still required. No local result or human approval waives that requirement.
+The user authorized public publication with the exact reply “确认” on 2026-10-08.
+Remote origin is [Jerry12228/Aether](https://github.com/Jerry12228/Aether); committed
+HEAD 2d0e5e18935d8334f9c81e7bce6036b034a51cee was pushed to main without force.
+[Actual first run](https://github.com/Jerry12228/Aether/actions/runs/37721726261)
+failed Selene Release preparation after three successful builds. Flutter-generated
+local symlink target spelling was rejected; a trailing-separator regression was
+reproduced as a real TAP failure and accepted by the GSD RED gate. Fix 6d59a78
+normalizes link-parent-relative full paths and trailing separators, while rejecting
+foreign targets. Twelve tooling tests and two actual sequential restores passed.
+[Actual second run](https://github.com/Jerry12228/Aether/actions/runs/37732241885)
+is in progress on 6d59a78734a457f2cdb1b6d11c399c344f45775e.
+[CI ledger](CI-RESULTS.json) retains actual API results, image/tool metadata and
+downloaded file hashes; the first failure is not changed to a pass.
+Complete passing counts/outcomes and uploaded
+log/artifact links are still required. No local result or human approval waives that requirement.
 02-03-02/CORE-03/D-17 and the phase therefore remain incomplete.
 
 After actual CI passes, present the full evidence for the final human checkpoint:
