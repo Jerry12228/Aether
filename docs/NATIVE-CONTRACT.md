@@ -44,7 +44,10 @@ contiguous received sequences, rather than assuming cross-thread arrival order.
 
 After stop, Dart drains/ACKs through the final sequence; destroy remains BUSY
 until both native quiescence and ACK hold. Only then does it close the listener
-and stream. TIMEOUT retains safe native/listener references and supports retry;
+and initiates stream closure. Paused external observers own their resume/cancel;
+dispose does not wait for their done delivery after native resources and the
+listener have been released. The Dart drain budget uses monotonic elapsed time.
+TIMEOUT retains safe native/listener references and supports retry;
 it never frees a callback still in use. Consumer code must release local cores
 before process exit. Window-close integration and its five-second aggregate
 budget are now implemented by plan 02-02. Dart removes the Texture consumer

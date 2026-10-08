@@ -168,14 +168,16 @@ class SeleneNativeCore {
     final (status, finalSequence) = await Isolate.run(() => _stopNative(path, handle));
     _check(status, 'stop');
     acknowledgeReceived();
-    final deadline = DateTime.now().add(const Duration(seconds: 2));
+    final draining = Stopwatch()..start();
     while (_acknowledged < finalSequence) {
-      if (DateTime.now().isAfter(deadline)) throw CoreException('Dart event drain', AetherStatus.AETHER_TIMEOUT.value);
+      if (draining.elapsed >= const Duration(seconds: 2)) throw CoreException('Dart event drain', AetherStatus.AETHER_TIMEOUT.value);
       await Future<void>.delayed(const Duration(milliseconds: 1));
     }
     _check(bindings.aether_core_destroy(token), 'destroy');
     disposed = true;
     listener.close();
-    await _events.close();
+    // Stream observers own their pause/resume/cancel. A paused observer's done
+    // delivery must not extend the completed native/ACK/listener barrier.
+    unawaited(_events.close());
   }
 }

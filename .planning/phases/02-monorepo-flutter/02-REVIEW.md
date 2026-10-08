@@ -4,10 +4,13 @@ reviewed: 2026-10-08T02:31:00Z
 depth: standard
 mode: inline (Codex skill adapter; no sub-agent authorization)
 source_commit: eed530d
-files_reviewed: 18
+files_reviewed: 22
 files_reviewed_list:
   - native/core/src/core.cpp
   - native/core/include/aether/core.h
+  - native/platform/platform.cpp
+  - native/platform/include/aether/platform.h
+  - native/platform/include/aether/presentation.h
   - native/platform/windows/presentation.cpp
   - packages/selene_native/windows/selene_native_plugin.cpp
   - packages/selene_native/lib/src/core.dart
@@ -15,6 +18,7 @@ files_reviewed_list:
   - apps/helios/main.cpp
   - apps/selene/lib/native_panel.dart
   - apps/selene/windows/runner/main.cpp
+  - apps/selene/windows/runner/flutter_window.cpp
   - scripts/tool-runner.cjs
   - scripts/build.cjs
   - scripts/verify.cjs
@@ -26,17 +30,18 @@ files_reviewed_list:
   - scripts/bootstrap-ci.ps1
 findings:
   critical: 0
-  warning: 1
+  warning: 0
   info: 0
-  total: 1
-status: issues_found
+  total: 0
+resolved_findings: 1
+status: clean
 ---
 
 # Phase 02 Code Review
 
 ## Narrative Findings (AI reviewer)
 
-### WR-01 — WARNING: paused external observers can prevent dispose completion
+### WR-01 — WARNING (fixed): paused external observers can prevent dispose completion
 
 File: packages/selene_native/lib/src/core.dart, final `await _events.close()` in
 `_dispose` (line 174 at reviewed commit). After stop, ACK, native destroy and
@@ -51,7 +56,13 @@ own resume/cancel. Add an actual-DLL paused-subscription regression that require
 dispose to complete and zero counters before the subscription resumes/cancels.
 Use monotonic elapsed time for the existing Dart callback-drain budget.
 
-Disposition: reproduced test and fix pending. This report is the focused review
+Disposition: real DLL reproduced the paused-observer timeout; GSD validated
+the actual TAP witness as RED_EVIDENCE_OK. The implementation now initiates
+controller closure without awaiting externally paused done delivery, and uses
+Stopwatch for the drain budget. Actual Debug and Release Lifecycle suites pass
+(six Dart cases plus one native suite per configuration), and the TAP witness
+passes after the fix. Final clean rerun remains required in execution evidence.
+No open finding remains in this review scope. This report is the focused review
 of authored lifecycle/source/tooling boundaries; generated non-Windows runners
 retain inventory/source checks and unsupported statuses. It is not a target
 support, actual-CI or final human-review sign-off.
