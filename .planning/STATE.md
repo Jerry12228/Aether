@@ -4,9 +4,9 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 status: executing
 stopped_at: 03-01-03 response 2 recorded; SudoVDA followup complete; no-qualified-provider blocks 03-02/03-03
-last_updated: "2026-10-08T13:55:18Z"
+last_updated: "2026-10-08T14:18:22Z"
 last_activity: 2026-10-08
-last_activity_desc: User chose SudoVDA evidence followup; source acquired; ACL/package/Win10 HDR still block admission
+last_activity_desc: Side-chat requirement R1 removes Win10 HDR; SudoVDA preferred; source/package/license/ACL and machine gates remain
 progress:
   total_phases: 42
   completed_phases: 2
@@ -29,7 +29,7 @@ See: .planning/PROJECT.md (updated 2026-10-08)
 Phase: 3 (虚拟显示器可行性) — NO QUALIFIED PROVIDER
 Plan: 03-01 — 3/3 task evidence done; SUMMARY status halted on no-qualified-provider branch
 Status: Provider checkpoint answered; admission unresolved; 03-02/03-03 not started
-Last activity: 2026-10-08 — Response 2 recorded; fixed SudoMaker driver source audited; no system mutation
+Last activity: 2026-10-08 — Side-chat R1 removes Win10 HDR requirement, preserves Win11 HDR and seven displays; no phase implementation resumed
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -69,6 +69,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 - 2026-10-08 用户原文“2”：确认当前no-qualified-provider，选择补SudoVDA来源/独立许可/ACL/持久性证据；recordedAt=2026-10-08T13:55:18Z，绑定原档案fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。公开驱动源码与作者修改许可声明已获得；对应包、继承许可、安全、短命令机器证据及Win10 HDR未闭合。未新增系统操作或修改driver授权。
 
+- 2026-10-08 侧聊用户原文“修改需求，不要求Win10 HDR；让需求适配SudoVDA；”：明确[需求修订R1](../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)，Win10四组七屏全SDR、Win11 D2 HDR；SudoVDA优先适配，允许显式受控watchdog=0配置与精确60Hz有理数约分。许可/签名/设备ACL、实际保活/容量/隔离仍待证据；本次未批准系统操作或恢复Phase3实施。旧Win10 HDR必需阻碍撤销，原源码事实、检查点hash和历史结果不改写。
+
 ### Pending Todos
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
@@ -83,6 +85,12 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 [Phase3 current gate] 五候选无合格provider。用户选2，已取得SudoMaker/SudoVDA固定源码a4b09fa；作者修改许可声明已定位，但正式DLL/CAT对应、继承许可/notices和正式信任链仍缺。all-users设备ACL+FILE_ANY_ACCESS high未缓解；默认watchdog移除全部屏，协议查询也重置倒计时。启动前watchdog=0选项未在对应包实测；上游明确Win10不支持HDR。VDD包可信Authenticode及INF/DLL成员事实不关闭源码对应、许可、逐slot/稳定ID/ACL和适用安装政策；/kp失败只记具体诊断。Microsoft/Rust/Parsec无完整固定准入来源。03-01-03已选no-qualified-provider和SudoVDA补证，结果见docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md；七屏/HDR/Win10实机及03-02/03-03均未完成。档案docs/phase03/PROVIDER-ADMISSION.md，digest fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。
 
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 261008-uu1 | Win10不要求HDR；SudoVDA适配需求R1 | 2026-10-08 | 00da0bc | [quick记录](quick/261008-uu1-win10-hdr-sudovda/261008-uu1-SUMMARY.md) |
+
 ## Deferred Items
 
 用户明确的TODO见BACKLOG，未把非TODO需求延后。
@@ -92,4 +100,4 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 Last session: 2026-10-08T13:55:18Z
 Stopped at: 03-01-03 answered; followup source evidence complete; no admitted candidate
 Resume file: .planning/phases/03-virtual-display-feasibility/03-01-PLAN.md
-Next action: 待对应正式包/继承许可/受限ACL/保活及Win10 HDR方案等新具体材料，生成新准入档案并重审。不要重复请求选项2或重跑已完成只读任务；无合格provider时03-02/03-03仍阻断，VDP与Phase3未完成。安装/更新/reset仍需03-03具体系统授权。
+Next action: 按用户需求修订R1准备SudoVDA对应正式包/继承许可/受限ACL/保活及Win11 HDR证据，生成区分Win10七屏SDR与Win11 D2 HDR的新准入档案并重审。Win10 HDR不再必需；不要重复请求选项2或重跑已完成只读任务。无合格provider时03-02/03-03仍阻断，VDP与Phase3未完成。安装/更新/reset仍需03-03具体系统授权；本侧聊仅修订文档。
