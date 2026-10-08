@@ -14,7 +14,10 @@ function Ensure-LocalPluginLink {
    New-Item -ItemType Junction -Path $junction -Target $target | Out-Null
  } else {
    $existing=Get-Item -LiteralPath $junction
-   if ($existing.LinkType -notin @('Junction','SymbolicLink') -or [IO.Path]::GetFullPath($existing.Target) -ne $target) { throw 'Existing plugin link has an unexpected target/type' }
+   # Flutter-generated symbolic links can retain a trailing separator; relative
+   # targets are interpreted from the link's parent, never the process cwd.
+   $resolvedTarget=[IO.Path]::GetFullPath($existing.Target,(Split-Path $junction)).TrimEnd('\','/')
+   if ($existing.LinkType -notin @('Junction','SymbolicLink') -or $resolvedTarget -ne $target.TrimEnd('\','/')) { throw 'Existing plugin link has an unexpected target/type' }
  }
 }
 Ensure-LocalPluginLink
