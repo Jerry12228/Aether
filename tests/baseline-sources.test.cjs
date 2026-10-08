@@ -47,6 +47,14 @@ test('independent checkout accepts Windows drive casing but rejects a parent rep
   assert.doesNotThrow(()=>api.context(f.root,record,spelling),'same Windows checkout identity must survive drive-letter casing');
   assert.throws(()=>api.context(f.root,record,(cwd,args,input)=>args.join(' ')==='rev-parse --show-toplevel'?Buffer.from(f.root+'\n'):api.gitRun(cwd,args,input)),/not an independent checkout/);
 });
+test('independent checkout accepts Win32 namespace aliases for the same directory',t=>{
+  const f=fixture(t),record=f.lock.repositories[0];
+  const spelling=(cwd,args,input)=>{
+    const output=api.gitRun(cwd,args,input);
+    return args.join(' ')==='rev-parse --show-toplevel'?Buffer.from(path.toNamespacedPath(output.toString().trim())+'\n'):output;
+  };
+  assert.doesNotThrow(()=>api.context(f.root,record,spelling),'real directory identity must survive a Windows path alias');
+});
 test('source tracer indexes fixed blobs and missing gitlink evidence, then renders via CLI',t=>{
   const f=indexed(t); assert.equal(f.data.files.length,3); assert.equal(f.data.externals.filter(x=>x.kind==='gitlink').length,1);
   assert.equal(f.data.externals[0].materialization,'absent');
