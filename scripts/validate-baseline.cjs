@@ -27,9 +27,10 @@ function selectRepos(lock,scope){const repos=scope?lock.repositories.filter(r=>r
 function context(root,repo,runner=gitRun){
   const cwd=guarded(root,repo.path);if(!fs.existsSync(cwd))throw Error(`missing checkout: ${repo.name}; restore explicitly`);
   const run=(args,input)=>{const out=runner(cwd,args,input);return Buffer.isBuffer(out)?out:Buffer.from(out);};
-  const actualRoot=fs.realpathSync(run(['rev-parse','--show-toplevel']).toString().trim()),expectedRoot=fs.realpathSync(cwd);
+  const actualRoot=fs.realpathSync.native(run(['rev-parse','--show-toplevel']).toString().trim()),expectedRoot=fs.realpathSync.native(cwd);
   // Windows paths are case-insensitive (including Git's drive spelling), while
-  // path.relative keeps POSIX comparisons case-sensitive. Both paths are real.
+  // path.relative keeps POSIX comparisons case-sensitive. Native realpath also
+  // canonicalizes Win32 namespace/short-name aliases through the OS filesystem.
   if(path.relative(actualRoot,expectedRoot)!=='')throw Error(`not an independent checkout: ${repo.name}; actual=${actualRoot}; expected=${expectedRoot}`);
   const head=run(['rev-parse','HEAD']).toString().trim();if(head!==repo.commit)throw Error(`HEAD SHA mismatch: ${repo.name}`);
   const remote=run(['remote','get-url','origin']).toString().trim();if(remote!==repo.url)throw Error(`remote mismatch: ${repo.name}`);
