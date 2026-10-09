@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "status": "verified",
+  "recordedAt": "2026-10-09T06:25:50.635Z",
+  "scope": "independent redistribution basis for this eight-input standalone driver source/package; no monorepo license selection or production release approval",
+  "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+  "sourceManifest": {
+    "path": "artifacts/phase03/derived-research/helios-1791524690800/research-source.json",
+    "length": 4620,
+    "sha256": "227839d8c950f97b6121f1ee5ebe4cadc0672a5e3177d26f09017764c4de8933",
+    "fixture": false
+  },
+  "packageRoot": "artifacts/phase03/selfsigned-research/helios-1791525277849",
+  "packageArchive": {
+    "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/HeliosDisplayResearch.zip",
+    "length": 1107415,
+    "sha256": "c5f085cba2fec999fabf141038dc7530bc61b5b489807d485e612b615c59783a",
+    "fixture": false
+  },
+  "licensedMicrosoftReference": {
+    "repository": "https://github.com/microsoft/Windows-driver-samples",
+    "commit": "d43983a97c79e5e7eafb4948fd2678f5e709838b",
+    "basis": "MS-PL grant for the available Microsoft sample expressions, independently matched after replacing unresolved earlier configuration/helper bodies; exact 2017 Git ancestry is not claimed",
+    "files": [
+      {
+        "path": "artifacts/phase03/admission-followup/ms-initial-Driver.cpp.raw",
+        "length": 26120,
+        "sha256": "402825d8ebab9b08bf0e270aa98349ce49163cd5cb50e03d6d3786e87bc803e6",
+        "fixture": false
+      },
+      {
+        "path": "artifacts/phase03/admission-followup/ms-initial-Driver.h.raw",
+        "length": 2788,
+        "sha256": "e257ed1f1cfed0edf64e9c939bc8f100148081a3f2fea736375b9591aede54d6",
+        "fixture": false
+      },
+      {
+        "path": "artifacts/phase03/admission-followup/ms-initial-Trace.h.raw",
+        "length": 2005,
+        "sha256": "937ed3725943d90aa20543400791ac8611d004fe4cabfc363671bde2b9827ce4",
+        "fixture": false
+      }
+    ],
+    "license": {
+      "path": "docs/phase03/licenses/Microsoft-MS-PL.txt",
+      "length": 2665,
+      "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a",
+      "fixture": false
+    }
+  },
+  "yukinoChanges": {
+    "basis": "Only Yukino/SudoMaker-authored changes use the author-modification CC0/public-domain option; never a blanket relicense",
+    "declaration": {
+      "path": "docs/phase03/licenses/SudoVDA-README.txt",
+      "length": 3663,
+      "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+      "fixture": false
+    },
+    "terms": {
+      "path": "docs/phase03/licenses/CC0-1.0.txt",
+      "length": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "fixture": false
+    }
+  },
+  "independentInputs": [
+    {
+      "path": "scripts/prepare-helios-display-research.cjs",
+      "sha256": "b4a16f2114236e5aaabb7c75eec67cc11aafa1ccd2bce2ae245dda546ec15f9f"
+    },
+    {
+      "path": "scripts/helios-display-inputs.cjs",
+      "sha256": "aaf9bbc9e742dbfeda92735b07ecd50c493d8d5c72dce8121b8b5a24dd7b3091"
+    },
+    {
+      "path": "tools/helios-display-research/AdapterOption.h",
+      "sha256": "ece732dec0137f9c324a42211507fdcf91f5cbd0fd3d5828fbc2d7b28af37a7d"
+    },
+    {
+      "path": "tools/helios-display-research/HeliosDisplay.inf",
+      "sha256": "2fa400b44ce35830c17df6810489ff40551e1d4db8058b9c035dceed1bbe3ef8"
+    },
+    {
+      "path": "tools/helios-display-research/HeliosDisplay.vcxproj",
+      "sha256": "d6cde10abb974dcde8ee5b49b632048556fbbb1b4dc47f4f31e4e9a7dab6db39"
+    },
+    {
+      "path": "tools/helios-display-research/HeliosDisplaySettings.cpp.inc",
+      "sha256": "6984975cd2d2b09ca78ea59d499d122882fa617dc238fe8355941c480500f64f"
+    },
+    {
+      "path": "tools/helios-display-research/HeliosDriverIncludes.cpp.inc",
+      "sha256": "40b027ffa5101e136cc40d25ae28d1837d2d84a895c696065577291526a99bbf"
+    }
+  ],
+  "audit": [
+    {
+      "name": "Driver.cpp",
+      "rows": 1645,
+      "authors": {
+        "karlf": 552,
+        "Yukino Song": 1067,
+        "ge9": 2,
+        "Joakim Sandström": 15,
+        "Sajid": 2,
+        "Mike Rodriguez": 7
+      },
+      "independentlyReplacedOriginalLines": [
+        {
+          "author": "karlf",
+          "line": 18,
+          "text": "#include \"Driver.h\""
+        },
+        {
+          "author": "ge9",
+          "line": 21,
+          "text": "#include <tuple>"
+        },
+        {
+          "author": "Joakim Sandström",
+          "line": 23,
+          "text": "#include <iostream>"
+        },
+        {
+          "author": "Joakim Sandström",
+          "line": 26,
+          "text": ""
+        },
+        {
+          "author": "Sajid",
+          "line": 27,
+          "text": "#include <AdapterOption.h>"
+        },
+        {
+          "author": "karlf",
+          "line": 29,
+          "text": ""
+        },
+        {
+          "author": "Joakim Sandström",
+          "line": 295,
+          "text": "\tLONG lResult;"
+        },
+        {
+          "author": "Joakim Sandström",
+          "line": 296,
+          "text": ""
+        },
+        {
+          "author": "Joakim Sandström",
+          "line": 297,
+          "text": "\t// Open the registry key"
+        },
+        {
+          "author": "Joakim Sandström",
+          "line": 299,
+          "text": "\tif (lResult != ERROR_SUCCESS) {"
+        },
+        {
+          "author": "Joakim Sandström",
+          "line": 359,
+          "text": "\t// Close the registry key"
+        },
+        {
+          "author": "Joakim Sandström",
+          "line": 360,
+          "text": "\tRegCloseKey(hKey);"
+        }
+      ],
+      "licensedReferenceExpressions": 566,
+      "unmatched": [],
+      "blame": {
+        "path": "artifacts/phase03/admission-followup/blame-copy-Driver.cpp.txt",
+        "length": 710462,
+        "sha256": "5501c2a31e3ff3468ee73088d6bf9da459e3ffc6ba3105dcdbf3768a0e9a8150",
+        "fixture": false
+      }
+    },
+    {
+      "name": "Driver.h",
+      "rows": 126,
+      "authors": {
+        "karlf": 94,
+        "Yukino Song": 32
+      },
+      "independentlyReplacedOriginalLines": [],
+      "licensedReferenceExpressions": 94,
+      "unmatched": [],
+      "blame": {
+        "path": "artifacts/phase03/admission-followup/blame-copy-Driver.h.txt",
+        "length": 44039,
+        "sha256": "086a19d5ac8c12a5e290a266ebe188f1e002bb3d3655b6bd814b34e1590e7aea",
+        "fixture": false
+      }
+    }
+  ],
+  "trace": {
+    "licensedOriginalLines": 59,
+    "legacyConditionalReplaced": true,
+    "identityIndependentlyChanged": true
+  },
+  "excludedOriginalInputs": [
+    "README.md",
+    "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+    "Virtual Display Driver (HDR)/SudoVDA.sln",
+    "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+    "Virtual Display Driver (HDR)/option.txt"
+  ],
+  "packageNotices": [
+    {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/licenses/Microsoft-MS-PL.txt",
+      "length": 2665,
+      "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a",
+      "fixture": false
+    },
+    {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/licenses/SudoVDA-README.txt",
+      "length": 3663,
+      "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+      "fixture": false
+    },
+    {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/licenses/CC0-1.0.txt",
+      "length": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "fixture": false
+    },
+    {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/licenses/HeliosDisplay-NOTICE.txt",
+      "length": 1813,
+      "sha256": "11400757633fe771d348a7b37f6c0858d65bca23ef08fc3a674e8a8c73999931",
+      "fixture": false
+    }
+  ],
+  "requiredDistributionConditions": [
+    "Retain full MS-PL, Microsoft copyright and all source notices.",
+    "Keep standalone driver source under MS-PL and compiled distribution compliant; no claim that the monorepo license is now selected.",
+    "Retain SudoMaker declaration and original attribution material; external EDID/GPL templates are excluded."
+  ],
+  "productionReleaseApproved": false
+}

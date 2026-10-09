@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "status": "verified",
+  "recordedAt": "2026-10-09T06:27:45.990Z",
+  "scope": "source-backed inference carrying forward the identical INF/WDF/private IOCTL access boundary; NOT a claim that the reconstructed DLL was installed",
+  "testedPackageRoot": "D:\\WorkSpace\\Aether\\artifacts\\phase03\\selfsigned-research\\helios-1791523416599",
+  "candidatePackageRoot": "artifacts/phase03/selfsigned-research/helios-1791525277849",
+  "actualAudit": {
+    "path": "docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json",
+    "sha256": "2766a73167a24322aa26039f3bbc2e24947f2953200a0f68adf8570325c74bca",
+    "fixture": false
+  },
+  "oldManifest": {
+    "path": "artifacts/phase03/derived-research/helios-1791523371087/research-source.json",
+    "sha256": "3cf06205a03ffc21db37e94879067c582c690dd745d05801adcb8414891a0233",
+    "fixture": false
+  },
+  "newManifest": {
+    "path": "artifacts/phase03/derived-research/helios-1791524690800/research-source.json",
+    "sha256": "227839d8c950f97b6121f1ee5ebe4cadc0672a5e3177d26f09017764c4de8933",
+    "fixture": false
+  },
+  "unchangedBuildInputs": [
+    "Common/Include/AdapterOption.h",
+    "Common/Include/sudovda-ioctl.h",
+    "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+    "Virtual Display Driver (HDR)/SudoVDA/HeliosDisplay.inf",
+    "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+    "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+    "Virtual Display Driver (HDR)/SudoVDA/edid.h"
+  ],
+  "includeOrderUnchanged": true,
+  "globalDefaultsAndCallbackDeclarationsUnchanged": true,
+  "deviceCreationAndIoctlImplementationUnchanged": true,
+  "changedRegions": [
+    "independently authored registry settings reader",
+    "independently declared identical dependency block"
+  ],
+  "deviceAcl": "D:P(A;;GA;;;SY)(A;;GA;;;BA)",
+  "hardwareId": "Root\\Aether\\HeliosDisplay",
+  "interfaceGuid": "0d9ecbde-124e-45f0-9ae0-3d71b16a7725",
+  "requiredProfile": {
+    "watchdog": 0,
+    "testMode": 0,
+    "maxMonitors": 10
+  },
+  "conclusion": "Actual filtered/elevated denial, zero-access rejection and BA/SY stack DACL apply to the unchanged Windows-managed boundary. Full reconstructed package installation/runtime remains later machine evidence.",
+  "limits": [
+    "Only GET_PROTOCOL_VERSION was physically probed.",
+    "No seven-screen/HDR/Win10/persistence/update result is inferred.",
+    "Any change to INF, private IOCTL/header, WDF/security callback suffix, identity or profile invalidates this transfer."
+  ]
+}

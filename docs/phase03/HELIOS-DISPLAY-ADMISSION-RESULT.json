@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "stage": "admission",
+  "selectedProviderId": "aether-helios-display",
+  "errors": [],
+  "dossierSha256": "03953899ea81654daa6f0fd144f8ff3dd8e060103284f933d374763e66d2c3ba",
+  "recordedAt": "2026-10-09T06:35:29.423Z",
+  "finalDllInstalled": false,
+  "phase0302Started": false,
+  "phase0303Started": false
+}

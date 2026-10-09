@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "status": "verified",
+  "scope": "actual prepared sources and actual x64 WDK build, signed package and separate native input tests; no installed final-DLL claim",
+  "sourceManifest": {
+    "path": "artifacts/phase03/derived-research/helios-1791524690800/research-source.json",
+    "length": 4620,
+    "sha256": "227839d8c950f97b6121f1ee5ebe4cadc0672a5e3177d26f09017764c4de8933",
+    "fixture": false
+  },
+  "build": {
+    "path": "artifacts/phase03/admission-followup/rights-reconstructed-build.log",
+    "length": 1145,
+    "sha256": "5ef22cc67f09d673e19d819585fde28e870799be2c7b8e3cdece37c709965885",
+    "fixture": false
+  },
+  "settingsBuild": {
+    "path": "artifacts/phase03/admission-followup/rights-settings-test-build-2.log",
+    "length": 207,
+    "sha256": "7c0a203c05a9e3263e55dd0864c03ee6a8eb26b2869572ad9f0a37e889c3961d",
+    "fixture": false
+  },
+  "settingsRun": {
+    "path": "artifacts/phase03/admission-followup/rights-settings-test-run.log",
+    "length": 216,
+    "sha256": "0642d5e079a6cf50cd79534fb2c4018384729632275281e10377d55c63c17f64",
+    "fixture": false
+  },
+  "edidBuild": {
+    "path": "artifacts/phase03/admission-followup/rights-edid-test-build.log",
+    "length": 203,
+    "sha256": "105942fa360f3945284673feb66afcbc4089516579fa1657d249bdd20ed2d811",
+    "fixture": false
+  },
+  "edidRun": {
+    "path": "artifacts/phase03/admission-followup/rights-edid-test-run.log",
+    "length": 97,
+    "sha256": "181a4635a449212dc43c6542f9d16af39ca36b244eb88a005212bc0d9c3f0cfa",
+    "fixture": false
+  },
+  "signing": {
+    "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/signing-state.json",
+    "length": 1467,
+    "sha256": "af862734b563cb700fd4e7a3e24f2d943dfe4fdbfc897fc290a8aaafa42e685f",
+    "fixture": false
+  },
+  "signature": {
+    "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/signature-verification.json",
+    "length": 1362,
+    "sha256": "642d6b04c5d8ae2e874b4b2d02e389b697cd8471841997329e505995b1005d18",
+    "fixture": false
+  },
+  "rights": {
+    "path": "docs/phase03/HELIOS-DISPLAY-RIGHTS-CLOSED.json",
+    "length": 8259,
+    "sha256": "2f7b8e28e9a8bab0b2a22be778f838195057391800b0ad9558859f052a489405",
+    "fixture": false
+  },
+  "acl": {
+    "path": "docs/phase03/HELIOS-DISPLAY-ACL-BRIDGE.json",
+    "length": 2483,
+    "sha256": "371bc5a3a4494429dbeb350888e77a776b26228c4b5d183aed5bd7f98ade94bc",
+    "fixture": false
+  }
+}
