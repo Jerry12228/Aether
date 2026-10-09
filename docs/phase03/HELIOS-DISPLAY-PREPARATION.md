@@ -1,5 +1,7 @@
 # Aether 专属 SudoVDA 派生准备结果
 
+**2026-10-09 续行：** 原文与旧包/hash保留。新的[来源/EDID追踪](HELIOS-DISPLAY-PROVENANCE.md)、[Win10/11 INF修正与实际构建](HELIOS-DISPLAY-INF-FOLLOWUP.md)、[签名准备](HELIOS-DISPLAY-SIGNING-READINESS.md)已完成。本轮全局 `/w` 和各OS分支检查通过，新的研究INF无2084；许可及正式签名仍未闭合，provider未准入。
+
 2026-10-08。用户原文 `1` 已选择 [R1 提案](SUDOVDA-R1-ROUTE.md)中的独立派生准备路线；[决定](PROVIDER-ADMISSION-R1.json)记录于 2026-10-08T15:18:55Z，仍绑定档案摘要 `0e2010bd2143013fbbc62d0be3cad622020024594562c8521370ff36bcf0d116`。原提案及其 hash 保持不变，本文件记录批准后的实际工作。
 
 用户另明确「严禁重启、关闭开发机」。该限制持续适用；本轮没有安装、重载、停止驱动/服务、发送 provider IOCTL、修改 registry、导入证书、更改安全策略、重启或关机。需要重启的后续检查保持未执行，不自动安排重启。
