@@ -90,6 +90,11 @@ test('derived origin refuses stale source bytes, omitted inputs, duplicate outpu
  try{
   const baseline=check(manifest);assert.ok(!baseline.some(e=>e.includes('derived')),baseline.join('\n'));
   assert.ok(baseline.some(e=>e.includes('fixture')),'synthetic evidence never grants real admission');
+  const reconstructed=structuredClone(manifest);reconstructed.sourceRevision=2;
+  for(const p of ['tools/helios-display-research/HeliosDisplaySettings.cpp.inc','tools/helios-display-research/HeliosDriverIncludes.cpp.inc'])reconstructed.independentInputs.push({path:p,sha256:hash(fs.readFileSync(path.join(root,p)))});
+  assert.ok(!check(reconstructed).some(e=>e.includes('derived')),'revision2 binds both independent reconstruction inputs');
+  const missingReconstruction=structuredClone(reconstructed);missingReconstruction.independentInputs.pop();assert.ok(check(missingReconstruction).some(e=>e.includes('inventory')));
+  const unsupported=structuredClone(reconstructed);unsupported.sourceRevision=3;assert.ok(check(unsupported).some(e=>e.includes('unknown derived source revision')));
   for(const [message,mutate] of [
    ['input bytes',m=>m.files[0].sha256='f'.repeat(64)],['eight build inputs',m=>m.files.pop()],
    ['inventory',m=>m.files[0].sourcePath=m.files[1].sourcePath],['duplicate',m=>m.files[0].outputPath=m.files[1].outputPath],

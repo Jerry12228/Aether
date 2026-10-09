@@ -49,6 +49,12 @@ function transform(relative,text){
   text=replaceOne(text,'wchar_t gpuName[128];','wchar_t gpuName[128]{};\n\tDWORD gpuNameType = 0;');
   text=replaceOne(text,'RegQueryValueExW(hKey, L"gpuName", NULL, NULL, (LPBYTE)gpuName, &bufferSize);','RegQueryValueExW(hKey, L"gpuName", NULL, &gpuNameType, (LPBYTE)gpuName, &bufferSize);');
   text=replaceOne(text,'if (lResult == ERROR_SUCCESS) {\n\t\tAdapterOption adapterOpt', 'if (lResult == ERROR_SUCCESS && gpuNameType == REG_SZ && bufferSize >= sizeof(wchar_t) && bufferSize <= sizeof(gpuName) && bufferSize % sizeof(wchar_t) == 0 && gpuName[bufferSize / sizeof(wchar_t) - 1] == 0) {\n\t\tAdapterOption adapterOpt');
+  const settingsBegin=text.indexOf('void LoadSettings() {'),settingsEnd=text.indexOf('\nvoid DisconnectAllMonitors()',settingsBegin);
+  if(settingsBegin<0||settingsEnd<0)throw Error('Settings function boundary changed');
+  text=text.slice(0,settingsBegin)+fs.readFileSync(path.join(root,'tools/helios-display-research/HeliosDisplaySettings.cpp.inc'),'utf8')+text.slice(settingsEnd);
+  const includesBegin=text.indexOf('#include "Driver.h"'),includesEnd=text.indexOf('using namespace std;',includesBegin);
+  if(includesBegin<0||includesEnd<0)throw Error('Driver dependency block changed');
+  text=text.slice(0,includesBegin)+fs.readFileSync(path.join(root,'tools/helios-display-research/HeliosDriverIncludes.cpp.inc'),'utf8')+'\n'+text.slice(includesEnd);
   text=replaceOne(text,'if (IoControlCode != IOCTL_GET_WATCHDOG)',
    'if (IoControlCode == IOCTL_ADD_VIRTUAL_DISPLAY || IoControlCode == IOCTL_REMOVE_VIRTUAL_DISPLAY || IoControlCode == IOCTL_SET_RENDER_ADAPTER || IoControlCode == IOCTL_DRIVER_PING)');
   const callback=text.indexOf('VOID SudoVDAIoDeviceControl(');if(callback<0)throw Error('Missing callback declaration');
@@ -117,8 +123,9 @@ async function prepare(){
   sourceFiles.push({sourcePath:f.path,sourceSha256:f.sha256,outputPath,sha256:sha(changed),changed:!changed.equals(bytes),bytes:changed,target});
  }
  for(const f of sourceFiles){fs.mkdirSync(path.dirname(f.target),{recursive:true});fs.writeFileSync(f.target,f.bytes);}
- const independentInputs=['scripts/prepare-helios-display-research.cjs','scripts/helios-display-inputs.cjs','tools/helios-display-research/AdapterOption.h','tools/helios-display-research/HeliosDisplay.inf','tools/helios-display-research/HeliosDisplay.vcxproj'].map(p=>({path:p,sha256:sha(fs.readFileSync(path.join(root,p)))}));
+ const independentInputs=['scripts/prepare-helios-display-research.cjs','scripts/helios-display-inputs.cjs','tools/helios-display-research/AdapterOption.h','tools/helios-display-research/HeliosDisplay.inf','tools/helios-display-research/HeliosDisplay.vcxproj','tools/helios-display-research/HeliosDisplaySettings.cpp.inc','tools/helios-display-research/HeliosDriverIncludes.cpp.inc'].map(p=>({path:p,sha256:sha(fs.readFileSync(path.join(root,p)))}));
  const report={scope:'research-only; source-rights dossier and runtime/security/machine behavior pending; not admitted package',sourceCommit:expectedCommit,independentInputs,excludedHistoricalInputs:manifest.files.filter(f=>!sourceFiles.some(x=>x.sourcePath===f.path)).map(f=>f.path),hardwareId:'Root\\Aether\\HeliosDisplay',interfaceGuid:'0d9ecbde-124e-45f0-9ae0-3d71b16a7725',registryPath:'HKLM\\SOFTWARE\\Aether\\HeliosDisplay',deviceAcl:'D:P(A;;GA;;;SY)(A;;GA;;;BA)',signMode:'Off',files:sourceFiles.map(({bytes,target,...f})=>f)};
+ report.sourceRevision=2;
  fs.writeFileSync(path.join(output,'research-source.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({output,changedFiles:report.files.filter(f=>f.changed).map(f=>f.sourcePath),signMode:report.signMode}));return report;
 }
 if(require.main===module){if(process.argv.slice(2).join(' ')!=='--prepare-unsigned-research'){console.error('Usage: node scripts/prepare-helios-display-research.cjs --prepare-unsigned-research');process.exitCode=2;}else prepare().catch(e=>{console.error(e.message);process.exitCode=1;});}
