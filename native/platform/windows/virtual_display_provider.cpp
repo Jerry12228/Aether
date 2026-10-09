@@ -80,7 +80,7 @@ std::string ToJson(const DisplayResult& r,const std::string& logPath,const std::
  s<<"],\"devices\":[";first=true;for(const auto& d:r.devices){if(!first)s<<',';first=false;s<<"{\"instanceId\":"<<Escape(d.instanceId)<<",\"description\":"<<Escape(d.description)<<",\"service\":"<<Escape(d.service)<<",\"providerHint\":"<<(d.providerId.empty()?"null":Escape(d.providerId))<<",\"devNodeStatus\":"<<d.status<<",\"problem\":"<<d.problem<<'}';}
  s<<"],\"logPath\":"<<(logPath.empty()?"null":Escape(logPath))<<",\"durationMs\":"<<r.durationMs<<'}';return s.str();
 }
-int RunDisplayCommand(int argc,char** argv){
+int RunProbeCommand(int argc,char** argv){
  bool probe=false,json=false;int i=2;std::string group;
  if(i<argc && std::string(argv[i])=="query")++i;
  else if(i+1<argc && std::string(argv[i])=="driver" && std::string(argv[i+1])=="check"){probe=true;i+=2;}

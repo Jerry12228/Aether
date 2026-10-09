@@ -2,9 +2,10 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os');
 const {spawnSync,spawn}=require('node:child_process');
 const config=process.env.AETHER_DISPLAY_CONFIGURATION||'Debug';
-const binary=path.resolve(`build/native/${config}/aether_helios_test.exe`),product=path.resolve(`build/native/${config}/helios.exe`);
+const repo=path.resolve(__dirname,'..');
+const binary=path.join(repo,`build/native/${config}/aether_helios_test.exe`),product=path.join(repo,`build/native/${config}/helios.exe`);
 function sandbox(){const root=fs.mkdtempSync(path.join(os.tmpdir(),'aether-display-contract-'));return root;}
-function run(root,args,code=0){const r=spawnSync(binary,['vdisplay',...args,'--test-provider','--test-root',root,'--json'],{encoding:'utf8',timeout:12000,windowsHide:true});assert.equal(r.status,code,r.error?.message||r.stdout+r.stderr);return JSON.parse(r.stdout);}
+function run(root,args,code=0){const r=spawnSync(binary,['vdisplay',...args,'--test-provider','--test-root',root,'--json'],{encoding:'utf8',timeout:12000,windowsHide:true});assert.equal(r.status,code,r.error?.message||r.stdout+r.stderr);return code===86?r:JSON.parse(r.stdout);}
 function slots(r){return r.groups.flatMap(g=>g.slots);}
 test('tracer: independent CLI processes persist A identity and reject duplicate name',()=>{
  const root=sandbox(),a=run(root,['create','A']);assert.equal(a.evidenceScope,'contract');assert.equal(a.status,'ok');
@@ -18,8 +19,9 @@ test('registry: partial creation and commit failures compensate owned slots only
   assert.equal(run(root,['create','A','--fault',fault],1).status,'failed');const q=run(root,['query']);assert.deepEqual(q.groups,[b]);assert.equal(q.pending,null);assert.equal(q.backendSlotCount,1);
  }
 });
-test('registry: crash leaves pending journal and explicit named recovery resolves it',()=>{
+test('registry: crash leaves pending journal and query does not recover it',()=>{
  const root=sandbox();run(root,['create','A','--fault','crash:1'],86); // abrupt process death, output is checked separately below
+ const q=run(root,['query']);assert.equal(q.groups.length,0);assert.equal(q.backendSlotCount,1);assert.equal(q.pending.stage,'creating');assert.equal(run(root,['create','B'],1).status,'pending-recovery');assert.equal(run(root,['query']).backendSlotCount,1);
 });
 test('registry: racing processes serialize normalized group creation',async()=>{
  const root=sandbox();

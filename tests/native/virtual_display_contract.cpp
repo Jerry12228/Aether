@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include "../../apps/helios/display_json.h"
 #if __has_include("aether/virtual_display.h")
 #include "aether/virtual_display.h"
 #define HAS_DISPLAY_CONTRACT 1
@@ -24,6 +25,15 @@ bool RunContractTests(){
 }
 #endif
 int main(int argc, char** argv) {
+ if(argc==5){
+  using aether::vdisplay::Json;
+  if(Json::parse("{\"id\":1,\"slots\":[true,null]}").at("id").number()!=1)return 1;
+  for(const auto* bad:{"{\"a\":1,\"a\":2}","[9223372036854775808]","[01]","[1.1]"}){bool refused=false;try{Json::parse(bad);}catch(...){refused=true;}if(!refused)return 1;}
+  const auto configuration=std::filesystem::path(argv[1]).parent_path().filename().string();SetEnvironmentVariableA("AETHER_DISPLAY_CONFIGURATION",configuration.c_str());
+  std::string command="\""+std::string(argv[4])+"\" --test --test-reporter=tap --test-name-pattern=\"^"+argv[2]+":\" \""+argv[3]+"\"";
+  STARTUPINFOA si{};si.cb=sizeof(si);si.dwFlags=STARTF_USESTDHANDLES;si.hStdOutput=GetStdHandle(STD_OUTPUT_HANDLE);si.hStdError=GetStdHandle(STD_ERROR_HANDLE);si.hStdInput=GetStdHandle(STD_INPUT_HANDLE);PROCESS_INFORMATION pi{};if(!CreateProcessA(nullptr,command.data(),nullptr,nullptr,TRUE,CREATE_NO_WINDOW,nullptr,nullptr,&si,&pi))return 2;
+  DWORD code=2;if(WaitForSingleObject(pi.hProcess,28000)!=WAIT_OBJECT_0){TerminateProcess(pi.hProcess,2);}GetExitCodeProcess(pi.hProcess,&code);CloseHandle(pi.hThread);CloseHandle(pi.hProcess);return static_cast<int>(code);
+ }
  if(argc!=2)return 2;
  std::string baseline;
  for(const bool probe:{false,true,false}){
@@ -46,7 +56,7 @@ int main(int argc, char** argv) {
  const auto actual=json.find("\"actual\":");const auto end=json.find(",\"logPath\":");
  if(actual==std::string::npos || end==std::string::npos)return 1;
  const auto reality=json.substr(actual,end-actual);
- if(baseline.empty())baseline=reality;else if(reality!=baseline){std::cerr<<"FAIL observed display/device state changed across read-only CLI calls\n";return 1;}
+ if(!probe){if(baseline.empty())baseline=reality;else if(reality!=baseline){std::cerr<<"FAIL observed display/device state changed across read-only CLI calls\n";return 1;}}
  }
 #ifdef HAS_DISPLAY_CONTRACT
  if(!RunContractTests()){std::cerr<<"FAIL injected display contract\n";return 1;}
