@@ -17,8 +17,8 @@ tech-stack:
   added: []
   patterns: [token-derived ownership, same-directory flush-and-replace journal, exact rational refresh, isolated test binary, bounded Windows calls]
 key-files:
-  created: [apps/helios/display_commands.cpp, apps/helios/display_json.h, apps/helios/display_registry.h, apps/helios/display_registry.cpp, apps/helios/display_test_pattern.cpp, native/platform/windows/virtual_display_mutation.cpp, native/platform/windows/helios_display_pin.h, tests/virtual-display-contract.test.cjs, tests/helios-display-lifecycle.test.cjs, docs/phase03/HELIOS-DISPLAY-CLI.md, docs/phase03/HELIOS-DISPLAY-CONTRACT-EVIDENCE.json, docs/phase03/HELIOS-DISPLAY-LIFECYCLE-EVIDENCE.json, docs/phase03/PROVIDER-ADMISSION-03-01-HISTORY.json]
-  modified: [CMakeLists.txt, apps/helios/main.cpp, native/platform/windows/virtual_display_provider.cpp, tests/native/virtual_display_contract.cpp, scripts/prepare-helios-display-research.cjs, scripts/record-helios-display-lifecycle.cjs, docs/phase03/PROVIDER-ADMISSION-RECONSTRUCTED.json]
+  created: [apps/helios/display_commands.cpp, apps/helios/display_json.h, apps/helios/display_registry.h, apps/helios/display_registry.cpp, apps/helios/display_test_pattern.cpp, native/platform/windows/virtual_display_mutation.cpp, native/platform/windows/helios_display_pin.h, tests/virtual-display-contract.test.cjs, tests/helios-display-lifecycle.test.cjs, scripts/record-helios-display-lifecycle.cjs, docs/phase03/HELIOS-DISPLAY-CLI.md, docs/phase03/HELIOS-DISPLAY-CONTRACT-EVIDENCE.json, docs/phase03/HELIOS-DISPLAY-LIFECYCLE-EVIDENCE.json, docs/phase03/PROVIDER-ADMISSION-03-01-HISTORY.json]
+  modified: [CMakeLists.txt, native/platform/windows/virtual_display_provider.cpp, tests/native/virtual_display_contract.cpp, scripts/prepare-helios-display-research.cjs, docs/phase03/PROVIDER-ADMISSION-RECONSTRUCTED.json]
 key-decisions:
   - New 2026-10-09 execute-phase authorization covers 03-02 implementation; actual installation/topology/config/reset remain 03-03 concrete authorization work
   - Production accepts no test injection even when the legacy test-hooks cache option is enabled
@@ -154,6 +154,7 @@ Native suite dispatch registers only its matching required cases, rejects zero-c
 ## Issues Encountered
 
 - Restricted sandbox child-process/Git metadata access produced EPERM or fail-closed branch lookup. Authorized elevated tool runs supplied actual tests/builds and verified nonprotected branch; these environment failures were never counted as intentional RED or passing evidence.
+- Existing STATE used prose without a parseable Current Plan counter. Closeout restored the labeled 2-of-3 position and reran the GSD advance handler successfully to plan 3; historical admission scope remains labeled history.
 - The WDK build returned success but its bundled InfVerif emitted a DLL-loading exception. The original log is retained; independently invoked installed x64 InfVerif passed all six configured checks. Lifecycle evidence states this diagnostic instead of calling the entire build diagnostic-free.
 - Windows SDK macro collisions/Windows integral JSON types and CTest working-directory dispatch were repaired during Task 1. The final guard supports integer/enum serialization and repository-resolved test files.
 

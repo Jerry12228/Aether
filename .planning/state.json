@@ -16,7 +16,7 @@
     {
       "number": "3",
       "name": "虚拟显示器可行性",
-      "status": "pending"
+      "status": "in_progress"
     },
     {
       "number": "4",
@@ -215,9 +215,9 @@
     }
   ],
   "next": {
-    "command": "/gsd:execute-phase 3",
-    "label": "Execute Phase 3 — 3 sequential plans",
-    "reason": "Phase 3 planned and independently checked; implementation has not started"
+    "command": "/gsd:progress --next",
+    "label": "Advance to the next step",
+    "reason": "Phase 3 of 42 · 5% · executing"
   },
-  "updated_at": "2026-10-08T12:04:14.309Z"
+  "updated_at": "2026-10-09T08:58:21.936Z"
 }
