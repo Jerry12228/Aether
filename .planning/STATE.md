@@ -3,12 +3,12 @@ gsd_state_version: "1.0"
 current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
-status: executing
-stopped_at: Completed 03-02-PLAN.md; 03-03 concrete system authorization checkpoint next
-last_updated: "2026-10-09T08:58:21.867Z"
+status: halted
+stopped_at: "03-03-02 blocking-human: fixed Win11 package plan awaits separately scoped system authorization"
+last_updated: "2026-10-09T10:15:47.516Z"
 last_activity: 2026-10-09
-last_activity_desc: 03-02 complete; persistent transactions, pinned native adapter and seven-slot contracts pass Debug/Release; 03-03 concrete system authorization remains
-state_head: d42b28ed025737bb5efb5925dd67250b3f7a612f
+last_activity_desc: 03-03 Task1 complete; native package code and immutable plan pass Contract35/35; halted at Task2 concrete machine authorization
+state_head: f3c780b
 progress:
   total_phases: 42
   completed_phases: 2
@@ -24,16 +24,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-08)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 03 — 虚拟显示器可行性（03-01/03-02 完成；修订包已重新准入；03-03 具体系统授权与实机矩阵未执行）
+**Current focus:** Phase 03 — 虚拟显示器可行性（03-01/03-02 完成；03-03 Task1固定包计划和安装代码完成；Task2具体授权、实机矩阵及最终人审未完成）
 
 ## Current Position
 
 Current Plan: 3
 Total Plans in Phase: 3
 Phase: 3 (虚拟显示器可行性) — two plans complete; phase and VDP requirements incomplete
-Plan: 03-02 complete — 03-03 concrete system authorization checkpoint and machine matrix next
-Status: Executing phase; user execute-phase authorization covered implementation, actual installation/topology/config/reset remain separately gated
-Last activity: 2026-10-09 — Completed 03-02: Debug/Release builds, CTest11/11 each (display8+core3), CLI/process27/27 each, admission regression19/19, zero skip; no actual device mutation
+Plan: 03-03 partial — Task1 complete (RED329a2dc/GREEN5c7f617); Task2 blocking-human awaiting concrete authorization
+Status: Halted at authorized checkpoint; execute-phase and resume approval covered implementation, actual installation/topology/config/reset remain separately gated
+Last activity: 2026-10-09 — Required Helios Release build and Contract35/35 passed, native CTest11/11 passed; durable plan and halted SUMMARY committed f3c780b; systemMutation=false
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -42,6 +42,8 @@ Progress: [█░░░░░░░░░] 5%
 Total plans completed: 8; completed phases: 2/42.
 Phase3 partial: 03-01/03-02 complete. Latest Debug/Release native builds pass; CTest11/11 each (26.54s/25.32s), CLI/process27/27 each (23.2867s/21.4822s), targeted admission/lifecycle19/19 (475.8736ms), zero skip. Revised dedicated source closes arrival cleanup and full-capacity GUID idempotence, actual WDK rebuild/signature and separate six-target InfVerif evidence retained. Native mutation code is compiled; only read-only actual device enumeration ran. 03-03 system authorization/machine matrix unperformed; VDP01/02 and Phase3 incomplete.
 
+03-03 Task1: native SetupAPI/NewDev package code, owner-protected stage/backup, side-effect journal and hash-bound readonly plan complete; Release build5,663ms, Contract35/35(1,040.4829ms TAP), CTest11/11(25.14s), zero skipped tests. Actual install/update/rollback/topology/HDR/persistence/reset remain untested. Machine win-5f5cc5dd3cf310b6, plan2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0; details in03-03-SUMMARY and HELIOS-DISPLAY-INSTALL-PLAN.md/json.
+
 Phase2: clean08a005c and actual CI9aff292 pass four Helios/Selene Debug/Release builds,19 required groups/142 records, version0.1.0/ABI1, zero resources and matching product/tool/test/lock inputs. Final human exact response “确认”, recorded2026-10-08T08:15:03Z, approves scoped boundary/evidence limits. Six valid static rounds, actual GPU/FFI/isolated-console and negative regressions retained. CORE-01/02/03 Complete. Evidence: docs/phase02/EVIDENCE.md.
 Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning fixture1/1。Quick真实快照1.523s/25s，15查询。Phase1目标10/10、BASE01/02/03已完成；零产品性能测量或产品功能验证。完整套件超过30秒反馈目标，针对性反馈约2秒。
 **Per-Plan Metrics:**
@@ -49,6 +51,7 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 | Plan | Duration | Tasks | Files |
 |------|----------|-------|-------|
 | Phase 03 P02 | 83min | 2 tasks | 19 files |
+| Phase 03 P03 | 63min | 1 tasks | 14 files |
 
 ## Accumulated Context
 
@@ -88,16 +91,19 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 - 2026-10-09 用户已授权「推进直到准入」「证书自签即可，效仿Apollo」与限定证书/先行 ACL 操作。03-01 的最终源码重构、许可、自签和访问边界闭合后准入 aether-helios-display；当前停止范围只到准入，不重新虚构最终 hash 人审、不启动03-02/03-03、不延用旧固定包安装授权。历史 R1 hash 与早期失败证据保留。
 - [Phase 03]: 03-02 implementation complete with revised admitted package and isolated contract evidence; no production test injection; 03-03 concrete system authorization and machine matrix remain
+- [Phase 03]: 03-03 Task1 uses the admitted local derived self-signed package without fabricating a release URL; shared owner store/mutex and native plan bind binary/package/machine/identity/resources. Task2 must record specific user choices before any device operation; no reboot/shutdown or scheduling exception.
 
 ### Pending Todos
 
-当前授权范围已完成：用户「推进直到准入」「证书自签即可，效仿Apollo」承接已选专属派生路线，技术 gates 闭合后记录 aether-helios-display 准入；不声称用户重新人工审阅最终 hash。最终源 helios-1791524690800、自签包 helios-1791525277849；最终 DLL 未安装。先行包实际普通/管理员令牌 ACL 测试已完成，ROOT\DISPLAY\0002/oem89.inf 和配置/空父键精确清理，外来设备清单前后相同；最终包相同 INF/header/WDF/security/IOCTL 边界逐字节对应承接该证据，明确为源码推断。此前 UAC/清理失败日志保留。指定 E3ED742C3D08188A117AFF7B6C1BB207523EB4DB 的 Root/TrustedPublisher 信任按授权保留，私钥未导出。未捕获即时成对 CCD，不宣称拓扑比较 PASS。见[准入记录](../docs/phase03/HELIOS-DISPLAY-ADMISSION.md)。
+当前 Task2 待决定：[具体授权计划](../docs/phase03/HELIOS-DISPLAY-INSTALL-PLAN.md)已就绪，Win11 Install可单独授权，随后Topology/Persistence/DeleteIsolation可分别授权。ResetRecovery须先取得实际私有root和全部group/slot清单；UpdateRollback须先取得已安装旧包和具体维护计划；独立Win10机器仍缺。授权文件不存在，humanReview=null，最终固定包未安装。ZIP b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae、plan2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0、binary c9f214a654d8866f539d55144c9402486aace631c839157845e73c503c807c2b。用户「继续，用量恢复」只恢复Task1实施，不补造系统授权。
 
-下一执行范围尚未授权：03-02/03-03 保持未启动；MonitorArrival 失败清理和满容量重复 GUID 幂等边界须在接入 mutation 前修正。watchdog=0/testMode=0/maxMonitors=10 为当前 profile。Win10/11 七屏、HDR、CLI 退出保活、恢复/更新、OS 最低 build、ARM64、EDID 正式厂商身份和发行渠道仍待对应后续证据，不从本次准入推断 PASS。
+历史准入/ACL授权已经结束：先行包设备与配置精确清理、外来设备保持；指定 E3ED742C3D08188A117AFF7B6C1BB207523EB4DB Root/TrustedPublisher信任保留、无新trust action。03-02已经修复MonitorArrival失败清理和满容量GUID幂等并重新构建准入；当前源helios-1791531076814、签名包helios-1791531228575。watchdog=0/testMode=0/maxMonitors=10是锁定编译默认，安装后实际回读仍待执行。七屏/HDR/保活/恢复/更新/最低build、ARM64、EDID正式厂商身份和通用发行仍未验证。
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
 
 ### Blockers/Concerns
+
+[Phase3 current 03-03-02 blocking-human] Task1已完成并提交；固定计划/二进制/资源绑定齐备但无具体系统授权。Win10环境、已安装旧包和reset实际清单尚缺；这些不阻塞Task1，却不能当作Task3通过。BCD只读查询access denied，默认安全分类partial，既有HVCI/VBS等未改变。自动审批拒绝Machine/Install假授权负例，该命令未执行且未重试/绕过；独立合同负例通过，不声称真实Machine fail-closed。WINDOWS ledger5/6记录未执行验证。SDK按SUMMARY存在曾计算9完成/03-03勾选，已按status:halted纠正为8完成、Phase3 2/3；不以暂停摘要关闭阶段或需求。
 
 [Phase1] 两个人审检查点均已答复、四原行为冲突已decided；VS2026与WDK28000同版本组件及集成文件存在，安装缺口resolved。保留9项open环境gap与1项Apple实机TODO：原生构建、独立Win10/客户端/架构/GPU环境、主机build下限、Apple/Linux executor、AndroidAPI21–23/Linux额外架构及测量仪器。来源1261阻碍条目含未决子模块、外部包/二进制来源、具体生产许可、驱动签名和渠道，阻断对应后续生产选用；全部research-only、生产清单空。637平台记录及637计划案例已映射，尚未实现或实机验证。Apple只有VFY01/02实机延期，构建义务仍保留。三个分类flag/六条无描述符prohibitions原状态保留，不伪造自动引擎通过。
 
@@ -131,7 +137,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-09T08:56:59.369Z
-Stopped at: Completed 03-02-PLAN.md; 03-03 concrete system authorization checkpoint next
-Resume file: None
-Next action: 03-02 执行器已完成并返回父级；先读取03-02-SUMMARY及修订准入/固定包。03-03 必须在任何安装/拓扑/config/reset/更新前到具体系统授权检查点，不从合同通过推断机器验收通过。旧ACL实验已清理；Win10/11七屏/HDR/保活/恢复、最低build、其他架构和生产渠道门槛保留。严禁执行或安排重启/关闭开发机。
+Last session: 2026-10-09T10:15:47.124Z
+Stopped at: 03-03-02 blocking-human: fixed Win11 package plan awaits separately scoped system authorization
+Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
+Next action: 从03-03-02继续，先读取已提交03-03-SUMMARY及HELIOS-DISPLAY-INSTALL-PLAN.md/json，取得真实用户对machine win-5f5cc5dd3cf310b6、精确plan/package和逐项场景的选择；原文/时间/hash匹配后才创建保护授权文件并进入Task3。未授权或缺环境的结果保持untested，Task4最终人审仍必需。无旧ACL安装授权可复用；严禁执行或安排重启/关机。
