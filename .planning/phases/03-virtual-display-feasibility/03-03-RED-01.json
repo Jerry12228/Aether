@@ -1,0 +1,8 @@
+{
+  "command": "node --test --test-reporter=tap tests/virtual-display-package.test.cjs; filter installer tracer",
+  "exitCode": 1,
+  "output": "TAP version 13\n# Subtest: installer tracer: real read-only plan binds fixed package and exact native actions\nnot ok 1 - installer tracer: real read-only plan binds fixed package and exact native actions\n  ---\n  duration_ms: 33.3865\n  type: 'test'\n  location: 'D:\\\\WorkSpace\\\\Aether\\\\tests\\\\virtual-display-package.test.cjs:4:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    read-only install plan must succeed without installation or elevation\n    \n    2 !== 0\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 0\n  actual: 2\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (D:\\WorkSpace\\Aether\\tests\\virtual-display-package.test.cjs:8:9)\n    Test.runInAsyncScope (node:async_hooks:228:14)\n    Test.run (node:internal/test_runner/test:1118:25)\n    Test.start (node:internal/test_runner/test:1015:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 0\n# fail 1\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 101.3443\n",
+  "targetTest": "installer tracer: real read-only plan binds fixed package and exact native actions",
+  "expected": "read-only install plan exits 0 without installation or elevation",
+  "actual": "CLI install plan returns exit 2; intended behavior assertion failed"
+}
