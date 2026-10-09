@@ -1,0 +1,329 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-09T02:58:07.302Z",
+  "scope": "unsigned research build and INF tools only; no installation or supported-OS declaration",
+  "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+  "script": {
+    "path": "scripts/prepare-helios-display-research.cjs",
+    "length": 12086,
+    "sha256": "6b8667f59167e140a441ddc2408d00577631fe1172a2c48e7a6b80fdcbf96470"
+  },
+  "preparedSource": {
+    "root": "artifacts/phase03/derived-research/helios-1791514549236",
+    "manifest": {
+      "path": "artifacts/phase03/derived-research/helios-1791514549236/research-source.json",
+      "length": 4860,
+      "sha256": "4eb99a3afb6f12612ca4fd593cdc6cc2cb98b2844f8e3761cf92dca2845316dc"
+    },
+    "files": [
+      {
+        "sourcePath": "Common/Include/AdapterOption.h",
+        "sourceSha256": "5948e1cceb8d2e659328a056ada1ef7be7732dc65f845dd6ce96fcba0e8baa75",
+        "outputPath": "Common/Include/AdapterOption.h",
+        "sha256": "5948e1cceb8d2e659328a056ada1ef7be7732dc65f845dd6ce96fcba0e8baa75",
+        "changed": false
+      },
+      {
+        "sourcePath": "Common/Include/sudovda-ioctl.h",
+        "sourceSha256": "dd924c9bd3918f75bdc1c1153ed16f23ae1658fde890d76f5f4f35397062dd73",
+        "outputPath": "Common/Include/sudovda-ioctl.h",
+        "sha256": "28ceced23ab8fd677ec5e98b9143bece5b1f7f4918e21e48da8ac6c6654b65a0",
+        "changed": true
+      },
+      {
+        "sourcePath": "README.md",
+        "sourceSha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+        "outputPath": "README.md",
+        "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+        "sourceSha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb",
+        "outputPath": "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+        "sha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA.sln",
+        "sourceSha256": "012f97c290c69b9e5cbed0e086b53b35f919029d84d548dbeb037b3dc5ad9dc1",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA.sln",
+        "sha256": "012f97c290c69b9e5cbed0e086b53b35f919029d84d548dbeb037b3dc5ad9dc1",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+        "sourceSha256": "10a555cd3acd83ddd3deda51e321b8514b296b238df43e8a1249af4b0f458e48",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+        "sha256": "4122f6e62b326aecef395f2878a7919d3cd1f6f22e13dc1939009f8736a22291",
+        "changed": true
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+        "sourceSha256": "41b9fb6b227a43ca988af8ade5b420efa6093ca85f52444b479fe7c8a4e853d9",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+        "sha256": "41b9fb6b227a43ca988af8ade5b420efa6093ca85f52444b479fe7c8a4e853d9",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+        "sourceSha256": "69ac02df77374edf50832f97464c6781cdd74938699c1dd114821e5c2990f0ca",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+        "sha256": "69ac02df77374edf50832f97464c6781cdd74938699c1dd114821e5c2990f0ca",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.inf",
+        "sourceSha256": "78247e9455fccca65fa1745664fc60dfb76eb3d59737b71cb1b8b3007bd41817",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/HeliosDisplay.inf",
+        "sha256": "4b37b29e7a9c727b7bd33f902c6088af1a9d40e901875edae0307a6ad97566c6",
+        "changed": true
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+        "sourceSha256": "3a80623d503632f06e28e22cbe3bdc3c7227b1e84142ad27727086f354594822",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+        "sha256": "bc1af3f4c9fce7cb0b94b38016560c82d04ef442484991408e000fe70bd1a889",
+        "changed": true
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+        "sourceSha256": "3eca4dd904e24723e6c47546d91a7eb91f2c3e06323fb5a152c74174acd0f2d1",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+        "sha256": "8499559036175a17727ca10d27e292ae6adbdeecf20f21026f31f8dc8d7adfcb",
+        "changed": true
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/edid.h",
+        "sourceSha256": "41993d6c0365b4b6f6dd97fa6d57d3687d3b399ff9e263e3fceb1b8be9b1df0e",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/edid.h",
+        "sha256": "41993d6c0365b4b6f6dd97fa6d57d3687d3b399ff9e263e3fceb1b8be9b1df0e",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/option.txt",
+        "sourceSha256": "67ebdd5ebcbd0f8b8ff5c7deff0811dcaf2c8fe40fff88b036de57fac2fd80b4",
+        "outputPath": "Virtual Display Driver (HDR)/option.txt",
+        "sha256": "67ebdd5ebcbd0f8b8ff5c7deff0811dcaf2c8fe40fff88b036de57fac2fd80b4",
+        "changed": false
+      }
+    ]
+  },
+  "build": {
+    "tool": "C:/Program Files/Microsoft Visual Studio/18/Enterprise/MSBuild/Current/Bin/amd64/MSBuild.exe",
+    "args": [
+      "/t:Build",
+      "/p:Configuration=Release",
+      "/p:Platform=x64",
+      "/p:WindowsTargetPlatformVersion=10.0.28000.0",
+      "/p:SignMode=Off",
+      "/p:EnableTestSign=false",
+      "/p:GenerateTestCertificate=false",
+      "/p:RunCodeAnalysis=false",
+      "/p:DriverDeployment=false",
+      "/m:1",
+      "/nologo",
+      "/v:minimal"
+    ],
+    "exitCode": 0,
+    "log": {
+      "path": "artifacts/phase03/admission-followup/build-final.log",
+      "length": 1145,
+      "sha256": "cbf16330f6e7eeb646d70d0d90a98b2ebb94fc4f2477fbc260c64b2be8ba7367"
+    },
+    "compilerCommand": {
+      "path": "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA.tlog/CL.command.1.tlog",
+      "length": 2978,
+      "sha256": "38ebf1eb57a4ec878eb89e1c83d8efebaafc4a8618b9c8f2189557d138ba9da3"
+    },
+    "warningsAsErrors": true,
+    "analyze": true,
+    "preFastEnabled": true,
+    "signMode": "Off",
+    "testCertificateGenerated": false,
+    "driverDeployment": false,
+    "configuration": "Release",
+    "platform": "x64"
+  },
+  "infChecks": [
+    {
+      "name": "legacy-default",
+      "tool": "C:\\Program Files (x86)\\Windows Kits\\10\\Tools\\10.0.28000.0\\x64\\infverif.exe",
+      "args": [
+        "/v",
+        "/osver",
+        "NTAMD64.10.0...16299",
+        "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.inf"
+      ],
+      "exitCode": 0,
+      "log": {
+        "path": "artifacts/phase03/admission-followup/final-infverif-legacy-default.log",
+        "length": 3456,
+        "sha256": "106cf6f9d492b19c4d208a2cd2796ed3111aac3a73d0432fa0301fd8331d20cf"
+      },
+      "warning2083Count": 14,
+      "warning2084": false
+    },
+    {
+      "name": "win10-1803-default",
+      "tool": "C:\\Program Files (x86)\\Windows Kits\\10\\Tools\\10.0.28000.0\\x64\\infverif.exe",
+      "args": [
+        "/v",
+        "/osver",
+        "NTAMD64.10.0...17134",
+        "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.inf"
+      ],
+      "exitCode": 0,
+      "log": {
+        "path": "artifacts/phase03/admission-followup/final-infverif-win10-1803-default.log",
+        "length": 3484,
+        "sha256": "f761b3865dba57461b0f0505ad1e49834d3ad771b90110a6bba4d12c220aad24"
+      },
+      "warning2083Count": 14,
+      "warning2084": false
+    },
+    {
+      "name": "win10-19045-w",
+      "tool": "C:\\Program Files (x86)\\Windows Kits\\10\\Tools\\10.0.28000.0\\x64\\infverif.exe",
+      "args": [
+        "/w",
+        "/v",
+        "/osver",
+        "NTAMD64.10.0...19045",
+        "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.inf"
+      ],
+      "exitCode": 0,
+      "log": {
+        "path": "artifacts/phase03/admission-followup/final-infverif-win10-19045-w.log",
+        "length": 3518,
+        "sha256": "e5f1b465b97dcbaca099eb3ed1e133a3e149390aaa50c54cab901b2dd9ddf801"
+      },
+      "warning2083Count": 14,
+      "warning2084": false
+    },
+    {
+      "name": "win11-22000-w",
+      "tool": "C:\\Program Files (x86)\\Windows Kits\\10\\Tools\\10.0.28000.0\\x64\\infverif.exe",
+      "args": [
+        "/w",
+        "/v",
+        "/osver",
+        "NTAMD64.10.0...22000",
+        "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.inf"
+      ],
+      "exitCode": 0,
+      "log": {
+        "path": "artifacts/phase03/admission-followup/final-infverif-win11-22000-w.log",
+        "length": 3754,
+        "sha256": "0e79945bf47dc2468a6116a0564310b9872073591d0e559868dcfad4d95b87dc"
+      },
+      "warning2083Count": 15,
+      "warning2084": false
+    },
+    {
+      "name": "win11-26100-w",
+      "tool": "C:\\Program Files (x86)\\Windows Kits\\10\\Tools\\10.0.28000.0\\x64\\infverif.exe",
+      "args": [
+        "/w",
+        "/v",
+        "/osver",
+        "NTAMD64.10.0...26100",
+        "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.inf"
+      ],
+      "exitCode": 0,
+      "log": {
+        "path": "artifacts/phase03/admission-followup/final-infverif-win11-26100-w.log",
+        "length": 3754,
+        "sha256": "06312bfba91943e6c83ce890fc013392bdf1021edadb2576ea21162f8678c378"
+      },
+      "warning2083Count": 15,
+      "warning2084": false
+    },
+    {
+      "name": "global-w",
+      "tool": "C:\\Program Files (x86)\\Windows Kits\\10\\Tools\\10.0.28000.0\\x64\\infverif.exe",
+      "args": [
+        "/w",
+        "/v",
+        "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.inf"
+      ],
+      "exitCode": 0,
+      "log": {
+        "path": "artifacts/phase03/admission-followup/final-infverif-global-w.log",
+        "length": 138,
+        "sha256": "66dbaea164aadcfa7ededc21f2a25e188a9ae6b6a9943984d5940e1166d27418"
+      },
+      "warning2083Count": 0,
+      "warning2084": false
+    }
+  ],
+  "catalog": {
+    "tool": "C:/Program Files (x86)/Windows Kits/10/bin/10.0.28000.0/x86/Inf2Cat.exe",
+    "args": [
+      "/driver:artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA",
+      "/os:10_VB_X64,10_CO_X64,10_NI_X64,10_GE_X64",
+      "/verbose"
+    ],
+    "exitCode": 0,
+    "log": {
+      "path": "artifacts/phase03/admission-followup/final-inf2cat.log",
+      "length": 1667,
+      "sha256": "1a8a0d285adafe41e1ff507c0a1248176b748f34ce9e8175ecb6b23556dc5587"
+    },
+    "errors": 0,
+    "warnings": 0
+  },
+  "members": [
+    {
+      "path": "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/heliosdisplay.cat",
+      "length": 1263,
+      "sha256": "076d1a77be2c0f0c7182c9a65a9a2229e8d9c5b441c922d99170b296ee7d5c02",
+      "authenticodeStatus": "NotSigned",
+      "trustedSignature": false
+    },
+    {
+      "path": "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.dll",
+      "length": 129536,
+      "sha256": "8b21f167a3a76d0502ff3654347387d89aba862850839f1c06c278b2097cfc31",
+      "authenticodeStatus": "NotSigned",
+      "trustedSignature": false
+    },
+    {
+      "path": "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.inf",
+      "length": 6608,
+      "sha256": "a2c1ebaf55762725e023fde397afa5ecb99c2e2aea85fa3d1ecddce4c6fe8b86",
+      "authenticodeStatus": "UnknownError",
+      "trustedSignature": false
+    }
+  ],
+  "symbol": {
+    "path": "artifacts/phase03/derived-research/helios-1791514549236/Virtual Display Driver (HDR)/SudoVDA/x64/Release/HeliosDisplay.pdb",
+    "length": 4083712,
+    "sha256": "7b524a1300351033a205fc8f6ca1d67a945ced18558e068b650ea0e934f674bc"
+  },
+  "failedIntermediate": {
+    "build": {
+      "path": "artifacts/phase03/admission-followup/build.log",
+      "length": 1145,
+      "sha256": "f8e330d680a9633401d7aea4ea368375e291fcbcb895379c366d8592210969f6"
+    },
+    "win10WindowsDriverCheck": {
+      "path": "artifacts/phase03/admission-followup/infverif-win10-w.log",
+      "length": 2109,
+      "sha256": "65b1f50fcb30b16b3dc81bdbadb51a2125a2a7e170091575cf412134072b3ef6"
+    },
+    "reason": "1322 DLL not isolated to DIRID13; repaired with Win10 1803+ branch while retaining pre-1803 path"
+  },
+  "machineConstraint": {
+    "restartPermitted": false,
+    "shutdownPermitted": false
+  },
+  "admission": {
+    "providerAdmitted": false,
+    "licenseClosed": false,
+    "formalSignatureObtained": false,
+    "osRuntimeVerified": false,
+    "win10FloorLocked": false,
+    "subsequentPlansStarted": false
+  }
+}

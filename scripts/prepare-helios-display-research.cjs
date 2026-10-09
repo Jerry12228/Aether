@@ -6,6 +6,32 @@ const manifestPath=path.join(root,'docs/phase03/SUDOVDA-SOURCE-EVIDENCE.json');
 const expectedCommit='a4b09fa2aa731a964d0cb5d139cb1e6240e4da12';
 const output=path.join(root,`artifacts/phase03/derived-research/helios-${Date.now()}`);
 function replaceOne(text,from,to){if(text.split(from).length!==2)throw Error('Fixed source edit anchor changed: '+from);return text.replace(from,to);}
+function platformInf(text){
+ // Replace only the known inherited install sections; keep Version/source/notices intact.
+ const found=[...text.matchAll(/^\[([^\]]+)\][^\r\n]*\r?\n([^]*?)(?=^\[|$(?![\s\S]))/gm)];
+ const sections=new Map();
+ for(const m of found){const key=m[1].toLowerCase();if(sections.has(key))throw Error('Duplicate INF section '+key);sections.set(key,m);}
+ const required=['Manufacturer','Standard.NT$ARCH$','HeliosDisplay_Install.NT','HeliosDisplay_Install.NT.hw','HeliosDisplay_Install.NT.Services','HeliosDisplay_Install.NT.Wdf','HeliosDisplay_Install','DestinationDirs','UMDriverCopy','WUDFRD_ServiceInstall','MyDevice_HardwareDeviceSettings'];
+ for(const name of required)if(!sections.has(name.toLowerCase()))throw Error('Missing inherited INF section '+name);
+ const model=sections.get('standard.nt$arch$')[2].split(/\r?\n/).filter(l=>l.trim()&&!l.trim().startsWith(';'));
+ if(model.length!==1||model[0].replaceAll(' ','')!=='%DeviceName%=HeliosDisplay_Install,Root\\Aether\\HeliosDisplay')throw Error('Unexpected inherited hardware identity');
+ const values=new Map([
+ ['manufacturer','%ManufacturerName%=Standard,NT$ARCH$.10.0,NT$ARCH$.10.0...17134,NT$ARCH$.10.0...22000'],
+ ['standard.nt$arch$','%DeviceName%=HeliosDisplay_Win10Legacy, Root\\Aether\\HeliosDisplay\n\n[Standard.NT$ARCH$.10.0...17134]\n%DeviceName%=HeliosDisplay_Win10, Root\\Aether\\HeliosDisplay\n\n[Standard.NT$ARCH$.10.0...22000]\n%DeviceName%=HeliosDisplay_Win11, Root\\Aether\\HeliosDisplay'],
+ ['heliosdisplay_install.nt','CopyFiles=UMDriverCopyWin10\n\n[HeliosDisplay_Win10Legacy.NT]\nCopyFiles=UMDriverCopyWin10Legacy\n\n[HeliosDisplay_Win11.NT]\nInclude=WUDFRD.inf\nNeeds=WUDFRD.NT\nCopyFiles=UMDriverCopyWin11'],
+ ['heliosdisplay_install.nt.hw','AddReg=MyDevice_HardwareDeviceSettings\n\n[HeliosDisplay_Win10Legacy.NT.hw]\nAddReg=MyDevice_HardwareDeviceSettings\n\n[HeliosDisplay_Win11.NT.hw]\nInclude=WUDFRD.inf\nNeeds=WUDFRD.NT.hw\nAddReg=MyDevice_HardwareDeviceSettings'],
+ ['heliosdisplay_install.nt.services','AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall\n\n[HeliosDisplay_Win10Legacy.NT.Services]\nAddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall\n\n[HeliosDisplay_Win11.NT.Services]\nInclude=WUDFRD.inf\nNeeds=WUDFRD.NT.Services'],
+ ['heliosdisplay_install.nt.wdf',wdf('Win10')+'\n\n[HeliosDisplay_Win10Legacy.NT.Wdf]\n'+wdf('Win10Legacy')+'\n\n[HeliosDisplay_Win11.NT.Wdf]\n'+wdf('Win11')],
+ ['heliosdisplay_install',service('%13%\\HeliosDisplay.dll')+'\n\n[HeliosDisplay_Win10Legacy_Service]\n'+service('%12%\\UMDF\\HeliosDisplay.dll')+'\n\n[HeliosDisplay_Win11_Service]\n'+service('%13%\\HeliosDisplay.dll')],
+ ['destinationdirs','UMDriverCopyWin10Legacy=12,UMDF\nUMDriverCopyWin10=13\nUMDriverCopyWin11=13'],
+ ['umdrivercopy','HeliosDisplay.dll\n\n[UMDriverCopyWin10Legacy]\nHeliosDisplay.dll\n\n[UMDriverCopyWin11]\nHeliosDisplay.dll']
+ ]);
+ function wdf(os){return `UmdfService=HeliosDisplay,HeliosDisplay_${os}_Service\nUmdfServiceOrder=HeliosDisplay\nUmdfKernelModeClientPolicy=AllowKernelModeClients`;}
+ function service(binary){return `UmdfLibraryVersion=$UMDFVERSION$\nServiceBinary=${binary}\nUmdfExtensions=IddCx0102`;}
+ const names=new Map([['standard.nt$arch$','Standard.NT$ARCH$.10.0'],['heliosdisplay_install.nt','HeliosDisplay_Win10.NT'],['heliosdisplay_install.nt.hw','HeliosDisplay_Win10.NT.hw'],['heliosdisplay_install.nt.services','HeliosDisplay_Win10.NT.Services'],['heliosdisplay_install.nt.wdf','HeliosDisplay_Win10.NT.Wdf'],['heliosdisplay_install','HeliosDisplay_Win10_Service'],['umdrivercopy','UMDriverCopyWin10']]);
+ for(const m of found.reverse()){const key=m[1].toLowerCase();if(values.has(key))text=text.slice(0,m.index)+`[${names.get(key)||m[1]}]\n${values.get(key)}\n\n`+text.slice(m.index+m[0].length);}
+ return text;
+}
 function transform(relative,text){
  if(relative.endsWith('/Driver.cpp')){
   text=replaceOne(text,'DWORD watchdogTimeout = 3;','DWORD watchdogTimeout = 0;');
@@ -53,6 +79,7 @@ function transform(relative,text){
   text=replaceOne(text,'D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GRGW;;;WD)','D:P(A;;GA;;;SY)(A;;GA;;;BA)');
   text=text.replaceAll('SudoVDA','HeliosDisplay').replaceAll('SudoMaker','Aether');
   text=replaceOne(text,'DriverVer= ; TODO: set DriverVer in stampinf property pages','DriverVer=10/08/2026,0.1.0.0');
+  text=platformInf(text);
  }
  if(relative.endsWith('/Trace.h')){
   text=replaceOne(text,'L"Microsoft\\\\UMDF2.0\\\\IddSampleDriver V1.0"','L"Aether\\\\HeliosDisplay\\\\Research V0.1"');
@@ -88,4 +115,4 @@ async function prepare(){
  fs.writeFileSync(path.join(output,'research-source.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({output,changedFiles:report.files.filter(f=>f.changed).map(f=>f.sourcePath),signMode:report.signMode}));return report;
 }
 if(require.main===module){if(process.argv.slice(2).join(' ')!=='--prepare-unsigned-research'){console.error('Usage: node scripts/prepare-helios-display-research.cjs --prepare-unsigned-research');process.exitCode=2;}else prepare().catch(e=>{console.error(e.message);process.exitCode=1;});}
-module.exports={transform,replaceOne};
+module.exports={transform,replaceOne,platformInf};
