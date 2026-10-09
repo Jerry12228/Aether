@@ -1,56 +1,56 @@
 {
   "schemaVersion": 1,
   "status": "awaiting-specific-authorization",
-  "recordedAt": "2026-10-09T10:03:50.438Z",
-  "inputCommit": "5c7f61776685e9cbb0d145caec3a8386a8bcefbe",
+  "recordedAt": "2026-10-09T12:10:06.886Z",
+  "inputCommit": "5050b4adef9d06b8702c007d977f0ba64d29ab71",
   "systemMutation": false,
   "evidenceScope": "native-contract-and-machine-readonly",
-  "planSha256": "2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0",
+  "planSha256": "4fa13eea427d0a90b3075f85e6813d2f246463dadb41e259d309660e4e77a60a",
   "nativePlan": {
-    "path": "artifacts/phase03/package-contract/install-plan.json",
-    "sha256": "cd87cbeedca34de893c854f6b456b40ec7a497f19cfb34d0c1529aa82ab83329",
+    "path": "artifacts/phase03/package-contract-isolation/install-plan.json",
+    "sha256": "21efd90d623a327d8a1c97912d781422893c5832d108d2aa180c10d5e9e1fb46",
     "length": 10025
   },
-  "manifestHash": "47fe64f8396b75a9072b84f8347b97d2934192c6d44a7502774390327fcd48b0",
+  "manifestHash": "78324da77c8ff2936337e3da948d8358105c7392792cecb679ccc92b948ea00d",
   "package": {
     "architecture": "x64",
-    "length": 1021771,
+    "length": 1029893,
     "license": "MS-PL driver; CC0 changes; retained notices",
-    "manifestHash": "47fe64f8396b75a9072b84f8347b97d2934192c6d44a7502774390327fcd48b0",
+    "manifestHash": "78324da77c8ff2936337e3da948d8358105c7392792cecb679ccc92b948ea00d",
     "members": [
       {
-        "length": 6356,
-        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\HeliosDisplayX64/HeliosDisplay.inf",
-        "sha256": "0a6d06ea850457f2b7e7a245f38708fd8f2d6d7d81ff9de5eda1c5e9266583bd"
+        "length": 6396,
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayX64/HeliosDisplay.inf",
+        "sha256": "f7f0f524897bfb0557eb003cb8a57d4919ef369eee05d8d1e968c772c98cb21e"
       },
       {
         "length": 130744,
-        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\HeliosDisplayX64/HeliosDisplay.dll",
-        "sha256": "119a6ca84397b80925a03561f2ae1cce92f7bcbb5426d9a8d766aed1f06b4d2f"
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayX64/HeliosDisplay.dll",
+        "sha256": "52d977d8057629236ce8e707dce26ceda295bb0dff3d731b15da56f46d0338d2"
       },
       {
         "length": 8988,
-        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\HeliosDisplayX64/heliosdisplay.cat",
-        "sha256": "8137a3124c959473833a082f17eb8e28fd25e8abcdc80fe7549ba3455ba8fc4d"
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayX64/heliosdisplay.cat",
+        "sha256": "b7ad78d5ca1af7daa2ac06f4d24c17e991895ccab39ab24d7601da80ccd71f7f"
       },
       {
         "length": 7048,
-        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\licenses/CC0-1.0.txt",
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\licenses/CC0-1.0.txt",
         "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
       },
       {
         "length": 1813,
-        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\licenses/HeliosDisplay-NOTICE.txt",
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\licenses/HeliosDisplay-NOTICE.txt",
         "sha256": "11400757633fe771d348a7b37f6c0858d65bca23ef08fc3a674e8a8c73999931"
       },
       {
         "length": 2665,
-        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\licenses/Microsoft-MS-PL.txt",
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\licenses/Microsoft-MS-PL.txt",
         "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a"
       },
       {
         "length": 3663,
-        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\licenses/SudoVDA-README.txt",
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\licenses/SudoVDA-README.txt",
         "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2"
       }
     ],
@@ -77,9 +77,9 @@
         "value": 0
       }
     },
-    "sha256": "b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae",
+    "sha256": "da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12",
     "signature": "current-local-Windows-authenticode-and-CAT",
-    "source": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\HeliosDisplayResearch.zip",
+    "source": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayResearch.zip",
     "status": "verified",
     "trustChanges": false,
     "version": "0.1.0.0"
@@ -149,7 +149,8 @@
       {
         "Thumbprint": "E3ED742C3D08188A117AFF7B6C1BB207523EB4DB"
       }
-    ]
+    ],
+    "recordedAt": "2026-10-09T12:10:06.6878267+00:00"
   },
   "securityClassification": "partial observed existing policy; no security settings changed; BCD query access denied; existing approved local self-sign trust only",
   "rebootPolicy": "prohibited",
@@ -160,10 +161,10 @@
       "driver",
       "install",
       "--approve-plan",
-      "2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0",
+      "4fa13eea427d0a90b3075f85e6813d2f246463dadb41e259d309660e4e77a60a",
       "--json"
     ],
-    "sha256": "c9f214a654d8866f539d55144c9402486aace631c839157845e73c503c807c2b",
+    "sha256": "824a6b8b2158c9d713dc2a5eeee88721ae7eccf18786d7096d7258e94f532994",
     "elevation": "Administrator token required; CLI does not trigger UAC"
   },
   "actions": [
@@ -171,8 +172,8 @@
       "api": "SetupCopyOEMInfW",
       "flags": "SP_COPY_NOOVERWRITE",
       "infExecution": "Verified protected stage path persisted in driver-install-effects.v1.json before native calls",
-      "infSha256": "0a6d06ea850457f2b7e7a245f38708fd8f2d6d7d81ff9de5eda1c5e9266583bd",
-      "infSource": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791531228575\\HeliosDisplayX64/HeliosDisplay.inf"
+      "infSha256": "f7f0f524897bfb0557eb003cb8a57d4919ef369eee05d8d1e968c772c98cb21e",
+      "infSource": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayX64/HeliosDisplay.inf"
     },
     {
       "api": "SetupDiCallClassInstaller(DIF_REGISTERDEVICE)",
@@ -400,37 +401,42 @@
     }
   ],
   "authorization": {
-    "status": "not-authorized",
-    "userText": null,
-    "recordedAt": null,
+    "status": "awaiting-new-fixed-plan-approval",
+    "priorConditionalAuthorization": {
+      "path": "docs/phase03/HELIOS-DISPLAY-APOLLO-CONDITIONAL-AUTHORIZATION.json",
+      "sha256": "e052ca3992fadda6505e508f98d3d8d38ed3ccb19de2b3325dd2c6bd63db2413",
+      "length": 1683,
+      "fixture": false
+    },
     "approvedPlanHash": null,
-    "gateFileCreated": false
+    "gateFileCreated": false,
+    "reason": "Original approved fixed bytes failed Apollo isolation preflight; no authorization transfer to new bytes"
   },
   "humanReview": null,
   "artifacts": [
     {
-      "path": "artifacts/phase03/package-contract/install-plan.json",
-      "sha256": "cd87cbeedca34de893c854f6b456b40ec7a497f19cfb34d0c1529aa82ab83329",
+      "path": "artifacts/phase03/package-contract-isolation/install-plan.json",
+      "sha256": "21efd90d623a327d8a1c97912d781422893c5832d108d2aa180c10d5e9e1fb46",
       "length": 10025
     },
     {
-      "path": "artifacts/phase03/package-contract/runner-result.json",
-      "sha256": "ce95de43127788548e230955e2f7e9530c8810027acec8505526abdd2004ad93",
-      "length": 1442
+      "path": "artifacts/phase03/package-contract-isolation/runner-result.json",
+      "sha256": "476e25a16f0594642294e8b4d5faaad20daaf7262b3dc1099b8c0156408bef88",
+      "length": 1462
     },
     {
-      "path": "artifacts/phase03/package-contract/machine-readonly.json",
-      "sha256": "ea032fb03058960c6d6b7dafc61e327229aefbb4b255ccb32f385b5c4dfd9430",
-      "length": 1567
+      "path": "artifacts/phase03/package-contract-isolation/machine-readonly.json",
+      "sha256": "d97a7e700033e1ab27c3d27d63dae815b659a6850fa851d509f6fd67761a7e19",
+      "length": 1621
     },
     {
-      "path": "artifacts/phase03/package-contract/readonly-plan.log",
-      "sha256": "dd334a9010b6e6f5cd44b042628ee24defd980acbeb631d67fc91494d321ac69",
+      "path": "artifacts/phase03/package-contract-isolation/readonly-plan.log",
+      "sha256": "60db72389825c855527871cab70a3d087c6ad6e2685eb7a959c598f61f2b21c4",
       "length": 7872
     },
     {
       "path": "artifacts/phase02/tooling/Display-Release-package-contract.log",
-      "sha256": "1f0dd1597ef9ee8d5de7c54ac47b8b427d8ec2b753b617691835628e59e2b9e9",
+      "sha256": "68d50d16544d819a59edd9c0af2ac9e625e8357817eeec57c0e7c64c86cae632",
       "length": 3792
     },
     {
@@ -455,7 +461,7 @@
     },
     {
       "path": "native/platform/windows/driver_package.cpp",
-      "sha256": "85495b4668efb1611d47e2aa20c3962c78008a4dc6647949f1198578a00ba93a",
+      "sha256": "24d235fc004aa8829cec2caa06dadb459f36ca2c728f33bc331523893a4c056a",
       "length": 35321
     },
     {
@@ -465,7 +471,7 @@
     },
     {
       "path": "native/platform/windows/helios_display_pin.h",
-      "sha256": "2d9ec7e24d9e31a0db6a571fef2b57b7bd8b04bb237d3ec0a7d8d86ab82c205f",
+      "sha256": "1f212c54f9d9a3340afe6621257435b59a7e8804d78a7c65ec52e3f1ad6342c8",
       "length": 468
     },
     {
@@ -485,12 +491,12 @@
     },
     {
       "path": "tests/virtual-display-package.test.cjs",
-      "sha256": "23741b0bd6f5ec8127593118c82ea3e1a3b623f8b4b88de523335b3d64d460c5",
+      "sha256": "86023e330ff5ff1b8d49fa294fb70698557a4f5161ab14ded682b8812f2376dc",
       "length": 17420
     }
   ],
   "gaps": [
-    "No system-operation authorization",
+    "New fixed plan installation authorization absent after original preflight was blocked",
     "Win10 machine absent",
     "No actual package install/topology/HDR/persistence/reset/update/rollback result",
     "BCD policy query not obtained",
@@ -501,5 +507,22 @@
     "executed": false,
     "reason": "Automatic approval review rejected the capable installation entry point because current authorization excludes real system installation; not retried or bypassed"
   },
-  "requirementsCompleted": []
+  "requirementsCompleted": [],
+  "apolloConstraint": {
+    "text": "不得影响主机已有的Apollo运行",
+    "preflight": {
+      "path": "docs/phase03/HELIOS-DISPLAY-APOLLO-PREFLIGHT.json",
+      "sha256": "afcb6144ec763d2fd8c73f61f3fbe7ac440ebf9da2c6b666af5e1bbdbf25b728",
+      "length": 4470,
+      "fixture": false
+    },
+    "correctedSource": {
+      "path": "docs/phase03/HELIOS-DISPLAY-UMDF-ISOLATION-EVIDENCE.json",
+      "sha256": "f3820e23ebaed1578bc78ae897b02e14dc4f68b84aa00f6d4d5132e449eb8eb6",
+      "length": 5082,
+      "fixture": false
+    },
+    "requiredBeforeMutation": "Repeat complete immediate baseline and fail closed on differences; verify corrected per-device WUDF group after install",
+    "runtimeIsolationVerified": false
+  }
 }

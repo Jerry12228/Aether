@@ -7,7 +7,7 @@ test('installer tracer: real read-only plan binds fixed package and exact native
  const r=spawnSync(exe,['vdisplay','driver','install','--plan','--json'],{encoding:'utf8',windowsHide:true,timeout:30000});
  assert.equal(r.status,0,'read-only install plan must succeed without installation or elevation');
  const p=JSON.parse(r.stdout);assert.equal(p.status,'planned');assert.equal(p.systemMutation,false);
- assert.equal(p.package.sha256,'b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae');
+ assert.equal(p.package.sha256,'da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12');
  assert.match(p.planSha256,/^[a-f0-9]{64}$/);assert.ok(p.actions.length>0);assert.equal(p.rebootPolicy,'prohibited');
  assert.ok(Array.isArray(p.foreignDevices));assert.ok(Array.isArray(p.groups));assert.equal(p.evidenceScope,'machine-readonly');
 });

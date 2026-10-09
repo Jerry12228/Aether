@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "status": "observations-unchanged",
+  "recordedAt": "2026-10-09T12:13:53.919Z",
+  "scope": "read-only continuity during prerequisite correction; driver installation was not invoked",
+  "systemMutation": false,
+  "installerInvoked": false,
+  "preflightOriginal": "blocked-by-wrong-WUDF-group-subkey",
+  "originalAuthorization": {
+    "path": "docs/phase03/HELIOS-DISPLAY-APOLLO-CONDITIONAL-AUTHORIZATION.json",
+    "sha256": "e052ca3992fadda6505e508f98d3d8d38ed3ccb19de2b3325dd2c6bd63db2413",
+    "length": 1683,
+    "fixture": false
+  },
+  "initial": {
+    "path": "artifacts/phase03/apollo-install-preflight/before-fix/snapshot.json",
+    "sha256": "ca647461afbec65691b9e3d8476de6f5c0387248612a06629b6c2667f1508d30",
+    "length": 9726,
+    "fixture": false
+  },
+  "before": {
+    "path": "artifacts/phase03/apollo-install-preflight/window-before/snapshot.json",
+    "sha256": "baef343e3ad763080a560463b27dd2ca798796ddf0047db6e5ebd81fac56e586",
+    "length": 13058,
+    "fixture": false
+  },
+  "after": {
+    "path": "artifacts/phase03/apollo-install-preflight/window-after/snapshot.json",
+    "sha256": "136b6fb85e4b002215ca4a69b3f86bfb6800fe120fe718c7d785b6ff3886e37f",
+    "length": 13058,
+    "fixture": false
+  },
+  "correctionChecks": {
+    "service": true,
+    "processes": true,
+    "files": true,
+    "drivers": true,
+    "umdfGroups": true,
+    "foreign": true,
+    "ownedDevices": true,
+    "groups": true,
+    "activeCcd": true,
+    "establishedTcp": true
+  },
+  "windowChecks": {
+    "service": true,
+    "processes": true,
+    "files": true,
+    "drivers": true,
+    "umdfGroups": true,
+    "foreign": true,
+    "ownedDevices": true,
+    "groups": true,
+    "driverStoreFiles": true,
+    "sharedWudfService": true,
+    "establishedTcp": true,
+    "activeCcd": true,
+    "planSha256": true
+  },
+  "observationWindowMs": 45957,
+  "service": {
+    "Name": "ApolloService",
+    "State": "Running",
+    "ProcessId": 6820,
+    "StartMode": "Auto"
+  },
+  "processes": [
+    {
+      "Name": "WUDFHost.exe",
+      "ProcessId": 2388,
+      "ParentProcessId": 2160,
+      "CreationDate": "2026-10-08T22:45:44.071475+08:00"
+    },
+    {
+      "Name": "WUDFHost.exe",
+      "ProcessId": 2660,
+      "ParentProcessId": 2160,
+      "CreationDate": "2026-10-08T22:45:44.135023+08:00"
+    },
+    {
+      "Name": "WUDFHost.exe",
+      "ProcessId": 3708,
+      "ParentProcessId": 2160,
+      "CreationDate": "2026-10-08T22:45:44.278511+08:00"
+    },
+    {
+      "Name": "WUDFHost.exe",
+      "ProcessId": 4420,
+      "ParentProcessId": 2160,
+      "CreationDate": "2026-10-08T22:45:44.401343+08:00"
+    },
+    {
+      "Name": "sunshinesvc.exe",
+      "ProcessId": 6820,
+      "ParentProcessId": 2160,
+      "CreationDate": "2026-10-08T22:45:44.79977+08:00"
+    },
+    {
+      "Name": "sunshine.exe",
+      "ProcessId": 15176,
+      "ParentProcessId": 6820,
+      "CreationDate": "2026-10-08T22:45:47.820787+08:00"
+    }
+  ],
+  "establishedTcpCount": 0,
+  "foreignCount": 20,
+  "foreignDriverStoreFileCount": 8,
+  "driverStoreLookupDiagnostic": "SetupAPI read-only lookup returned87; identity verified by unique exact published-INF hash match",
+  "activeCcd": [
+    {
+      "advancedColorEnabled": false,
+      "advancedColorSupported": true,
+      "colorError": 0,
+      "hdrVerified": null,
+      "height": 1400,
+      "identity": {
+        "adapterLuid": "0:145065",
+        "deviceName": "\\\\.\\DISPLAY10",
+        "monitorPath": "\\\\?\\DISPLAY#SMKD1CE#1&28a6823a&2&UID256#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}",
+        "sourceId": 0,
+        "targetId": 256
+      },
+      "identityError": 0,
+      "outputTechnology": 5,
+      "ownedByAether": false,
+      "refresh": {
+        "denominator": 1000,
+        "numerator": 30000
+      },
+      "width": 2240,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "newPlanSha256": "4fa13eea427d0a90b3075f85e6813d2f246463dadb41e259d309660e4e77a60a",
+  "newPackageSha256": "da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12",
+  "newInstallerSha256": "824a6b8b2158c9d713dc2a5eeee88721ae7eccf18786d7096d7258e94f532994",
+  "limitations": [
+    "No actual installation/noninterference success asserted",
+    "TCP tuple identity hashes do not prove UDP/video quality or future behavior",
+    "Corrected WUDF grouping remains source/build evidence until approved install and runtime readback",
+    "Other machine scenarios and final human review remain untested"
+  ],
+  "requirementsCompleted": []
+}

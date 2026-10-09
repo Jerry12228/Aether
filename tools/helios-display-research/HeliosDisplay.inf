@@ -23,7 +23,7 @@ CopyFiles=UMDriverCopy
 AddReg=MyDevice_HardwareDeviceSettings
 [MyDevice_HardwareDeviceSettings]
 HKR,,UpperFilters,0x00010000,IndirectKmd
-HKR,,DeviceGroupId,,HeliosDisplayGroup
+HKR,"WUDF","DeviceGroupId",0x00000000,"HeliosDisplayGroup"
 HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)"
 [HeliosDisplay_Install.NT.Services]
 AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall
