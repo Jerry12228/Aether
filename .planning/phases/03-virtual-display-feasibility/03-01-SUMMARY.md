@@ -120,4 +120,12 @@ T-03-01/02/SC通过**拒绝未准入接入**约束当前边界；没有把上游
 
 ## Self-check
 
+### 2026-10-09 approved followup (quick 261009-f0f)
+
+用户明确继续已批准的独立派生路线，通过GSD依次补来源/EDID、INF结构与正式签名条件。Quick来源任务提交 `062ebec`，INF边界RED提交 `632c63a`；本轮没有重问路线，也没有启动03-02/03-03。来源13输入/45网络观察均固定hash；追踪两次重组/改名、早期贡献者、384字节独立EDID与256字节编译数组，工具edid.S文件GPL-2.0-or-later声明与根LICENSE分开，完整许可材料在忽略研究树中。权利总门保持open，无生产复用批准。
+
+INF实际修正为Win10 Legacy DIRID12、Win10 1803+ DIRID13+AddService、Win11 DIRID13+WudfRd.inf Include/Needs三分支，保留原低版本路径而不锁最低build。Release x64未签名构建退出0，真实Tlog保留/WX与/analyze；6/6 InfVerif（全局/w零告警，按OS出现14/15项2083未使用分支告警）、明确Win10/Win11 Inf2Cat退出0且errors/warnings0；新的研究包无2084。早期Win10/w 1322失败日志保留。DLL/CAT NotSigned、INF UnknownError，不标可信签名。
+
+最终针对性研究3项/包9项/planning1项 **13/13** 无skip，400.88ms；42阶段/105需求映射通过，原R1决定hash未变，runnable=[]。正式签名清单包含PDB/CAB/EV/dashboard或其他可信CA政策候选，账户、提交与返回包仍未取得；此轮不需要账户信息。没有设备/registry/证书/安全策略变更、重启或关机。详情见[INF续行证据](../../../docs/phase03/HELIOS-DISPLAY-INF-FOLLOWUP.md)、[来源记录](../../../docs/phase03/HELIOS-DISPLAY-PROVENANCE.md)、[签名准备](../../../docs/phase03/HELIOS-DISPLAY-SIGNING-READINESS.md)。SUMMARY保持halted，VDP-01/02与Phase3保持未完成。
+
 **PASSED for original readonly/dossier/decision, R1 checker/audit and approved private derived preparation scope.** 原三任务证据和用户`2`保留；新的用户`1`路线决定和准备结果已经记录，不再等待该批准。**Plan intentionally HALTED on no-qualified-provider branch; Phase3 NOT COMPLETE.** 保留status: halted使依赖引擎阻断03-02/03-03，不因研究构建通过而打开未准入实施。

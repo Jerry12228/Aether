@@ -3,10 +3,10 @@ gsd_state_version: "1.0"
 current_phase: 3
 current_phase_name: 虚拟显示器可行性
 status: executing
-stopped_at: Approved derived research preparation built unsigned; license/signing/runtime admission remains open; no restart or shutdown permitted
-last_updated: "2026-10-08T15:39:19.640Z"
-last_activity: 2026-10-08
-last_activity_desc: User 1 recorded; dedicated Helios research package built Release x64 unsigned; 11/11 scoped tests pass; provider not admitted
+stopped_at: 03-01 provenance and Win10/11 INF followup complete; unsigned build and six INF checks pass; license/signing/runtime gates remain open
+last_updated: "2026-10-09T03:03:17.366Z"
+last_activity: 2026-10-09
+last_activity_desc: Quick 261009-f0f source/EDID history, split platform INF and signing readiness complete; 13/13 tests; provider not admitted
 progress:
   total_phases: 42
   completed_phases: 2
@@ -27,9 +27,9 @@ See: .planning/PROJECT.md (updated 2026-10-08)
 ## Current Position
 
 Phase: 3 (虚拟显示器可行性) — NO QUALIFIED PROVIDER
-Plan: 03-01 — historical and R1 route decisions recorded; derived research preparation complete; SUMMARY halted on admission
-Status: Release x64 unsigned research package built; source rights/formal signing/runtime gates open; 03-02/03-03 not started
-Last activity: 2026-10-08 — dedicated identities/config/ACL research changes, per-file license ledger, signing plan and 11/11 scoped tests
+Plan: 03-01 — approved derived route continued through quick 261009-f0f; SUMMARY halted on admission
+Status: Source/EDID provenance audit, split Win10/11 INF and unsigned Release x64 build verified; source rights/formal signing/runtime gates open; 03-02/03-03 not started
+Last activity: 2026-10-09 — quick 261009-f0f: 13/13 tests, six INF checks, explicit OS CAT generation; no provider admission
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -74,6 +74,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 - 2026-10-08 用户原文 `1` 已选择 Aether 专属 SudoVDA 派生准备；2026-10-08T15:18:55Z 绑定 R1 档案 hash，routeId=aether-sudovda-derived-preparation。准备提交2079041重建固定13文件私有研究树，五文件变换；Release x64 unsigned DLL/INF/CAT 编译及目录生成通过，保留 /WX 与 /analyze、INF2084 warning。逐文件来源/notice 与签名渠道方案见 [准备结果](../docs/phase03/HELIOS-DISPLAY-PREPARATION.md)。该选择已经记录，不再等待同一路线批准；生产复用和provider准入尚未关闭。
 - 用户原文「严禁重启、关闭开发机」：禁止执行或安排开发机重启/关机；需要这些操作的检查保持未执行。本轮没有设备/registry/证书/安全策略操作。
 
+- 2026-10-09 用户授权继续03-01独立派生补证，quick261009-f0f完成：13输入/45来源观察、早期贡献与两条不同EDID证据、Win10 Legacy/1803+/Win11三INF分支。Release x64 unsigned、6/6 InfVerif及明确OS Inf2Cat通过，新INF2084关闭（原失败日志保留）；13/13测试、89摘要/19链接核验。逐行许可/模板来源仍open，签名条件已整理而未取得账户/证书/返回包。provider未准入，VDP与03-01仍halted，03-02/03-03未启动；机器禁重启/关机持续有效。见[INF补证](../docs/phase03/HELIOS-DISPLAY-INF-FOLLOWUP.md)、[来源审计](../docs/phase03/HELIOS-DISPLAY-PROVENANCE.md)、[签名条件](../docs/phase03/HELIOS-DISPLAY-SIGNING-READINESS.md)。
+
 ### Pending Todos
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
@@ -97,6 +99,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 | # | Description | Date | Commit | Directory |
 |---|-------------|------|--------|-----------|
 | 261008-uu1 | Win10不要求HDR；SudoVDA适配需求R1 | 2026-10-08 | 00da0bc | [quick记录](quick/261008-uu1-win10-hdr-sudovda/261008-uu1-SUMMARY.md) |
+| 261009-f0f | 03-01 SudoVDA来源EDID审计、Win10/11 INF构建与签名准备补证 | 2026-10-09 | 565c5d8 | [261009-f0f-03-01-sudovda-source-edid-license-inf-an](./quick/261009-f0f-03-01-sudovda-source-edid-license-inf-an/) |
 
 ## Deferred Items
 
@@ -104,7 +107,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-08T15:39:19.640Z
-Stopped at: Approved derived preparation built unsigned; provider remains unqualified; no restart/shutdown permitted
+Last session: 2026-10-09T03:03:00Z
+Stopped at: Approved 03-01 followup complete: source/EDID audit, platform INF build and signing checklist; provider remains unqualified; no restart/shutdown permitted
 Resume file: .planning/phases/03-virtual-display-feasibility/03-01-PLAN.md
-Next action: 按HELIOS-DISPLAY-PREPARATION.md继续具体来源/EDID与独立许可闭合、Win10/11 INF包结构及正式签名条件；不重复询问已批准的路线1。等待账户/EV条件信息不等于已准入，实机ACL/保活/七屏/HDR证据仍未完成。03-02/03-03保持阻断；安装/更新/config/reset另需具体系统授权，严禁重启或关闭开发机。
+Next action: 继续按HELIOS-DISPLAY-PROVENANCE.md关闭准确祖先/逐行贡献许可、EDID精确来源或独立替代；新INF分支及WDK构建检查已通过，无需重复原结构修复。实际签名提交前再询问发行主体、Hardware Developer Program与EV非秘密状态；本轮整理无需账户信息。provider未准入，实机ACL/保活/七屏/HDR和Win10最低build仍未完成。03-02/03-03保持阻断；安装/更新/config/reset另需具体系统授权，严禁重启或关闭开发机。
