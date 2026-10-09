@@ -60,3 +60,14 @@ test('fixture audit distinguishes release tags UTF16 INF versions and real byte 
   c.package.members[0].sha256='f'.repeat(64);assert.ok(validate(d,{stage:'admission',providerId:c.providerId}).errors.some(e=>e.includes('sha256 member')));
  }finally{fs.unlinkSync(file);fs.rmdirSync(dir);}
 });
+
+test('dedicated local derivation has explicit origin and retains license signature and ACL gates',()=>{
+ const {admission}=api(),c={providerId:'aether-helios-display',fixture:false,sourceCommit:'a4b09fa2aa731a964d0cb5d139cb1e6240e4da12',officialRepository:'https://github.com/Jerry12228/Aether',package:{origin:{kind:'local-derived'},version:'0.1.0.0',kind:'umdf'}};
+ const errors=admission(c);
+ assert.ok(!errors.some(e=>e.includes('official fixed release')||e.includes('fixed release URL')),'dedicated derivation must not fabricate an upstream release URL');
+ for(const message of ['derived source manifest','derived build evidence','license','signature','acl'])assert.ok(errors.some(e=>e.includes(message)),message);
+ const foreign=structuredClone(c);foreign.providerId='foreign-provider';assert.ok(admission(foreign).some(e=>e.includes('dedicated derivation')));
+ const spoofed=structuredClone(c);spoofed.sourceCommit='f'.repeat(40);assert.ok(admission(spoofed).some(e=>e.includes('derived base commit')));
+ const reused=structuredClone(c);reused.officialRepository='https://github.com/SudoMaker/SudoVDA';assert.ok(admission(reused).some(e=>e.includes('derived repository')));
+ const unsigned=structuredClone(c);unsigned.package.origin.kind='unsigned-research';assert.ok(admission(unsigned).some(e=>e.includes('official fixed release')));
+});
