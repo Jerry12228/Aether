@@ -1,0 +1,397 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-09T05:29:35.301Z",
+  "scope": "03-01 bounded self-signed research followup; provider NOT ADMITTED",
+  "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+  "sourceManifest": {
+    "path": "artifacts/phase03/derived-research/helios-1791523371087/research-source.json",
+    "length": 4252,
+    "sha256": "3cf06205a03ffc21db37e94879067c582c690dd745d05801adcb8414891a0233",
+    "fixture": false
+  },
+  "build": {
+    "path": "artifacts/phase03/admission-followup/access-required-build.log",
+    "length": 1145,
+    "sha256": "17c62019ea8771f46f1f2f929407d66eff721d9f10d4496b2cba5b2ac2f7f0d0",
+    "fixture": false
+  },
+  "nativeEdidBuild": {
+    "path": "artifacts/phase03/admission-followup/access-required-native-build.log",
+    "length": 203,
+    "sha256": "6fdd1b62c088b34ebe4f93dd8187cc21b86a0c6a97bcb1c1356b87218a6ef327",
+    "fixture": false
+  },
+  "nativeEdidRun": {
+    "path": "artifacts/phase03/admission-followup/access-required-native-run.log",
+    "length": 97,
+    "sha256": "181a4635a449212dc43c6542f9d16af39ca36b244eb88a005212bc0d9c3f0cfa",
+    "fixture": false
+  },
+  "infChecks": {
+    "path": "artifacts/phase03/admission-followup/final-inf-results.json",
+    "length": 1182,
+    "sha256": "88398e2c3a5de917a4a4862de34062013b0fe7b7ad5ac7139be122d4f842a5d1",
+    "fixture": false
+  },
+  "infUnchangedFromSixCheckedTargets": true,
+  "sourceBoundary": {
+    "buildInputs": 8,
+    "independentInputs": [
+      {
+        "path": "scripts/prepare-helios-display-research.cjs",
+        "sha256": "1b78cdcb9a4446dfe5cc0b9d257c69626ec0a6f28e8a987783c1d3e329bdb685"
+      },
+      {
+        "path": "scripts/helios-display-inputs.cjs",
+        "sha256": "aaf9bbc9e742dbfeda92735b07ecd50c493d8d5c72dce8121b8b5a24dd7b3091"
+      },
+      {
+        "path": "tools/helios-display-research/AdapterOption.h",
+        "sha256": "ece732dec0137f9c324a42211507fdcf91f5cbd0fd3d5828fbc2d7b28af37a7d"
+      },
+      {
+        "path": "tools/helios-display-research/HeliosDisplay.inf",
+        "sha256": "2fa400b44ce35830c17df6810489ff40551e1d4db8058b9c035dceed1bbe3ef8"
+      },
+      {
+        "path": "tools/helios-display-research/HeliosDisplay.vcxproj",
+        "sha256": "d6cde10abb974dcde8ee5b49b632048556fbbb1b4dc47f4f31e4e9a7dab6db39"
+      }
+    ],
+    "excluded": [
+      "README.md",
+      "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+      "Virtual Display Driver (HDR)/SudoVDA.sln",
+      "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+      "Virtual Display Driver (HDR)/option.txt"
+    ],
+    "edid": "independently generated 256-byte SDR/HDR; external 384-byte asset and GPL template excluded",
+    "vendorIdentity": "ZZZ is a research placeholder, not an assigned Aether identity"
+  },
+  "rights": {
+    "closed": false,
+    "microsoftLicensedReferenceCommit": "d43983a97c79e5e7eafb4948fd2678f5e709838b",
+    "microsoftLicense": {
+      "path": "docs/phase03/licenses/Microsoft-MS-PL.txt",
+      "length": 2665,
+      "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a",
+      "fixture": false
+    },
+    "sudoNotice": {
+      "path": "docs/phase03/licenses/SudoVDA-README.txt",
+      "length": 3663,
+      "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+      "fixture": false
+    },
+    "lineAudit": [
+      {
+        "name": "Driver.cpp",
+        "copyDetectionFlags": "-w -M -C -C",
+        "authors": {
+          "karlf": 552,
+          "Yukino Song": 1067,
+          "ge9": 2,
+          "Joakim Sandström": 15,
+          "Sajid": 2,
+          "Mike Rodriguez": 7
+        },
+        "karlfLines": 552,
+        "karlfExpressionsAbsentFromMicrosoft2020": [],
+        "otherContributorLines": [
+          {
+            "author": "ge9",
+            "originalLine": 23,
+            "line": 21,
+            "text": "#include <tuple>"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 29,
+            "line": 23,
+            "text": "#include <iostream>"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 32,
+            "line": 26,
+            "text": ""
+          },
+          {
+            "author": "Sajid",
+            "originalLine": 25,
+            "line": 27,
+            "text": "#include <AdapterOption.h>"
+          },
+          {
+            "author": "Sajid",
+            "originalLine": 55,
+            "line": 255,
+            "text": "{"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 74,
+            "line": 257,
+            "text": ""
+          },
+          {
+            "author": "ge9",
+            "originalLine": 50,
+            "line": 264,
+            "text": ""
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 143,
+            "line": 295,
+            "text": "\tLONG lResult;"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 144,
+            "line": 296,
+            "text": ""
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 145,
+            "line": 297,
+            "text": "\t// Open the registry key"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 147,
+            "line": 299,
+            "text": "\tif (lResult != ERROR_SUCCESS) {"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 164,
+            "line": 359,
+            "text": "\t// Close the registry key"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 165,
+            "line": 360,
+            "text": "\tRegCloseKey(hKey);"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 144,
+            "line": 437,
+            "text": ""
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 151,
+            "line": 441,
+            "text": "}"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 152,
+            "line": 442,
+            "text": ""
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 160,
+            "line": 450,
+            "text": "\t}"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 168,
+            "line": 451,
+            "text": "}"
+          },
+          {
+            "author": "Joakim Sandström",
+            "originalLine": 169,
+            "line": 452,
+            "text": ""
+          },
+          {
+            "author": "Mike Rodriguez",
+            "originalLine": 173,
+            "line": 486,
+            "text": ""
+          },
+          {
+            "author": "Mike Rodriguez",
+            "originalLine": 469,
+            "line": 773,
+            "text": "\tm_Adapter = {};"
+          },
+          {
+            "author": "Mike Rodriguez",
+            "originalLine": 737,
+            "line": 1273,
+            "text": "}"
+          },
+          {
+            "author": "Mike Rodriguez",
+            "originalLine": 738,
+            "line": 1274,
+            "text": ""
+          },
+          {
+            "author": "Mike Rodriguez",
+            "originalLine": 896,
+            "line": 1436,
+            "text": "\treturn STATUS_SUCCESS;"
+          },
+          {
+            "author": "Mike Rodriguez",
+            "originalLine": 897,
+            "line": 1476,
+            "text": "}"
+          },
+          {
+            "author": "Mike Rodriguez",
+            "originalLine": 898,
+            "line": 1477,
+            "text": ""
+          }
+        ],
+        "blame": {
+          "path": "artifacts/phase03/admission-followup/blame-copy-Driver.cpp.txt",
+          "length": 710462,
+          "sha256": "5501c2a31e3ff3468ee73088d6bf9da459e3ffc6ba3105dcdbf3768a0e9a8150",
+          "fixture": false
+        }
+      },
+      {
+        "name": "Driver.h",
+        "copyDetectionFlags": "-w -M -C -C",
+        "authors": {
+          "karlf": 94,
+          "Yukino Song": 32
+        },
+        "karlfLines": 94,
+        "karlfExpressionsAbsentFromMicrosoft2020": [],
+        "otherContributorLines": [],
+        "blame": {
+          "path": "artifacts/phase03/admission-followup/blame-copy-Driver.h.txt",
+          "length": 44039,
+          "sha256": "086a19d5ac8c12a5e290a266ebe188f1e002bb3d3655b6bd814b34e1590e7aea",
+          "fixture": false
+        }
+      }
+    ],
+    "limitations": [
+      "Matching whitespace-normalized expressions establishes available licensed reference text, not an exact 2017 Git ancestor.",
+      "SudoMaker waiver expressly covers its own modifications; no blanket grant is attributed to other contributors.",
+      "Remaining source expressions require a bounded independent reconstruction or independent rights evidence before licenseEvidence may be verified."
+    ],
+    "productionReuseApproved": false
+  },
+  "signing": {
+    "state": {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791523416599/signing-state.json",
+      "length": 1467,
+      "sha256": "dfba63ab475771ef28d992e84bdbac1b1d893f6ba3bf706ed8c73fd890dc5a41",
+      "fixture": false
+    },
+    "verification": {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791523416599/signature-verification.json",
+      "length": 1362,
+      "sha256": "77b54f0f82f476772bcb7b159dcc8e0c0ba3eacc701c423a97fddf414a1f2962",
+      "fixture": false
+    },
+    "publicCertificate": {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791523416599/HeliosDisplayResearch.cer",
+      "length": 1074,
+      "sha256": "ab42aa42b7ee79033ae3572b7fe9bbfa9205d6a9460f2a62ecb4a51e24a63342",
+      "fixture": false
+    },
+    "trustImport": {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791521377539/trust-import.json",
+      "length": 796,
+      "sha256": "b496618b1e4f83a8cc4a275c1ff7469133920470a28c357ad0fa783376323d21",
+      "fixture": false
+    },
+    "thumbprint": "E3ED742C3D08188A117AFF7B6C1BB207523EB4DB",
+    "defaultWindowsTrustVerified": true,
+    "policy": "umdf-authenticode; local machine trust only",
+    "members": [
+      {
+        "name": "heliosdisplay.cat",
+        "length": 8988,
+        "sha256": "1b2ba5813a5faca867a2441ca30f1709fa1ae097ce8ce9b9a46b1b42589c7459",
+        "localPath": "artifacts/phase03/selfsigned-research/helios-1791523416599/HeliosDisplayX64/heliosdisplay.cat",
+        "catalogRequired": false
+      },
+      {
+        "name": "HeliosDisplay.dll",
+        "length": 130232,
+        "sha256": "de3c2c47d7349194c4d412a37c20f3d6ce93c380f684af3481e5016489af254c",
+        "localPath": "artifacts/phase03/selfsigned-research/helios-1791523416599/HeliosDisplayX64/HeliosDisplay.dll",
+        "catalogRequired": true
+      },
+      {
+        "name": "HeliosDisplay.inf",
+        "length": 6356,
+        "sha256": "0a6d06ea850457f2b7e7a245f38708fd8f2d6d7d81ff9de5eda1c5e9266583bd",
+        "localPath": "artifacts/phase03/selfsigned-research/helios-1791523416599/HeliosDisplayX64/HeliosDisplay.inf",
+        "catalogRequired": true
+      },
+      {
+        "name": "HeliosDisplay.pdb",
+        "length": 4001792,
+        "sha256": "6871a7a1b20fdb844358973f74e49bcf37273abf7d35f5b3291070c972c66457",
+        "localPath": "artifacts/phase03/selfsigned-research/helios-1791523416599/HeliosDisplayX64/HeliosDisplay.pdb",
+        "catalogRequired": false
+      }
+    ],
+    "archive": {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791523416599/HeliosDisplayResearch.zip",
+      "length": 1096090,
+      "sha256": "f275b1421de1f237e3b4e38bc740c3cb90280c9cfc809f9635eb1efe199fcc36",
+      "fixture": false
+    },
+    "negativeChecks": {
+      "path": "artifacts/phase03/admission-followup/selfsignature-negative-results.json",
+      "length": 96,
+      "sha256": "e50409589fe0fc2ffb122d2e33a01d64d1a305412d61ee0483cd5cca6657f587",
+      "fixture": false
+    }
+  },
+  "security": {
+    "hardwareId": "Root\\Aether\\HeliosDisplay",
+    "interfaceGuid": "0d9ecbde-124e-45f0-9ae0-3d71b16a7725",
+    "deviceAcl": "D:P(A;;GA;;;SY)(A;;GA;;;BA)",
+    "protocol": "0.3.0 research; incompatible private IOCTL access bits intentionally changed",
+    "queryAccess": "FILE_READ_ACCESS",
+    "mutationAccess": "FILE_READ_ACCESS | FILE_WRITE_ACCESS",
+    "actualAclVerified": false,
+    "baselineProbe": {
+      "path": "artifacts/phase03/admission-followup/acl-before-install.json",
+      "length": 380,
+      "sha256": "447af3f936041cf60be844e833d83bff7e8f6bb207742805cbf2c1c70c9709ad",
+      "fixture": false
+    },
+    "highRisk": "T-03-02 remains open until actual stack DACL and filtered/elevated caller tests pass"
+  },
+  "machine": {
+    "certificateTrustChanged": true,
+    "driverInstalled": false,
+    "deviceCreated": false,
+    "securityChecksDisabled": false,
+    "rebootOrShutdown": false,
+    "phase0302Started": false,
+    "phase0303Started": false
+  },
+  "remainingGates": [
+    "bounded inherited source rights",
+    "actual device/IOCTL access boundary",
+    "concrete admitted-provider decision after evidence closes"
+  ],
+  "interfaceAudit": {
+    "path": "docs/phase03/HELIOS-DISPLAY-INTERFACE-AUDIT.md",
+    "length": 3597,
+    "sha256": "4e23b35d83b356976a1096f58da8f71598da2fad24e80de60348116bd9c9493c",
+    "fixture": false
+  }
+}
