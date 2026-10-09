@@ -1,0 +1,2145 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-09T02:52:44.877Z",
+  "scope": "03-01 private provenance followup only; no production reuse or provider admission",
+  "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+  "licenseClosed": false,
+  "productionReuseApproved": false,
+  "files": [
+    {
+      "path": "Common/Include/AdapterOption.h",
+      "sha256": "5948e1cceb8d2e659328a056ada1ef7be7732dc65f845dd6ce96fcba0e8baa75",
+      "gitBlob": "6b78e0e6ae7b27fc03864eb28cb272ae114592c7",
+      "currentPathHistory": {
+        "path": "Common/Include/AdapterOption.h",
+        "commits": [
+          {
+            "sha": "772a05f14a61af283bfa34f090718645de79bf45",
+            "author": "Yukino Song",
+            "date": "2024-08-10T17:09:12Z",
+            "message": "Track upstream",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/772a05f14a61af283bfa34f090718645de79bf45"
+          },
+          {
+            "sha": "540ad48f26e934f1a1319f1a5f46f06043cee4d9",
+            "author": "Joakim Sandström",
+            "date": "2024-07-31T21:36:07Z",
+            "message": "Here is the whole bit working",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/540ad48f26e934f1a1319f1a5f46f06043cee4d9"
+          },
+          {
+            "sha": "a8742af494fbfa81519f1f570248a3a6861f4090",
+            "author": "Joakim Sandström",
+            "date": "2024-07-30T19:36:48Z",
+            "message": "ops options txt",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/a8742af494fbfa81519f1f570248a3a6861f4090"
+          },
+          {
+            "sha": "41f9d6a1a077817d0026bc7d07a7de0ab497e9e9",
+            "author": "Joakim Sandström",
+            "date": "2024-07-27T08:28:41Z",
+            "message": "GPU fallback and XML",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/41f9d6a1a077817d0026bc7d07a7de0ab497e9e9"
+          },
+          {
+            "sha": "3e911fa1135e5b5000b148d0e5ec45a82bc1fa52",
+            "author": "Sajid",
+            "date": "2024-05-28T19:59:41Z",
+            "message": "Add support for picking render adapter",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/3e911fa1135e5b5000b148d0e5ec45a82bc1fa52"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": false,
+      "requiredAction": "Resolve earlier Sajid/Joakim contributions and preserve notices; SudoMaker statement does not blanket-relicense earlier contributions"
+    },
+    {
+      "path": "Common/Include/sudovda-ioctl.h",
+      "sha256": "dd924c9bd3918f75bdc1c1153ed16f23ae1658fde890d76f5f4f35397062dd73",
+      "gitBlob": "849c87f39c8a4f4390cf5a6ab2b7ebc87fcc45be",
+      "currentPathHistory": {
+        "path": "Common/Include/sudovda-ioctl.h",
+        "commits": [
+          {
+            "sha": "1044eca77a456fd6537873dedc114368014e0083",
+            "author": "Yukino Song",
+            "date": "2024-09-08T22:32:54Z",
+            "message": "Minor adjustments",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/1044eca77a456fd6537873dedc114368014e0083"
+          },
+          {
+            "sha": "fe3658a9d011f18bbdf9f7945edd0e5aabddf768",
+            "author": "Yukino Song",
+            "date": "2024-08-15T22:18:58Z",
+            "message": "Fix interface guid",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/fe3658a9d011f18bbdf9f7945edd0e5aabddf768"
+          },
+          {
+            "sha": "f56946d6f6ba0904c21be4818688bb7dd6f2bfcd",
+            "author": "Yukino Song",
+            "date": "2024-08-14T19:40:18Z",
+            "message": "Update ioctl header",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/f56946d6f6ba0904c21be4818688bb7dd6f2bfcd"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": false,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+      "gitBlob": "23187b6171425597e82bcac4b547ca4f673404d7",
+      "currentPathHistory": {
+        "path": "README.md",
+        "commits": [
+          {
+            "sha": "098da8d120ba51339634fef075bb3d5f69c9fb18",
+            "author": "Yukino Song",
+            "date": "2025-02-14T19:54:13Z",
+            "message": "Update README",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/098da8d120ba51339634fef075bb3d5f69c9fb18"
+          },
+          {
+            "sha": "e3689a0cbff6e92ef50f835e0774097be0f336ae",
+            "author": "Yukino Song",
+            "date": "2025-01-21T08:25:34Z",
+            "message": "Update README",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/e3689a0cbff6e92ef50f835e0774097be0f336ae"
+          },
+          {
+            "sha": "3d8bd68f058cc0a371ca1a8cc9a4f058b9062dc6",
+            "author": "Mike Rodriguez",
+            "date": "2024-08-06T16:50:49Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/3d8bd68f058cc0a371ca1a8cc9a4f058b9062dc6"
+          },
+          {
+            "sha": "7d134485957fe03059a150d4ed14d233cf94eefa",
+            "author": "Mike Rodriguez",
+            "date": "2024-07-19T10:59:11Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/7d134485957fe03059a150d4ed14d233cf94eefa"
+          },
+          {
+            "sha": "7ffb7c34e07119c6075016cf93c32a6cb73eaf88",
+            "author": "Mike Rodriguez",
+            "date": "2024-07-19T10:58:50Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/7ffb7c34e07119c6075016cf93c32a6cb73eaf88"
+          },
+          {
+            "sha": "ada3f545f8054f613b12b9284f46662b38c5e637",
+            "author": "Mike Rodriguez",
+            "date": "2024-07-19T10:57:55Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/ada3f545f8054f613b12b9284f46662b38c5e637"
+          },
+          {
+            "sha": "bb671c2375bcf8fb4c11c08e64bc1141af2eda09",
+            "author": "Mike Rodriguez",
+            "date": "2024-07-19T05:26:21Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/bb671c2375bcf8fb4c11c08e64bc1141af2eda09"
+          },
+          {
+            "sha": "001b869de9f7bdb62056e845d04572c4a0427fb3",
+            "author": "Mike Rodriguez",
+            "date": "2024-07-19T05:24:33Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/001b869de9f7bdb62056e845d04572c4a0427fb3"
+          },
+          {
+            "sha": "23e991bb3949a62f5e673da4148b4433107c1da4",
+            "author": "Mike Rodriguez",
+            "date": "2024-05-29T23:22:33Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/23e991bb3949a62f5e673da4148b4433107c1da4"
+          },
+          {
+            "sha": "a27ae38d6084d1f76bbd4e4e866ce61b7390bd0b",
+            "author": "Mike Rodriguez",
+            "date": "2024-05-29T23:22:14Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/a27ae38d6084d1f76bbd4e4e866ce61b7390bd0b"
+          },
+          {
+            "sha": "be9433b7a3b9931592d833c30649e05cc7e64d51",
+            "author": "Mike Rodriguez",
+            "date": "2024-05-29T23:21:57Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/be9433b7a3b9931592d833c30649e05cc7e64d51"
+          },
+          {
+            "sha": "24fe31b934cbf621165ffb35052a0de89c904f27",
+            "author": "Mike Rodriguez",
+            "date": "2024-05-29T23:21:18Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/24fe31b934cbf621165ffb35052a0de89c904f27"
+          },
+          {
+            "sha": "c733e68325e126b5016886d6f8a65c3b24f422ae",
+            "author": "Mike Rodriguez",
+            "date": "2024-05-29T23:20:49Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/c733e68325e126b5016886d6f8a65c3b24f422ae"
+          },
+          {
+            "sha": "96cd8d92420b86af7ac9c44ceb686e59f5dab44c",
+            "author": "Mike Rodriguez",
+            "date": "2024-03-31T00:03:55Z",
+            "message": "Added additional credits: Baloukj, zjoasan, and Bud.",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/96cd8d92420b86af7ac9c44ceb686e59f5dab44c"
+          },
+          {
+            "sha": "6144b56d272b5d8735158367769b8d35e9cf66fe",
+            "author": "Bud",
+            "date": "2024-02-16T01:28:22Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/6144b56d272b5d8735158367769b8d35e9cf66fe"
+          },
+          {
+            "sha": "c4e01ba39eb2506e752bfd58318e905f3b75a365",
+            "author": "Joakim Sandström",
+            "date": "2024-02-15T23:03:29Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/c4e01ba39eb2506e752bfd58318e905f3b75a365"
+          },
+          {
+            "sha": "6058ce0b6e8197944001a80a85cbdf0def373dda",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-04T02:36:11Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/6058ce0b6e8197944001a80a85cbdf0def373dda"
+          },
+          {
+            "sha": "9d9d8d3e4e2914cf7018fd19b185308caedc6161",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-03T01:36:31Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/9d9d8d3e4e2914cf7018fd19b185308caedc6161"
+          },
+          {
+            "sha": "929d970f20272070f7c18e83149d3e1441393a1d",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-03T01:35:20Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/929d970f20272070f7c18e83149d3e1441393a1d"
+          },
+          {
+            "sha": "d4833be7f4aba7db559c6008791637ce17d76e7e",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-03T01:34:53Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/d4833be7f4aba7db559c6008791637ce17d76e7e"
+          },
+          {
+            "sha": "3778c78bf65c72c274f4b11b7d6f6ef20470d95a",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-02T16:59:22Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/3778c78bf65c72c274f4b11b7d6f6ef20470d95a"
+          },
+          {
+            "sha": "227c69bb692483726e62424431f8c4cc00509405",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-02T16:59:08Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/227c69bb692483726e62424431f8c4cc00509405"
+          },
+          {
+            "sha": "3600ea4f93b9e82c8d9a6e7c5565568871b1b2fe",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-02T16:05:43Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/3600ea4f93b9e82c8d9a6e7c5565568871b1b2fe"
+          },
+          {
+            "sha": "4a1649b197e6b0e01bde7d6a81adf6bddc8e5062",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-02T14:32:40Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/4a1649b197e6b0e01bde7d6a81adf6bddc8e5062"
+          },
+          {
+            "sha": "2ac6924bc255e9a8043848bd1c409b3dfc8e2bee",
+            "author": "Mike Rodriguez",
+            "date": "2023-12-02T14:24:33Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/2ac6924bc255e9a8043848bd1c409b3dfc8e2bee"
+          },
+          {
+            "sha": "dfe1ef953a32397d0ce88164b9f3b212634575f8",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-20T08:46:00Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/dfe1ef953a32397d0ce88164b9f3b212634575f8"
+          },
+          {
+            "sha": "0b76138aae0026618d2b4106bcf0b6ed72f3cedb",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-20T08:39:43Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/0b76138aae0026618d2b4106bcf0b6ed72f3cedb"
+          },
+          {
+            "sha": "5e7773dd93c7b111a8fd9ab94876293a7c131143",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-20T08:29:19Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/5e7773dd93c7b111a8fd9ab94876293a7c131143"
+          },
+          {
+            "sha": "fc70569f4bc8c28b73955388a2ff44b7a08636cd",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-20T08:20:55Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/fc70569f4bc8c28b73955388a2ff44b7a08636cd"
+          },
+          {
+            "sha": "06bc23160b33611185c6259dccb8ddd57ec38b0f",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-19T07:12:42Z",
+            "message": "Added 2732 x 2048 support.",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/06bc23160b33611185c6259dccb8ddd57ec38b0f"
+          },
+          {
+            "sha": "655cf45e337b0fbe88c14c815d29b5b307b7a821",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-19T02:51:54Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/655cf45e337b0fbe88c14c815d29b5b307b7a821"
+          },
+          {
+            "sha": "fb1dc708654aa6a185099f443b6a3c4426933f9a",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-18T23:36:55Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/fb1dc708654aa6a185099f443b6a3c4426933f9a"
+          },
+          {
+            "sha": "64e69942294491d36bb03795477e769b79628ba6",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-18T23:36:15Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/64e69942294491d36bb03795477e769b79628ba6"
+          },
+          {
+            "sha": "9786e055c4fcf24a65c3e958235172600b0171c2",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-18T23:35:33Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/9786e055c4fcf24a65c3e958235172600b0171c2"
+          },
+          {
+            "sha": "2cd34bc14898a40632d89887d623240c7a869351",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-18T23:32:36Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/2cd34bc14898a40632d89887d623240c7a869351"
+          },
+          {
+            "sha": "4b3c17838bf2ae4a085a294f4981267f381094d9",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-18T23:31:31Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/4b3c17838bf2ae4a085a294f4981267f381094d9"
+          },
+          {
+            "sha": "69c12621835cdc0314164646f766f3e0f0741ae6",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-15T01:48:04Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/69c12621835cdc0314164646f766f3e0f0741ae6"
+          },
+          {
+            "sha": "236b8d0abe3ea2124e41afcb7c0873628fc76d4d",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-15T01:39:24Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/236b8d0abe3ea2124e41afcb7c0873628fc76d4d"
+          },
+          {
+            "sha": "9ee885a99755dd9e0a48f3486c85272deef68af7",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-15T01:38:11Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/9ee885a99755dd9e0a48f3486c85272deef68af7"
+          },
+          {
+            "sha": "280d9a8453f1095504c181f8f33c67557162cdb1",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T19:31:46Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/280d9a8453f1095504c181f8f33c67557162cdb1"
+          },
+          {
+            "sha": "34d6ac026c75c89a65ced43ea8de115a62fad226",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T19:29:31Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/34d6ac026c75c89a65ced43ea8de115a62fad226"
+          },
+          {
+            "sha": "4c5d820530fe2ae5551e789093dd7cdeeb11e4ea",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T19:27:47Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/4c5d820530fe2ae5551e789093dd7cdeeb11e4ea"
+          },
+          {
+            "sha": "8140f98bd5c4058500326a6de556612b8b1ca2d9",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T19:10:40Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/8140f98bd5c4058500326a6de556612b8b1ca2d9"
+          },
+          {
+            "sha": "abf90476bf5cc1a1d95f6e9ff3d22e4bafae7897",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T19:08:25Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/abf90476bf5cc1a1d95f6e9ff3d22e4bafae7897"
+          },
+          {
+            "sha": "111e2f0cfa619672f947d4d80e7c21cc7c3a27c5",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T19:08:00Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/111e2f0cfa619672f947d4d80e7c21cc7c3a27c5"
+          },
+          {
+            "sha": "29e50367d8c0ec3665fb4b3b15bfe3fdf82d5f5e",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T18:33:47Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/29e50367d8c0ec3665fb4b3b15bfe3fdf82d5f5e"
+          },
+          {
+            "sha": "c7a7f82ff53f8afa6dbc1201c0f33dbe50f66126",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T18:32:27Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/c7a7f82ff53f8afa6dbc1201c0f33dbe50f66126"
+          },
+          {
+            "sha": "2d9f7d04de126302c430628055f3d5f4bdca3138",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T18:31:39Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/2d9f7d04de126302c430628055f3d5f4bdca3138"
+          },
+          {
+            "sha": "000d02482769ea9e1e34d0a12ab9d11e14689414",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T13:57:26Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/000d02482769ea9e1e34d0a12ab9d11e14689414"
+          },
+          {
+            "sha": "4665af1c1515d0f0b19e3c80f4947e2aa50fe507",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T13:54:42Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/4665af1c1515d0f0b19e3c80f4947e2aa50fe507"
+          },
+          {
+            "sha": "d22225f0710885a783d1ddce4671db213d573873",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T13:48:55Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/d22225f0710885a783d1ddce4671db213d573873"
+          },
+          {
+            "sha": "5c242a86bb34257280d347c6a4c51f5f557c31f7",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T13:47:32Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/5c242a86bb34257280d347c6a4c51f5f557c31f7"
+          },
+          {
+            "sha": "1d5f7a7c58e1f83666d901372b5a811e68d86803",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T13:00:46Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/1d5f7a7c58e1f83666d901372b5a811e68d86803"
+          },
+          {
+            "sha": "35a38ee047c567a99360df59edd308ff171a290b",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T12:30:45Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/35a38ee047c567a99360df59edd308ff171a290b"
+          },
+          {
+            "sha": "37dc3299e15923006561df859c4f9b0d5cc6382a",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T12:30:20Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/37dc3299e15923006561df859c4f9b0d5cc6382a"
+          },
+          {
+            "sha": "01aa650469b9cfec3715001c086aae797e3b929e",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T12:28:05Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/01aa650469b9cfec3715001c086aae797e3b929e"
+          },
+          {
+            "sha": "830aba561e9b7891f2f1ef57913dfd6ec30cdbf6",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T12:25:32Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/830aba561e9b7891f2f1ef57913dfd6ec30cdbf6"
+          },
+          {
+            "sha": "0e5f74fafbc6bdecf4c26841454f8ef4d59e2708",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T12:22:53Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/0e5f74fafbc6bdecf4c26841454f8ef4d59e2708"
+          },
+          {
+            "sha": "83ec8c2bd9566c70c969c2bad74de8d152c6f2ab",
+            "author": "Mike Rodriguez",
+            "date": "2023-10-14T12:14:02Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/83ec8c2bd9566c70c969c2bad74de8d152c6f2ab"
+          },
+          {
+            "sha": "335037871e9f528c756d5c5bc32bc68ba919171a",
+            "author": "Max Boone",
+            "date": "2022-10-13T02:19:25Z",
+            "message": "Add requirement for nefcon",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/335037871e9f528c756d5c5bc32bc68ba919171a"
+          },
+          {
+            "sha": "263ac01a8edc8b1cd0270de02cefe364929e0815",
+            "author": "sitiom",
+            "date": "2022-07-11T08:40:11Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/263ac01a8edc8b1cd0270de02cefe364929e0815"
+          },
+          {
+            "sha": "e05854eb5bca66f95a05ac925ce3273192457785",
+            "author": "sitiom",
+            "date": "2022-07-11T08:38:11Z",
+            "message": "Update manual installation guide",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/e05854eb5bca66f95a05ac925ce3273192457785"
+          },
+          {
+            "sha": "a5e97012f7a50fca688aa71465d79f7febe7eba8",
+            "author": "sitiom",
+            "date": "2022-07-11T08:12:07Z",
+            "message": "Add License and Acknowledgements section",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/a5e97012f7a50fca688aa71465d79f7febe7eba8"
+          },
+          {
+            "sha": "a75a4d80609a9e8f4f10c465d3d5e76dfb337f79",
+            "author": "sitiom",
+            "date": "2022-07-11T05:13:40Z",
+            "message": "Add installation and configuration section",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/a75a4d80609a9e8f4f10c465d3d5e76dfb337f79"
+          },
+          {
+            "sha": "df7238c1f242e1093cdcab0ea749f34094570283",
+            "author": "Rashi Abramson",
+            "date": "2022-02-20T22:06:48Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/df7238c1f242e1093cdcab0ea749f34094570283"
+          },
+          {
+            "sha": "42a964a2be7e6751ed078764a12c776f10b994bc",
+            "author": "Rashi Abramson",
+            "date": "2021-12-09T20:58:21Z",
+            "message": "Revert \"Update README.md\"",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/42a964a2be7e6751ed078764a12c776f10b994bc"
+          },
+          {
+            "sha": "a5a9541f935b5915227f4394e2a8b3adf5ff822d",
+            "author": "Rashi Abramson",
+            "date": "2021-12-09T20:47:38Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/a5a9541f935b5915227f4394e2a8b3adf5ff822d"
+          },
+          {
+            "sha": "adcdfc65dd51b31119aad90df41d18dea3122cc4",
+            "author": "Rashi Abramson",
+            "date": "2021-11-02T21:21:50Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/adcdfc65dd51b31119aad90df41d18dea3122cc4"
+          },
+          {
+            "sha": "39c61844a2769fd6b488e4324087f0be2420e18a",
+            "author": "Rashi Abramson",
+            "date": "2021-10-06T18:43:04Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/39c61844a2769fd6b488e4324087f0be2420e18a"
+          },
+          {
+            "sha": "3aeac47cce0098b622a97f1f822c6baa5e7365a3",
+            "author": "Rashi Abramson",
+            "date": "2021-08-11T16:55:46Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/3aeac47cce0098b622a97f1f822c6baa5e7365a3"
+          },
+          {
+            "sha": "0f6fef73007fda8aa0aed9578b21641576794c2b",
+            "author": "Rashi Abramson",
+            "date": "2021-04-20T21:46:06Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/0f6fef73007fda8aa0aed9578b21641576794c2b"
+          },
+          {
+            "sha": "2316a3e836bbf5ec15e7b5acd85c2ea754e55caa",
+            "author": "Rashi Abramson",
+            "date": "2021-04-09T21:56:10Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/2316a3e836bbf5ec15e7b5acd85c2ea754e55caa"
+          },
+          {
+            "sha": "fc8048a627d9102b4e142c08a057dc9fcee3b33b",
+            "author": "Rashi Abramson",
+            "date": "2021-04-08T22:49:00Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/fc8048a627d9102b4e142c08a057dc9fcee3b33b"
+          },
+          {
+            "sha": "b16ba13c0b5e292fdd2f2dc097f359bf3226e6d3",
+            "author": "Rashi Abramson",
+            "date": "2021-04-08T22:24:56Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/b16ba13c0b5e292fdd2f2dc097f359bf3226e6d3"
+          },
+          {
+            "sha": "899ab22246df6873d29fd4a412bf05f458c56e63",
+            "author": "Rashi Abramson",
+            "date": "2021-04-08T20:53:25Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/899ab22246df6873d29fd4a412bf05f458c56e63"
+          },
+          {
+            "sha": "10ac866f5d4afd3a7e79a2ad6040aebdfe9fbade",
+            "author": "Rashi Abramson",
+            "date": "2021-04-08T20:30:48Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/10ac866f5d4afd3a7e79a2ad6040aebdfe9fbade"
+          },
+          {
+            "sha": "e8d50b101765988c4aea4d6818e2d524aaa4fc28",
+            "author": "Rashi Abramson",
+            "date": "2021-04-08T20:30:21Z",
+            "message": "Update README.md",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/e8d50b101765988c4aea4d6818e2d524aaa4fc28"
+          },
+          {
+            "sha": "8ca800d1e17b9c42aefb6d2519646e5b94fad9e8",
+            "author": "karlf",
+            "date": "2017-04-03T23:20:52Z",
+            "message": "Add project files.",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": false,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+      "sha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb",
+      "gitBlob": "93b1af711db311350c8c145fac6c99ab690e58e5",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+        "commits": [
+          {
+            "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+            "author": "Mike Rodriguez",
+            "date": "2024-04-22T07:41:18Z",
+            "message": "Reorganization",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Establish actual template input/helper provenance or independently replace; generator license alone cannot resolve output rights"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA.sln",
+      "sha256": "012f97c290c69b9e5cbed0e086b53b35f919029d84d548dbeb037b3dc5ad9dc1",
+      "gitBlob": "0eba42872efc9d3737932bf26f1e0a8c4f5b726c",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/SudoVDA.sln",
+        "commits": [
+          {
+            "sha": "46a04eb7e19594db43193f1af81b25e6c72b3715",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:25:07Z",
+            "message": "Rename to SudoVDA",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/46a04eb7e19594db43193f1af81b25e6c72b3715"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": false,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+      "sha256": "10a555cd3acd83ddd3deda51e321b8514b296b238df43e8a1249af4b0f458e48",
+      "gitBlob": "8e906a76827032e3054e8348c00d0a1818c3d1fb",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+        "commits": [
+          {
+            "sha": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+            "author": "Yukino Song",
+            "date": "2025-04-14T16:21:36Z",
+            "message": "Remove built-in VR resolutions",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/a4b09fa2aa731a964d0cb5d139cb1e6240e4da12"
+          },
+          {
+            "sha": "39501270d20a9a67b17120d5effc895262513cee",
+            "author": "Yukino Song",
+            "date": "2025-02-27T21:30:44Z",
+            "message": "Fix Windows 10",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/39501270d20a9a67b17120d5effc895262513cee"
+          },
+          {
+            "sha": "6414f0d82304984e7634d45e3531f9e8215f8ad3",
+            "author": "Yukino Song",
+            "date": "2025-02-25T15:30:19Z",
+            "message": "Better support for fractional refresh rate and mode automation",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/6414f0d82304984e7634d45e3531f9e8215f8ad3"
+          },
+          {
+            "sha": "a21501f09a410ed29c0605427536eed22e8bdda8",
+            "author": "Yukino Song",
+            "date": "2025-02-25T11:47:38Z",
+            "message": "Make all default modes use 1000 denominator",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/a21501f09a410ed29c0605427536eed22e8bdda8"
+          },
+          {
+            "sha": "04e8deb77353b4c60550754b34a1444a62530657",
+            "author": "Yukino Song",
+            "date": "2025-02-14T19:53:32Z",
+            "message": "Add WCG/SDR10bit/HDR12bit/decimal refresh rate support w/ logic refinement w/ more default modes",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/04e8deb77353b4c60550754b34a1444a62530657"
+          },
+          {
+            "sha": "91a67e92ebd6e34f13018dc84dce459922ce921d",
+            "author": "Yukino Song",
+            "date": "2025-01-23T09:09:44Z",
+            "message": "Set high priority for the driver",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/91a67e92ebd6e34f13018dc84dce459922ce921d"
+          },
+          {
+            "sha": "aa2392d20e8d8b6a4956b5bed6edb2aa4da1249f",
+            "author": "Yukino Song",
+            "date": "2024-09-10T12:57:31Z",
+            "message": "Add test mode",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/aa2392d20e8d8b6a4956b5bed6edb2aa4da1249f"
+          },
+          {
+            "sha": "1044eca77a456fd6537873dedc114368014e0083",
+            "author": "Yukino Song",
+            "date": "2024-09-08T22:32:54Z",
+            "message": "Minor adjustments",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/1044eca77a456fd6537873dedc114368014e0083"
+          },
+          {
+            "sha": "336404bae0ebf89bf0a88b7f0431874eb86795d6",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:26:33Z",
+            "message": "Rename to SudoVDA 2",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/336404bae0ebf89bf0a88b7f0431874eb86795d6"
+          },
+          {
+            "sha": "46a04eb7e19594db43193f1af81b25e6c72b3715",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:25:07Z",
+            "message": "Rename to SudoVDA",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/46a04eb7e19594db43193f1af81b25e6c72b3715"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+      "sha256": "41b9fb6b227a43ca988af8ade5b420efa6093ca85f52444b479fe7c8a4e853d9",
+      "gitBlob": "b071923f495fe70ffbc019a6ae3f2654f726e727",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+        "commits": [
+          {
+            "sha": "46a04eb7e19594db43193f1af81b25e6c72b3715",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:25:07Z",
+            "message": "Rename to SudoVDA",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/46a04eb7e19594db43193f1af81b25e6c72b3715"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+      "sha256": "69ac02df77374edf50832f97464c6781cdd74938699c1dd114821e5c2990f0ca",
+      "gitBlob": "c2ba39df36a8d60578eaa78cff58b2ec9466a09d",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+        "commits": [
+          {
+            "sha": "46a04eb7e19594db43193f1af81b25e6c72b3715",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:25:07Z",
+            "message": "Rename to SudoVDA",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/46a04eb7e19594db43193f1af81b25e6c72b3715"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.inf",
+      "sha256": "78247e9455fccca65fa1745664fc60dfb76eb3d59737b71cb1b8b3007bd41817",
+      "gitBlob": "77a07b6dd627c5292ba5f663d4ef69ecafdc8123",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.inf",
+        "commits": [
+          {
+            "sha": "38274e0b30e9814692c48d5e6f2f6f077bd73f08",
+            "author": "Yukino Song",
+            "date": "2024-08-22T18:34:59Z",
+            "message": "Fix Windows 10",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/38274e0b30e9814692c48d5e6f2f6f077bd73f08"
+          },
+          {
+            "sha": "46a04eb7e19594db43193f1af81b25e6c72b3715",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:25:07Z",
+            "message": "Rename to SudoVDA",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/46a04eb7e19594db43193f1af81b25e6c72b3715"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+      "sha256": "3a80623d503632f06e28e22cbe3bdc3c7227b1e84142ad27727086f354594822",
+      "gitBlob": "3b2b0fc04785b15dfbccd40638e442e015246a2c",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+        "commits": [
+          {
+            "sha": "46a04eb7e19594db43193f1af81b25e6c72b3715",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:25:07Z",
+            "message": "Rename to SudoVDA",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/46a04eb7e19594db43193f1af81b25e6c72b3715"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+      "sha256": "3eca4dd904e24723e6c47546d91a7eb91f2c3e06323fb5a152c74174acd0f2d1",
+      "gitBlob": "c16559013ad9c26f9295936375cf4ef93aa447c5",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+        "commits": [
+          {
+            "sha": "46a04eb7e19594db43193f1af81b25e6c72b3715",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:25:07Z",
+            "message": "Rename to SudoVDA",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/46a04eb7e19594db43193f1af81b25e6c72b3715"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/edid.h",
+      "sha256": "41993d6c0365b4b6f6dd97fa6d57d3687d3b399ff9e263e3fceb1b8be9b1df0e",
+      "gitBlob": "91c05170369f4f41319af6146d9ec79fc0d13a3d",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/SudoVDA/edid.h",
+        "commits": [
+          {
+            "sha": "221a3838c7fa1698f6960477ca5d6acc4a79fe21",
+            "author": "Yukino Song",
+            "date": "2025-02-25T11:47:01Z",
+            "message": "Update EDID for 0 minimal luminance",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/221a3838c7fa1698f6960477ca5d6acc4a79fe21"
+          },
+          {
+            "sha": "62040a35fb1115f884a4d43a7e6d19202e23290c",
+            "author": "Yukino Song",
+            "date": "2025-01-01T14:09:12Z",
+            "message": "Update EDID",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/62040a35fb1115f884a4d43a7e6d19202e23290c"
+          },
+          {
+            "sha": "46a04eb7e19594db43193f1af81b25e6c72b3715",
+            "author": "Yukino Song",
+            "date": "2024-08-19T18:25:07Z",
+            "message": "Rename to SudoVDA",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/46a04eb7e19594db43193f1af81b25e6c72b3715"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Establish actual template input/helper provenance or independently replace; generator license alone cannot resolve output rights"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/option.txt",
+      "sha256": "67ebdd5ebcbd0f8b8ff5c7deff0811dcaf2c8fe40fff88b036de57fac2fd80b4",
+      "gitBlob": "7bc082db42db48d4231a6e7636b1dbc8e98e6af3",
+      "currentPathHistory": {
+        "path": "Virtual Display Driver (HDR)/option.txt",
+        "commits": [
+          {
+            "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+            "author": "Mike Rodriguez",
+            "date": "2024-04-22T07:41:18Z",
+            "message": "Reorganization",
+            "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+          }
+        ],
+        "paginationComplete": true
+      },
+      "rightsStatus": "open",
+      "renameHistoryFollowed": true,
+      "requiredAction": "Preserve original notices and resolve Microsoft plus preceding contributors; source history is not a relicensing grant"
+    }
+  ],
+  "earlierHistories": [
+    {
+      "path": "Virtual Display Driver (HDR)/IddSampleDriver/Driver.cpp",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 24,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+          "author": "Yukino Song",
+          "date": "2024-08-17T20:43:25Z",
+          "message": "Do not recreate monitor if the same GUID is already present",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/22b698e2fdd0ec0bd2253f7227ff0d003735a279"
+        },
+        {
+          "sha": "f56946d6f6ba0904c21be4818688bb7dd6f2bfcd",
+          "author": "Yukino Song",
+          "date": "2024-08-14T19:40:18Z",
+          "message": "Update ioctl header",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/f56946d6f6ba0904c21be4818688bb7dd6f2bfcd"
+        },
+        {
+          "sha": "ae51114e46a8febcb060321645afbdd24ec06edb",
+          "author": "Yukino Song",
+          "date": "2024-08-14T17:21:08Z",
+          "message": "Add more ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/ae51114e46a8febcb060321645afbdd24ec06edb"
+        },
+        {
+          "sha": "f311eddaa96f7002262980db05adff785cd64118",
+          "author": "Yukino Song",
+          "date": "2024-08-14T01:44:31Z",
+          "message": "Stable way for getting newly created display",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/f311eddaa96f7002262980db05adff785cd64118"
+        },
+        {
+          "sha": "1a03b778c2028f347f2e48217b7a333483b8d3c2",
+          "author": "Yukino Song",
+          "date": "2024-08-13T19:14:39Z",
+          "message": "Implement watchdog",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/1a03b778c2028f347f2e48217b7a333483b8d3c2"
+        },
+        {
+          "sha": "5281fdc0d5af5c3f802aa81e4a348868979fcbc3",
+          "author": "Yukino Song",
+          "date": "2024-08-13T17:30:02Z",
+          "message": "Update ioctl w/ add connector slot management",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/5281fdc0d5af5c3f802aa81e4a348868979fcbc3"
+        },
+        {
+          "sha": "1a738317ff1fa2f62d47c36d3bbcd8d9fd3636a5",
+          "author": "Yukino Song",
+          "date": "2024-08-12T21:32:55Z",
+          "message": "Implement GPU select",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/1a738317ff1fa2f62d47c36d3bbcd8d9fd3636a5"
+        },
+        {
+          "sha": "336ce44634e08c0db7890f1dbf8e882cd8d6a551",
+          "author": "Yukino Song",
+          "date": "2024-08-12T19:43:20Z",
+          "message": "Clean up",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/336ce44634e08c0db7890f1dbf8e882cd8d6a551"
+        },
+        {
+          "sha": "50f1610a428e583a9be5c435620093925f1a4bc1",
+          "author": "Yukino Song",
+          "date": "2024-08-12T18:10:42Z",
+          "message": "Lower permission for ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/50f1610a428e583a9be5c435620093925f1a4bc1"
+        },
+        {
+          "sha": "a514e03cbfba481f2574e62222df7281422c508c",
+          "author": "Yukino Song",
+          "date": "2024-08-12T00:01:33Z",
+          "message": "Finalize ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/a514e03cbfba481f2574e62222df7281422c508c"
+        },
+        {
+          "sha": "d8b685de7161b4df223332ac4b2499d52a006a76",
+          "author": "Yukino Song",
+          "date": "2024-08-11T20:36:09Z",
+          "message": "Try implement HDR",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/d8b685de7161b4df223332ac4b2499d52a006a76"
+        },
+        {
+          "sha": "68e0994c9dc1407743f1b17d08eb3cd86c05323b",
+          "author": "Yukino Song",
+          "date": "2024-08-11T15:37:39Z",
+          "message": "Re-implement ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/68e0994c9dc1407743f1b17d08eb3cd86c05323b"
+        },
+        {
+          "sha": "0030c74e4cdafd21ac723f1645bb388d28650c31",
+          "author": "Yukino Song",
+          "date": "2024-08-10T19:34:41Z",
+          "message": "Clean up",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/0030c74e4cdafd21ac723f1645bb388d28650c31"
+        },
+        {
+          "sha": "772a05f14a61af283bfa34f090718645de79bf45",
+          "author": "Yukino Song",
+          "date": "2024-08-10T17:09:12Z",
+          "message": "Track upstream",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/772a05f14a61af283bfa34f090718645de79bf45"
+        },
+        {
+          "sha": "50eeb1e34a8c5d945fbef65ce312870b674f6624",
+          "author": "Yukino Song",
+          "date": "2024-08-09T17:31:27Z",
+          "message": "Support hw cursor",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/50eeb1e34a8c5d945fbef65ce312870b674f6624"
+        },
+        {
+          "sha": "ec9bf0d762494ed789fe4410dc534807cfa41d28",
+          "author": "Yukino Song",
+          "date": "2024-08-09T19:05:00Z",
+          "message": "Add ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/ec9bf0d762494ed789fe4410dc534807cfa41d28"
+        },
+        {
+          "sha": "b18c2e99a7aa763e72b755bbd7ce1abe0bb42710",
+          "author": "Bud",
+          "date": "2024-08-06T15:27:46Z",
+          "message": "Corrected tuple locations + added 165 hz again",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/b18c2e99a7aa763e72b755bbd7ce1abe0bb42710"
+        },
+        {
+          "sha": "de33359baf61d667a27640153051894adbff548d",
+          "author": "Bud",
+          "date": "2024-08-04T16:20:43Z",
+          "message": "remove unnecessary standard definition",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/de33359baf61d667a27640153051894adbff548d"
+        },
+        {
+          "sha": "540ad48f26e934f1a1319f1a5f46f06043cee4d9",
+          "author": "Joakim Sandström",
+          "date": "2024-07-31T21:36:07Z",
+          "message": "Here is the whole bit working",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/540ad48f26e934f1a1319f1a5f46f06043cee4d9"
+        },
+        {
+          "sha": "a8742af494fbfa81519f1f570248a3a6861f4090",
+          "author": "Joakim Sandström",
+          "date": "2024-07-30T19:36:48Z",
+          "message": "ops options txt",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/a8742af494fbfa81519f1f570248a3a6861f4090"
+        },
+        {
+          "sha": "a04f2ddbee0eaa3f1897abdbbc271b8c8bea7a6f",
+          "author": "Joakim Sandström",
+          "date": "2024-07-30T19:04:45Z",
+          "message": "Rest of loadsettings",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/a04f2ddbee0eaa3f1897abdbbc271b8c8bea7a6f"
+        },
+        {
+          "sha": "41f9d6a1a077817d0026bc7d07a7de0ab497e9e9",
+          "author": "Joakim Sandström",
+          "date": "2024-07-27T08:28:41Z",
+          "message": "GPU fallback and XML",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/41f9d6a1a077817d0026bc7d07a7de0ab497e9e9"
+        },
+        {
+          "sha": "3e911fa1135e5b5000b148d0e5ec45a82bc1fa52",
+          "author": "Sajid",
+          "date": "2024-05-28T19:59:41Z",
+          "message": "Add support for picking render adapter",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/3e911fa1135e5b5000b148d0e5ec45a82bc1fa52"
+        },
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        }
+      ]
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/IddSampleDriver/Driver.h",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 13,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "ae51114e46a8febcb060321645afbdd24ec06edb",
+          "author": "Yukino Song",
+          "date": "2024-08-14T17:21:08Z",
+          "message": "Add more ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/ae51114e46a8febcb060321645afbdd24ec06edb"
+        },
+        {
+          "sha": "f311eddaa96f7002262980db05adff785cd64118",
+          "author": "Yukino Song",
+          "date": "2024-08-14T01:44:31Z",
+          "message": "Stable way for getting newly created display",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/f311eddaa96f7002262980db05adff785cd64118"
+        },
+        {
+          "sha": "1a03b778c2028f347f2e48217b7a333483b8d3c2",
+          "author": "Yukino Song",
+          "date": "2024-08-13T19:14:39Z",
+          "message": "Implement watchdog",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/1a03b778c2028f347f2e48217b7a333483b8d3c2"
+        },
+        {
+          "sha": "5281fdc0d5af5c3f802aa81e4a348868979fcbc3",
+          "author": "Yukino Song",
+          "date": "2024-08-13T17:30:02Z",
+          "message": "Update ioctl w/ add connector slot management",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/5281fdc0d5af5c3f802aa81e4a348868979fcbc3"
+        },
+        {
+          "sha": "1a738317ff1fa2f62d47c36d3bbcd8d9fd3636a5",
+          "author": "Yukino Song",
+          "date": "2024-08-12T21:32:55Z",
+          "message": "Implement GPU select",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/1a738317ff1fa2f62d47c36d3bbcd8d9fd3636a5"
+        },
+        {
+          "sha": "336ce44634e08c0db7890f1dbf8e882cd8d6a551",
+          "author": "Yukino Song",
+          "date": "2024-08-12T19:43:20Z",
+          "message": "Clean up",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/336ce44634e08c0db7890f1dbf8e882cd8d6a551"
+        },
+        {
+          "sha": "d8b685de7161b4df223332ac4b2499d52a006a76",
+          "author": "Yukino Song",
+          "date": "2024-08-11T20:36:09Z",
+          "message": "Try implement HDR",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/d8b685de7161b4df223332ac4b2499d52a006a76"
+        },
+        {
+          "sha": "68e0994c9dc1407743f1b17d08eb3cd86c05323b",
+          "author": "Yukino Song",
+          "date": "2024-08-11T15:37:39Z",
+          "message": "Re-implement ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/68e0994c9dc1407743f1b17d08eb3cd86c05323b"
+        },
+        {
+          "sha": "0030c74e4cdafd21ac723f1645bb388d28650c31",
+          "author": "Yukino Song",
+          "date": "2024-08-10T19:34:41Z",
+          "message": "Clean up",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/0030c74e4cdafd21ac723f1645bb388d28650c31"
+        },
+        {
+          "sha": "772a05f14a61af283bfa34f090718645de79bf45",
+          "author": "Yukino Song",
+          "date": "2024-08-10T17:09:12Z",
+          "message": "Track upstream",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/772a05f14a61af283bfa34f090718645de79bf45"
+        },
+        {
+          "sha": "50eeb1e34a8c5d945fbef65ce312870b674f6624",
+          "author": "Yukino Song",
+          "date": "2024-08-09T17:31:27Z",
+          "message": "Support hw cursor",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/50eeb1e34a8c5d945fbef65ce312870b674f6624"
+        },
+        {
+          "sha": "ec9bf0d762494ed789fe4410dc534807cfa41d28",
+          "author": "Yukino Song",
+          "date": "2024-08-09T19:05:00Z",
+          "message": "Add ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/ec9bf0d762494ed789fe4410dc534807cfa41d28"
+        },
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        }
+      ]
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/IddSampleDriver/Trace.h",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 1,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        }
+      ]
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/IddSampleDriver/edid.h",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 4,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "d8b685de7161b4df223332ac4b2499d52a006a76",
+          "author": "Yukino Song",
+          "date": "2024-08-11T20:36:09Z",
+          "message": "Try implement HDR",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/d8b685de7161b4df223332ac4b2499d52a006a76"
+        },
+        {
+          "sha": "68e0994c9dc1407743f1b17d08eb3cd86c05323b",
+          "author": "Yukino Song",
+          "date": "2024-08-11T15:37:39Z",
+          "message": "Re-implement ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/68e0994c9dc1407743f1b17d08eb3cd86c05323b"
+        },
+        {
+          "sha": "0030c74e4cdafd21ac723f1645bb388d28650c31",
+          "author": "Yukino Song",
+          "date": "2024-08-10T19:34:41Z",
+          "message": "Clean up",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/0030c74e4cdafd21ac723f1645bb388d28650c31"
+        },
+        {
+          "sha": "772a05f14a61af283bfa34f090718645de79bf45",
+          "author": "Yukino Song",
+          "date": "2024-08-10T17:09:12Z",
+          "message": "Track upstream",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/772a05f14a61af283bfa34f090718645de79bf45"
+        }
+      ]
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/IddSampleDriver/IddSampleDriver.inf",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 5,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "50f1610a428e583a9be5c435620093925f1a4bc1",
+          "author": "Yukino Song",
+          "date": "2024-08-12T18:10:42Z",
+          "message": "Lower permission for ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/50f1610a428e583a9be5c435620093925f1a4bc1"
+        },
+        {
+          "sha": "d8b685de7161b4df223332ac4b2499d52a006a76",
+          "author": "Yukino Song",
+          "date": "2024-08-11T20:36:09Z",
+          "message": "Try implement HDR",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/d8b685de7161b4df223332ac4b2499d52a006a76"
+        },
+        {
+          "sha": "56256c74ff7a0ff654af197015de0aba4628a6f5",
+          "author": "Yukino Song",
+          "date": "2024-08-10T12:01:31Z",
+          "message": "Merge ini from upstream",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/56256c74ff7a0ff654af197015de0aba4628a6f5"
+        },
+        {
+          "sha": "ec9bf0d762494ed789fe4410dc534807cfa41d28",
+          "author": "Yukino Song",
+          "date": "2024-08-09T19:05:00Z",
+          "message": "Add ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/ec9bf0d762494ed789fe4410dc534807cfa41d28"
+        },
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        }
+      ]
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/IddSampleDriver/IddSampleDriver.vcxproj",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 5,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "50eeb1e34a8c5d945fbef65ce312870b674f6624",
+          "author": "Yukino Song",
+          "date": "2024-08-09T17:31:27Z",
+          "message": "Support hw cursor",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/50eeb1e34a8c5d945fbef65ce312870b674f6624"
+        },
+        {
+          "sha": "ec9bf0d762494ed789fe4410dc534807cfa41d28",
+          "author": "Yukino Song",
+          "date": "2024-08-09T19:05:00Z",
+          "message": "Add ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/ec9bf0d762494ed789fe4410dc534807cfa41d28"
+        },
+        {
+          "sha": "de85ea2b41fbd7b2b24d2a2dbbf69ec041800966",
+          "author": "Mike Rodriguez",
+          "date": "2024-07-19T09:22:34Z",
+          "message": "First update to support 10/11 in a single driver.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/de85ea2b41fbd7b2b24d2a2dbbf69ec041800966"
+        },
+        {
+          "sha": "3e911fa1135e5b5000b148d0e5ec45a82bc1fa52",
+          "author": "Sajid",
+          "date": "2024-05-28T19:59:41Z",
+          "message": "Add support for picking render adapter",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/3e911fa1135e5b5000b148d0e5ec45a82bc1fa52"
+        },
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        }
+      ]
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/IddSampleDriver/IddSampleDriver.vcxproj.filters",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 1,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        }
+      ]
+    },
+    {
+      "path": "8K240HzHDR.edid",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 2,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        },
+        {
+          "sha": "963c13ee281ee2338aa3808da15f68fe437aba9b",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-18T23:45:53Z",
+          "message": "Added initial custom EDID for KMDOD driver.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/963c13ee281ee2338aa3808da15f68fe437aba9b"
+        }
+      ]
+    },
+    {
+      "path": "option.txt",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 11,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        },
+        {
+          "sha": "4d4d0a737726360d390d9088eba3bade31946e7d",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-21T18:28:06Z",
+          "message": "Refresh rate bug fix. Initial implementation.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/4d4d0a737726360d390d9088eba3bade31946e7d"
+        },
+        {
+          "sha": "57980ab82cb1fcf986ae8d8b321d335fef83231d",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-20T08:38:39Z",
+          "message": "Added 165Hz support.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/57980ab82cb1fcf986ae8d8b321d335fef83231d"
+        },
+        {
+          "sha": "6e84c52109f6907b1fcd001ae6e9253a8571f132",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-20T08:27:16Z",
+          "message": "Added new refresh rates.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/6e84c52109f6907b1fcd001ae6e9253a8571f132"
+        },
+        {
+          "sha": "c696867321d2ca83ba54565ad79baaf0088f82ae",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-20T08:18:57Z",
+          "message": "Added new widescreen resolutions.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/c696867321d2ca83ba54565ad79baaf0088f82ae"
+        },
+        {
+          "sha": "23405e5e35b4b669952c0d912b9a78dc8d46193b",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-19T07:10:31Z",
+          "message": "Added 2732 x 2048 support.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/23405e5e35b4b669952c0d912b9a78dc8d46193b"
+        },
+        {
+          "sha": "cecb3d709048eac417559ac8f21a5e86cf56bfc2",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-14T19:30:05Z",
+          "message": "Added support for more refresh rates.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/cecb3d709048eac417559ac8f21a5e86cf56bfc2"
+        },
+        {
+          "sha": "eb31a83dd8b0bf1f0b661c37ec6e46a5032faa4b",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-14T13:01:20Z",
+          "message": "Limit to 60 and 120hz.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/eb31a83dd8b0bf1f0b661c37ec6e46a5032faa4b"
+        },
+        {
+          "sha": "1b61261deef8764e2d93b9b416b80f79be0e6955",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-14T12:23:46Z",
+          "message": "Added 75hz, 120hz, 144hz, and 240hz support.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/1b61261deef8764e2d93b9b416b80f79be0e6955"
+        },
+        {
+          "sha": "696592047aa5895d5a27c4ccd607d8dc37e5ef18",
+          "author": "Wind0S",
+          "date": "2021-10-06T06:42:06Z",
+          "message": "Update option.txt",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/696592047aa5895d5a27c4ccd607d8dc37e5ef18"
+        },
+        {
+          "sha": "218cdbbe40062d02c3d5b4519cc2c692fe31fb09",
+          "author": "ge9",
+          "date": "2021-09-11T05:26:47Z",
+          "message": "Use option.txt",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/218cdbbe40062d02c3d5b4519cc2c692fe31fb09"
+        }
+      ]
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/IddSampleDriver.sln",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 2,
+      "complete": true,
+      "commits": [
+        {
+          "sha": "ec9bf0d762494ed789fe4410dc534807cfa41d28",
+          "author": "Yukino Song",
+          "date": "2024-08-09T19:05:00Z",
+          "message": "Add ioctl",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/ec9bf0d762494ed789fe4410dc534807cfa41d28"
+        },
+        {
+          "sha": "85c56c3e695ab4ad4331715aa7cdc837ca782601",
+          "author": "Mike Rodriguez",
+          "date": "2024-04-22T07:41:18Z",
+          "message": "Reorganization",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/85c56c3e695ab4ad4331715aa7cdc837ca782601"
+        }
+      ]
+    },
+    {
+      "path": "LICENSE",
+      "at": "22b698e2fdd0ec0bd2253f7227ff0d003735a279",
+      "count": 0,
+      "complete": true,
+      "commits": []
+    }
+  ],
+  "originalHistories": [
+    {
+      "path": "IddSampleDriver/Driver.cpp",
+      "complete": true,
+      "commits": [
+        {
+          "sha": "a34825ea7633bfaa1ca1e0d5474ee3c327f32134",
+          "author": "Mike Rodriguez",
+          "date": "2024-03-30T23:45:11Z",
+          "message": "Driver source update.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/a34825ea7633bfaa1ca1e0d5474ee3c327f32134"
+        },
+        {
+          "sha": "c9bff80b2383fb02393a6bf35a30909280d65fc8",
+          "author": "Mike Rodriguez",
+          "date": "2023-12-02T15:18:11Z",
+          "message": "HDR Support.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/c9bff80b2383fb02393a6bf35a30909280d65fc8"
+        },
+        {
+          "sha": "10ab460cdf7010b6bfd4d31d02c97590a141b03e",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-18T23:05:26Z",
+          "message": "Added beta installer source. Not complete.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/10ab460cdf7010b6bfd4d31d02c97590a141b03e"
+        },
+        {
+          "sha": "fb4e50672d86204e2746a0957749cd0841d2b89d",
+          "author": "ge9",
+          "date": "2021-09-11T05:31:32Z",
+          "message": "Use option.txt",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/fb4e50672d86204e2746a0957749cd0841d2b89d"
+        },
+        {
+          "sha": "218cdbbe40062d02c3d5b4519cc2c692fe31fb09",
+          "author": "ge9",
+          "date": "2021-09-11T05:26:47Z",
+          "message": "Use option.txt",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/218cdbbe40062d02c3d5b4519cc2c692fe31fb09"
+        },
+        {
+          "sha": "930582b7a51056c936666086e71696ab2d401a06",
+          "author": "ge9",
+          "date": "2021-08-10T14:47:15Z",
+          "message": "Add more target modes",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/930582b7a51056c936666086e71696ab2d401a06"
+        },
+        {
+          "sha": "a2ddf27195805daad6850bf29f3cb724cdfb6ec5",
+          "author": "ge9",
+          "date": "2021-08-05T11:56:18Z",
+          "message": "increase resolution, only 1 monitor",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/a2ddf27195805daad6850bf29f3cb724cdfb6ec5"
+        },
+        {
+          "sha": "fface5ea7ecf07037f2b0f866c20db67c02a47f4",
+          "author": "Rashi Abramson",
+          "date": "2021-04-08T19:47:11Z",
+          "message": "Working driver!",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/fface5ea7ecf07037f2b0f866c20db67c02a47f4"
+        },
+        {
+          "sha": "8ca800d1e17b9c42aefb6d2519646e5b94fad9e8",
+          "author": "karlf",
+          "date": "2017-04-03T23:20:52Z",
+          "message": "Add project files.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8"
+        }
+      ]
+    },
+    {
+      "path": "IddSampleDriver/Driver.h",
+      "complete": true,
+      "commits": [
+        {
+          "sha": "fface5ea7ecf07037f2b0f866c20db67c02a47f4",
+          "author": "Rashi Abramson",
+          "date": "2021-04-08T19:47:11Z",
+          "message": "Working driver!",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/fface5ea7ecf07037f2b0f866c20db67c02a47f4"
+        },
+        {
+          "sha": "8ca800d1e17b9c42aefb6d2519646e5b94fad9e8",
+          "author": "karlf",
+          "date": "2017-04-03T23:20:52Z",
+          "message": "Add project files.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8"
+        }
+      ]
+    },
+    {
+      "path": "IddSampleDriver/Trace.h",
+      "complete": true,
+      "commits": [
+        {
+          "sha": "8ca800d1e17b9c42aefb6d2519646e5b94fad9e8",
+          "author": "karlf",
+          "date": "2017-04-03T23:20:52Z",
+          "message": "Add project files.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8"
+        }
+      ]
+    },
+    {
+      "path": "IddSampleDriver/IddSampleDriver.inf",
+      "complete": true,
+      "commits": [
+        {
+          "sha": "a34825ea7633bfaa1ca1e0d5474ee3c327f32134",
+          "author": "Mike Rodriguez",
+          "date": "2024-03-30T23:45:11Z",
+          "message": "Driver source update.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/a34825ea7633bfaa1ca1e0d5474ee3c327f32134"
+        },
+        {
+          "sha": "c44b310a55a6b0a1354b3ef429487a684a4aed12",
+          "author": "Joakim Sandström",
+          "date": "2023-12-04T18:08:35Z",
+          "message": "Update IddSampleDriver.inf",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/c44b310a55a6b0a1354b3ef429487a684a4aed12"
+        },
+        {
+          "sha": "c9bff80b2383fb02393a6bf35a30909280d65fc8",
+          "author": "Mike Rodriguez",
+          "date": "2023-12-02T15:18:11Z",
+          "message": "HDR Support.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/c9bff80b2383fb02393a6bf35a30909280d65fc8"
+        },
+        {
+          "sha": "7de73dcf4938e20c0dc4e58086322710ad7e3b51",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-14T18:03:24Z",
+          "message": "Updated Driver",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/7de73dcf4938e20c0dc4e58086322710ad7e3b51"
+        },
+        {
+          "sha": "fface5ea7ecf07037f2b0f866c20db67c02a47f4",
+          "author": "Rashi Abramson",
+          "date": "2021-04-08T19:47:11Z",
+          "message": "Working driver!",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/fface5ea7ecf07037f2b0f866c20db67c02a47f4"
+        },
+        {
+          "sha": "8ca800d1e17b9c42aefb6d2519646e5b94fad9e8",
+          "author": "karlf",
+          "date": "2017-04-03T23:20:52Z",
+          "message": "Add project files.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8"
+        }
+      ]
+    },
+    {
+      "path": "IddSampleDriver/IddSampleDriver.vcxproj",
+      "complete": true,
+      "commits": [
+        {
+          "sha": "a34825ea7633bfaa1ca1e0d5474ee3c327f32134",
+          "author": "Mike Rodriguez",
+          "date": "2024-03-30T23:45:11Z",
+          "message": "Driver source update.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/a34825ea7633bfaa1ca1e0d5474ee3c327f32134"
+        },
+        {
+          "sha": "c9bff80b2383fb02393a6bf35a30909280d65fc8",
+          "author": "Mike Rodriguez",
+          "date": "2023-12-02T15:18:11Z",
+          "message": "HDR Support.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/c9bff80b2383fb02393a6bf35a30909280d65fc8"
+        },
+        {
+          "sha": "7de73dcf4938e20c0dc4e58086322710ad7e3b51",
+          "author": "Mike Rodriguez",
+          "date": "2023-10-14T18:03:24Z",
+          "message": "Updated Driver",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/7de73dcf4938e20c0dc4e58086322710ad7e3b51"
+        },
+        {
+          "sha": "930582b7a51056c936666086e71696ab2d401a06",
+          "author": "ge9",
+          "date": "2021-08-10T14:47:15Z",
+          "message": "Add more target modes",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/930582b7a51056c936666086e71696ab2d401a06"
+        },
+        {
+          "sha": "43a3ec388bcad9234ab43bf59e7411d4aa6b6421",
+          "author": "ge9",
+          "date": "2021-08-05T11:38:26Z",
+          "message": "change project properties",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/43a3ec388bcad9234ab43bf59e7411d4aa6b6421"
+        },
+        {
+          "sha": "fface5ea7ecf07037f2b0f866c20db67c02a47f4",
+          "author": "Rashi Abramson",
+          "date": "2021-04-08T19:47:11Z",
+          "message": "Working driver!",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/fface5ea7ecf07037f2b0f866c20db67c02a47f4"
+        },
+        {
+          "sha": "8ca800d1e17b9c42aefb6d2519646e5b94fad9e8",
+          "author": "karlf",
+          "date": "2017-04-03T23:20:52Z",
+          "message": "Add project files.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8"
+        }
+      ]
+    },
+    {
+      "path": "IddSampleDriver/IddSampleDriver.vcxproj.filters",
+      "complete": true,
+      "commits": [
+        {
+          "sha": "a34825ea7633bfaa1ca1e0d5474ee3c327f32134",
+          "author": "Mike Rodriguez",
+          "date": "2024-03-30T23:45:11Z",
+          "message": "Driver source update.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/a34825ea7633bfaa1ca1e0d5474ee3c327f32134"
+        },
+        {
+          "sha": "fface5ea7ecf07037f2b0f866c20db67c02a47f4",
+          "author": "Rashi Abramson",
+          "date": "2021-04-08T19:47:11Z",
+          "message": "Working driver!",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/fface5ea7ecf07037f2b0f866c20db67c02a47f4"
+        },
+        {
+          "sha": "8ca800d1e17b9c42aefb6d2519646e5b94fad9e8",
+          "author": "karlf",
+          "date": "2017-04-03T23:20:52Z",
+          "message": "Add project files.",
+          "url": "https://github.com/SudoMaker/SudoVDA/commit/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8"
+        }
+      ]
+    }
+  ],
+  "edid": {
+    "externalFileLength": 384,
+    "externalSha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb",
+    "externalEqualsFirstAdded": true,
+    "firstExternalCommit": "963c13ee281ee2338aa3808da15f68fe437aba9b",
+    "compiledArrayLength": 256,
+    "compiledArraySha256": "dc04897c0994e685cb220fd350ad3ff93d68770023eaea91bc7440504dd3b39b",
+    "blockChecksums": [
+      0,
+      0
+    ],
+    "arrayEqualsExternal": false,
+    "firstHelperCommit": "772a05f14a61af283bfa34f090718645de79bf45",
+    "generatorCommit": "476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8",
+    "generatorRootLicense": "GPL-3.0 (repository LICENSE)",
+    "generatorTemplateNotice": "GPL-2.0-or-later; Copyright 2012 Carsten Emde (edid.S)",
+    "generatorTreeHas8K240Template": false,
+    "outputLicenseResolved": false
+  },
+  "trace": {
+    "unchangedFromFirstSudoHistoryCommit": true,
+    "firstCommit": "8ca800d1e17b9c42aefb6d2519646e5b94fad9e8",
+    "exactMicrosoftAncestorResolved": false
+  },
+  "licenseMaterial": [
+    {
+      "path": "artifacts/phase03/r1-recheck/microsoft-license.txt",
+      "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a",
+      "url": "https://raw.githubusercontent.com/microsoft/Windows-driver-samples/2dc3fd3a0cc84a2933f2194e7ec0871584979071/LICENSE",
+      "license": "MS-PL"
+    },
+    {
+      "path": "artifacts/phase03/admission-followup/generator-LICENSE.txt",
+      "sha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+      "url": "https://raw.githubusercontent.com/akatrevorjay/edid-generator/476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8/LICENSE",
+      "license": "GPL-3.0"
+    },
+    {
+      "path": "artifacts/phase03/admission-followup/generator-edid-S.txt",
+      "sha256": "590bccbf1e5a49f6318119bf5e8d45f4c85e94793b2b443b1b9a1cd943dd4e12",
+      "url": "https://raw.githubusercontent.com/akatrevorjay/edid-generator/476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8/edid.S",
+      "license": "GPL-2.0-or-later header"
+    }
+  ],
+  "observations": [
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Common%2FInclude%2FAdapterOption.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-0.json",
+      "status": 200,
+      "length": 18572,
+      "sha256": "41410c17be077cab56dc18425c0aeef46b5bf12f4e64b9349acb3548b53bd501",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Common%2FInclude%2Fsudovda-ioctl.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-1.json",
+      "status": 200,
+      "length": 13564,
+      "sha256": "e4f01832fe85bedc6765ff4e4c93362d0fd55682a0e0eeff805f29777dd2be9b",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=README.md&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-2.json",
+      "status": 200,
+      "length": 314984,
+      "sha256": "109fdac4408959a6e0388103d0b0f207747e59a07ec935cc61795ee30298533c",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2F8K240HzHDR.edid&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-3.json",
+      "status": 200,
+      "length": 3390,
+      "sha256": "9d3c4e245ed6992cc048b34396d5309e9af08e161f114534b9d95112235ee155",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2FSudoVDA.sln&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-4.json",
+      "status": 200,
+      "length": 4520,
+      "sha256": "3af885669109095a402fa8f16bf2fb299fe67f3761946f421ca96465a9a01352",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2FSudoVDA%2FDriver.cpp&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-5.json",
+      "status": 200,
+      "length": 45503,
+      "sha256": "eb185e23ad4bc13af59d49be6e8e4657daa48635b19dcb260684e056d1ab3b3a",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2FSudoVDA%2FDriver.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-6.json",
+      "status": 200,
+      "length": 4520,
+      "sha256": "3af885669109095a402fa8f16bf2fb299fe67f3761946f421ca96465a9a01352",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2FSudoVDA%2FSudoVDA.filters&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-7.json",
+      "status": 200,
+      "length": 4520,
+      "sha256": "3af885669109095a402fa8f16bf2fb299fe67f3761946f421ca96465a9a01352",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2FSudoVDA%2FSudoVDA.inf&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-8.json",
+      "status": 200,
+      "length": 9033,
+      "sha256": "4dbc67f7416a52da0308cd824ba4d0db096da36ae89ad626507898cdc98f7100",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2FSudoVDA%2FSudoVDA.vcxproj&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-9.json",
+      "status": 200,
+      "length": 4520,
+      "sha256": "3af885669109095a402fa8f16bf2fb299fe67f3761946f421ca96465a9a01352",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2FSudoVDA%2FTrace.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-10.json",
+      "status": 200,
+      "length": 4520,
+      "sha256": "3af885669109095a402fa8f16bf2fb299fe67f3761946f421ca96465a9a01352",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2FSudoVDA%2Fedid.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-11.json",
+      "status": 200,
+      "length": 13742,
+      "sha256": "b89af95f549316edebe6e3a8e8eac7666c6654e67365097d0a936630d1feeeb5",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a4b09fa2aa731a964d0cb5d139cb1e6240e4da12&path=Virtual%20Display%20Driver%20(HDR)%2Foption.txt&per_page=100",
+      "path": "artifacts/phase03/admission-followup/history-12.json",
+      "status": 200,
+      "length": 3390,
+      "sha256": "9d3c4e245ed6992cc048b34396d5309e9af08e161f114534b9d95112235ee155",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/akatrevorjay/edid-generator/git/trees/476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8?recursive=1",
+      "path": "artifacts/phase03/admission-followup/edid-tree.json",
+      "status": 200,
+      "length": 6613,
+      "sha256": "a588a9a5aba95daa7cda99c73e8d3a28a26ade6aa1545cd79dc4cdc8913f165a",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=Virtual%20Display%20Driver%20(HDR)%2FIddSampleDriver%2FDriver.cpp&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-0.json",
+      "status": 200,
+      "length": 100813,
+      "sha256": "8fca18eb716d99f454a9ba2484b90e5819dcadac4012b5bb7adc3eb7a4010fe7",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=Virtual%20Display%20Driver%20(HDR)%2FIddSampleDriver%2FDriver.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-1.json",
+      "status": 200,
+      "length": 57684,
+      "sha256": "2944f8c49f5db1a537adedfd3a55d035fb7826dbc7a8b752f8609cb3a0053555",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=Virtual%20Display%20Driver%20(HDR)%2FIddSampleDriver%2FTrace.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-2.json",
+      "status": 200,
+      "length": 3390,
+      "sha256": "9d3c4e245ed6992cc048b34396d5309e9af08e161f114534b9d95112235ee155",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=Virtual%20Display%20Driver%20(HDR)%2FIddSampleDriver%2Fedid.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-3.json",
+      "status": 200,
+      "length": 18055,
+      "sha256": "7760cc9adeeecfa438c6b686faec9de5d620fd79fcb9eab03134a1ae02d259b5",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=Virtual%20Display%20Driver%20(HDR)%2FIddSampleDriver%2FIddSampleDriver.inf&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-4.json",
+      "status": 200,
+      "length": 21490,
+      "sha256": "fb6dbd98112a96ce0356c987581a7290434faebed7b8a27c6d6c39853fa28758",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=Virtual%20Display%20Driver%20(HDR)%2FIddSampleDriver%2FIddSampleDriver.vcxproj&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-5.json",
+      "status": 200,
+      "length": 19113,
+      "sha256": "8459e77ba3e0acd6ed771aa05e0c2b958eb379003005100b758605ffc7224448",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=Virtual%20Display%20Driver%20(HDR)%2FIddSampleDriver%2FIddSampleDriver.vcxproj.filters&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-6.json",
+      "status": 200,
+      "length": 3390,
+      "sha256": "9d3c4e245ed6992cc048b34396d5309e9af08e161f114534b9d95112235ee155",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=8K240HzHDR.edid&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-7.json",
+      "status": 200,
+      "length": 6808,
+      "sha256": "6c7242899816b29ae225b4e2871d5a393ca7a6f61c89935e3c93c21099111cdc",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=option.txt&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-8.json",
+      "status": 200,
+      "length": 38624,
+      "sha256": "aac05142de45788ddeb01aa77cf4a256f58d214c1c0e58b2ebf60ab79c4d2165",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=Virtual%20Display%20Driver%20(HDR)%2FIddSampleDriver.sln&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-9.json",
+      "status": 200,
+      "length": 7903,
+      "sha256": "fed6e3fb330d56b5834915ee348021e6f749d4725628fc89cae04e5f861c0975",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=22b698e2fdd0ec0bd2253f7227ff0d003735a279&path=LICENSE&per_page=100",
+      "path": "artifacts/phase03/admission-followup/earlier-10.json",
+      "status": 200,
+      "length": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "link": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/akatrevorjay/edid-generator/476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8/LICENSE",
+      "path": "artifacts/phase03/admission-followup/generator-LICENSE.txt",
+      "status": 200,
+      "length": 35141,
+      "sha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2",
+      "link": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/akatrevorjay/edid-generator/476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8/edid.S",
+      "path": "artifacts/phase03/admission-followup/generator-edid-S.txt",
+      "status": 200,
+      "length": 9709,
+      "sha256": "590bccbf1e5a49f6318119bf5e8d45f4c85e94793b2b443b1b9a1cd943dd4e12",
+      "link": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/akatrevorjay/edid-generator/476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8/README.md",
+      "path": "artifacts/phase03/admission-followup/generator-README-md.txt",
+      "status": 200,
+      "length": 2493,
+      "sha256": "c471312a229a9649f867bdbdf5af949b826e87ccfdbb2a5b92e240d6affca0da",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a34825ea7633bfaa1ca1e0d5474ee3c327f32134&path=IddSampleDriver%2FDriver.cpp&per_page=100",
+      "path": "artifacts/phase03/admission-followup/original-0.json",
+      "status": 200,
+      "length": 27314,
+      "sha256": "c981bb6ede55f1af68d7ae1f64435a27a6500c2169eaa152d6ea89e0da440433",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a34825ea7633bfaa1ca1e0d5474ee3c327f32134&path=IddSampleDriver%2FDriver.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/original-1.json",
+      "status": 200,
+      "length": 4606,
+      "sha256": "f8e5df51ad740b0083dc5ec35f0928ae5739b4e62e2332a4add9b1486e79f160",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a34825ea7633bfaa1ca1e0d5474ee3c327f32134&path=IddSampleDriver%2FTrace.h&per_page=100",
+      "path": "artifacts/phase03/admission-followup/original-2.json",
+      "status": 200,
+      "length": 1367,
+      "sha256": "0833c21bd8e88f51010afc8ce1d4403573cf807b059784e1f0a725d3db707b4e",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a34825ea7633bfaa1ca1e0d5474ee3c327f32134&path=IddSampleDriver%2FIddSampleDriver.inf&per_page=100",
+      "path": "artifacts/phase03/admission-followup/original-3.json",
+      "status": 200,
+      "length": 18819,
+      "sha256": "90a069f6fc8125e868688b39d7859413bc5e8034585697fae357441cc4ea77d6",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a34825ea7633bfaa1ca1e0d5474ee3c327f32134&path=IddSampleDriver%2FIddSampleDriver.vcxproj&per_page=100",
+      "path": "artifacts/phase03/admission-followup/original-4.json",
+      "status": 200,
+      "length": 21036,
+      "sha256": "5eb8c09045e3e11edc51212eb453c1ca0e6dee52ad68a20b4158e918cba4a01c",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits?sha=a34825ea7633bfaa1ca1e0d5474ee3c327f32134&path=IddSampleDriver%2FIddSampleDriver.vcxproj.filters&per_page=100",
+      "path": "artifacts/phase03/admission-followup/original-5.json",
+      "status": 200,
+      "length": 8002,
+      "sha256": "3c6572881f59f5928da005300158d4137650d75c6f2d973dbfc9912ef163a635",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits/772a05f14a61af283bfa34f090718645de79bf45",
+      "path": "artifacts/phase03/admission-followup/commit-772a05f14a61af283bfa34f090718645de79bf45.json",
+      "status": 200,
+      "length": 87469,
+      "sha256": "69d5d09fda4fcc9150aa047f1d0be1c8a7cdb8193040c1471810852fa3dda4aa",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits/963c13ee281ee2338aa3808da15f68fe437aba9b",
+      "path": "artifacts/phase03/admission-followup/commit-963c13ee281ee2338aa3808da15f68fe437aba9b.json",
+      "status": 200,
+      "length": 3968,
+      "sha256": "0276cbcfca9d5f6207daa3f0dd12eddde5cdaa2c060417ba60e0af34fdcd43e1",
+      "link": null
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits/62040a35fb1115f884a4d43a7e6d19202e23290c",
+      "path": "artifacts/phase03/admission-followup/commit-62040a35fb1115f884a4d43a7e6d19202e23290c.json",
+      "status": 200,
+      "length": 7891,
+      "sha256": "8593b59dc6577a1164af00d635990143c38ca3e653e5abb4b378eec90a65762d",
+      "link": null
+    },
+    {
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8/README.md",
+      "path": "artifacts/phase03/admission-followup/initial-readme.raw",
+      "status": 200,
+      "length": 3277,
+      "sha256": "aef3b2a415be416fa7a9ec0869e6bc572e464f1a918414b098623951a4d09e5c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/8ca800d1e17b9c42aefb6d2519646e5b94fad9e8/IddSampleDriver/Trace.h",
+      "path": "artifacts/phase03/admission-followup/initial-trace.raw",
+      "status": 200,
+      "length": 1959,
+      "sha256": "3eca4dd904e24723e6c47546d91a7eb91f2c3e06323fb5a152c74174acd0f2d1"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/963c13ee281ee2338aa3808da15f68fe437aba9b/8K240HzHDR.edid",
+      "path": "artifacts/phase03/admission-followup/added-edid.raw",
+      "status": 200,
+      "length": 384,
+      "sha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/SudoMaker/SudoVDA/772a05f14a61af283bfa34f090718645de79bf45/Virtual%20Display%20Driver%20(HDR)/IddSampleDriver/edid.h",
+      "path": "artifacts/phase03/admission-followup/tracked-edid-helper.raw",
+      "status": 200,
+      "length": 2161,
+      "sha256": "250288a8d3e2b1ae6cdbadaa99cacd1df65d90df65157dd0b0dbcea2d30799f5"
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits/221a3838c7fa1698f6960477ca5d6acc4a79fe21",
+      "path": "artifacts/phase03/admission-followup/commit-221a3838c7fa1698f6960477ca5d6acc4a79fe21.json",
+      "status": 200,
+      "length": 6377,
+      "sha256": "b3fde91ac84057959e3e349e2207f1fab04aade1782cdf7f1f57eb268b378c96"
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits/38274e0b30e9814692c48d5e6f2f6f077bd73f08",
+      "path": "artifacts/phase03/admission-followup/commit-38274e0b30e9814692c48d5e6f2f6f077bd73f08.json",
+      "status": 200,
+      "length": 5228,
+      "sha256": "e5f24f806bf10abfbdcea6f1b96043aa8803cd25b635ceeecc1ec07cb0d2d6d7"
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits/46a04eb7e19594db43193f1af81b25e6c72b3715",
+      "path": "artifacts/phase03/admission-followup/commit-46a04eb7e19594db43193f1af81b25e6c72b3715.json",
+      "status": 200,
+      "length": 27880,
+      "sha256": "f45b0b6e9ae331d7ec187cfdd5d0572ff02eb37d3a42bcb848a15eb24bb3e21f"
+    },
+    {
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits/85c56c3e695ab4ad4331715aa7cdc837ca782601",
+      "path": "artifacts/phase03/admission-followup/commit-85c56c3e695ab4ad4331715aa7cdc837ca782601.json",
+      "status": 200,
+      "length": 289919,
+      "sha256": "5f6c20940adc83423f4161add17b52b14904be7e52106e6aa2a3521235a417ec"
+    }
+  ]
+}
