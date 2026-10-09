@@ -4,11 +4,11 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: "03-03-02 blocking-human: fixed Win11 package plan awaits separately scoped system authorization"
-last_updated: "2026-10-09T10:15:47.516Z"
+stopped_at: "03-03-02 blocking-human: corrected UMDF package plan awaits exact install-only approval; Apollo unchanged"
+last_updated: "2026-10-09T12:23:17.575Z"
 last_activity: 2026-10-09
-last_activity_desc: 03-03 Task1 complete; native package code and immutable plan pass Contract35/35; halted at Task2 concrete machine authorization
-state_head: f3c780b
+last_activity_desc: Apollo conditional install preflight blocked old INF; corrected package/new plan verified; no installation; exact new-plan approval pending
+state_head: aaeda0e
 progress:
   total_phases: 42
   completed_phases: 2
@@ -24,16 +24,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-08)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 03 — 虚拟显示器可行性（03-01/03-02 完成；03-03 Task1固定包计划和安装代码完成；Task2具体授权、实机矩阵及最终人审未完成）
+**Current focus:** Phase 03 — 03-01/03-02完成；03-03旧单独安装条件授权因Apollo前置缺陷阻断，修正包已就绪；新计划授权、安装/矩阵及最终人审未完成。
 
 ## Current Position
 
 Current Plan: 3
 Total Plans in Phase: 3
 Phase: 3 (虚拟显示器可行性) — two plans complete; phase and VDP requirements incomplete
-Plan: 03-03 partial — Task1 complete (RED329a2dc/GREEN5c7f617); Task2 blocking-human awaiting concrete authorization
-Status: Halted at authorized checkpoint; execute-phase and resume approval covered implementation, actual installation/topology/config/reset remain separately gated
-Last activity: 2026-10-09 — Required Helios Release build and Contract35/35 passed, native CTest11/11 passed; durable plan and halted SUMMARY committed f3c780b; systemMutation=false
+Plan: 03-03 partial — Task1 complete; old conditional choice1 recorded; correction RED5050b4a/GREENaaeda0e; Task2 blocking-human awaiting new fixed-plan install-only approval
+Status: Halted; existing Apollo preserved. Old approval binds superseded bytes and cannot authorize corrected package. No runtime authorization file or installer invocation.
+Last activity: 2026-10-09 — Corrected WUDF INF group, WDK/six-INF/signature/Helios build, Contract35/35, source7/7 and CTest11/11 passed. 45,957ms Apollo observation unchanged; systemMutation=false.
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -92,10 +92,11 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 - 2026-10-09 用户已授权「推进直到准入」「证书自签即可，效仿Apollo」与限定证书/先行 ACL 操作。03-01 的最终源码重构、许可、自签和访问边界闭合后准入 aether-helios-display；当前停止范围只到准入，不重新虚构最终 hash 人审、不启动03-02/03-03、不延用旧固定包安装授权。历史 R1 hash 与早期失败证据保留。
 - [Phase 03]: 03-02 implementation complete with revised admitted package and isolated contract evidence; no production test injection; 03-03 concrete system authorization and machine matrix remain
 - [Phase 03]: 03-03 Task1 uses the admitted local derived self-signed package without fabricating a release URL; shared owner store/mutex and native plan bind binary/package/machine/identity/resources. Task2 must record specific user choices before any device operation; no reboot/shutdown or scheduling exception.
+- [Phase 03]: Original install-only choice1 with Apollo preservation constraint failed old INF WUDF isolation preflight; corrected/rebuilt fixed bytes require new reviewed plan approval. No runtime authorization or installation.
 
 ### Pending Todos
 
-当前 Task2 待决定：[具体授权计划](../docs/phase03/HELIOS-DISPLAY-INSTALL-PLAN.md)已就绪，Win11 Install可单独授权，随后Topology/Persistence/DeleteIsolation可分别授权。ResetRecovery须先取得实际私有root和全部group/slot清单；UpdateRollback须先取得已安装旧包和具体维护计划；独立Win10机器仍缺。授权文件不存在，humanReview=null，最终固定包未安装。ZIP b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae、plan2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0、binary c9f214a654d8866f539d55144c9402486aace631c839157845e73c503c807c2b。用户「继续，用量恢复」只恢复Task1实施，不补造系统授权。
+Task2最新：[修正具体计划](../docs/phase03/HELIOS-DISPLAY-INSTALL-PLAN.md)待新固定字节单独安装批准。用户原文「1\n不得影响主机已有的Apollo运行」确已批准旧plan，但INF分组前置失败；未安装，原条件授权与旧hash单独保留。新ZIP da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12、plan4fa13eea427d0a90b3075f85e6813d2f246463dadb41e259d309660e4e77a60a、binary824a6b8b2158c9d713dc2a5eeee88721ae7eccf18786d7096d7258e94f532994。无runtime授权文件，humanReview=null。Topology/Persistence/DeleteIsolation/reset/update仍分别未授权；Win10缺环境。运行时UMDF隔离/安装非干扰性未验证；不得仅凭修正源码保证零影响。
 
 历史准入/ACL授权已经结束：先行包设备与配置精确清理、外来设备保持；指定 E3ED742C3D08188A117AFF7B6C1BB207523EB4DB Root/TrustedPublisher信任保留、无新trust action。03-02已经修复MonitorArrival失败清理和满容量GUID幂等并重新构建准入；当前源helios-1791531076814、签名包helios-1791531228575。watchdog=0/testMode=0/maxMonitors=10是锁定编译默认，安装后实际回读仍待执行。七屏/HDR/保活/恢复/更新/最低build、ARM64、EDID正式厂商身份和通用发行仍未验证。
 
@@ -103,7 +104,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
-[Phase3 current 03-03-02 blocking-human] Task1已完成并提交；固定计划/二进制/资源绑定齐备但无具体系统授权。Win10环境、已安装旧包和reset实际清单尚缺；这些不阻塞Task1，却不能当作Task3通过。BCD只读查询access denied，默认安全分类partial，既有HVCI/VBS等未改变。自动审批拒绝Machine/Install假授权负例，该命令未执行且未重试/绕过；独立合同负例通过，不声称真实Machine fail-closed。WINDOWS ledger5/6记录未执行验证。SDK按SUMMARY存在曾计算9完成/03-03勾选，已按status:halted纠正为8完成、Phase3 2/3；不以暂停摘要关闭阶段或需求。
+[Phase3 current 03-03-02 blocking-human] 原安装条件授权在Apollo前置失败停止。现exact WUDF subkey修正/新包完成，等待新plan4fa13eea批准；机器安装和实际UMDF隔离均未执行。Apollo PID6820/15176与四WUDFHost、配置/二进制、20外来记录/8store文件和CCD保持；45,957ms只读窗口全部一致，0 establishedTCP不代表无UDP串流。BCD权限partial、既有安全/信任不变；历史Machine/Install假授权自动审批拒绝原样保留。WINDOWS ledger未执行矩阵仍open。SDK仍按SUMMARY存在误计9/3，已再次按halted纠正8完成、Phase3 2/3；不关闭VDP。
 
 [Phase1] 两个人审检查点均已答复、四原行为冲突已decided；VS2026与WDK28000同版本组件及集成文件存在，安装缺口resolved。保留9项open环境gap与1项Apple实机TODO：原生构建、独立Win10/客户端/架构/GPU环境、主机build下限、Apple/Linux executor、AndroidAPI21–23/Linux额外架构及测量仪器。来源1261阻碍条目含未决子模块、外部包/二进制来源、具体生产许可、驱动签名和渠道，阻断对应后续生产选用；全部research-only、生产清单空。637平台记录及637计划案例已映射，尚未实现或实机验证。Apple只有VFY01/02实机延期，构建义务仍保留。三个分类flag/六条无描述符prohibitions原状态保留，不伪造自动引擎通过。
 
@@ -137,7 +138,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-09T10:15:47.124Z
-Stopped at: 03-03-02 blocking-human: fixed Win11 package plan awaits separately scoped system authorization
+Last session: 2026-10-09T12:23:17.524Z
+Stopped at: 03-03-02 blocking-human: corrected UMDF package plan awaits exact install-only approval; Apollo unchanged
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
-Next action: 从03-03-02继续，先读取已提交03-03-SUMMARY及HELIOS-DISPLAY-INSTALL-PLAN.md/json，取得真实用户对machine win-5f5cc5dd3cf310b6、精确plan/package和逐项场景的选择；原文/时间/hash匹配后才创建保护授权文件并进入Task3。未授权或缺环境的结果保持untested，Task4最终人审仍必需。无旧ACL安装授权可复用；严禁执行或安排重启/关机。
+Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。

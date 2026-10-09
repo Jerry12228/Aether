@@ -40,11 +40,11 @@ key-decisions:
 requirements-planned: [VDP-01, VDP-02]
 requirements-completed: []
 actuals:
-  tokens: 24064
+  tokens: 59674
   tasks: 1
-  commits: 2
+  commits: 6
 plan_head_before: 841f958b1df459ecacece2963e3abf1eb004f201
-plan_head_after: 5c7f61776685e9cbb0d145caec3a8386a8bcefbe
+plan_head_after: aaeda0e867d111bdcef35758fe8a97fd17c5d3ef
 duration: 63min
 started: "2026-10-09T09:11:12Z"
 checkpoint_recorded: "2026-10-09T10:14:29Z"
@@ -53,7 +53,9 @@ completed: null
 
 # Phase 3 Plan 3: Native Package Plan and Authorization Checkpoint Summary
 
-**固定自签派生包的真实原生安装/更新/回滚代码已实现；实际只读计划与合同验证通过，停止在具体机器操作授权门。**
+**固定包安装代码与合同已完成；用户单独安装授权因 Apollo 隔离前置缺陷被阻断。INF 已修正、重建和重签，新计划可审阅，尚未安装，等待新字节对应的具体授权。**
+
+Latest continuation: RED `5050b4a`, correction/evidence `aaeda0e`. User original text `1\n不得影响主机已有的Apollo运行` is preserved verbatim with its original plan/package/binary hashes in the conditional authorization record. The old install was never invoked. No runtime authorization file was created. The sections below retain Task1's historical checkpoint facts; the latest fixed inputs and continuation results are at the end of this summary.
 
 ## Progress and Task Commits
 
@@ -93,7 +95,7 @@ The final CTest round covered the functional staging/file-protection changes. Th
 
 Ignored local raw receipts/logs are under `artifacts/phase03/package-contract/` and `artifacts/phase02/tooling/`; the durable JSON retains their exact file digests, redacted observations, classifications, package facts and input commit. No fake machine PASS, authorization or human review was generated.
 
-## Fixed Checkpoint Inputs
+## Historical Task1 Fixed Checkpoint Inputs — superseded for execution
 
 | Input | Value |
 |---|---|
@@ -127,10 +129,41 @@ None in the completed Task1 implementation. Actual installation/readiness, updat
 
 ## Awaiting Task2 Decision
 
-The durable plan offers current Win11 Install separately from subsequent Topology/Persistence/DeleteIsolation. ResetRecovery first requires the installed private root and complete group/slot IDs; UpdateRollback requires a verified installed old package, backup and separate maintenance plan. Win10 needs a separate available/approved test machine and plan. No authorization file exists; no old ACL experiment authorization carries forward. Record real user text/time and exact machine/package/plan/scenarios only after the user's concrete choice. Do not mark authorization or VDP complete in the meantime.
+The latest durable plan offers corrected Win11 Install separately from subsequent Topology/Persistence/DeleteIsolation. The old specific install-only approval remains genuine but its Apollo precondition failed; it does not approve the rebuilt package/plan. ResetRecovery first requires the installed private root and complete group/slot IDs; UpdateRollback requires a verified installed old package, backup and separate maintenance plan. Win10 needs a separate available/approved test machine and plan. No runtime authorization file exists. Only after concrete approval of the new fixed plan and a fresh passing preflight may the protected identity-bound install-only file be created. Do not mark VDP or Phase3 complete.
 
 Resume at **03-03-02**, then execute only individually approved Task3 operations and stop again at Task4's mandatory human review. Phase3 validation/Nyquist remain draft/false and requirements remain incomplete.
 
 ## Self-Check: PASSED
 
-All eight checked implementation/review/RED-evidence files exist. Both RED and GREEN commit objects exist. The persisted ledger base and GREEN head match this summary; the durable review JSON binds GREEN as inputCommit. Required Task1 build/Contract tests passed with no skipped tests. The unrun machine matrix and final review are explicitly retained, not claimed passed.
+Historical Task1 self-check: all eight implementation/review/RED-evidence files and RED/GREEN objects existed and matched its then-recorded input commit. Required Task1 build/Contract tests passed with no skipped tests. The unrun matrix/review remains retained.
+
+## Apollo Constraint Continuation — 2026-10-09
+
+**Gate:** blocking-human, new fixed-plan approval. **Progress:** Task1 complete; Task2 original conditional authorization recorded, new package approval pending; Task3 only prerequisite evidence collected, installation/matrix unperformed; Task4 unreached.
+
+The old INF put DeviceGroupId at `HKR` root. The installed Apollo/Oray registry readbacks put their groups under Device Parameters/WUDF. The new independent test failed at the real wrong-line assertion before the fix (exit1, tests1/fail1/skip0); the corrected template and generated INF now place the group under WUDF. Exactly seven of eight compiled source inputs match the previously admitted revision. The only INF change is `HKR,"WUDF","DeviceGroupId",0x00000000,"HeliosDisplayGroup"`; device ACL, private hardware/interface, IOCTL access, DeviceAdd and the entire Driver.cpp remain unchanged. Prior MS-PL/CC0/notices and precise ACL correspondence are re-audited without claiming runtime corrected grouping.
+
+Primary evidence: [Microsoft IDD INF](https://github.com/microsoft/Windows-driver-samples/blob/main/video/IndirectDisplay/IddSampleDriver/IddSampleDriver.inf) and [UMDF device pooling](https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/using-device-pooling-in-umdf-drivers). Shared UMDF process failure can restart other pooled devices; corrected source grouping supports a constrained attempt but is not a guarantee of zero impact. Runtime WUDF grouping, separate hosting and installation noninterference remain untested.
+
+| Input | Latest value |
+|---|---|
+| Machine | win-5f5cc5dd3cf310b6, Win11 build26100 |
+| Source / signed package | helios-1791547416299 / helios-1791547543587 |
+| ZIP SHA256 | da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12 |
+| Dossier SHA256 | 78324da77c8ff2936337e3da948d8358105c7392792cecb679ccc92b948ea00d |
+| Native plan SHA256 | 4fa13eea427d0a90b3075f85e6813d2f246463dadb41e259d309660e4e77a60a |
+| Helios Release SHA256 | 824a6b8b2158c9d713dc2a5eeee88721ae7eccf18786d7096d7258e94f532994 |
+
+Latest checks: required Helios Release build PASS9,185ms; actual WDK x64 build exit0 with the existing bundled InfVerif loader exception retained; six independent installed x64 INF checks PASS; original wrong /osver invocation failure retained separately then corrected to documented NTamd64 target syntax. Existing E3ED742C3D08188A117AFF7B6C1BB207523EB4DB signing certificate reused, no new certificate/trust import; catalog members, timestamp, embedded signer/default Windows policy PASS. Source/lifecycle7/7 PASS427–443ms, package Contract35/35 PASS1,052.0039ms TAP, native CTest11/11 PASS25.31s; zero skipped tests.
+
+Preparation-wide and additional45,957ms bounded read-only observations are unchanged: ApolloService Running/PID6820 start2026-10-08T22:45:44.799770+08; sunshine.exe PID15176/parent6820 start22:45:47.820787+08; WUDFHost2388/2660/3708/4420 retain identities. Apollo config/binaries, SudoVDA0.22.37.632/oem44.inf and Oray17.50.19.949/oem88.inf,20foreign records,8foreign driver-store file hashes, shared WUDFRd policy, zero observed establishedTCP tuple count and active2240×1400@30000/1000 x0y0 SDR/LUID0:145065/UID256/\\.\DISPLAY10 remain identical. ZeroTCP does not assert absence of UDP streams or unchanged media quality. Read-only SetupAPI store lookup returned87; unique exact published-INF hash correspondence established the store identity and the diagnostic remains recorded.
+
+Durable evidence: `HELIOS-DISPLAY-APOLLO-CONDITIONAL-AUTHORIZATION.json`, `HELIOS-DISPLAY-APOLLO-PREFLIGHT.json`, `HELIOS-DISPLAY-UMDF-ISOLATION-EVIDENCE.json`, new `HELIOS-DISPLAY-INSTALL-PLAN.md/json`. Old plan/dossier are separately preserved in `*-03-03-HISTORY.*` and `PROVIDER-ADMISSION-03-02-HISTORY.json`; ignored raw artifacts retain all failure logs. No machine authorization carries forward, no installed/readiness PASS is fabricated, no provider config/topology/reset/update/trust or power action occurred. Full Task3 matrix, Win10, All clean-checkout verification and final human review remain unrun; existing ledger entries remain open.
+
+**[Rule1 - Bug]** Wrong INF WUDF group path was directly found by the newly required Apollo preflight. Fixed exact field and rebuilt/re-audited all changed package/pin inputs; RED5050b4a/GREENaaeda0e. **[Rule2 - correctness]** Added durable read-only continuity and conditional-authorization evidence so the new constraint is reviewable. No new architecture, network endpoint, auth path or privileged machine operation introduced; file access is limited to prerequisite evidence under existing phase ownership.
+
+Measured actuals now use the persisted03-03 ledger base through aaeda0e: commits6 (including historical metadata commits in that range), tokens59,674=ceil(realized committed diff chars/4). Tasks remain1/4; metadata closeout is separate. No completion metric or requirement waiver is inferred.
+
+## Continuation Self-Check: PASSED
+
+New scripts, corrected INF, pins, RED evidence, current/historical dossiers and exact review artifacts exist; 5050b4a and aaeda0e commit objects exist. Admission and nativeplan match the new digests. All comparison flags are true. Actual install/UMDF-host readback and the remaining matrix/human gates are explicitly unperformed, with Phase3/VDP incomplete.
