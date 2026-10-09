@@ -121,11 +121,11 @@
 1. 四组七屏按已批准规格创建、重开、删一组不影响其他组；全部请求60 Hz，记录请求与实际分辨率/刷新率及D组SDR/HDR条件，严格拒绝不得冒充七屏通过。
 2. 原型与正式分发差异清楚；仅测试签名或来源不明不能通过生产可行性结论。
 
-**Plans:** 3 plans（规划完成，尚未执行；准入、系统授权和实机门槛分别验证）
+**Plans:** 1/3 plans complete（03-01 专属自签 provider 准入完成；用户范围停在准入，03-02/03-03 未启动；系统授权、实机及生产门槛保留）
 
 **Wave 1**
 
-- [ ] 03-01-PLAN.md — 固定provider准入、真实只读状态与具体候选决定（R1路线1已批准；独立派生研究包未签名构建通过；许可/正式签名/实机准入仍开放，halted）
+- [x] 03-01-PLAN.md — 固定provider准入、真实只读状态与具体候选决定（aether-helios-display 准入；来源/许可、x64 构建、自签本机信任和实际 ACL 对应证据闭合；未完成 Phase3 实机验收）
 
 **Wave 2** *(depends on 03-01)*
 
@@ -623,7 +623,7 @@
 |-------|----------------|--------|-----------|
 | 1. 来源、原功能与环境基线 | 3/3 | Complete    | 2026-10-07 |
 | 2. Monorepo 与 Flutter/原生骨架 | 3/3 | Complete    | 2026-10-08 |
-| 3. 虚拟显示器可行性 | 0/3 | Halted — R1 dossier verified; derived route decision pending | - |
+| 3. 虚拟显示器可行性 | 1/3 | In progress — 03-01 admitted; user scope stops here, 03-02/03-03 unstarted | - |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
 | 6. GameStream 协议重构与扩展 | 0/TBD | Not started | - |

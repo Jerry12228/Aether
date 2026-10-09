@@ -8,6 +8,7 @@ created: "2026-10-08"
 ---
 
 # Phase 03 — Validation Strategy
+**当前状态（2026-10-09）：** 03-01 已完成，`aether-helios-display` 通过当前 `PROVIDER-ADMISSION-RECONSTRUCTED.json` 的 admission/require-decision。独立许可、自签本机信任、实际先行包 ACL 与最终源码边界对应已经闭合；最终 DLL 未安装。以下旧无合格候选/未签名记录按发生时保留。03-02/03-03 未启动，七屏/HDR/保活/更新矩阵未执行，VDP 与 Phase3 不完成；status: draft、nyquist_compliant: false、wave_0_complete: false 不改写。
 **需求修订优先级（2026-10-08）：** [SudoVDA需求修订R1](../../../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)覆盖旧Win10 HDR必需场景；Win10七屏全SDR，Win11 D2 HDR。SudoVDA是优先候选，允许受控watchdog=0配置与精确60Hz有理数约分核验；许可/签名/ACL/实机门槛仍有效。用户续行后R1准入补证完成，未解锁03-02/03-03系统接入。
 
 

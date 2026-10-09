@@ -1,5 +1,13 @@
 # Phase03 外部能力覆盖
 
+## 当前 03-01 准入（2026-10-09）
+
+`aether-helios-display` 已准入，固定档案与完整接口理由见[当前范围](../../../docs/phase03/HELIOS-DISPLAY-ADMISSION.md)。以下未选定 provider 的原审计为历史；当前专属 protocol 0.3.0 的 OpenDevice 和协议检查可在受控 profile 下作为 INTEGRATE 方向，QUERY 需 READ，mutation 需 READ|WRITE。GET_WATCHDOG/GET_PROTOCOL_VERSION 不刷新 watchdog；仍禁止产品接入全 adapter SetRenderAdapter、持续 Ping 或隐式 owner。逐 GUID ADD/REMOVE、查询和现有 wrapper 方法均在当前档案逐项列出，GUID/HWID/registry 已独立隔离。
+
+当前产品仍零 provider IOCTL；实际先行包 ACL 实验只查询协议并已清理。最终包权限结论由同一 INF/header/WDF/security/IOCTL 边界逐字节对应承接，最终 DLL 未安装。配置 reader/helper/EDID/INF/project 的重构及构建不会证明全部运行 DDI 或 OS 行为；03-02/03-03 未启动，实际七屏/HDR/保活/恢复与生产分发保持待验证。MonitorArrival 失败清理和满容量重复 GUID 幂等问题列为后续接入前修复。
+
+## 初始规划和历史候选审计
+
 2026-10-08：实际API detector对计划正文返回detected:false，signals为空；因此自动API检查点未触发。以下是Windows/provider实际接入范围的补充矩阵。provider未选定；03-01固定接口审计须补齐获选provider全部方法，不能将此矩阵当作来源、实现或支持批准。
 
 | capability | decision | reason |

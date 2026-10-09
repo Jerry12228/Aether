@@ -3,15 +3,16 @@ gsd_state_version: "1.0"
 current_phase: 3
 current_phase_name: 虚拟显示器可行性
 status: executing
-stopped_at: 03-01 self-signing and actual device ACL verified with exact cleanup; bounded source-rights reconstruction continuing; 03-02/03-03 blocked
-last_updated: "2026-10-09T03:03:17.366Z"
+stopped_at: 03-01 complete with admitted aether-helios-display; current user scope ends at admission; 03-02/03-03 unstarted
+last_updated: "2026-10-09T06:55:03.620Z"
 last_activity: 2026-10-09
-last_activity_desc: Quick 261009-fns in progress; 18/18 tests, local default signing trust and actual ACL pass; only license audit blocks candidate admission
+last_activity_desc: Quick 261009-fns complete; dedicated source rights, x64 build, local self-sign trust and ACL correspondence close 03-01 admission
+state_head: 1488cf46f823f93d11d35f984e3de87e588fbb34
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 9
-  completed_plans: 6
+  completed_plans: 7
   percent: 5
 ---
 
@@ -22,21 +23,22 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-08)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 03 — 虚拟显示器可行性（独立自签研究包、本机可信签名与实际 ACL 已验证；继承许可重构中，无合格provider）
+**Current focus:** Phase 03 — 虚拟显示器可行性（03-01 完成；aether-helios-display 已准入；用户范围停在准入，03-02/03-03 未启动）
 
 ## Current Position
 
-Phase: 3 (虚拟显示器可行性) — NO QUALIFIED PROVIDER
-Plan: 03-01 — approved derived route continues through quick 261009-fns; SUMMARY halted on admission
-Status: Self-signing/default local trust and actual BA/SY device/IOCTL access verified; exact experiment cleanup complete; license gate open; 03-02/03-03 not started
-Last activity: 2026-10-09 — quick 261009-fns in progress: 18/18 tests, x64 WDK/native EDID, signing and actual ACL pass; only independent license audit rejects derived admission
+Phase: 3 (虚拟显示器可行性) — scoped provider admission complete; phase incomplete
+Plan: 03-01 complete — quick 261009-fns closed remaining gates; do not execute 03-02/03-03 within current scope
+Status: Executing phase, stopped at completed admission scope; later plans and final-package system operations require new concrete scope/authorization
+Last activity: 2026-10-09 — Completed quick 261009-fns: 18/18 tests, actual x64 WDK/native EDID/settings, source rights, local self-sign trust and ACL correspondence pass; aether-helios-display admitted
 
 Progress: [█░░░░░░░░░] 5%
 
 ## Performance Metrics
 
-Total plans completed: 6; completed phases: 2/42.
-Phase3 partial: Debug/Release build and readonly probe pass；Release CTest4/4(2.45s)，Helios Debug/Release实际进程回归各2/2，包准入负例7/7(~0.10s)、planning fixture1/1及105需求映射通过。五候选均未准入，VDP01/02未完成；03-01 summary为halted，不计完成计划。
+Total plans completed: 7; completed phases: 2/42.
+Phase3 partial: 03-01 complete；aether-helios-display admitted only for provider selection. Latest targeted tests18/18(no skip,491.7617ms), actual Release x64 WDK and native EDID/settings pass; current dossier/admission and historical R1 pass, final installation authorization correctly rejects. Initial Debug/Release readonly probe, Release CTest4/4(2.45s), actual Helios process Debug2/2 and Release2/2 retained. 03-02/03-03 unstarted; VDP01/02 and Phase3 incomplete.
+
 Phase2: clean08a005c and actual CI9aff292 pass four Helios/Selene Debug/Release builds,19 required groups/142 records, version0.1.0/ABI1, zero resources and matching product/tool/test/lock inputs. Final human exact response “确认”, recorded2026-10-08T08:15:03Z, approves scoped boundary/evidence limits. Six valid static rounds, actual GPU/FFI/isolated-console and negative regressions retained. CORE-01/02/03 Complete. Evidence: docs/phase02/EVIDENCE.md.
 Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning fixture1/1。Quick真实快照1.523s/25s，15查询。Phase1目标10/10、BASE01/02/03已完成；零产品性能测量或产品功能验证。完整套件超过30秒反馈目标，针对性反馈约2秒。
 
@@ -76,9 +78,13 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 - 2026-10-09 用户授权继续03-01独立派生补证，quick261009-f0f完成：13输入/45来源观察、早期贡献与两条不同EDID证据、Win10 Legacy/1803+/Win11三INF分支。Release x64 unsigned、6/6 InfVerif及明确OS Inf2Cat通过，新INF2084关闭（原失败日志保留）；13/13测试、89摘要/19链接核验。逐行许可/模板来源仍open，签名条件已整理而未取得账户/证书/返回包。provider未准入，VDP与03-01仍halted，03-02/03-03未启动；机器禁重启/关机持续有效。见[INF补证](../docs/phase03/HELIOS-DISPLAY-INF-FOLLOWUP.md)、[来源审计](../docs/phase03/HELIOS-DISPLAY-PROVENANCE.md)、[签名条件](../docs/phase03/HELIOS-DISPLAY-SIGNING-READINESS.md)。
 
+- 2026-10-09 用户已授权「推进直到准入」「证书自签即可，效仿Apollo」与限定证书/先行 ACL 操作。03-01 的最终源码重构、许可、自签和访问边界闭合后准入 aether-helios-display；当前停止范围只到准入，不重新虚构最终 hash 人审、不启动03-02/03-03、不延用旧固定包安装授权。历史 R1 hash 与早期失败证据保留。
+
 ### Pending Todos
 
-03-01 active followup: 用户选择自签并明确批准指定 CER 的本机 Root/TrustedPublisher 信任及固定研究适配器 ACL 安装/只读测试/清理。实际研究包 helios-1791523416599 的 INF/DLL `/pa /c`、CAT 与 RFC3161 通过；普通令牌访问全部拒绝，管理员 READ 返回 0.3.0，管理员零访问 IOCTL 拒绝，真实设备 DACL 仅 SY/BA。ROOT\DISPLAY\0002/oem89.inf 及新建配置/空父键均精确清除；外来设备清单恢复一致，无重启/关机。初次 UAC 被取消与两次父键清理拒绝保留失败记录，最终原生确切键删除通过。证书信任按已授权范围保留。继承表达式的独立许可审计仍 open，继续受限重构；没有批准 provider、03-02/03-03 或实机七屏/HDR。见[自签收据](../docs/phase03/HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.md)、[ACL证据](../docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json)、[新档案](../docs/phase03/PROVIDER-ADMISSION-SELFSIGNED.json)。
+当前授权范围已完成：用户「推进直到准入」「证书自签即可，效仿Apollo」承接已选专属派生路线，技术 gates 闭合后记录 aether-helios-display 准入；不声称用户重新人工审阅最终 hash。最终源 helios-1791524690800、自签包 helios-1791525277849；最终 DLL 未安装。先行包实际普通/管理员令牌 ACL 测试已完成，ROOT\DISPLAY\0002/oem89.inf 和配置/空父键精确清理，外来设备清单前后相同；最终包相同 INF/header/WDF/security/IOCTL 边界逐字节对应承接该证据，明确为源码推断。此前 UAC/清理失败日志保留。指定 E3ED742C3D08188A117AFF7B6C1BB207523EB4DB 的 Root/TrustedPublisher 信任按授权保留，私钥未导出。未捕获即时成对 CCD，不宣称拓扑比较 PASS。见[准入记录](../docs/phase03/HELIOS-DISPLAY-ADMISSION.md)。
+
+下一执行范围尚未授权：03-02/03-03 保持未启动；MonitorArrival 失败清理和满容量重复 GUID 幂等边界须在接入 mutation 前修正。watchdog=0/testMode=0/maxMonitors=10 为当前 profile。Win10/11 七屏、HDR、CLI 退出保活、恢复/更新、OS 最低 build、ARM64、EDID 正式厂商身份和发行渠道仍待对应后续证据，不从本次准入推断 PASS。
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
 
@@ -86,11 +92,15 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 [Phase1] 两个人审检查点均已答复、四原行为冲突已decided；VS2026与WDK28000同版本组件及集成文件存在，安装缺口resolved。保留9项open环境gap与1项Apple实机TODO：原生构建、独立Win10/客户端/架构/GPU环境、主机build下限、Apple/Linux executor、AndroidAPI21–23/Linux额外架构及测量仪器。来源1261阻碍条目含未决子模块、外部包/二进制来源、具体生产许可、驱动签名和渠道，阻断对应后续生产选用；全部research-only、生产清单空。637平台记录及637计划案例已映射，尚未实现或实机验证。Apple只有VFY01/02实机延期，构建义务仍保留。三个分类flag/六条无描述符prohibitions原状态保留，不伪造自动引擎通过。
 
-[Phase2 retained limits] Final actual run37741148365 and clean08a005c passed; prior CI failures/cancellation retain original outcomes. Final human checkpoint complete, CORE-01/02/03 Complete; Nyquist/wave0 true for scoped phase. Win10 host floor/WindowsARM/other-platform engine and build executors, remote/media/HDR/driver/production-license evidence remain later obligations. Six Android lower-API native cross-compiles do not close Fluttermin24; LinuxWSL failed before compiler; Apple implementation/build remainsv1, only physicalVFY01/02TODO. Three unclassified/six descriptorless machine flags remain unchanged after human boundary approval. No Phase3 started.
+[Phase2 retained limits] Final actual run37741148365 and clean08a005c passed; prior CI failures/cancellation retain original outcomes. Final human checkpoint complete, CORE-01/02/03 Complete; Nyquist/wave0 true for scoped phase. Win10 host floor/WindowsARM/other-platform engine and build executors, remote/media/HDR/driver/production-license evidence remain later obligations. Six Android lower-API native cross-compiles do not close Fluttermin24; LinuxWSL failed before compiler; Apple implementation/build remainsv1, only physicalVFY01/02TODO. Three unclassified/six descriptorless machine flags remain unchanged after human boundary approval. Phase3 admission research follows below; later product/device implementation remains unstarted.
 
-[Phase3 planned limits] 正式固定包/独立许可/签名、接口与设备ACL、短CLI退出保活、七屏容量与SDR/HDR、Win10/11实机、恢复/更新回滚均待执行证据。已知IddCx Win10 HDR限制不得用降级/五屏假PASS或提高主机下限绕过；03-03-04真实检查点承接补证、替代研究或申请明确规范修订，原请求未经修订前不变。无准入候选保持VDP与阶段未完成。规划研究处置RESOLVED不表示技术事实验证；没有批准任何具体系统操作。
+[Phase3 current admission gate] docs/phase03/PROVIDER-ADMISSION-RECONSTRUCTED.json，hash 03953899ea81654daa6f0fd144f8ff3dd8e060103284f933d374763e66d2c3ba。最终 ZIP c5f085cba2fec999fabf141038dc7530bc61b5b489807d485e612b615c59783a；当前默认 checker admission/require-decision PASS。八编译输入/七独立输入固定，未决较大表达式独立替换后剩余早期共享表达式对应固定 MS-PL 样例，未匹配为零；不声称找到2017精确祖先或整体仓库许可已选。独立驱动按 MS-PL、完整 MS-PL/CC0/声明/notice 随包保留。实际 WDK、六目标 INF 与最终字节一致、CAT/成员/默认本机自签信任/时间戳、实际 ACL 与相同边界对应完成。源码提交 d9ed040，证据提交1488cf4。最终 DLL 未安装；需要新的具体系统计划与授权，authorization 仍正确拒绝。
 
-[Phase3 current gate] R1新档案docs/phase03/PROVIDER-ADMISSION-R1.json，hash 0e2010bd2143013fbbc62d0be3cad622020024594562c8521370ff36bcf0d116。用户1已批准独立派生准备，默认require-decision通过；旧档案与决定原样保留。Apollo自签原包不准入；当前Helios独立研究树已真实Release x64构建并生成unsigned目录，静态ACL声明去掉WD，尚未验证运行权限。13文件许可账本、微软共享文本及EDID缺口、正式签名方案记录于HELIOS-DISPLAY-PREPARATION.md/json；继承许可/生产复用、可信签名、INF2084平台结构和实机保活/七屏/HDR仍开放。最终11/11测试364.90ms、47摘要与11本地链接核验通过；VDP与Phase3未完成，03-02/03-03仍阻断。严禁重启/关闭开发机，无系统变更授权。
+[Phase3 retained limits] Win10 七屏 SDR / Win11 D2 HDR、短 CLI 退出保活、恢复/更新和最低 build 实机尚未验证；03-02/03-03 未启动，VDP 和 Phase3 不完成，Nyquist/wave0 仍false。ZZZ 仅研究占位厂商字段；自签只在已授权本机信任，不是微软认证或通用发行批准。Medium 的 Arrival 失败清理和满容量幂等问题后续接入前必须修复。严禁执行/安排重启或关机；不得以本次准入或依赖就绪自动开展后续计划。
+
+以下历史门槛按发生时结果保留，不代表当前准入状态。
+
+[Phase3 historical R1 preparation gate] R1新档案docs/phase03/PROVIDER-ADMISSION-R1.json，hash 0e2010bd2143013fbbc62d0be3cad622020024594562c8521370ff36bcf0d116。用户1已批准独立派生准备，默认require-decision通过；旧档案与决定原样保留。Apollo自签原包不准入；当前Helios独立研究树已真实Release x64构建并生成unsigned目录，静态ACL声明去掉WD，尚未验证运行权限。13文件许可账本、微软共享文本及EDID缺口、正式签名方案记录于HELIOS-DISPLAY-PREPARATION.md/json；继承许可/生产复用、可信签名、INF2084平台结构和实机保活/七屏/HDR仍开放。最终11/11测试364.90ms、47摘要与11本地链接核验通过；VDP与Phase3未完成，03-02/03-03仍阻断。严禁重启/关闭开发机，无系统变更授权。
 
 [Phase3 pre-R1 historical gate] 五候选无合格provider。用户选2，已取得SudoMaker/SudoVDA固定源码a4b09fa；作者修改许可声明已定位，但正式DLL/CAT对应、继承许可/notices和正式信任链仍缺。all-users设备ACL+FILE_ANY_ACCESS high未缓解；默认watchdog移除全部屏，协议查询也重置倒计时。启动前watchdog=0选项未在对应包实测；上游明确Win10不支持HDR。VDD包可信Authenticode及INF/DLL成员事实不关闭源码对应、许可、逐slot/稳定ID/ACL和适用安装政策；/kp失败只记具体诊断。Microsoft/Rust/Parsec无完整固定准入来源。03-01-03已选no-qualified-provider和SudoVDA补证，结果见docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md；七屏/HDR/Win10实机及03-02/03-03均未完成。档案docs/phase03/PROVIDER-ADMISSION.md，digest fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8。
 
@@ -102,6 +112,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 |---|-------------|------|--------|-----------|
 | 261008-uu1 | Win10不要求HDR；SudoVDA适配需求R1 | 2026-10-08 | 00da0bc | [quick记录](quick/261008-uu1-win10-hdr-sudovda/261008-uu1-SUMMARY.md) |
 | 261009-f0f | 03-01 SudoVDA来源EDID审计、Win10/11 INF构建与签名准备补证 | 2026-10-09 | 565c5d8 | [261009-f0f-03-01-sudovda-source-edid-license-inf-an](./quick/261009-f0f-03-01-sudovda-source-edid-license-inf-an/) |
+| 261009-fns | 03-01独立源许可重构、自签信任与实际ACL补证后准入aether-helios-display；03-02/03-03未启动 | 2026-10-09 | 1488cf4 | [261009-fns-03-01-close-derived-source-rights-and-pr](./quick/261009-fns-03-01-close-derived-source-rights-and-pr/) |
 
 ## Deferred Items
 
@@ -109,7 +120,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-09T03:03:00Z
-Stopped at: Approved 03-01 followup complete: source/EDID audit, platform INF build and signing checklist; provider remains unqualified; no restart/shutdown permitted
-Resume file: .planning/phases/03-virtual-display-feasibility/03-01-PLAN.md
-Next action: 继续按HELIOS-DISPLAY-PROVENANCE.md关闭准确祖先/逐行贡献许可、EDID精确来源或独立替代；新INF分支及WDK构建检查已通过，无需重复原结构修复。实际签名提交前再询问发行主体、Hardware Developer Program与EV非秘密状态；本轮整理无需账户信息。provider未准入，实机ACL/保活/七屏/HDR和Win10最低build仍未完成。03-02/03-03保持阻断；安装/更新/config/reset另需具体系统授权，严禁重启或关闭开发机。
+Last session: 2026-10-09T06:53:56.121Z
+Stopped at: 03-01 completed with admitted aether-helios-display; current user scope fulfilled; 03-02/03-03 unstarted
+Resume file: .planning/phases/03-virtual-display-feasibility/03-01-SUMMARY.md
+Next action: 当前请求已完成，无自动执行下一计划。未来用户授权继续03-02时先读取当前准入范围/固定档案与两项medium接入前修复；依赖就绪不等于执行授权。最终包或任何新系统安装/拓扑/config/reset/更新仍须具体方案与授权；旧ACL实验已完成清理。Win10/11七屏/HDR/保活/恢复、最低build、其他架构和生产渠道门槛保留，严禁执行或安排重启/关闭开发机。

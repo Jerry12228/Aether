@@ -1,7 +1,7 @@
 ---
 phase: 03-virtual-display-feasibility
 plan: "01"
-status: halted
+status: complete
 subsystem: windows-display-provider
 tags: [windows, ccd, setupapi, provider-admission, supply-chain]
 requires:
@@ -11,6 +11,7 @@ provides:
   - Real read-only Helios CCD and present-device enumeration
   - Five-candidate dossier and layered fail-closed admission checks
   - User no-qualified-provider decision and pinned SudoMaker source followup
+  - Admitted dedicated aether-helios-display source/package with bounded rights, signature and ACL evidence
 affects: [03-02, 03-03, 17-display-lifecycle]
 tech-stack:
   added: []
@@ -19,15 +20,17 @@ key-files:
   created: [native/platform/include/aether/virtual_display.h, native/platform/windows/virtual_display_provider.cpp, tests/native/virtual_display_contract.cpp, scripts/check-virtual-display-admission.cjs, tests/virtual-display-package.test.cjs, docs/phase03/PROVIDER-ADMISSION.json, docs/phase03/PROVIDER-ADMISSION.md, docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md, docs/phase03/SUDOVDA-SOURCE-EVIDENCE.json]
   modified: [apps/helios/main.cpp, CMakeLists.txt, .planning/phases/03-virtual-display-feasibility/COVERAGE.md]
 key-decisions:
-  - No provider selected; user chose no-qualified-provider plus SudoVDA evidence followup (original response 2)
-  - No installation, update, reset, topology change or provider IOCTL performed
+  - Initial no-qualified-provider response 2 retained as history; approved dedicated route now admits aether-helios-display
+  - Earlier explicitly authorized ACL experiment completed and cleaned; final reconstructed DLL not installed
+  - Standing instructions authorize admission only; 03-02/03-03 remain unstarted
 requirements-planned: [VDP-01, VDP-02]
 requirements-completed: []
 actuals:
   tasks: 3
-  commits: 7
-duration: 23 min measured between first RED commit and checkpoint; preflight not timed
-completed: "2026-10-08"
+  initial_commits: 7
+  followup: quick 261009-f0f and 261009-fns
+duration: Original 23 min to initial checkpoint; total followup duration not measured
+completed: "2026-10-09"
 halted_at: "2026-10-08T12:53:53Z"
 coverage:
   - id: readonly-probe
@@ -41,7 +44,7 @@ coverage:
     description: Honest unknowns and five candidates are reviewable; unsafe/missing evidence cannot enter admission
     verification:
       - kind: unit
-        ref: tests/virtual-display-package.test.cjs (7 tests)
+        ref: tests/virtual-display-package.test.cjs (11 tests; complete targeted suite 18 tests)
         status: pass
       - kind: other
         ref: node scripts/check-virtual-display-admission.cjs --stage dossier
@@ -51,15 +54,23 @@ coverage:
     description: Choose exact admitted provider or no-qualified-provider with concrete next research/evidence action
     verification:
       - kind: other
-        ref: node scripts/check-virtual-display-admission.cjs --stage dossier --require-decision --file docs/phase03/PROVIDER-ADMISSION.json
+        ref: node scripts/check-virtual-display-admission.cjs --stage admission --require-decision --file docs/phase03/PROVIDER-ADMISSION-RECONSTRUCTED.json
         status: pass
     human_judgment: true
-    rationale: User response 2 recorded with original dossier hash; no-qualified-provider intentionally blocks dependent implementation
+    rationale: Initial response 2 retained; later explicit dedicated-route and self-sign instructions authorize scoped admission after closed gates, not a new manual final-hash review or subsequent plan execution
 ---
 
 # Phase 03 Plan 01 — read-only probe and provider admission checkpoint
 
-**R1续行当前状态：** 用户 `1` 已批准独立派生准备并绑定R1档案；固定源研究树、独立身份/配置/ACL声明、Release x64 unsigned构建、逐文件许可清单和签名方案已完成。provider仍未准入；status: halted仍阻断03-02/03-03。用户明确禁止重启/关闭开发机。
+**当前状态（2026-10-09）：03-01 完成，`aether-helios-display` 已准入。** 固定档案 `PROVIDER-ADMISSION-RECONSTRUCTED.json` 摘要 `03953899ea81654daa6f0fd144f8ff3dd8e060103284f933d374763e66d2c3ba`；最终 ZIP `c5f085cba2fec999fabf141038dc7530bc61b5b489807d485e612b615c59783a`。用户「推进直到准入」「证书自签即可，效仿Apollo」承接已批准专属派生路线，不声称用户重新人工审阅最终 hash。18/18 针对性测试、实际 x64 WDK 与原生 EDID/settings、默认 Windows 签名策略和许可/ACL 对应门通过。默认 checker 已指向当前档案；旧 R1 与决定/hash 不改写。
+
+安装先行研究包的 ACL 实验已经精确清理。最终 DLL 未安装；实际权限边界通过相同 INF/header/WDF/security/IOCTL 源体的逐字节对应承接，属于明确的源码推断。只保留用户授权的研究证书 Root/TrustedPublisher 信任。03-02/03-03 仍未启动：技术依赖就绪不构成新的执行/系统授权；VDP-01/02、七屏/HDR/保活/更新实机与 Phase3 仍未完成。严禁执行或安排重启/关机。
+
+详见[准入范围](../../../docs/phase03/HELIOS-DISPLAY-ADMISSION.md)、[许可闭合](../../../docs/phase03/HELIOS-DISPLAY-RIGHTS-CLOSED.json)、[实际 ACL](../../../docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json)、[对应证明](../../../docs/phase03/HELIOS-DISPLAY-ACL-BRIDGE.json)。源码与完整 notice 提交 `d9ed040`；准入证据与收据提交 `1488cf4`。03-02 开始 monitor mutation 前必须先修复 MonitorArrival 失败清理及满容量重复 GUID 幂等边界。
+
+## Historical checkpoints and evidence
+
+以下按发生时的实际结果保留，旧「halted / 未准入」不代表上述当前状态。
 
 **真实Windows枚举、五候选档案及03-01-03路线决定已完成；用户选择2补SudoVDA证据，无合格provider，后续实施仍暂停。**
 
@@ -136,4 +147,4 @@ INF实际修正为Win10 Legacy DIRID12、Win10 1803+ DIRID13+AddService、Win11 
 
 最终针对性研究3项/包9项/planning1项 **13/13** 无skip，400.88ms；42阶段/105需求映射通过，原R1决定hash未变，runnable=[]。正式签名清单包含PDB/CAB/EV/dashboard或其他可信CA政策候选，账户、提交与返回包仍未取得；此轮不需要账户信息。没有设备/registry/证书/安全策略变更、重启或关机。详情见[INF续行证据](../../../docs/phase03/HELIOS-DISPLAY-INF-FOLLOWUP.md)、[来源记录](../../../docs/phase03/HELIOS-DISPLAY-PROVENANCE.md)、[签名准备](../../../docs/phase03/HELIOS-DISPLAY-SIGNING-READINESS.md)。SUMMARY保持halted，VDP-01/02与Phase3保持未完成。
 
-**PASSED for original readonly/dossier/decision, R1 checker/audit and approved private derived preparation scope.** 原三任务证据和用户`2`保留；新的用户`1`路线决定和准备结果已经记录，不再等待该批准。**Plan intentionally HALTED on no-qualified-provider branch; Phase3 NOT COMPLETE.** 保留status: halted使依赖引擎阻断03-02/03-03，不因研究构建通过而打开未准入实施。
+**Historical self-check:** 原只读、档案、R1 和派生准备范围通过；当时 no-qualified-provider 分支保持 halted。该历史停止点于上述 2026-10-09 准入补证后关闭。当前仅 03-01 complete；Phase3 和 VDP 不完成，用户范围继续禁止启动 03-02/03-03。
