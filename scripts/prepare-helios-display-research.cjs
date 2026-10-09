@@ -4,6 +4,7 @@ const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypt
 const root=path.resolve(__dirname,'..'),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const manifestPath=path.join(root,'docs/phase03/SUDOVDA-SOURCE-EVIDENCE.json');
 const expectedCommit='a4b09fa2aa731a964d0cb5d139cb1e6240e4da12';
+const {edidHeader,adapterHeader}=require('./helios-display-inputs.cjs');
 const output=path.join(root,`artifacts/phase03/derived-research/helios-${Date.now()}`);
 function replaceOne(text,from,to){if(text.split(from).length!==2)throw Error('Fixed source edit anchor changed: '+from);return text.replace(from,to);}
 function platformInf(text){
@@ -33,11 +34,21 @@ function platformInf(text){
  return text;
 }
 function transform(relative,text){
+ if(relative==='Common/Include/AdapterOption.h')return adapterHeader();
+ if(relative.endsWith('/edid.h'))return edidHeader();
+ if(relative.endsWith('/SudoVDA.inf'))return '\ufeff'+platformInf(fs.readFileSync(path.join(root,'tools/helios-display-research/HeliosDisplay.inf'),'utf8'));
+ if(relative.endsWith('/SudoVDA.vcxproj'))return fs.readFileSync(path.join(root,'tools/helios-display-research/HeliosDisplay.vcxproj'),'utf8');
  if(relative.endsWith('/Driver.cpp')){
+  text=replaceOne(text,'#include <tuple>','#include <tuple>\n#include <string>');
   text=replaceOne(text,'DWORD watchdogTimeout = 3;','DWORD watchdogTimeout = 0;');
   text=replaceOne(text,'L"SOFTWARE\\\\SudoMaker\\\\SudoVDA"','L"SOFTWARE\\\\Aether\\\\HeliosDisplay"');
   text=replaceOne(text,'L"SudoMaker Virtual Display Adapter"','L"Aether Helios Research Display Adapter"');
   text=replaceOne(text,'L"SudoMaker"','L"Aether"');
+  text=replaceOne(text,'generate_edid(containerId.Data1, serialStr.c_str(), dispName.c_str());','generate_edid(containerId.Data1, serialStr.c_str(), dispName.c_str(), isHDRSupported);\n\tif (!edidData) { return; }');
+  text=replaceOne(text,'generate_edid(params->MonitorGuid.Data1, params->SerialNumber, params->DeviceName);','generate_edid(params->MonitorGuid.Data1, params->SerialNumber, params->DeviceName, isHDRSupported);\n\t\t\tif (!edidData) { Status = STATUS_INSUFFICIENT_RESOURCES; break; }');
+  text=replaceOne(text,'wchar_t gpuName[128];','wchar_t gpuName[128]{};\n\tDWORD gpuNameType = 0;');
+  text=replaceOne(text,'RegQueryValueExW(hKey, L"gpuName", NULL, NULL, (LPBYTE)gpuName, &bufferSize);','RegQueryValueExW(hKey, L"gpuName", NULL, &gpuNameType, (LPBYTE)gpuName, &bufferSize);');
+  text=replaceOne(text,'if (lResult == ERROR_SUCCESS) {\n\t\tAdapterOption adapterOpt', 'if (lResult == ERROR_SUCCESS && gpuNameType == REG_SZ && bufferSize >= sizeof(wchar_t) && bufferSize <= sizeof(gpuName) && bufferSize % sizeof(wchar_t) == 0 && gpuName[bufferSize / sizeof(wchar_t) - 1] == 0) {\n\t\tAdapterOption adapterOpt');
   text=replaceOne(text,'if (IoControlCode != IOCTL_GET_WATCHDOG)',
    'if (IoControlCode == IOCTL_ADD_VIRTUAL_DISPLAY || IoControlCode == IOCTL_REMOVE_VIRTUAL_DISPLAY || IoControlCode == IOCTL_SET_RENDER_ADAPTER || IoControlCode == IOCTL_DRIVER_PING)');
   const callback=text.indexOf('VOID SudoVDAIoDeviceControl(');if(callback<0)throw Error('Missing callback declaration');
@@ -68,29 +79,22 @@ function transform(relative,text){
    'const auto connectorId = ctx->connectorId;\n\t\t\t\tStatus = IddCxMonitorDeparture(ctx->GetMonitor());\n\t\t\t\tif (!NT_SUCCESS(Status)) { break; }\n\t\t\t\tfreeConnectorSlots.push(connectorId);\n\t\t\t\tmonitorCtxList.erase(it);');
  }
  if(relative==='Common/Include/sudovda-ioctl.h'){
+  for(const name of ['ADD_VIRTUAL_DISPLAY','REMOVE_VIRTUAL_DISPLAY','SET_RENDER_ADAPTER','DRIVER_PING','GET_WATCHDOG','GET_PROTOCOL_VERSION']){
+   const access=name.startsWith('GET_')?'FILE_READ_ACCESS':'(FILE_READ_ACCESS | FILE_WRITE_ACCESS)';
+   const expression=new RegExp(`(#define IOCTL_${name} CTL_CODE\\([^\\n]+, )FILE_ANY_ACCESS(\\))`);
+   if(!expression.test(text))throw Error('Fixed IOCTL access anchor changed: '+name);
+   text=text.replace(expression,`$1${access}$2`);
+  }
+  text=replaceOne(text,'{ 0, 2, 1, true }','{ 0, 3, 0, true }');
   text=replaceOne(text,'"root\\\\sudomaker\\\\sudovda"','"root\\\\aether\\\\heliosdisplay"');
   text=replaceOne(text,'{ 0xe5bcc234, 0x1e0c, 0x418a, { 0xa0, 0xd4, 0xef, 0x8b, 0x75, 0x01, 0x41, 0x4d } }',
    '{ 0x0d9ecbde, 0x124e, 0x45f0, { 0x9a, 0xe0, 0x3d, 0x71, 0xb1, 0x6a, 0x77, 0x25 } }');
- }
- if(relative.endsWith('/SudoVDA.inf')){
-  text=replaceOne(text,'Root\\SudoMaker\\SudoVDA','Root\\Aether\\HeliosDisplay');
-  text=replaceOne(text,'CatalogFile=sudovda.cat','CatalogFile=heliosdisplay.cat');
-  text=replaceOne(text,'%DeviceName%=SudoVDA_Install, SudoVDA','; No secondary generic hardware ID: only the dedicated Aether root ID is eligible.');
-  text=replaceOne(text,'D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GRGW;;;WD)','D:P(A;;GA;;;SY)(A;;GA;;;BA)');
-  text=text.replaceAll('SudoVDA','HeliosDisplay').replaceAll('SudoMaker','Aether');
-  text=replaceOne(text,'DriverVer= ; TODO: set DriverVer in stampinf property pages','DriverVer=10/08/2026,0.1.0.0');
-  text=platformInf(text);
  }
  if(relative.endsWith('/Trace.h')){
   text=replaceOne(text,'L"Microsoft\\\\UMDF2.0\\\\IddSampleDriver V1.0"','L"Aether\\\\HeliosDisplay\\\\Research V0.1"');
   text=replaceOne(text,'b254994f-46e6-4718-80a0-0a3aa50d6ce4','f7ac2c18-2967-4d42-9b20-f2d83f6ae2c5');
   text=replaceOne(text,'(b254994f,46e6,4718,80a0,0a3aa50d6ce4)','(f7ac2c18,2967,4d42,9b20,f2d83f6ae2c5)');
- }
- if(relative.endsWith('/SudoVDA.vcxproj')){
-  text=replaceOne(text,'<Inf Include="SudoVDA.inf" />','<Inf Include="HeliosDisplay.inf">\n      <SpecifyDriverVerDirectiveDate>true</SpecifyDriverVerDirectiveDate>\n      <DateStamp>10/08/2026</DateStamp>\n      <SpecifyDriverVerDirectiveVersion>true</SpecifyDriverVerDirectiveVersion>\n      <TimeStamp>0.1.0.0</TimeStamp>\n    </Inf>');
-  text=replaceOne(text,'<RootNamespace>SudoVDA</RootNamespace>','<RootNamespace>HeliosDisplay</RootNamespace>');
-  text=replaceOne(text,'<Import Project="$(VCTargetsPath)\\Microsoft.Cpp.props" />',
-   '<Import Project="$(VCTargetsPath)\\Microsoft.Cpp.props" />\n  <PropertyGroup>\n    <TargetName>HeliosDisplay</TargetName>\n    <SignMode>Off</SignMode>\n    <EnableTestSign>false</EnableTestSign>\n    <GenerateTestCertificate>false</GenerateTestCertificate>\n  </PropertyGroup>');
+  text=replaceOne(text,'#if UMDF_VERSION_MAJOR == 2 && UMDF_VERSION_MINOR == 0\n    // TODO: Update the name of the tracing provider\n    #define MYDRIVER_TRACING_ID      L"Aether\\\\HeliosDisplay\\\\Research V0.1"\n#endif', '#define MYDRIVER_TRACING_ID L"Aether\\\\HeliosDisplay\\\\Research V0.1"');
  }
  return text;
 }
@@ -104,6 +108,8 @@ async function prepare(){
   const cached=path.join(root,'artifacts/phase03/sudovda-followup',path.posix.basename(f.path));let bytes;
   if(fs.existsSync(cached))bytes=fs.readFileSync(cached);else{const response=await fetch(f.url,{signal:AbortSignal.timeout(20000)});if(!response.ok)throw Error('Source HTTP '+response.status);bytes=Buffer.from(await response.arrayBuffer());}
   if(bytes.length!==f.length||sha(bytes)!==f.sha256||crypto.createHash('sha1').update(Buffer.from(`blob ${bytes.length}\0`)).update(bytes).digest('hex')!==f.gitBlob)throw Error('Pinned bytes mismatch '+f.path);
+  // These historical research inputs are not build dependencies. Preserve their original evidence only.
+  if(/(?:^README\.md$|\.sln$|\.filters$|\.edid$|\/option\.txt$)/i.test(f.path))continue;
   const encoding=bytes[0]===0xff&&bytes[1]===0xfe?'utf16le':'utf8';
   const changed=/\.(cpp|h|inf|vcxproj)$/i.test(f.path)?Buffer.from(transform(f.path,bytes.toString(encoding)),encoding):bytes;
   const outputPath=f.path.endsWith('/SudoVDA.inf')?f.path.replace('/SudoVDA.inf','/HeliosDisplay.inf'):f.path;
@@ -111,7 +117,8 @@ async function prepare(){
   sourceFiles.push({sourcePath:f.path,sourceSha256:f.sha256,outputPath,sha256:sha(changed),changed:!changed.equals(bytes),bytes:changed,target});
  }
  for(const f of sourceFiles){fs.mkdirSync(path.dirname(f.target),{recursive:true});fs.writeFileSync(f.target,f.bytes);}
- const report={scope:'research-only; inherited license and runtime/security/machine behavior unresolved; not production source reuse or admitted package',sourceCommit:expectedCommit,hardwareId:'Root\\Aether\\HeliosDisplay',interfaceGuid:'0d9ecbde-124e-45f0-9ae0-3d71b16a7725',registryPath:'HKLM\\SOFTWARE\\Aether\\HeliosDisplay',deviceAcl:'D:P(A;;GA;;;SY)(A;;GA;;;BA)',signMode:'Off',files:sourceFiles.map(({bytes,target,...f})=>f)};
+ const independentInputs=['scripts/prepare-helios-display-research.cjs','scripts/helios-display-inputs.cjs','tools/helios-display-research/AdapterOption.h','tools/helios-display-research/HeliosDisplay.inf','tools/helios-display-research/HeliosDisplay.vcxproj'].map(p=>({path:p,sha256:sha(fs.readFileSync(path.join(root,p)))}));
+ const report={scope:'research-only; source-rights dossier and runtime/security/machine behavior pending; not admitted package',sourceCommit:expectedCommit,independentInputs,excludedHistoricalInputs:manifest.files.filter(f=>!sourceFiles.some(x=>x.sourcePath===f.path)).map(f=>f.path),hardwareId:'Root\\Aether\\HeliosDisplay',interfaceGuid:'0d9ecbde-124e-45f0-9ae0-3d71b16a7725',registryPath:'HKLM\\SOFTWARE\\Aether\\HeliosDisplay',deviceAcl:'D:P(A;;GA;;;SY)(A;;GA;;;BA)',signMode:'Off',files:sourceFiles.map(({bytes,target,...f})=>f)};
  fs.writeFileSync(path.join(output,'research-source.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({output,changedFiles:report.files.filter(f=>f.changed).map(f=>f.sourcePath),signMode:report.signMode}));return report;
 }
 if(require.main===module){if(process.argv.slice(2).join(' ')!=='--prepare-unsigned-research'){console.error('Usage: node scripts/prepare-helios-display-research.cjs --prepare-unsigned-research');process.exitCode=2;}else prepare().catch(e=>{console.error(e.message);process.exitCode=1;});}

@@ -1,0 +1,52 @@
+; Independently assembled Aether research package from the required UMDF/IddCx contract.
+[Version]
+Signature="$Windows NT$"
+Class=Display
+ClassGuid={4D36E968-E325-11CE-BFC1-08002BE10318}
+ClassVer=2.0
+Provider=%ManufacturerName%
+DriverVer=10/09/2026,0.1.0.0
+CatalogFile=heliosdisplay.cat
+PnpLockdown=1
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+[Standard.NT$ARCH$]
+%DeviceName%=HeliosDisplay_Install, Root\Aether\HeliosDisplay
+[SourceDisksFiles]
+HeliosDisplay.dll=1
+[SourceDisksNames]
+1=%DiskName%
+[HeliosDisplay_Install.NT]
+CopyFiles=UMDriverCopy
+[HeliosDisplay_Install.NT.hw]
+AddReg=MyDevice_HardwareDeviceSettings
+[MyDevice_HardwareDeviceSettings]
+HKR,,UpperFilters,0x00010000,IndirectKmd
+HKR,,DeviceGroupId,,HeliosDisplayGroup
+HKR,,Security,,"D:P(A;;GA;;;SY)(A;;GA;;;BA)"
+[HeliosDisplay_Install.NT.Services]
+AddService=WUDFRd,0x000001fa,WUDFRD_ServiceInstall
+[WUDFRD_ServiceInstall]
+DisplayName=%WUDFRDDisplayName%
+ServiceType=1
+StartType=3
+ErrorControl=1
+ServiceBinary=%12%\WUDFRd.sys
+[HeliosDisplay_Install.NT.Wdf]
+UmdfService=HeliosDisplay,HeliosDisplay_Install
+UmdfServiceOrder=HeliosDisplay
+UmdfKernelModeClientPolicy=AllowKernelModeClients
+[HeliosDisplay_Install]
+UmdfLibraryVersion=$UMDFVERSION$
+ServiceBinary=%12%\UMDF\HeliosDisplay.dll
+UmdfExtensions=IddCx0102
+[DestinationDirs]
+UMDriverCopy=12,UMDF
+[UMDriverCopy]
+HeliosDisplay.dll
+[Strings]
+ManufacturerName="Aether"
+DeviceName="Aether Helios Research Display Adapter"
+DiskName="HeliosDisplay research package"
+WUDFRDDisplayName="Windows Driver Foundation - User-mode Driver Framework Reflector"

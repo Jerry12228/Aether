@@ -71,3 +71,33 @@ test('dedicated local derivation has explicit origin and retains license signatu
  const reused=structuredClone(c);reused.officialRepository='https://github.com/SudoMaker/SudoVDA';assert.ok(admission(reused).some(e=>e.includes('derived repository')));
  const unsigned=structuredClone(c);unsigned.package.origin.kind='unsigned-research';assert.ok(admission(unsigned).some(e=>e.includes('official fixed release')));
 });
+
+test('derived origin refuses stale source bytes, omitted inputs, duplicate output and changed identity',()=>{
+ const {admission}=api(),crypto=require('node:crypto'),root=path.resolve(__dirname,'..');
+ const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+ const relative=`artifacts/phase03/derived-research/helios-000${Date.now()}${process.pid}`,dir=path.resolve(root,relative);
+ const upstream=JSON.parse(fs.readFileSync(path.join(root,'docs/phase03/SUDOVDA-SOURCE-EVIDENCE.json'),'utf8'));
+ const inputPaths=['scripts/prepare-helios-display-research.cjs','scripts/helios-display-inputs.cjs','tools/helios-display-research/AdapterOption.h','tools/helios-display-research/HeliosDisplay.inf','tools/helios-display-research/HeliosDisplay.vcxproj'];
+ const files=upstream.files.filter(f=>!/(?:^README\.md$|\.sln$|\.filters$|\.edid$|\/option\.txt$)/i.test(f.path)).map((f,i)=>{
+  const outputPath=f.path.replace('/SudoVDA.inf','/HeliosDisplay.inf'),target=path.join(dir,outputPath),bytes=Buffer.from('fixture source '+i);
+  fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,bytes);
+  return {sourcePath:f.path,sourceSha256:f.sha256,outputPath,sha256:hash(bytes)};
+ });
+ const manifest={sourceCommit:upstream.sourceCommit,files,hardwareId:'Root\\Aether\\HeliosDisplay',interfaceGuid:'0d9ecbde-124e-45f0-9ae0-3d71b16a7725',deviceAcl:'D:P(A;;GA;;;SY)(A;;GA;;;BA)',independentInputs:inputPaths.map(p=>({path:p,sha256:hash(fs.readFileSync(path.join(root,p)))}))};
+ const log=path.join(dir,'build.log');fs.writeFileSync(log,'fixture build log; cannot admit');
+ const candidate={providerId:'aether-helios-display',fixture:true,sourceCommit:upstream.sourceCommit,officialRepository:'https://github.com/Jerry12228/Aether',package:{version:'0.1.0.0',origin:{kind:'local-derived',buildEvidence:{path:relative+'/build.log',sha256:hash(fs.readFileSync(log)),fixture:false}}}};
+ function check(m){const bytes=Buffer.from(JSON.stringify(m));fs.writeFileSync(path.join(dir,'research-source.json'),bytes);candidate.package.origin.sourceManifest={path:relative+'/research-source.json',sha256:hash(bytes),fixture:false};return admission(candidate);}
+ try{
+  const baseline=check(manifest);assert.ok(!baseline.some(e=>e.includes('derived')),baseline.join('\n'));
+  assert.ok(baseline.some(e=>e.includes('fixture')),'synthetic evidence never grants real admission');
+  for(const [message,mutate] of [
+   ['input bytes',m=>m.files[0].sha256='f'.repeat(64)],['eight build inputs',m=>m.files.pop()],
+   ['inventory',m=>m.files[0].sourcePath=m.files[1].sourcePath],['duplicate',m=>m.files[0].outputPath=m.files[1].outputPath],
+   ['identity',m=>m.deviceAcl='D:P(A;;GA;;;WD)'],['transformation input bytes',m=>m.independentInputs[0].sha256='a'.repeat(64)],
+   ['inventory',m=>m.independentInputs.pop()],['path',m=>m.files[0].outputPath='../../escape.cpp']
+  ]){const changed=structuredClone(manifest);mutate(changed);assert.ok(check(changed).some(e=>e.includes(message)),message);}
+ }finally{
+  assert.equal(path.dirname(dir),path.join(root,'artifacts/phase03/derived-research'));
+  fs.rmSync(dir,{recursive:true,force:true});
+ }
+});

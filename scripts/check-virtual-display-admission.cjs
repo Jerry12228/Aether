@@ -19,8 +19,40 @@ function admission(c){
  bad(c.fixture===false,'fixture must never enter real admission');bad(commit.test(c.sourceCommit||''),'source commit must be fixed');
  const locked=upstream.find(r=>r.name===fixedSources[c.providerId]);if(locked){bad(c.sourceCommit===locked.commit,'source commit differs from fixed repository');bad(c.officialRepository===locked.url.replace(/\.git$/,''),'source official repository mismatch');}
  const p=c.package||{},s=p.signature||{};
- bad(typeof p.url==='string' && p.url.startsWith(`${c.officialRepository}/releases/download/`),'source package URL must be official fixed release');
- bad(typeof p.version==='string' && p.url?.includes(`/releases/download/${p.version}/`),'version must match fixed release URL');
+ if(p.origin?.kind==='local-derived'){
+  bad(c.providerId==='aether-helios-display','local origin only permitted for dedicated derivation');
+  bad(c.sourceCommit==='a4b09fa2aa731a964d0cb5d139cb1e6240e4da12','derived base commit must match approved SudoVDA pin');
+  bad(c.officialRepository==='https://github.com/Jerry12228/Aether','derived repository must be the Aether repository');
+  bad(p.url===null||p.url===undefined,'derived origin cannot masquerade as upstream release URL');
+  bad(/^\d+\.\d+\.\d+\.\d+$/.test(p.version||''),'derived version must be a fixed INF version');
+  bad(evidence(p.origin.sourceManifest),'derived source manifest evidence required');
+  bad(evidence(p.origin.buildEvidence),'derived build evidence required');
+  bad(/^artifacts\/phase03\/derived-research\/helios-\d+\/research-source\.json$/.test(p.origin.sourceManifest?.path||''),'derived source manifest must be a distinct research tree');
+  try{
+   const source=JSON.parse(fs.readFileSync(localFile(p.origin.sourceManifest.path),'utf8'));
+   const sourceRoot=path.dirname(localFile(p.origin.sourceManifest.path));
+   const original=JSON.parse(fs.readFileSync(path.join(root,'docs/phase03/SUDOVDA-SOURCE-EVIDENCE.json'),'utf8'));
+   bad(source.sourceCommit===c.sourceCommit&&source.sourceCommit===original.sourceCommit,'derived manifest base mismatch');
+   bad(source.hardwareId==='Root\\Aether\\HeliosDisplay'&&source.interfaceGuid==='0d9ecbde-124e-45f0-9ae0-3d71b16a7725'&&source.deviceAcl==='D:P(A;;GA;;;SY)(A;;GA;;;BA)','derived identity and ACL mismatch');
+   bad(Array.isArray(source.files)&&source.files.length===8,'derived source manifest must contain exactly eight build inputs');
+   const paths=new Set();
+   const expectedSources=original.files.filter(f=>!/(?:^README\.md$|\.sln$|\.filters$|\.edid$|\/option\.txt$)/i.test(f.path)).map(f=>f.path).sort();
+   bad(JSON.stringify((source.files||[]).map(f=>f.sourcePath).sort())===JSON.stringify(expectedSources),'derived source inventory differs from approved build boundary');
+   for(const file of source.files||[]){
+    const upstreamFile=original.files.find(f=>f.path===file.sourcePath);
+    bad(upstreamFile&&upstreamFile.sha256===file.sourceSha256,'derived original input mismatch');
+    bad(typeof file.outputPath==='string'&&!path.isAbsolute(file.outputPath)&&!file.outputPath.split(/[\\/]/).includes('..')&&!paths.has(file.outputPath),'derived source path invalid or duplicate');paths.add(file.outputPath);
+    const relative=path.relative(root,path.resolve(sourceRoot,file.outputPath));
+    bad(evidence({path:relative,sha256:file.sha256,fixture:false}),'derived transformed input bytes mismatch');
+   }
+   const expectedInputs=['scripts/prepare-helios-display-research.cjs','scripts/helios-display-inputs.cjs','tools/helios-display-research/AdapterOption.h','tools/helios-display-research/HeliosDisplay.inf','tools/helios-display-research/HeliosDisplay.vcxproj'];
+   bad(JSON.stringify((source.independentInputs||[]).map(x=>x.path).sort())===JSON.stringify(expectedInputs.sort()),'derived transformation input inventory mismatch');
+   for(const input of source.independentInputs||[])bad(evidence({...input,fixture:false}),'derived transformation input bytes mismatch');
+  }catch{bad(false,'derived source manifest unavailable or malformed');}
+ }else{
+  bad(typeof p.url==='string' && p.url.startsWith(`${c.officialRepository}/releases/download/`),'source package URL must be official fixed release');
+  bad(typeof p.version==='string' && p.url?.includes(`/releases/download/${p.version}/`),'version must match fixed release URL');
+ }
  bad(p.architecture==='x64','architecture must be audited x64 prototype');bad(digest.test(p.sha256||''),'sha256 must be a real locked digest');
  bad(Number.isSafeInteger(p.length)&&p.length>0,'package length required');bad(p.complete===true,'complete package required');
  bad(p.sourceCorrespondence?.status==='verified' && evidence(p.sourceCorrespondence),'source correspondence audit required');

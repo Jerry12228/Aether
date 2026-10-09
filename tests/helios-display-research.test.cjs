@@ -48,7 +48,8 @@ test('platform INF refuses incomplete or duplicate inherited sections before gen
 });
 test('research entry point rejects machine actions and extra flags without writing output',()=>{
  const output=path.join(root,'artifacts/phase03/derived-research');
- const listing=()=>fs.existsSync(output)?fs.readdirSync(output).sort():[];
+ // Admission tests use the reserved 000 prefix for temporary fixtures in another worker.
+ const listing=()=>fs.existsSync(output)?fs.readdirSync(output).filter(name=>!name.startsWith('helios-000')).sort():[];
  const before=listing();
  for(const args of [[],['--install'],['--restart'],['--shutdown'],['--prepare-unsigned-research','--install']]){
   const result=spawnSync(process.execPath,[path.join(root,'scripts/prepare-helios-display-research.cjs'),...args],{cwd:root,encoding:'utf8',timeout:5000,windowsHide:true});
@@ -57,4 +58,18 @@ test('research entry point rejects machine actions and extra flags without writi
   assert.match(result.stderr,/Usage:/);
  }
  assert.deepEqual(listing(),before);
+});
+
+test('dedicated IOCTL protocol requires read access for queries and read/write for mutations',()=>{
+ const {transform}=require('../scripts/prepare-helios-display-research.cjs');
+ const names=['ADD_VIRTUAL_DISPLAY','REMOVE_VIRTUAL_DISPLAY','SET_RENDER_ADAPTER','GET_WATCHDOG','DRIVER_PING','GET_PROTOCOL_VERSION'];
+ const input=names.map((name,i)=>`#define IOCTL_${name} CTL_CODE(FILE_DEVICE_UNKNOWN, ${0x800+i}, METHOD_BUFFERED, FILE_ANY_ACCESS)`).join('\n')+'\n'+
+  String.raw`"root\\sudomaker\\sudovda"`+'\n{ 0xe5bcc234, 0x1e0c, 0x418a, { 0xa0, 0xd4, 0xef, 0x8b, 0x75, 0x01, 0x41, 0x4d } }\n{ 0, 2, 1, true }';
+ const output=transform('Common/Include/sudovda-ioctl.h',input);
+ assert.doesNotMatch(output,/FILE_ANY_ACCESS/);
+ for(const name of names){const line=output.split('\n').find(l=>l.startsWith(`#define IOCTL_${name} `));
+  assert.ok(line.endsWith(name.startsWith('GET_')?'FILE_READ_ACCESS)':'(FILE_READ_ACCESS | FILE_WRITE_ACCESS))'),line);
+ }
+ assert.match(output,/\{ 0, 3, 0, true \}/);
+ assert.throws(()=>transform('Common/Include/sudovda-ioctl.h',input.replace('IOCTL_DRIVER_PING','IOCTL_UNKNOWN')),/anchor changed/);
 });
