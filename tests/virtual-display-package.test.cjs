@@ -3,7 +3,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const checker=path.resolve(__dirname,'../scripts/check-virtual-display-admission.cjs');
 test('installer tracer: real read-only plan binds fixed package and exact native actions',()=>{
  const {spawnSync}=require('node:child_process');
- const exe=path.resolve(__dirname,'../build/native/Release/helios.exe');
+ const exe=path.resolve(__dirname,'../build/native',process.env.AETHER_DISPLAY_CONFIGURATION||'Release','helios.exe');
  const r=spawnSync(exe,['vdisplay','driver','install','--plan','--json'],{encoding:'utf8',windowsHide:true,timeout:30000});
  assert.equal(r.status,0,'read-only install plan must succeed without installation or elevation');
  const p=JSON.parse(r.stdout);assert.equal(p.status,'planned');assert.equal(p.systemMutation,false);
@@ -11,6 +11,17 @@ test('installer tracer: real read-only plan binds fixed package and exact native
  assert.match(p.planSha256,/^[a-f0-9]{64}$/);assert.ok(p.actions.length>0);assert.equal(p.rebootPolicy,'prohibited');
  assert.ok(Array.isArray(p.foreignDevices));assert.ok(Array.isArray(p.groups));assert.equal(p.evidenceScope,'machine-readonly');
 });
+const packageContract=path.resolve(__dirname,'../build/native',process.env.AETHER_DISPLAY_CONFIGURATION||'Release','aether_driver_package_contract.exe');
+function installCase(name){const {spawnSync}=require('node:child_process');const r=spawnSync(packageContract,[name],{encoding:'utf8',windowsHide:true,timeout:10000});assert.equal(r.status,0,r.error?.message||r.stderr);return JSON.parse(r.stdout);}
+test('native install contract: unregistered private-provider resources cannot be treated as owned',()=>{const r=installCase('unknown-private');assert.equal(r.status,'identity-conflict');assert.equal(r.installs,0);assert.equal(r.writes,0);});
+for(const [name,status]of Object.entries({hash:'package-invalid',signature:'package-invalid',arch:'package-invalid','package-version':'package-invalid',truncated:'package-invalid',traversal:'package-invalid',reparse:'package-invalid',version:'version-mismatch','missing-auth':'system-authorization-required',stale:'system-authorization-required',machine:'system-authorization-required',denied:'access-denied',groups:'maintenance-required'}))test(`native install contract: ${name} rejects before any installer side effect`,()=>{const r=installCase(name);assert.equal(r.status,status);assert.equal(r.installs,0);assert.equal(r.backups,0);assert.equal(r.writes,0);assert.equal(r.registryPreserved,true);});
+for(const name of ['install','update','maintenance'])test(`native install contract: explicit ${name} verifies and commits without clearing groups`,()=>{const r=installCase(name);assert.equal(r.status,'installed');assert.equal(r.installs,1);assert.equal(r.backups,1);assert.equal(r.journal.status,'complete');assert.equal(r.registryPreserved,true);});
+test('native install contract: same version checks readiness without reinstallation',()=>{const r=installCase('same-version');assert.equal(r.status,'already-ready');assert.equal(r.installs,0);assert.equal(r.writes,0);});
+test('native install contract: plan is side effect free',()=>{const r=installCase('plan');assert.equal(r.status,'planned');assert.equal(r.installs,0);assert.equal(r.writes,0);assert.equal(r.backups,0);});
+test('native install contract: update failure restores verified old package and retains last-success',()=>{const r=installCase('rollback');assert.equal(r.status,'failed-rolled-back');assert.equal(r.rollbacks,1);assert.equal(r.journal.unresolvedEffects,false);assert.equal(r.registryPreserved,true);});
+test('native install contract: rollback failure remains pending',()=>{const r=installCase('rollback-fails');assert.equal(r.status,'pending-recovery');assert.equal(r.journal.unresolvedEffects,true);assert.equal(r.rollbackResult.status,'failed');assert.equal(r.registryPreserved,true);});
+test('native install contract: reboot requirement exits pending and never schedules restart',()=>{const r=installCase('reboot');assert.equal(r.status,'reboot-required');assert.equal(r.rebootPolicy,'prohibited');assert.equal(r.journal.status,'reboot-required');assert.equal(r.journal.unresolvedEffects,true);});
+test('native install contract: timeout retains unknown effects and does not assume rollback',()=>{const r=installCase('timeout');assert.equal(r.status,'timeout');assert.equal(r.rollbacks,0);assert.equal(r.journal.status,'pending-recovery');assert.equal(r.journal.unresolvedEffects,true);});
 function api(){assert.ok(fs.existsSync(checker),'provider dossier validator must exist');return require(checker);}
 function dossier(){return JSON.parse(fs.readFileSync(path.resolve(__dirname,'../docs/phase03/PROVIDER-ADMISSION.json'),'utf8'));}
 function revisedDossier(){const d=dossier(),crypto=require('node:crypto');d.schemaVersion=2;d.decision=null;d.requirementRevision={id:'R1',path:'docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md',sha256:crypto.createHash('sha256').update(fs.readFileSync(path.resolve(__dirname,'..','docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md'))).digest('hex'),fixture:false};d.requestedByPlatform={windows10:structuredClone(d.requested),windows11:structuredClone(d.requested)};d.requestedByPlatform.windows10.at(-1).color='SDR';delete d.requested;return d;}

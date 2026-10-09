@@ -3,6 +3,7 @@
 #include "aether/virtual_display.h"
 #include <filesystem>
 #include <memory>
+#include <functional>
 namespace aether::vdisplay {
 struct DisplayError:std::runtime_error{std::string status;bool uncertain=false;DisplayError(std::string s,std::string r,bool u=false):runtime_error(r),status(std::move(s)),uncertain(u){}};
 struct DisplayOptions{std::string command,name;std::vector<DisplayRequest> requests;bool json=false,test=false;std::filesystem::path testRoot;std::string fault;};
@@ -21,4 +22,11 @@ Json DefaultRequests(const std::string&,bool);
 bool ExactRefresh(uint32_t,uint32_t);
 bool ValidDisplayName(const std::string&);
 Json RunDisplayTestPattern(const Json&,bool,const std::string&);
+// Installation shares the group mutex and validated owner store. Read-only
+// calls never create files or directories; absent state returns empty groups.
+struct DriverStore {
+ std::filesystem::path root;Json identity,registry,authorization,journal;
+ std::function<void(const std::string&,const Json&)> save;
+};
+Json WithDriverStore(bool readOnly,const std::function<Json(DriverStore&)>&);
 }

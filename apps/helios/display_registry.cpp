@@ -45,7 +45,7 @@ struct Caller{
 void NoReparse(const std::filesystem::path& path){auto p=std::filesystem::absolute(path).lexically_normal();for(auto it=p;!it.empty();){const auto attrs=GetFileAttributesW(it.c_str());if(attrs!=INVALID_FILE_ATTRIBUTES&&(attrs&FILE_ATTRIBUTE_REPARSE_POINT))throw DisplayError("access-denied","Reparse point path refused");auto parent=it.parent_path();if(parent==it)break;it=parent;}}
 struct Store{
  Caller& caller;std::filesystem::path root;Handle directory,mutex;bool locked=false;
- Store(Caller& c,const DisplayOptions& options,DisplayDeadline deadline):caller(c){
+ Store(Caller& c,const DisplayOptions& options,DisplayDeadline deadline,bool readOnly=false):caller(c){
   if(options.test){
 #ifdef AETHER_ENABLE_TEST_HOOKS
    root=std::filesystem::absolute(options.testRoot).lexically_normal();NoReparse(root);if(!std::filesystem::is_directory(root))throw DisplayError("access-denied","Existing isolated test root required");
@@ -57,7 +57,8 @@ struct Store{
 #endif
   }else{
    PWSTR local=nullptr;if(FAILED(SHGetKnownFolderPath(FOLDERID_LocalAppData,KF_FLAG_DEFAULT,nullptr,&local)))throw DisplayError("access-denied","LocalAppData unavailable");root=local;CoTaskMemFree(local);NoReparse(root);
-   for(const auto* part:{L"Aether",L"phase03"}){root/=part;if(!CreateDirectoryW(root.c_str(),&c.sa)&&GetLastError()!=ERROR_ALREADY_EXISTS)throw DisplayError("access-denied","Cannot create private registry directory");Handle h(CreateFileW(root.c_str(),READ_CONTROL,FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE,nullptr,OPEN_EXISTING,FILE_FLAG_BACKUP_SEMANTICS|FILE_FLAG_OPEN_REPARSE_POINT,nullptr));if(h.h==INVALID_HANDLE_VALUE)throw DisplayError("access-denied","Cannot open registry directory");NoReparse(root);c.Validate(h.h);}
+   if(readOnly){root/=L"Aether";root/=L"phase03";NoReparse(root);if(GetFileAttributesW(root.c_str())==INVALID_FILE_ATTRIBUTES){if(GetLastError()!=ERROR_PATH_NOT_FOUND&&GetLastError()!=ERROR_FILE_NOT_FOUND)throw DisplayError("access-denied","Cannot inspect private directory");return;}}
+   else for(const auto* part:{L"Aether",L"phase03"}){root/=part;if(!CreateDirectoryW(root.c_str(),&c.sa)&&GetLastError()!=ERROR_ALREADY_EXISTS)throw DisplayError("access-denied","Cannot create private registry directory");Handle h(CreateFileW(root.c_str(),READ_CONTROL,FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE,nullptr,OPEN_EXISTING,FILE_FLAG_BACKUP_SEMANTICS|FILE_FLAG_OPEN_REPARSE_POINT,nullptr));if(h.h==INVALID_HANDLE_VALUE)throw DisplayError("access-denied","Cannot open registry directory");NoReparse(root);c.Validate(h.h);}
   }
   directory.h=CreateFileW(root.c_str(),READ_CONTROL,FILE_SHARE_READ|FILE_SHARE_WRITE,nullptr,OPEN_EXISTING,FILE_FLAG_BACKUP_SEMANTICS|FILE_FLAG_OPEN_REPARSE_POINT,nullptr);if(directory.h==INVALID_HANDLE_VALUE)throw DisplayError("access-denied","Cannot pin registry directory");c.Validate(directory.h);
   const auto name=Wide("Local\\Aether-Display-"+c.sid+"-"+std::to_string(std::hash<std::wstring>{}(root.native())));mutex.h=CreateMutexW(&c.sa,FALSE,name.c_str());if(!mutex.h)throw DisplayError("access-denied","Cannot create owner mutex");c.Validate(mutex.h,SE_KERNEL_OBJECT);
@@ -65,7 +66,7 @@ struct Store{
  }
  ~Store(){if(locked)ReleaseMutex(mutex.h);}
  void CheckFile(HANDLE h)const{BY_HANDLE_FILE_INFORMATION info{};if(!GetFileInformationByHandle(h,&info)||info.nNumberOfLinks!=1||(info.dwFileAttributes&FILE_ATTRIBUTE_REPARSE_POINT))throw DisplayError("access-denied","Linked/reparse registry file refused");caller.Validate(h);}
- Json Read(const std::string& name,Json fallback){const auto file=root/Wide(name);Handle h(CreateFileW(file.c_str(),GENERIC_READ|READ_CONTROL,FILE_SHARE_READ,nullptr,OPEN_EXISTING,FILE_FLAG_OPEN_REPARSE_POINT,nullptr));if(h.h==INVALID_HANDLE_VALUE){if(GetLastError()==ERROR_FILE_NOT_FOUND)return fallback;throw DisplayError("access-denied","Cannot read private registry");}CheckFile(h.h);LARGE_INTEGER size{};if(!GetFileSizeEx(h.h,&size)||size.QuadPart<0||size.QuadPart>2*1024*1024)throw DisplayError("identity-conflict","Registry size invalid");std::string bytes(static_cast<size_t>(size.QuadPart),0);DWORD got=0;if(!ReadFile(h.h,bytes.data(),static_cast<DWORD>(bytes.size()),&got,nullptr)||got!=bytes.size())throw DisplayError("failed","Registry read failed");Wide(bytes);try{return Json::parse(bytes);}catch(...){throw DisplayError("identity-conflict","Invalid registry JSON; no mutation performed");}}
+ Json Read(const std::string& name,Json fallback){const auto file=root/Wide(name);Handle h(CreateFileW(file.c_str(),GENERIC_READ|READ_CONTROL,FILE_SHARE_READ,nullptr,OPEN_EXISTING,FILE_FLAG_OPEN_REPARSE_POINT,nullptr));if(h.h==INVALID_HANDLE_VALUE){if(GetLastError()==ERROR_FILE_NOT_FOUND||GetLastError()==ERROR_PATH_NOT_FOUND)return fallback;throw DisplayError("access-denied","Cannot read private registry");}CheckFile(h.h);LARGE_INTEGER size{};if(!GetFileSizeEx(h.h,&size)||size.QuadPart<0||size.QuadPart>2*1024*1024)throw DisplayError("identity-conflict","Registry size invalid");std::string bytes(static_cast<size_t>(size.QuadPart),0);DWORD got=0;if(!ReadFile(h.h,bytes.data(),static_cast<DWORD>(bytes.size()),&got,nullptr)||got!=bytes.size())throw DisplayError("failed","Registry read failed");Wide(bytes);try{return Json::parse(bytes);}catch(...){throw DisplayError("identity-conflict","Invalid registry JSON; no mutation performed");}}
  void Save(const std::string& name,const Json& value){
   const auto target=root/Wide(name);Read(name,nullptr);const auto temp=root/Wide(name+"."+Guid()+".tmp");
   struct TempCleanup{std::filesystem::path p;~TempCleanup(){DeleteFileW(p.c_str());}}cleanup{temp};
@@ -126,6 +127,12 @@ Json Reply(Json registry,const Json& reality,const std::string& status,const std
 }
 }
 bool ExactRefresh(uint32_t n,uint32_t d){return d>0&&n>0&&static_cast<uint64_t>(d)*60==n;}
+Json WithDriverStore(bool readOnly,const std::function<Json(DriverStore&)>& operation){
+ Caller caller;DisplayOptions options;Store store(caller,options,std::chrono::steady_clock::now()+std::chrono::seconds(10),readOnly);
+ auto registry=store.Read("display-registry.v1.json",O{{"schemaVersion",1},{"ownerSid",caller.sid},{"loginAuthLuid",caller.auth},{"desktop",caller.desktop},{"groups",A{}},{"pending",nullptr}});ValidateRegistry(registry,caller);
+ DriverStore context{store.root,O{{"ownerSid",caller.sid},{"loginAuthLuid",caller.auth},{"desktop",caller.desktop}},registry,store.Read("machine-authorization.v1.json",nullptr),store.Read("driver-install.v1.json",nullptr),[&](const std::string& name,const Json& j){if(readOnly)throw DisplayError("failed","Read-only store cannot write");store.Save(name,j);}};
+ return operation(context);
+}
 bool ValidDisplayName(const std::string& name){if(name.empty()||name.size()>64)return false;for(unsigned char c:name)if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'||c=='-'))return false;return true;}
 bool IsWindows11(){using Fn=LONG(WINAPI*)(OSVERSIONINFOW*);auto fn=reinterpret_cast<Fn>(GetProcAddress(GetModuleHandleW(L"ntdll.dll"),"RtlGetVersion"));OSVERSIONINFOW os{};os.dwOSVersionInfoSize=sizeof(os);return fn&&fn(&os)==0&&os.dwBuildNumber>=22000;}
 Json DefaultRequests(const std::string& name,bool win11){A a;const int count=name=="A"||name=="C"||name=="D"?2:name=="B"?1:0;for(int slot=1;slot<=count;++slot)a.push_back(O{{"slot",slot},{"width",name=="A"&&slot==2?2560:1920},{"height",name=="A"&&slot==2?1440:1080},{"refreshNumerator",60},{"refreshDenominator",1},{"hdr",name=="D"&&slot==2&&win11},{"x",0},{"y",0}});return a;}
