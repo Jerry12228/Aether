@@ -3,10 +3,10 @@ gsd_state_version: "1.0"
 current_phase: 3
 current_phase_name: 虚拟显示器可行性
 status: executing
-stopped_at: 03-01 provenance and Win10/11 INF followup complete; unsigned build and six INF checks pass; license/signing/runtime gates remain open
+stopped_at: 03-01 self-signing and actual device ACL verified with exact cleanup; bounded source-rights reconstruction continuing; 03-02/03-03 blocked
 last_updated: "2026-10-09T03:03:17.366Z"
 last_activity: 2026-10-09
-last_activity_desc: Quick 261009-f0f source/EDID history, split platform INF and signing readiness complete; 13/13 tests; provider not admitted
+last_activity_desc: Quick 261009-fns in progress; 18/18 tests, local default signing trust and actual ACL pass; only license audit blocks candidate admission
 progress:
   total_phases: 42
   completed_phases: 2
@@ -22,14 +22,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-08)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
-**Current focus:** Phase 03 — 虚拟显示器可行性（用户1已批准独立派生准备；未签名研究构建通过，无合格provider）
+**Current focus:** Phase 03 — 虚拟显示器可行性（独立自签研究包、本机可信签名与实际 ACL 已验证；继承许可重构中，无合格provider）
 
 ## Current Position
 
 Phase: 3 (虚拟显示器可行性) — NO QUALIFIED PROVIDER
-Plan: 03-01 — approved derived route continued through quick 261009-f0f; SUMMARY halted on admission
-Status: Source/EDID provenance audit, split Win10/11 INF and unsigned Release x64 build verified; source rights/formal signing/runtime gates open; 03-02/03-03 not started
-Last activity: 2026-10-09 — quick 261009-f0f: 13/13 tests, six INF checks, explicit OS CAT generation; no provider admission
+Plan: 03-01 — approved derived route continues through quick 261009-fns; SUMMARY halted on admission
+Status: Self-signing/default local trust and actual BA/SY device/IOCTL access verified; exact experiment cleanup complete; license gate open; 03-02/03-03 not started
+Last activity: 2026-10-09 — quick 261009-fns in progress: 18/18 tests, x64 WDK/native EDID, signing and actual ACL pass; only independent license audit rejects derived admission
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -77,6 +77,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 - 2026-10-09 用户授权继续03-01独立派生补证，quick261009-f0f完成：13输入/45来源观察、早期贡献与两条不同EDID证据、Win10 Legacy/1803+/Win11三INF分支。Release x64 unsigned、6/6 InfVerif及明确OS Inf2Cat通过，新INF2084关闭（原失败日志保留）；13/13测试、89摘要/19链接核验。逐行许可/模板来源仍open，签名条件已整理而未取得账户/证书/返回包。provider未准入，VDP与03-01仍halted，03-02/03-03未启动；机器禁重启/关机持续有效。见[INF补证](../docs/phase03/HELIOS-DISPLAY-INF-FOLLOWUP.md)、[来源审计](../docs/phase03/HELIOS-DISPLAY-PROVENANCE.md)、[签名条件](../docs/phase03/HELIOS-DISPLAY-SIGNING-READINESS.md)。
 
 ### Pending Todos
+
+03-01 active followup: 用户选择自签并明确批准指定 CER 的本机 Root/TrustedPublisher 信任及固定研究适配器 ACL 安装/只读测试/清理。实际研究包 helios-1791523416599 的 INF/DLL `/pa /c`、CAT 与 RFC3161 通过；普通令牌访问全部拒绝，管理员 READ 返回 0.3.0，管理员零访问 IOCTL 拒绝，真实设备 DACL 仅 SY/BA。ROOT\DISPLAY\0002/oem89.inf 及新建配置/空父键均精确清除；外来设备清单恢复一致，无重启/关机。初次 UAC 被取消与两次父键清理拒绝保留失败记录，最终原生确切键删除通过。证书信任按已授权范围保留。继承表达式的独立许可审计仍 open，继续受限重构；没有批准 provider、03-02/03-03 或实机七屏/HDR。见[自签收据](../docs/phase03/HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.md)、[ACL证据](../docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json)、[新档案](../docs/phase03/PROVIDER-ADMISSION-SELFSIGNED.json)。
 
 VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（VFY-01/VFY-02）见 docs/BACKLOG.md。
 

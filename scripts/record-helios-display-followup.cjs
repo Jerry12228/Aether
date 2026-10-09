@@ -33,11 +33,17 @@ const report={schemaVersion:1,recordedAt:new Date().toISOString(),scope:'03-01 b
 report.signing.archive=receipt(signedRoot+'/HeliosDisplayResearch.zip');
 report.signing.negativeChecks=receipt('artifacts/phase03/admission-followup/selfsignature-negative-results.json');
 report.interfaceAudit=receipt('docs/phase03/HELIOS-DISPLAY-INTERFACE-AUDIT.md');
+const aclAudit=receipt('docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json');
+const acl=json(aclAudit.path);
+if(acl.status!=='verified'||!acl.filteredCallerDenied||!acl.zeroAccessIoctlDenied||!acl.cleanup.createdConfigAndParentRemoved)throw Error('Actual ACL/cleanup audit not closed');
+report.security.actualAclVerified=true;report.security.actualEvidence=aclAudit;report.security.highRisk='T-03-02 mitigated by actual BA/SY stack DACL and token/IOCTL tests';
+report.machine.driverInstalledDuringAclExperiment=true;report.machine.deviceCreatedAndRemoved=true;report.machine.exactCleanupVerified=true;
 fs.writeFileSync(path.join(root,'docs/phase03/HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.json'),JSON.stringify(report,null,2)+'\n');
 const auditPath='docs/phase03/HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.json',audit=receipt(auditPath);
 const pending={status:'unverified',evidence:null};
 const interfaceEvidence=Object.fromEntries(['perSlotOperations','stableIdentity','sevenSlotCapacity','shortProcessPersistence','strictModes','win10Route','win11Route','acl'].map(name=>[name,structuredClone(pending)]));
 for(const name of ['perSlotOperations','stableIdentity','sevenSlotCapacity','shortProcessPersistence','strictModes','win10Route','win11Route'])interfaceEvidence[name]={status:'verified',scope:'pre-install source/build feasibility only; not physical matrix',...report.interfaceAudit};
+interfaceEvidence.acl={status:'verified',scope:'actual local stack and filtered/elevated read-only access; exact cleanup complete',...aclAudit};
 interfaceEvidence.methods=[
  ['OpenDevice','INTEGRATE','Private GUID only; filtered/elevated access tests pending, no mutation on open in reviewed source.'],
  ['AddVirtualDisplay','INTEGRATE','Per-GUID create; private read/write IOCTL, implementation only after admission.'],
@@ -50,11 +56,11 @@ interfaceEvidence.methods=[
  ['PingDriver','OPT-OUT','No persistent ping owner; research/default watchdog is zero.'],
  ['GetAddedDisplayName','INTEGRATE','Match adapter LUID and target ID together; deferred until admitted implementation.']
 ].map(([name,decision,reason])=>({name,decision,reason}));
-const candidate={providerId:'aether-helios-display',officialRepository:'https://github.com/Jerry12228/Aether',sourceCommit:source.sourceCommit,fixture:false,package:{url:null,version:'0.1.0.0',architecture:'x64',kind:'umdf',localPath:report.signing.archive.path,length:report.signing.archive.length,sha256:report.signing.archive.sha256,complete:true,infVersion:'0.1.0.0',origin:{kind:'local-derived',sourceManifest:report.sourceManifest,buildEvidence:report.build},members:report.signing.members,signature:{policy:'umdf-authenticode',policyVerified:true,catalogMembersVerified:true,timestampVerified:true,...report.signing.verification},licenseEvidence:null,sourceCorrespondence:{status:'verified',...audit}},interfaceEvidence,risks:[{id:'T-03-02',severity:'high',status:'open',reason:'Actual stack DACL and filtered/elevated caller evidence absent.'}],admission:{status:'not-admitted'},gaps:[{field:'package.url',reason:'Locally built research artifact, no fabricated upstream release URL.'},{field:'package.licenseEvidence',reason:'Remaining inherited rights/reconstruction gate is open.'},{field:'interfaceEvidence',reason:'Source feasibility is documented; independent interface/security admission audit and actual ACL evidence remain pending.'}]};
+const candidate={providerId:'aether-helios-display',officialRepository:'https://github.com/Jerry12228/Aether',sourceCommit:source.sourceCommit,fixture:false,package:{url:null,version:'0.1.0.0',architecture:'x64',kind:'umdf',localPath:report.signing.archive.path,length:report.signing.archive.length,sha256:report.signing.archive.sha256,complete:true,infVersion:'0.1.0.0',origin:{kind:'local-derived',sourceManifest:report.sourceManifest,buildEvidence:report.build},members:report.signing.members,signature:{policy:'umdf-authenticode',policyVerified:true,catalogMembersVerified:true,timestampVerified:true,...report.signing.verification},licenseEvidence:null,sourceCorrespondence:{status:'verified',...audit}},interfaceEvidence,risks:[{id:'T-03-02',severity:'high',status:'mitigated',reason:'Actual BA/SY stack DACL, filtered caller denial, admin read and zero-access denial verified; exact cleanup complete.'}],admission:{status:'not-admitted'},gaps:[{field:'package.url',reason:'Locally built research artifact, no fabricated upstream release URL.'},{field:'package.licenseEvidence',reason:'Remaining inherited rights/reconstruction gate is open.'}]};
 const dossier=json('docs/phase03/PROVIDER-ADMISSION-R1.json');
 dossier.capturedAt=report.recordedAt;dossier.purpose='03-01 dedicated self-signed research evidence; not production or driver-install authorization';
 dossier.candidates.push(candidate);dossier.selectedProviderId=null;dossier.decision=null;
 dossier.gaps.push({field:'decision',reason:'No admitted provider exists; prior preparation decision stays in unchanged R1 dossier.'});
 dossier.derivedFollowup=audit;
 fs.writeFileSync(path.join(root,'docs/phase03/PROVIDER-ADMISSION-SELFSIGNED.json'),JSON.stringify(dossier,null,2)+'\n');
-console.log(JSON.stringify({sourceInputs:source.files.length,karlfUnmatched:lineAudit.reduce((n,r)=>n+r.karlfExpressionsAbsentFromMicrosoft2020.length,0),rightsClosed:false,defaultWindowsTrustVerified:true,actualAclVerified:false}));
+console.log(JSON.stringify({sourceInputs:source.files.length,karlfUnmatched:lineAudit.reduce((n,r)=>n+r.karlfExpressionsAbsentFromMicrosoft2020.length,0),rightsClosed:false,defaultWindowsTrustVerified:true,actualAclVerified:true}));

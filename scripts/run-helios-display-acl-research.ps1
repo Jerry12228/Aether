@@ -59,26 +59,44 @@ try {
   if ($state.hardwareId -ne $hardwareId -or $state.packageRoot -ne $package) { throw 'Cleanup identity mismatch.' }
   if ($state.instanceId) {
    $devices=@(Get-CimInstance Win32_PnPEntity | Where-Object {$_.PNPDeviceID -eq $state.instanceId})
-   if ($devices.Count -ne 1 -or $devices[0].HardwareID -notcontains $hardwareId) { throw 'Exact cleanup device mismatch.' }
-   & $devcon remove "@$($state.instanceId)" *> (Join-Path $output 'acl-devcon-remove.log')
-   $state.removeExit=$LASTEXITCODE
+   if ($devices.Count -eq 0 -and $state.removeExit -eq 0) { Write-Output 'Exact device already removed by this run.' }
+   else {
+    if ($devices.Count -ne 1 -or $devices[0].HardwareID -notcontains $hardwareId) { throw 'Exact cleanup device mismatch.' }
+    & $devcon remove "@$($state.instanceId)" *> (Join-Path $output 'acl-devcon-remove.log')
+    $state.removeExit=$LASTEXITCODE
+   }
   }
   if ($state.infName) {
    if ($state.infName -notmatch '^oem[0-9]+\.inf$' -or $state.beforeInfs -contains $state.infName.ToLowerInvariant()) { throw 'Cleanup package was not uniquely added by this run.' }
-   & $pnputil /delete-driver $state.infName /uninstall *> (Join-Path $output 'acl-pnputil-delete.log')
-   $state.deletePackageExit=$LASTEXITCODE
+   if ($state.deletePackageExit -eq 0 -and !(Test-Path -LiteralPath (Join-Path $env:WINDIR "INF/$($state.infName)"))) { Write-Output 'Exact OEM package already deleted by this run.' }
+   else { & $pnputil /delete-driver $state.infName /uninstall *> (Join-Path $output 'acl-pnputil-delete.log');$state.deletePackageExit=$LASTEXITCODE }
   }
   if ($state.configCreated -and (Test-Path -LiteralPath $config)) {
    Remove-Item -LiteralPath $config
-   if (!$state.aetherParentExisted) {
-    $parent=Get-Item -LiteralPath 'HKLM:\SOFTWARE\Aether'
-    if ($parent.SubKeyCount -eq 0 -and $parent.ValueCount -eq 0) { Remove-Item -LiteralPath 'HKLM:\SOFTWARE\Aether' }
+  }
+  if (!$state.aetherParentExisted -and (Test-Path -LiteralPath 'HKLM:\SOFTWARE\Aether')) {
+   $parent=Get-Item -LiteralPath 'HKLM:\SOFTWARE\Aether'
+   $empty=$parent.SubKeyCount -eq 0 -and $parent.ValueCount -eq 0
+   $parent.Close()
+   if ($empty) {
+    Add-Type -TypeDefinition @'
+using System;
+using System.Runtime.InteropServices;
+public static class HeliosExactRegistryCleanup {
+ [DllImport("advapi32.dll",CharSet=CharSet.Unicode)] static extern int RegDeleteKeyEx(IntPtr key,string subkey,uint access,uint reserved);
+ public static int DeleteEmptyResearchParent(){return RegDeleteKeyEx(new IntPtr(unchecked((int)0x80000002)),"SOFTWARE\\Aether",0x100,0);}
+}
+'@
+    $deleteResult=[HeliosExactRegistryCleanup]::DeleteEmptyResearchParent()
+    if ($deleteResult -ne 0) { throw "Exact empty parent deletion failed: Win32 $deleteResult" }
    }
   }
   $after=@(Get-CimInstance Win32_PnPEntity -Filter "PNPClass='Display'")
   $after | Select-Object Name,PNPDeviceID,HardwareID,ConfigManagerErrorCode | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $output 'acl-display-devices-after-cleanup.json') -Encoding utf8
   $state.cleanedDeviceAbsent=@($after | Where-Object {$_.HardwareID -contains $hardwareId}).Count -eq 0
   $state.cleanedConfigAbsent=!(Test-Path -LiteralPath $config)
+  $state.cleanedNewParentAbsent=$state.aetherParentExisted -or !(Test-Path -LiteralPath 'HKLM:\SOFTWARE\Aether')
+  $state.cleanupErrorResolved=$true
   $state.cleanedAt=[DateTime]::UtcNow.ToString('o')
   $state | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $statePath -Encoding utf8
  }

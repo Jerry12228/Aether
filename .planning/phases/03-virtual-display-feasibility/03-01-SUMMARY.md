@@ -120,6 +120,14 @@ T-03-01/02/SC通过**拒绝未准入接入**约束当前边界；没有把上游
 
 ## Self-check
 
+### 2026-10-09 self-signed and actual ACL followup (quick 261009-fns, still executing)
+
+用户明确「证书自签即可，效仿Apollo」，随后批准指定 CER 的 LocalMachine Root/TrustedPublisher 导入，再批准固定研究包 helios-1791523416599 的单适配器 ACL 实验及精确清理。独立 helper/EDID/INF/project 与排除资产使实际输入缩为八项；Win10/11 INF 和原生 EDID/Release x64 构建通过。私有 IOCTL query 要求 READ、mutation 要求 READ|WRITE，协议 0.3.0。实际默认签名策略、CAT成员、可信时间戳及两项签名负例通过；18/18 针对性测试无 skip。
+
+实际设备 ROOT\DISPLAY\0002 使用唯一 Aether ID/GUID：普通未提升令牌三种访问都拒绝，管理员 READ/READ|WRITE 返回 0.3.0，零访问句柄 IOCTL 拒绝；实际 stack DACL 仅 SY/BA。新增 oem89.inf、设备和专属配置/新建父键均清理完成；外来 display device 清单前后相同。失败 UAC/清理日志保留，无重启/关机、安全检查关闭或 monitor mutation。仅安装一个研究适配器，不执行 03-02/03-03 或七屏/HDR/保活矩阵；未捕获成对即时 CCD 快照，不宣称拓扑比较 PASS。
+
+提交 e683b35/281154f 记录工具和固定包授权。旧 R1 hash 保留；新自签档案 dossier 合法，admission 目前仅拒绝 independent package license audit。剩余继承表达式继续独立重构；SUMMARY仍 halted，不把实际 ACL 或可信自签写成 provider 已准入或 Phase3完成。见[续行收据](../../../docs/phase03/HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.md)。
+
 ### 2026-10-09 approved followup (quick 261009-f0f)
 
 用户明确继续已批准的独立派生路线，通过GSD依次补来源/EDID、INF结构与正式签名条件。Quick来源任务提交 `062ebec`，INF边界RED提交 `632c63a`；本轮没有重问路线，也没有启动03-02/03-03。来源13输入/45网络观察均固定hash；追踪两次重组/改名、早期贡献者、384字节独立EDID与256字节编译数组，工具edid.S文件GPL-2.0-or-later声明与根LICENSE分开，完整许可材料在忽略研究树中。权利总门保持open，无生产复用批准。

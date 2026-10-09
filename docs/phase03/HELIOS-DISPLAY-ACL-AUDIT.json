@@ -1,0 +1,54 @@
+{
+  "scope": "03-01 actual Win11 local device/IOCTL boundary; no seven-screen/HDR/mutation matrix",
+  "recordedAt": "2026-10-09T05:40:09.519Z",
+  "status": "verified",
+  "packageRoot": "D:\\WorkSpace\\Aether\\artifacts\\phase03\\selfsigned-research\\helios-1791523416599",
+  "hardwareId": "Root\\Aether\\HeliosDisplay",
+  "instanceId": "ROOT\\DISPLAY\\0002",
+  "infName": "oem89.inf",
+  "deviceAcl": "D:P(A;;GA;;;SY)(A;;GA;;;BA)",
+  "filteredCallerDenied": true,
+  "adminReadProtocolVerified": true,
+  "zeroAccessIoctlDenied": true,
+  "raw": [
+    {
+      "path": "artifacts/phase03/admission-followup/acl-filtered.json",
+      "sha256": "0ee08ebe3e9b2b4bada855bf0184332a5e5b843610e3640e414d81f9c9728756",
+      "fixture": false
+    },
+    {
+      "path": "artifacts/phase03/admission-followup/acl-elevated.json",
+      "sha256": "58ba8a1487ddebb501aedaa33f95a437cddc8dfd64a04622eb15c34166015ae8",
+      "fixture": false
+    },
+    {
+      "path": "artifacts/phase03/admission-followup/acl-install-state.json",
+      "sha256": "0f86b2bc82ddfc8dcfbb861f5e35871a8de92ef5edfac18865f379353dc6ef2b",
+      "fixture": false
+    },
+    {
+      "path": "artifacts/phase03/admission-followup/acl-display-devices-before.json",
+      "sha256": "4b7ac3efa05b7c7a306efd2c9da1b165043d2d1afa4120d04ac11a3e1ed3b909",
+      "fixture": false
+    },
+    {
+      "path": "artifacts/phase03/admission-followup/acl-display-devices-after-cleanup.json",
+      "sha256": "4b7ac3efa05b7c7a306efd2c9da1b165043d2d1afa4120d04ac11a3e1ed3b909",
+      "fixture": false
+    }
+  ],
+  "cleanup": {
+    "deviceRemoved": true,
+    "addedPackageDeleted": true,
+    "createdConfigAndParentRemoved": true,
+    "foreignDisplayDevicesUnchanged": true
+  },
+  "limits": [
+    "Probe sent only GET_PROTOCOL_VERSION; it never sent add/remove/render-adapter/ping requests.",
+    "No immediate paired CCD snapshots were captured; no actual display-topology comparison PASS is asserted.",
+    "Later seven-screen/HDR/persistence/Win10 machine evidence remains unperformed."
+  ],
+  "powerOperation": false,
+  "phase0302Started": false,
+  "phase0303Started": false
+}

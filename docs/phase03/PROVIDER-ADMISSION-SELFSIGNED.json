@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "capturedAt": "2026-10-09T05:29:35.301Z",
+  "capturedAt": "2026-10-09T05:42:08.834Z",
   "purpose": "03-01 dedicated self-signed research evidence; not production or driver-install authorization",
   "selectedProviderId": null,
   "constraints": {
@@ -815,8 +815,8 @@
         "sourceCorrespondence": {
           "status": "verified",
           "path": "docs/phase03/HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.json",
-          "length": 13432,
-          "sha256": "ea6d2e92f6c4190ac5f0e769fff6193e221b5c9c8e2cd90af159a7bbdb9854b6",
+          "length": 13752,
+          "sha256": "58b0f1e8128550b5dc057719469b2480ce19e7f334187199a43c486cb9f4e0e6",
           "fixture": false
         }
       },
@@ -878,8 +878,12 @@
           "fixture": false
         },
         "acl": {
-          "status": "unverified",
-          "evidence": null
+          "status": "verified",
+          "scope": "actual local stack and filtered/elevated read-only access; exact cleanup complete",
+          "path": "docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json",
+          "length": 2116,
+          "sha256": "2766a73167a24322aa26039f3bbc2e24947f2953200a0f68adf8570325c74bca",
+          "fixture": false
         },
         "methods": [
           {
@@ -938,8 +942,8 @@
         {
           "id": "T-03-02",
           "severity": "high",
-          "status": "open",
-          "reason": "Actual stack DACL and filtered/elevated caller evidence absent."
+          "status": "mitigated",
+          "reason": "Actual BA/SY stack DACL, filtered caller denial, admin read and zero-access denial verified; exact cleanup complete."
         }
       ],
       "admission": {
@@ -953,10 +957,6 @@
         {
           "field": "package.licenseEvidence",
           "reason": "Remaining inherited rights/reconstruction gate is open."
-        },
-        {
-          "field": "interfaceEvidence",
-          "reason": "Source feasibility is documented; independent interface/security admission audit and actual ACL evidence remain pending."
         }
       ]
     }
@@ -1248,8 +1248,8 @@
   "preferredProviderId": "apollo-sudovda",
   "derivedFollowup": {
     "path": "docs/phase03/HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.json",
-    "length": 13432,
-    "sha256": "ea6d2e92f6c4190ac5f0e769fff6193e221b5c9c8e2cd90af159a7bbdb9854b6",
+    "length": 13752,
+    "sha256": "58b0f1e8128550b5dc057719469b2480ce19e7f334187199a43c486cb9f4e0e6",
     "fixture": false
   }
 }

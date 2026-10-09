@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "recordedAt": "2026-10-09T05:29:35.301Z",
+  "recordedAt": "2026-10-09T05:42:08.834Z",
   "scope": "03-01 bounded self-signed research followup; provider NOT ADMITTED",
   "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
   "sourceManifest": {
@@ -365,14 +365,20 @@
     "protocol": "0.3.0 research; incompatible private IOCTL access bits intentionally changed",
     "queryAccess": "FILE_READ_ACCESS",
     "mutationAccess": "FILE_READ_ACCESS | FILE_WRITE_ACCESS",
-    "actualAclVerified": false,
+    "actualAclVerified": true,
     "baselineProbe": {
       "path": "artifacts/phase03/admission-followup/acl-before-install.json",
       "length": 380,
       "sha256": "447af3f936041cf60be844e833d83bff7e8f6bb207742805cbf2c1c70c9709ad",
       "fixture": false
     },
-    "highRisk": "T-03-02 remains open until actual stack DACL and filtered/elevated caller tests pass"
+    "highRisk": "T-03-02 mitigated by actual BA/SY stack DACL and token/IOCTL tests",
+    "actualEvidence": {
+      "path": "docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json",
+      "length": 2116,
+      "sha256": "2766a73167a24322aa26039f3bbc2e24947f2953200a0f68adf8570325c74bca",
+      "fixture": false
+    }
   },
   "machine": {
     "certificateTrustChanged": true,
@@ -381,7 +387,10 @@
     "securityChecksDisabled": false,
     "rebootOrShutdown": false,
     "phase0302Started": false,
-    "phase0303Started": false
+    "phase0303Started": false,
+    "driverInstalledDuringAclExperiment": true,
+    "deviceCreatedAndRemoved": true,
+    "exactCleanupVerified": true
   },
   "remainingGates": [
     "bounded inherited source rights",

@@ -1,6 +1,6 @@
 # 03-01 独立输入与自签补证
 
-**本机可信自签已经通过；provider 仍未准入。** 用户「证书自签即可，效仿Apollo」替代本次研究的 HDP/EV 路线；用户随后明确授权仅导入指定证书并复核。不是生产渠道准入，也不授权设备安装。03-02/03-03 未启动，开发机禁重启/关机继续有效。
+**本机可信自签和实际 ACL 已通过；provider 仍未准入。** 用户「证书自签即可，效仿Apollo」替代本次研究的 HDP/EV 路线；用户随后分别明确授权指定证书导入和限定单适配器 ACL 安装/测试/清理。03-02/03-03 未启动，开发机禁重启/关机继续有效。
 
 ## 实际完成
 
@@ -26,4 +26,6 @@ SudoMaker 的声明只覆盖其本人修改。较大的早期 AdapterOption、ED
 
 ## 下一步
 
-继续完成剩余源码权利闭环；实际设备 ACL 补证需要新增具体系统授权。已经准备 [ACL 方案](HELIOS-DISPLAY-ACL-PROBE-PLAN.md)，只装一个零显示屏研究适配器、做只读权限检查并精确清理；不执行七屏/HDR/持久登记，也不启动 03-02/03-03。所有 gates 关闭后才提交具体准入结果。构建、原生测试、签名、来源与系统边界的实际摘要见 [JSON 收据](HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.json)。
+限定 [ACL 方案](HELIOS-DISPLAY-ACL-PROBE-PLAN.md) 已获批准并执行：实际设备 DACL 仅 SY/BA；普通 caller 访问拒绝，管理员 READ 查询成功，零访问 IOCTL 拒绝。本次 ROOT\DISPLAY\0002 / oem89.inf 及新建配置/空父键已精确清除，外来设备清单恢复一致。初次 UAC 取消、父键广泛写入拒绝均保留日志，最终只用原生 API 删除确切空键；无重启/关机或权限改写。未采集成对即时 CCD 快照，不宣称显示拓扑比较 PASS。见 [ACL 原始收据](HELIOS-DISPLAY-ACL-AUDIT.json)。
+
+继续完成剩余源码权利闭环；admission 现在只拒绝独立许可审计。所有 gates 关闭后才提交具体准入结果。不执行七屏/HDR/持久登记，也不启动 03-02/03-03。构建、原生测试、签名、来源与系统边界的实际摘要见 [JSON 收据](HELIOS-DISPLAY-SELFSIGNED-FOLLOWUP.json)。
