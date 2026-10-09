@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
-  "capturedAt": "2026-10-09T06:35:28.707Z",
-  "purpose": "03-01 dedicated self-signed provider admission; no production approval or further machine authorization",
+  "capturedAt": "2026-10-09T07:40:29.868Z",
+  "purpose": "03-02 lifecycle revision admission; historical hashes preserved, machine operations require 03-03 checkpoint",
   "selectedProviderId": "aether-helios-display",
   "constraints": {
     "strictNoDowngrade": true,
@@ -752,52 +752,52 @@
         "infVersion": "0.1.0.0",
         "architecture": "x64",
         "kind": "umdf",
-        "localPath": "artifacts/phase03/selfsigned-research/helios-1791525277849/HeliosDisplayResearch.zip",
-        "length": 1107415,
-        "sha256": "c5f085cba2fec999fabf141038dc7530bc61b5b489807d485e612b615c59783a",
+        "localPath": "artifacts/phase03/selfsigned-research/helios-1791531228575/HeliosDisplayResearch.zip",
+        "length": 1021771,
+        "sha256": "b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae",
         "complete": true,
         "origin": {
           "kind": "local-derived",
           "sourceManifest": {
-            "path": "artifacts/phase03/derived-research/helios-1791524690800/research-source.json",
+            "path": "artifacts/phase03/derived-research/helios-1791531076814/research-source.json",
             "length": 4620,
-            "sha256": "227839d8c950f97b6121f1ee5ebe4cadc0672a5e3177d26f09017764c4de8933",
+            "sha256": "60456d319d5806d0ed9422917b6df76ecefdc067d6a7bef5e747c0ac82cf8fae",
             "fixture": false
           },
           "buildEvidence": {
-            "path": "artifacts/phase03/admission-followup/rights-reconstructed-build.log",
-            "length": 1145,
-            "sha256": "5ef22cc67f09d673e19d819585fde28e870799be2c7b8e3cdece37c709965885",
+            "path": "artifacts/phase03/contract/driver-build.log",
+            "length": 9766,
+            "sha256": "64d5042d20318739f8111c761989aae2afe05cf375126fbf77a07374a13fd2e8",
             "fixture": false
           }
         },
         "members": [
           {
             "name": "heliosdisplay.cat",
-            "length": 8987,
-            "sha256": "bdbfb909518a1ffe49a932f500019bd46eaf313ad2c49935975fb4f84dd13b6d",
-            "localPath": "artifacts/phase03/selfsigned-research/helios-1791525277849/HeliosDisplayX64/heliosdisplay.cat",
+            "length": 8988,
+            "sha256": "8137a3124c959473833a082f17eb8e28fd25e8abcdc80fe7549ba3455ba8fc4d",
+            "localPath": "artifacts/phase03/selfsigned-research/helios-1791531228575/HeliosDisplayX64/heliosdisplay.cat",
             "catalogRequired": false
           },
           {
             "name": "HeliosDisplay.dll",
-            "length": 130232,
-            "sha256": "73ede1d0ff9064959e3f0b86a1a7f1f1d952d71cbdd10675945f1904f77c50ee",
-            "localPath": "artifacts/phase03/selfsigned-research/helios-1791525277849/HeliosDisplayX64/HeliosDisplay.dll",
+            "length": 130744,
+            "sha256": "119a6ca84397b80925a03561f2ae1cce92f7bcbb5426d9a8d766aed1f06b4d2f",
+            "localPath": "artifacts/phase03/selfsigned-research/helios-1791531228575/HeliosDisplayX64/HeliosDisplay.dll",
             "catalogRequired": true
           },
           {
             "name": "HeliosDisplay.inf",
             "length": 6356,
             "sha256": "0a6d06ea850457f2b7e7a245f38708fd8f2d6d7d81ff9de5eda1c5e9266583bd",
-            "localPath": "artifacts/phase03/selfsigned-research/helios-1791525277849/HeliosDisplayX64/HeliosDisplay.inf",
+            "localPath": "artifacts/phase03/selfsigned-research/helios-1791531228575/HeliosDisplayX64/HeliosDisplay.inf",
             "catalogRequired": true
           },
           {
             "name": "HeliosDisplay.pdb",
-            "length": 4009984,
-            "sha256": "a9efeb79136058c12cc8d0ce62ede15c3b35fbc476a4ca8028dfa3467a903f66",
-            "localPath": "artifacts/phase03/selfsigned-research/helios-1791525277849/HeliosDisplayX64/HeliosDisplay.pdb",
+            "length": 3723264,
+            "sha256": "27148324e3bc4588b2448e8308ebc588886ae550014bd0c7d2c18b9f4f12bf9d",
+            "localPath": "artifacts/phase03/selfsigned-research/helios-1791531228575/HeliosDisplayX64/HeliosDisplay.pdb",
             "catalogRequired": false
           }
         ],
@@ -806,23 +806,23 @@
           "policyVerified": true,
           "catalogMembersVerified": true,
           "timestampVerified": true,
-          "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/signature-verification.json",
+          "path": "artifacts/phase03/selfsigned-research/helios-1791531228575/signature-verification.json",
           "length": 1362,
-          "sha256": "642d6b04c5d8ae2e874b4b2d02e389b697cd8471841997329e505995b1005d18",
+          "sha256": "7814e374c8f322081e149d5682969903bcffbb8b7dd920844cbd738c2aa0e4cd",
           "fixture": false
         },
         "licenseEvidence": {
           "status": "verified",
-          "path": "docs/phase03/HELIOS-DISPLAY-RIGHTS-CLOSED.json",
-          "length": 8259,
-          "sha256": "2f7b8e28e9a8bab0b2a22be778f838195057391800b0ad9558859f052a489405",
+          "path": "docs/phase03/HELIOS-DISPLAY-LIFECYCLE-EVIDENCE.json",
+          "length": 4908,
+          "sha256": "c2d17352f29046df41ead774231b51f3b84f724deed78dbbe86f74bc3f1fd849",
           "fixture": false
         },
         "sourceCorrespondence": {
           "status": "verified",
-          "path": "docs/phase03/HELIOS-DISPLAY-RECONSTRUCTED-EVIDENCE.json",
-          "length": 2442,
-          "sha256": "da480e1c1eaa06224f64771380149906a4be89bb897e4621c9c8bb5de3dec3f9",
+          "path": "docs/phase03/HELIOS-DISPLAY-LIFECYCLE-EVIDENCE.json",
+          "length": 4908,
+          "sha256": "c2d17352f29046df41ead774231b51f3b84f724deed78dbbe86f74bc3f1fd849",
           "fixture": false
         }
       },
@@ -885,10 +885,10 @@
         },
         "acl": {
           "status": "verified",
-          "scope": "source-backed inference carrying forward the identical INF/WDF/private IOCTL access boundary; NOT a claim that the reconstructed DLL was installed",
-          "path": "docs/phase03/HELIOS-DISPLAY-ACL-BRIDGE.json",
-          "length": 2483,
-          "sha256": "371bc5a3a4494429dbeb350888e77a776b26228c4b5d183aed5bd7f98ade94bc",
+          "scope": "source-backed inference for identical private header/access bits, INF, hardware/interface identity, WDF DeviceAdd and read-query bodies only; changed monitor lifetime callback is reviewed source, not physically retested",
+          "path": "docs/phase03/HELIOS-DISPLAY-LIFECYCLE-EVIDENCE.json",
+          "length": 4908,
+          "sha256": "c2d17352f29046df41ead774231b51f3b84f724deed78dbbe86f74bc3f1fd849",
           "fixture": false
         },
         "methods": [
@@ -954,19 +954,19 @@
         {
           "id": "arrival-cleanup",
           "severity": "medium",
-          "status": "open",
-          "reason": "03-02 must fix partial MonitorArrival cleanup before mutation implementation."
+          "status": "mitigated",
+          "reason": "Reviewed independent lifecycle patch, failing-before source guards and actual WDK rebuild; machine behavior still pending."
         },
         {
           "id": "full-capacity-idempotence",
           "severity": "medium",
-          "status": "open",
-          "reason": "03-02 must move existing GUID lookup before capacity rejection."
+          "status": "mitigated",
+          "reason": "Reviewed independent lifecycle patch, failing-before source guards and actual WDK rebuild; machine behavior still pending."
         }
       ],
       "admission": {
         "status": "admitted",
-        "scope": "03-01 provider selection only; 03-02/03-03 execution prohibited by current user scope"
+        "scope": "03-02 source implementation admitted; no system mutation authorized"
       },
       "gaps": [
         {
@@ -985,11 +985,11 @@
   "decision": {
     "status": "admitted-provider",
     "providerId": "aether-helios-display",
-    "userText": "推进直到准入\n证书自签即可，效仿Apollo",
-    "recordedAt": "2026-10-09T06:35:28.707Z",
-    "authorizationBasis": "Standing explicit user instruction for the already approved dedicated route, conditional on independently closed gates; no new manual hash-review assertion",
-    "scope": "Admission only; keep 03-02/03-03 unstarted",
-    "dossierSha256": "03953899ea81654daa6f0fd144f8ff3dd8e060103284f933d374763e66d2c3ba"
+    "userText": "推进直到准入\n证书自签即可，效仿Apollo\n$gsd-execute-phase 3",
+    "recordedAt": "2026-10-09T07:40:29.868Z",
+    "authorizationBasis": "Existing dedicated-route/self-sign authorization plus explicit phase execution on 2026-10-09; no manual revised-hash review claimed",
+    "scope": "03-02 implementation and prerequisite repair; no new system-operation authorization",
+    "dossierSha256": "47fe64f8396b75a9072b84f8347b97d2934192c6d44a7502774390327fcd48b0"
   },
   "machineAuthorization": {
     "status": "not-authorized",
@@ -1046,9 +1046,9 @@
       "Existing Oray and active DISPLAY10 are foreign; preserve resources and topology"
     ],
     "package": {
-      "path": "artifacts/phase03/selfsigned-research/helios-1791525277849/HeliosDisplayResearch.zip",
-      "length": 1107415,
-      "sha256": "c5f085cba2fec999fabf141038dc7530bc61b5b489807d485e612b615c59783a",
+      "path": "artifacts/phase03/selfsigned-research/helios-1791531228575/HeliosDisplayResearch.zip",
+      "length": 1021771,
+      "sha256": "b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae",
       "fixture": false
     },
     "profile": {
@@ -1072,7 +1072,7 @@
     },
     {
       "field": "phase03",
-      "reason": "VDP-01/02 and Phase3 remain incomplete; 03-02/03-03 not started."
+      "reason": "03-02 in progress; VDP-01/02 and Phase3 incomplete pending 03-03 machine validation."
     }
   ],
   "recommendation": {

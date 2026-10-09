@@ -63,6 +63,16 @@ function transform(relative,text){
    'if (AvTaskHandle && !AvRevertMmThreadCharacteristics(AvTaskHandle)) {\n\t\tstd::cerr << "Helios research MMCSS revert failed: " << GetLastError() << std::endl;\n\t}');
   text=replaceOne(text,'CoCreateGuid(&containerId);',
    'if (FAILED(CoCreateGuid(&containerId))) {\n\t\tstd::cerr << "Helios research test monitor GUID creation failed" << std::endl;\n\t\treturn;\n\t}');
+  // Keep provisional monitor ownership local until Arrival succeeds. WDF deletion
+  // owns context/EDID disposal; the failed connector is returned exactly once.
+  text=replaceOne(text,'WDF_OBJECT_ATTRIBUTES_INIT_CONTEXT_TYPE(&Attr, IndirectMonitorContextWrapper);',
+   'WDF_OBJECT_ATTRIBUTES_INIT_CONTEXT_TYPE(&Attr, IndirectMonitorContextWrapper);\n\tAttr.EvtCleanupCallback = [](WDFOBJECT object) { WdfObjectGet_IndirectMonitorContextWrapper(object)->Cleanup(); };');
+  text=replaceOne(text,'pMonitorContext->targetId = ArrivalOut.OsTargetId;\n\t\t}',
+   'pMonitorContext->targetId = ArrivalOut.OsTargetId;\n\t\t} else {\n\t\t\tmonitorCtxList.remove(pMonitorContext);\n\t\t\tfreeConnectorSlots.push(MonitorInfo.ConnectorIndex);\n\t\t\tWdfObjectDelete(MonitorCreateOut.MonitorObject);\n\t\t\tpMonitorContext = nullptr;\n\t\t}');
+  text=replaceOne(text,'\t\tif (freeConnectorSlots.empty()) {\n\t\t\tStatus = STATUS_TOO_MANY_NODES;\n\t\t\tbreak;\n\t\t}\n\n','');
+  text=replaceOne(text,'\t\tbool guidFound = false;', '\t\tstd::lock_guard<std::mutex> lg(monitorListOp);\n\t\tbool guidFound = false;');
+  text=replaceOne(text,'\t\t// Validate and add the virtual display','\t\tif (freeConnectorSlots.empty()) {\n\t\t\tStatus = STATUS_TOO_MANY_NODES;\n\t\t\tbreak;\n\t\t}\n\n\t\t// Validate and add the virtual display');
+  text=replaceOne(text,'\t\t\tstd::lock_guard<std::mutex> lg(monitorListOp);\n\n\t\t\tauto* pDeviceContextWrapper','\t\t\tauto* pDeviceContextWrapper');
   const begin=text.indexOf('void DisconnectAllMonitors() {'),end=text.indexOf('\nvoid RunWatchdog()',begin);
   if(begin<0||end<0)throw Error('Watchdog cleanup anchor changed');
   text=text.slice(0,begin)+`void DisconnectAllMonitors() {

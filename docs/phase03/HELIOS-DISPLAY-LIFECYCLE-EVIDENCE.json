@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "verified",
+  "recordedAt": "2026-10-09T07:40:29.868Z",
+  "scope": "03-02 bounded lifecycle source/build/signature re-audit; no installed revised DLL or machine functionality claim",
+  "previousDossier": {
+    "path": "docs/phase03/PROVIDER-ADMISSION-03-01-HISTORY.json",
+    "length": 43562,
+    "sha256": "c5d9bb3040b5813dd1cc3307fe4c6774cd8d29b7a94b6a710e83014fc455bcdd",
+    "fixture": false
+  },
+  "previousPackage": "c5f085cba2fec999fabf141038dc7530bc61b5b489807d485e612b615c59783a",
+  "sourceManifest": {
+    "path": "artifacts/phase03/derived-research/helios-1791531076814/research-source.json",
+    "length": 4620,
+    "sha256": "60456d319d5806d0ed9422917b6df76ecefdc067d6a7bef5e747c0ac82cf8fae",
+    "fixture": false
+  },
+  "build": {
+    "path": "artifacts/phase03/contract/driver-build.log",
+    "length": 9766,
+    "sha256": "64d5042d20318739f8111c761989aae2afe05cf375126fbf77a07374a13fd2e8",
+    "fixture": false
+  },
+  "infChecks": {
+    "path": "artifacts/phase03/contract/inf-results.json",
+    "length": 649,
+    "sha256": "fc8b7ac09d40ff37348972bc93bbce784015a2c4c25e987e762f0ebd79216264",
+    "fixture": false
+  },
+  "buildDiagnostic": "MSBuild returns 0 but bundled InfVerif task emits a load-DLL exception. Explicit installed x64 InfVerif independently passed all six targets; original diagnostic retained.",
+  "unchangedInputs": [
+    "Common/Include/AdapterOption.h",
+    "Common/Include/sudovda-ioctl.h",
+    "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+    "Virtual Display Driver (HDR)/SudoVDA/HeliosDisplay.inf",
+    "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+    "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+    "Virtual Display Driver (HDR)/SudoVDA/edid.h"
+  ],
+  "rights": {
+    "status": "verified",
+    "prior": {
+      "path": "docs/phase03/HELIOS-DISPLAY-RIGHTS-CLOSED.json",
+      "length": 8259,
+      "sha256": "2f7b8e28e9a8bab0b2a22be778f838195057391800b0ad9558859f052a489405",
+      "fixture": false
+    },
+    "basis": "Seven compiled inputs unchanged. Driver.cpp differs only by independently authored lifecycle cleanup/locking transform; fixed source notices/MS-PL/CC0 obligations retained.",
+    "notices": [
+      {
+        "path": "artifacts/phase03/selfsigned-research/helios-1791531228575/licenses/Microsoft-MS-PL.txt",
+        "length": 2665,
+        "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a",
+        "fixture": false
+      },
+      {
+        "path": "artifacts/phase03/selfsigned-research/helios-1791531228575/licenses/SudoVDA-README.txt",
+        "length": 3663,
+        "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+        "fixture": false
+      },
+      {
+        "path": "artifacts/phase03/selfsigned-research/helios-1791531228575/licenses/CC0-1.0.txt",
+        "length": 7048,
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+        "fixture": false
+      },
+      {
+        "path": "artifacts/phase03/selfsigned-research/helios-1791531228575/licenses/HeliosDisplay-NOTICE.txt",
+        "length": 1813,
+        "sha256": "11400757633fe771d348a7b37f6c0858d65bca23ef08fc3a674e8a8c73999931",
+        "fixture": false
+      }
+    ]
+  },
+  "acl": {
+    "status": "verified",
+    "scope": "source-backed inference for identical private header/access bits, INF, hardware/interface identity, WDF DeviceAdd and read-query bodies only; changed monitor lifetime callback is reviewed source, not physically retested",
+    "actual": {
+      "path": "docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json",
+      "length": 2116,
+      "sha256": "2766a73167a24322aa26039f3bbc2e24947f2953200a0f68adf8570325c74bca",
+      "fixture": false
+    },
+    "priorBridge": {
+      "path": "docs/phase03/HELIOS-DISPLAY-ACL-BRIDGE.json",
+      "length": 2483,
+      "sha256": "371bc5a3a4494429dbeb350888e77a776b26228c4b5d183aed5bd7f98ade94bc",
+      "fixture": false
+    },
+    "profile": {
+      "watchdog": 0,
+      "testMode": 0,
+      "maxMonitors": 10
+    }
+  },
+  "signature": {
+    "path": "artifacts/phase03/selfsigned-research/helios-1791531228575/signature-verification.json",
+    "length": 1362,
+    "sha256": "7814e374c8f322081e149d5682969903bcffbb8b7dd920844cbd738c2aa0e4cd",
+    "fixture": false
+  },
+  "archive": {
+    "path": "artifacts/phase03/selfsigned-research/helios-1791531228575/HeliosDisplayResearch.zip",
+    "length": 1021771,
+    "sha256": "b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae",
+    "fixture": false
+  },
+  "driverInstalled": false,
+  "machineMutationAuthorized": false,
+  "limitations": [
+    "No Win10/11 seven-screen/HDR/persistence/update result inferred.",
+    "Arrival/duplicate boundary regressions are source transform checks plus actual WDK compilation; installed-driver failure injection remains 03-03.",
+    "No reboot or shutdown executed or scheduled."
+  ]
+}
