@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "task": "03-03 Apollo-preserving installation prerequisite",
+  "command": "node --test --test-name-pattern 'dedicated INF places UMDF' tests/helios-display-research.test.cjs",
+  "expectedBehavior": "Generated dedicated INF places DeviceGroupId under WUDF for actual UMDF pooling isolation",
+  "actualFailure": "AssertionError: HKR,,DeviceGroupId,,HeliosDisplayGroup does not match the WUDF-subkey requirement",
+  "exitCode": 1,
+  "tests": 1,
+  "failures": 1,
+  "skipped": 0,
+  "log": "artifacts/phase03/apollo-infrastructure-red.log",
+  "systemMutation": false
+}

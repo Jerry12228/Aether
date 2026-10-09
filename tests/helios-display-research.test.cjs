@@ -19,6 +19,14 @@ function legacyInf(){return [
  '[Strings]','ManufacturerName="Aether"'
  ].join('\n');}
 function sections(inf){return Object.fromEntries([...inf.matchAll(/^\[([^\]]+)\]\s*\n([^]*?)(?=^\[|$(?![\s\S]))/gm)].map(m=>[m[1].toLowerCase(),m[2]]));}
+test('dedicated INF places UMDF isolation group under the WUDF device subkey',()=>{
+ const template=fs.readFileSync(path.join(root,'tools/helios-display-research/HeliosDisplay.inf'),'utf8');
+ for(const inf of [template,platformInf(template)]){
+  const hw=sections(inf)['mydevice_hardwaredevicesettings'];
+  assert.match(hw,/^HKR,\s*"?WUDF"?,\s*"?DeviceGroupId"?,\s*(?:0x00000000)?,\s*"?HeliosDisplayGroup"?\s*$/mi);
+  assert.doesNotMatch(hw,/^HKR,\s*,\s*"?DeviceGroupId"?/mi);
+ }
+});
 test('platform INF retains Win10 reflector and selects separate Win11 inbox services',()=>{
  const inf=platformInf(legacyInf()),s=sections(inf);
  assert.match(s.manufacturer,/Standard,NT\$ARCH\$\.10\.0,NT\$ARCH\$\.10\.0\.\.\.17134,NT\$ARCH\$\.10\.0\.\.\.22000/);
