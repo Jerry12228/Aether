@@ -20,4 +20,5 @@ bool IsWindows11();
 Json DefaultRequests(const std::string&,bool);
 bool ExactRefresh(uint32_t,uint32_t);
 bool ValidDisplayName(const std::string&);
+Json RunDisplayTestPattern(const Json&,bool,const std::string&);
 }

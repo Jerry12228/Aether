@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "plan": "03-02",
+  "recordedAt": "2026-10-09T08:52:00Z",
+  "scope": "contract-and-native-build-with-read-only-machine-enumeration",
+  "providerId": "aether-helios-display",
+  "dossierSha256": "47fe64f8396b75a9072b84f8347b97d2934192c6d44a7502774390327fcd48b0",
+  "packageSha256": "b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae",
+  "builds": [
+    {"command": "cmake --build --preset windows-core-debug", "exitCode": 0},
+    {"command": "cmake --build --preset windows-core-release", "exitCode": 0}
+  ],
+  "runs": [
+    {"command": "ctest --test-dir build/native -C Debug --output-on-failure --no-tests=error", "exitCode": 0, "tests": 11, "passed": 11, "virtualDisplaySuites": 8, "coreSuites": 3, "seconds": 26.54, "log": "artifacts/phase03/contract/debug-native.log", "sha256": "d49cf856895085f8dd15faea61f786e81f4d26e850ce679ecaac6e5d69e70cf9"},
+    {"command": "ctest --test-dir build/native -C Release --output-on-failure --no-tests=error", "exitCode": 0, "tests": 11, "passed": 11, "virtualDisplaySuites": 8, "coreSuites": 3, "seconds": 25.32, "log": "artifacts/phase03/contract/release-native.log", "sha256": "f0f6e41619935f512ca551e71716078e484e2db5b372f8dd448f367e7502a841"},
+    {"command": "node --test tests/virtual-display-contract.test.cjs tests/helios-process.test.cjs", "configuration": "Debug", "exitCode": 0, "tests": 27, "displayCases": 25, "priorProcessCases": 2, "passed": 27, "skipped": 0, "milliseconds": 23286.6714, "log": "artifacts/phase03/contract/debug-cli.log", "sha256": "95e7e9fdbedb1e3384e32911e5d44cb60059e4aab05d8681950d416f410a79b4"},
+    {"command": "node --test tests/virtual-display-contract.test.cjs tests/helios-process.test.cjs", "configuration": "Release", "exitCode": 0, "tests": 27, "displayCases": 25, "priorProcessCases": 2, "passed": 27, "skipped": 0, "milliseconds": 21482.229, "log": "artifacts/phase03/contract/release-cli.log", "sha256": "e1a5ffacacc43ea6c6e268eeb0bd42b947f7c6e28d78393b6ee700e621b393e5"},
+    {"command": "node --test tests/helios-display-lifecycle.test.cjs tests/helios-display-research.test.cjs tests/helios-display-inputs.test.cjs tests/virtual-display-package.test.cjs", "exitCode": 0, "tests": 19, "passed": 19, "skipped": 0, "milliseconds": 475.8736, "log": "artifacts/phase03/contract/admission-regression.log"},
+    {"command": "node scripts/check-virtual-display-admission.cjs --stage admission --require-decision", "exitCode": 0, "status": "pass"}
+  ],
+  "tdd": [
+    {"task": "03-02-01", "record": "artifacts/phase03/contract/task1-red.json", "sha256": "9c513a680072601c67008ceef72b62b2561793215d1d1a33a7210ce9936e06e9", "verdict": "RED_EVIDENCE_OK", "actualRedTests": 5, "actualRedFailures": 5},
+    {"task": "03-02-02", "record": "artifacts/phase03/contract/task2-red.json", "sha256": "81bed3c2346906ec769c05bcf86d1fe2b7c19595269ef918e296ee77fbefacd3", "verdict": "RED_EVIDENCE_OK", "actualRedTests": 16, "actualRedFailures": 9}
+  ],
+  "evidenceLimits": [
+    "Contract backend persists isolated files; it does not create actual monitors.",
+    "Pattern contract creates real hidden HWNDs and sends WM_CLOSE; it does not prove visible seven-monitor placement or HDR picture quality.",
+    "Native Windows IOCTL/CCD/advanced-color implementation is compiled in both configurations; its mutation path has not been executed.",
+    "Production read-only query/driver check and prior actual Ctrl+C core process regressions ran; no driver install, trust change, registry profile change, topology apply, driver reset, reboot or shutdown ran.",
+    "Win10 seven SDR, Win11 D2 HDR, physical/foreign preservation, device persistence and bounded driver cancellation require 03-03 authorization and machine evidence.",
+    "CCD has no atomic compare-and-swap; observed topology checks reduce but cannot eliminate races with outside system actors.",
+    "VDP-01, VDP-02 and Phase 3 remain incomplete."
+  ]
+}

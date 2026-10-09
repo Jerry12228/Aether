@@ -1,5 +1,7 @@
 'use strict';
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os');
+const nativeTest=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),os=require('node:os');
+const selectedSuite=process.env.AETHER_DISPLAY_SUITE||'';let requiredCases=0;
+function test(name,body){if(!selectedSuite||name.startsWith(selectedSuite+':')){++requiredCases;nativeTest(name,body);}}
 const {spawnSync,spawn}=require('node:child_process');
 const config=process.env.AETHER_DISPLAY_CONFIGURATION||'Debug';
 const repo=path.resolve(__dirname,'..');
@@ -77,3 +79,32 @@ test('security: hard-linked registry and foreign native identity cannot authoriz
  const root=sandbox();run(root,['create','A']);const file=path.join(root,'display-registry.v1.json');fs.linkSync(file,path.join(root,'foreign-link.json'));assert.equal(run(root,['query'],1).status,'access-denied');
  const other=sandbox();run(other,['create','A']);const backend=path.join(other,'contract-backend.v1.json'),j=JSON.parse(fs.readFileSync(backend,'utf8'));j.slots[0].ownerSid='S-1-5-18';fs.writeFileSync(backend,JSON.stringify(j));assert.equal(run(other,['delete','A'],1).status,'identity-conflict');assert.equal(JSON.parse(fs.readFileSync(backend,'utf8')).slots.length,2);
 });
+test('security: corrupted schema, authentication, desktop, UTF8 and stable identity are refused without provider effects',()=>{
+ for(const change of [j=>j.schemaVersion=2,j=>j.loginAuthLuid='foreign',j=>j.desktop='Other',j=>j.groups[0].slots[1].slotId=j.groups[0].slots[0].slotId,j=>j.groups[0].slots[0].requested.width=4294967296]){const root=sandbox();run(root,['create','A']);const file=path.join(root,'display-registry.v1.json'),j=JSON.parse(fs.readFileSync(file));change(j);fs.writeFileSync(file,JSON.stringify(j));run(root,['query'],1);assert.equal(JSON.parse(fs.readFileSync(path.join(root,'contract-backend.v1.json'))).slots.length,2);}
+ const root=sandbox();run(root,['create','A']);fs.writeFileSync(path.join(root,'display-registry.v1.json'),Buffer.from([123,34,255,34,58,49,125]));assert.equal(run(root,['query'],1).status,'invalid-argument');
+});
+test('security: junction root is refused before touching its target',()=>{
+ const outer=sandbox(),target=sandbox(),link=path.join(outer,'junction');fs.symlinkSync(target,link,'junction');assert.equal(run(link,['create','A'],1).status,'access-denied');assert.deepEqual(fs.readdirSync(target),[]);
+});
+test('recovery: changed system identity is reported and remapping preserves logical identity',()=>{
+ const root=sandbox();const before=run(root,['create','C']);const file=path.join(root,'contract-backend.v1.json'),j=JSON.parse(fs.readFileSync(file));j.slots[0].systemIdentity.targetId=77;fs.writeFileSync(file,JSON.stringify(j));assert.equal(run(root,['delete','C'],1).status,'identity-conflict');const q=run(root,['recover','C']);assert.equal(q.groups[0].slots[0].slotId,before.groups[0].slots[0].slotId);assert.equal(q.groups[0].slots[0].identityRemap.actual.targetId,77);assert.equal(q.pending,null);
+});
+test('failure: failed delete retains last-success and requires explicit recovery',()=>{
+ const root=sandbox();const before=run(root,['create','A']);run(root,['create','B']);assert.equal(run(root,['delete','A','--fault','remove'],1).status,'pending-recovery');const q=run(root,['query']);assert.deepEqual(q.groups[0],before.groups[0]);assert.equal(q.pending.kind,'delete');assert.equal(run(root,['recover','A']).pending,null);assert.equal(run(root,['query']).backendSlotCount,3);
+});
+test('topology: successful update preserves other groups and overlapping update is refused',()=>{
+ const root=sandbox();run(root,['create','A']);run(root,['create','B']);const b=run(root,['query','--group','B']).groups[0];const q=run(root,['update','A','--slot','1=1280x720@60/1:SDR']);assert.equal(q.groups[0].slots[0].lastSuccess.width,1280);assert.deepEqual(q.groups[1],b);assert.equal(run(root,['update','A','--slot','1=1920x2000@60/1:SDR'],1).status,'unsupported');assert.deepEqual(run(root,['query']).groups,q.groups);
+});
+test('registry: lock contention returns within 2s and does not mutate the waiting group',async()=>{
+ const root=sandbox();run(root,['query']);const p=spawn(binary,['vdisplay','create','A','--test-provider','--test-root',root,'--fault','hold-lock','--json'],{windowsHide:true});const finished=new Promise((resolve,reject)=>{p.on('error',reject);p.on('close',resolve);});let journal=false;for(let i=0;i<100;i++){if(fs.existsSync(path.join(root,'display-registry.v1.json'))){journal=true;break;}await new Promise(r=>setTimeout(r,20));}assert.equal(journal,true);const began=Date.now();assert.equal(run(root,['create','B'],1).status,'timeout');assert.ok(Date.now()-began<2400);assert.equal(await finished,0);assert.deepEqual(run(root,['query']).groups.map(g=>g.groupName),['A']);
+});
+test('registry: total 10s deadline terminates uncertain provider and retains durable journal',()=>{
+ const root=sandbox();const began=Date.now();const r=spawnSync(binary,['vdisplay','create','A','--test-provider','--test-root',root,'--fault','deadline','--json'],{encoding:'utf8',windowsHide:true,timeout:11500});assert.equal(r.status,124);assert.equal(JSON.parse(r.stdout).status,'timeout');assert.ok(Date.now()-began<11000);const q=run(root,['query']);assert.equal(q.pending.stage,'creating');assert.equal(q.backendSlotCount,1);assert.equal(run(root,['recover','A']).backendSlotCount,2);
+});
+test('topology: whole D rejection preserves A B C and capacity rejects before effects',()=>{
+ const root=sandbox();for(const g of ['A','B','C'])run(root,['create',g]);const before=run(root,['query']);assert.equal(run(root,['create','D','--fault','hdr-unsupported'],1).status,'unsupported');assert.deepEqual(run(root,['query']).groups,before.groups);run(root,['create','D']);for(const g of ['E','F','G'])run(root,['create',g,'--slot','1=1920x1080@60/1:SDR']);assert.equal(run(root,['query']).backendSlotCount,10);assert.equal(run(root,['create','H','--slot','1=1920x1080@60/1:SDR'],1).status,'unsupported');assert.equal(run(root,['recover','A']).backendSlotCount,10);
+});
+test('tracer: real core stop ack destroy does not delete persistent contract display groups',()=>{
+ const root=sandbox();const before=run(root,['create','A']);const r=spawnSync(product,['--self-test','--automation'],{encoding:'utf8',windowsHide:true,timeout:5000});assert.equal(r.status,0,r.stdout+r.stderr);assert.match(r.stdout,/stop=0 ack=0 destroy=0/);assert.deepEqual(run(root,['query']).groups,before.groups);
+});
+assert.ok(requiredCases>0,'The requested native suite must discover at least one required behavior case');

@@ -30,7 +30,8 @@ int main(int argc, char** argv) {
   if(Json::parse("{\"id\":1,\"slots\":[true,null]}").at("id").number()!=1)return 1;
   for(const auto* bad:{"{\"a\":1,\"a\":2}","[9223372036854775808]","[01]","[1.1]"}){bool refused=false;try{Json::parse(bad);}catch(...){refused=true;}if(!refused)return 1;}
   const auto configuration=std::filesystem::path(argv[1]).parent_path().filename().string();SetEnvironmentVariableA("AETHER_DISPLAY_CONFIGURATION",configuration.c_str());
-  std::string command="\""+std::string(argv[4])+"\" --test --test-reporter=tap --test-name-pattern=\"^"+argv[2]+":\" \""+argv[3]+"\"";
+  SetEnvironmentVariableA("AETHER_DISPLAY_SUITE",argv[2]);
+  std::string command="\""+std::string(argv[4])+"\" --test --test-reporter=tap \""+argv[3]+"\"";
   STARTUPINFOA si{};si.cb=sizeof(si);si.dwFlags=STARTF_USESTDHANDLES;si.hStdOutput=GetStdHandle(STD_OUTPUT_HANDLE);si.hStdError=GetStdHandle(STD_ERROR_HANDLE);si.hStdInput=GetStdHandle(STD_INPUT_HANDLE);PROCESS_INFORMATION pi{};if(!CreateProcessA(nullptr,command.data(),nullptr,nullptr,TRUE,CREATE_NO_WINDOW,nullptr,nullptr,&si,&pi))return 2;
   DWORD code=2;if(WaitForSingleObject(pi.hProcess,28000)!=WAIT_OBJECT_0){TerminateProcess(pi.hProcess,2);}GetExitCodeProcess(pi.hProcess,&code);CloseHandle(pi.hThread);CloseHandle(pi.hProcess);return static_cast<int>(code);
  }

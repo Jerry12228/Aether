@@ -11,7 +11,7 @@ namespace aether::vdisplay {
 struct Json {
  using Array=std::vector<Json>;using Object=std::map<std::string,Json>;
  std::variant<std::nullptr_t,bool,int64_t,std::string,Array,Object> value=nullptr;
- Json()=default;Json(std::nullptr_t){}Json(bool v):value(v){}template<class T> requires(std::is_integral_v<T>&&!std::is_same_v<T,bool>) Json(T v):value(static_cast<int64_t>(v)){}Json(const char* v):value(std::string(v)){}Json(std::string v):value(std::move(v)){}Json(Array v):value(std::move(v)){}Json(Object v):value(std::move(v)){}
+ Json()=default;Json(std::nullptr_t){}Json(bool v):value(v){}template<class T> requires((std::is_integral_v<T>||std::is_enum_v<T>)&&!std::is_same_v<T,bool>) Json(T v):value(static_cast<int64_t>(v)){}Json(const char* v):value(std::string(v)){}Json(std::string v):value(std::move(v)){}Json(Array v):value(std::move(v)){}Json(Object v):value(std::move(v)){}
  bool null()const{return std::holds_alternative<std::nullptr_t>(value);}
  const Json& at(const std::string& k)const{return std::get<Object>(value).at(k);}Json& operator[](const std::string& k){return std::get<Object>(value)[k];}
  const Array& array()const{return std::get<Array>(value);}Array& array(){return std::get<Array>(value);}
