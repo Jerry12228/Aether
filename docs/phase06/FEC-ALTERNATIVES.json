@@ -1,0 +1,1823 @@
+{
+  "schema": 1,
+  "observedAt": "2026-10-10T05:12:34.501Z",
+  "status": "alternative-proposal-not-approved",
+  "fallbackTriggered": false,
+  "candidates": [
+    {
+      "name": "botan",
+      "repo": "randombit/botan",
+      "ref": "3.13.0",
+      "sourceSha": "2a81eef56c96c237e590c27f9a75e60317c9c700",
+      "commitDate": "2026-08-13T14:11:32Z",
+      "archiveUrl": "https://api.github.com/repos/randombit/botan/tarball/2a81eef56c96c237e590c27f9a75e60317c9c700",
+      "archiveSha256": "714d6c52c6d752808e8784df21c146e176e91c57c99ee72c08eff4439fcff872",
+      "archiveBytes": 14867751,
+      "excludedSymlinks": [
+        ".github/codecov.yml"
+      ],
+      "archiveTransforms": [],
+      "fileCount": 4041,
+      "inventorySha256": "dcb3b82f30f2569c81f57d6e8bb5094e7360ac8efbe31b75358339799fab8efa",
+      "status": "research-only-not-linked",
+      "relevantFiles": [
+        {
+          "path": "license.txt",
+          "blob": "948d3d10cfdc3adaaec07410a5cb0de56f053467",
+          "sha256": "758ea6b4a65d5611bf79c24920f92473ef44bdde0b3b97fa578470a0ffc34f14",
+          "bytes": 1311
+        },
+        {
+          "path": "readme.rst",
+          "blob": "3d9796cc9fd7e2d03b971b678b8c7f4b64b30f22",
+          "sha256": "e501445d70d0b6bcd90e693ff810ec0b6671bbb68fdf9cfa7b6b4d75c105b7c2",
+          "bytes": 6592
+        },
+        {
+          "path": "src/editors/README.md",
+          "blob": "bdf13cb6e97fc4cef7d03c8ecc4b963344b70636",
+          "sha256": "c846d4c06bb37acb8de9c4c1a5a5561386178a2461131e5ef6a6e1561d2f9aa7",
+          "bytes": 533
+        },
+        {
+          "path": "src/scripts/tls_scanner/readme.txt",
+          "blob": "952ba6892ca9f9319d58063c642576a1073e459e",
+          "sha256": "5ab78bddf757d7e814c4a946a16381f4442e0591e23ba25dbf16b60eb522a6d7",
+          "bytes": 159
+        },
+        {
+          "path": "src/tests/data/x509/bsi/readme.txt",
+          "blob": "2895eb597798d5c812daad4bab15cd61a56b3a85",
+          "sha256": "250ddcdcb98a2b97fce67724f1449e5119d6c7d2916117f173a188e28423b2bb",
+          "bytes": 699
+        },
+        {
+          "path": "src/tests/data/x509/misc/crl_without_nextupdate/README.md",
+          "blob": "0bab0b7e88bd94c32172fad98debcd6e3548c74f",
+          "sha256": "43f181e02c8bbccf67e670c2859d1b548ee4ba1548c69f69d1dde193cb69a8b5",
+          "bytes": 908
+        },
+        {
+          "path": "src/tests/data/x509/misc/root_cert_time_check/README.md",
+          "blob": "c2c9c82e930cb078c2b145bd5c8646956699d00f",
+          "sha256": "05e4a1d10cd7b040fb0d9ac507afd88c51b98429aeba0d484e400d153358b2e4",
+          "bytes": 843
+        },
+        {
+          "path": "src/tests/data/x509/pss_certs/01/README.txt",
+          "blob": "300dbea58c076b691d6c9965e92793a78f45a90b",
+          "sha256": "8d7a9ae4b913cdf23391905b9497dfdb11dbea9b685a91284ab8e76d4952a372",
+          "bytes": 14
+        },
+        {
+          "path": "src/tests/data/x509/pss_certs/02/README.txt",
+          "blob": "ec0a7e4319f3ced7e4d49d3eb444c7228ee250b0",
+          "sha256": "43f3234e4bbc7ceea944bdb20ea4e88ae62f79bfa3ee892ed40398715155828d",
+          "bytes": 13
+        },
+        {
+          "path": "src/tests/data/x509/pss_certs/109/README.txt",
+          "blob": "27274f30401cdbc4ae3f973cbe7e8bd3378117fe",
+          "sha256": "d6cde73ea056eeee0868070200767a68259518b6b3c7979b6aff8131b34811ac",
+          "bytes": 26
+        },
+        {
+          "path": "src/tests/data/x509/pss_certs/97/README.txt",
+          "blob": "5d745e9004ea1611578a44f38ccfac73624f915c",
+          "sha256": "4e93c8195994bd2e8894a26e5ab07580b0a92eed101c754d72e331f417eb595e",
+          "bytes": 19
+        },
+        {
+          "path": "src/tests/data/x509/pss_certs/98/README.txt",
+          "blob": "546043b7fd5d0ae6267171f6460a956c6a8077b3",
+          "sha256": "3625dcb2c0c5be224ad78123c66ef07dec9ef33046d900f8b86974a1e9c49428",
+          "bytes": 15
+        },
+        {
+          "path": "src/tests/data/x509/pss_certs/99/README.txt",
+          "blob": "8b2fba01fa69f6a4851fdb893c6a6903c170cd50",
+          "sha256": "757bee1fa6d0fdebf603792d88b2d98a69fb108bd4833ce3167d8f0ae897361a",
+          "bytes": 13
+        }
+      ]
+    },
+    {
+      "name": "fecpp",
+      "repo": "randombit/fecpp",
+      "ref": "d7e9b41eaaab3c605be36f282465210d17bc432f",
+      "sourceSha": "d7e9b41eaaab3c605be36f282465210d17bc432f",
+      "commitDate": "2021-12-15T22:24:10Z",
+      "archiveUrl": "https://api.github.com/repos/randombit/fecpp/tarball/d7e9b41eaaab3c605be36f282465210d17bc432f",
+      "archiveSha256": "9f75dba08347b117bfa6d641feb21a3569dcc501055f03300d28c3e6c1b49dec",
+      "archiveBytes": 30507,
+      "excludedSymlinks": [],
+      "archiveTransforms": [],
+      "fileCount": 20,
+      "inventorySha256": "8490c574b120e45748f96e2d7f64584522d3bea730a79e2267e20216ac431194",
+      "status": "research-only-not-linked",
+      "relevantFiles": [
+        {
+          "path": "fecpp.cpp",
+          "blob": "d727b354370bfd4b5e909de5a4813aaa0def9c8a",
+          "sha256": "0fea953b3f45b90a77f5dc907f29ec31dee84ed509a2c65c2c49cd68705d90a6",
+          "bytes": 19646
+        },
+        {
+          "path": "license.txt",
+          "blob": "5cdc2ff398f2f7627d0999396dbdab983b2d08e8",
+          "sha256": "6084feb8a74333f251f8b8e053443a3fc4e5417a272227e9dc613cf86e502e97",
+          "bytes": 1527
+        },
+        {
+          "path": "readme.txt",
+          "blob": "25cc271b9cb5dc60a3234e792459485e595348fc",
+          "sha256": "5a638fb79736bf90de1aba160de4c045981d075eb39a1a55d6e01ba446e8783c",
+          "bytes": 4504
+        }
+      ]
+    },
+    {
+      "name": "cm256",
+      "repo": "catid/cm256",
+      "ref": "634d1e36b095dbba937586a7e9843d828762dae4",
+      "sourceSha": "634d1e36b095dbba937586a7e9843d828762dae4",
+      "commitDate": "2024-10-17T03:31:41Z",
+      "archiveUrl": "https://api.github.com/repos/catid/cm256/tarball/634d1e36b095dbba937586a7e9843d828762dae4",
+      "archiveSha256": "e250b4c119888ad2ebc94bc0d586b5f92718d94f3a0a7832581d5b906353b52c",
+      "archiveBytes": 893352,
+      "excludedSymlinks": [],
+      "archiveTransforms": [],
+      "fileCount": 19,
+      "inventorySha256": "27dc8ae98e0a1234946ddbadb824613e257829a32a68efe8e390b2aa809ac9b9",
+      "status": "research-only-not-linked",
+      "relevantFiles": [
+        {
+          "path": "LICENSE",
+          "blob": "c8dd646c43f33ffe5a8079e86da3d5aae629523b",
+          "sha256": "4ab1cb08a6171fb6cc4919856ad06651562fc2ad86552b02e4e825fe98c7c009",
+          "bytes": 1498
+        },
+        {
+          "path": "README.md",
+          "blob": "af233f7ec1a6f6ce161d3a8656cd9a4db4a48538",
+          "sha256": "6bc88765b4b181a502bc19ff28a1670bbc655d00b3740cfd8e59f1dff5b07088",
+          "bytes": 9406
+        },
+        {
+          "path": "include/cm256.h",
+          "blob": "72a841528ef32126f093698a4ca068db2629a82b",
+          "sha256": "25231b2a480501a2296121395322613298297e52d708db7f009bc90864cefff0",
+          "bytes": 6168
+        },
+        {
+          "path": "include/gf256.h",
+          "blob": "8396a44e433385e49449e7fba9c225e0cb1e8259",
+          "sha256": "8a3420f9ab9a937258fdf676e8613aca60819943d1d6bf4f095d062775f6b6e9",
+          "bytes": 8942
+        },
+        {
+          "path": "src/cm256.cpp",
+          "blob": "b0e08da97a3b2eaad5ca605a5ce5534edc42e4ce",
+          "sha256": "f256284dc88495eb679477a92c02e255752afca9cb3947e75f8236962cfc4430",
+          "bytes": 19180
+        },
+        {
+          "path": "src/gf256.cpp",
+          "blob": "66aa9f01d4d3345af9742927231eeeafbc6a069f",
+          "sha256": "2c279f2abf2e6554c73533c14c69f710c0eaddcfb569680bc1f54e3304e7e775",
+          "bytes": 54239
+        }
+      ]
+    },
+    {
+      "name": "libcorrect",
+      "repo": "quiet/libcorrect",
+      "ref": "ee82e6673a806dfdf0a969b975ab36596ecc5401",
+      "sourceSha": "ee82e6673a806dfdf0a969b975ab36596ecc5401",
+      "commitDate": "2026-02-04T20:35:39Z",
+      "archiveUrl": "https://api.github.com/repos/quiet/libcorrect/tarball/ee82e6673a806dfdf0a969b975ab36596ecc5401",
+      "archiveSha256": "3d1e9cb9461c65386b5328c075b8a521309815f0bd1068893fc142506a51acd3",
+      "archiveBytes": 52517,
+      "excludedSymlinks": [],
+      "archiveTransforms": [],
+      "fileCount": 76,
+      "inventorySha256": "c9bae67630642c3cf9ff9d73c2b84423424da8bd095ae743a277209e9b39844e",
+      "status": "research-only-not-linked",
+      "relevantFiles": [
+        {
+          "path": "LICENSE",
+          "blob": "8bb8fad823808f802f176bbd3526999e98382c12",
+          "sha256": "135138cd4304aa637836758dc5edfb5f21b7d09ecc637d25288d206b151a5768",
+          "bytes": 1486
+        },
+        {
+          "path": "README.md",
+          "blob": "4a5f342b2091da425312bf51bdefa12592c04698",
+          "sha256": "5a3c51dc7f2e0d8a96227fe39d6b9c7bcb3a142141bb17c312d3c9a699983743",
+          "bytes": 3903
+        },
+        {
+          "path": "include/correct.h",
+          "blob": "12d817db95803c0a8964beb4bc13d5723159687b",
+          "sha256": "470bc97c3950a05e13d0a9e108cab8f9158b731199e172ccc3ee9e4e17e3529f",
+          "bytes": 12154
+        }
+      ]
+    },
+    {
+      "name": "zfec",
+      "repo": "tahoe-lafs/zfec",
+      "ref": "master",
+      "sourceSha": "1fede6c166592c98da7f102539f94daf99db4756",
+      "commitDate": "2026-05-22T20:35:56Z",
+      "archiveUrl": "https://api.github.com/repos/tahoe-lafs/zfec/tarball/1fede6c166592c98da7f102539f94daf99db4756",
+      "archiveSha256": "8941fd96bce037fcc5b23f1fca89fc18f9694f2905671db70f3e461a7d17bbf4",
+      "archiveBytes": 91281,
+      "excludedSymlinks": [],
+      "archiveTransforms": [
+        {
+          "path": "zfec/_version.py",
+          "reason": "official verified export-subst; restore exact Git blob for research",
+          "archiveSha256": "50be397022fe03de3199b0f0f91ac8169fc7a4fe872eacfb7cbca70cf6b13bc9",
+          "sourceSha256": "263459d46bb5494106544c655ee7dbe511bccf61a428ea7c2909e69bc609d386"
+        }
+      ],
+      "fileCount": 43,
+      "inventorySha256": "b3b1655fac3f1d08622e4338edfbc8c7b82a7b2a776946bc58eb3b2e345d4c09",
+      "status": "research-only-not-linked",
+      "relevantFiles": [
+        {
+          "path": "COPYING.GPL",
+          "blob": "5075166af9ae64484a96ef16f664d0bc669a9cfd",
+          "sha256": "8ad2ee495cac08584674d8ec175538eb8baff5e968ed9df175e8c4d13cee35bc",
+          "bytes": 24277
+        },
+        {
+          "path": "COPYING.TGPPL.rst",
+          "blob": "e89b079fefaed20eceaa4f99da4f0972b6840072",
+          "sha256": "05422a345f7145523cfceb5d3cd0386f2de8d80147dce47db6a567461ef0d9bd",
+          "bytes": 17259
+        },
+        {
+          "path": "README.rst",
+          "blob": "63499e607fcae98d832e0cc2a61c4237966978b0",
+          "sha256": "74d9f001d49d53c5a1fe93240d5389c8b2a94bce8a4451584c9e226707ffc7ea",
+          "bytes": 14045
+        },
+        {
+          "path": "copyright",
+          "blob": "b6a402080ec4a30c5eb640f9b75dfd6973f9118b",
+          "sha256": "b4b5964078a97b881f7eeea81f75bca428d183466696d56d14cb76dd39726867",
+          "bytes": 14840
+        },
+        {
+          "path": "zfec/fec.c",
+          "blob": "993f22a18e8d309f0bb5122bd300a2339dce3766",
+          "sha256": "78cc30c58943164fba96cee024694a6cac15833717ed29a93b06ddd49045aacc",
+          "bytes": 19778
+        },
+        {
+          "path": "zfec/fec.h",
+          "blob": "aaa42578c372831a006bbfa1cd9b39824fb46499",
+          "sha256": "ad5c17b1fe3f67ade315f996f9deb8a7edb38d40fcf7c732854d1ea6f78bcd8d",
+          "bytes": 4479
+        }
+      ]
+    }
+  ],
+  "selected": {
+    "name": "Botan ZFEC scalar subset",
+    "sourceSha": "2a81eef56c96c237e590c27f9a75e60317c9c700",
+    "archiveSha256": "714d6c52c6d752808e8784df21c146e176e91c57c99ee72c08eff4439fcff872",
+    "sourceFiles": [
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/alignment_buffer.h",
+        "sha256": "b502d1f7258ed17b03dad62bafa9df14c13fd0d255a07f556d5575de2e14b610",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/alignment_buffer.h",
+            "blob": "db8a9d3fbbe985b35406873cf8471c64d835fb3c"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n * Alignment buffer helper\n * (C) 2023 Jack Lloyd\n *     2023 René Meusel - Rohde & Schwarz Cybersecurity\n *\n * Botan is released under the Simplified BSD License (see license.txt)\n */"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/bit_ops.h",
+        "sha256": "f8f5b8c00e4becad0c85ef502ad52f391586ca3376e03514a8685bc8533f6559",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/bit_ops.h",
+            "blob": "7db36f59e937b1fc83315bc7bc02a77ebf452e03"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Bit/Word Operations\n* (C) 1999-2008 Jack Lloyd\n* (C) Copyright Projet SECRET, INRIA, Rocquencourt\n* (C) Bhaskar Biswas and  Nicolas Sendrier\n* (C) 2014 cryptosource GmbH\n* (C) 2014 Falko Strenzke fstrenzke@cryptosource.de\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/bswap.h",
+        "sha256": "3a77ffb26f04d6b9031d581134051b22562aca94d4ff84ebc252febe10557501",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/bswap.h",
+            "blob": "d7bf65fdbaef7722bda070e4a77a00d7d89e7792"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Byte Swapping Operations\n* (C) 1999-2011,2018 Jack Lloyd\n* (C) 2007 Yves Jerschow\n* (C) 2024 René Meusel - Rohde & Schwarz Cybersecurity\n*\n* TODO: C++23: replace this entire implementation with std::byteswap\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/buffer_slicer.h",
+        "sha256": "2c88f5c127332596ef300d7f44feff53c5567691d0343922aafce1bfd8ad7a69",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/buffer_slicer.h",
+            "blob": "f4c4d997e51f320967a73de7bbbec293ddceff8b"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2023-2024 René Meusel - Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/buffer_stuffer.h",
+        "sha256": "8f66cc873405245640bed03e45e887cd3530fae5c37f5b6cf562b6f0b9608e57",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/buffer_stuffer.h",
+            "blob": "d73fce7fe7acdfe226aa3b628204771caea2a52b"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2023-2024 René Meusel - Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/calendar.h",
+        "sha256": "073ae10be6586054e741b7a90029790a196e34496232dac6529e6f00efaf3500",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/calendar.h",
+            "blob": "c8d4c578de39cd52ac50d92d051e7ae3fa405cd3"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Calendar Functions\n* (C) 1999-2009,2015 Jack Lloyd\n* (C) 2015 Simon Warta (Kullo GmbH)\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/charset.h",
+        "sha256": "a69040b2dace169da9e5592e93e5365fcc8ef75e9cbb086a87cf2faf5263cd15",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/charset.h",
+            "blob": "ddf0272f3a8afa724ab050c4c101a621b49360a5"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Character Set Conversions\n* (C) 1999-2007 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/codec_base.h",
+        "sha256": "40c91bcca6b977451af19dafaac2a9887c7a21dce2c5f22e9fa68cd0fd08fd75",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/codec_base.h",
+            "blob": "08dec232c6405ed64842ea25141ce7b3de35e397"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Base Encoding and Decoding\n* (C) 2018 Erwan Chaussy\n* (C) 2018 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/concat_util.h",
+        "sha256": "e9c5f732a26c6ea1a75d1d9871fe3a97b6d798d59d5ecc47cb1da1a8c4737230",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/concat_util.h",
+            "blob": "311309e76e83bb4589d4a536184bc9777a30ceec"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2023-2024 René Meusel - Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/ct_utils.h",
+        "sha256": "1116f375636ce65e72d5b116c59c686e3cf2b4f17771f406d7293bbf1895af9e",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/ct_utils.h",
+            "blob": "615dcfcd48b00338f8f1409bcc9738e7b7ba46a7"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Functions for constant time operations on data and testing of\n* constant time annotations using valgrind.\n*\n* For more information about constant time programming see\n* Wagner, Molnar, et al \"The Program Counter Security Model\"\n*\n* (C) 2010 Falko Strenzke\n* (C) 2015,2016,2018,2024 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/donna128.h",
+        "sha256": "6cafb8e83e08a2f2dada78d0329a842bd2f835902cdc7e2b39971f4339557361",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/donna128.h",
+            "blob": "518ae9b6c78e4e18be772b0db3379593abec3984"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* A minimal 128-bit integer type\n* (C) 2014 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/filesystem.h",
+        "sha256": "4892876d8580bb1ef54cf5090ad02454e91689c7cebef76ed7279d7c717d1571",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/filesystem.h",
+            "blob": "14233b67eb084e4ecf864905f46bf002fc9a306a"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2015 Jack Lloyd\n* (C) 2015 Simon Warta (Kullo GmbH)\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/fmt.h",
+        "sha256": "f88c264db06aa22ae54ae64127ef20308abf75dcc648b22b6619dc3c7145691c",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/fmt.h",
+            "blob": "d7702ea22c0afc768670c8370320f5846f24a6b8"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2023 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/gfni_utils.h",
+        "sha256": "e79655dfc0089440c9b4c4221fc654df83f452f2111a208c2fd296a7b7a5f888",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/gfni_utils.h",
+            "blob": "5e981cf625bc757d74afc66b5acd9cbf15dad8f3"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2024 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/int_utils.h",
+        "sha256": "bf415a9fcd53295f216b15eba9e08726ed8309e45733235f6808b611e9f97dd2",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/int_utils.h",
+            "blob": "b1c27005e8d0e6465c331230b72c00f646fa1fda"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2024 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/isa_extn.h",
+        "sha256": "708ae8e4652841684cc6ef8bfc4b49e2cecc4117805610fac03748df2a190f45",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/isa_extn.h",
+            "blob": "6d06c77503b541c1123563e777ad294f68cfd8fe"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2025 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/loadstor.h",
+        "sha256": "1520983742f5ca66936ad81f6909aab08a24b518c7a71da195a6e9ffa90504fc",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/loadstor.h",
+            "blob": "022b075d61496b4c9817a45695b2c07d98afce6d"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Load/Store Operators\n* (C) 1999-2007,2015,2017 Jack Lloyd\n*     2007 Yves Jerschow\n*     2023-2024 Fabian Albert, René Meusel - Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/mem_utils.h",
+        "sha256": "627b1220f9fc1856c1c26231a4a7b4abe9144d61dd6930e02c2071ff5402bd42",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/mem_utils.h",
+            "blob": "c154da2c0cd2639353bf56cc26b76f3746bf73cd"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2025 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/mul128.h",
+        "sha256": "0d33b358e84ba7a8b4a3a2b9498a547777026b4c8e94102121746797aee06eaa",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/mul128.h",
+            "blob": "e63973500cfd832cf51a9f1e8c24789f52a61f50"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* 64x64->128 bit multiply operation\n* (C) 2013,2015 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/parsing.h",
+        "sha256": "beaaf5b418d9e361a7f6595e195fa6052b7d9ee3efcc2bb918ecf200be4b6987",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/parsing.h",
+            "blob": "91a8d2336bfb5e28aee6150ee1e2da9c23c27d60"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Various string utils and parsing functions\n* (C) 1999-2007,2013 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/prefetch.h",
+        "sha256": "4b1dd702b0f196d8d40e21125eb9104a7501a47625f836bcb6e730dfe873c82d",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/prefetch.h",
+            "blob": "c68049facf3679619e390a72eca9b7de652b9bad"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2023 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/rotate.h",
+        "sha256": "30ac4ce3676a71a6e618f47fdf407bb13ac4defae7b20969f836a077abc33f9f",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/rotate.h",
+            "blob": "5556ba5c029c50e426b90b2169d91276520ba9a3"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Word Rotation Operations\n* (C) 1999-2008,2023 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/rounding.h",
+        "sha256": "3ab1b15f627a6cb3cc6430b043e0f5227f3bfac4f3dd64921206d1c1a2cb4f28",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/rounding.h",
+            "blob": "201dc40215dde77ff5f3322509e5c058b1989ed6"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Integer Rounding Functions\n* (C) 1999-2007 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/scan_name.h",
+        "sha256": "5c4d7251f05ae5f2f9f52080dcce7efe26b6a9306e2afdbc6022d3a67852d3c8",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/scan_name.h",
+            "blob": "630d17279cad2c562c397830028c49424e154ac1"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* SCAN Name Abstraction\n* (C) 2008,2015 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/scoped_cleanup.h",
+        "sha256": "942e1da33c2790ef84406f1556e5ac3ed98bc2f4f0ca2c8f64e77a048886d792",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/scoped_cleanup.h",
+            "blob": "7ca147cb91882b762f9566711c325ce68aea6437"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2023-2024 René Meusel - Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/stack_scrubbing.h",
+        "sha256": "3d5af7c43a6d5cc5d842d4e93baba5382077a2cb39a68731ea9f209f8ffd7934",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/stack_scrubbing.h",
+            "blob": "1885cf316bb34e0d44be2fcc69463d5de4a14474"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Helpers for compiler-assisted stack scrubbing\n* (C) 2025 Jack Lloyd\n*     2025 René Meusel - Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/stl_util.h",
+        "sha256": "57ac4eb8807e833d8500814f4fa1ab657df9846aea397970ba54681f2289f771",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/stl_util.h",
+            "blob": "5693731d78c886e87b649cca72748cfb18115f74"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* STL Utility Functions\n* (C) 1999-2007 Jack Lloyd\n* (C) 2015 Simon Warta (Kullo GmbH)\n* (C) 2023-2024 René Meusel - Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/target_info.h",
+        "sha256": "33578923d33039d1df623f91d0cd8363b4beb0200232572024d845214d4226cf",
+        "officialMatches": [],
+        "generated": true,
+        "notices": []
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/time_utils.h",
+        "sha256": "c4737b6efef58ea3eabadcbfddd12ad575e0bc65551809b3638a514fb6812712",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/time_utils.h",
+            "blob": "e83a55cb3c0cf6df6e361ceb341f39d5ec76c8b3"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/**\n* (C) 2024 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/value_barrier.h",
+        "sha256": "f1545aabe5ca5c962a89db96831acc6c40422c497b132705d7f2b36be9957a92",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/value_barrier.h",
+            "blob": "e18d9cb5a7726285c777e8a55b0df049aa5135f9"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2025 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/version_info.h",
+        "sha256": "46a7d7b6c7110a68637d0119f5f3c8fb9113b74cbe80baa9a9687f2cea9b16a6",
+        "officialMatches": [],
+        "generated": true,
+        "notices": []
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/allocator.h",
+        "sha256": "f16a075684e8aa468d05041824b8efc4a09015b3374087ccd9df03d236964043",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/allocator.h",
+            "blob": "60142ea4daef5109cd031cc047789cd44b6f2899"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2023 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/api.h",
+        "sha256": "122f14f91a499be40d88c35f0aff3b686a876a60635af2178cd68e13fee1896d",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/api.h",
+            "blob": "8644e8000ecd723f2ff5c1b2c7003d9a5ffbb17d"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2016,2025 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/assert.h",
+        "sha256": "9c2e66ee9f4ddb0c26f3f6dbe51e6fef00d46f2b44050332512101ac38672a28",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/assert.h",
+            "blob": "a6b72a2acc00ffb359a6222579b0b617d7bfbfc3"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Runtime assertion checking\n* (C) 2010,2018 Jack Lloyd\n*     2017 Simon Warta (Kullo GmbH)\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/buf_comp.h",
+        "sha256": "cef7f09b0c3004dc09098be7547a0e7dfec7766ec0f2742c8b67d843a869e360",
+        "officialMatches": [
+          {
+            "path": "src/lib/base/buf_comp.h",
+            "blob": "8bc7ee9b150498855db1d0168565f2be28acef38"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Buffered Computation\n* (C) 1999-2007 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/build.h",
+        "sha256": "1211c5d0dca9358224cb420006f1651ce62ce4ea1f107a0c905801d40d0eb643",
+        "officialMatches": [],
+        "generated": true,
+        "notices": []
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/compiler.h",
+        "sha256": "7a64c689a1e90848716cd4cd5ddc6a95eee5eafa9de9dd941ae375da1e4c1660",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/compiler.h",
+            "blob": "4fe056767f94ad2573976780b1e80cdf241520c7"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Define useful compiler-specific macros\n* (C) 2016 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/concepts.h",
+        "sha256": "66c8dd7b61d4e2714b191d3ade303b146069897f6c75d985b5bd68b56ca111fb",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/concepts.h",
+            "blob": "907ff21303f6e6c0cb937bf6b13686db00f08068"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/**\n * Useful concepts that are available throughout the library\n * (C) 2023 Jack Lloyd\n *     2023 René Meusel - Rohde & Schwarz Cybersecurity\n *\n * Botan is released under the Simplified BSD License (see license.txt)\n */"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/data_src.h",
+        "sha256": "2eaf4b95be34e0aa8277f7ddbf205ec775a73645f811800ede1baf1d867f1833",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/data_src.h",
+            "blob": "353e6f3aa0338102996318fb8251e78ea42f0ae5"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* DataSource\n* (C) 1999-2007 Jack Lloyd\n*     2012 Markus Wanner\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/database.h",
+        "sha256": "df7ed342373af29cf04bdcff7ae1e186c1e41b87f62f275afc90756a2008b707",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/database.h",
+            "blob": "448ccb1523043d84972efbaaff2129027d737ed3"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* SQL database interface\n* (C) 2014,2026 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/exceptn.h",
+        "sha256": "a37b079ccec6101d2b231931c7c118420144f027b6d163cf19a09ed6272157fb",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/exceptn.h",
+            "blob": "6dbf1eab83228c54bbf0117164458c7e9a758c76"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Exceptions\n* (C) 1999-2009,2018 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/hex.h",
+        "sha256": "70c640e47f85f9719354bfe9aec5a242003d2709b804519aba340f39a10b9583",
+        "officialMatches": [
+          {
+            "path": "src/lib/codec/hex/hex.h",
+            "blob": "6a158b870b07445d509ab72df4cc30c6bfb3426f"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Hex Encoding and Decoding\n* (C) 2010 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/mem_ops.h",
+        "sha256": "35e0ac5b699bd4d32e0376737c69f9008245612fa7084d62d774b19a308a849d",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/mem_ops.h",
+            "blob": "467002b969e6c911c9f15cf21599dbd5b752620a"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Memory Operations\n* (C) 1999-2009,2012,2015 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/mutex.h",
+        "sha256": "3ff2bf5386044a05562bd3faec60cde6f038616bfed4b0dc2ac9ac220f9c8e92",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/mutex.h",
+            "blob": "843f21adfc541d2effb2b959cb8331538f4907c1"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2016 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/range_concepts.h",
+        "sha256": "1cbd0c7b1978a014d61043969996bc322140aac437e4d0027f8ef7078545a47f",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/range_concepts.h",
+            "blob": "ec7972a0d4577e76d4d4653383f840d82e43bd8f"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/**\n * (C) 2023 Jack Lloyd\n *     2023 René Meusel - Rohde & Schwarz Cybersecurity\n *\n * Botan is released under the Simplified BSD License (see license.txt)\n */"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/rng.h",
+        "sha256": "7a2be46dce67731cceefca6e61668bda8c0c2f58895e42e324ba1efdb91dff2c",
+        "officialMatches": [
+          {
+            "path": "src/lib/rng/rng.h",
+            "blob": "adeb1f9808c0a7535c3c9f5e8e29e85e537f7a36"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Random Number Generator base classes\n* (C) 1999-2009,2015,2016 Jack Lloyd\n*     2023                René Meusel - Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/secmem.h",
+        "sha256": "03fa33503ef5c130b7dfc580092419c05cb357eb6dd2548c6d02c351dcebbb08",
+        "officialMatches": [
+          {
+            "path": "src/lib/base/secmem.h",
+            "blob": "375b834edc375a469f268f9cbfc5db744871aba4"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Secure Memory Buffers\n* (C) 1999-2007,2012 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/strong_type.h",
+        "sha256": "8e374a90c9d7c49e914967a9b6497389db1cbea1c13de8eff605c1096f0e825a",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/strong_type.h",
+            "blob": "ef22effffbab75fc9a541337980edef3102e1b9f"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/**\n * A wrapper class to implement strong types\n * (C) 2022 Jack Lloyd\n *     2022 René Meusel - Rohde & Schwarz Cybersecurity\n *\n * Botan is released under the Simplified BSD License (see license.txt)\n */"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/sym_algo.h",
+        "sha256": "622aaba927ce3a501b682c5088dc10eeaa71f2c82b3f7c3d88a90b3dfe715b6d",
+        "officialMatches": [
+          {
+            "path": "src/lib/base/sym_algo.h",
+            "blob": "842a87a185dda5c27865af528fb880d983adb29a"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Symmetric Algorithm Base Class\n* (C) 1999-2007 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/symkey.h",
+        "sha256": "4ca6bd61e7c734196c8ca559aa5af9be65cb4b86115b5bc9370e0c2a9970b0fb",
+        "officialMatches": [
+          {
+            "path": "src/lib/base/symkey.h",
+            "blob": "2f556decdd64b59cc0152aaa9a1c4627178a4fbe"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* OctetString\n* (C) 1999-2007 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/types.h",
+        "sha256": "7df061b2c549c74eb4c3b72d0c5b57785d7f641b3b1b699fd2b6afae08e7a7f4",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/types.h",
+            "blob": "32f158680721c03de82aa72c002a785161254719"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Low Level Types\n* (C) 1999-2007 Jack Lloyd\n* (C) 2015 Simon Warta (Kullo GmbH)\n* (C) 2016 René Korthaus, Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/version.h",
+        "sha256": "60c0634c4ebfef09c80598e2feb81edcff176df096b9765a303aa3a71f1bbfc0",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/version.h",
+            "blob": "e2114bf10c116eb8fa57df3a0c19c0618c4fd8f2"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Version Information\n* (C) 1999-2011,2015 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/zfec.h",
+        "sha256": "66bdbd9ef2d9830c7551ebca384de8b386014af3fe8f1d6d192576f4ad4b0e8f",
+        "officialMatches": [
+          {
+            "path": "src/lib/misc/zfec/zfec.h",
+            "blob": "4ae15e2ce5382727248d2892c759667f399b8971"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n * Forward error correction based on Vandermonde matrices\n *\n * (C) 1997-1998 Luigi Rizzo (luigi@iet.unipi.it)\n * (C) 2009,2017,2021 Jack Lloyd\n *\n * Distributed under the terms given in license.txt\n */"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/base/buf_comp.cpp",
+        "sha256": "1fe886397dc5984f2c7fa462289e05adab854d0fa02ab85cc91a8af81125edbd",
+        "officialMatches": [
+          {
+            "path": "src/lib/base/buf_comp.cpp",
+            "blob": "820a945a0b7e09f59f8a498db6a41d4d9bc206b7"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2019 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/base/sym_algo.cpp",
+        "sha256": "9b6049a638aa2e94fde74ee8bfcca3ec342f964bbd365f67ed11f9efb6f5416a",
+        "officialMatches": [
+          {
+            "path": "src/lib/base/sym_algo.cpp",
+            "blob": "1aeadd40df988ad5a1ba90e6653e5106b9e4c567"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2018 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/base/symkey.cpp",
+        "sha256": "8337ad29af980e4737ccdf13a4b598a6ae82c249ed7e0f82659f305ea2161e64",
+        "officialMatches": [
+          {
+            "path": "src/lib/base/symkey.cpp",
+            "blob": "9a6a9ee3b68ddeaffd10331daa45ac8c2b2b6f87"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* OctetString\n* (C) 1999-2007 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/codec/hex/hex.cpp",
+        "sha256": "d1ede125c2ef2ecd488172234e3b1cd3dd9eba1d3119ddfa3636680aaa37ac30",
+        "officialMatches": [
+          {
+            "path": "src/lib/codec/hex/hex.cpp",
+            "blob": "5aa24e48e169b423fa808b405e31d7303f8406d6"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Hex Encoding and Decoding\n* (C) 2010,2020 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/misc/zfec/info.txt",
+        "sha256": "1aab40e09820a82dc85306868e7b7f4a2ab61d68c68ed9a2a4d2c1c42507b1dc",
+        "officialMatches": [
+          {
+            "path": "src/lib/misc/zfec/info.txt",
+            "blob": "16f341a7da661831ca272c2575755f7a840db877"
+          }
+        ],
+        "generated": false,
+        "notices": []
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/misc/zfec/zfec.cpp",
+        "sha256": "7750990c9b8ec59430c45265b58e0fc27304abadecb87a0c701776332879198b",
+        "officialMatches": [
+          {
+            "path": "src/lib/misc/zfec/zfec.cpp",
+            "blob": "6b8593511ea9d14776c95b55c9efd9c855490b50"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Forward error correction based on Vandermonde matrices\n*\n* (C) 1997-1998 Luigi Rizzo (luigi@iet.unipi.it)\n* (C) 2009,2010,2021 Jack Lloyd\n* (C) 2011 Billy Brumley (billy.brumley@aalto.fi)\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/rng/rng.cpp",
+        "sha256": "6f60f4ef37338e1987bc48580276106525b250c98b1f4d13d42376da2373b229",
+        "officialMatches": [
+          {
+            "path": "src/lib/rng/rng.cpp",
+            "blob": "98803055c561de9050524acd3afc481f079b780b"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2016 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/allocator.cpp",
+        "sha256": "6d396eac7e4a6184c045d73f8e1f855ea09ab2e8a6bda3cff0e57922e83aa2a3",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/allocator.cpp",
+            "blob": "2eaafad2904b46e8480d131228dc352eb3b8d9c2"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2017,2023 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/assert.cpp",
+        "sha256": "0cf1a7996d330aff749b712a88b0f8c742e0a925aa3b5a78a8c3ea379d52ddf1",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/assert.cpp",
+            "blob": "6d6c1917373accf96b929b332b829079d29de233"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Runtime assertion checking\n* (C) 2010,2012,2018 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/calendar.cpp",
+        "sha256": "6d65504df65d94f563e12b4c3297f2af428ae1768e37dd3f3c79df4f259bf637",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/calendar.cpp",
+            "blob": "fe295fae84afc400ce3629f7e4674c3348469bdb"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Calendar Functions\n* (C) 1999-2010,2017 Jack Lloyd\n* (C) 2015 Simon Warta (Kullo GmbH)\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/charset.cpp",
+        "sha256": "a13a5d363e71f268ec7899f89cc382bf641370fcfb663d07df4da2d02e346f9d",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/charset.cpp",
+            "blob": "52f8ae9686990e180159c202be2c061ca22c3026"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Character Set Handling\n* (C) 1999-2007,2021 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/ct_utils.cpp",
+        "sha256": "1caa1a7910823ec2d25e9301e3fb5a50c6a54c92c03f20affe48b7c9265bf9f7",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/ct_utils.cpp",
+            "blob": "c3088bfdfca434496b9f627269515c3f34a14a71"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2018,2021 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/data_src.cpp",
+        "sha256": "9315bf0ede9e5b2c6ed88a53c59f8684720b841bed7ab35733e90af5a3200d73",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/data_src.cpp",
+            "blob": "ef8286e1ce8d75125c078f2154370828027cd3ba"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* DataSource\n* (C) 1999-2007 Jack Lloyd\n*     2005 Matthew Gregan\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/database.cpp",
+        "sha256": "488d023b80642c62bb52d48f6b5135ccbc15ac81f474c45c2b86e1160138743e",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/database.cpp",
+            "blob": "c3bdce51f95b17d70edc0098f9c333d72247e7c9"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2026 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/exceptn.cpp",
+        "sha256": "2b8332726cc2b7a3e3a856960b0aa3f049777132e49167b0de83bc31076e630c",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/exceptn.cpp",
+            "blob": "83a7296494633a9dd3086d74d39e0a8289274565"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2017 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/filesystem.cpp",
+        "sha256": "ec54d29b4c54fa71bfb5ee99e4cc1a9f593573626e1107faa33b7673b09f02aa",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/filesystem.cpp",
+            "blob": "117999a5062e4cf99aad7c19274f2eccb7db076a"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2015,2017,2019 Jack Lloyd\n* (C) 2015 Simon Warta (Kullo GmbH)\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/mem_ops.cpp",
+        "sha256": "2955f08e081897872fae1e5d75d334c69d3a38ec9432b4eb15f57f6f63926f89",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/mem_ops.cpp",
+            "blob": "6cc582f30371e182ab33177e4f4a1f7964fa3e41"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2017 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/mem_utils.cpp",
+        "sha256": "60164d6f85e229e9e9d2bae04396f43dc012a0dc525b923b3e59a39311c2f3c5",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/mem_utils.cpp",
+            "blob": "d896494c323266e84055f89f7d1dbdf305c8648b"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2025 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/parsing.cpp",
+        "sha256": "73836b7d6b71f1f278f403c66f7871a3074326bc0b2c1151a965de81fb62c64c",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/parsing.cpp",
+            "blob": "98466c31ea2009ae0f49688e95ac9e4f64651c09"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Various string utils and parsing functions\n* (C) 1999-2007,2013,2014,2015,2018 Jack Lloyd\n* (C) 2015 Simon Warta (Kullo GmbH)\n* (C) 2017 René Korthaus, Rohde & Schwarz Cybersecurity\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/prefetch.cpp",
+        "sha256": "082a1b0c72b50372c770ec99047bff94779233a6ea75fe89229ea16030bb536f",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/prefetch.cpp",
+            "blob": "73cf09e18382cd4733bae7002b62cdce01280220"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2023 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/read_cfg.cpp",
+        "sha256": "0caf26e3a15280f780f4c2a1bc850025ff15b05f97593aeb580bd7f768c108ca",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/read_cfg.cpp",
+            "blob": "5b4c781f928b1a495ee3018ae12e989444b0cfc0"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Simple config/test file reader\n* (C) 2013,2014,2015 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/read_kv.cpp",
+        "sha256": "ce8fa17aac8254059888637c9ae2eaca8b4a9f70fb32ddbcffc67fdf1a2ac81d",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/read_kv.cpp",
+            "blob": "cdceb500be7936c89faf2a351d30e00c9c6d945b"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* (C) 2018 Ribose Inc\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/scan_name.cpp",
+        "sha256": "f19007bd6dfe180145b8ae65c3473de8283beb70a56086e9acc750d2bfcbe15b",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/scan_name.cpp",
+            "blob": "643d70aff1c9871745aa9a6ebca41911da2298a6"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* SCAN Name Abstraction\n* (C) 2008-2009,2015 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/lib/utils/version.cpp",
+        "sha256": "f458a247fe6e806d8fcdd48cddbd2d770e16141ff76cf620e288c6703aaa1766",
+        "officialMatches": [
+          {
+            "path": "src/lib/utils/version.cpp",
+            "blob": "eb404616257e8a126ebc37c741ed873e1ccca1c4"
+          }
+        ],
+        "generated": false,
+        "notices": [
+          "/*\n* Version Information\n* (C) 1999-2013,2015 Jack Lloyd\n*\n* Botan is released under the Simplified BSD License (see license.txt)\n*/"
+        ]
+      },
+      {
+        "path": "build/phase06/fec-alternatives/botan/src/tests/data/zfec.vec",
+        "sha256": "61ea41ea10d9a23b949f83e3e8063ad0b83ad8d45bd93ee7997f9bc2acd80e83",
+        "officialMatches": [
+          {
+            "path": "src/tests/data/zfec.vec",
+            "blob": "e0f9241d9caa1f73535f0627299d8c8071024d49"
+          }
+        ],
+        "generated": false,
+        "notices": []
+      }
+    ],
+    "build": {
+      "schema": 1,
+      "sourceSha": "2a81eef56c96c237e590c27f9a75e60317c9c700",
+      "archiveSha256": "714d6c52c6d752808e8784df21c146e176e91c57c99ee72c08eff4439fcff872",
+      "options": [
+        "--cc=msvc",
+        "--os=windows",
+        "--cpu=x86_64",
+        "--minimized-build",
+        "--enable-modules=zfec",
+        "--disable-modules=zfec_vperm,zfec_gfni,cpuid",
+        "--disable-asm",
+        "--disable-shared-library",
+        "--build-targets=static",
+        "--without-documentation",
+        "--link-method=copy",
+        "--msvc-runtime=MT",
+        "--werror-mode",
+        "--with-build-dir=../botan-build"
+      ],
+      "interpreter": "C:\\Program Files\\Python313\\python3.13t.exe",
+      "elapsedMs": 14718,
+      "modules": [
+        "HEX_CODEC 20131128",
+        "ZFEC 20211211"
+      ],
+      "compiledSources": [
+        "src/lib/base/buf_comp.cpp",
+        "src/lib/base/sym_algo.cpp",
+        "src/lib/base/symkey.cpp",
+        "src/lib/codec/hex/hex.cpp",
+        "src/lib/misc/zfec/zfec.cpp",
+        "src/lib/rng/rng.cpp",
+        "src/lib/utils/allocator.cpp",
+        "src/lib/utils/assert.cpp",
+        "src/lib/utils/calendar.cpp",
+        "src/lib/utils/charset.cpp",
+        "src/lib/utils/ct_utils.cpp",
+        "src/lib/utils/data_src.cpp",
+        "src/lib/utils/database.cpp",
+        "src/lib/utils/exceptn.cpp",
+        "src/lib/utils/filesystem.cpp",
+        "src/lib/utils/mem_ops.cpp",
+        "src/lib/utils/mem_utils.cpp",
+        "src/lib/utils/parsing.cpp",
+        "src/lib/utils/prefetch.cpp",
+        "src/lib/utils/read_cfg.cpp",
+        "src/lib/utils/read_kv.cpp",
+        "src/lib/utils/scan_name.cpp",
+        "src/lib/utils/version.cpp"
+      ],
+      "library": "D:\\WorkSpace\\Aether\\build\\phase06\\fec-alternatives\\botan-build\\botan-3.lib",
+      "librarySha256": "03cff010ad57fed0e78f1f46eecb035196beadfde72eb277e0d53d0b5db83ac3",
+      "status": "research-only-not-linked"
+    },
+    "manifest": {
+      "schema": 1,
+      "sourceSha": "2a81eef56c96c237e590c27f9a75e60317c9c700",
+      "archiveSha256": "714d6c52c6d752808e8784df21c146e176e91c57c99ee72c08eff4439fcff872",
+      "binary": "D:\\WorkSpace\\Aether\\build\\phase06\\fec-alternatives\\candidate-build\\Release\\fec_candidate.exe",
+      "binarySha256": "b22ea47b03cdd9276f12ec304d0e633c9582714fc32403cee854cc0280ce9bcf",
+      "addressSanitizer": true,
+      "runtime": {
+        "path": "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\clang_rt.asan_dynamic-x86_64.dll",
+        "sha256": "7f901a239979c49b36a3b18ecd1843f551f94b5879585bded41a650c5b71f35f",
+        "scope": "installed compiler runtime; owned child PATH only; not redistributed"
+      },
+      "inputs": [
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/alignment_buffer.h",
+          "sha256": "b502d1f7258ed17b03dad62bafa9df14c13fd0d255a07f556d5575de2e14b610"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/bit_ops.h",
+          "sha256": "f8f5b8c00e4becad0c85ef502ad52f391586ca3376e03514a8685bc8533f6559"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/bswap.h",
+          "sha256": "3a77ffb26f04d6b9031d581134051b22562aca94d4ff84ebc252febe10557501"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/buffer_slicer.h",
+          "sha256": "2c88f5c127332596ef300d7f44feff53c5567691d0343922aafce1bfd8ad7a69"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/buffer_stuffer.h",
+          "sha256": "8f66cc873405245640bed03e45e887cd3530fae5c37f5b6cf562b6f0b9608e57"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/calendar.h",
+          "sha256": "073ae10be6586054e741b7a90029790a196e34496232dac6529e6f00efaf3500"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/charset.h",
+          "sha256": "a69040b2dace169da9e5592e93e5365fcc8ef75e9cbb086a87cf2faf5263cd15"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/codec_base.h",
+          "sha256": "40c91bcca6b977451af19dafaac2a9887c7a21dce2c5f22e9fa68cd0fd08fd75"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/concat_util.h",
+          "sha256": "e9c5f732a26c6ea1a75d1d9871fe3a97b6d798d59d5ecc47cb1da1a8c4737230"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/ct_utils.h",
+          "sha256": "1116f375636ce65e72d5b116c59c686e3cf2b4f17771f406d7293bbf1895af9e"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/donna128.h",
+          "sha256": "6cafb8e83e08a2f2dada78d0329a842bd2f835902cdc7e2b39971f4339557361"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/filesystem.h",
+          "sha256": "4892876d8580bb1ef54cf5090ad02454e91689c7cebef76ed7279d7c717d1571"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/fmt.h",
+          "sha256": "f88c264db06aa22ae54ae64127ef20308abf75dcc648b22b6619dc3c7145691c"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/gfni_utils.h",
+          "sha256": "e79655dfc0089440c9b4c4221fc654df83f452f2111a208c2fd296a7b7a5f888"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/int_utils.h",
+          "sha256": "bf415a9fcd53295f216b15eba9e08726ed8309e45733235f6808b611e9f97dd2"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/isa_extn.h",
+          "sha256": "708ae8e4652841684cc6ef8bfc4b49e2cecc4117805610fac03748df2a190f45"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/loadstor.h",
+          "sha256": "1520983742f5ca66936ad81f6909aab08a24b518c7a71da195a6e9ffa90504fc"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/mem_utils.h",
+          "sha256": "627b1220f9fc1856c1c26231a4a7b4abe9144d61dd6930e02c2071ff5402bd42"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/mul128.h",
+          "sha256": "0d33b358e84ba7a8b4a3a2b9498a547777026b4c8e94102121746797aee06eaa"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/parsing.h",
+          "sha256": "beaaf5b418d9e361a7f6595e195fa6052b7d9ee3efcc2bb918ecf200be4b6987"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/prefetch.h",
+          "sha256": "4b1dd702b0f196d8d40e21125eb9104a7501a47625f836bcb6e730dfe873c82d"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/rotate.h",
+          "sha256": "30ac4ce3676a71a6e618f47fdf407bb13ac4defae7b20969f836a077abc33f9f"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/rounding.h",
+          "sha256": "3ab1b15f627a6cb3cc6430b043e0f5227f3bfac4f3dd64921206d1c1a2cb4f28"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/scan_name.h",
+          "sha256": "5c4d7251f05ae5f2f9f52080dcce7efe26b6a9306e2afdbc6022d3a67852d3c8"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/scoped_cleanup.h",
+          "sha256": "942e1da33c2790ef84406f1556e5ac3ed98bc2f4f0ca2c8f64e77a048886d792"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/stack_scrubbing.h",
+          "sha256": "3d5af7c43a6d5cc5d842d4e93baba5382077a2cb39a68731ea9f209f8ffd7934"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/stl_util.h",
+          "sha256": "57ac4eb8807e833d8500814f4fa1ab657df9846aea397970ba54681f2289f771"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/target_info.h",
+          "sha256": "33578923d33039d1df623f91d0cd8363b4beb0200232572024d845214d4226cf"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/time_utils.h",
+          "sha256": "c4737b6efef58ea3eabadcbfddd12ad575e0bc65551809b3638a514fb6812712"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/value_barrier.h",
+          "sha256": "f1545aabe5ca5c962a89db96831acc6c40422c497b132705d7f2b36be9957a92"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/version_info.h",
+          "sha256": "46a7d7b6c7110a68637d0119f5f3c8fb9113b74cbe80baa9a9687f2cea9b16a6"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/allocator.h",
+          "sha256": "f16a075684e8aa468d05041824b8efc4a09015b3374087ccd9df03d236964043"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/api.h",
+          "sha256": "122f14f91a499be40d88c35f0aff3b686a876a60635af2178cd68e13fee1896d"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/assert.h",
+          "sha256": "9c2e66ee9f4ddb0c26f3f6dbe51e6fef00d46f2b44050332512101ac38672a28"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/buf_comp.h",
+          "sha256": "cef7f09b0c3004dc09098be7547a0e7dfec7766ec0f2742c8b67d843a869e360"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/build.h",
+          "sha256": "1211c5d0dca9358224cb420006f1651ce62ce4ea1f107a0c905801d40d0eb643"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/compiler.h",
+          "sha256": "7a64c689a1e90848716cd4cd5ddc6a95eee5eafa9de9dd941ae375da1e4c1660"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/concepts.h",
+          "sha256": "66c8dd7b61d4e2714b191d3ade303b146069897f6c75d985b5bd68b56ca111fb"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/data_src.h",
+          "sha256": "2eaf4b95be34e0aa8277f7ddbf205ec775a73645f811800ede1baf1d867f1833"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/database.h",
+          "sha256": "df7ed342373af29cf04bdcff7ae1e186c1e41b87f62f275afc90756a2008b707"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/exceptn.h",
+          "sha256": "a37b079ccec6101d2b231931c7c118420144f027b6d163cf19a09ed6272157fb"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/hex.h",
+          "sha256": "70c640e47f85f9719354bfe9aec5a242003d2709b804519aba340f39a10b9583"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/mem_ops.h",
+          "sha256": "35e0ac5b699bd4d32e0376737c69f9008245612fa7084d62d774b19a308a849d"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/mutex.h",
+          "sha256": "3ff2bf5386044a05562bd3faec60cde6f038616bfed4b0dc2ac9ac220f9c8e92"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/range_concepts.h",
+          "sha256": "1cbd0c7b1978a014d61043969996bc322140aac437e4d0027f8ef7078545a47f"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/rng.h",
+          "sha256": "7a2be46dce67731cceefca6e61668bda8c0c2f58895e42e324ba1efdb91dff2c"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/secmem.h",
+          "sha256": "03fa33503ef5c130b7dfc580092419c05cb357eb6dd2548c6d02c351dcebbb08"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/strong_type.h",
+          "sha256": "8e374a90c9d7c49e914967a9b6497389db1cbea1c13de8eff605c1096f0e825a"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/sym_algo.h",
+          "sha256": "622aaba927ce3a501b682c5088dc10eeaa71f2c82b3f7c3d88a90b3dfe715b6d"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/symkey.h",
+          "sha256": "4ca6bd61e7c734196c8ca559aa5af9be65cb4b86115b5bc9370e0c2a9970b0fb"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/types.h",
+          "sha256": "7df061b2c549c74eb4c3b72d0c5b57785d7f641b3b1b699fd2b6afae08e7a7f4"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/version.h",
+          "sha256": "60c0634c4ebfef09c80598e2feb81edcff176df096b9765a303aa3a71f1bbfc0"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/zfec.h",
+          "sha256": "66bdbd9ef2d9830c7551ebca384de8b386014af3fe8f1d6d192576f4ad4b0e8f"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/configure.py",
+          "sha256": "c5e712410a5647f3a807c0d03226188ddb0e1fc0ebde042f451d00ea59b31fbb"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/license.txt",
+          "sha256": "758ea6b4a65d5611bf79c24920f92473ef44bdde0b3b97fa578470a0ffc34f14"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/base/buf_comp.cpp",
+          "sha256": "1fe886397dc5984f2c7fa462289e05adab854d0fa02ab85cc91a8af81125edbd"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/base/sym_algo.cpp",
+          "sha256": "9b6049a638aa2e94fde74ee8bfcca3ec342f964bbd365f67ed11f9efb6f5416a"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/base/symkey.cpp",
+          "sha256": "8337ad29af980e4737ccdf13a4b598a6ae82c249ed7e0f82659f305ea2161e64"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/codec/hex/hex.cpp",
+          "sha256": "d1ede125c2ef2ecd488172234e3b1cd3dd9eba1d3119ddfa3636680aaa37ac30"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/misc/zfec/info.txt",
+          "sha256": "1aab40e09820a82dc85306868e7b7f4a2ab61d68c68ed9a2a4d2c1c42507b1dc"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/misc/zfec/zfec.cpp",
+          "sha256": "7750990c9b8ec59430c45265b58e0fc27304abadecb87a0c701776332879198b"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/rng/rng.cpp",
+          "sha256": "6f60f4ef37338e1987bc48580276106525b250c98b1f4d13d42376da2373b229"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/allocator.cpp",
+          "sha256": "6d396eac7e4a6184c045d73f8e1f855ea09ab2e8a6bda3cff0e57922e83aa2a3"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/assert.cpp",
+          "sha256": "0cf1a7996d330aff749b712a88b0f8c742e0a925aa3b5a78a8c3ea379d52ddf1"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/calendar.cpp",
+          "sha256": "6d65504df65d94f563e12b4c3297f2af428ae1768e37dd3f3c79df4f259bf637"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/charset.cpp",
+          "sha256": "a13a5d363e71f268ec7899f89cc382bf641370fcfb663d07df4da2d02e346f9d"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/ct_utils.cpp",
+          "sha256": "1caa1a7910823ec2d25e9301e3fb5a50c6a54c92c03f20affe48b7c9265bf9f7"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/data_src.cpp",
+          "sha256": "9315bf0ede9e5b2c6ed88a53c59f8684720b841bed7ab35733e90af5a3200d73"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/database.cpp",
+          "sha256": "488d023b80642c62bb52d48f6b5135ccbc15ac81f474c45c2b86e1160138743e"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/exceptn.cpp",
+          "sha256": "2b8332726cc2b7a3e3a856960b0aa3f049777132e49167b0de83bc31076e630c"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/filesystem.cpp",
+          "sha256": "ec54d29b4c54fa71bfb5ee99e4cc1a9f593573626e1107faa33b7673b09f02aa"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/mem_ops.cpp",
+          "sha256": "2955f08e081897872fae1e5d75d334c69d3a38ec9432b4eb15f57f6f63926f89"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/mem_utils.cpp",
+          "sha256": "60164d6f85e229e9e9d2bae04396f43dc012a0dc525b923b3e59a39311c2f3c5"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/parsing.cpp",
+          "sha256": "73836b7d6b71f1f278f403c66f7871a3074326bc0b2c1151a965de81fb62c64c"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/prefetch.cpp",
+          "sha256": "082a1b0c72b50372c770ec99047bff94779233a6ea75fe89229ea16030bb536f"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/read_cfg.cpp",
+          "sha256": "0caf26e3a15280f780f4c2a1bc850025ff15b05f97593aeb580bd7f768c108ca"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/read_kv.cpp",
+          "sha256": "ce8fa17aac8254059888637c9ae2eaca8b4a9f70fb32ddbcffc67fdf1a2ac81d"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/scan_name.cpp",
+          "sha256": "f19007bd6dfe180145b8ae65c3473de8283beb70a56086e9acc750d2bfcbe15b"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/lib/utils/version.cpp",
+          "sha256": "f458a247fe6e806d8fcdd48cddbd2d770e16141ff76cf620e288c6703aaa1766"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/botan/src/tests/data/zfec.vec",
+          "sha256": "61ea41ea10d9a23b949f83e3e8063ad0b83ad8d45bd93ee7997f9bc2acd80e83"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/candidate-build/fec_candidate.vcxproj",
+          "sha256": "64c0587dfaa2b0fdfaa3faaa65a01b925a7afa24d9d2032bbc734f72316c63b9"
+        },
+        {
+          "path": "build/phase06/fec-alternatives/candidate-build/fec_research.vcxproj",
+          "sha256": "2ffe1205acb6f27d708875b4cdf5db47dc08ca4d865d21ea79aa5dd15d59ea88"
+        },
+        {
+          "path": "tests/native/fec-candidate/CMakeLists.txt",
+          "sha256": "9c2a35f886f8478713e0fa79a079dbe42aa3aaf3351300dca73644daac011426"
+        },
+        {
+          "path": "tests/native/fec-candidate/candidate.cpp",
+          "sha256": "2e71acddeab0c8ae33ba8a8a3ec2a8779439bd9ac1096446e3075a254c81359e"
+        },
+        {
+          "path": "tests/protocol-fec-candidate.test.cjs",
+          "sha256": "7846ee49aa564a0bf8f55c26caef9cd34c64993ea1e3394b3cc92aeaf5979152"
+        }
+      ],
+      "synthetic": true,
+      "systemMutation": false,
+      "productLinked": false
+    }
+  },
+  "notices": [
+    {
+      "path": "botan/license.txt",
+      "sha256": "758ea6b4a65d5611bf79c24920f92473ef44bdde0b3b97fa578470a0ffc34f14",
+      "text": "Copyright (C) 1999-2026 The Botan Authors\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice,\n   this list of conditions, and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright\n   notice, this list of conditions, and the following disclaimer in the\n   documentation and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.\n",
+      "scope": "selected upstream root license plus per-file author notices"
+    },
+    {
+      "path": "fecpp/license.txt",
+      "sha256": "6084feb8a74333f251f8b8e053443a3fc4e5417a272227e9dc613cf86e502e97",
+      "text": "(C) 1996-1998 Luigi Rizzo (luigi@iet.unipi.it)\n    2009,2010,2018 Jack Lloyd (jack@randombit.net)\n    2011 Billy Brumley (billy.brumley@aalto.fi)\n\nPortions derived from code by Phil Karn (karn@ka9q.ampr.org),\nRobert Morelos-Zaragoza (robert@spectra.eng.hawaii.edu) and Hari\nThirumoorthy (harit@spectra.eng.hawaii.edu), Aug 1995\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are\nmet:\n\n1. Redistributions of source code must retain the above copyright\n   notice, this list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright\n   notice, this list of conditions and the following disclaimer in the\n   documentation and/or other materials provided with the\n   distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE AUTHORS ``AS IS'' AND ANY EXPRESS OR\nIMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY DIRECT,\nINDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\nHOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,\nSTRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING\nIN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.\n",
+      "scope": "upstream FECpp predecessor notice retained; no FECpp product code copied"
+    }
+  ],
+  "tools": {
+    "python": {
+      "path": "C:\\Program Files\\Python313\\python3.13t.exe",
+      "sha256": "40df5dcd8bd8c571be967d5d21b64325eefff28197f85992724f4e9a9f52fb48",
+      "scope": "installed build-only interpreter; no package installation or redistribution"
+    },
+    "addressSanitizer": {
+      "path": "C:\\Program Files\\Microsoft Visual Studio\\18\\Enterprise\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx64\\x64\\clang_rt.asan_dynamic-x86_64.dll",
+      "sha256": "7f901a239979c49b36a3b18ecd1843f551f94b5879585bded41a650c5b71f35f",
+      "scope": "installed compiler runtime; owned child PATH only; not redistributed"
+    }
+  },
+  "evidence": [
+    {
+      "path": "artifacts/phase06/fec-alternatives-audit.log",
+      "sha256": "f047d472afcb941bd1afc82cb3cf066731bd74e02128f3023b3c329990f6996f"
+    },
+    {
+      "path": "artifacts/phase06/botan-fec-build.log",
+      "sha256": "350fc9b450d7fdb365193754c6fddb619246a9a83384654e2619ac8d637bd67b"
+    },
+    {
+      "path": "artifacts/phase06/botan-fec-asan-build.log",
+      "sha256": "343c60447f93764b750dc550b1aa174a6b00e8ccdfe917320482ecb9626a0937"
+    },
+    {
+      "path": "artifacts/phase06/fec-candidate-tests.log",
+      "sha256": "fc5b4230a4f514cab379bc4062867ad9400482f80d2aadab78dfafe6c1d09d09"
+    },
+    {
+      "path": "artifacts/phase06/fec-candidate-kat.json",
+      "sha256": "09614e59b8e8eea1a1c061ccacc0caa963a9e151f9b39d107501f28540c95178"
+    }
+  ]
+}
