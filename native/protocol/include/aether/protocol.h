@@ -17,7 +17,8 @@ enum AetherProtocolStatus {
  AP_OK=0, AP_INVALID_ARGUMENT=1, AP_ABI_MISMATCH=2, AP_INVALID_HANDLE=3,
  AP_BUSY=5, AP_STOPPED=6, AP_TIMEOUT=11, AP_INTERNAL_ERROR=12,
  AP_BUFFER_TOO_SMALL=13, AP_VERSION=20, AP_TRUST=21, AP_IDENTITY=22,
- AP_PERMISSION=23, AP_LENGTH=24, AP_FIELD=25, AP_PROTECTION=26
+ AP_PERMISSION=23, AP_LENGTH=24, AP_FIELD=25, AP_PROTECTION=26,
+ AP_STALE=27, AP_CANCELLED=28, AP_EXPIRED=29, AP_ALREADY_COMPLETE=30
 };
 typedef void (*AetherProtocolEvent)(uint64_t handle, uint64_t sequence,
  uint32_t kind, int32_t status, uint64_t operation);
@@ -33,6 +34,19 @@ typedef struct AetherProtocolConfig {
  uint32_t version_count, versions[8];
  uint32_t permission_read, reserved2;
 } AetherProtocolConfig;
+/* Availability: 0 unsupported, 1 supported, 2 unverified. Numeric reason codes
+   remain visible with disabled capabilities. A proposal never alters a stream. */
+typedef struct AetherProtocolCapability {
+ char name[32];
+ uint32_t availability, reason;
+ uint64_t requested, available;
+} AetherProtocolCapability;
+typedef struct AetherProtocolRequest {
+ uint32_t abi_version, struct_size;
+ uint64_t request_id, budget_revision, lease_epoch;
+ uint32_t expires_ms, capability_count;
+ const AetherProtocolCapability* capabilities;
+} AetherProtocolRequest;
 /* One bounded synchronous tracer operation per connection. Host input is an
    explicitly synthetic sink payload; client input is a HELLO wire request.
    A second submit is rejected. Native sockets belong to this handle only. */
@@ -42,6 +56,10 @@ AETHER_PROTOCOL_API int32_t aether_protocol_query(uint64_t, char*, uint32_t, uin
 AETHER_PROTOCOL_API int32_t aether_protocol_ack(uint64_t, uint64_t);
 AETHER_PROTOCOL_API int32_t aether_protocol_stop(uint64_t, uint64_t*);
 AETHER_PROTOCOL_API int32_t aether_protocol_destroy(uint64_t);
+AETHER_PROTOCOL_API int32_t aether_protocol_propose(uint64_t, const AetherProtocolRequest*);
+AETHER_PROTOCOL_API int32_t aether_protocol_confirm(uint64_t, uint64_t request_id,
+ uint64_t budget_revision, const char* proposal_digest);
+AETHER_PROTOCOL_API int32_t aether_protocol_cancel(uint64_t, uint64_t request_id);
 /* Pure bounded parser: independent golden inputs can exercise the wire oracle. */
 AETHER_PROTOCOL_API int32_t aether_protocol_negotiate(const uint8_t*, uint32_t,
  const uint32_t*, uint32_t, uint32_t* selected, uint32_t* upgrade_side);

@@ -63,7 +63,7 @@ include(CTest)
 if(BUILD_TESTING)
   add_executable(aether_protocol_tracer tools/tracer.cpp)
   target_compile_features(aether_protocol_tracer PRIVATE cxx_std_20)
-  target_link_libraries(aether_protocol_tracer PRIVATE aether_protocol)
+  target_link_libraries(aether_protocol_tracer PRIVATE aether_protocol OpenSSL::Crypto)
   add_custom_command(TARGET aether_protocol_tracer POST_BUILD
     COMMAND "${AETHER_NODE}" "${AETHER_ROOT}/tests/protocol-tracer.test.cjs"
       --manifest "$<TARGET_FILE:aether_protocol_tracer>" "$<CONFIG>" "${CMAKE_CURRENT_BINARY_DIR}")
