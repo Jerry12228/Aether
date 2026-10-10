@@ -9,7 +9,7 @@ created: "2026-10-09"
 
 # Phase 06 — Validation Strategy
 
-本文件是执行期验证契约。06-01具体ADR与06-02独立Botan复用原答复1均已记录；06-02原完整五路synthetic媒体/FEC验证及历史研究证据保留。06-06两任务已完成，最终Debug/ASan控制各27场景、client445/445及父57/57，旧Node各46/46；完整CTest各11/11，最终受影响control已重跑，父级集成CTest11/11（44.36s）。ASan不覆盖预编译OpenSSL，非leak/TSan认证。06-03/04/05尚未完成，尚不存在入口仍是目标；阶段3/6及NET未完成，保留draft/false直到全阶段执行与审计取证。
+本文件是执行期验证契约。06-01/02批准与历史证据、06-06前置交付保留。06-03三任务已完成，最终Debug Node106/106、Debug/ASan CTest12/12（108.14s/109.00s）；父级构建/CTest12/12（108.16s）及658项证据摘要匹配。三轮真实socket量测281648.188ms绑定f853627归档；最终恢复修正另经完整回归。ASan不覆盖预编译OpenSSL，非leak/TSan认证。06-04/05、五目标及最终人审尚未完成，尚不存在入口仍是目标；阶段4/6及NET未完成，保留draft/false直到全阶段执行与审计取证。
 
 ## Test Infrastructure
 
@@ -40,9 +40,9 @@ created: "2026-10-09"
 | 06-02-03 | 02 | 2 | NET-01/02/03 | T-06-05/06/09 | 独立golden/KAT、±1/头篡改/seqwrap与公开结构 | vectors+process | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass public ABI/options,22 boundaries and exact TLV/profile refusal |
 | 06-06-01 | 06 | 3 | NET-01/02/03 | T-06-20/21/SC | typed兼容合同/真实产品client/fixture host/confirm前零媒体 | native+process | ctest --test-dir build/phase06/windows-x64 -C Debug -R "^protocol_control$" --output-on-failure --no-tests=error | yes | 已通过；06-06-01-EVIDENCE及最终旧ABI/版本1和2回归 |
 | 06-06-02 | 06 | 3 | NET-01/02/03 | T-06-20/21/22 | 双PID取消仲裁/GRANT READY闭环、背压/ACK/query/stop/健康流 | native+process | ctest --test-dir build/phase06/windows-x64 -C Debug -R "^protocol_control$" --output-on-failure --no-tests=error | yes | 已通过；Debug/ASan各27场景、client445及父57断言；共享provider与最终证据 |
-| 06-03-01 | 03 | 4 | NET-01/02/03 | T-06-07/08/SC | 完整proposal/资源向量/原子confirm/observer预算 | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
-| 06-03-02 | 03 | 4 | NET-01/02/03 | T-06-08/10/11/18 | fresh auth/旧epoch/上行另确认/独立恢复/临时trace | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
-| 06-03-03 | 03 | 4 | NET-01/02/03 | T-06-07/10/11/18 | 真实限值量测、D阈值/全原case映射/R1 | measure+state | node --test tests/protocol-recovery.test.cjs；node tests/protocol-recovery.test.cjs --measure --evidence artifacts/phase06/limits.json | W0:06-03-01 | pending |
+| 06-03-01 | 03 | 4 | NET-01/02/03 | T-06-07/08/SC | 完整proposal/资源向量/原子confirm/observer预算 | process+state | node --test tests/protocol-recovery.test.cjs | yes | 已通过；首组18/18、最终恢复60/60；全方案及六维共享事务 |
+| 06-03-02 | 03 | 4 | NET-01/02/03 | T-06-08/10/11/18 | fresh auth/旧epoch/上行另确认/独立恢复/临时trace | process+state | node --test tests/protocol-recovery.test.cjs | yes | 已通过；真实断线/手动重试/逐流key，完整Debug/ASan恢复60/60 |
+| 06-03-03 | 03 | 4 | NET-01/02/03 | T-06-07/10/11/18 | 真实限值量测、D阈值/全原case映射/R1 | measure+state | node --test tests/protocol-recovery.test.cjs；node tests/protocol-recovery.test.cjs --measure --evidence artifacts/phase06/limits.json | yes | 已通过；三轮281648.188ms归档量测、637原case保留及12NET设置映射 |
 | 06-04-01 | 04 | 5 | NET-01/02/03 | T-06-12/19/SC | 真实Dart FFI/独立host/socket/完整proposal | FFI+process | dart run ffigen --config protocol/ffigen.yaml；node --test tests/protocol-ffi.test.cjs | W0:06-04-01 | pending |
 | 06-04-02 | 04 | 5 | NET-01/02/03 | T-06-12/19/SC | 恢复/trace消费者、ACK/timeout/stop负例和来源总账 | FFI+process | node --test tests/protocol-ffi.test.cjs | W0:06-04-01 | pending |
 | 06-05-01 | 05 | 6 | NET-01/02/03 | T-06-13/15/17/SC | 五目标native实际build/run，iOS device与simulator分证据 | target+CI | ctest --test-dir build/phase06/windows-x64 -C Release -R protocol --output-on-failure --no-tests=error（其余目标匹配runner） | W0:06-05-01 | pending |
@@ -112,3 +112,7 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 ## 2026-10-10 06-06交付记录
 
 06-06两任务及中文摘要已提交：RED7853203/e50c978、GREEN2282dcb/ff081cf、摘要d68b2a6。具名协议向量与最终源码/二进制/原始日志摘要见docs/phase06/06-06-02-EVIDENCE.json及06-06-CONTROL-VECTORS.json。最终Debug/ASan控制各27场景、client445/445和父57/57、fail/skip0；完整Debug11/11（47.71s）、ASan11/11（48.22s），后续受影响control重跑各21.05s/22.89s。父级另核验8个源码hash匹配、构建及CTest11/11（44.36s），schema/UI门槛未阻断，codebase-drift因无STRUCTURE.md跳过。首ASan缺runtime路径导致的环境失败单独保留，未当作行为RED。以上只关闭前置任务，完整预算/恢复/trace由06-03交付，FFI/五目标/最终人审由04/05交付；NET、Nyquist及wave0保持未完成。
+
+## 2026-10-10 06-03交付记录
+
+三任务RED5c3d2f6/6ce3ede/842aa20、GREEN3ec8231/f853627/bce5030、中文摘要23b814e完成。最终Debug Node106/106（旧46+恢复60）、Debug/ASan完整CTest12/12（108.14s/109.00s），控制27场景回归均通过，零fail/skip/cancel/TODO。父级独立集成构建/CTest12/12（108.16s），按各运行dir解析的658项证据路径/hash全匹配；schema/UI门槛未阻断，codebase-drift仍因无STRUCTURE.md跳过。三轮真实socket预热30495/30483/30506ms、窗口61111/61120/61114ms，总281648.188ms，绑定独立保存f853627的13源码/4二进制；最终断线/重复reset/标量统计修正另经完整回归，不改绑量测hash。实际CPU/资源分母与失败历史见LIMITS及06-03-03-EVIDENCE.json。完整637原case与12NET合同保留，两OS标签不是两OS实机证据。此处仅完成06-03，04真实FFI、05五目标与最终人审尚未执行；NET、Nyquist、wave0及3个unclassified/6个descriptorless仍不关闭。
