@@ -9,7 +9,7 @@ created: "2026-10-09"
 
 # Phase 06 — Validation Strategy
 
-本文件是执行期验证契约。2026-10-10完成06-01-01/02，真实Windows x64原型node19/19（5,038.0752ms）及CTest9/9（10.48s）通过，摘要核验8材料/14过程及日志通过；06-01-03等待真实具体ADR决定，后续计划未执行。尚不存在的入口仍是计划目标，不能记为已运行。保留draft/false直到全阶段执行和审计取证。
+本文件是执行期验证契约。2026-10-10真实原答复1已完成06-01具体ADR批准；06-02-01双video完成，最新Windows x64 synthetic原型node25/25（4,752.2043ms）及完整CTest10/10（13.04s）通过；原批准快照8材料/14日志核验通过。现停于06-02-02新增FEC来源隔离准备决定，未链接FEC；Task2/3和后续计划未执行。尚不存在入口仍是目标，不能记为已运行。保留draft/false直到全阶段执行与审计取证。
 
 ## Test Infrastructure
 
@@ -35,8 +35,8 @@ created: "2026-10-09"
 | 06-01-01 | 01 | 1 | NET-01/02/03 | T-06-01–04/SC | 双PID真实安全socket、共同版本/身份/长度拒绝、资源停止 | native+process | node --test tests/protocol-tracer.test.cjs | yes | pass scoped prototype |
 | 06-01-02 | 01 | 1 | NET-01/02/03 | T-06-01/02/SC | 独立golden/KAT、完整字段/原设置、D01–04/13 | vectors+process | node --test tests/protocol-tracer.test.cjs | yes | pass automated19/19; ADR candidate |
 | 06-01-03 | 01 | 1 | NET-01/02/03 | T-06-01–04/SC | 具体ADR/来源/原设置决定绑定hash | process+真人决定 | node --test tests/protocol-tracer.test.cjs | yes | pass19/19 + real reply1; reviewed hash0cdda0d2 |
-| 06-02-01 | 02 | 2 | NET-01/02/03 | T-06-05/09 | 真实双video、独立安全域/故障/owned清理 | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | W0:06-02-01 | pending |
-| 06-02-02 | 02 | 2 | NET-01/02/03 | T-06-05/06/09/SC | audio/双向synthetic、认证后FEC、replay/key epoch/nonce exhaustion | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | W0:06-02-01 | pending |
+| 06-02-01 | 02 | 2 | NET-01/02/03 | T-06-05/09 | 真实双video、独立安全域/故障/owned清理 | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass scoped Task1;25/25,total CTest10/10 |
+| 06-02-02 | 02 | 2 | NET-01/02/03 | T-06-05/06/09/SC | audio/双向synthetic、认证后FEC、replay/key epoch/nonce exhaustion | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | halted before new FEC source preparation decision |
 | 06-02-03 | 02 | 2 | NET-01/02/03 | T-06-05/06/09 | 独立golden/KAT、±1/头篡改/seqwrap与公开结构 | vectors+process | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | W0:06-02-01 | pending |
 | 06-03-01 | 03 | 3 | NET-01/02/03 | T-06-07/08/SC | 完整proposal/资源向量/原子confirm/observer预算 | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
 | 06-03-02 | 03 | 3 | NET-01/02/03 | T-06-08/10/11/18 | fresh auth/旧epoch/上行另确认/独立恢复/临时trace | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
@@ -100,4 +100,4 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 
 06-01具体ADR批准已完成：真实原答复1、recordedAt2026-10-10T03:46:30Z，历史材料摘要已绑定，续跑19/19（4,749.1274ms）。本处Approval pending指全阶段验证/最终人审，不是重复请求同一ADR批准。
 
-06-01局部验证记录见[halted SUMMARY](06-01-SUMMARY.md)和[具体ADR](../../../docs/phase06/PROTOCOL-ADR.md)。三条edge probe和六条descriptorless禁止项未自动改成resolved；平台、FEC/丢包、重连/epoch/trace/FFI等后续验证未执行，不因首计划测试通过设置nyquist或wave0 true。
+06-01局部验证见[completed SUMMARY](06-01-SUMMARY.md)和[批准ADR](../../../docs/phase06/PROTOCOL-ADR.md)；06-02 Task1及新来源停点见[halted SUMMARY](06-02-SUMMARY.md)。双video同窗口丢失隔离已实测，FEC/双向/nonce/key epoch/完整queue/平台/重连/trace/FFI仍未验证。三条edge probe和六条descriptorless禁止项未自动改成resolved；不因局部测试设置nyquist或wave0 true。

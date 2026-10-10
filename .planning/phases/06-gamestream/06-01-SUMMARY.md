@@ -12,7 +12,7 @@ requires:
 provides:
   - Real independent-process loopback TLS control and SRTP UDP native sink
   - Complete native pending capability proposal and independent digest oracle
-  - Pinned source/license/artifact inventory and concrete unapproved protocol ADR
+  - Pinned source/license/artifact inventory and exact real-approved scoped protocol ADR
 affects: [06-02, 06-03, 06-04, 06-05, pairing, media, session-control]
 tech-stack:
   added: [OpenSSL-3.5.9-candidate, libSRTP-2.8.0-candidate]
@@ -29,7 +29,7 @@ key-files:
     - docs/phase06/PROTOCOL-ADR.md
   modified: [docs/PROTOCOL.md]
 key-decisions:
-  - "TLS1.3/SRTP and native reuse remain candidates, not user-approved production choices."
+  - "Real reply1 approves the exact local TLS1.3/SRTP and two-library prototype scope; broader production/platform claims remain unproven."
   - "No reference code, ENet or nanors/OBL is copied/linked; FEC reuse needs its own closed source audit."
   - "Actual five-target build/run remains required; only Apple physical evidence has a TODO exception."
 requirements-planned: [NET-01, NET-02, NET-03]

@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: Phase 6 06-01 complete after real ADR approval; proceeding to 06-02; Phase 3 corrected install gate unchanged
-last_updated: "2026-10-10T03:54:19.000Z"
+stopped_at: Phase6 06-02 Task1 complete; halted at Task2 new FEC isolated-preparation decision; Phase3 gate unchanged
+last_updated: "2026-10-10T04:40:54.000Z"
 last_activity: 2026-10-10
-last_activity_desc: Real reply1 approved exact ADR0cdda0d2; 06-01 complete, continuation19/19; 06-02 ready; Phase3 unchanged
+last_activity_desc: Approved06-01 continued to dual-video25/25 and native10/10; new FEC source gate pending; Phase3 unchanged
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 14
   completed_plans: 9
   percent: 5
-state_head: c74cfb1
+state_head: a49c217
 ---
 
 # Project State
@@ -39,16 +39,15 @@ Progress: [█░░░░░░░░░] 5%
 
 ## Ahead-of-Sequence Execution
 
-Phase 6 — GameStream 协议重构与扩展：用户2026-10-10显式执行授权后，顺序完成06-01-01/02，停在06-01-03 blocking-human具体ADR决定。5计划/5顺序波，0/5计划完成、2/3首计划任务完成；NET-01/02/03仍未完成。仅技术依赖Phase 2已完成。实际原生loopback双PID TLS1.3控制与SRTP UDP synthetic sink、完整待确认方案、独立golden/KAT/摘要、拒绝/回调停止/绝对超时回归通过；node19/19（5,038.0752ms）、CTest9/9（10.48s）、dossier8材料/14证据摘要核验通过。源映射296行，637原能力/case/条件/owner全部保留；OpenSSL3.5.9/libSRTP2.8.0源码本地构建，参考/ENet/nanors未链接。当前仅Windows x64 Debug实测，不是产品远程/设备/性能/五目标支持。VALIDATION仍draft、nyquist/wave0 false，三条未分类边界和六条无描述符禁止项保留。
+Phase 6 — GameStream协议重构与扩展：用户真实原答复`1`已批准06-01具体ADR并完成首计划；06-02-01真实双video RED/GREEN完成，停在06-02-02新FEC来源的blocking-human隔离准备决定。5计划/5顺序波，1/5计划完成，第二计划1/3任务完成；NET-01/02/03仍未完成。最新双PID TLS1.3/SRTP、同窗口丢失隔离/跨流篡改/方向篡改/高序号/重放及原回归node25/25（4,752.2043ms）、完整CTest10/10（13.04s）通过；原批准快照8材料/14证据核验通过，不以当前产物冒充原批准字节。源映射296行与637原能力/case/条件/owner保留；OpenSSL3.5.9/libSRTP2.8.0为当前仅两项链接来源，参考/ENet/nanors未链接。FEC固定源码36文件研究审计完成，内嵌OBL十文件只匹配一个，默认实现初始化/CPU分派/共享scratch/分配界限需准备修正和证据；未准入、未编译FEC。当前仅Windows x64 Debug synthetic实测，不是实际设备/codec/HDR/性能/五目标支持。VALIDATION仍draft、nyquist/wave0 false，三条未分类边界和六条无描述符禁止项保留。
 
-具体协议/安全/wire/来源ADR人审：06-01-03，尚无真实原答复。当前材料：[PROTOCOL-ADR](../docs/phase06/PROTOCOL-ADR.md)，完整SHA256 `0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc`；其余lock/vectors/source/binary/log摘要在ADR和[06-01-SUMMARY](phases/06-gamestream/06-01-SUMMARY.md)。候选局部TLS1.3控制+SRTP媒体、强制保护/原明文选项保留禁用原因及安全替代、仅两库复用待批准。06-02被halted06-01阻断；06-03/04/05传递阻断，均未执行。五目标真实构建运行与阶段末强制人审仍为06-05-03门槛；Apple只有实机验收TODO。五计划为同一协议链容量例外，不扩展到配对/设备/codec/生产仲裁，不改变42阶段产品边界。
+06-01具体ADR人审已完成：reviewedSHA256 `0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc`、原答复1/approve-concrete/2026-10-10T03:46:30Z，限定TLS/SRTP/原明文选项明确处置/两库复用。[06-01-SUMMARY](phases/06-gamestream/06-01-SUMMARY.md)保留历史。当前等待的新材料是[FEC-ADMISSION](../docs/phase06/FEC-ADMISSION.md)，SHA256 `e823f1bdf02ea36b6c374c8855b33d823711ca39d57a1106bbe0f2d9ac54c483`，源码账本 `3b46c3c459545051b3ae9b19246246484283b6d1963c3856d6909f5636a783cd`。选1只批准固定nanors最小标量版隔离准备/许可补证/独立实测，非链接准入；选2研究替代；选3保持停点。回复/选择/时间仍null。[06-02-SUMMARY](phases/06-gamestream/06-02-SUMMARY.md)是halted，不等于完成；06-03/04/05受其阻断未执行。五目标真实构建运行与末期强制人审仍为06-05-03门槛；Apple只有实机验收TODO。五计划为同一协议链容量例外，无新产品子系统。
 
-为保留Phase 3的blocking-human恢复入口，未用通用state.advance-plan覆盖Current Position；Phase6执行状态单独记录在本节及ROADMAP。当前phase3/plan3/status halted、Apollo条件、安装授权和Phase3完成计数原样保留。下一步对当前具体ADR回复approve-concrete/revise-concrete/hold，按06-01-SUMMARY从06-01-03恢复，先核验摘要再记录真实答复。生产/TDD提交c1bd244、02903c4、9aee05d、3fc54a7；halted摘要5292638。已有SUMMARY不等于计划完成；仍8完成计划/2完成阶段，不使用误计halted的通用完成计数。
+为保留Phase3的blocking-human恢复入口，未用通用state.advance-plan覆盖Current Position；当前phase3/plan3/status halted、Apollo条件、安装授权原样保留。当前协议下一步从06-02-02新FEC来源决定恢复，核验材料/原批准快照后记录真实答复；不重复06-02-01已完成工作。Task1 RED3f189b7/GREEN5d3effd，研究d7f9ec5、halted摘要a49c217。总计9/14完成计划、2/42完成阶段；不使用会误计halted SUMMARY的通用完成计数。
 
 ## Performance Metrics
 
-Total plans completed: 8; completed phases: 2/42.
-Current count after2026-10-10 ADR approval:9/14 plans complete,2/42 phases; the preceding8-plan value is the retained pre-approval baseline.
+Total plans completed: 9/14; completed phases: 2/42. Phase6 1/5;06-02 Task1 complete,Tasks2/3 incomplete.
 Phase3 partial: 03-01/03-02 complete. Latest Debug/Release native builds pass; CTest11/11 each (26.54s/25.32s), CLI/process27/27 each (23.2867s/21.4822s), targeted admission/lifecycle19/19 (475.8736ms), zero skip. Revised dedicated source closes arrival cleanup and full-capacity GUID idempotence, actual WDK rebuild/signature and separate six-target InfVerif evidence retained. Native mutation code is compiled; only read-only actual device enumeration ran. 03-03 system authorization/machine matrix unperformed; VDP01/02 and Phase3 incomplete.
 
 03-03 Task1: native SetupAPI/NewDev package code, owner-protected stage/backup, side-effect journal and hash-bound readonly plan complete; Release build5,663ms, Contract35/35(1,040.4829ms TAP), CTest11/11(25.14s), zero skipped tests. Actual install/update/rollback/topology/HDR/persistence/reset remain untested. Machine win-5f5cc5dd3cf310b6, plan2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0; details in03-03-SUMMARY and HELIOS-DISPLAY-INSTALL-PLAN.md/json.
@@ -65,6 +64,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 ## Accumulated Context
 
 ### Decisions
+
+- 2026-10-10 Phase6续跑06-02-01完成：独立双video25/25及原生10/10，原ADR批准不变；新FEC源码未纳入批准，研究发现默认实现及内嵌来源缺口，停于新的隔离准备决定。06-02-SUMMARY status halted，Phase6 1/5/NET未完成，无系统变更。
 
 - 2026-10-10真实用户原答复`1`：批准具体ADR reviewedSHA2560cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc，recordedAt2026-10-10T03:46:30Z，approve-concrete；c74cfb1记录原答复/初始8材料14证据及只两库复用范围。06-01完成，06-02解锁，Phase6 1/5；NET未完成。原审阅快照在build/phase06/reviewed-06-01，之后源码演进不能覆盖批准历史。新FEC候选仍需独立准入/具体批准，无设备/信任/网络/Phase3安装授权。
 
@@ -117,7 +118,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
-[Phase6 approval complete; remaining evidence] 真实原答复1已批准ADR0cdda0d2对应局部TLS/SRTP/两库及原明文选项明确禁用处置；06-01完成，06-02准备执行。Phase6/NET01/02/03仍未完成；多流/nonce/FEC/rekey/真实权限/预算/五目标未执行，不从单synthetic包推断支持。新FEC源未纳入本次批准，按06-02来源关口处理。
+[Phase6 06-02-02 blocking-human] 原答复1/ADR0cdda0d2批准不变，06-01及06-02 Task1完成。25/25及10/10仅证明真实socket双synthetic-video局部路径；audio/uplink/FEC/rekey/nonce/完整queue/public向量、权限/预算/恢复/五目标未执行。新FEC来源36文件审计及默认实现风险见FEC-ADMISSION；待选隔离标量准备/替代研究/保持停点，尚无回复或链接准入。Phase6 1/5，NET未完成。
 
 [Phase3 current 03-03-02 blocking-human] 原安装条件授权在Apollo前置失败停止。现exact WUDF subkey修正/新包完成，等待新plan4fa13eea批准；机器安装和实际UMDF隔离均未执行。Apollo PID6820/15176与四WUDFHost、配置/二进制、20外来记录/8store文件和CCD保持；45,957ms只读窗口全部一致，0 establishedTCP不代表无UDP串流。BCD权限partial、既有安全/信任不变；历史Machine/Install假授权自动审批拒绝原样保留。WINDOWS ledger未执行矩阵仍open。SDK仍按SUMMARY存在误计9/3，已再次按halted纠正8完成、Phase3 2/3；不关闭VDP。
 
@@ -154,8 +155,8 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 ## Session Continuity
 
 Last session: 2026-10-10（Asia/Singapore）
-Stopped at: Phase 6 halted at 06-01-03 specific ADR decision; Phase 3 independently halted at 03-03-02 corrected install plan; no system mutation
+Stopped at: Phase6 06-02-02 new FEC preparation decision; Phase3 independently halted at03-03-02 corrected install plan; no system mutation
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
 
-Active Phase6 resume: `.planning/phases/06-gamestream/06-02-PLAN.md`。06-01真实原答复1已记录并完成；先核验reviewed ADR0cdda0d2历史快照及当前产物source manifest，再做06-02-01双video RED/GREEN。新FEC源若需新增回具体ADR批准。以上Phase3 Resume file/Next action仅保留其独立安装恢复入口，不是当前协议执行的下一任务。
+Active Phase6 resume: `.planning/phases/06-gamestream/06-02-PLAN.md` Task2来源门槛；读取halted06-02-SUMMARY与FEC-ADMISSION绑定摘要，取得真实选项、存档审阅字节并记录原答复。选1仅隔离准备，待来源/安全/KAT闭合后另审具体复用，禁止直接链接；选2研究替代，选3保留停点。06-01及06-02-01已完成，不重复执行。Phase3 Resume file/Next action仅保留独立安装恢复入口，不是当前协议下一任务。
