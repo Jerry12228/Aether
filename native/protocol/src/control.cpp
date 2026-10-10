@@ -1,0 +1,209 @@
+#include "internal.h"
+#include <algorithm>
+#include <cstring>
+#include <sstream>
+#include <optional>
+#include <openssl/err.h>
+namespace aether::protocol {
+using Clock=std::chrono::steady_clock;
+namespace ctl {
+using Fields=std::map<uint16_t,std::vector<uint8_t>>;
+Fields fields(const std::vector<uint8_t>& b){
+ require(b.size()>=4&&b.size()<=8192,AP_LENGTH);require(u16(b.data())==1&&u16(b.data()+2)<=32,AP_FIELD);
+ Fields out;std::set<uint16_t> seen;size_t offset=4;for(unsigned i=0;i<u16(b.data()+2);++i){require(offset+4<=b.size(),AP_LENGTH);auto t=u16(b.data()+offset),n=u16(b.data()+offset+2);offset+=4;require(t&&!(t&0x8000)&&seen.insert(t).second,AP_FIELD);require(n<=b.size()-offset,AP_LENGTH);if(t<=21)out.emplace(t,std::vector<uint8_t>(b.begin()+offset,b.begin()+offset+n));offset+=n;}require(offset==b.size(),AP_LENGTH);return out;
+}
+const std::vector<uint8_t>& item(const Fields& f,uint16_t t,size_t n){auto i=f.find(t);require(i!=f.end()&&i->second.size()==n,AP_FIELD);return i->second;}
+uint32_t number(const Fields& f,uint16_t t){return u32(item(f,t,4).data());}
+uint64_t wide(const Fields& f,uint16_t t){return u64(item(f,t,8).data());}
+void add(Fields& f,uint16_t t,uint64_t v,size_t n){std::vector<uint8_t> b(n);if(n==4)put32(b.data(),static_cast<uint32_t>(v));else put64(b.data(),v);f[t]=std::move(b);}
+std::vector<uint8_t> encode(const Fields& f){std::vector<uint8_t> b(4);put16(b.data(),1);put16(b.data()+2,static_cast<uint16_t>(f.size()));for(const auto& [t,v]:f){require(v.size()<=6144,AP_LENGTH);auto p=b.size();b.resize(p+4+v.size());put16(b.data()+p,t);put16(b.data()+p+2,static_cast<uint16_t>(v.size()));std::copy(v.begin(),v.end(),b.begin()+p+4);}require(b.size()<=8192,AP_LENGTH);return b;}
+std::string hex(const std::vector<uint8_t>& b){constexpr char h[]="0123456789abcdef";std::string s;for(auto v:b){s+=h[v>>4];s+=h[v&15];}return s;}
+Identity identity(const ConnectionContext& c){const auto& x=c.config;return {x.host_id,x.instance_id,x.display_id,x.stream_id,x.connection_id,x.client_id,x.lease_epoch,x.config_generation,x.key_generation};}
+uint64_t mul(uint64_t a,uint64_t b){require(!a||b<=UINT64_MAX/a,AP_LENGTH);return a*b;}
+uint64_t plus(uint64_t a,uint64_t b){require(b<=UINT64_MAX-a,AP_LENGTH);return a+b;}
+std::string resources(const ResourceVector& r){std::ostringstream s;s<<'[';bool first=true;for(auto v:r.values()){if(!first)s<<',';first=false;s<<v;}s<<']';return s.str();}
+void hello(const std::vector<uint8_t>& b){uint32_t version=0,side=0,local=3;require(aether_protocol_negotiate(b.data(),static_cast<uint32_t>(b.size()),&local,1,&version,&side)==AP_OK&&version==3,AP_VERSION);bool schema=false;for(size_t p=8+2*b[7];p<b.size();){auto t=u16(b.data()+p),n=u16(b.data()+p+2);p+=4;if(t==8){require(n==2&&u16(b.data()+p)==1,AP_VERSION);schema=true;}p+=n;}require(schema,AP_VERSION);}
+struct Record {uint16_t opcode=0;uint32_t flags=0;uint64_t operation=0,request=0,sequence=0;Identity identity;std::vector<uint8_t> payload;};
+std::vector<uint8_t> record(const Record& r){require(r.payload.size()<=8192,AP_LENGTH);std::vector<uint8_t> b(124+r.payload.size());put32(b.data(),static_cast<uint32_t>(b.size()-4));auto h=b.data()+4;std::memcpy(h,"ACTL",4);put16(h+4,1);put16(h+6,r.opcode);put32(h+8,r.flags);put32(h+12,static_cast<uint32_t>(r.payload.size()));put64(h+16,r.operation);put64(h+24,r.request);put64(h+32,r.sequence);const auto& i=r.identity;size_t p=40;for(auto v:{i.host,i.instance,i.display,i.stream,i.connection,i.client,i.lease,i.config,i.key,uint64_t{3}}){put64(h+p,v);p+=8;}std::copy(r.payload.begin(),r.payload.end(),b.begin()+124);return b;}
+Record receive(ConnectionContext& c,uint64_t& sequence){std::array<uint8_t,4> n{};read_tls(c,n.data(),4);auto size=u32(n.data());require(size>=120&&size<=8312,AP_LENGTH);std::array<uint8_t,120> h{};read_tls(c,h.data(),120);require(!std::memcmp(h.data(),"ACTL",4)&&u16(h.data()+4)==1,AP_FIELD);Record r;r.opcode=u16(h.data()+6);r.flags=u32(h.data()+8);require(r.opcode>=1&&r.opcode<=14&&r.flags<=2,AP_FIELD);require(u32(h.data()+12)==size-120,AP_LENGTH);r.operation=u64(h.data()+16);r.request=u64(h.data()+24);r.sequence=u64(h.data()+32);require(r.sequence==sequence+1,AP_STALE);const auto current=identity(c);std::array<uint64_t,10> expected{current.host,current.instance,current.display,u64(h.data()+64),current.connection,current.client,current.lease,current.config,current.key,3};for(size_t i=0;i<10;++i)require(u64(h.data()+40+8*i)==expected[i],i==9?AP_VERSION:i>=6?AP_STALE:AP_IDENTITY);r.identity=current;r.identity.stream=u64(h.data()+64);require(!r.identity.stream||r.identity.stream==current.stream,AP_IDENTITY);r.payload.resize(size-120);read_tls(c,r.payload.data(),r.payload.size());(void)fields(r.payload);sequence=r.sequence;return r;}
+void transmit(ConnectionContext& c,Record r,uint64_t& seq){r.sequence=++seq;auto b=record(r);write_tls(c,b.data(),b.size());}
+}
+int32_t AdmissionEngine::request(Reservation& r,const std::vector<uint8_t>& payload,uint32_t ttl,std::string& json){
+ require(services!=nullptr,AP_PERMISSION);auto f=ctl::fields(payload);auto policy=ctl::number(f,1),preference=ctl::number(f,2);require(policy<=2&&preference>=1&&preference<=2&&ttl&&ttl<=60000,AP_FIELD);
+ auto streams=f.find(4),caps=f.find(5);require(streams!=f.end()&&caps!=f.end(),AP_FIELD);auto& b=streams->second;require(b.size()>=2&&u16(b.data())>=1&&u16(b.data())<=8&&b.size()==2+56u*u16(b.data()),AP_LENGTH);
+ r.resources={};std::set<uint64_t> ids;std::ostringstream specs;for(size_t p=2;p<b.size();p+=56){auto stream=u64(b.data()+p),display=u64(b.data()+p+8);auto kind=u32(b.data()+p+16),direction=u32(b.data()+p+20),w=u32(b.data()+p+24),h=u32(b.data()+p+28),fn=u32(b.data()+p+32),fd=u32(b.data()+p+36),rate=u32(b.data()+p+40),codec=u32(b.data()+p+44),colour=u32(b.data()+p+48),role=u32(b.data()+p+52);
+  require(stream&&display&&ids.insert(stream).second&&fd&&fn&&w&&h&&rate,AP_FIELD);require(kind==AP_VIDEO&&direction==AP_DOWNLINK&&codec==1&&colour==1&&role==0,AP_VERSION);require(stream==r.binding.identity.stream&&display==r.binding.identity.display,AP_IDENTITY);
+  auto pixels=ctl::mul(ctl::mul(w,h),fn);pixels=pixels/fd+(pixels%fd!=0);r.resources.host_encoder_sessions=ctl::plus(r.resources.host_encoder_sessions,1);r.resources.client_downlink_decoder_sessions=ctl::plus(r.resources.client_downlink_decoder_sessions,1);r.resources.pixel_rate_per_second=ctl::plus(r.resources.pixel_rate_per_second,pixels);r.resources.vram_bytes=ctl::plus(r.resources.vram_bytes,ctl::mul(ctl::mul(w,h),4));r.resources.bandwidth_bits_per_second=ctl::plus(r.resources.bandwidth_bits_per_second,rate);
+  if(p!=2)specs<<',';specs<<"{\"streamId\":"<<stream<<",\"displayId\":"<<display<<",\"mediaKind\":"<<kind<<",\"direction\":"<<direction<<",\"width\":"<<w<<",\"height\":"<<h<<",\"fpsNumerator\":"<<fn<<",\"fpsDenominator\":"<<fd<<",\"bitrateBps\":"<<rate<<",\"codec\":"<<codec<<",\"colour\":"<<colour<<",\"role\":"<<role<<'}';
+ }
+ auto& cap=caps->second;require(cap.size()>=2&&u16(cap.data())<=32,AP_LENGTH);size_t p=2;std::set<std::string> names;std::ostringstream capabilities;for(unsigned n=0;n<u16(cap.data());++n){require(p+2<=cap.size(),AP_LENGTH);auto len=u16(cap.data()+p);p+=2;require(len&&len<=31&&p+len+8<=cap.size(),AP_LENGTH);std::string name(cap.begin()+p,cap.begin()+p+len);p+=len;require(std::all_of(name.begin(),name.end(),[](unsigned char ch){return ch>=33&&ch<=126&&ch!='"'&&ch!='\\';})&&names.insert(name).second,AP_FIELD);auto requested=u64(cap.data()+p);p+=8;if(n)capabilities<<',';capabilities<<"{\"name\":\""<<name<<"\",\"availability\":2,\"reason\":3,\"requested\":"<<requested<<",\"effective\":0}";}require(p==cap.size(),AP_LENGTH);
+ auto snapshot=services->snapshot(r.binding);require(snapshot.host_id==r.binding.identity.host&&snapshot.read_allowed,AP_PERMISSION);r.revision=snapshot.revision;r.expiry_token=snapshot.expiry_token;r.expiry=Clock::now()+std::chrono::milliseconds(ttl);
+ auto canonical=payload;for(auto v:{r.binding.identity.host,r.binding.identity.instance,r.binding.identity.display,r.binding.identity.stream,r.binding.identity.connection,r.binding.identity.client,r.binding.identity.lease,r.binding.identity.config,r.binding.identity.key,r.binding.request_id,r.revision,r.expiry_token}){auto k=canonical.size();canonical.resize(k+8);put64(canonical.data()+k,v);}for(auto v:r.resources.values()){auto k=canonical.size();canonical.resize(k+8);put64(canonical.data()+k,v);}r.binding.digest=hash(canonical.data(),canonical.size());auto status=services->reserve(r,ttl);if(status!=AP_OK)return status;
+ std::ostringstream s;s<<"{\"requestId\":"<<r.binding.request_id<<",\"hostRevision\":"<<r.revision<<",\"expiryToken\":"<<r.expiry_token<<",\"digest\":\""<<r.binding.digest<<"\",\"policy\":"<<policy<<",\"preference\":"<<preference<<",\"resources\":"<<ctl::resources(r.resources)<<",\"streams\":["<<specs.str()<<"],\"capabilities\":["<<capabilities.str()<<"],\"supported\":true}";json=s.str();require(json.size()<=6144,AP_LENGTH);return AP_OK;
+}
+int32_t AdmissionEngine::confirm(Reservation& r,const Binding& b,uint64_t revision,uint64_t expiry){require(services!=nullptr,AP_PERMISSION);require(b.request_id==r.binding.request_id&&b.digest==r.binding.digest&&revision==r.revision&&expiry==r.expiry_token,AP_STALE);require(Clock::now()<r.expiry,AP_EXPIRED);r.binding.operation_id=b.operation_id;return services->commit(r);}
+int32_t AdmissionEngine::cancel(Reservation& r){require(services!=nullptr,AP_PERMISSION);return services->cancel(r);}
+int32_t dispatch_recovery(ConnectionContext&,RecoveryController&,uint32_t,const Binding&,uint32_t){return AP_VERSION;}
+int32_t dispatch_trace(ConnectionContext&,TraceWindow&,uint32_t,uint32_t){return AP_VERSION;}
+struct ControlState {
+ struct Command {AetherProtocolCommand meta{};std::vector<uint8_t> payload;};
+ struct Result {uint64_t operation=0,request=0,event=0,transaction=0;int32_t status=AP_BUSY,authority=AP_BUSY;bool terminal=false,known=false;uint32_t phase=1;std::string cancel="none",digest;};
+ std::mutex mutex;std::condition_variable wake;std::thread worker;
+ std::atomic<bool> stopping{false};bool finished=false,opened=false;uint64_t last_operation=0,published=0,acked=0,tx=0,rx=0;
+ uint32_t queued_bytes=0,grants=0,sinks=0,peer_udp=0;std::string proposal="null",digest,sink_digest;uint64_t revision=0,expiry=0;
+ std::deque<Command> commands;std::map<uint64_t,Result> results;std::deque<std::pair<uint64_t,uint64_t>> events;std::set<uint64_t> cancellations;
+ struct Outgoing {ctl::Record record;Clock::time_point due;bool replay=false;uint32_t mutation=0;};
+ struct Deferred {ctl::Record record;Clock::time_point due;};
+ std::deque<Outgoing> outgoing;std::deque<Deferred> deferred;
+ std::vector<uint8_t> incoming;Clock::time_point frame_deadline{};
+ std::map<uint64_t,Command> unresolved;
+ uint64_t media_index=1,rejected_frames=0;
+ Clock::time_point next_media{};
+ std::timed_mutex transport_mutex,stop_mutex;
+ std::map<uint64_t,Reservation> reservations;std::string snapshot;
+ ~ControlState(){if(worker.joinable())worker.join();}
+};
+namespace ctl {
+void snapshot(ConnectionContext& c,ControlState& s){std::ostringstream j;j<<"{\"queryVersion\":2,\"commandVersion\":1,\"selectedVersion\":"<<(s.opened?3:0)<<",\"authenticated\":"<<(s.opened?"true":"false")<<",\"grants\":"<<s.grants<<",\"sinkPackets\":"<<s.sinks<<",\"sinkDigest\":\""<<s.sink_digest<<"\",\"sequence\":"<<s.published<<",\"acked\":"<<s.acked<<",\"queueBytes\":"<<s.queued_bytes<<",\"proposal\":"<<s.proposal<<",\"hostRevision\":"<<s.revision<<",\"expiryToken\":"<<s.expiry<<",\"persistentIdentity\":{\"instanceId\":"<<c.config.instance_id<<",\"displayId\":"<<c.config.display_id<<"},\"operations\":[";bool comma=false;for(auto& [id,r]:s.results){if(comma)j<<',';comma=true;j<<"{\"operationId\":"<<id<<",\"requestId\":"<<r.request<<",\"status\":"<<r.status<<",\"terminal\":"<<(r.terminal?"true":"false")<<",\"resultKnown\":"<<(r.known?"true":"false")<<",\"authorityTerminal\":"<<(r.known?std::to_string(r.authority):"null")<<",\"transactionSequence\":"<<r.transaction<<",\"activationPhase\":"<<r.phase<<",\"cancelOutcome\":\""<<r.cancel<<"\"}";}j<<"],\"threads\":"<<(s.finished?0:1)<<",\"stopped\":"<<(c.stopped?"true":"false")<<'}';s.snapshot=j.str();require(s.snapshot.size()<=65535,AP_LENGTH);}
+void event(ConnectionContext& c,ControlState& s,uint64_t op,int32_t status,bool known,uint64_t transaction=0,uint32_t phase=1,uint32_t kind=11){uint64_t seq;{std::lock_guard lock(s.mutex);if(kind==11){auto& r=s.results[op];if(r.terminal)return;r.operation=op;r.status=status;r.known=r.known||known;if(known&&r.authority==AP_BUSY)r.authority=status;r.transaction=transaction;r.phase=phase;r.terminal=true;}size_t pending=0;for(auto& [id,result]:s.results){(void)id;if(!result.terminal)++pending;}if(kind!=11&&kind!=15&&s.events.size()+pending+2>=256)return;seq=++s.published;if(kind==11)s.results[op].event=seq;s.events.emplace_back(seq,kind==11?op:UINT64_MAX);snapshot(c,s);}c.callback(c.token,seq,kind,status,op);}
+Record response(ConnectionContext& c,const Record& request,int32_t status,const Reservation* r=nullptr,const std::string& proposal=""){Record out=request;out.identity=identity(c);out.identity.stream=request.identity.stream;out.flags=1;Fields f;add(f,12,status,4);add(f,13,status,4);add(f,14,3,4);if(!proposal.empty())f[15]={proposal.begin(),proposal.end()};if(r){std::vector<uint8_t> digest;for(size_t i=0;i<r->binding.digest.size();i+=2)digest.push_back(static_cast<uint8_t>(std::stoul(r->binding.digest.substr(i,2),nullptr,16)));f[6]=std::move(digest);add(f,18,r->transaction_sequence,8);add(f,19,r->phase,4);add(f,20,request.operation,8);if(r->phase==3)add(f,21,3000,4);}out.payload=encode(f);return out;}
+bool ready(ConnectionContext& c){return SSL_pending(c.tls.get())>0||datagram_ready(c.tcp.value,Clock::now()+std::chrono::milliseconds(20));}
+void negotiate_control(ConnectionContext& c,ControlState& s,const std::vector<uint8_t>& data){c.exchange_deadline=Clock::now()+std::chrono::milliseconds(c.config.deadline_ms);handshake(c);std::array<uint8_t,4> n{};if(c.config.role==2){put32(n.data(),static_cast<uint32_t>(data.size()));write_tls(c,n.data(),4);write_tls(c,data.data(),data.size());}else{read_tls(c,n.data(),4);auto size=u32(n.data());require(size>=10&&size<=512,AP_LENGTH);std::vector<uint8_t> b(size);read_tls(c,b.data(),b.size());hello(b);bool local=false;for(unsigned i=0;i<c.config.version_count;++i)if(c.config.versions[i]==3)local=true;require(local,AP_VERSION);}
+ if(c.config.role==1){put32(n.data(),3);write_tls(c,n.data(),4);}else{read_tls(c,n.data(),4);require(u32(n.data())==3,AP_VERSION);}
+ c.selected=3;std::array<uint8_t,82> binding{};auto id=identity(c);size_t p=0;for(auto v:{id.host,id.instance,id.display,id.stream,id.connection,id.client,id.lease,id.config,id.key,uint64_t{3}}){put64(binding.data()+p,v);p+=8;}put16(binding.data()+80,static_cast<uint16_t>(c.udp_port));auto local=binding;if(c.config.role==1){write_tls(c,local.data(),82);read_tls(c,binding.data(),82);}else{read_tls(c,binding.data(),82);write_tls(c,local.data(),82);}require(!std::memcmp(binding.data(),local.data(),80),AP_IDENTITY);s.peer_udp=u16(binding.data()+80);require(s.peer_udp!=0,AP_FIELD);{std::lock_guard lock(s.mutex);s.opened=true;snapshot(c,s);}event(c,s,0,AP_OK,true);
+}
+std::optional<Record> pump(ConnectionContext& c,ControlState& s){
+ if(s.incoming.empty())s.frame_deadline=Clock::now()+std::chrono::seconds(3);else require(Clock::now()<s.frame_deadline,AP_TIMEOUT);
+ size_t target=s.incoming.size()<4?4:124;
+ if(s.incoming.size()>=4){auto size=u32(s.incoming.data());require(size>=120&&size<=8312,AP_LENGTH);if(s.incoming.size()>=124)target=4+size;}
+ if(s.incoming.size()<target){
+  if(SSL_pending(c.tls.get())==0&&!datagram_ready(c.tcp.value,Clock::now()+std::chrono::milliseconds(2)))return {};
+  require(Clock::now()<s.frame_deadline,AP_TIMEOUT);std::array<uint8_t,8316> b{};size_t got=0;ERR_clear_error();auto result=SSL_read_ex(c.tls.get(),b.data(),target-s.incoming.size(),&got);
+  if(result!=1){auto error=SSL_get_error(c.tls.get(),result);if(error==SSL_ERROR_WANT_READ||error==SSL_ERROR_WANT_WRITE)return {};throw Failure{AP_LENGTH};}
+  require(got>0,AP_LENGTH);s.incoming.insert(s.incoming.end(),b.begin(),b.begin()+got);
+ }
+ if(s.incoming.size()<124)return {};
+ const auto h=s.incoming.data()+4;auto size=u32(s.incoming.data());require(!std::memcmp(h,"ACTL",4)&&u16(h+4)==1,AP_FIELD);require(u16(h+6)>=1&&u16(h+6)<=14&&u32(h+8)<=2,AP_FIELD);require(u32(h+12)==size-120,AP_LENGTH);
+ const auto id=identity(c);std::array<uint64_t,10> expected{id.host,id.instance,id.display,u64(h+64),id.connection,id.client,id.lease,id.config,id.key,3};for(size_t i=0;i<10;++i)require(u64(h+40+8*i)==expected[i],i==9?AP_VERSION:i>=6?AP_STALE:AP_IDENTITY);
+ require(!u64(h+64)||u64(h+64)==id.stream,AP_IDENTITY);
+ if(s.incoming.size()!=size+4)return {};
+ Record r;r.opcode=u16(h+6);r.flags=u32(h+8);r.operation=u64(h+16);r.request=u64(h+24);r.sequence=u64(h+32);r.identity=id;r.identity.stream=u64(h+64);r.payload.assign(s.incoming.begin()+124,s.incoming.end());s.incoming.clear();
+ if(r.sequence<=s.rx){++s.rejected_frames;return {};}
+ require(r.sequence==s.rx+1,AP_STALE);s.rx=r.sequence;(void)fields(r.payload);return r;
+}
+void command_fields(uint32_t opcode,const Fields& f){
+ switch(opcode){
+ case 1:case 4:require(number(f,1)<=2&&number(f,2)<=2&&number(f,3)>=1&&number(f,3)<=60000&&f.count(4)&&f.count(5),AP_FIELD);break;
+ case 2:case 9:(void)item(f,6,32);(void)wide(f,7);(void)wide(f,8);break;
+ case 3:(void)wide(f,20);break;
+ case 5:case 6:case 11:require(f.empty(),AP_FIELD);break;
+ case 7:require(number(f,9)>=1&&number(f,9)<=3000,AP_FIELD);break;
+ case 8:require(number(f,10)<=3,AP_FIELD);break;
+ case 10:case 12:require(number(f,11)>=1&&number(f,11)<=60000,AP_FIELD);break;
+ case 13:require(number(f,16)>=1&&number(f,16)<=3&&f.count(17)&&f.at(17).size()<=1024,AP_FIELD);break;
+ case 14:(void)wide(f,20);break;
+ default:throw Failure{AP_FIELD};
+ }
+}
+void video_window(ConnectionContext& c,ControlState& s){
+ if(!c.srtp||!s.grants)return;
+ if(c.config.role==1){if(!s.grants||Clock::now()<s.next_media)return;s.next_media=Clock::now()+std::chrono::milliseconds(20);require(s.media_index<65536,AP_PROTECTION);const std::string data="confirmed-synthetic-video";std::vector<uint8_t> b(12+data.size()+SRTP_MAX_TRAILER_LEN);b[0]=0x80;b[1]=96;put16(b.data()+2,static_cast<uint16_t>(s.media_index));put32(b.data()+4,static_cast<uint32_t>(90000+3000*s.media_index));put32(b.data()+8,static_cast<uint32_t>(c.config.stream_id));++s.media_index;std::memcpy(b.data()+12,data.data(),data.size());int n=static_cast<int>(12+data.size());require(srtp_protect(c.srtp,b.data(),&n)==srtp_err_status_ok,AP_PROTECTION);auto remote=endpoint(s.peer_udp);require(sendto(c.udp.value,reinterpret_cast<const char*>(b.data()),n,0,reinterpret_cast<sockaddr*>(&remote),sizeof(remote))==n,AP_INTERNAL_ERROR);
+ }else{for(unsigned inspected=0;inspected<16&&datagram_ready(c.udp.value,Clock::now()+std::chrono::milliseconds(1));++inspected){std::array<uint8_t,1500> b{};int n=recv(c.udp.value,reinterpret_cast<char*>(b.data()),static_cast<int>(b.size()),0);if(n<28||srtp_unprotect(c.srtp,b.data(),&n)!=srtp_err_status_ok||n<12||b[0]!=0x80||b[1]!=96||u32(b.data()+8)!=c.config.stream_id)continue;std::lock_guard lock(s.mutex);++s.sinks;s.sink_digest=hash(b.data()+12,static_cast<size_t>(n-12));snapshot(c,s);}}
+}
+void schedule(ConnectionContext& c,ControlState& s,Record out,const Reservation* reservation){
+ uint32_t delay=0,mutation=0;bool drop=false,replay=false;(void)reservation;
+#ifdef AETHER_CONTROL_FIXTURE
+ auto fault=control_fixture_fault(out.opcode,reservation?reservation->phase:0,out.request,false);delay=fault.delay_ms;drop=fault.drop;replay=fault.replay;mutation=fault.mutation;
+#endif
+ if(drop)return;require(s.outgoing.size()<64,AP_BUSY);s.outgoing.push_back({std::move(out),Clock::now()+std::chrono::milliseconds(delay),replay,mutation});(void)c;
+}
+void flush(ConnectionContext& c,ControlState& s){for(auto i=s.outgoing.begin();i!=s.outgoing.end();){if(Clock::now()<i->due){++i;continue;}c.exchange_deadline=Clock::now()+std::chrono::milliseconds(100);auto out=std::move(i->record);bool replay=i->replay;auto mutation=i->mutation;i=s.outgoing.erase(i);out.sequence=++s.tx;auto b=record(out);
+#ifdef AETHER_CONTROL_FIXTURE
+ control_fixture_wire(b.data(),b.size());
+ if(mutation==1)put32(b.data(),8313);
+ if(mutation==2)put16(b.data()+8,2);
+ if(mutation==3)put64(b.data()+36,out.sequence+1);
+ if(mutation==4){auto p=b.size();b.resize(p+8);put16(b.data()+p,0x8001);put16(b.data()+p+2,4);put32(b.data()+p+4,1);put16(b.data()+126,static_cast<uint16_t>(u16(b.data()+126)+1));put32(b.data(),static_cast<uint32_t>(b.size()-4));put32(b.data()+16,static_cast<uint32_t>(b.size()-124));}
+ if(mutation==5){auto p=b.size();b.resize(p+8);put16(b.data()+p,12);put16(b.data()+p+2,4);put32(b.data()+p+4,0);put16(b.data()+126,static_cast<uint16_t>(u16(b.data()+126)+1));put32(b.data(),static_cast<uint32_t>(b.size()-4));put32(b.data()+16,static_cast<uint32_t>(b.size()-124));}
+ if(mutation==6)b.resize(124);
+ if(mutation==7){for(size_t p=128;p+4<=b.size();){auto type=u16(b.data()+p),length=u16(b.data()+p+2);p+=4;require(length<=b.size()-p,AP_FIELD);if(type==6&&length){b[p]^=1;break;}p+=length;}}
+#else
+ (void)mutation;
+#endif
+ write_tls(c,b.data(),b.size());if(replay)write_tls(c,b.data(),b.size());}}
+void host_dispatch(ConnectionContext& c,ControlState& s,const Record& in,bool resumed=false){
+ auto f=fields(in.payload);command_fields(in.opcode,f);require(in.operation&&in.request,AP_FIELD);require(in.flags==0||((in.opcode==3||in.opcode==14)&&in.flags==2),AP_FIELD);
+ if(in.flags==0&&!resumed){require(in.operation>s.last_operation,AP_STALE);s.last_operation=in.operation;}
+ int32_t status=AP_VERSION;Reservation* r=nullptr;std::string proposal;AdmissionEngine engine(c.host_services);
+ try{
+  if(in.opcode==1||in.opcode==4){require(!s.reservations.count(in.request),AP_STALE);if(in.opcode==4){for(auto& [id,pending]:s.reservations)if(pending.phase==1)engine.cancel(pending);}Reservation next;next.binding={in.identity,in.operation,in.request,{}};status=engine.request(next,in.payload,number(f,3),proposal);if(status==AP_OK){auto pos=s.reservations.emplace(in.request,std::move(next));r=&pos.first->second;}}
+  else if(in.opcode==2){auto i=s.reservations.find(in.request);require(i!=s.reservations.end(),AP_STALE);r=&i->second;
+#ifdef AETHER_CONTROL_FIXTURE
+   require(hex(item(f,6,32))==r->binding.digest&&wide(f,7)==r->revision&&wide(f,8)==r->expiry_token,AP_STALE);
+   if(!resumed){auto fault=control_fixture_fault(in.opcode,0,in.request,true);if(fault.delay_ms||fault.drop){require(s.deferred.size()<32,AP_BUSY);r->binding.operation_id=in.operation;if(!fault.drop)s.deferred.push_back({in,Clock::now()+std::chrono::milliseconds(fault.delay_ms)});return;}}
+#endif
+   Binding binding{in.identity,in.operation,in.request,hex(item(f,6,32))};status=engine.confirm(*r,binding,wide(f,7),wide(f,8));
+  }else if(in.opcode==3||in.opcode==14){auto i=s.reservations.find(in.request);require(i!=s.reservations.end()&&c.host_services,AP_STALE);r=&i->second;const auto target=wide(f,20);if(in.flags==2){require(target==in.operation&&target==r->binding.operation_id,AP_STALE);require(hex(item(f,6,32))==r->binding.digest,AP_STALE);}
+   if(in.opcode==3)status=engine.cancel(*r);else{status=c.host_services->status(*r);if(f.count(19)){require(number(f,19)==3&&f.count(18)&&wide(f,18)<=r->transaction_sequence,AP_STALE);
+#ifdef AETHER_CONTROL_FIXTURE
+    if(!resumed){auto fault=control_fixture_fault(in.opcode,0,in.request,true);if(fault.delay_ms||fault.drop){require(s.deferred.size()<32,AP_BUSY);if(!fault.drop)s.deferred.push_back({in,Clock::now()+std::chrono::milliseconds(fault.delay_ms)});return;}}
+#endif
+    auto before=r->phase;status=c.host_services->activate(*r);if(status==AP_OK&&before!=4){if(!c.srtp)make_srtp(c);std::lock_guard lock(s.mutex);++s.grants;}}}
+  }
+ }catch(Failure e){status=e.status;}
+ schedule(c,s,response(c,in,status,r,proposal),r);{std::lock_guard lock(s.mutex);if(!proposal.empty()){s.proposal=proposal;s.revision=r->revision;s.expiry=r->expiry_token;}snapshot(c,s);}
+}
+void receipt(ConnectionContext& c,ControlState& s,const Record& r){auto f=fields(r.payload);auto status=static_cast<int32_t>(number(f,12));require(status>=AP_OK&&status<=AP_ALREADY_COMPLETE,AP_FIELD);(void)number(f,13);(void)number(f,14);uint64_t transaction=f.count(18)?wide(f,18):0;uint32_t phase=f.count(19)?number(f,19):1;require(phase>=1&&phase<=5,AP_FIELD);
+ std::lock_guard lock(s.mutex);auto i=s.results.find(r.operation);require(i!=s.results.end()&&i->second.request==r.request,AP_STALE);auto& result=i->second;if(transaction&&transaction<result.transaction){++s.rejected_frames;return;}
+ if(transaction){require(wide(f,20)==r.operation,AP_STALE);if(!result.digest.empty())require(hex(item(f,6,32))==result.digest,AP_STALE);result.transaction=transaction;result.phase=phase;result.known=true;result.authority=(phase==2?AP_CANCELLED:(phase>=3?AP_OK:status));}
+ if(r.opcode==3){result.cancel=status==AP_ALREADY_COMPLETE?"already-committed":status==AP_CANCELLED?"cancelled":"unknown";}
+ if(f.count(15)){std::string proposal(f.at(15).begin(),f.at(15).end());require(proposal.size()<=6144&&proposal.front()=='{'&&proposal.back()=='}',AP_FIELD);s.proposal=proposal;auto marker=proposal.find("\"digest\":\"");if(marker!=std::string::npos)s.digest=proposal.substr(marker+10,64);}
+ snapshot(c,s);
+}
+Record status_request(ConnectionContext& c,const ControlState::Command& command,uint16_t opcode,uint64_t transaction=0,bool activation=false){auto f=fields(command.payload);Fields out;add(out,20,command.meta.operation_id,8);out[6]=item(f,6,32);if(transaction)add(out,18,transaction,8);if(activation)add(out,19,3,4);Record r{opcode,2,command.meta.operation_id,command.meta.request_id,0,identity(c),encode(out)};r.identity.stream=command.meta.stream_id;return r;}
+void client_dispatch(ConnectionContext& c,ControlState& s,ControlState::Command command){
+ auto& m=command.meta;bool cancellation=false;{std::lock_guard lock(s.mutex);cancellation=s.cancellations.count(m.operation_id)>0;}if(cancellation){event(c,s,m.operation_id,AP_CANCELLED,true);return;}
+ const auto deadline=Clock::now()+std::chrono::milliseconds(m.deadline_ms);c.exchange_deadline=deadline;Record r{static_cast<uint16_t>(m.opcode),0,m.operation_id,m.request_id,0,identity(c),command.payload};r.identity.stream=m.stream_id;transmit(c,r,s.tx);
+ const bool side_effect=m.opcode==2||m.opcode==9;bool cancel_sent=false,activation_sent=false,authority=false,completed=false;unsigned retries=0;auto next_status=Clock::now()+std::chrono::milliseconds(100);uint64_t transaction=0;uint32_t phase=1;int32_t terminal_status=AP_TIMEOUT;
+ while(Clock::now()<deadline&&!s.stopping){
+  video_window(c,s);{std::lock_guard lock(s.mutex);cancellation=s.cancellations.count(m.operation_id)>0;}
+  if(cancellation&&side_effect&&!cancel_sent){c.exchange_deadline=deadline;transmit(c,status_request(c,command,3),s.tx);cancel_sent=true;}
+  auto incoming=pump(c,s);if(incoming){require(incoming->flags==1,AP_FIELD);if(incoming->operation!=m.operation_id){receipt(c,s,*incoming);continue;}require(incoming->request==m.request_id,AP_STALE);auto f=fields(incoming->payload);auto status=static_cast<int32_t>(number(f,12));receipt(c,s,*incoming);if(f.count(18)){transaction=wide(f,18);phase=number(f,19);authority=true;}
+   if(!side_effect){terminal_status=status;completed=true;break;}
+   if(incoming->opcode==3){if(status==AP_CANCELLED){terminal_status=AP_CANCELLED;completed=true;break;}require(status==AP_ALREADY_COMPLETE||status==AP_STALE,AP_FIELD);}
+   if(status!=AP_OK&&status!=AP_BUSY&&phase<3&&incoming->opcode!=3){terminal_status=status;completed=true;break;}
+   if(phase==3&&status==AP_OK&&!activation_sent){require(f.count(21)||incoming->opcode==14||incoming->opcode==3,AP_FIELD);if(f.count(21))require(number(f,21)>=1&&number(f,21)<=3000,AP_FIELD);if(!c.srtp)make_srtp(c);c.exchange_deadline=deadline;transmit(c,status_request(c,command,14,transaction,true),s.tx);activation_sent=true;next_status=Clock::now()+std::chrono::milliseconds(100);}
+   if(phase==4){if(cancel_sent){std::lock_guard lock(s.mutex);if(s.results.at(m.operation_id).cancel=="none")continue;}if(!c.srtp)make_srtp(c);{std::lock_guard lock(s.mutex);++s.grants;}terminal_status=AP_OK;completed=true;break;}
+   if(phase==5){terminal_status=AP_EXPIRED;completed=true;break;}
+  }
+  if(side_effect&&Clock::now()>=next_status&&retries<3){c.exchange_deadline=deadline;transmit(c,status_request(c,command,14,transaction,activation_sent),s.tx);++retries;next_status=Clock::now()+std::chrono::milliseconds(100);}
+  std::this_thread::sleep_for(std::chrono::milliseconds(1));
+ }
+ if(completed){auto until=std::min(deadline,Clock::now()+std::chrono::milliseconds(25));while(Clock::now()<until){video_window(c,s);std::this_thread::sleep_for(std::chrono::milliseconds(1));}event(c,s,m.operation_id,terminal_status,true,transaction,phase);}
+ else{{std::lock_guard lock(s.mutex);s.results.at(m.operation_id).cancel=cancel_sent?"unknown":"none";s.unresolved.emplace(m.operation_id,command);}event(c,s,m.operation_id,s.stopping?AP_STOPPED:AP_TIMEOUT,false,transaction,phase);}
+ (void)authority;
+}
+void control_worker(std::shared_ptr<ConnectionContext> context,std::vector<uint8_t> hello_bytes){auto& c=*context;auto& s=*c.control;
+ try{{std::lock_guard transport(s.transport_mutex);negotiate_control(c,s,hello_bytes);}while(!s.stopping){video_window(c,s);if(c.config.role==1){for(auto i=s.deferred.begin();i!=s.deferred.end();){if(Clock::now()<i->due){++i;continue;}auto record=std::move(i->record);i=s.deferred.erase(i);host_dispatch(c,s,record,true);}flush(c,s);auto record=pump(c,s);if(record){c.exchange_deadline=Clock::now()+std::chrono::milliseconds(100);host_dispatch(c,s,*record);}}else{ControlState::Command command;bool available=false;{std::lock_guard lock(s.mutex);if(!s.commands.empty()){command=std::move(s.commands.front());s.commands.pop_front();s.queued_bytes-=static_cast<uint32_t>(command.payload.size());available=true;}}
+    if(available){try{client_dispatch(c,s,command);}catch(Failure e){event(c,s,command.meta.operation_id,e.status,false);if(e.status!=AP_TIMEOUT)break;}}
+    else{auto record=pump(c,s);if(record){receipt(c,s,*record);event(c,s,record->operation,AP_OK,true,0,1,10);}}
+   }std::this_thread::sleep_for(std::chrono::milliseconds(1));}}
+ catch(Failure e){if(!s.stopping)event(c,s,0,e.status,false);}catch(...){if(!s.stopping)event(c,s,0,AP_INTERNAL_ERROR,false);}
+ std::vector<uint64_t> pending;{std::lock_guard lock(s.mutex);for(auto& [id,result]:s.results)if(!result.terminal)pending.push_back(id);}for(auto id:pending){bool sent=false;{std::lock_guard lock(s.mutex);sent=s.unresolved.count(id)>0;}event(c,s,id,sent?AP_STOPPED:AP_CANCELLED,!sent);}
+ if(c.host_services)c.host_services->release_connection(c.config.connection_id);{std::lock_guard lock(s.mutex);s.commands.clear();s.queued_bytes=0;s.cancellations.clear();s.unresolved.clear();s.incoming.clear();s.outgoing.clear();s.deferred.clear();}{std::lock_guard transport(s.transport_mutex);c.cleanup();}
+ event(c,s,0,AP_OK,true,0,1,15);{std::lock_guard lock(s.mutex);s.opened=false;s.finished=true;snapshot(c,s);}s.wake.notify_all();
+}
+}
+int32_t control_open(std::shared_ptr<ConnectionContext> c,const AetherProtocolControlOpen* in){require(c!=nullptr,AP_INVALID_HANDLE);require(in&&in->struct_size>=sizeof(*in),AP_INVALID_ARGUMENT);require(in->abi_version==1&&in->command_version==1,AP_ABI_MISMATCH);require(!in->reserved&&!in->reserved2&&in->hello_bytes<=512,AP_FIELD);bool version3=false;for(unsigned i=0;i<c->config.version_count;++i)version3|=c->config.versions[i]==3;require(version3,AP_VERSION);std::vector<uint8_t> data;if(c->config.role==2){require(in->hello&&in->hello_bytes>=10,AP_LENGTH);data.assign(in->hello,in->hello+in->hello_bytes);ctl::hello(data);}else require(!in->hello_bytes&&!in->hello,AP_FIELD);std::lock_guard lock(c->mutex);require(!c->stopped,AP_STOPPED);require(!c->submitted&&!c->control,AP_BUSY);c->control=std::make_shared<ControlState>();{std::lock_guard state(c->control->mutex);ctl::snapshot(*c,*c->control);}c->control->worker=std::thread(ctl::control_worker,c,std::move(data));return AP_OK;}
+int32_t control_send(std::shared_ptr<ConnectionContext> c,const AetherProtocolCommand* in){require(c!=nullptr,AP_INVALID_HANDLE);require(in&&in->struct_size>=sizeof(*in),AP_INVALID_ARGUMENT);require(in->abi_version==1&&in->command_version==1,AP_ABI_MISMATCH);require(in->opcode>=1&&in->opcode<=13&&!in->flags&&!in->reserved&&in->operation_id&&in->deadline_ms&&in->deadline_ms<=3000,AP_FIELD);require(in->payload&&in->payload_bytes>=4&&in->payload_bytes<=8192,AP_LENGTH);ControlState::Command cmd;cmd.meta=*in;cmd.meta.payload=nullptr;cmd.payload.assign(in->payload,in->payload+in->payload_bytes);auto inputFields=ctl::fields(cmd.payload);ctl::command_fields(in->opcode,inputFields);require(!in->stream_id||in->stream_id==c->config.stream_id,AP_IDENTITY);require(in->expected_generation==c->config.config_generation,AP_STALE);require(c->control&&c->config.role==2,AP_BUSY);auto& s=*c->control;std::lock_guard lock(s.mutex);require(!s.stopping&&!s.finished,AP_STOPPED);require(s.opened,AP_BUSY);require(in->operation_id>s.last_operation,AP_STALE);require(s.results.size()-(s.results.count(0)?1:0)<32&&s.events.size()+2*s.results.size()<254&&s.queued_bytes<=262144-in->payload_bytes,AP_BUSY);s.last_operation=in->operation_id;ControlState::Result result;result.operation=in->operation_id;result.request=in->request_id;if(inputFields.count(6))result.digest=ctl::hex(inputFields.at(6));s.results.emplace(in->operation_id,result);s.queued_bytes+=in->payload_bytes;s.commands.push_back(std::move(cmd));ctl::snapshot(*c,s);s.wake.notify_all();return AP_OK;}
+int32_t control_cancel(std::shared_ptr<ConnectionContext> c,uint64_t op){require(c&&c->control,AP_INVALID_HANDLE);auto& s=*c->control;std::lock_guard lock(s.mutex);require(!s.stopping,AP_STOPPED);require(op==0||s.results.count(op),AP_STALE);if(op&&s.results.at(op).terminal)return AP_ALREADY_COMPLETE;s.cancellations.insert(op);s.wake.notify_all();return AP_OK;}
+int32_t control_query(std::shared_ptr<ConnectionContext> c,char* out,uint32_t n,uint32_t* required){require(c&&c->control,AP_INVALID_HANDLE);require(required&&(!n||out),AP_INVALID_ARGUMENT);auto& s=*c->control;std::lock_guard lock(s.mutex);auto& b=s.snapshot;*required=static_cast<uint32_t>(b.size()+1);if(n<*required){if(n){std::memcpy(out,b.data(),n-1);out[n-1]=0;}return AP_BUFFER_TOO_SMALL;}std::memcpy(out,b.c_str(),b.size()+1);return AP_OK;}
+int32_t control_ack(std::shared_ptr<ConnectionContext> c,uint64_t seq){require(c&&c->control,AP_INVALID_HANDLE);auto& s=*c->control;std::lock_guard lock(s.mutex);require(seq==s.acked||seq==s.acked+1,AP_INVALID_ARGUMENT);require(seq<=s.published,AP_INVALID_ARGUMENT);s.acked=seq;if(!s.events.empty()&&s.events.front().first==seq){auto op=s.events.front().second;s.events.pop_front();auto i=s.results.find(op);if(i!=s.results.end()&&i->second.terminal&&i->second.event==seq)s.results.erase(i);}c->acked=seq;ctl::snapshot(*c,s);return AP_OK;}
+int32_t control_stop(std::shared_ptr<ConnectionContext> c,uint64_t* seq){require(seq,AP_INVALID_ARGUMENT);auto& s=*c->control;const auto deadline=Clock::now()+std::chrono::seconds(2);std::unique_lock serial(s.stop_mutex,std::defer_lock);require(serial.try_lock_until(deadline),AP_TIMEOUT);s.stopping=true;s.wake.notify_all();std::unique_lock transport(s.transport_mutex,std::defer_lock);require(transport.try_lock_until(deadline),AP_TIMEOUT);if(c->tcp.value!=invalid){
+#ifdef _WIN32
+ shutdown(c->tcp.value,SD_BOTH);
+#else
+ shutdown(c->tcp.value,SHUT_RDWR);
+#endif
+ }transport.unlock();std::unique_lock lock(s.mutex);require(s.wake.wait_until(lock,deadline,[&]{return s.finished;}),AP_TIMEOUT);lock.unlock();if(s.worker.joinable())s.worker.join();lock.lock();c->stopped=true;c->published=s.published;*seq=s.published;ctl::snapshot(*c,s);return AP_OK;}
+}

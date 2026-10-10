@@ -35,7 +35,7 @@ uint32_t clock_step(uint8_t media){return media==2||media==3?960:3000;}
 const char* media_name(uint8_t media){return media==1?"video":media==2?"audio":media==3?"mic":"camera";}
 bool sending(const ConnectionContext& c,const StreamContext& s){return s.domain.direction==c.config.role;}
 void create_streams(ConnectionContext& c){
- require(c.config.stream_id<=UINT32_MAX-4&&c.selected==2&&c.streams.empty(),AP_FIELD);
+ require(c.config.stream_id<=UINT32_MAX-4&&(c.selected==2||c.selected==3)&&c.streams.empty(),AP_FIELD);
  for(uint32_t offset=0;offset<5;++offset){
   auto s=std::make_unique<StreamContext>();
   s->domain.identity={c.config.host_id,c.config.instance_id,c.config.display_id,c.config.stream_id+offset,c.config.connection_id,c.config.client_id,c.config.lease_epoch,c.config.config_generation,c.config.key_generation};
@@ -173,5 +173,19 @@ void run_media(ConnectionContext& c,uint16_t port,const uint8_t* payload,uint32_
   else{read_tls(c,control.data(),control.size());require(u32(control.data())==round,AP_FIELD);transmit(c,port,payload,size,round);c.windows.push_back(MediaScheduler(c,round).receive());write_tls(c,control.data(),control.size());read_tls(c,control.data(),control.size());require(u32(control.data())==round,AP_FIELD);}
   ++c.control_progress;
  }
+}
+WindowRecord media_service_window(ConnectionContext& c,uint16_t port,const uint8_t* payload,uint32_t size,uint32_t round){
+ require(c.selected==3&&payload&&size&&size<=64&&round,AP_FIELD);
+ if(c.streams.empty())create_streams(c);
+ transmit(c,port,payload,size,round);
+ auto result=MediaScheduler(c,round).receive();++c.control_progress;return result;
+}
+int32_t reset_stream_generation(ConnectionContext& c,uint64_t stream,uint64_t generation){
+ try{require(c.selected==3&&generation,AP_VERSION);auto found=std::find_if(c.streams.begin(),c.streams.end(),[&](const auto& s){return s->domain.identity.stream==stream;});require(found!=c.streams.end(),AP_IDENTITY);auto& s=**found;require(generation>s.domain.identity.key,AP_STALE);
+  // Stage both new domains first; a failed exporter leaves the old healthy pair.
+  auto domain=s.domain;domain.identity.key=generation;srtp_t source=nullptr,repair=nullptr;
+  create_crypto(c.tls.get(),domain,3,&source);try{domain.role=1;create_crypto(c.tls.get(),domain,3,&repair);}catch(...){srtp_dealloc(source);throw;}
+  if(s.crypto)srtp_dealloc(s.crypto);if(s.repair_crypto)srtp_dealloc(s.repair_crypto);s.crypto=source;s.repair_crypto=repair;s.domain.identity.key=generation;s.next_source=1;s.next_repair=1;s.authenticated_bytes.clear();s.digest.clear();return AP_OK;
+ }catch(Failure e){return e.status;}catch(...){return AP_INTERNAL_ERROR;}
 }
 }

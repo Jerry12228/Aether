@@ -182,5 +182,14 @@ int32_t control_cancel(std::shared_ptr<ConnectionContext>,uint64_t);
 int32_t control_query(std::shared_ptr<ConnectionContext>,char*,uint32_t,uint32_t*);
 int32_t control_ack(std::shared_ptr<ConnectionContext>,uint64_t);
 int32_t control_stop(std::shared_ptr<ConnectionContext>,uint64_t*);
+// These declarations only exist in the separately linked contract host.
+// The product DLL has neither a fixture provider nor a fault registration API.
+#ifdef AETHER_CONTROL_FIXTURE
+struct ControlFixtureFault {uint32_t delay_ms=0;bool drop=false,replay=false;uint32_t mutation=0;};
+ControlFixtureFault control_fixture_fault(uint16_t opcode,uint32_t phase,uint64_t request,bool before_commit);
+void control_fixture_wire(const uint8_t*,size_t);
+#endif
+WindowRecord media_service_window(ConnectionContext&,uint16_t,const uint8_t*,uint32_t,uint32_t);
+int32_t reset_stream_generation(ConnectionContext&,uint64_t,uint64_t);
 }
 #endif

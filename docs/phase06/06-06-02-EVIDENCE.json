@@ -1,0 +1,1628 @@
+{
+  "schema": 1,
+  "plan": "06-06",
+  "task": 2,
+  "synthetic": true,
+  "systemMutation": false,
+  "sourceHashes": [
+    {
+      "path": "native/protocol/include/aether/protocol.h",
+      "sha256": "3e8c36e70fbfe5fd0f92b096f9702956a72a6caf87f069b1d13d07e6735eaef4"
+    },
+    {
+      "path": "native/protocol/src/internal.h",
+      "sha256": "7570373e1a12caeaf55ac4b0dd167e33354b897e976f48cdae08162df62d11b3"
+    },
+    {
+      "path": "native/protocol/src/protocol.cpp",
+      "sha256": "cb8e40a4ab90e2a81210a48d41edd7b5c9fbf6263490abbf38ed646b6a7f279f"
+    },
+    {
+      "path": "native/protocol/src/control.cpp",
+      "sha256": "15b2bb5ffe3a550cc673ccf259e4a63377af0287e9f131ede5d33a3c7efa60e0"
+    },
+    {
+      "path": "native/protocol/src/secure_transport.cpp",
+      "sha256": "352aaa813d3c8c239336f981768ca88616749033296f29ff0af9fec801575e52"
+    },
+    {
+      "path": "native/protocol/src/media_packetization.cpp",
+      "sha256": "eeef0f63a3265fdf98d15619c4f919ee5f45df2b887b57729777e1cc5dc9199e"
+    },
+    {
+      "path": "native/protocol/CMakeLists.txt",
+      "sha256": "25958d96d248bce2ce4301649e8c528b893129007f1d2d9e68de1c1f9d0ef854"
+    },
+    {
+      "path": "tests/native/protocol_control.cpp",
+      "sha256": "4ff0eba10b3039acacf19fefb998bb76ee62406678e6cfd3d913855ab00b1d63"
+    }
+  ],
+  "finalDebug": {
+    "ctestTotal": 11,
+    "ctestPassed": 11,
+    "elapsedSeconds": 47.71,
+    "controlElapsedSeconds": 21.05,
+    "control": {
+      "scenarioCount": 27,
+      "clientAssertions": 445,
+      "parentAssertions": 57,
+      "failed": 0,
+      "skipped": 0,
+      "raw": {
+        "path": "build/phase06/windows-x64/Testing/Temporary/LastTest.log",
+        "sha256": "6f976af07ec2674e0359bea9ac9bfee2d01ff926cecd706519c7b91d7c85ecc7"
+      },
+      "cases": [
+        {
+          "name": "authority-capacity",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 52712,
+          "clientPid": 14668,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/authority-capacity/client.log",
+            "sha256": "8845c58667c87bb289673ac5924375f70b2f1703969cf6d7148b02d5f57018d7"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/authority-capacity/host.log",
+            "sha256": "91b12639613dbcf8d504d901bc6f8908a7e3c867f49463d745e0a8577a6699ee"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/authority-capacity/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": {
+            "path": "build/phase06/control-fixtures/63612/authority-capacity/provider.bin",
+            "sha256": "15dd7c343923f7a253633d2190d26796d0d59cb92628606d463d6ff53c3b7fb9"
+          }
+        },
+        {
+          "name": "authority-clock",
+          "clientAssertions": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 38328,
+          "clientPid": 23000,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/authority-clock/client.log",
+            "sha256": "231729afd4c68d044274fd8d17b8622992621cf4d35b5dd4192e39703cc5b008"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/authority-clock/host.log",
+            "sha256": "b12e5b8bccb3b4a48d69935da4193bec6918393bdc8cfc5af7d8cc7030298a86"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/authority-clock/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": {
+            "path": "build/phase06/control-fixtures/63612/authority-clock/provider.bin",
+            "sha256": "825fe5fe244910dd13f19ff5ddcdc82c6d85212eb301ab464feece748a7efdb3"
+          }
+        },
+        {
+          "name": "authority-read-deny",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 54860,
+          "clientPid": 62456,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/authority-read-deny/client.log",
+            "sha256": "15af0caac4132a1461612215b0403854a48e4f8a7a54552354889f410122acd1"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/authority-read-deny/host.log",
+            "sha256": "ce689b90f981aa1e2f3df766cd3624136c6aeadaf5118eecab5a39ef2388a8e1"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/authority-read-deny/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": {
+            "path": "build/phase06/control-fixtures/63612/authority-read-deny/provider.bin",
+            "sha256": "d5bc1c4a562a8638bd1df23da13193940379a098531ef73f872d7862814b4a90"
+          }
+        },
+        {
+          "name": "authority-revision",
+          "clientAssertions": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 61940,
+          "clientPid": 60368,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/authority-revision/client.log",
+            "sha256": "00190903ecf84c808f2d193b375f2cf46557244b94f791b83943bfadc0511282"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/authority-revision/host.log",
+            "sha256": "c8c7baf53a89a9c353e97c568b0e58512c386f03a17d55db1d48ddb0426ab8e3"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/authority-revision/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": {
+            "path": "build/phase06/control-fixtures/63612/authority-revision/provider.bin",
+            "sha256": "55b1ca187b953ec2bec33500557c7afa3c9159458bdef57c7e9a9815b67309c0"
+          }
+        },
+        {
+          "name": "boundaries",
+          "clientAssertions": 32,
+          "passed": 32,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 42328,
+          "clientPid": 67084,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/boundaries/client.log",
+            "sha256": "6ea1a75bf8ddbb4ae5ac015bfc7e94121b45834940ac769f460b3b226ebdb810"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/boundaries/host.log",
+            "sha256": "201b22d15e6a686107fd37e0d60a91aa373274b425e3dba817c35f76a9b8f995"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/boundaries/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "cancel-before",
+          "clientAssertions": 19,
+          "passed": 19,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 45084,
+          "clientPid": 58452,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/cancel-before/client.log",
+            "sha256": "cece45d3381337bfe500ce9d71d19754158c44264231e8b39c923afe31e96266"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/cancel-before/host.log",
+            "sha256": "e6e975533c8ba99abfd1ce7694f1075f0c4c2cb35c7b7acc1a1e627032d00ce0"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/cancel-before/scenario.bin",
+            "sha256": "bd768372709a3d17908c80e9dc3f00cac0f739edca55c46cd49d94779ef7d257"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "cancel-committed",
+          "clientAssertions": 23,
+          "passed": 23,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 16044,
+          "clientPid": 62368,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/cancel-committed/client.log",
+            "sha256": "e7a95f4fc395a5286f115faf0452643500b673f0791504227cd4047bce94de0f"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/cancel-committed/host.log",
+            "sha256": "467777bca61c5327a45533ed8dad710495a7ab0e03e6d959cb84913d5032a862"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/cancel-committed/scenario.bin",
+            "sha256": "88bb97f79072b17e0f9b33a4ffe2613052fd7abf64ea78fbcb2e7d2f2adbd7be"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "digest",
+          "clientAssertions": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 55536,
+          "clientPid": 63700,
+          "commits": 1,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/digest/client.log",
+            "sha256": "365c00d5e5782bfc9ca2ead66f9aae4608a6b6f0dcf724cb5a0d5ba1b36f4c14"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/digest/host.log",
+            "sha256": "63321c630adf75fd90decce7182843aca1d72f9ce9f193e4df18b042ca6f26af"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/digest/scenario.bin",
+            "sha256": "6fbd805b74aef0165de5fd3e7209d3574722563389511a19210a27445147f588"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "duplicate",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 53572,
+          "clientPid": 60368,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/duplicate/client.log",
+            "sha256": "d48b44a61a5267b496c0b5c5abbdcea92500bd472dea93898f4419dd0d7ea5bd"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/duplicate/host.log",
+            "sha256": "5c5d38c3ec3f982c8f268d8cfaddc8066d98290005806199172d18ca3419f4ea"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/duplicate/scenario.bin",
+            "sha256": "625d647239ff968bf28770007fa85d79475fea5ff519cda251469d4fef5e0d09"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "exact",
+          "clientAssertions": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 12568,
+          "clientPid": 61452,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/exact/client.log",
+            "sha256": "42c8e4ac991e321bebf5197623ddf8e5b62e4efe251abce974042349c62f6bdb"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/exact/host.log",
+            "sha256": "52641dba036dfbf7b42dc4b32140235d001d8b205875629d280b3f4e1724b240"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/exact/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "grant-loss",
+          "clientAssertions": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 55560,
+          "clientPid": 52980,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/grant-loss/client.log",
+            "sha256": "cc1785acff30b12d9d956d00f92c259719ea7962375f859b7da8a0112d683e15"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/grant-loss/host.log",
+            "sha256": "7a9f3f46544f0c8b63557f5448b2cb88d618125d5586e3a80bfe088fb74aa1ff"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/grant-loss/scenario.bin",
+            "sha256": "630b265b61529b8669670d6381ee758805708dbb13816ac2612bcb542c6ec320"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "healthy-cancel",
+          "clientAssertions": 21,
+          "passed": 21,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 10764,
+          "clientPid": 10280,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/healthy-cancel/client.log",
+            "sha256": "fc61e0ffdd04d0202ab66915535ce052e6e12fd07b4eb5f5138087523044c338"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/healthy-cancel/host.log",
+            "sha256": "13c8a9ab06e0b9d8a75a5707b25b2dd47e39726a45b33f3e448cbc177e408c7e"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/healthy-cancel/scenario.bin",
+            "sha256": "a2426e7cee838f1af2a40009b30821742e9b5f34c511204ba0bf8d579f43d4b7"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "no-provider",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 56240,
+          "clientPid": 38368,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/no-provider/client.log",
+            "sha256": "a59c3721ada09cd2988b6f310282bfeeb277587b802482f89bba56aba2ce7c79"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/no-provider/host.log",
+            "sha256": "efdbbe218eef0ea60cd6ce21d468aa4ff2010227ab1606240375e9aa56d2708a"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/no-provider/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "oversize",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 40156,
+          "clientPid": 57416,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/oversize/client.log",
+            "sha256": "4bf0b283571193733b6d64a67b233d119cf3b91de66b323d1f7d6555cdb16fb6"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/oversize/host.log",
+            "sha256": "e7119a9c90791de1b443e4d36b1f22b0637ea9bdab2961d80d8b37ed193994eb"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/oversize/scenario.bin",
+            "sha256": "95be271fd4f79637e197d90180a638065886a6ba415daf6f3259d4c1afda93d4"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "ready-delay",
+          "clientAssertions": 18,
+          "passed": 18,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 40156,
+          "clientPid": 63776,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/ready-delay/client.log",
+            "sha256": "f051ead627b4a37711087e77a72cf26f752bf6aa6add5968fe88f8f416732fbd"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/ready-delay/host.log",
+            "sha256": "86ae2cc763e252fa144711d73dfe312e312b67afdb076f2e9c56a3a0dba4be0b"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/ready-delay/scenario.bin",
+            "sha256": "4f860bced5c6397576ef67ccaa5acfd0f75cafa80ed88e954424e29eff5a35a0"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "ready-loss",
+          "clientAssertions": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 38624,
+          "clientPid": 60520,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/ready-loss/client.log",
+            "sha256": "6801652c13077e9ae68aa6f2c30b2a930df580cebd0292566489158b1b85a0f1"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/ready-loss/host.log",
+            "sha256": "c043f8ee19a986fc0bf290c6bc669711f43438f8e6a2c86c5d276bb6c08c2d53"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/ready-loss/scenario.bin",
+            "sha256": "8a395774737b37efadd18a924c743eaa1c8c2ab75c67c882abb11c9d772695d5"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "readyack-delay",
+          "clientAssertions": 18,
+          "passed": 18,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 65760,
+          "clientPid": 65448,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/readyack-delay/client.log",
+            "sha256": "30ca03df27d08869a17eeb0d816344d60e8cd1c50899e4e8de56200cfc97b232"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/readyack-delay/host.log",
+            "sha256": "74df8c102e249fe69e5dc6741f5db397ae4da06e702d77c52cbc52246d52b8ff"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/readyack-delay/scenario.bin",
+            "sha256": "1af2cd710a4d8759286698f9bb06449d258c8dc9bcaab8e4e9359c2a4c644450"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "readyack-loss",
+          "clientAssertions": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 54400,
+          "clientPid": 60308,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/readyack-loss/client.log",
+            "sha256": "6f0cfacb2f05215031177b6b483ada8d48c2a9247ffa9f87c26537d2396c5803"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/readyack-loss/host.log",
+            "sha256": "5e057322c2878be40c75cfe51f32cb49a552d2be1983ec2f3e231b28c4a4622a"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/readyack-loss/scenario.bin",
+            "sha256": "154effb44ba68577ddf9d49504d08b3d2222da2cc6643061b2c6e1aa51a8c497"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "readyall-loss",
+          "clientAssertions": 17,
+          "passed": 17,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 57244,
+          "clientPid": 21344,
+          "commits": 1,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/readyall-loss/client.log",
+            "sha256": "ef1a7ea1d134238e13ca290d289975de4f85c5dc8f8323841e2b9d7dc910dc04"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/readyall-loss/host.log",
+            "sha256": "6004ff5f6b329a2c897a180fd49735fb84ccf7c54db6defaccf9a11cac59d6bb"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/readyall-loss/scenario.bin",
+            "sha256": "7a1f4919968dee8ab5bc63e89bee71635cac64fb070759b516c16aed1d8de7b9"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "replay",
+          "clientAssertions": 18,
+          "passed": 18,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 26804,
+          "clientPid": 656,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/replay/client.log",
+            "sha256": "3ea85cd270f35282ea56b6067bcd3f2999435f8b80481d7e9768aabd71ee2ca1"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/replay/host.log",
+            "sha256": "bef70a91fcf474a2e4bd9f1172c5b059d1d94c67e2209af978237c8c9534703d"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/replay/scenario.bin",
+            "sha256": "1b2491043be77b489253a0979aeac61424e18d077bbb5c3b1a1af61be39d0b79"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "required",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 48744,
+          "clientPid": 45288,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/required/client.log",
+            "sha256": "d501d9e41be207dddc454857bb1317773e1858f98c896c7d81a2c0723aeab51f"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/required/host.log",
+            "sha256": "5b52b5403ee629e2fdddcc4573befb7b6113c2e6d42bc697807cdb12ca415943"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/required/scenario.bin",
+            "sha256": "68e7f179feaac8710b8fa068f50df9e5256dae4f9ec30526b2b720cff4e0d7b0"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "schema",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 43068,
+          "clientPid": 39304,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/schema/client.log",
+            "sha256": "25fb3e95556e742d4de05b1425ebde3540cfd4ecdf8cdf3ab3b5b99be6e7655c"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/schema/host.log",
+            "sha256": "1f3b1f2e009bde93e8549bcd1acf0aa90c862901d952e4199f4b61128be31340"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/schema/scenario.bin",
+            "sha256": "21ed745f788926be46b2779734a3bedf556bf68a64cab35ff6c2713751b9fa6e"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "sequence",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 53196,
+          "clientPid": 55740,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/sequence/client.log",
+            "sha256": "169328aec6beb043b4e0c4b2c20dd4bab06f18e35753344712a5e355870fda3a"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/sequence/host.log",
+            "sha256": "70b23f70b052d0cc5c1a880427b50017eb9e72d46e1f3cb4bbb73e3cd341e9ba"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/sequence/scenario.bin",
+            "sha256": "d3d36b40dbe3b8bd7cd62e07409450b589f20c8ca0a4b8c2589cbf290c0ea47f"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "shared-provider",
+          "clientAssertions": 16,
+          "passed": 16,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 45032,
+          "clientPid": null,
+          "clientPidNote": "该场景早返回未输出 PID；两个 Child 原生 CreateProcess/exit 由父测试具名 two-PID 检查，未补造 PID",
+          "commits": 2,
+          "activations": 2,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/shared-provider/client.log",
+            "sha256": "d6033cbd6d2c90637f0a5a300edc5318fdd0957856476b02f634f55576cbf09f"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/shared-provider/host.log",
+            "sha256": "cdba440a56f111afc1b50b4c9c9d3765bce8990001e37217b7ffb228489a18bb"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/shared-provider/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "stop-timeout",
+          "clientAssertions": 18,
+          "passed": 18,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 48444,
+          "clientPid": 42420,
+          "commits": 1,
+          "activations": 1,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/stop-timeout/client.log",
+            "sha256": "144f7b7c1423b5d932a278335971bdb0d94ed815570220f45e895ade5b3b80ee"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/stop-timeout/host.log",
+            "sha256": "6f686ec80f045242eb9abdf44988a4d8c3ae730290b8bca8bc2c5aaae6514ce5"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/stop-timeout/scenario.bin",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "truncated",
+          "clientAssertions": 12,
+          "passed": 12,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 67368,
+          "clientPid": 63888,
+          "commits": 0,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/truncated/client.log",
+            "sha256": "e1f71a9ca376578c0ec8f08116c28988ff23387144236f6bc8600f2d4b88b7c3"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/truncated/host.log",
+            "sha256": "f1c73b9d91b3a6a7a824108aab15576a6e397d5294e36fb48450f0cff41a95cc"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/truncated/scenario.bin",
+            "sha256": "cac08f48e42708d97979e92cc4796aad1df976d61cfbe042f5f00c9fa70423e4"
+          },
+          "authorityInput": null
+        },
+        {
+          "name": "unknown",
+          "clientAssertions": 21,
+          "passed": 21,
+          "failed": 0,
+          "skipped": 0,
+          "hostPid": 67580,
+          "clientPid": 58888,
+          "commits": 1,
+          "activations": 0,
+          "remainingOwned": 0,
+          "clientLog": {
+            "path": "build/phase06/control-fixtures/63612/unknown/client.log",
+            "sha256": "a16f0a3bd2843dab2ef5ff5c819cd0ab445ddc81b6cfbc786fd5de4d0329c7a0"
+          },
+          "hostLog": {
+            "path": "build/phase06/control-fixtures/63612/unknown/host.log",
+            "sha256": "0e3eb725e4fb0e857043b0c0d4042d5b3d14fcdb3a87e7b1c0abf8186e590258"
+          },
+          "faultInput": {
+            "path": "build/phase06/control-fixtures/63612/unknown/scenario.bin",
+            "sha256": "39aaf5c1022d8f8c5067907b6221231b548f3227845a05dfde348267ca220978"
+          },
+          "authorityInput": null
+        }
+      ]
+    },
+    "legacy": [
+      {
+        "suite": "protocol_tracer",
+        "tests": 19,
+        "passed": 19,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 5294.3821
+      },
+      {
+        "suite": "protocol_multistream",
+        "tests": 27,
+        "passed": 27,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "durationMs": 15687.5149
+      }
+    ],
+    "build": {
+      "path": "build/phase06/06-06-debug-build-final.log",
+      "sha256": "0c5ed3f1f9c89debe6aed2654e50ef1f95e3eb934fc44b03b0d8132841ce9ad7"
+    },
+    "ctest": {
+      "path": "build/phase06/06-06-debug-ctest-final.log",
+      "sha256": "477120c2d34eb102fb51be6ddabfc1d1ce2ca2623c818e468874c1b31b85e0c7"
+    },
+    "binaries": [
+      {
+        "path": "build/phase06/windows-x64/Debug/aether_protocol.dll",
+        "sha256": "697dabecf982eb5a3eb2614eed64fc09ad2ecccba8aef68b6a24250c69310fc0"
+      },
+      {
+        "path": "build/phase06/windows-x64/Debug/aether_protocol_control_client.exe",
+        "sha256": "8b33479e5de7ee9af29f74003e1ab75aecc8a29b6d2d50efcc6c18198cfe2623"
+      },
+      {
+        "path": "build/phase06/windows-x64/Debug/aether_protocol_control_host.exe",
+        "sha256": "d6c0d1bb6ea08c745c159d9e0ab4c053f5629b3eb211c45d37cef1a71cd2896c"
+      }
+    ],
+    "manifest": {
+      "path": "build/phase06/windows-x64/target-manifest-Debug.json",
+      "sha256": "8a58c43c8af45f03d27b4922f549f683bab56784be9f5ae1bf4276028e0fdcf6"
+    },
+    "legacyRaw": {
+      "path": "build/phase06/06-06-debug-legacy-raw.log",
+      "sha256": "c2e4edbe2ea7f49336a5436e36cdc872ca5d83089add480d83dd9874fba55ce7"
+    },
+    "finalFixtureBuild": {
+      "path": "build/phase06/06-06-debug-fixture-build.log",
+      "sha256": "a3c11a6b3efc1395a8f4a9132c77dedeb430f10fe07dda71d2748f27a09cb593"
+    },
+    "finalControl": {
+      "ctestTotal": 1,
+      "ctestPassed": 1,
+      "elapsedSeconds": 21.06,
+      "controlElapsedSeconds": 21.05,
+      "ctest": {
+        "path": "build/phase06/06-06-debug-fixture-ctest.log",
+        "sha256": "43d377313042f12798c37b25cd93f39211db964542172cb67c4680fc02b146fc"
+      }
+    }
+  },
+  "asan": {
+    "fullRegression": {
+      "ctestTotal": 11,
+      "ctestPassed": 11,
+      "elapsedSeconds": 48.22,
+      "controlScenarioCount": 26,
+      "controlElapsedSeconds": 21.25,
+      "legacy": [
+        {
+          "suite": "protocol_tracer",
+          "tests": 19,
+          "passed": 19,
+          "failed": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "durationMs": 6040.2713
+        },
+        {
+          "suite": "protocol_multistream",
+          "tests": 27,
+          "passed": 27,
+          "failed": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0,
+          "durationMs": 16750.5698
+        }
+      ],
+      "ctest": {
+        "path": "build/phase06/06-06-asan-ctest-bound.log",
+        "sha256": "57c062e75ebefbe6eeb3fb66e356a07da5d05e57e39ff5a8ab3c128ccdc01dfa"
+      },
+      "raw": {
+        "path": "build/phase06/06-06-asan-legacy-raw.log",
+        "sha256": "2c8e402e9e4c920cbd511bc071cce8d761b068f8c5abc58f9a7b5475afe9a4f5"
+      },
+      "manifest": {
+        "path": "build/phase06/06-06-asan-legacy-manifest.json",
+        "sha256": "f2b3cfcbec48b72039bdcd71badad5865d1ef85946e49fafdd569c4de289de2c"
+      },
+      "note": "完整回归后仅修正 v3 resultKnown 保留；其余套件未重复。"
+    },
+    "finalControl": {
+      "ctestTotal": 1,
+      "ctestPassed": 1,
+      "elapsedSeconds": 22.9,
+      "controlElapsedSeconds": 22.89,
+      "control": {
+        "scenarioCount": 27,
+        "clientAssertions": 445,
+        "parentAssertions": 57,
+        "failed": 0,
+        "skipped": 0,
+        "raw": {
+          "path": "build/phase06/windows-x64-asan/Testing/Temporary/LastTest.log",
+          "sha256": "d7df49685cfa41dfa8765d3653881208fd1eae9ddb1007d96e3f8c436e8e178e"
+        },
+        "cases": [
+          {
+            "name": "authority-capacity",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 39020,
+            "clientPid": 67568,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/authority-capacity/client.log",
+              "sha256": "77cea7ff3b84dcf770570bf7269ba2041c48126b9113095891458101397ac942"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/authority-capacity/host.log",
+              "sha256": "8e119ed70fdaa7ce5ab436850eaee490ac4cfadfaede599e35e08a00e45ddace"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/authority-capacity/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": {
+              "path": "build/phase06/control-fixtures/60032/authority-capacity/provider.bin",
+              "sha256": "15dd7c343923f7a253633d2190d26796d0d59cb92628606d463d6ff53c3b7fb9"
+            }
+          },
+          {
+            "name": "authority-clock",
+            "clientAssertions": 16,
+            "passed": 16,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 42812,
+            "clientPid": 63548,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/authority-clock/client.log",
+              "sha256": "739ed776eed524ef73f54fe15ccd4c4880bb8f96e9cef301d54f83a0ba1c28d7"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/authority-clock/host.log",
+              "sha256": "b4570ebbdb0b1e7a75367a7789e5f0fcb302463b1e99720c05790a9bba66d14f"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/authority-clock/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": {
+              "path": "build/phase06/control-fixtures/60032/authority-clock/provider.bin",
+              "sha256": "825fe5fe244910dd13f19ff5ddcdc82c6d85212eb301ab464feece748a7efdb3"
+            }
+          },
+          {
+            "name": "authority-read-deny",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 46956,
+            "clientPid": 60304,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/authority-read-deny/client.log",
+              "sha256": "c5e3f698fafdfb688612b19a1799e46aa724bb51df747339837d65fdab3af3ba"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/authority-read-deny/host.log",
+              "sha256": "79c3a92721ccc654cd7ce82b5415e4f1636dbb7f890dcc7f88bbafb5f6f1bd12"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/authority-read-deny/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": {
+              "path": "build/phase06/control-fixtures/60032/authority-read-deny/provider.bin",
+              "sha256": "d5bc1c4a562a8638bd1df23da13193940379a098531ef73f872d7862814b4a90"
+            }
+          },
+          {
+            "name": "authority-revision",
+            "clientAssertions": 16,
+            "passed": 16,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 45544,
+            "clientPid": 42912,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/authority-revision/client.log",
+              "sha256": "6049aa55e8614847d0de843a0827b748aa8b24cf2c6509d32ee0d8f65ab11110"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/authority-revision/host.log",
+              "sha256": "04b3b30ddf93a6dd29da8dad780da94445a57c8b0b5264337a606ef834a3ac53"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/authority-revision/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": {
+              "path": "build/phase06/control-fixtures/60032/authority-revision/provider.bin",
+              "sha256": "55b1ca187b953ec2bec33500557c7afa3c9159458bdef57c7e9a9815b67309c0"
+            }
+          },
+          {
+            "name": "boundaries",
+            "clientAssertions": 32,
+            "passed": 32,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 8864,
+            "clientPid": 57724,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/boundaries/client.log",
+              "sha256": "96ad827142cffd1b6b80f062b0c6b6c03ad54575ee2ecc4401bd1fcd768108c9"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/boundaries/host.log",
+              "sha256": "53cda3d036034a461a88aa4c0aee7b1c05340d4c91730660a4587bf638eb68ac"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/boundaries/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "cancel-before",
+            "clientAssertions": 19,
+            "passed": 19,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 67112,
+            "clientPid": 34764,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/cancel-before/client.log",
+              "sha256": "0a59eb005f93bd0c260e9d9ffad40ceeebec80ef7ccc93806a3b3a91be226cd3"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/cancel-before/host.log",
+              "sha256": "9324321ed1b3625a18d490daf6a35e35fee83ad7fb37cb21fa8f7ed877139703"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/cancel-before/scenario.bin",
+              "sha256": "bd768372709a3d17908c80e9dc3f00cac0f739edca55c46cd49d94779ef7d257"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "cancel-committed",
+            "clientAssertions": 23,
+            "passed": 23,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 42912,
+            "clientPid": 66812,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/cancel-committed/client.log",
+              "sha256": "00985cd517dab47115863006f7965c64d3a1a6d9261006c1959d9496b96eae18"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/cancel-committed/host.log",
+              "sha256": "c4a56cb6aae09998c4793a9f0ae3915312d2166f3d658f9b26cf892eaa814943"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/cancel-committed/scenario.bin",
+              "sha256": "88bb97f79072b17e0f9b33a4ffe2613052fd7abf64ea78fbcb2e7d2f2adbd7be"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "digest",
+            "clientAssertions": 16,
+            "passed": 16,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 52188,
+            "clientPid": 62368,
+            "commits": 1,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/digest/client.log",
+              "sha256": "e3f20573c81b96f8dd33968453e7b4fdc9df3245160776824cd60e7d21e372b8"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/digest/host.log",
+              "sha256": "588647f6a88bc5edd43a655ade23fa8ff3718ab27e74d35d9b72571c040af8ce"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/digest/scenario.bin",
+              "sha256": "6fbd805b74aef0165de5fd3e7209d3574722563389511a19210a27445147f588"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "duplicate",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 64564,
+            "clientPid": 57220,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/duplicate/client.log",
+              "sha256": "c07d585aadfd9a866371c1d5d2c465c823ec30458672cccf1fa891f2e52bff27"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/duplicate/host.log",
+              "sha256": "14ecbb3e90c78f37cfd2e4da46f6ff88bef4aed07855f675ea263beb9efc87f7"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/duplicate/scenario.bin",
+              "sha256": "625d647239ff968bf28770007fa85d79475fea5ff519cda251469d4fef5e0d09"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "exact",
+            "clientAssertions": 17,
+            "passed": 17,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 64972,
+            "clientPid": 60852,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/exact/client.log",
+              "sha256": "156c1cf7a96c67bdaf9b35303dec19e60620acb38f86e24e26db4f3a0da56783"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/exact/host.log",
+              "sha256": "544c6891c749cf42d061fbea43c91383a2905f81a25e70ddb736484e9d762f3b"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/exact/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "grant-loss",
+            "clientAssertions": 17,
+            "passed": 17,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 66144,
+            "clientPid": 63776,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/grant-loss/client.log",
+              "sha256": "975b26983e7a410323e7fd830ed6e8a618499efc4b44b1679394ad4e35885b8b"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/grant-loss/host.log",
+              "sha256": "49520d9a801f15a1acccb2eb9cce58cb8bb78a562576cb08376fd6a30ff3c950"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/grant-loss/scenario.bin",
+              "sha256": "630b265b61529b8669670d6381ee758805708dbb13816ac2612bcb542c6ec320"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "healthy-cancel",
+            "clientAssertions": 21,
+            "passed": 21,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 56948,
+            "clientPid": 63700,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/healthy-cancel/client.log",
+              "sha256": "0676759925527779082c69f6222f1d13ba98809a3fc19e12e6744675256e345c"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/healthy-cancel/host.log",
+              "sha256": "abc8424667a26a8e54483fd9e9ad54608e5ee10d47beaaaa19b83d0365661e8c"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/healthy-cancel/scenario.bin",
+              "sha256": "a2426e7cee838f1af2a40009b30821742e9b5f34c511204ba0bf8d579f43d4b7"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "no-provider",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 58232,
+            "clientPid": 56184,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/no-provider/client.log",
+              "sha256": "02b0aade19570577c43529c6300b299b61815c116e058b8d98568404d13aa862"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/no-provider/host.log",
+              "sha256": "00f8de32ca494dbf7e7bee35809390039439f2cfec50016caa22bff1902522f1"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/no-provider/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "oversize",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 62264,
+            "clientPid": 54708,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/oversize/client.log",
+              "sha256": "4afeddfde686bea86a99a13b104030031a7902342350e9859bfd9d2bdd95dbd6"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/oversize/host.log",
+              "sha256": "4f7fd4e011a1b22f6e12ed1b0c1552ea2ba73dd367e66011fdd3f301f507e93b"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/oversize/scenario.bin",
+              "sha256": "95be271fd4f79637e197d90180a638065886a6ba415daf6f3259d4c1afda93d4"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "ready-delay",
+            "clientAssertions": 18,
+            "passed": 18,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 23000,
+            "clientPid": 9568,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/ready-delay/client.log",
+              "sha256": "6795eb3cd4d73766307710442bf49446243f6615b109b16e1ee1c2096a696d43"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/ready-delay/host.log",
+              "sha256": "c4a90bd92dbcd4c653cf2bf6e11ead43ab179815a57fa6f7145ee8ec6ad439de"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/ready-delay/scenario.bin",
+              "sha256": "4f860bced5c6397576ef67ccaa5acfd0f75cafa80ed88e954424e29eff5a35a0"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "ready-loss",
+            "clientAssertions": 17,
+            "passed": 17,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 38608,
+            "clientPid": 59324,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/ready-loss/client.log",
+              "sha256": "4e6fc57d917858480eda04fa2682c9060bfc29026a5294dc14f80420dd1ecbda"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/ready-loss/host.log",
+              "sha256": "69cd99b47ae836126fef6a2b4fb4b353f50beb7cda9f13c87ae5a3a3b62c51ed"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/ready-loss/scenario.bin",
+              "sha256": "8a395774737b37efadd18a924c743eaa1c8c2ab75c67c882abb11c9d772695d5"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "readyack-delay",
+            "clientAssertions": 18,
+            "passed": 18,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 65968,
+            "clientPid": 28704,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/readyack-delay/client.log",
+              "sha256": "3f9b4ee9c3e441d093c43431e6d2add193dbe4be7405b8e8f41c977982b4eabf"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/readyack-delay/host.log",
+              "sha256": "5de7168e4082974040d240412ef4d15d86d1bb9feb63c9eeec1dc5a2ab97a35a"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/readyack-delay/scenario.bin",
+              "sha256": "1af2cd710a4d8759286698f9bb06449d258c8dc9bcaab8e4e9359c2a4c644450"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "readyack-loss",
+            "clientAssertions": 17,
+            "passed": 17,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 35696,
+            "clientPid": 67204,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/readyack-loss/client.log",
+              "sha256": "ab7ef4d7dbceb90b98e68f11a054f9ebe5ed0613bc0028a756b85d78d472de0d"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/readyack-loss/host.log",
+              "sha256": "6967e552c549c07766bc8b1b72b5e5dd49a323b279226ee48310bd1b4f933a7d"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/readyack-loss/scenario.bin",
+              "sha256": "154effb44ba68577ddf9d49504d08b3d2222da2cc6643061b2c6e1aa51a8c497"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "readyall-loss",
+            "clientAssertions": 17,
+            "passed": 17,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 62112,
+            "clientPid": 6396,
+            "commits": 1,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/readyall-loss/client.log",
+              "sha256": "1278a1f5824703f874e275e3236fca8ef527a6f9ab7f0bf3e3b421c6943e1fd6"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/readyall-loss/host.log",
+              "sha256": "3acbf58ab61c6013d85c62251fa26071d7b2d1e1ed35a33d785a3ec9a3b558c7"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/readyall-loss/scenario.bin",
+              "sha256": "7a1f4919968dee8ab5bc63e89bee71635cac64fb070759b516c16aed1d8de7b9"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "replay",
+            "clientAssertions": 18,
+            "passed": 18,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 63220,
+            "clientPid": 39224,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/replay/client.log",
+              "sha256": "5b7abb09e637b38cd6ed243e3ce1335ba50695f809b9eef511fdf65748429df3"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/replay/host.log",
+              "sha256": "bca17436da529bc1f293d7cb34789e52ee9cdc846b73f89281bfe9e03f8ae6e2"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/replay/scenario.bin",
+              "sha256": "1b2491043be77b489253a0979aeac61424e18d077bbb5c3b1a1af61be39d0b79"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "required",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 45336,
+            "clientPid": 57944,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/required/client.log",
+              "sha256": "4d8152b72c5f98a24cb110bb2f47083769901cf49438677d55ef0f5d727831e1"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/required/host.log",
+              "sha256": "1be0718b40ea9cd09aa54f7e9098eece92dfdae6513d20da8fa25caa5c6ff353"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/required/scenario.bin",
+              "sha256": "68e7f179feaac8710b8fa068f50df9e5256dae4f9ec30526b2b720cff4e0d7b0"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "schema",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 23856,
+            "clientPid": 25340,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/schema/client.log",
+              "sha256": "f97e2fe3acb8547a0477e94c9b196c94ac0785dc488b8f6184eca93d820608bc"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/schema/host.log",
+              "sha256": "87cbe939ac048d27c7165113d94c0cc812c8608c392684d1b709af886af24207"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/schema/scenario.bin",
+              "sha256": "21ed745f788926be46b2779734a3bedf556bf68a64cab35ff6c2713751b9fa6e"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "sequence",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 37504,
+            "clientPid": 58564,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/sequence/client.log",
+              "sha256": "7cb3c562a4ae05d02b33029db0e756205b4c30367811c956da1267b9bb35f0ab"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/sequence/host.log",
+              "sha256": "fed6d83a7f7fad6e0813818c959226edbe201ad3cc7563fe17574492609a10c8"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/sequence/scenario.bin",
+              "sha256": "d3d36b40dbe3b8bd7cd62e07409450b589f20c8ca0a4b8c2589cbf290c0ea47f"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "shared-provider",
+            "clientAssertions": 16,
+            "passed": 16,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 61508,
+            "clientPid": null,
+            "clientPidNote": "该场景早返回未输出 PID；两个 Child 原生 CreateProcess/exit 由父测试具名 two-PID 检查，未补造 PID",
+            "commits": 2,
+            "activations": 2,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/shared-provider/client.log",
+              "sha256": "d6033cbd6d2c90637f0a5a300edc5318fdd0957856476b02f634f55576cbf09f"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/shared-provider/host.log",
+              "sha256": "05d1cd8c6e621c446e54b49ff66244d06c779bef00757aedae76fe01bb46f85b"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/shared-provider/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "stop-timeout",
+            "clientAssertions": 18,
+            "passed": 18,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 38676,
+            "clientPid": 43068,
+            "commits": 1,
+            "activations": 1,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/stop-timeout/client.log",
+              "sha256": "adf36706e493d2fc0a291acc08e3e88a92da7daf33aa9c069269fb896d05e27c"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/stop-timeout/host.log",
+              "sha256": "e151cd9c366834d784aaeaceed9d477bb1bcca2620405b61dc0c715b08fa7441"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/stop-timeout/scenario.bin",
+              "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "truncated",
+            "clientAssertions": 12,
+            "passed": 12,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 11024,
+            "clientPid": 66172,
+            "commits": 0,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/truncated/client.log",
+              "sha256": "a868be5a19725b588cbfe626fbaf7508cf4ed20255123bbe19f6c1e74b1302d0"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/truncated/host.log",
+              "sha256": "1dc8c103265a36240be3c6365bbda7aa50b09e2573f8255d185bb50c528b1aad"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/truncated/scenario.bin",
+              "sha256": "cac08f48e42708d97979e92cc4796aad1df976d61cfbe042f5f00c9fa70423e4"
+            },
+            "authorityInput": null
+          },
+          {
+            "name": "unknown",
+            "clientAssertions": 21,
+            "passed": 21,
+            "failed": 0,
+            "skipped": 0,
+            "hostPid": 3108,
+            "clientPid": 42076,
+            "commits": 1,
+            "activations": 0,
+            "remainingOwned": 0,
+            "clientLog": {
+              "path": "build/phase06/control-fixtures/60032/unknown/client.log",
+              "sha256": "5085cd13604abc208ffa10bc5dc85f1a069e115910647ba47d190fa1c03850c8"
+            },
+            "hostLog": {
+              "path": "build/phase06/control-fixtures/60032/unknown/host.log",
+              "sha256": "131ee11d987500dd069968272b261295770c05bd4a55bb37f5dd0803e7774854"
+            },
+            "faultInput": {
+              "path": "build/phase06/control-fixtures/60032/unknown/scenario.bin",
+              "sha256": "39aaf5c1022d8f8c5067907b6221231b548f3227845a05dfde348267ca220978"
+            },
+            "authorityInput": null
+          }
+        ]
+      },
+      "build": {
+        "path": "build/phase06/06-06-asan-fixture-build.log",
+        "sha256": "d5389ad39f1890d8398aafed7631bdaf91566f75b76894ad78f740f45e7e8cac"
+      },
+      "ctest": {
+        "path": "build/phase06/06-06-asan-fixture-ctest.log",
+        "sha256": "47da8fb5f7b5a36ec1499b2289b51ffe311941a4c139f3766906ad9aadf348ee"
+      },
+      "binaries": [
+        {
+          "path": "build/phase06/windows-x64-asan/Release/aether_protocol.dll",
+          "sha256": "1d0221ed70558ae323f6487fdfc8670fe3887126f459860b0221b07a6eed6a9d"
+        },
+        {
+          "path": "build/phase06/windows-x64-asan/Release/aether_protocol_control_client.exe",
+          "sha256": "6fde8b598da4337396185b45939f7ec2f2950524903d888c91fd1b5d685fcc81"
+        },
+        {
+          "path": "build/phase06/windows-x64-asan/Release/aether_protocol_control_host.exe",
+          "sha256": "1fdab5478ba1d39899983cac9966b7b53e64ec0281fc209984dbe14c39c6ab3a"
+        }
+      ],
+      "manifest": {
+        "path": "build/phase06/windows-x64-asan/target-manifest-Release.json",
+        "sha256": "c065b705313a2d72940384d3ceb81992433c34a4329c6a75a19a9cff60a44a30"
+      }
+    },
+    "runtime": {
+      "path": "C:/Program Files/Microsoft Visual Studio/18/Enterprise/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/clang_rt.asan_dynamic-x86_64.dll",
+      "sha256": "7f901a239979c49b36a3b18ecd1843f551f94b5879585bded41a650c5b71f35f"
+    },
+    "instrumentation": "Aether、Botan、libSRTP /fsanitize=address；固定预编译 OpenSSL 未插桩。仅进程临时 PATH/ASAN_OPTIONS/manifest。",
+    "initialRuntimeMissing": {
+      "ctestExit": 8,
+      "failed": 9,
+      "total": 11,
+      "log": {
+        "path": "build/phase06/06-06-asan-ctest.log",
+        "sha256": "d15b4e2738a7e26e36a7a0762dcada100ac80a6daa60b73f969ca424547e5e24"
+      },
+      "classification": "环境 runtime 路径遗漏，0xc0000135/timeout；不作为 TDD RED。"
+    }
+  },
+  "fixtureContract": {
+    "authority": {
+      "file": "provider.bin",
+      "bytes": 96,
+      "magic": "APFX",
+      "schema": 1,
+      "networkEndian": true,
+      "fields": "0 magic4;4 schema:u32;8 capacity:6*u64;56 revision:u64;64 expiryToken:u64;72 lease:u64;80 permissionBits:u32;84 deviceBits:u32;88 monotonicAdvanceMs:u64 <=60000"
+    },
+    "fault": {
+      "file": "scenario.bin",
+      "recordBytes": 32,
+      "maxDelayMs": 3000,
+      "maxRemaining": 32,
+      "fields": "opcode:u32,phase:u32,request:u64,beforeCommit:u32,delayMs:u32,flags:u32,remaining:u32",
+      "maxRecords": 32,
+      "maxFileBytes": 1024,
+      "sharedCounterMutex": true
+    },
+    "entry": "aether_protocol_control_client.exe --orchestrate [--scenario NAME]；host --host DIRECTORY NAME；client --client DIRECTORY NAME PORT；仅测试 host 读 authority/fault 输入。"
+  },
+  "limitations": "Windows x64、synthetic authority/video 和真实 loopback TLS/SRTP；完整预算/恢复/trace/upstream、真实配对及设备由后续计划覆盖，NET 共享要求未完成。"
+}
