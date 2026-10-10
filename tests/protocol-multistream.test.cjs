@@ -60,7 +60,7 @@ function fixture(){
 }
 if(process.argv.includes('--audit-fec'))auditFec().catch(e=>{console.error(e);process.exitCode=1;});
 else for(const scenario of ['happy','loss-video1','cross-stream','wrong-direction','tamper-high-sequence','replay',
-  'fec-happy','fec-threshold','fec-beyond','fec-tamper-repair','fec-cross-role','fec-reorder-replay','fec-late','fec-queue','fec-domain-tamper','fec-burst','fec-fresh-epoch','fec-stale-epoch'])test('real secure media: '+scenario,{timeout:10000},async()=>{
+  'fec-happy','fec-threshold','fec-beyond','fec-tamper-repair','fec-cross-role','fec-reorder-replay','fec-late','fec-queue','fec-domain-tamper','fec-burst','fec-fresh-epoch','fec-stale-epoch','fec-contract'])test('real secure media: '+scenario,{timeout:10000},async()=>{
   const full=scenario.startsWith('fec-');
   const m=target(),dir=fixture(),relay=dgram.createSocket('udp4');let host,client,receiver=0,hostPort=0;const held=[];const relayCounts={received:0,forwarded:0,dropped:0,injected:0};let relayError;
   relay.on('error',e=>{relayError=e;});
@@ -120,6 +120,7 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
       assert.equal(cs.streams.length,5,'Missing independent native streams');assert.equal(cs.controlProgress,8);assert.equal(hs.controlProgress,8);
       assert.equal(relayCounts.received,120);
       for(const result of [hs,cs]){
+        if(scenario==='fec-contract'){assert.equal(result.queryVersion,1);assert.equal(result.mediaLimits.headerBytes,160);assert.equal(result.mediaLimits.frameBytes,128);assert.equal(result.mediaLimits.effectivePacketBytes,240);}
         assert.equal(result.fecProfile,'rs-vandermonde-gf256-11d-v1');
         assert.equal(result.queueBytes,0);assert.ok(result.peakQueueBytes<=(scenario==='fec-queue'?640:960));
         for(const stream of result.streams){
@@ -160,4 +161,14 @@ if(!process.argv.includes('--audit-fec'))for(const mode of ['rollover','nonce-ex
   const m=target();assert.ok(m.mediaSecurity,'Current security test target manifest required');
   const result=cp.spawnSync(m.mediaSecurity.binary,[mode],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000,maxBuffer:4096});
   assert.equal(result.status,0,result.stderr);assert.deepEqual(JSON.parse(result.stdout),{ok:true,case:mode});
+});
+function optionBytes(options){const b=Buffer.alloc(20);for(const [name,offset] of [['packetSize',0],['mtu',2],['fecPercent',4],['minRepair',6],['shardBytes',8],['k',10],['ttlMs',16],['reserved',18]])b.writeUInt16BE(options[name],offset);b.writeUInt32BE(options.perStreamQueue,12);return b;}
+function mediaHello(options,profile=1){
+  const b=Buffer.from('41455448000001020001000200010001050003000200010006000178','hex');b.writeUInt16BE(profile,21);
+  const tlv=Buffer.alloc(4);tlv.writeUInt16BE(7,0);tlv.writeUInt16BE(20,2);const request=Buffer.concat([b,tlv,optionBytes(options)]);request.writeUInt16BE(request.length,4);return request;
+}
+if(!process.argv.includes('--audit-fec'))test('independent full-media parser boundaries and profile negotiation',()=>{
+  const m=target(),vectors=JSON.parse(fs.readFileSync(path.join(root,'protocol/vectors.json'))).multiMedia;
+  for(const vector of vectors.boundaries){const request=mediaHello({...vectors.options,...vector.changes});const r=cp.spawnSync(m.binary,['--role','parse','--wire',request.toString('hex')],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000});assert.equal(r.status,0);assert.equal(JSON.parse(r.stdout).status,vector.status,vector.id);}
+  const unknown=mediaHello(vectors.options,2),r=cp.spawnSync(m.binary,['--role','parse','--wire',unknown.toString('hex')],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000});assert.equal(r.status,0);assert.equal(JSON.parse(r.stdout).status,20,'Unknown FEC profile must fail before allocation');
 });
