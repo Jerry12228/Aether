@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: Phase 6 planning complete (5 plans, revision 1 verified); Phase 3 still halted at 03-03-02 pending corrected install-plan approval; no execution or system mutation
-last_updated: "2026-10-09T16:38:14.000Z"
+stopped_at: Phase 6 halted at 06-01-03 concrete ADR decision (2/3 tasks); Phase 3 still halted at 03-03-02 corrected install-plan approval; no system mutation
+last_updated: "2026-10-10T03:34:01.000Z"
 last_activity: 2026-10-10
-last_activity_desc: Phase 6 research/planning/check complete; 5 sequential plans ready for separate execution authorization; Phase 3 install gate unchanged
+last_activity_desc: Phase 6 tasks 06-01-01/02 committed, tests19/19 and CTest9/9; specific ADR decision pending; Phase 3 install gate unchanged
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 14
   completed_plans: 8
   percent: 5
-state_head: 02f65b8
+state_head: 5292638
 ---
 
 # Project State
@@ -37,13 +37,13 @@ Last activity: 2026-10-09 — Corrected WUDF INF group, WDK/six-INF/signature/He
 
 Progress: [█░░░░░░░░░] 5%
 
-## Ahead-of-Sequence Planning
+## Ahead-of-Sequence Execution
 
-Phase 6 — GameStream 协议重构与扩展：2026-10-10规划完成，5计划/5顺序波/14任务，未执行。仅技术依赖Phase 2已完成。首轮1 blocker/1 warning（计划容量）经Revision 1拆分为9/9/9/6/9文件执行包，第二轮独立检查0 blocker/0 warning。NET-01/02/03覆盖3/3、D-01–16覆盖16/16、post-plan19/19；28条自动命令失败方向通过，路径引擎not_applicable不等于实际路径验证。研究、模式、验证策略和检查报告位于 `.planning/phases/06-gamestream/`。VALIDATION仍draft、nyquist/wave0 false，三条未分类边界和六条无描述符禁止项保留。
+Phase 6 — GameStream 协议重构与扩展：用户2026-10-10显式执行授权后，顺序完成06-01-01/02，停在06-01-03 blocking-human具体ADR决定。5计划/5顺序波，0/5计划完成、2/3首计划任务完成；NET-01/02/03仍未完成。仅技术依赖Phase 2已完成。实际原生loopback双PID TLS1.3控制与SRTP UDP synthetic sink、完整待确认方案、独立golden/KAT/摘要、拒绝/回调停止/绝对超时回归通过；node19/19（5,038.0752ms）、CTest9/9（10.48s）、dossier8材料/14证据摘要核验通过。源映射296行，637原能力/case/条件/owner全部保留；OpenSSL3.5.9/libSRTP2.8.0源码本地构建，参考/ENet/nanors未链接。当前仅Windows x64 Debug实测，不是产品远程/设备/性能/五目标支持。VALIDATION仍draft、nyquist/wave0 false，三条未分类边界和六条无描述符禁止项保留。
 
-具体协议/安全/wire/来源ADR人审：06-01-03；五目标真实构建运行与阶段末强制人审：06-05-03。候选库及协议尚未锁定，原型/模拟与真实设备/性能证据分开。Apple只有实机验收TODO，构建/可运行检查仍为完成门槛。五计划是同一协议原型链的容量例外，不扩展到配对/设备/codec/生产仲裁，不修改42阶段产品边界。
+具体协议/安全/wire/来源ADR人审：06-01-03，尚无真实原答复。当前材料：[PROTOCOL-ADR](../docs/phase06/PROTOCOL-ADR.md)，完整SHA256 `0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc`；其余lock/vectors/source/binary/log摘要在ADR和[06-01-SUMMARY](phases/06-gamestream/06-01-SUMMARY.md)。候选局部TLS1.3控制+SRTP媒体、强制保护/原明文选项保留禁用原因及安全替代、仅两库复用待批准。06-02被halted06-01阻断；06-03/04/05传递阻断，均未执行。五目标真实构建运行与阶段末强制人审仍为06-05-03门槛；Apple只有实机验收TODO。五计划为同一协议链容量例外，不扩展到配对/设备/codec/生产仲裁，不改变42阶段产品边界。
 
-为保留当前Phase 3的blocking-human恢复入口，未用通用`state.planned-phase`将Current Position覆盖成Phase 6；规划状态单独记录在本节及ROADMAP Planned行。当前phase/plan/status、Apollo条件、安装授权和Phase3完成计数原样保留。下一步可显式调用 `$gsd-execute-phase 6`；本轮未启动任何实现或系统操作。
+为保留Phase 3的blocking-human恢复入口，未用通用state.advance-plan覆盖Current Position；Phase6执行状态单独记录在本节及ROADMAP。当前phase3/plan3/status halted、Apollo条件、安装授权和Phase3完成计数原样保留。下一步对当前具体ADR回复approve-concrete/revise-concrete/hold，按06-01-SUMMARY从06-01-03恢复，先核验摘要再记录真实答复。生产/TDD提交c1bd244、02903c4、9aee05d、3fc54a7；halted摘要5292638。已有SUMMARY不等于计划完成；仍8完成计划/2完成阶段，不使用误计halted的通用完成计数。
 
 ## Performance Metrics
 
@@ -64,6 +64,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 ## Accumulated Context
 
 ### Decisions
+
+- 2026-10-10 Phase6按用户`$gsd-execute-phase 6`内联顺序执行至06-01-03：安全单包原型和完整具体ADR已提交；自动测试不代表批准，decision原答复/选择/时间仍null。独立原生proposal确认只记批准计数，不提交生产预算；多流/FEC/恢复/FFI/其余目标未执行。未改变Phase3系统授权，无设备/信任/网络配置修改或执行/安排重启/关机。
 
 - Aether Monorepo；Helios Windows10/11；Selene Flutter 五端。
 - 麦克风/摄像头必须作为Windows系统设备供普通软件使用。
@@ -112,6 +114,8 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
+[Phase6 current 06-01-03 blocking-human] 具体ADR hash0cdda0d2待真实审阅答复；TLS/SRTP/两库是候选，不推断技术批准。原mode0关闭加密/mode1明文回退与D13冲突，保留名称和禁用原因，提供mandatory安全替代。06-02/03/04/05阻断；Phase6、NET01/02/03未完成。当前scope仅loopback单synthetic下行包，剩余nonce/FEC/rekey/多流/真实权限/预算/五目标不能从该结果推断支持。GSD phase-plan-index实际返回halted=true、runnable=[]，四后续计划blocked_by06-01。
+
 [Phase3 current 03-03-02 blocking-human] 原安装条件授权在Apollo前置失败停止。现exact WUDF subkey修正/新包完成，等待新plan4fa13eea批准；机器安装和实际UMDF隔离均未执行。Apollo PID6820/15176与四WUDFHost、配置/二进制、20外来记录/8store文件和CCD保持；45,957ms只读窗口全部一致，0 establishedTCP不代表无UDP串流。BCD权限partial、既有安全/信任不变；历史Machine/Install假授权自动审批拒绝原样保留。WINDOWS ledger未执行矩阵仍open。SDK仍按SUMMARY存在误计9/3，已再次按halted纠正8完成、Phase3 2/3；不关闭VDP。
 
 [Phase1] 两个人审检查点均已答复、四原行为冲突已decided；VS2026与WDK28000同版本组件及集成文件存在，安装缺口resolved。保留9项open环境gap与1项Apple实机TODO：原生构建、独立Win10/客户端/架构/GPU环境、主机build下限、Apple/Linux executor、AndroidAPI21–23/Linux额外架构及测量仪器。来源1261阻碍条目含未决子模块、外部包/二进制来源、具体生产许可、驱动签名和渠道，阻断对应后续生产选用；全部research-only、生产清单空。637平台记录及637计划案例已映射，尚未实现或实机验证。Apple只有VFY01/02实机延期，构建义务仍保留。三个分类flag/六条无描述符prohibitions原状态保留，不伪造自动引擎通过。
@@ -147,6 +151,8 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 ## Session Continuity
 
 Last session: 2026-10-10（Asia/Singapore）
-Stopped at: Phase 6 planning complete (5 plans, revision 1 verified); Phase 3 still halted at 03-03-02 pending corrected install-plan approval; no execution or system mutation
+Stopped at: Phase 6 halted at 06-01-03 specific ADR decision; Phase 3 independently halted at 03-03-02 corrected install plan; no system mutation
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
+
+Active Phase6 resume: `.planning/phases/06-gamestream/06-01-SUMMARY.md` + `06-01-PLAN.md` Task06-01-03。先核验ADR0cdda0d2及绑定材料，取得真实具体答复；approve才完成06-01/允许06-02，revise/hold保持后续阻断。以上Phase3 Resume file/Next action仅保留其独立安装恢复入口，不是本次协议执行的下一任务。

@@ -9,7 +9,7 @@ created: "2026-10-09"
 
 # Phase 06 — Validation Strategy
 
-本文件是执行期验证契约；所有新入口尚未创建，命令是计划目标，不是本轮已运行证据。规划代理应同步实际任务编号、测试名和命令，保留 draft/false 直到执行和审计取得证据。
+本文件是执行期验证契约。2026-10-10完成06-01-01/02，真实Windows x64原型node19/19（5,038.0752ms）及CTest9/9（10.48s）通过，摘要核验8材料/14过程及日志通过；06-01-03等待真实具体ADR决定，后续计划未执行。尚不存在的入口仍是计划目标，不能记为已运行。保留draft/false直到全阶段执行和审计取证。
 
 ## Test Infrastructure
 
@@ -19,7 +19,7 @@ created: "2026-10-09"
 | Config file | native/protocol/CMakeLists.txt（Wave 0 新建，独立于 Windows driver） |
 | Quick run command | node --test tests/protocol-tracer.test.cjs（06-01-01创建后；其余任务使用对应定向suite） |
 | Full suite command | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs tests/protocol-recovery.test.cjs tests/protocol-ffi.test.cjs tests/protocol-evidence.test.cjs；五目标证据另运行独立verify |
-| Estimated runtime | 未测；快速反馈目标30秒，完整故障/平台矩阵单独记录实际时长 |
+| Estimated runtime | 首计划真实node5.038s/CTest10.48s；快速反馈目标30秒，完整故障/平台矩阵仍未测 |
 
 ## Sampling Rate
 
@@ -32,9 +32,9 @@ created: "2026-10-09"
 
 | Task ID | Plan | Wave | Requirement | Threat Ref | Secure Behavior | Test Type | Automated Command | File Exists | Status |
 |---|---|---|---|---|---|---|---|---|---|
-| 06-01-01 | 01 | 1 | NET-01/02/03 | T-06-01–04/SC | 双PID真实安全socket、共同版本/身份/长度拒绝、资源停止 | native+process | node --test tests/protocol-tracer.test.cjs | W0:06-01-01 | pending |
-| 06-01-02 | 01 | 1 | NET-01/02/03 | T-06-01/02/SC | 独立golden/KAT、完整字段/原设置、D01–04/13 | vectors+process | node --test tests/protocol-tracer.test.cjs | W0:06-01-01 | pending |
-| 06-01-03 | 01 | 1 | NET-01/02/03 | T-06-01–04/SC | 具体ADR/来源/原设置决定绑定hash | process+真人决定 | node --test tests/protocol-tracer.test.cjs | W0:06-01-01 | pending |
+| 06-01-01 | 01 | 1 | NET-01/02/03 | T-06-01–04/SC | 双PID真实安全socket、共同版本/身份/长度拒绝、资源停止 | native+process | node --test tests/protocol-tracer.test.cjs | yes | pass scoped prototype |
+| 06-01-02 | 01 | 1 | NET-01/02/03 | T-06-01/02/SC | 独立golden/KAT、完整字段/原设置、D01–04/13 | vectors+process | node --test tests/protocol-tracer.test.cjs | yes | pass automated19/19; ADR candidate |
+| 06-01-03 | 01 | 1 | NET-01/02/03 | T-06-01–04/SC | 具体ADR/来源/原设置决定绑定hash | process+真人决定 | node --test tests/protocol-tracer.test.cjs | yes | halted blocking-human; decision null |
 | 06-02-01 | 02 | 2 | NET-01/02/03 | T-06-05/09 | 真实双video、独立安全域/故障/owned清理 | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | W0:06-02-01 | pending |
 | 06-02-02 | 02 | 2 | NET-01/02/03 | T-06-05/06/09/SC | audio/双向synthetic、认证后FEC、replay/key epoch/nonce exhaustion | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | W0:06-02-01 | pending |
 | 06-02-03 | 02 | 2 | NET-01/02/03 | T-06-05/06/09 | 独立golden/KAT、±1/头篡改/seqwrap与公开结构 | vectors+process | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | W0:06-02-01 | pending |
@@ -49,7 +49,7 @@ created: "2026-10-09"
 
 上述命令失败方向：非零exit、零tests、skip/cancel/TODO、缺具名case/目标/真实log或artifact、source/SDK/arch/dependency/binary hash漂移、timeout、资源未归零。坏证据fixture必须被拒绝；退出0但缺证明亦失败。自动化通过不能代替06-01-03具体决定和06-05-03强制真人审阅。每计划各命令立即附`fails_when`为权威细则。五个顺序wave的已创建suite依次为tracer；+multistream；+recovery；+FFI；+evidence与五目标独立verify。长量测实际30秒预热/60秒窗口/3轮，不计作fast用时。
 
-## Substantive Edge Coverage（手工规划，未执行）
+## Substantive Edge Coverage（06-01实测，其余仍规划）
 
 | Edge | Task/test | Expected boundary |
 |---|---|---|
@@ -73,7 +73,7 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 
 ## Wave 0 Requirements
 
-- [ ] 独立 native/protocol 合同构建根、真实 socket 双进程 tracer 与独立 golden wire/密码已知答案向量。
+- [x] 独立 native/protocol 合同构建根、真实 socket 双进程 tracer 与独立 golden wire/密码已知答案向量（Windows x64 Debug scoped；不代表五端完成）。
 - [ ] 正式库准入：official SHA、archive hash、LICENSE/NOTICE、平台构建选项和产物；引用源码不能进入产品构建。
 - [ ] test-only authority/设备 fixture、单调假时钟、有限 userspace loss relay；固定seed及丢包位置，不改系统网络。
 - [ ] packet/frame/shard/queue/parse/deadline界限、重试和trace上限；native sink digest、丢失/恢复/认证失败统计。
@@ -97,3 +97,5 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 - [ ] 执行后完成审计才设置 nyquist_compliant/wave_0_complete。
 
 **Approval:** pending
+
+06-01局部验证记录见[halted SUMMARY](06-01-SUMMARY.md)和[具体ADR](../../../docs/phase06/PROTOCOL-ADR.md)。三条edge probe和六条descriptorless禁止项未自动改成resolved；平台、FEC/丢包、重连/epoch/trace/FFI等后续验证未执行，不因首计划测试通过设置nyquist或wave0 true。

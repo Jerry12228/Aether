@@ -175,7 +175,7 @@
 
 **Wave 1**
 
-- [ ] 06-01-PLAN.md — 真实安全双进程 tracer、固定基线/向量和具体 ADR 决定
+- [ ] 06-01-PLAN.md — 真实安全双进程 tracer、固定基线/向量完成；06-01-03具体 ADR 人审待答复（2/3任务，halted）
 
 **Wave 2（前置：Wave 1完成及具体ADR批准）**
 
@@ -193,7 +193,7 @@
 
 - [ ] 06-05-PLAN.md — 五目标实际构建运行、独立证据与强制最终人审
 
-Phase 3仍halted；Phase 6只依赖已完成的Phase 2，本次仅提前规划。具体传输/安全/wire/复用决定在06-01-03，阶段最终人审在06-05-03；本轮不启动执行。
+Phase 3仍halted；Phase 6只依赖已完成的Phase 2。2026-10-10显式执行已完成06-01前两任务（node19/19、CTest9/9），停在06-01-03具体传输/安全/wire/复用决定；ADR hash0cdda0d2待真实答复，0/5计划完成。06-02被halted06-01阻断，06-03/04/05传递阻断，均未执行；阶段最终五目标证据与人审仍在06-05-03。
 
 ### Phase 7: 配对、发现与设备权限
 
@@ -650,7 +650,7 @@ Phase 3仍halted；Phase 6只依赖已完成的Phase 2，本次仅提前规划�
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 0/5 | Planned | - |
+| 6. GameStream 协议重构与扩展 | 0/5 | In Progress (halted 06-01-03) | - |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |
