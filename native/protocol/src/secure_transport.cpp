@@ -5,6 +5,7 @@
 #include <openssl/sslerr.h>
 #include <openssl/x509v3.h>
 #include <algorithm>
+#include <cerrno>
 #ifndef _WIN32
 #include <fcntl.h>
 #endif
@@ -64,7 +65,20 @@ void handshake(Context& c){
   timeval ms{static_cast<long>(c.config.deadline_ms/1000),0};
   setsockopt(c.tcp.value,SOL_SOCKET,SO_RCVTIMEO,&ms,sizeof(ms));setsockopt(c.tcp.value,SOL_SOCKET,SO_SNDTIMEO,&ms,sizeof(ms));
 #endif
- }else{make_socket(c.tcp,SOCK_STREAM,c.config.deadline_ms);auto a=endpoint(c.config.peer_control_port);require(connect(c.tcp.value,reinterpret_cast<sockaddr*>(&a),sizeof(a))==0,AP_TIMEOUT);}
+ }else{make_socket(c.tcp,SOCK_STREAM,c.config.deadline_ms);auto a=endpoint(c.config.peer_control_port);if(c.selected==3){nonblocking(c.tcp.value);if(connect(c.tcp.value,reinterpret_cast<sockaddr*>(&a),sizeof(a))!=0){
+#ifdef _WIN32
+   require(WSAGetLastError()==WSAEWOULDBLOCK,AP_TIMEOUT);
+#else
+   require(errno==EINPROGRESS,AP_TIMEOUT);
+#endif
+   wait_socket(c,c.tcp.value,true);int error=0;
+#ifdef _WIN32
+   int bytes=sizeof(error);
+#else
+   socklen_t bytes=sizeof(error);
+#endif
+   require(getsockopt(c.tcp.value,SOL_SOCKET,SO_ERROR,reinterpret_cast<char*>(&error),&bytes)==0&&error==0,AP_TIMEOUT);
+  }}else require(connect(c.tcp.value,reinterpret_cast<sockaddr*>(&a),sizeof(a))==0,AP_TIMEOUT);}
  nonblocking(c.tcp.value);
  c.tls.reset(SSL_new(c.tls_context.get()));require(c.tls!=nullptr,AP_INTERNAL_ERROR);
  require(SSL_set_fd(c.tls.get(),static_cast<int>(c.tcp.value))==1,AP_INTERNAL_ERROR);

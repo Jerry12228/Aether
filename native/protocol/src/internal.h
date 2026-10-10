@@ -108,9 +108,9 @@ public:
  virtual int32_t fresh_auth_result(const Binding&,Identity&)=0;
  virtual int32_t check_permission_device(const Binding&,uint32_t mask)=0;
 };
-struct RecoveryController {Identity previous,current;uint64_t epoch=0;uint32_t attempts=0,retry_remaining_ms=0;bool cancelled=false;std::string state="manual",reason;};
+struct RecoveryController {Identity previous,current;uint64_t epoch=0;uint32_t attempts=0,retry_remaining_ms=0,maximum_attempts=3,initial_backoff_ms=50,maximum_backoff_ms=200,persistent_threshold_ms=500;bool cancelled=false;std::chrono::steady_clock::time_point retry_started{},failure_started{};std::string state="manual",reason,scope="connection";};
 struct SummaryRecord {uint64_t connection=0,stream=0;int32_t status=AP_OK;uint32_t packets=0,rejected=0;};
-struct TraceWindow {uint64_t expires=0,bytes=0;bool enabled=false;};
+struct TraceWindow {uint64_t expires=0,bytes=0,limit_bytes=65536;bool enabled=false;std::string records;};
 struct ControlState;
 struct FecBlock;
 class MediaScheduler;
