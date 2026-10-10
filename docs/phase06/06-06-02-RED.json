@@ -1,0 +1,10 @@
+{
+  "actual": "已发送取消只留本地token，query cancelOutcome none",
+  "exitCode": 1,
+  "targetTest": "committed-confirm-cancel-needs-authority-receipt",
+  "expected": "cancelOutcome already-committed由真实主机回执提供且原CONFIRM只一个terminal",
+  "nativeChildExitObservedBy": "orchestrator 子进程实际exit=1，父same-case退出1",
+  "rawLog": "D:\\WorkSpace\\Aether\\build\\phase06\\control-fixtures\\55284\\cancel-committed\\client.log",
+  "command": "build/phase06/windows-x64/Debug/aether_protocol_control_client.exe --client D:\\WorkSpace\\Aether\\build\\phase06\\control-fixtures\\55284\\cancel-committed cancel-committed 25112",
+  "output": "TAP version 13\r\nok 1 - control-open-copies-hello\r\nok 2 - fresh-TLS3-schema1-open\r\nok 3 - hello-never-grants-media\r\nok 4 - legacy-submit-control-mode-exclusive\r\nok 5 - request-accepted\r\nok 6 - exact-supported-proposal\r\nok 7 - proposal-complete-six-dimensional-specs\r\nok 8 - proposal-before-confirm-zero-sink\r\nok 9 - explicit-confirm-accepted\r\nok 10 - cancel-operation-accepts-local-intent\r\nok 11 - grant-ready-readyack-confirm-terminal\r\nnot ok 12 - committed-confirm-cancel-needs-authority-receipt\r\nok 13 - authenticated-SRTP-video-sink\r\nok 14 - authority-active-result-known\r\nok 15 - stop-joins-native-worker\r\nok 16 - destroy-after-ACK\r\nok 17 - no-callback-after-destroy\r\nCLIENT pid=2456\r\n1..17\r\n# tests 17\r\n# pass 16\r\n# fail 1\r\n# skipped 0\r\n"
+}
