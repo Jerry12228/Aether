@@ -1,0 +1,333 @@
+{
+  "schema": 1,
+  "repo": "sleepybishop/nanors",
+  "sourceSha": "b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a",
+  "archiveUrl": "https://api.github.com/repos/sleepybishop/nanors/tarball/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a",
+  "archiveSha256": "da130dba8643ad08a6af18866f94d3bf7574339496ba249d81ac2f34cc313a2d",
+  "archiveBytes": 69400,
+  "observedAt": "2026-10-10T04:39:52.914Z",
+  "status": "research-only-not-linked",
+  "files": [
+    {
+      "path": ".clang-format",
+      "blob": "9640123c79e4ee82a6708ce07974c133b5e61150",
+      "sha256": "a108a5ca339d1dae3d949adb41c2150a11072f3d7ac8d6071c5a8d38f953855e",
+      "bytes": 168,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/.clang-format"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "blob": "9d0faebf90dcb524e1e01694870f9c2ba0884650",
+      "sha256": "0add0726912989f22573bbdc013366da671f3092f42083ea53b4bde050ed4261",
+      "bytes": 2915,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/.github/workflows/ci.yml"
+    },
+    {
+      "path": ".gitignore",
+      "blob": "50f4b1c7d7345c86bdedf6cca3b77a9540e5bbe6",
+      "sha256": "5e00d3cef9560c24b1c5dfc53b8439cc5786a8ce99461107e397f22d1db469ba",
+      "bytes": 144,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/.gitignore"
+    },
+    {
+      "path": "LICENSE",
+      "blob": "89a77e6258540b7c3d7db22edc64ba36c4f4d6d4",
+      "sha256": "3fdda5f011d8490331950398e86427d67dfae05e048681476c2c6b8c34bdd033",
+      "bytes": 1072,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/LICENSE"
+    },
+    {
+      "path": "Makefile",
+      "blob": "ea4b348a04a82dee501d810f368f7d5fd68a8c92",
+      "sha256": "27808ec248a7675b057b74857b83417601dbb25cd7aa9846b2cb3915fdf3c697",
+      "bytes": 2491,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/Makefile"
+    },
+    {
+      "path": "README.md",
+      "blob": "766080cb241d56a39b14cb5a4471a4e6f9ccfe9b",
+      "sha256": "c560c4b58a3f85a89ed08b050dde5a0d69e2e14ffeb32593cf41079eaad12e43",
+      "bytes": 1472,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/README.md"
+    },
+    {
+      "path": "deps/obl/gf2_8_affine_mat.h",
+      "blob": "53826dabe53084f56cc9fca3f83de9ceb56f1788",
+      "sha256": "7742dcb53c95a6c04771b60ebd60f281a50684faf4599b4a9b0962daa5161d2a",
+      "bytes": 6229,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/gf2_8_affine_mat.h"
+    },
+    {
+      "path": "deps/obl/gf2_8_tables.h",
+      "blob": "f02a9feb1abb653adf52f66cdfd6240399cb8bf4",
+      "sha256": "ed4480ba7cb72217724b24ae2cb51c58c74a10456bb0d7c8317f9a5e613a31db",
+      "bytes": 37800,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/gf2_8_tables.h"
+    },
+    {
+      "path": "deps/obl/oblas16.c",
+      "blob": "fb8b99d67067a94be1d7eb689d6f5516490bd7b0",
+      "sha256": "4bd240760e5ec4814d508ff20993cb6703983503f3d9e136f81e4081de31bb47",
+      "bytes": 43711,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/oblas16.c"
+    },
+    {
+      "path": "deps/obl/oblas16.h",
+      "blob": "17e03d2e1dbfe533cfb676bf760ef9e5eb909105",
+      "sha256": "49a42a51d20c2f819440b68cd83421deb2a5e4d7732d82bf3c13eb5d3118b183",
+      "bytes": 873,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/oblas16.h"
+    },
+    {
+      "path": "deps/obl/oblas16_afft.c",
+      "blob": "505de050b5bcb0992b858b81faac47cb8e20e112",
+      "sha256": "460bd2420e0b1ea28d9ef698df05cee36a7d27545c046643d7972806d46d4247",
+      "bytes": 50069,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/oblas16_afft.c"
+    },
+    {
+      "path": "deps/obl/oblas16_afft.h",
+      "blob": "324971ee2b6e39b1f277120819e97735a9c04fad",
+      "sha256": "3f694ce4ff8ee5cb7ff805ae718c8cdcb71a0cfaffaccb94f2a7ff56bdb2f8c6",
+      "bytes": 978,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/oblas16_afft.h"
+    },
+    {
+      "path": "deps/obl/oblas_common.c",
+      "blob": "bd7bf5226f24381c3fd917f9149d586c07898a32",
+      "sha256": "187336b73b29d89ffc52d19566047618b03251aa4a35a05d685111fd57dc2397",
+      "bytes": 1606,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/oblas_common.c"
+    },
+    {
+      "path": "deps/obl/oblas_common.h",
+      "blob": "e9cc9f39bcba544b052b8f867e56f96beeed7baf",
+      "sha256": "06e632ab5a2f781e887ac539e0804add644dfa367c3086b1972af7c74085552c",
+      "bytes": 2328,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/oblas_common.h"
+    },
+    {
+      "path": "deps/obl/oblas_lite.c",
+      "blob": "4df2af6d2e91a791ebea0a7b6049d100f4dd6012",
+      "sha256": "34c357667ffd1c43e28dbd53c9da7ba6e6317c46d3afe09d0066252eb46172d3",
+      "bytes": 27500,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/oblas_lite.c"
+    },
+    {
+      "path": "deps/obl/oblas_lite.h",
+      "blob": "d1114d0e71156f25a6502173bd8a4d1700a20896",
+      "sha256": "ff68e76d40146de1273b7ea013fc6b741096681664df885938235f6fbc0a38c7",
+      "bytes": 643,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/deps/obl/oblas_lite.h"
+    },
+    {
+      "path": "graph.png",
+      "blob": "a6fb49c1f82f839165aadcf9717cf0bb67cdfb06",
+      "sha256": "b69b4f5219202b795ec05862f7f7f868a378fed7ac640e6c314ed79e7e67b869",
+      "bytes": 24705,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/graph.png"
+    },
+    {
+      "path": "rs.c",
+      "blob": "716e7296b258eb40206805410d0fcc58a57fa734",
+      "sha256": "e650cec353c2d3430e48c3a171d86622495d9ec1023bb7793d17bb5f05ba50c9",
+      "bytes": 5590,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/rs.c"
+    },
+    {
+      "path": "rs.h",
+      "blob": "4d175c0d7ded3962ae995e35c2bbf3339bcf7d7a",
+      "sha256": "cc17817b06ddd89b8bb438fe1c8b61e1f6c639670e98f9d035839c86340c5164",
+      "bytes": 1466,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/rs.h"
+    },
+    {
+      "path": "rs16.c",
+      "blob": "675f850c495c814dcb485e7f40b882de70275f68",
+      "sha256": "d2305801fdf4255bff9314a201eb444e6bd04049eda7d2150c98de12e6926ed3",
+      "bytes": 5810,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/rs16.c"
+    },
+    {
+      "path": "rs16.h",
+      "blob": "d14a584a2e604f4fbf4e465ff21de177ffaaa500",
+      "sha256": "f37b7ccaac15489200bdc87e0f817f2b1068f588ff7d709408a300e62af28a6f",
+      "bytes": 891,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/rs16.h"
+    },
+    {
+      "path": "rs16_afft.c",
+      "blob": "5616da841085db6e0cc8ac431455eb3f663952b0",
+      "sha256": "2ff4f59fb661716e44134c76c46eb7a1d4843211857db282cf8569ceedbf6b2e",
+      "bytes": 16168,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/rs16_afft.c"
+    },
+    {
+      "path": "rs16_afft.h",
+      "blob": "57729008129d33f2e54660eb26556a68f175208f",
+      "sha256": "1e9b5e4d6403ba54fcf2fa9368f05385868819479771e8a9df0fcd3ef069ab8f",
+      "bytes": 638,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/rs16_afft.h"
+    },
+    {
+      "path": "t/00util/bench.c",
+      "blob": "6aa327c3a09fda4598dec3e94cc4c50f78546a11",
+      "sha256": "f0d8ba5c1bd4f7f33249dbad95d8e7d659ad55af612b7f1dca25703c526bbbb4",
+      "bytes": 3806,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/00util/bench.c"
+    },
+    {
+      "path": "t/00util/bench16.c",
+      "blob": "94779089cab016e02c2b23b41b53ec0ff8a83ea5",
+      "sha256": "ab86584d303f79c19fac82bd27cc864ae1a4eff044974292f416133a250d52f1",
+      "bytes": 3788,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/00util/bench16.c"
+    },
+    {
+      "path": "t/00util/bench16_afft.c",
+      "blob": "747ebfeaced76ed9b4f2bc5a474571b62871d3a8",
+      "sha256": "19eca5a3a3ade0cfb7b4c4a9702b9b9e8d6a7ef48f24a3e45320cc1a25d74a08",
+      "bytes": 3809,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/00util/bench16_afft.c"
+    },
+    {
+      "path": "t/00util/test.c",
+      "blob": "ae535d1dbc260a1aa27e6c7ce4635b70ff8e8822",
+      "sha256": "7e35d7ddf9216d9a7a56889843d511c00f5211af9abc4be615273da74018c72b",
+      "bytes": 14102,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/00util/test.c"
+    },
+    {
+      "path": "t/00util/test16.c",
+      "blob": "ee3e9f7fea1a1887e274c4a1491cf42ad5355cba",
+      "sha256": "1fc8fdd072dd3ec5b45bdac4b7877d83b6d6d0dcc5244805972e57125c43e80a",
+      "bytes": 8225,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/00util/test16.c"
+    },
+    {
+      "path": "t/00util/test16_afft.c",
+      "blob": "426d92beca7f924e077452bfbae9f68fdde554a4",
+      "sha256": "159e9b48dd3fe84b3cefde14b4c10461763e52b027d870f851983a12e5dcb7f7",
+      "bytes": 8246,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/00util/test16_afft.c"
+    },
+    {
+      "path": "t/10random_schemes.t",
+      "blob": "c6c3f588f8d5a2efa0697237ec6d7f8cfac1a8e5",
+      "sha256": "36de1ef605fc3074848aef6265598177d6fd7e0c4cbff97bd04850a9917d0b3f",
+      "bytes": 445,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/10random_schemes.t"
+    },
+    {
+      "path": "t/15random_schemes16.t",
+      "blob": "aab3da08f49710bdeb3a63c05e348800133b0afd",
+      "sha256": "7ab6bd8a5a6a9abab05e26b5cff88401d2e329bd57af9e52c4f50b727d59fcf4",
+      "bytes": 479,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/15random_schemes16.t"
+    },
+    {
+      "path": "t/16random_schemes16_afft.t",
+      "blob": "e0554ae1649bd34452abad708e0d29a05180a416",
+      "sha256": "b4a29d97ef66b0d7663fd484c159dac8540f92801fdc2b4203ebb42e3710fd38",
+      "bytes": 489,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/16random_schemes16_afft.t"
+    },
+    {
+      "path": "t/20sample_bench.t",
+      "blob": "6d54476629f676f6da8bb3692592259aa28479a5",
+      "sha256": "6efb43d22e61addbf6a62a67f7493ba984d3f52ed6c20061d5f0ca673fd7d14b",
+      "bytes": 906,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/20sample_bench.t"
+    },
+    {
+      "path": "t/25sample_bench16.t",
+      "blob": "953091a8a3a4b280aad13041c8614242539f2694",
+      "sha256": "10b21d839e914ea494603e98db9a9bdbe6d1fff677ca3acc05384f4c73ae0014",
+      "bytes": 885,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/25sample_bench16.t"
+    },
+    {
+      "path": "t/26sample_bench16_afft.t",
+      "blob": "700bc0ea92603607db2b6cdd7e11830b5c8be749",
+      "sha256": "3144a740a43ca74167d19ade18d4f81f66c6cb8dd0dd21ddc738831efb653aa1",
+      "bytes": 1273,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/26sample_bench16_afft.t"
+    },
+    {
+      "path": "t/Util.pm",
+      "blob": "3ba00298619657ddde880f5112dcc565aae0b933",
+      "sha256": "41d8b23da2e550d35b7d2c302863158212d773ca412b1b4c80e7be6ca4b043dd",
+      "bytes": 935,
+      "sourceUrl": "https://raw.githubusercontent.com/sleepybishop/nanors/b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a/t/Util.pm"
+    }
+  ],
+  "rootLicense": {
+    "path": "LICENSE",
+    "blob": "89a77e6258540b7c3d7db22edc64ba36c4f4d6d4",
+    "sha256": "3fdda5f011d8490331950398e86427d67dfae05e048681476c2c6b8c34bdd033",
+    "bytes": 1072,
+    "text": "MIT License\n\nCopyright (c) 2021 Joseph Calderon\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "origin": {
+    "repo": "sleepybishop/oblas",
+    "sourceSha": "73830b455855a4f8e2746c37403be1c721fe9fad",
+    "licenseUrl": "https://raw.githubusercontent.com/sleepybishop/oblas/73830b455855a4f8e2746c37403be1c721fe9fad/LICENSE",
+    "licenseSha256": "9abac3a567b2ca6994037a9e549e847c1fbf85988b857cf0691b5447aa3a2ae9",
+    "licenseText": "MIT License\n\nCopyright (c) 2018 Joseph Calderon\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n",
+    "comparisons": [
+      {
+        "embeddedPath": "deps/obl/gf2_8_affine_mat.h",
+        "embeddedBlob": "53826dabe53084f56cc9fca3f83de9ceb56f1788",
+        "exactBlobMatches": []
+      },
+      {
+        "embeddedPath": "deps/obl/gf2_8_tables.h",
+        "embeddedBlob": "f02a9feb1abb653adf52f66cdfd6240399cb8bf4",
+        "exactBlobMatches": [
+          "gf2_8_tables.h"
+        ]
+      },
+      {
+        "embeddedPath": "deps/obl/oblas16.c",
+        "embeddedBlob": "fb8b99d67067a94be1d7eb689d6f5516490bd7b0",
+        "exactBlobMatches": []
+      },
+      {
+        "embeddedPath": "deps/obl/oblas16.h",
+        "embeddedBlob": "17e03d2e1dbfe533cfb676bf760ef9e5eb909105",
+        "exactBlobMatches": []
+      },
+      {
+        "embeddedPath": "deps/obl/oblas16_afft.c",
+        "embeddedBlob": "505de050b5bcb0992b858b81faac47cb8e20e112",
+        "exactBlobMatches": []
+      },
+      {
+        "embeddedPath": "deps/obl/oblas16_afft.h",
+        "embeddedBlob": "324971ee2b6e39b1f277120819e97735a9c04fad",
+        "exactBlobMatches": []
+      },
+      {
+        "embeddedPath": "deps/obl/oblas_common.c",
+        "embeddedBlob": "bd7bf5226f24381c3fd917f9149d586c07898a32",
+        "exactBlobMatches": []
+      },
+      {
+        "embeddedPath": "deps/obl/oblas_common.h",
+        "embeddedBlob": "e9cc9f39bcba544b052b8f867e56f96beeed7baf",
+        "exactBlobMatches": []
+      },
+      {
+        "embeddedPath": "deps/obl/oblas_lite.c",
+        "embeddedBlob": "4df2af6d2e91a791ebea0a7b6049d100f4dd6012",
+        "exactBlobMatches": []
+      },
+      {
+        "embeddedPath": "deps/obl/oblas_lite.h",
+        "embeddedBlob": "d1114d0e71156f25a6502173bd8a4d1700a20896",
+        "exactBlobMatches": []
+      }
+    ],
+    "status": "reference-license-only-no-exact-ancestry-claim"
+  }
+}
