@@ -1,0 +1,8 @@
+{
+  "output": "TAP version 13\r\n# Subtest: D-15 explicit trace reports monotonic remaining and expires\r\nnot ok 1 - D-15 explicit trace reports monotonic remaining and expires\r\n  ---\r\n  duration_ms: 828.8892\r\n  type: 'test'\r\n  location: 'D:\\\\WorkSpace\\\\Aether\\\\tests\\\\protocol-recovery.test.cjs:17:1'\r\n  failureType: 'testCodeFailure'\r\n  error: |-\r\n    Expected values to be strictly equal:\r\n    \r\n    20 !== 0\r\n    \r\n  code: 'ERR_ASSERTION'\r\n  name: 'AssertionError'\r\n  expected: 0\r\n  actual: 20\r\n  operator: 'strictEqual'\r\n  stack: |-\r\n    TestContext.<anonymous> (D:\\WorkSpace\\Aether\\tests\\protocol-recovery.test.cjs:17:198)\r\n    process.processTicksAndRejections (node:internal/process/task_queues:104:5)\r\n    async Test.run (node:internal/test_runner/test:1125:7)\r\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)\r\n  ...\r\n1..1\r\n# tests 1\r\n# suites 0\r\n# pass 0\r\n# fail 1\r\n# cancelled 0\r\n# skipped 0\r\n# todo 0\r\n# duration_ms 904.0613\r\nmise ERROR command failed: exit code 1\r\nmise ERROR Run with --verbose or MISE_VERBOSE=1 for more information\r\n\r\n",
+  "exitCode": 1,
+  "actual": "TRACE_START真实peer返回AP_VERSION=20",
+  "expected": "TRACE_START返回AP_OK并提供单调倒计时及自动到期关闭",
+  "command": "node --test --test-reporter=tap --test-name-pattern='D-15 explicit trace' tests/protocol-recovery.test.cjs",
+  "targetTest": "D-15 explicit trace reports monotonic remaining and expires"
+}
