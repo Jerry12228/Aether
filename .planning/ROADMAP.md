@@ -179,7 +179,7 @@
 
 **Wave 2（前置：Wave 1完成及具体ADR批准）**
 
-- [ ] 06-02-PLAN.md — Task1双video完成（25/25、CTest10/10）；halted于Task2新增FEC来源隔离准备决定，双向/FEC与Task3未执行
+- [ ] 06-02-PLAN.md — Task1双video完成；条件替代研究已执行，Botan标量候选ASan12/12；halted于Task2具体复用批准，FEC未链接，双向/Task3未执行
 
 **Wave 3（前置：Wave 2完成）**
 
@@ -193,7 +193,7 @@
 
 - [ ] 06-05-PLAN.md — 五目标实际构建运行、独立证据与强制最终人审
 
-Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。真实原答复1已批准06-01 ADR0cdda0d2/两库范围，首计划完成；06-02 Task1真实双video完成（node25/25、CTest10/10），现停在06-02-02新增FEC来源的隔离准备决定。FEC源码36文件研究审计不等于复用准入；原批准不包含新库。1/5计划完成，06-02 halted，06-03/04/05传递阻断未执行；NET未完成，阶段五目标证据与最终人审仍在06-05-03。
+Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原答复1已批准06-01 ADR0cdda0d2/两库范围，06-02 Task1完成。新原答复`2,若无则1`的替代研究已执行；五候选中Botan固定标量子集真实MSVC/ASan12/12、81独立KAT/42丢失组合/1,600并发检查通过，未触发nanors回退。当前等待FEC-ALTERNATIVES具体复用批准，不将研究选择或测试扩大为准入；FEC未链接。最新产品node25/25，历史CTest10/10未重跑。1/5计划完成，06-02 halted，06-03/04/05阻断，NET未完成；五目标与最终人审仍06-05-03。
 
 ### Phase 7: 配对、发现与设备权限
 
@@ -650,7 +650,7 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。真实原答�
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 1/5 | Halted (06-02 Task2 FEC source gate) | - |
+| 6. GameStream 协议重构与扩展 | 1/5 | Halted (06-02 Task2 Botan concrete reuse gate) | - |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |
