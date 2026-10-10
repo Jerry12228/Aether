@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "rawResponse": "1",
+  "choice": "approve-botan-prototype-reuse",
+  "recordedAt": "2026-10-10T05:34:57Z",
+  "reviewedCommit": "11f7397",
+  "reviewedMaterials": [
+    {"path": "docs/phase06/FEC-ALTERNATIVES.md", "sha256": "3ebdf494fa77c8262d620e7eb60f874c1546564c6bb866c2c9e816b18ac3fa22"},
+    {"path": "docs/phase06/FEC-ALTERNATIVES.json", "sha256": "a3157d9e6dc90e921c017d62c9ba3f88241a4aaadd9cf07ace4676fcb02451d8"}
+  ],
+  "archive": "build/phase06/reviewed-fec-reuse",
+  "source": {
+    "repo": "randombit/botan",
+    "version": "3.13.0",
+    "sourceSha": "2a81eef56c96c237e590c27f9a75e60317c9c700",
+    "archiveSha256": "714d6c52c6d752808e8784df21c146e176e91c57c99ee72c08eff4439fcff872",
+    "configuration": "Reviewed unmodified 23-source scalar ZFEC subset; base/hex/rng/utils/zfec; no concrete crypto/RNG/TLS provider, SIMD, CPUID, assembly or shared toolkit",
+    "noticePolicy": "Retain full reviewed root, predecessor and selected source/header notices"
+  },
+  "scope": {
+    "productLinking": "Phase6 synthetic native protocol prototype only",
+    "profile": "rs-vandermonde-gf256-11d-v1",
+    "explicitProfileNegotiation": true,
+    "authBeforeRepair": true,
+    "boundedStagedOwnership": true,
+    "originalCapabilitiesPreserved": true,
+    "nonConstantTimeProcessing": "Trusted native synthetic media boundary only; no credentials/keys/nonce seeds; no cache-side-channel resistance claim; real-media boundary reassessment required",
+    "cryptoSelectionUnchanged": true,
+    "redistributionCertification": false,
+    "realDeviceOrFivePlatformApproval": false,
+    "systemMutation": false,
+    "phase3Installation": false,
+    "restartOrShutdown": false
+  },
+  "priorResearchDecisionUnchanged": true,
+  "priorProtocolApprovalUnchanged": true,
+  "fallbackTriggered": false
+}
