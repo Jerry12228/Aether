@@ -3,9 +3,9 @@ phase: 06-gamestream
 plan: "01"
 subsystem: native-protocol-prototype
 tags: [GameStream, TLS1.3, SRTP, OpenSSL, libSRTP, C-ABI, TDD]
-status: halted
-checkpoint: 06-01-03
-checkpoint_gate: blocking-human
+status: complete
+checkpoint: null
+checkpoint_gate: null
 requires:
   - phase: 02-monorepo-flutter
     provides: Approved monorepo/native C ABI and lifecycle boundaries
@@ -36,14 +36,14 @@ requirements-planned: [NET-01, NET-02, NET-03]
 requirements-completed: []
 actuals:
   tokens: 867358
-  tasks: 2
-  commits: 4
+  tasks: 3
+  commits: 5
 plan_head_before: b25b555
-plan_head_after: 3fc54a79ed4c609e8ac9538ee1d52d11b48efcb3
+plan_head_after: c74cfb1
 duration: approximately-66min-from-first-RED
 started: "2026-10-10T02:27:48Z"
 checkpoint_recorded: "2026-10-10T03:34:01Z"
-completed: null
+completed: "2026-10-10T03:54:19Z"
 coverage:
   - id: D1
     description: Real secure two-process synthetic packet path, refusal vectors and owned cleanup
@@ -63,14 +63,25 @@ coverage:
     human_judgment: false
   - id: D3
     description: Concrete ADR, original setting safety dispositions and scoped native reuse decision
-    verification: []
+    verification:
+      - kind: manual_procedural
+        ref: docs/phase06/PROTOCOL-ADR.md#Bound Evidence And Decision; real user reply 1
+        status: pass
     human_judgment: true
-    rationale: Mandatory 06-01-03 blocking-human architecture and reuse decision has no real response yet
+    rationale: Mandatory 06-01-03 real user reply 1 recorded against the reviewed ADR digest at 2026-10-10T03:46:30Z
 ---
 
 # Phase 6 Plan 1: Secure Tracer And Concrete ADR Checkpoint
 
-**Two of three tasks complete; real Windows x64 prototype evidence is committed, but the concrete ADR has not been approved.**
+**All three tasks complete after real user reply `1`; the scoped ADR is approved, while Phase 6 and NET requirements remain incomplete.**
+
+## Approval Continuation
+
+Real original response `1` selects approve-concrete, recorded2026-10-10T03:46:30Z, reviewed ADR SHA256 `0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc`. Commit `c74cfb1` records response/time/scope/initial source commit and preserves all original eight material/fourteen evidence bindings. Exact reviewed files, logs and binary copies are archived in owned ignored `build/phase06/reviewed-06-01`; the original tracked bytes also remain at `3fc54a7`. No evidence resealing may overwrite this historical decision. Approval-record ADR current SHA256 is `b50607d81ab7de1e4a16832973f3ed866b8855106444f4015a68a7d2afcc4a34`.
+
+Continuation regression: 19/19, fail/cancel/skip/TODO0, 4,749.1274ms. Dossier verification passes against original reviewed bytes. The first continuation run rejected a deliberately bad digest earlier than before; its diagnostic text did not match the test's expected phrase (18pass/1fail). The diagnostic was corrected without weakening rejection, then all19 passed. No protocol source/binary changed in this continuation.
+
+06-01 is now complete, Phase6 is1/5, total completed plans9/14; completed phases remain2/42. NET-01/02/03 are shared by all five plans and therefore `requirements-completed` remains empty. 06-02 may now run. Approval is not for FEC source reuse, system operations, physical devices or five-target support. Phase3 03-03-02 corrected-install plan and Apollo conditions are unchanged. The sections below preserve the original halted checkpoint measurements/history.
 
 The `started` value is the first durable RED commit time, not a fabricated initialization timestamp. Duration is approximate wall time from that point to this checkpoint. `actuals.tokens` is ceil(3,469,432 committed diff characters / 4), the workflow estimate scale, not model token consumption. The generated full source/notice/parity ledger dominates this number; it should not be used as handwritten-code calibration. Nine planned production/document paths changed. Summary/state metadata commits are separate.
 
@@ -82,9 +93,9 @@ The `started` value is the first durable RED commit time, not a fabricated initi
 | 06-01-01 GREEN | 02903c4 | Source-built crypto, separate native TLS/UDP processes, independent sink digest; 10/10 tests and CTest9/9 |
 | 06-01-02 RED | 9aee05d | 12 tests: 10 pass, 2 actual failures for missing native proposal evidence and missing independent vectors |
 | 06-01-02 GREEN | 3fc54a7 | Complete proposal, independent vectors/KAT, 296 source rows, 637 preserved records/cases, exact concrete ADR and source/notice/artifact ledger |
-| 06-01-03 | not executed | blocking-human; choice/raw response/time remain null |
+| 06-01-03 | c74cfb1 | real reply1 -> approve-concrete, exact reviewed hash/time recorded; no system authorization |
 
-Tasks1/2 are complete within their scoped prototype contract. 06-01 itself is NOT complete, Phase6 is 0/5 plans complete, and NET-01/02/03 remain incomplete. 06-02 is blocked by halted06-01; 06-03,06-04,06-05 are transitively blocked and have not started.
+Historical halt: Tasks1/2 complete,06-01 incomplete,Phase6 0/5 and later plans blocked. Superseded by the real approval continuation above; NET-01/02/03 remain incomplete until the full phase completes.
 
 ## Verification
 
