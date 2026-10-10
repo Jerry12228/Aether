@@ -1,0 +1,51 @@
+#ifndef AETHER_PROTOCOL_H
+#define AETHER_PROTOCOL_H
+#include <stdint.h>
+#if defined(_WIN32)
+# if defined(AETHER_PROTOCOL_EXPORTS)
+#  define AETHER_PROTOCOL_API __declspec(dllexport)
+# else
+#  define AETHER_PROTOCOL_API __declspec(dllimport)
+# endif
+#else
+# define AETHER_PROTOCOL_API __attribute__((visibility("default")))
+#endif
+#ifdef __cplusplus
+extern "C" {
+#endif
+enum AetherProtocolStatus {
+ AP_OK=0, AP_INVALID_ARGUMENT=1, AP_ABI_MISMATCH=2, AP_INVALID_HANDLE=3,
+ AP_BUSY=5, AP_STOPPED=6, AP_TIMEOUT=11, AP_INTERNAL_ERROR=12,
+ AP_BUFFER_TOO_SMALL=13, AP_VERSION=20, AP_TRUST=21, AP_IDENTITY=22,
+ AP_PERMISSION=23, AP_LENGTH=24, AP_FIELD=25, AP_PROTECTION=26
+};
+typedef void (*AetherProtocolEvent)(uint64_t handle, uint64_t sequence,
+ uint32_t kind, int32_t status, uint64_t operation);
+/* Borrowed strings are copied at create. Credentials are supplied by the caller;
+   the library has no embedded identity, test authority or permissive verifier.
+   This isolated prototype binds loopback only; it is not a product listener. */
+typedef struct AetherProtocolConfig {
+ uint32_t abi_version, struct_size, role, deadline_ms;
+ uint32_t peer_control_port, reserved;
+ uint64_t host_id, instance_id, display_id, stream_id, connection_id, client_id;
+ uint64_t lease_epoch, config_generation, key_generation;
+ const char *certificate_file, *private_key_file, *trust_file, *peer_name;
+ uint32_t version_count, versions[8];
+ uint32_t permission_read, reserved2;
+} AetherProtocolConfig;
+/* One bounded synchronous tracer operation per connection. Host input is an
+   explicitly synthetic sink payload; client input is a HELLO wire request.
+   A second submit is rejected. Native sockets belong to this handle only. */
+AETHER_PROTOCOL_API int32_t aether_protocol_create(const AetherProtocolConfig*, AetherProtocolEvent, uint64_t*);
+AETHER_PROTOCOL_API int32_t aether_protocol_submit(uint64_t, const uint8_t*, uint32_t);
+AETHER_PROTOCOL_API int32_t aether_protocol_query(uint64_t, char*, uint32_t, uint32_t*);
+AETHER_PROTOCOL_API int32_t aether_protocol_ack(uint64_t, uint64_t);
+AETHER_PROTOCOL_API int32_t aether_protocol_stop(uint64_t, uint64_t*);
+AETHER_PROTOCOL_API int32_t aether_protocol_destroy(uint64_t);
+/* Pure bounded parser: independent golden inputs can exercise the wire oracle. */
+AETHER_PROTOCOL_API int32_t aether_protocol_negotiate(const uint8_t*, uint32_t,
+ const uint32_t*, uint32_t, uint32_t* selected, uint32_t* upgrade_side);
+#ifdef __cplusplus
+}
+#endif
+#endif
