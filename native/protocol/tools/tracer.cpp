@@ -13,6 +13,7 @@
 #include <openssl/evp.h>
 #include <memory>
 #include <atomic>
+#include <mutex>
 #ifdef _WIN32
 #include <process.h>
 #else
@@ -20,6 +21,15 @@
 #endif
 namespace {
 std::atomic<bool> delay_callback{false},callback_started{false},callback_completed{false};
+std::vector<uint8_t> from_hex(const std::string&);
+std::string proposal_digest(const std::string&);
+std::mutex control_mutex;std::map<uint64_t,int32_t> control_results;std::atomic<uint64_t> control_sequence{0};
+void control_event(uint64_t,uint64_t seq,uint32_t kind,int32_t status,uint64_t op){control_sequence=seq;if(kind==11){std::lock_guard lock(control_mutex);control_results[op]=status;}}
+std::string control_query(uint64_t token){uint32_t n=0;if(aether_protocol_control_query(token,nullptr,0,&n)!=AP_BUFFER_TOO_SMALL||n>65536)throw std::runtime_error("control bounds");std::vector<char> out(65536);if(aether_protocol_control_query(token,out.data(),static_cast<uint32_t>(out.size()),&n)!=AP_OK)throw std::runtime_error("control query");return out.data();}
+uint32_t read32(const uint8_t* p){return (uint32_t(p[0])<<24)|(uint32_t(p[1])<<16)|(uint32_t(p[2])<<8)|p[3];}
+uint64_t read64(const uint8_t* p){return (uint64_t(read32(p))<<32)|read32(p+4);}
+void write64(uint8_t* p,uint64_t n){for(int i=7;i>=0;--i){p[i]=static_cast<uint8_t>(n);n>>=8;}}
+std::vector<uint8_t> control_confirmation(const std::string& s){auto value=[&](const char* field){std::string marker=std::string("\"")+field+"\":";auto p=s.find(marker);if(p==std::string::npos)throw std::runtime_error("confirm field");return std::stoull(s.substr(p+marker.size()));};auto digest=from_hex(proposal_digest(s));std::vector<uint8_t> b{0,1,0,3,0,6,0,32};b.insert(b.end(),digest.begin(),digest.end());for(auto field:{7,8}){auto p=b.size();b.resize(p+12);b[p+1]=static_cast<uint8_t>(field);b[p+3]=8;write64(b.data()+p+4,value(field==7?"hostRevision":"expiryToken"));}return b;}
 void event(uint64_t token,uint64_t seq,uint32_t kind,int32_t status,uint64_t op){if(delay_callback){callback_started=true;std::this_thread::sleep_for(std::chrono::milliseconds(100));}std::cout<<"{\"kind\":\"event\",\"handle\":"<<token<<",\"sequence\":"<<seq<<",\"eventKind\":"<<kind<<",\"status\":"<<status<<",\"operation\":"<<op<<"}"<<std::endl;callback_completed=true;}
 std::string query(uint64_t token){uint32_t n=0;auto s=aether_protocol_query(token,nullptr,0,&n);if(s!=AP_BUFFER_TOO_SMALL||n>4096)throw std::runtime_error("query size");std::vector<char> out(n);if(aether_protocol_query(token,out.data(),n,&n)!=AP_OK)throw std::runtime_error("query");return out.data();}
 std::vector<uint8_t> from_hex(const std::string& hex){if(hex.size()%2||hex.size()>2048)throw std::runtime_error("hex length");std::vector<uint8_t> b;for(size_t i=0;i<hex.size();i+=2){size_t used=0;auto n=std::stoul(hex.substr(i,2),&used,16);if(used!=2)throw std::runtime_error("hex");b.push_back(static_cast<uint8_t>(n));}return b;}
@@ -51,6 +61,21 @@ void kat(const std::map<std::string,std::string>& args){
  if(!ctx||EVP_EncryptInit_ex(ctx.get(),EVP_aes_256_gcm(),nullptr,key.data(),iv.data())!=1||EVP_EncryptUpdate(ctx.get(),cipher.data(),&n,plain.data(),static_cast<int>(plain.size()))!=1||EVP_EncryptFinal_ex(ctx.get(),cipher.data()+n,&final)!=1||EVP_CIPHER_CTX_ctrl(ctx.get(),EVP_CTRL_GCM_GET_TAG,16,tag)!=1)throw std::runtime_error("KAT encrypt");
  auto hex=[](const uint8_t* p,size_t size){std::string s;const char* digits="0123456789abcdef";for(size_t i=0;i<size;++i){s.push_back(digits[p[i]>>4]);s.push_back(digits[p[i]&15]);}return s;};
  std::cout<<"{\"ciphertext\":\""<<hex(cipher.data(),static_cast<size_t>(n+final))<<"\",\"tag\":\""<<hex(tag,16)<<"\"}"<<std::endl;
+}
+int control_actions(const std::map<std::string,std::string>& args,AetherProtocolConfig config){
+ std::ifstream f(args.at("--control-actions"),std::ios::binary);std::vector<uint8_t> actions(std::istreambuf_iterator<char>(f),{});if(actions.size()<12||actions.size()>1048576||std::memcmp(actions.data(),"APAC",4)||read32(actions.data()+4)!=1||read32(actions.data()+8)>512)throw std::runtime_error("actions bounds");
+ uint64_t token=0;config.host_id=1;config.instance_id=2;config.display_id=3;config.stream_id=4;config.connection_id=args.contains("--connection")?std::stoull(args.at("--connection")):5;config.client_id=args.contains("--client-id")?std::stoull(args.at("--client-id")):6;config.deadline_ms=3000;if(aether_protocol_create(&config,control_event,&token)!=AP_OK)throw std::runtime_error("control create");
+ auto drain=[&]{auto s=control_query(token);auto p=s.find("\"acked\":");if(p==std::string::npos)throw std::runtime_error("acked");auto ack=std::stoull(s.substr(p+8));while(ack<control_sequence.load()){if(aether_protocol_control_ack(token,++ack)!=AP_OK)throw std::runtime_error("control ack");}};
+ auto wait=[&](uint64_t op,uint32_t ms){auto until=std::chrono::steady_clock::now()+std::chrono::milliseconds(ms);while(std::chrono::steady_clock::now()<until){{std::lock_guard lock(control_mutex);auto i=control_results.find(op);if(i!=control_results.end())return i->second;}std::this_thread::sleep_for(std::chrono::milliseconds(1));}return int32_t{AP_TIMEOUT};};
+ try{std::vector<uint8_t> hello{'A','E','T','H',0,16,1,1,0,3,0,8,0,2,0,1};AetherProtocolControlOpen open{1,sizeof(open),1,0,static_cast<uint32_t>(hello.size()),0,hello.data()};if(aether_protocol_control_open(token,&open)!=AP_OK||wait(0,3500)!=AP_OK)throw std::runtime_error("control open");drain();uint64_t operation=0;size_t offset=12;uint64_t total_wait=0;
+  for(unsigned step=0;step<read32(actions.data()+8);++step){if(offset+40>actions.size())throw std::runtime_error("action header");auto p=actions.data()+offset;auto opcode=read32(p),delay=read32(p+4),size=read32(p+32),deadline=read32(p+36);auto request=read64(p+8),stream=read64(p+16),generation=read64(p+24);offset+=40;if(size>8192||size>actions.size()-offset||delay>90000||total_wait+delay>300000)throw std::runtime_error("action payload");total_wait+=delay;std::vector<uint8_t> payload(actions.begin()+offset,actions.begin()+offset+size);offset+=size;int32_t status=AP_OK;
+   if(opcode==103)status=aether_protocol_control_cancel_operation(token,request);
+   else if(opcode<=13){if(payload.empty())payload=opcode==2||opcode==9?control_confirmation(control_query(token)):std::vector<uint8_t>{0,1,0,0};AetherProtocolCommand command{1,sizeof(command),1,opcode,0,deadline,++operation,request,stream,generation,static_cast<uint32_t>(payload.size()),0,payload.data()};status=aether_protocol_control_send(token,&command);if(status==AP_OK)status=wait(operation,deadline+500);}
+   else if(opcode!=100)throw std::runtime_error("action opcode");
+   if(delay)std::this_thread::sleep_for(std::chrono::milliseconds(delay));
+   std::cout<<"{\"kind\":\"control-state\",\"step\":"<<step<<",\"opcode\":"<<opcode<<",\"status\":"<<status<<",\"detail\":"<<control_query(token)<<"}"<<std::endl;drain();
+  }if(offset!=actions.size())throw std::runtime_error("actions tail");uint64_t seq=0;if(aether_protocol_stop(token,&seq)!=AP_OK)throw std::runtime_error("control stop");drain();std::cout<<"{\"kind\":\"control-clean\",\"detail\":"<<control_query(token)<<"}"<<std::endl;if(aether_protocol_destroy(token)!=AP_OK)throw std::runtime_error("control destroy");return 0;
+ }catch(...){uint64_t seq=0;if(aether_protocol_stop(token,&seq)==AP_OK){drain();aether_protocol_destroy(token);}throw;}
 }
 }
 int main(int argc,char** argv){
@@ -86,6 +111,7 @@ int main(int argc,char** argv){
   c.host_id=101;c.instance_id=102;c.display_id=103;c.stream_id=104;c.connection_id=105;c.client_id=106;c.lease_epoch=1;c.config_generation=1;c.key_generation=1;
   if(args.contains("--key-generation")){c.key_generation=std::stoull(args.at("--key-generation"));if(c.key_generation==0)throw std::runtime_error("key generation");}
   c.certificate_file=cert.c_str();c.private_key_file=key.c_str();c.trust_file=trust.c_str();c.peer_name=peer;c.version_count=static_cast<uint32_t>(local.size());for(size_t i=0;i<local.size();++i)c.versions[i]=local[i];c.permission_read=scenario=="wrong-permission"&&role=="host"?0:1;
+  if(args.contains("--control-actions"))return control_actions(args,c);
   auto status=aether_protocol_create(&c,event,&token);if(status!=AP_OK){std::cout<<"{\"kind\":\"create-failed\",\"status\":"<<status<<"}"<<std::endl;return 1;}
   if(scenario=="multistream"){auto other=c;other.role=1;other.connection_id=205;other.stream_id=204;if(aether_protocol_create(&other,event,&sibling)!=AP_OK)throw std::runtime_error("sibling");}
 #ifdef _WIN32

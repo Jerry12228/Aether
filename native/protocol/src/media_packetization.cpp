@@ -61,7 +61,7 @@ Bytes header(const StreamContext& s,uint32_t round,uint16_t share,const std::str
 void transmit(ConnectionContext& c,uint16_t port,const uint8_t* payload,uint32_t size,uint32_t round){
  const auto sources=c.media_limits.k,total=c.media_limits.n;const auto frame_bytes=c.media_limits.frame;
  const auto destination=endpoint(port);
- for(auto& stream:c.streams){auto& s=*stream;if(!sending(c,s))continue;
+ for(size_t index=0;index<c.streams.size();++index){auto& s=*c.streams[index];if(!sending(c,s))continue;if(c.selected==3&&(!(c.media_enabled_mask&(1u<<index))||(s.domain.identity.stream==c.media_fault_stream&&std::chrono::steady_clock::now()<c.media_fault_until)))continue;
   std::string data(reinterpret_cast<const char*>(payload),size);data+=':';data+=media_name(s.domain.media);data+=':';data+=std::to_string(s.domain.identity.stream);data+=':';data+=std::to_string(round);
   require(data.size()<=frame_bytes-4,AP_LENGTH);Bytes frame(frame_bytes);put32(frame.data(),static_cast<uint32_t>(data.size()));std::memcpy(frame.data()+4,data.data(),data.size());
   const auto digest=hash(frame.data(),frame.size());const auto shares=fec_encode(frame,c.media_limits);
@@ -116,6 +116,7 @@ class MediaScheduler {
   const auto length=u32(frame.data());
   if(frame_digest!=expected_digest||length==0||length>frame_bytes-4||!std::all_of(frame.begin()+4+std::min<uint32_t>(length,frame_bytes-4),frame.end(),[](auto byte){return byte==0;})){++s.rejected;return;}
   if(std::chrono::steady_clock::now()>=deadline){++s.expired;return;}
+  if(context.selected==3)s.authenticated_bytes.clear();
   require(s.authenticated_bytes.size()+length<=dual_video_rounds*maximum_stream_payload,AP_LENGTH);
   s.authenticated_bytes.append(reinterpret_cast<const char*>(frame.data()+4),length);s.digest=hash(reinterpret_cast<const uint8_t*>(s.authenticated_bytes.data()),s.authenticated_bytes.size());++s.received;
   for(size_t source=0;source<sources;++source)if(!block.owned.contains(source)){++s.recovered;break;}
@@ -140,10 +141,10 @@ public:
    if(!unprotect_packet(s,role,packet))continue;
    if(sending(context,s)){++s.rejected;continue;}
    if(packet.size()!=header_bytes+shard_bytes){++s.rejected;continue;}
-   if(u32(packet.data()+20)!=round){++s.expired;continue;}
+   if(context.selected!=3&&u32(packet.data()+20)!=round){++s.expired;continue;}
    const auto share=u16(packet.data()+96);if(share>=total||(share<sources?0:1)!=role){++s.rejected;continue;}
    // Every field, including reserved bytes, is validated against the local domain after AEAD.
-   auto expected=header(s,round,share,std::string(64,'0'),context.media_limits);std::copy(packet.begin()+120,packet.begin()+152,expected.begin()+120);put16(expected.data()+2,u16(packet.data()+2));
+   auto expected=header(s,context.selected==3?u32(packet.data()+20):round,share,std::string(64,'0'),context.media_limits);std::copy(packet.begin()+120,packet.begin()+152,expected.begin()+120);put16(expected.data()+2,u16(packet.data()+2));
    if(std::memcmp(expected.data(),packet.data(),header_bytes)!=0){++s.rejected;continue;}
    auto& block=blocks[static_cast<size_t>(found-context.streams.begin())];
    Bytes canonical(packet.begin(),packet.begin()+header_bytes);put16(canonical.data()+2,0);canonical[18]=0;put16(canonical.data()+96,0);

@@ -89,7 +89,8 @@ struct HostSnapshot {
  bool read_allowed=false,control_allowed=false,microphone_allowed=false,camera_allowed=false;
  bool microphone_available=false,camera_available=false;
 };
-struct Reservation {Binding binding;ResourceVector resources;uint64_t revision=0,expiry_token=0,transaction_sequence=0;uint32_t phase=1;int32_t authority_terminal=AP_BUSY;std::chrono::steady_clock::time_point expiry{},activation_expiry{};};
+struct StreamSpec {uint64_t stream=0,display=0;uint32_t kind=0,direction=0,width=0,height=0,fps=0,denominator=0,bitrate=0,codec=0,colour=0,role=0;};
+struct Reservation {Binding binding;ResourceVector resources;uint64_t revision=0,expiry_token=0,transaction_sequence=0;uint32_t phase=1,media_mask=0,upstream_mask=0;int32_t authority_terminal=AP_BUSY;std::vector<StreamSpec> specs;std::chrono::steady_clock::time_point expiry{},activation_expiry{};};
 struct Proposal {uint64_t request=0,budget_revision=0,epoch=0;std::string digest;ResourceVector resources;};
 // Only a native coordinator may attach this shared authority before open.
 // Every mutation/receipt is linearized by the provider's host-wide transaction.
@@ -141,6 +142,7 @@ struct ConnectionContext : Transport {
  std::vector<WindowRecord> windows;
  uint32_t control_progress=0,queue_bytes=0,peak_queue_bytes=0;
  MediaLimits media_limits;
+ uint32_t media_enabled_mask=31;uint64_t media_fault_stream=0;std::chrono::steady_clock::time_point media_fault_until{};
  std::shared_ptr<HostServices> host_services;
  std::shared_ptr<ControlState> control;
  ~ConnectionContext(){cleanup();}
@@ -173,7 +175,16 @@ public:
  int32_t request(Reservation&,const std::vector<uint8_t>&,uint32_t,std::string&);
  int32_t confirm(Reservation&,const Binding&,uint64_t revision,uint64_t expiry_token);
  int32_t cancel(Reservation&);
+ int32_t upstream(Reservation&,uint32_t,std::string&);
 };
+namespace ctl {
+using Fields=std::map<uint16_t,std::vector<uint8_t>>;
+Fields fields(const std::vector<uint8_t>&);
+const std::vector<uint8_t>& item(const Fields&,uint16_t,size_t);
+uint32_t number(const Fields&,uint16_t);uint64_t wide(const Fields&,uint16_t);
+uint64_t mul(uint64_t,uint64_t);uint64_t plus(uint64_t,uint64_t);
+std::string resources(const ResourceVector&);
+}
 int32_t dispatch_recovery(ConnectionContext&,RecoveryController&,uint32_t,const Binding&,uint32_t);
 int32_t dispatch_trace(ConnectionContext&,TraceWindow&,uint32_t,uint32_t);
 int32_t control_open(std::shared_ptr<ConnectionContext>,const AetherProtocolControlOpen*);
