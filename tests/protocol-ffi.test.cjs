@@ -7,6 +7,10 @@ function checkedInputs(){
  const m=JSON.parse(fs.readFileSync(manifestFile));assert.equal(m.configuration,'Debug');
  for(const x of m.sources)assert.equal(sha(fs.readFileSync(path.resolve(root,x.file))),x.sha256,x.file+' drift');
  assert.equal(sha(fs.readFileSync(m.library)),m.librarySha256,'DLL drift');
+ const header=sha(fs.readFileSync(path.join(root,'native/protocol/include/aether/protocol.h')));
+ const generated=fs.readFileSync(path.join(root,'packages/selene_native/lib/src/protocol_bindings.g.dart'),'utf8');
+ assert.ok(generated.includes('Header SHA256: '+header),'generated header digest drift');
+ assert.ok(generated.includes('aether_protocol_control_send'),'empty generated binding rejected');
  const host=path.join(path.dirname(m.library),'aether_protocol_control_host.exe');assert.ok(fs.existsSync(host));
  const lock=JSON.parse(fs.readFileSync(path.join(root,'toolchains.lock.json')));assert.equal(lock.generator.version,'21.0.0');
  assert.match(fs.readFileSync(path.join(root,'pubspec.lock'),'utf8'),/version: "2\.2\.0"/);
