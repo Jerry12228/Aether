@@ -83,6 +83,24 @@ AETHER_PROTOCOL_API int32_t aether_protocol_cancel(uint64_t, uint64_t request_id
 /* Pure bounded parser: independent golden inputs can exercise the wire oracle. */
 AETHER_PROTOCOL_API int32_t aether_protocol_negotiate(const uint8_t*, uint32_t,
  const uint32_t*, uint32_t, uint32_t* selected, uint32_t* upgrade_side);
+/* Additive opt-in control protocol 3/schema 1. Borrowed inputs are copied.
+   AP_OK accepts work; terminal events and query describe the remote result. */
+typedef struct AetherProtocolControlOpen {
+ uint32_t abi_version, struct_size, command_version, reserved;
+ uint32_t hello_bytes, reserved2;
+ const uint8_t* hello;
+} AetherProtocolControlOpen;
+typedef struct AetherProtocolCommand {
+ uint32_t abi_version, struct_size, command_version, opcode, flags, deadline_ms;
+ uint64_t operation_id, request_id, stream_id, expected_generation;
+ uint32_t payload_bytes, reserved;
+ const uint8_t* payload;
+} AetherProtocolCommand;
+AETHER_PROTOCOL_API int32_t aether_protocol_control_open(uint64_t,const AetherProtocolControlOpen*);
+AETHER_PROTOCOL_API int32_t aether_protocol_control_send(uint64_t,const AetherProtocolCommand*);
+AETHER_PROTOCOL_API int32_t aether_protocol_control_cancel_operation(uint64_t,uint64_t);
+AETHER_PROTOCOL_API int32_t aether_protocol_control_query(uint64_t,char*,uint32_t,uint32_t*);
+AETHER_PROTOCOL_API int32_t aether_protocol_control_ack(uint64_t,uint64_t);
 #ifdef __cplusplus
 }
 #endif

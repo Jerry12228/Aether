@@ -19,6 +19,11 @@
 #include <mutex>
 #include <string>
 #include <vector>
+#include <thread>
+#include <atomic>
+#include <condition_variable>
+#include <deque>
+#include <set>
 namespace aether::protocol {
 struct Failure {int32_t status;};
 inline void require(bool ok,int32_t status){if(!ok)throw Failure{status};}
@@ -71,15 +76,41 @@ struct StreamContext {
  StreamContext& operator=(const StreamContext&)=delete;
 };
 struct WindowRecord {uint32_t round=0,video1=0,video2=0,control=0,audio=0,mic=0,camera=0;};
-// Reserved typed seams for the following sequential slices; no authority or
-// resource reservation is inferred from these unimplemented service contracts.
-struct ResourceVector {uint64_t encoders=0,decoders=0,vram=0,bandwidth=0;};
+struct ResourceVector {
+ uint64_t host_encoder_sessions=0,host_uplink_decoder_sessions=0,client_downlink_decoder_sessions=0;
+ uint64_t pixel_rate_per_second=0,vram_bytes=0,bandwidth_bits_per_second=0;
+ std::array<uint64_t,6> values()const{return {host_encoder_sessions,host_uplink_decoder_sessions,client_downlink_decoder_sessions,pixel_rate_per_second,vram_bytes,bandwidth_bits_per_second};}
+};
+struct Binding {Identity identity;uint64_t operation_id=0,request_id=0;std::string digest;};
+struct HostSnapshot {
+ uint64_t host_id=0,revision=0,expiry_token=0;
+ ResourceVector capacity,committed,pending;
+ Identity controller;
+ bool read_allowed=false,control_allowed=false,microphone_allowed=false,camera_allowed=false;
+ bool microphone_available=false,camera_available=false;
+};
+struct Reservation {Binding binding;ResourceVector resources;uint64_t revision=0,expiry_token=0,transaction_sequence=0;uint32_t phase=1;int32_t authority_terminal=AP_BUSY;std::chrono::steady_clock::time_point expiry{},activation_expiry{};};
 struct Proposal {uint64_t request=0,budget_revision=0,epoch=0;std::string digest;ResourceVector resources;};
-struct Reservation {uint64_t revision=0;ResourceVector resources;bool committed=false;};
-class AuthorityAdapter {public:virtual ~AuthorityAdapter()=default;virtual int32_t authorize(const Identity&,uint32_t operation)const=0;};
-struct RecoveryController {uint64_t epoch=0;uint32_t attempts=0;bool cancelled=false;};
+// Only a native coordinator may attach this shared authority before open.
+// Every mutation/receipt is linearized by the provider's host-wide transaction.
+class HostServices {
+public:
+ virtual ~HostServices()=default;
+ virtual uint64_t host_id()const=0;
+ virtual HostSnapshot snapshot(const Binding&)=0;
+ virtual int32_t reserve(Reservation&,uint32_t ttl_ms)=0;
+ virtual int32_t commit(Reservation&)=0;
+ virtual int32_t cancel(Reservation&)=0;
+ virtual int32_t activate(Reservation&)=0;
+ virtual int32_t status(Reservation&)=0;
+ virtual void release_connection(uint64_t connection)=0;
+ virtual int32_t fresh_auth_result(const Binding&,Identity&)=0;
+ virtual int32_t check_permission_device(const Binding&,uint32_t mask)=0;
+};
+struct RecoveryController {Identity previous,current;uint64_t epoch=0;uint32_t attempts=0,retry_remaining_ms=0;bool cancelled=false;std::string state="manual",reason;};
 struct SummaryRecord {uint64_t connection=0,stream=0;int32_t status=AP_OK;uint32_t packets=0,rejected=0;};
 struct TraceWindow {uint64_t expires=0,bytes=0;bool enabled=false;};
+struct ControlState;
 struct FecBlock;
 class MediaScheduler;
 struct Transport {
@@ -110,6 +141,8 @@ struct ConnectionContext : Transport {
  std::vector<WindowRecord> windows;
  uint32_t control_progress=0,queue_bytes=0,peak_queue_bytes=0;
  MediaLimits media_limits;
+ std::shared_ptr<HostServices> host_services;
+ std::shared_ptr<ControlState> control;
  ~ConnectionContext(){cleanup();}
  void cleanup(){for(auto& s:streams){if(s->crypto){srtp_dealloc(s->crypto);s->crypto=nullptr;}if(s->repair_crypto){srtp_dealloc(s->repair_crypto);s->repair_crypto=nullptr;}s->authenticated_bytes.clear();}queue_bytes=0;if(srtp){srtp_dealloc(srtp);srtp=nullptr;}tls.reset();tls_context.reset();listener.reset();tcp.reset();udp.reset();}
 };
@@ -131,5 +164,23 @@ MediaLimits media_limits(const uint8_t* request,uint32_t size);
 std::vector<std::vector<uint8_t>> fec_encode(const std::vector<uint8_t>& frame,const MediaLimits& limits);
 std::vector<uint8_t> fec_recover(const std::map<size_t,std::vector<uint8_t>>& shards,const MediaLimits& limits);
 constexpr uint32_t media_header_bytes=64,dual_video_rounds=8,maximum_stream_payload=1024;
+std::shared_ptr<ConnectionContext> find_context(uint64_t);
+int32_t attach_host_services(uint64_t,std::shared_ptr<HostServices>);
+class AdmissionEngine {
+ std::shared_ptr<HostServices> services;
+public:
+ explicit AdmissionEngine(std::shared_ptr<HostServices> value):services(std::move(value)){}
+ int32_t request(Reservation&,const std::vector<uint8_t>&,uint32_t,std::string&);
+ int32_t confirm(Reservation&,const Binding&,uint64_t revision,uint64_t expiry_token);
+ int32_t cancel(Reservation&);
+};
+int32_t dispatch_recovery(ConnectionContext&,RecoveryController&,uint32_t,const Binding&,uint32_t);
+int32_t dispatch_trace(ConnectionContext&,TraceWindow&,uint32_t,uint32_t);
+int32_t control_open(std::shared_ptr<ConnectionContext>,const AetherProtocolControlOpen*);
+int32_t control_send(std::shared_ptr<ConnectionContext>,const AetherProtocolCommand*);
+int32_t control_cancel(std::shared_ptr<ConnectionContext>,uint64_t);
+int32_t control_query(std::shared_ptr<ConnectionContext>,char*,uint32_t,uint32_t*);
+int32_t control_ack(std::shared_ptr<ConnectionContext>,uint64_t);
+int32_t control_stop(std::shared_ptr<ConnectionContext>,uint64_t*);
 }
 #endif
