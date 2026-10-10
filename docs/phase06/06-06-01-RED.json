@@ -1,0 +1,8 @@
+{
+  "output": "TAP version 13\r\nnot ok 1 - explicit-confirm-control-entry\r\n  ---\r\n  error: expected additive control_open for explicit-confirm path; actual missing\r\n  ...\r\n1..1\r\n# tests 1\r\n# pass 0\r\n# fail 1\r\n# skipped 0\r\n",
+  "exitCode": 1,
+  "actual": "产品DLL缺失control_open",
+  "expected": "control_open存在并支持显式确认控制路径",
+  "command": "build/phase06/windows-x64/Debug/aether_protocol_control_client.exe",
+  "targetTest": "explicit-confirm-control-entry"
+}
