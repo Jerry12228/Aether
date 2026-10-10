@@ -200,7 +200,7 @@ else if(process.argv.includes('--manifest')) {
   const library=path.join(path.dirname(binary),'aether_protocol.dll');
   const dependencies=['libssl.lib','libcrypto.lib'].map(name=>{const p=path.join(root,'build/phase06/dependencies/openssl-install/lib',name);return {name,sha256:digest(fs.readFileSync(p))};});
   const manifest={schema:1,target:'aether_protocol_tracer',configuration,binary,sha256:digest(fs.readFileSync(binary)),library,librarySha256:digest(fs.readFileSync(library)),dependencies,
-    sources:['native/protocol/CMakeLists.txt','native/protocol/include/aether/protocol.h','native/protocol/src/protocol.cpp','native/protocol/tools/tracer.cpp'].map(file=>({file,sha256:digest(fs.readFileSync(path.join(root,file)))}))};
+    sources:['native/protocol/CMakeLists.txt','native/protocol/include/aether/protocol.h',...fs.readdirSync(path.join(root,'native/protocol/src')).filter(n=>/\.(cpp|h)$/.test(n)).sort().map(n=>'native/protocol/src/'+n),'native/protocol/tools/tracer.cpp'].map(file=>({file,sha256:digest(fs.readFileSync(path.join(root,file)))}))};
   fs.writeFileSync(path.join(out,`target-manifest-${configuration}.json`),JSON.stringify(manifest,null,2)+'\n');
 } else {
   function loadTarget() {

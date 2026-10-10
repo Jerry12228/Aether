@@ -15,6 +15,7 @@
 #include <openssl/err.h>
 #include <openssl/sslerr.h>
 #include <srtp.h>
+#include "internal.h"
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -46,6 +47,9 @@ struct OwnedSocket {
 uint16_t u16(const uint8_t* p){return static_cast<uint16_t>((p[0]<<8)|p[1]);}
 void put16(uint8_t* p,uint16_t v){p[0]=static_cast<uint8_t>(v>>8);p[1]=static_cast<uint8_t>(v);}
 void put32(uint8_t* p,uint32_t v){for(int i=3;i>=0;--i){p[i]=static_cast<uint8_t>(v);v>>=8;}}
+void put64(uint8_t* p,uint64_t v){for(int i=7;i>=0;--i){p[i]=static_cast<uint8_t>(v);v>>=8;}}
+uint32_t u32(const uint8_t* p){return (uint32_t(p[0])<<24)|(uint32_t(p[1])<<16)|(uint32_t(p[2])<<8)|p[3];}
+uint64_t u64(const uint8_t* p){return (uint64_t(u32(p))<<32)|u32(p+4);}
 void append64(std::vector<uint8_t>& b,uint64_t v){for(int i=7;i>=0;--i)b.push_back(static_cast<uint8_t>(v>>(i*8)));}
 std::string bounded_string(const char* value,size_t maximum){require(value!=nullptr,AP_INVALID_ARGUMENT);size_t n=0;while(n<=maximum&&value[n])++n;require(n>0&&n<=maximum,AP_LENGTH);return std::string(value,n);}
 int32_t negotiate(const uint8_t* bytes,uint32_t size,const uint32_t* local,uint32_t count,uint32_t* selected,uint32_t* side){
@@ -84,8 +88,11 @@ struct Context {
  std::unique_ptr<SSL_CTX,decltype(&SSL_CTX_free)> tls_context{nullptr,SSL_CTX_free};
  std::unique_ptr<SSL,decltype(&SSL_free)> tls{nullptr,SSL_free};
  srtp_t srtp=nullptr;
+ std::vector<std::unique_ptr<aether::protocol::StreamContext>> streams;
+ std::vector<aether::protocol::WindowRecord> windows;
+ uint32_t control_progress=0;
  ~Context(){if(srtp)srtp_dealloc(srtp);}
- void cleanup(){if(srtp){srtp_dealloc(srtp);srtp=nullptr;}tls.reset();tls_context.reset();listener.reset();tcp.reset();udp.reset();}
+ void cleanup(){for(auto& s:streams)if(s->crypto){srtp_dealloc(s->crypto);s->crypto=nullptr;s->authenticated_bytes.clear();}if(srtp){srtp_dealloc(srtp);srtp=nullptr;}tls.reset();tls_context.reset();listener.reset();tcp.reset();udp.reset();}
 };
 std::mutex registry_mutex;
 std::map<uint64_t,std::shared_ptr<Context>> registry;
@@ -171,6 +178,72 @@ void make_srtp(Context& c){
  auto result=srtp_create(&c.srtp,&policy);OPENSSL_cleanse(material.data(),material.size());require(result==srtp_err_status_ok,AP_PROTECTION);
 }
 std::string hash(const uint8_t* bytes,size_t size){std::array<unsigned char,32> out{};unsigned int n=0;require(EVP_Digest(bytes,size,out.data(),&n,EVP_sha256(),nullptr)==1&&n==32,AP_INTERNAL_ERROR);constexpr char hex[]="0123456789abcdef";std::string s;for(auto b:out){s.push_back(hex[b>>4]);s.push_back(hex[b&15]);}return s;}
+uint16_t optional_port(const uint8_t* bytes,uint32_t size){
+ for(uint32_t offset=8u+2u*bytes[7];offset<size;){auto type=u16(bytes+offset),length=u16(bytes+offset+2);offset+=4;if(type==2){require(length==2&&u16(bytes+offset)!=0,AP_FIELD);return u16(bytes+offset);}offset+=length;}
+ return 0;
+}
+bool dual_requested(const uint8_t* bytes,uint32_t size){
+ for(uint32_t offset=8u+2u*bytes[7];offset<size;){auto type=u16(bytes+offset),length=u16(bytes+offset+2);offset+=4;if(type==1){require(length==1&&bytes[offset]==2,AP_FIELD);return true;}offset+=length;}
+ return false;
+}
+void create_dual_streams(Context& c){
+ require(c.config.stream_id<UINT32_MAX&&c.selected==2,AP_FIELD);
+ for(uint64_t id:{c.config.stream_id,c.config.stream_id+1}){
+  auto stream=std::make_unique<aether::protocol::StreamContext>();
+  stream->domain.identity={c.config.host_id,c.config.instance_id,c.config.display_id,id,c.config.connection_id,c.config.client_id,c.config.lease_epoch,c.config.config_generation,c.config.key_generation};
+  auto previous=c.config.stream_id;c.config.stream_id=id;
+  try{make_srtp(c);}catch(...){c.config.stream_id=previous;throw;}
+  c.config.stream_id=previous;stream->crypto=c.srtp;c.srtp=nullptr;c.streams.push_back(std::move(stream));
+ }
+}
+void transmit_dual(Context& c,uint16_t port,const uint8_t* payload,uint32_t size){
+ require(size<=128&&c.streams.size()==2,AP_LENGTH);auto remote=endpoint(port);
+ for(uint32_t round=1;round<=aether::protocol::dual_video_rounds;++round){
+  for(auto& stream:c.streams){
+   auto& s=*stream;auto& id=s.domain.identity;std::string data(reinterpret_cast<const char*>(payload),size);data+=":video:"+std::to_string(id.stream)+":"+std::to_string(round);require(data.size()<=aether::protocol::maximum_stream_payload,AP_LENGTH);
+   std::vector<uint8_t> packet(aether::protocol::media_header_bytes+data.size()+SRTP_MAX_TRAILER_LEN);
+   packet[0]=0x90;packet[1]=96;put16(packet.data()+2,static_cast<uint16_t>(round));put32(packet.data()+4,90000+3000*(round-1));put32(packet.data()+8,static_cast<uint32_t>(id.stream));
+   put16(packet.data()+12,0xa37e);put16(packet.data()+14,12);packet[16]=s.domain.direction;packet[17]=s.domain.media;packet[18]=s.domain.role;packet[19]=0;put32(packet.data()+20,round);
+   put64(packet.data()+24,id.connection);put64(packet.data()+32,id.lease);put64(packet.data()+40,id.config);put64(packet.data()+48,id.key);put64(packet.data()+56,id.stream);
+   std::memcpy(packet.data()+aether::protocol::media_header_bytes,data.data(),data.size());int n=static_cast<int>(aether::protocol::media_header_bytes+data.size());
+   require(srtp_protect(s.crypto,packet.data(),&n)==srtp_err_status_ok,AP_PROTECTION);require(sendto(c.udp.value,reinterpret_cast<const char*>(packet.data()),n,0,reinterpret_cast<sockaddr*>(&remote),sizeof(remote))==n,AP_INTERNAL_ERROR);
+   ++s.sent;s.sequence=static_cast<uint16_t>(round);s.timestamp=90000+3000*(round-1);
+  }
+  std::array<uint8_t,4> control{};put32(control.data(),round);write_tls(c,control.data(),control.size());std::array<uint8_t,4> ack{};read_tls(c,ack.data(),ack.size());require(u32(ack.data())==round,AP_FIELD);++c.control_progress;
+ }
+}
+bool datagram_ready(Socket socket,std::chrono::steady_clock::time_point deadline){
+#ifndef _WIN32
+ require(socket>=0&&socket<FD_SETSIZE,AP_BUSY);
+#endif
+ auto remaining=std::chrono::duration_cast<std::chrono::microseconds>(deadline-std::chrono::steady_clock::now()).count();if(remaining<=0)return false;
+ fd_set fds;FD_ZERO(&fds);FD_SET(socket,&fds);timeval timeout{static_cast<long>(remaining/1000000),static_cast<long>(remaining%1000000)};auto result=select(static_cast<int>(socket)+1,&fds,nullptr,nullptr,&timeout);require(result>=0,AP_INTERNAL_ERROR);return result>0;
+}
+void receive_dual(Context& c){
+ create_dual_streams(c);
+ for(uint32_t round=1;round<=aether::protocol::dual_video_rounds;++round){
+  std::array<uint8_t,4> control{};read_tls(c,control.data(),control.size());require(u32(control.data())==round,AP_FIELD);
+  aether::protocol::WindowRecord window{round,0,0,1};
+  auto deadline=std::min(c.exchange_deadline,std::chrono::steady_clock::now()+std::chrono::milliseconds(25));uint32_t inspected=0;
+  // Each bounded round is a real control-health window. Authentication precedes
+  // metadata parsing, counters, digest bytes and delivery into a stream sink.
+  while(inspected<32&&datagram_ready(c.udp.value,deadline)){
+   ++inspected;std::array<uint8_t,1500> packet{};int n=recv(c.udp.value,reinterpret_cast<char*>(packet.data()),static_cast<int>(packet.size()),0);
+#ifdef _WIN32
+   if(n<0&&WSAGetLastError()==WSAEMSGSIZE)continue;
+#endif
+   require(n>=0,AP_INTERNAL_ERROR);if(n<12)continue;
+   auto ssrc=u32(packet.data()+8);auto found=std::find_if(c.streams.begin(),c.streams.end(),[&](const auto& s){return s->domain.identity.stream==ssrc;});if(found==c.streams.end())continue;
+   auto& s=**found;auto& id=s.domain.identity;
+   if(srtp_unprotect(s.crypto,packet.data(),&n)!=srtp_err_status_ok){++s.rejected;continue;}
+   if(n<=static_cast<int>(aether::protocol::media_header_bytes)||n>static_cast<int>(aether::protocol::media_header_bytes+aether::protocol::maximum_stream_payload)||packet[0]!=0x90||packet[1]!=96||u16(packet.data()+12)!=0xa37e||u16(packet.data()+14)!=12||packet[16]!=s.domain.direction||packet[17]!=s.domain.media||packet[18]!=s.domain.role||packet[19]||u32(packet.data()+20)!=round||u16(packet.data()+2)!=round||u64(packet.data()+24)!=id.connection||u64(packet.data()+32)!=id.lease||u64(packet.data()+40)!=id.config||u64(packet.data()+48)!=id.key||u64(packet.data()+56)!=id.stream){++s.rejected;continue;}
+   auto& received=ssrc==c.config.stream_id?window.video1:window.video2;if(received){++s.rejected;continue;}
+   auto bytes=static_cast<size_t>(n)-aether::protocol::media_header_bytes;require(s.authenticated_bytes.size()+bytes<=aether::protocol::dual_video_rounds*aether::protocol::maximum_stream_payload,AP_LENGTH);
+   s.authenticated_bytes.append(reinterpret_cast<const char*>(packet.data()+aether::protocol::media_header_bytes),bytes);s.digest=hash(reinterpret_cast<const uint8_t*>(s.authenticated_bytes.data()),s.authenticated_bytes.size());++s.received;s.sequence=u16(packet.data()+2);s.timestamp=u32(packet.data()+4);++received;
+  }
+  c.windows.push_back(window);write_tls(c,control.data(),control.size());++c.control_progress;
+ }
+}
 int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
  c.exchange_deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(c.config.deadline_ms);
  handshake(c);
@@ -182,6 +255,9 @@ int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
   int32_t status=negotiate(request.data(),length,c.config.versions,c.config.version_count,&c.selected,&c.upgrade);
   if(status!=AP_OK){std::array<uint8_t,8> rejection{};put32(rejection.data(),static_cast<uint32_t>(status));put32(rejection.data()+4,c.upgrade);write_tls(c,rejection.data(),rejection.size());c.rejection_sent=true;return status;}
   std::array<uint8_t,2> port{};read_tls(c,port.data(),2);require(u16(port.data())!=0,AP_FIELD);
+  if(dual_requested(request.data(),length)){
+   require(c.selected==2,AP_VERSION);require(size<=128,AP_LENGTH);create_dual_streams(c);std::array<uint8_t,8> ack{};put32(ack.data()+4,c.selected);write_tls(c,ack.data(),ack.size());++c.grants;transmit_dual(c,u16(port.data()),data,size);return AP_OK;
+  }
   make_srtp(c);
   std::array<uint8_t,8> ack{};put32(ack.data()+4,c.selected);write_tls(c,ack.data(),ack.size());
   ++c.grants;
@@ -192,11 +268,14 @@ int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
   std::array<uint8_t,1> done{};read_tls(c,done.data(),1);require(done[0]==1,AP_PROTECTION);return AP_OK;
  }
  std::array<uint8_t,4> frame{};put32(frame.data(),size);write_tls(c,frame.data(),frame.size());write_tls(c,data,size);
- std::array<uint8_t,2> port{};put16(port.data(),static_cast<uint16_t>(c.udp_port));write_tls(c,port.data(),port.size());
+ uint32_t parse_version=0,parse_side=0;bool valid=negotiate(data,size,c.config.versions,c.config.version_count,&parse_version,&parse_side)==AP_OK;
+ uint16_t redirect=valid?optional_port(data,size):uint16_t{0};
+ std::array<uint8_t,2> port{};put16(port.data(),redirect?redirect:static_cast<uint16_t>(c.udp_port));write_tls(c,port.data(),port.size());
  std::array<uint8_t,8> ack{};read_tls(c,ack.data(),ack.size());uint32_t status=(uint32_t(ack[0])<<24)|(uint32_t(ack[1])<<16)|(uint32_t(ack[2])<<8)|ack[3];
  if(status){c.upgrade=(uint32_t(ack[4])<<24)|(uint32_t(ack[5])<<16)|(uint32_t(ack[6])<<8)|ack[7];return static_cast<int32_t>(status);}
  c.selected=(uint32_t(ack[4])<<24)|(uint32_t(ack[5])<<16)|(uint32_t(ack[6])<<8)|ack[7];
  uint32_t selected=0,side=0;require(negotiate(data,size,c.config.versions,c.config.version_count,&selected,&side)==AP_OK&&selected==c.selected,AP_VERSION);
+ if(dual_requested(data,size)){++c.grants;receive_dual(c);return AP_OK;}
  make_srtp(c);++c.grants;
  wait_socket(c,c.udp.value,false);std::array<uint8_t,1500> packet{};int n=recv(c.udp.value,reinterpret_cast<char*>(packet.data()),static_cast<int>(packet.size()),0);require(n>0,AP_TIMEOUT);
  require(srtp_unprotect(c.srtp,packet.data(),&n)==srtp_err_status_ok&&n>=12,AP_PROTECTION);
@@ -204,7 +283,8 @@ int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
  c.sink_digest=hash(packet.data()+12,static_cast<size_t>(n-12));++c.sink_packets;
  const uint8_t done=1;write_tls(c,&done,1);return AP_OK;
 }
-std::string summary(const Context& c){std::ostringstream s;s<<"{\"controlPort\":"<<c.tcp_port<<",\"udpPort\":"<<c.udp_port<<",\"status\":"<<c.result<<",\"selectedVersion\":"<<c.selected<<",\"upgradeSide\":"<<c.upgrade<<",\"grants\":"<<c.grants<<",\"sinkPackets\":"<<c.sink_packets<<",\"sinkDigest\":\""<<c.sink_digest<<"\",\"sequence\":"<<c.published<<",\"sockets\":"<<((c.listener.value!=invalid)+(c.tcp.value!=invalid)+(c.udp.value!=invalid))<<",\"threads\":0,\"stopped\":"<<(c.stopped?"true":"false")<<",\"confirmedProposals\":"<<c.confirmed_proposals<<",\"proposal\":"<<(c.proposal_json.empty()?"null":c.proposal_json)<<"}";return s.str();}
+std::string summary(const Context& c){std::ostringstream s;s<<"{\"controlPort\":"<<c.tcp_port<<",\"udpPort\":"<<c.udp_port<<",\"status\":"<<c.result<<",\"selectedVersion\":"<<c.selected<<",\"upgradeSide\":"<<c.upgrade<<",\"grants\":"<<c.grants<<",\"sinkPackets\":"<<c.sink_packets<<",\"sinkDigest\":\""<<c.sink_digest<<"\",\"sequence\":"<<c.published<<",\"sockets\":"<<((c.listener.value!=invalid)+(c.tcp.value!=invalid)+(c.udp.value!=invalid))<<",\"threads\":0,\"stopped\":"<<(c.stopped?"true":"false")<<",\"confirmedProposals\":"<<c.confirmed_proposals<<",\"proposal\":"<<(c.proposal_json.empty()?"null":c.proposal_json)<<",\"persistentIdentity\":{\"instanceId\":"<<c.config.instance_id<<",\"displayId\":"<<c.config.display_id<<"},\"controlProgress\":"<<c.control_progress<<",\"streams\":[";
+ bool comma=false;for(const auto& stream:c.streams){if(comma)s<<',';comma=true;s<<"{\"id\":"<<stream->domain.identity.stream<<",\"sent\":"<<stream->sent<<",\"received\":"<<stream->received<<",\"rejected\":"<<stream->rejected<<",\"sequence\":"<<stream->sequence<<",\"timestamp\":"<<stream->timestamp<<",\"digest\":\""<<stream->digest<<"\"}";}s<<"],\"windows\":[";comma=false;for(const auto& w:c.windows){if(comma)s<<',';comma=true;s<<"{\"round\":"<<w.round<<",\"video1\":"<<w.video1<<",\"video2\":"<<w.video2<<",\"control\":"<<w.control<<"}";}s<<"]}";return s.str();}
 }
 extern "C" {
 int32_t aether_protocol_negotiate(const uint8_t* b,uint32_t n,const uint32_t* local,uint32_t count,uint32_t* v,uint32_t* side){return boundary([&]{return negotiate(b,n,local,count,v,side);});}

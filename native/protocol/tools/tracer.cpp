@@ -53,7 +53,7 @@ void kat(const std::map<std::string,std::string>& args){
 }
 }
 int main(int argc,char** argv){
- uint64_t token=0;
+ uint64_t token=0,sibling=0;
  try{
   std::map<std::string,std::string> args;
   for(int i=1;i<argc;i+=2){if(i+1>=argc||!args.emplace(argv[i],argv[i+1]).second)throw std::runtime_error("arguments");}
@@ -71,6 +71,7 @@ int main(int argc,char** argv){
   c.host_id=101;c.instance_id=102;c.display_id=103;c.stream_id=104;c.connection_id=105;c.client_id=106;c.lease_epoch=1;c.config_generation=1;c.key_generation=1;
   c.certificate_file=cert.c_str();c.private_key_file=key.c_str();c.trust_file=trust.c_str();c.peer_name=peer;c.version_count=static_cast<uint32_t>(local.size());for(size_t i=0;i<local.size();++i)c.versions[i]=local[i];c.permission_read=scenario=="wrong-permission"&&role=="host"?0:1;
   auto status=aether_protocol_create(&c,event,&token);if(status!=AP_OK){std::cout<<"{\"kind\":\"create-failed\",\"status\":"<<status<<"}"<<std::endl;return 1;}
+  if(scenario=="multistream"){auto other=c;other.role=1;other.connection_id=205;other.stream_id=204;if(aether_protocol_create(&other,event,&sibling)!=AP_OK)throw std::runtime_error("sibling");}
 #ifdef _WIN32
   auto pid=_getpid();
 #else
@@ -94,6 +95,7 @@ int main(int argc,char** argv){
   std::cout<<"{\"kind\":\"result\",\"pid\":"<<pid<<",\"detail\":"<<query(token)<<"}"<<std::endl;
   uint64_t final=0;if(aether_protocol_stop(token,&final)!=AP_OK||aether_protocol_ack(token,final)!=AP_OK)throw std::runtime_error("stop/ack");
   std::cout<<"{\"kind\":\"clean\",\"pid\":"<<pid<<",\"detail\":"<<query(token)<<"}"<<std::endl;
+  if(sibling){std::cout<<"{\"kind\":\"sibling-survives\",\"detail\":"<<query(sibling)<<"}"<<std::endl;uint64_t other_final=0;if(aether_protocol_stop(sibling,&other_final)!=AP_OK||aether_protocol_ack(sibling,other_final)!=AP_OK||aether_protocol_destroy(sibling)!=AP_OK)throw std::runtime_error("sibling cleanup");sibling=0;}
   if(aether_protocol_destroy(token)!=AP_OK)throw std::runtime_error("destroy");token=0;return status==AP_OK?0:2;
- }catch(const std::exception&){if(token){uint64_t final=0;if(aether_protocol_stop(token,&final)==AP_OK){aether_protocol_ack(token,final);aether_protocol_destroy(token);}}std::cerr<<"tracer rejected bounded input or lifecycle failure"<<std::endl;return 1;}
+ }catch(const std::exception&){for(auto owned:{token,sibling})if(owned){uint64_t final=0;if(aether_protocol_stop(owned,&final)==AP_OK){aether_protocol_ack(owned,final);aether_protocol_destroy(owned);}}std::cerr<<"tracer rejected bounded input or lifecycle failure"<<std::endl;return 1;}
 }
