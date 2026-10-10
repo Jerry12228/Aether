@@ -9,7 +9,7 @@ created: "2026-10-09"
 
 # Phase 06 — Validation Strategy
 
-本文件是执行期验证契约。06-01具体ADR与06-02独立Botan复用原答复1均已记录。06-02全三任务完成，最终Debug node46/46（14,213.3037ms）/CTest10/10（24.48s），独立ASan Release node46/46（16,892.4128ms）/CTest10/10（26.72s），fail/cancel/skip/TODO0。实际保护双向五synthetic流、认证后FEC、公开边界和同窗口隔离已运行；候选原12/12/81KAT/42组合/1,600并发保留独立历史研究。ASan不覆盖预编译OpenSSL，非leak/TSan认证。06-06/03/04/05未执行，尚不存在入口仍是目标；阶段2/6及NET未完成，保留draft/false直到全阶段执行与审计取证。
+本文件是执行期验证契约。06-01具体ADR与06-02独立Botan复用原答复1均已记录；06-02原完整五路synthetic媒体/FEC验证及历史研究证据保留。06-06两任务已完成，最终Debug/ASan控制各27场景、client445/445及父57/57，旧Node各46/46；完整CTest各11/11，最终受影响control已重跑，父级集成CTest11/11（44.36s）。ASan不覆盖预编译OpenSSL，非leak/TSan认证。06-03/04/05尚未完成，尚不存在入口仍是目标；阶段3/6及NET未完成，保留draft/false直到全阶段执行与审计取证。
 
 ## Test Infrastructure
 
@@ -38,8 +38,8 @@ created: "2026-10-09"
 | 06-02-01 | 02 | 2 | NET-01/02/03 | T-06-05/09 | 真实双video、独立安全域/故障/owned清理 | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass scoped; finalDebug/ASan46/46, fullCTest10/10 each |
 | 06-02-02 | 02 | 2 | NET-01/02/03 | T-06-05/06/09/SC | audio/双向synthetic、认证后FEC、replay/key epoch/nonce exhaustion | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass integrated synthetic; real reuse reply1; Debug/ASan46/46 |
 | 06-02-03 | 02 | 2 | NET-01/02/03 | T-06-05/06/09 | 独立golden/KAT、±1/头篡改/seqwrap与公开结构 | vectors+process | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass public ABI/options,22 boundaries and exact TLV/profile refusal |
-| 06-06-01 | 06 | 3 | NET-01/02/03 | T-06-20/21/SC | typed兼容合同/真实产品client/fixture host/confirm前零媒体 | native+process | ctest --test-dir build/phase06/windows-x64 -C Debug -R "^protocol_control$" --output-on-failure --no-tests=error | W0:06-06-01 | pending |
-| 06-06-02 | 06 | 3 | NET-01/02/03 | T-06-20/21/22 | 双PID取消仲裁/GRANT READY闭环、背压/ACK/query/stop/健康流 | native+process | ctest --test-dir build/phase06/windows-x64 -C Debug -R "^protocol_control$" --output-on-failure --no-tests=error | W0:06-06-01 | pending |
+| 06-06-01 | 06 | 3 | NET-01/02/03 | T-06-20/21/SC | typed兼容合同/真实产品client/fixture host/confirm前零媒体 | native+process | ctest --test-dir build/phase06/windows-x64 -C Debug -R "^protocol_control$" --output-on-failure --no-tests=error | yes | 已通过；06-06-01-EVIDENCE及最终旧ABI/版本1和2回归 |
+| 06-06-02 | 06 | 3 | NET-01/02/03 | T-06-20/21/22 | 双PID取消仲裁/GRANT READY闭环、背压/ACK/query/stop/健康流 | native+process | ctest --test-dir build/phase06/windows-x64 -C Debug -R "^protocol_control$" --output-on-failure --no-tests=error | yes | 已通过；Debug/ASan各27场景、client445及父57断言；共享provider与最终证据 |
 | 06-03-01 | 03 | 4 | NET-01/02/03 | T-06-07/08/SC | 完整proposal/资源向量/原子confirm/observer预算 | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
 | 06-03-02 | 03 | 4 | NET-01/02/03 | T-06-08/10/11/18 | fresh auth/旧epoch/上行另确认/独立恢复/临时trace | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
 | 06-03-03 | 03 | 4 | NET-01/02/03 | T-06-07/10/11/18 | 真实限值量测、D阈值/全原case映射/R1 | measure+state | node --test tests/protocol-recovery.test.cjs；node tests/protocol-recovery.test.cjs --measure --evidence artifacts/phase06/limits.json | W0:06-03-01 | pending |
@@ -108,3 +108,7 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 ## 2026-10-10 操作合同修订
 
 用户本会话1已授权修订并继续；06-06为wave3新增前置，独立Revision1计划检查0blocker/0warning。CONTROL-CONTRACT明确API/网络版本、权威取消/提交/READY闭环及双PID实际产品DLL client证据。此处pending仍为实施状态，计划检查不是产品通过；旧ABI1/v1/2回归必需。Nyquist/wave0保留false。
+
+## 2026-10-10 06-06交付记录
+
+06-06两任务及中文摘要已提交：RED7853203/e50c978、GREEN2282dcb/ff081cf、摘要d68b2a6。具名协议向量与最终源码/二进制/原始日志摘要见docs/phase06/06-06-02-EVIDENCE.json及06-06-CONTROL-VECTORS.json。最终Debug/ASan控制各27场景、client445/445和父57/57、fail/skip0；完整Debug11/11（47.71s）、ASan11/11（48.22s），后续受影响control重跑各21.05s/22.89s。父级另核验8个源码hash匹配、构建及CTest11/11（44.36s），schema/UI门槛未阻断，codebase-drift因无STRUCTURE.md跳过。首ASan缺runtime路径导致的环境失败单独保留，未当作行为RED。以上只关闭前置任务，完整预算/恢复/trace由06-03交付，FFI/五目标/最终人审由04/05交付；NET、Nyquist及wave0保持未完成。
