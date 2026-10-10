@@ -82,6 +82,13 @@ Do not make direct repo edits outside a GSD workflow unless the user explicitly 
 > This section is managed by `generate-claude-profile` -- do not edit manually.
 <!-- GSD:profile-end -->
 
+## 项目语言规则
+
+- 新建或实质更新的项目文档默认使用简体中文，包括 GSD 规划、研究、计划检查、执行摘要、验证报告、交接记录、设计说明和证据解读。
+- 面向用户的说明、问题及进度更新使用简体中文。
+- 代码标识、API 名称、命令、路径、版本号、哈希、机器可读字段及枚举值保持原样；必要技术术语可保留英文。
+- 外部来源的原文引用、许可证、第三方 notices、原始日志及固定审阅快照保持原样，不因语言统一破坏证据。
+
 ## Aether Repository Rules
 
 - Start with [.planning/STATE.md](.planning/STATE.md), then the current phase and its directly relevant documents. The user approved the roadmap on 2026-10-07; Phase 1 baseline and Phase 2 Windows local skeleton, actual CI and final human review are complete. Phase 3 is ready to discuss/plan; no virtual-device or full remote-streaming implementation phase has run.
