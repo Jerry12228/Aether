@@ -175,7 +175,7 @@
 
 **Wave 1**
 
-- [ ] 06-01-PLAN.md — 真实安全双进程 tracer、固定基线/向量完成；06-01-03具体 ADR 人审待答复（2/3任务，halted）
+- [x] 06-01-PLAN.md — 真实安全双进程 tracer、固定基线/向量及真实具体ADR批准完成（原答复1，reviewed hash0cdda0d2）
 
 **Wave 2（前置：Wave 1完成及具体ADR批准）**
 
@@ -650,7 +650,7 @@ Phase 3仍halted；Phase 6只依赖已完成的Phase 2。2026-10-10显式执行�
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 0/5 | In Progress (halted 06-01-03) | - |
+| 6. GameStream 协议重构与扩展 | 1/5 | In Progress (06-02 ready) | - |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |

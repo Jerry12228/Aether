@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: Phase 6 halted at 06-01-03 concrete ADR decision (2/3 tasks); Phase 3 still halted at 03-03-02 corrected install-plan approval; no system mutation
-last_updated: "2026-10-10T03:34:01.000Z"
+stopped_at: Phase 6 06-01 complete after real ADR approval; proceeding to 06-02; Phase 3 corrected install gate unchanged
+last_updated: "2026-10-10T03:54:19.000Z"
 last_activity: 2026-10-10
-last_activity_desc: Phase 6 tasks 06-01-01/02 committed, tests19/19 and CTest9/9; specific ADR decision pending; Phase 3 install gate unchanged
+last_activity_desc: Real reply1 approved exact ADR0cdda0d2; 06-01 complete, continuation19/19; 06-02 ready; Phase3 unchanged
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 14
-  completed_plans: 8
+  completed_plans: 9
   percent: 5
-state_head: 5292638
+state_head: c74cfb1
 ---
 
 # Project State
@@ -48,6 +48,7 @@ Phase 6 — GameStream 协议重构与扩展：用户2026-10-10显式执行授�
 ## Performance Metrics
 
 Total plans completed: 8; completed phases: 2/42.
+Current count after2026-10-10 ADR approval:9/14 plans complete,2/42 phases; the preceding8-plan value is the retained pre-approval baseline.
 Phase3 partial: 03-01/03-02 complete. Latest Debug/Release native builds pass; CTest11/11 each (26.54s/25.32s), CLI/process27/27 each (23.2867s/21.4822s), targeted admission/lifecycle19/19 (475.8736ms), zero skip. Revised dedicated source closes arrival cleanup and full-capacity GUID idempotence, actual WDK rebuild/signature and separate six-target InfVerif evidence retained. Native mutation code is compiled; only read-only actual device enumeration ran. 03-03 system authorization/machine matrix unperformed; VDP01/02 and Phase3 incomplete.
 
 03-03 Task1: native SetupAPI/NewDev package code, owner-protected stage/backup, side-effect journal and hash-bound readonly plan complete; Release build5,663ms, Contract35/35(1,040.4829ms TAP), CTest11/11(25.14s), zero skipped tests. Actual install/update/rollback/topology/HDR/persistence/reset remain untested. Machine win-5f5cc5dd3cf310b6, plan2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0; details in03-03-SUMMARY and HELIOS-DISPLAY-INSTALL-PLAN.md/json.
@@ -64,6 +65,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 ## Accumulated Context
 
 ### Decisions
+
+- 2026-10-10真实用户原答复`1`：批准具体ADR reviewedSHA2560cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc，recordedAt2026-10-10T03:46:30Z，approve-concrete；c74cfb1记录原答复/初始8材料14证据及只两库复用范围。06-01完成，06-02解锁，Phase6 1/5；NET未完成。原审阅快照在build/phase06/reviewed-06-01，之后源码演进不能覆盖批准历史。新FEC候选仍需独立准入/具体批准，无设备/信任/网络/Phase3安装授权。
 
 - 2026-10-10 Phase6按用户`$gsd-execute-phase 6`内联顺序执行至06-01-03：安全单包原型和完整具体ADR已提交；自动测试不代表批准，decision原答复/选择/时间仍null。独立原生proposal确认只记批准计数，不提交生产预算；多流/FEC/恢复/FFI/其余目标未执行。未改变Phase3系统授权，无设备/信任/网络配置修改或执行/安排重启/关机。
 
@@ -114,7 +117,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
-[Phase6 current 06-01-03 blocking-human] 具体ADR hash0cdda0d2待真实审阅答复；TLS/SRTP/两库是候选，不推断技术批准。原mode0关闭加密/mode1明文回退与D13冲突，保留名称和禁用原因，提供mandatory安全替代。06-02/03/04/05阻断；Phase6、NET01/02/03未完成。当前scope仅loopback单synthetic下行包，剩余nonce/FEC/rekey/多流/真实权限/预算/五目标不能从该结果推断支持。GSD phase-plan-index实际返回halted=true、runnable=[]，四后续计划blocked_by06-01。
+[Phase6 approval complete; remaining evidence] 真实原答复1已批准ADR0cdda0d2对应局部TLS/SRTP/两库及原明文选项明确禁用处置；06-01完成，06-02准备执行。Phase6/NET01/02/03仍未完成；多流/nonce/FEC/rekey/真实权限/预算/五目标未执行，不从单synthetic包推断支持。新FEC源未纳入本次批准，按06-02来源关口处理。
 
 [Phase3 current 03-03-02 blocking-human] 原安装条件授权在Apollo前置失败停止。现exact WUDF subkey修正/新包完成，等待新plan4fa13eea批准；机器安装和实际UMDF隔离均未执行。Apollo PID6820/15176与四WUDFHost、配置/二进制、20外来记录/8store文件和CCD保持；45,957ms只读窗口全部一致，0 establishedTCP不代表无UDP串流。BCD权限partial、既有安全/信任不变；历史Machine/Install假授权自动审批拒绝原样保留。WINDOWS ledger未执行矩阵仍open。SDK仍按SUMMARY存在误计9/3，已再次按halted纠正8完成、Phase3 2/3；不关闭VDP。
 
@@ -155,4 +158,4 @@ Stopped at: Phase 6 halted at 06-01-03 specific ADR decision; Phase 3 independen
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
 
-Active Phase6 resume: `.planning/phases/06-gamestream/06-01-SUMMARY.md` + `06-01-PLAN.md` Task06-01-03。先核验ADR0cdda0d2及绑定材料，取得真实具体答复；approve才完成06-01/允许06-02，revise/hold保持后续阻断。以上Phase3 Resume file/Next action仅保留其独立安装恢复入口，不是本次协议执行的下一任务。
+Active Phase6 resume: `.planning/phases/06-gamestream/06-02-PLAN.md`。06-01真实原答复1已记录并完成；先核验reviewed ADR0cdda0d2历史快照及当前产物source manifest，再做06-02-01双video RED/GREEN。新FEC源若需新增回具体ADR批准。以上Phase3 Resume file/Next action仅保留其独立安装恢复入口，不是当前协议执行的下一任务。
