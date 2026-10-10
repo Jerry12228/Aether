@@ -8,6 +8,7 @@ const crypto=require('node:crypto');
 const dgram=require('node:dgram');
 const root=path.resolve(__dirname,'..');
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
+let priorProtectedSource;
 async function auditFec(){
   const repo='sleepybishop/nanors',sha='b1e3c22ca0cdc0bb83e3cd6ed1a2fc77869ed99a';
   const base=path.join(root,'build/phase06/fec-audit');fs.mkdirSync(base,{recursive:true});
@@ -39,7 +40,7 @@ async function auditFec(){
   fs.writeFileSync(path.join(root,'docs/phase06/FEC-SOURCE-AUDIT.json'),JSON.stringify(ledger,null,2)+'\n');
   console.log(JSON.stringify({sourceSha:sha,archiveSha256:dossier.archiveSha256,files:files.map(f=>f.path),origin,status:dossier.status}));
 }
-function target(){const m=JSON.parse(fs.readFileSync(path.join(root,'build/phase06/windows-x64/target-manifest-Debug.json'),'utf8'));assert.equal(hash(fs.readFileSync(m.binary)),m.sha256);assert.equal(hash(fs.readFileSync(m.library)),m.librarySha256);for(const s of m.sources)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);return m;}
+function target(){const m=JSON.parse(fs.readFileSync(path.join(root,'build/phase06/windows-x64/target-manifest-Debug.json'),'utf8'));assert.equal(hash(fs.readFileSync(m.binary)),m.sha256);assert.equal(hash(fs.readFileSync(m.library)),m.librarySha256);for(const s of m.sources)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);if(m.fec){assert.equal(hash(fs.readFileSync(path.join(root,'docs/phase06/FEC-REUSE-DECISION.json'))),m.fec.decisionSha256);for(const s of m.fec.inputs)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);for(const d of m.dependencies)if(d.file)assert.equal(hash(fs.readFileSync(d.file)),d.sha256);assert.equal(hash(fs.readFileSync(m.mediaSecurity.binary)),m.mediaSecurity.sha256);}return m;}
 function child(binary,args){
   const process=cp.spawn(binary,args,{shell:false,windowsHide:true,stdio:['ignore','pipe','pipe']});
   let buffer='',stderr='',finished=false;const messages=[],waiters=[];let resolve,reject;
@@ -59,7 +60,7 @@ function fixture(){
 }
 if(process.argv.includes('--audit-fec'))auditFec().catch(e=>{console.error(e);process.exitCode=1;});
 else for(const scenario of ['happy','loss-video1','cross-stream','wrong-direction','tamper-high-sequence','replay',
-  'fec-happy','fec-threshold','fec-beyond','fec-tamper-repair','fec-cross-role','fec-reorder-replay','fec-late'])test('real secure media: '+scenario,{timeout:10000},async()=>{
+  'fec-happy','fec-threshold','fec-beyond','fec-tamper-repair','fec-cross-role','fec-reorder-replay','fec-late','fec-queue','fec-domain-tamper','fec-burst','fec-fresh-epoch','fec-stale-epoch'])test('real secure media: '+scenario,{timeout:10000},async()=>{
   const full=scenario.startsWith('fec-');
   const m=target(),dir=fixture(),relay=dgram.createSocket('udp4');let host,client,receiver=0,hostPort=0;const held=[];const relayCounts={received:0,forwarded:0,dropped:0,injected:0};let relayError;
   relay.on('error',e=>{relayError=e;});
@@ -70,6 +71,8 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
       const stream=packet.readUInt32BE(8),seq=packet.readUInt16BE(2);
       if(full){
         const destination=stream>=107?hostPort:receiver,round=packet.readUInt32BE(20),role=packet[18],shard=packet.readUInt16BE(96);
+        if(scenario==='fec-happy'&&stream===104&&round===1&&shard===0)priorProtectedSource=Buffer.from(packet);
+        if(scenario==='fec-fresh-epoch'&&stream===104&&round===1&&shard===0){assert.ok(priorProtectedSource);relay.send(priorProtectedSource,destination,'127.0.0.1');++relayCounts.injected;}
         if(stream===104&&round>=2&&round<=4){
           if(['fec-threshold','fec-tamper-repair','fec-late'].includes(scenario)&&shard===0){++relayCounts.dropped;return;}
           if(scenario==='fec-beyond'&&shard<2){++relayCounts.dropped;return;}
@@ -81,6 +84,8 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
         relay.send(packet,destination,'127.0.0.1');++relayCounts.forwarded;
         if(scenario==='fec-reorder-replay'&&role===1){for(const p of held.splice(0)){relay.send(p.packet,p.destination,'127.0.0.1');relay.send(p.packet,p.destination,'127.0.0.1');relayCounts.forwarded++;relayCounts.injected++;}}
         if(scenario==='fec-late'&&stream===104&&round>=3&&shard===1){for(const p of held.splice(0)){relay.send(p.packet,p.destination,'127.0.0.1');++relayCounts.forwarded;}}
+        if(scenario==='fec-domain-tamper'&&stream===104&&round===2&&role===1){for(const offset of [2,4,8,16,17,18,19,20,24,32,40,48,56,64,72,80,88,96,98,100,102,104,108,116,120,152,156]){const bad=Buffer.from(packet);bad[offset]^=1;relay.send(bad,destination,'127.0.0.1');++relayCounts.injected;}}
+        if(scenario==='fec-burst'&&stream===104&&shard===0){for(let i=0;i<20;i++){relay.send(packet,destination,'127.0.0.1');++relayCounts.injected;}}
         return;
       }
       if(scenario==='loss-video1'&&stream===104&&seq>=2&&seq<=4){++relayCounts.dropped;return;}
@@ -98,18 +103,25 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
     // The destination port is carried as a bounded optional TLV, not a fault hook.
     const port=Buffer.alloc(6);port.writeUInt16BE(2,0);port.writeUInt16BE(2,2);port.writeUInt16BE(relay.address().port,4);
     const profile=full?Buffer.from('000300020001','hex'):Buffer.alloc(0);
-    const request=Buffer.concat([wire,port,profile]);request.writeUInt16BE(request.length,4);fs.writeFileSync(path.join(dir,'request.bin'),request);
-    host=child(m.binary,['--role','host','--fixture',dir,'--scenario','multistream']);const ready=await host.wait('ready');
+    const uplink=full?Buffer.concat([Buffer.from('00060011','hex'),Buffer.from('synthetic-phase06')]):Buffer.alloc(0);
+    const limits=scenario==='fec-queue'?Buffer.from('0007001400f000f000320001004000020000008000190000','hex'):Buffer.alloc(0);
+    const request=Buffer.concat([wire,port,profile,uplink,limits]);request.writeUInt16BE(request.length,4);fs.writeFileSync(path.join(dir,'request.bin'),request);
+    const hostEpoch=scenario==='fec-fresh-epoch'?['--key-generation','2']:[];
+    const clientEpoch=['fec-fresh-epoch','fec-stale-epoch'].includes(scenario)?['--key-generation','2']:[];
+    host=child(m.binary,['--role','host','--fixture',dir,'--scenario','multistream',...hostEpoch]);const ready=await host.wait('ready');
     hostPort=ready.detail.udpPort;
-    client=child(m.binary,['--role','client','--peer',String(ready.detail.controlPort),'--fixture',dir,'--scenario','multistream']);receiver=(await client.wait('ready')).detail.udpPort;
-    const [h,c]=await Promise.all([host.closed,client.closed]);assert.equal(h.code,0,JSON.stringify(h));assert.equal(c.code,0,JSON.stringify(c));assert.notEqual(h.pid,c.pid);assert.ifError(relayError);
+    client=child(m.binary,['--role','client','--peer',String(ready.detail.controlPort),'--fixture',dir,'--scenario','multistream',...clientEpoch]);receiver=(await client.wait('ready')).detail.udpPort;
+    const [h,c]=await Promise.all([host.closed,client.closed]);assert.equal(h.code,scenario==='fec-stale-epoch'?2:0,JSON.stringify(h));assert.equal(c.code,scenario==='fec-stale-epoch'?2:0,JSON.stringify(c));assert.notEqual(h.pid,c.pid);assert.ifError(relayError);
     const hs=h.messages.find(v=>v.kind==='result').detail,cs=c.messages.find(v=>v.kind==='result').detail;
-    assert.equal(cs.streams.length,full?5:2,'Missing independent native streams');assert.equal(cs.controlProgress,8);assert.equal(hs.controlProgress,8);
-    if(full){
+    if(scenario==='fec-stale-epoch'){
+      for(const result of [hs,cs]){assert.equal(result.status,27);assert.equal(result.grants,0);assert.equal(result.streams.length,0);assert.equal(result.queueBytes,0);}
+      assert.equal(relayCounts.received,0);
+    }else if(full){
+      assert.equal(cs.streams.length,5,'Missing independent native streams');assert.equal(cs.controlProgress,8);assert.equal(hs.controlProgress,8);
       assert.equal(relayCounts.received,120);
       for(const result of [hs,cs]){
         assert.equal(result.fecProfile,'rs-vandermonde-gf256-11d-v1');
-        assert.equal(result.queueBytes,0);assert.ok(result.peakQueueBytes<=960);
+        assert.equal(result.queueBytes,0);assert.ok(result.peakQueueBytes<=(scenario==='fec-queue'?640:960));
         for(const stream of result.streams){
           const receiving=result===cs?stream.direction===1:stream.direction===2;
           if(!receiving){assert.equal(stream.sent,24);continue;}
@@ -118,6 +130,8 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
           const name={104:'video',105:'video',106:'audio',107:'mic',108:'camera'}[stream.id];
           const rounds=[1,2,3,4,5,6,7,8].filter(r=>!missing.includes(r));
           assert.equal(stream.digest,hash(Buffer.from(rounds.map(r=>`synthetic-phase06:${name}:${stream.id}:${r}`).join(''))));
+          assert.equal(stream.timestamp,(0xffffffff-3000+(name==='audio'||name==='mic'?960:3000)*7)>>>0);
+          if(scenario==='fec-queue')assert.ok(stream.rejected>=8,'Full per-stream shard queue did not reject extra repair bytes');
           if(stream.id===104){
             if(scenario==='fec-threshold')assert.equal(stream.recovered,3);
             if(missing.length)assert.equal(stream.dropped,3);
@@ -132,6 +146,7 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
       }
       if(relayCounts.injected)assert.ok(cs.streams.reduce((n,s)=>n+s.rejected,0)+hs.streams.reduce((n,s)=>n+s.rejected,0)>0);
     }else{
+    assert.equal(cs.streams.length,2,'Missing independent native streams');assert.equal(cs.controlProgress,8);assert.equal(hs.controlProgress,8);
     assert.equal(relayCounts.received,16);assert.equal(hs.streams[0].sent,8);assert.equal(hs.streams[1].sent,8);
     for(const s of cs.streams){assert.equal(s.received,scenario==='loss-video1'&&s.id===104?5:8);const rounds=[1,2,3,4,5,6,7,8].filter(r=>!(scenario==='loss-video1'&&s.id===104&&r>=2&&r<=4));assert.equal(s.digest,hash(Buffer.from(rounds.map(r=>`synthetic-phase06:video:${s.id}:${r}`).join(''))));}
     if(scenario==='loss-video1')for(const round of [2,3,4]){const w=cs.windows.find(w=>w.round===round);assert.equal(w.video1,0);assert.equal(w.video2,1);assert.equal(w.control,1);}
@@ -140,4 +155,9 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
     for(const r of [h,c]){const clean=r.messages.find(v=>v.kind==='clean').detail;assert.equal(clean.sockets,0);assert.equal(clean.threads,0);assert.equal(clean.stopped,true);assert.equal(clean.persistentIdentity.instanceId,102);assert.equal(clean.persistentIdentity.displayId,103);const sibling=r.messages.find(v=>v.kind==='sibling-survives');assert.ok(sibling&&sibling.detail.stopped===false&&sibling.detail.sockets===2);}
     const out=path.join(root,'artifacts/phase06/multistream');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,scenario+'.json'),JSON.stringify({schema:1,scenario,seed:601,relay:relayCounts,targetSha256:m.sha256,sources:m.sources,host:h,client:c,synthetic:true,systemMutation:false},null,2)+'\n');
   }finally{for(const p of [host,client])if(p?.process.exitCode===null)p.process.kill();await new Promise(resolve=>relay.close(resolve));fs.rmSync(dir,{recursive:true,force:true});}
+});
+if(!process.argv.includes('--audit-fec'))for(const mode of ['rollover','nonce-exhaustion','high-sequence','role-key-epoch','unchanged-retransmission','fec-golden'])test('actual native media security: '+mode,()=>{
+  const m=target();assert.ok(m.mediaSecurity,'Current security test target manifest required');
+  const result=cp.spawnSync(m.mediaSecurity.binary,[mode],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000,maxBuffer:4096});
+  assert.equal(result.status,0,result.stderr);assert.deepEqual(JSON.parse(result.stdout),{ok:true,case:mode});
 });

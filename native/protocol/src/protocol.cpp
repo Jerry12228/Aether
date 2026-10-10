@@ -27,29 +27,9 @@
 #include <string>
 #include <vector>
 namespace {
-#ifdef _WIN32
-using Socket=SOCKET;
-constexpr Socket invalid=INVALID_SOCKET;
-void close_socket(Socket s){closesocket(s);}
-#else
-using Socket=int;
-constexpr Socket invalid=-1;
-void close_socket(Socket s){close(s);}
-#endif
-struct Failure {int32_t status;};
-void require(bool ok,int32_t status){if(!ok)throw Failure{status};}
+using namespace aether::protocol;
+using Context=ConnectionContext;
 template<class F> int32_t boundary(F f) noexcept {try{return f();}catch(Failure e){return e.status;}catch(...){return AP_INTERNAL_ERROR;}}
-struct OwnedSocket {
- Socket value=invalid;
- ~OwnedSocket(){reset();}
- void reset(){if(value!=invalid){close_socket(value);value=invalid;}}
-};
-uint16_t u16(const uint8_t* p){return static_cast<uint16_t>((p[0]<<8)|p[1]);}
-void put16(uint8_t* p,uint16_t v){p[0]=static_cast<uint8_t>(v>>8);p[1]=static_cast<uint8_t>(v);}
-void put32(uint8_t* p,uint32_t v){for(int i=3;i>=0;--i){p[i]=static_cast<uint8_t>(v);v>>=8;}}
-void put64(uint8_t* p,uint64_t v){for(int i=7;i>=0;--i){p[i]=static_cast<uint8_t>(v);v>>=8;}}
-uint32_t u32(const uint8_t* p){return (uint32_t(p[0])<<24)|(uint32_t(p[1])<<16)|(uint32_t(p[2])<<8)|p[3];}
-uint64_t u64(const uint8_t* p){return (uint64_t(u32(p))<<32)|u32(p+4);}
 void append64(std::vector<uint8_t>& b,uint64_t v){for(int i=7;i>=0;--i)b.push_back(static_cast<uint8_t>(v>>(i*8)));}
 std::string bounded_string(const char* value,size_t maximum){require(value!=nullptr,AP_INVALID_ARGUMENT);size_t n=0;while(n<=maximum&&value[n])++n;require(n>0&&n<=maximum,AP_LENGTH);return std::string(value,n);}
 int32_t negotiate(const uint8_t* bytes,uint32_t size,const uint32_t* local,uint32_t count,uint32_t* selected,uint32_t* side){
@@ -65,126 +45,40 @@ int32_t negotiate(const uint8_t* bytes,uint32_t size,const uint32_t* local,uint3
  std::array<bool,65536> fields{};uint32_t field_count=0;
  for(uint32_t offset=8+2*bytes[7];offset<size;){if(size-offset<4)return AP_LENGTH;auto type=u16(bytes+offset);auto n=u16(bytes+offset+2);offset+=4;if(n>size-offset)return AP_LENGTH;if(!type||fields[type]||++field_count>32)return AP_FIELD;fields[type]=true;if(type&0x8000)return AP_FIELD;offset+=n;}
  if(!candidate){*side=remote_max<local_max?1:local_max<remote_max?2:3;return AP_VERSION;}
+ (void)media_limits(bytes,size);
  *selected=candidate;
  return AP_OK;
 }
-struct Context {
- AetherProtocolConfig config{};
- std::string cert,key,trust,peer;
- AetherProtocolEvent callback=nullptr;
- uint64_t token=0,published=0,acked=0;
- uint32_t tcp_port=0,udp_port=0,selected=0,upgrade=0,grants=0,sink_packets=0;
- std::string sink_digest;
- int32_t result=AP_OK;
- bool submitted=false,stopped=false,authenticated=false,rejection_sent=false;
- uint64_t request_id=0,budget_revision=0,confirmed_proposals=0;
- std::string proposal_digest,proposal_json;
- std::chrono::steady_clock::time_point proposal_expiry{};
- std::chrono::steady_clock::time_point exchange_deadline{};
- bool proposal_cancelled=false,proposal_confirmed=false;
- std::timed_mutex mutex;
- std::timed_mutex operation_mutex;
- OwnedSocket listener,tcp,udp;
- std::unique_ptr<SSL_CTX,decltype(&SSL_CTX_free)> tls_context{nullptr,SSL_CTX_free};
- std::unique_ptr<SSL,decltype(&SSL_free)> tls{nullptr,SSL_free};
- srtp_t srtp=nullptr;
- std::vector<std::unique_ptr<aether::protocol::StreamContext>> streams;
- std::vector<aether::protocol::WindowRecord> windows;
- uint32_t control_progress=0;
- ~Context(){if(srtp)srtp_dealloc(srtp);}
- void cleanup(){for(auto& s:streams)if(s->crypto){srtp_dealloc(s->crypto);s->crypto=nullptr;s->authenticated_bytes.clear();}if(srtp){srtp_dealloc(srtp);srtp=nullptr;}tls.reset();tls_context.reset();listener.reset();tcp.reset();udp.reset();}
-};
 std::mutex registry_mutex;
 std::map<uint64_t,std::shared_ptr<Context>> registry;
 uint64_t next_token=1;
 std::shared_ptr<Context> find(uint64_t token){std::lock_guard lock(registry_mutex);auto i=registry.find(token);return i==registry.end()?nullptr:i->second;}
-sockaddr_in endpoint(uint32_t port){sockaddr_in a{};a.sin_family=AF_INET;a.sin_addr.s_addr=htonl(INADDR_LOOPBACK);a.sin_port=htons(static_cast<uint16_t>(port));return a;}
-void nonblocking(Socket s){
-#ifdef _WIN32
- u_long enabled=1;require(ioctlsocket(s,FIONBIO,&enabled)==0,AP_INTERNAL_ERROR);
-#else
- require(s<FD_SETSIZE,AP_BUSY);auto flags=fcntl(s,F_GETFL,0);require(flags>=0&&fcntl(s,F_SETFL,flags|O_NONBLOCK)==0,AP_INTERNAL_ERROR);
-#endif
-}
-void wait_socket(Context& c,Socket s,bool write){
-#ifndef _WIN32
- require(s>=0&&s<FD_SETSIZE,AP_BUSY);
-#endif
- auto remaining=std::chrono::duration_cast<std::chrono::microseconds>(c.exchange_deadline-std::chrono::steady_clock::now()).count();require(remaining>0,AP_TIMEOUT);
- fd_set fds;FD_ZERO(&fds);FD_SET(s,&fds);timeval timeout{static_cast<long>(remaining/1000000),static_cast<long>(remaining%1000000)};
- require(select(static_cast<int>(s)+1,write?nullptr:&fds,write?&fds:nullptr,nullptr,&timeout)>0,AP_TIMEOUT);
-}
-bool retry_tls(Context& c,int result,int32_t otherwise){
- auto error=SSL_get_error(c.tls.get(),result);
- if(error==SSL_ERROR_WANT_READ||error==SSL_ERROR_WANT_WRITE){wait_socket(c,c.tcp.value,error==SSL_ERROR_WANT_WRITE);return true;}
- auto reason=ERR_GET_REASON(ERR_peek_last_error());throw Failure{reason==SSL_R_TLSV1_ALERT_UNKNOWN_CA||reason==SSL_R_SSLV3_ALERT_BAD_CERTIFICATE||reason==SSL_R_TLSV13_ALERT_CERTIFICATE_REQUIRED?AP_TRUST:otherwise};
-}
-void make_socket(OwnedSocket& s,int kind,uint32_t ms){
- s.value=socket(AF_INET,kind,0);require(s.value!=invalid,AP_INTERNAL_ERROR);
-#ifdef _WIN32
- DWORD timeout=ms;
- require(setsockopt(s.value,SOL_SOCKET,SO_RCVTIMEO,reinterpret_cast<char*>(&timeout),sizeof(timeout))==0,AP_INTERNAL_ERROR);
- require(setsockopt(s.value,SOL_SOCKET,SO_SNDTIMEO,reinterpret_cast<char*>(&timeout),sizeof(timeout))==0,AP_INTERNAL_ERROR);
-#else
- timeval timeout{static_cast<long>(ms/1000),static_cast<long>((ms%1000)*1000)};
- require(setsockopt(s.value,SOL_SOCKET,SO_RCVTIMEO,&timeout,sizeof(timeout))==0,AP_INTERNAL_ERROR);
- require(setsockopt(s.value,SOL_SOCKET,SO_SNDTIMEO,&timeout,sizeof(timeout))==0,AP_INTERNAL_ERROR);
-#endif
-}
-uint32_t bind_socket(OwnedSocket& s){auto a=endpoint(0);require(bind(s.value,reinterpret_cast<sockaddr*>(&a),sizeof(a))==0,AP_INTERNAL_ERROR);
-#ifdef _WIN32
- int n=sizeof(a);
-#else
- socklen_t n=sizeof(a);
-#endif
- require(getsockname(s.value,reinterpret_cast<sockaddr*>(&a),&n)==0,AP_INTERNAL_ERROR);return ntohs(a.sin_port);
-}
-void handshake(Context& c){
- if(c.config.role==1){
-  wait_socket(c,c.listener.value,false);
-  c.tcp.value=accept(c.listener.value,nullptr,nullptr);require(c.tcp.value!=invalid,AP_INTERNAL_ERROR);
-#ifdef _WIN32
-  DWORD ms=c.config.deadline_ms;
-  setsockopt(c.tcp.value,SOL_SOCKET,SO_RCVTIMEO,reinterpret_cast<char*>(&ms),sizeof(ms));
-  setsockopt(c.tcp.value,SOL_SOCKET,SO_SNDTIMEO,reinterpret_cast<char*>(&ms),sizeof(ms));
-#else
-  timeval ms{static_cast<long>(c.config.deadline_ms/1000),0};
-  setsockopt(c.tcp.value,SOL_SOCKET,SO_RCVTIMEO,&ms,sizeof(ms));setsockopt(c.tcp.value,SOL_SOCKET,SO_SNDTIMEO,&ms,sizeof(ms));
-#endif
- }else{make_socket(c.tcp,SOCK_STREAM,c.config.deadline_ms);auto a=endpoint(c.config.peer_control_port);require(connect(c.tcp.value,reinterpret_cast<sockaddr*>(&a),sizeof(a))==0,AP_TIMEOUT);}
- nonblocking(c.tcp.value);
- c.tls.reset(SSL_new(c.tls_context.get()));require(c.tls!=nullptr,AP_INTERNAL_ERROR);
- require(SSL_set_fd(c.tls.get(),static_cast<int>(c.tcp.value))==1,AP_INTERNAL_ERROR);
- if(c.config.role==2){require(SSL_set1_host(c.tls.get(),c.peer.c_str())==1,AP_INTERNAL_ERROR);SSL_set_tlsext_host_name(c.tls.get(),c.peer.c_str());}
- for(;;){ERR_clear_error();int ok=c.config.role==1?SSL_accept(c.tls.get()):SSL_connect(c.tls.get());if(ok==1)break;auto e=SSL_get_verify_result(c.tls.get());retry_tls(c,ok,e==X509_V_ERR_HOSTNAME_MISMATCH?AP_IDENTITY:AP_TRUST);}
- require(SSL_version(c.tls.get())==TLS1_3_VERSION,AP_PROTECTION);
- require(SSL_get_verify_result(c.tls.get())==X509_V_OK,AP_TRUST);
- std::unique_ptr<X509,decltype(&X509_free)> peer{SSL_get1_peer_certificate(c.tls.get()),X509_free};
- require(peer&&X509_check_host(peer.get(),c.peer.c_str(),c.peer.size(),X509_CHECK_FLAG_NO_PARTIAL_WILDCARDS,nullptr)==1,AP_IDENTITY);
- c.authenticated=true;
-}
-void write_tls(Context& c,const uint8_t* b,size_t n){while(n){require(std::chrono::steady_clock::now()<c.exchange_deadline,AP_TIMEOUT);size_t written=0;ERR_clear_error();auto result=SSL_write_ex(c.tls.get(),b,n,&written);if(result!=1){retry_tls(c,result,AP_PROTECTION);continue;}require(written>0,AP_PROTECTION);b+=written;n-=written;}}
-void read_tls(Context& c,uint8_t* b,size_t n){while(n){require(std::chrono::steady_clock::now()<c.exchange_deadline,AP_TIMEOUT);size_t got=0;ERR_clear_error();auto result=SSL_read_ex(c.tls.get(),b,n,&got);if(result!=1){retry_tls(c,result,AP_LENGTH);continue;}require(got>0,AP_LENGTH);b+=got;n-=got;}}
-void make_srtp(Context& c){
- std::vector<uint8_t> domain{'A','E','T','H',0,1};
- for(uint64_t id:{c.config.host_id,c.config.instance_id,c.config.display_id,c.config.stream_id,c.config.connection_id,c.config.client_id,c.config.lease_epoch,c.config.config_generation,c.config.key_generation})append64(domain,id);
- // Version, direction and media type are canonical, network-order domain fields.
- append64(domain,c.selected);domain.push_back(1);domain.push_back(1);
- std::array<unsigned char,44> material{};
- constexpr char label[]="EXPORTER-Aether-SRTP-v1";
- require(SSL_export_keying_material(c.tls.get(),material.data(),material.size(),label,sizeof(label)-1,domain.data(),domain.size(),1)==1,AP_PROTECTION);
- srtp_policy_t policy{};srtp_crypto_policy_set_aes_gcm_256_16_auth(&policy.rtp);srtp_crypto_policy_set_aes_gcm_256_16_auth(&policy.rtcp);
- policy.ssrc.type=ssrc_specific;policy.ssrc.value=static_cast<uint32_t>(c.config.stream_id);policy.key=material.data();policy.window_size=128;policy.allow_repeat_tx=0;
- auto result=srtp_create(&c.srtp,&policy);OPENSSL_cleanse(material.data(),material.size());require(result==srtp_err_status_ok,AP_PROTECTION);
-}
-std::string hash(const uint8_t* bytes,size_t size){std::array<unsigned char,32> out{};unsigned int n=0;require(EVP_Digest(bytes,size,out.data(),&n,EVP_sha256(),nullptr)==1&&n==32,AP_INTERNAL_ERROR);constexpr char hex[]="0123456789abcdef";std::string s;for(auto b:out){s.push_back(hex[b>>4]);s.push_back(hex[b&15]);}return s;}
 uint16_t optional_port(const uint8_t* bytes,uint32_t size){
  for(uint32_t offset=8u+2u*bytes[7];offset<size;){auto type=u16(bytes+offset),length=u16(bytes+offset+2);offset+=4;if(type==2){require(length==2&&u16(bytes+offset)!=0,AP_FIELD);return u16(bytes+offset);}offset+=length;}
  return 0;
 }
 bool dual_requested(const uint8_t* bytes,uint32_t size){
- for(uint32_t offset=8u+2u*bytes[7];offset<size;){auto type=u16(bytes+offset),length=u16(bytes+offset+2);offset+=4;if(type==1){require(length==1&&bytes[offset]==2,AP_FIELD);return true;}offset+=length;}
+ for(uint32_t offset=8u+2u*bytes[7];offset<size;){auto type=u16(bytes+offset),length=u16(bytes+offset+2);offset+=4;if(type==1){require(length==1&&(bytes[offset]==2||bytes[offset]==5),AP_FIELD);return bytes[offset]==2;}offset+=length;}
  return false;
+}
+bool full_requested(const uint8_t* bytes,uint32_t size){
+ bool full=false,profile=false,uplink=false;
+ for(uint32_t offset=8u+2u*bytes[7];offset<size;){auto type=u16(bytes+offset),length=u16(bytes+offset+2);offset+=4;
+  if(type==1){require(length==1&&(bytes[offset]==2||bytes[offset]==5),AP_FIELD);full=bytes[offset]==5;}
+  if(type==3){require(length==2,AP_FIELD);require(u16(bytes+offset)==1,AP_VERSION);profile=true;}
+  if(type==6){require(length>0&&length<=64,AP_LENGTH);uplink=true;}offset+=length;
+ }if(full)require(profile&&uplink,AP_FIELD);return full;
+}
+std::vector<uint8_t> uplink_payload(const uint8_t* bytes,uint32_t size){
+ for(uint32_t offset=8u+2u*bytes[7];offset<size;){auto type=u16(bytes+offset),length=u16(bytes+offset+2);offset+=4;if(type==6)return {bytes+offset,bytes+offset+length};offset+=length;}throw Failure{AP_FIELD};
+}
+std::vector<uint8_t> control_domain(const Context& c,uint32_t version){
+ std::vector<uint8_t> bytes;bytes.reserve(80);
+ for(uint64_t value:{c.config.host_id,c.config.instance_id,c.config.display_id,c.config.stream_id,c.config.connection_id,c.config.client_id,c.config.lease_epoch,c.config.config_generation,c.config.key_generation,uint64_t(version)})append64(bytes,value);return bytes;
+}
+void validate_domain(const Context& c,const uint8_t* received,uint32_t version){
+ const auto expected=control_domain(c,version);
+ for(size_t field=0;field<10;++field)require(u64(received+8*field)==u64(expected.data()+8*field),field==9?AP_VERSION:field>=6?AP_STALE:AP_IDENTITY);
 }
 void create_dual_streams(Context& c){
  require(c.config.stream_id<UINT32_MAX&&c.selected==2,AP_FIELD);
@@ -211,13 +105,6 @@ void transmit_dual(Context& c,uint16_t port,const uint8_t* payload,uint32_t size
   }
   std::array<uint8_t,4> control{};put32(control.data(),round);write_tls(c,control.data(),control.size());std::array<uint8_t,4> ack{};read_tls(c,ack.data(),ack.size());require(u32(ack.data())==round,AP_FIELD);++c.control_progress;
  }
-}
-bool datagram_ready(Socket socket,std::chrono::steady_clock::time_point deadline){
-#ifndef _WIN32
- require(socket>=0&&socket<FD_SETSIZE,AP_BUSY);
-#endif
- auto remaining=std::chrono::duration_cast<std::chrono::microseconds>(deadline-std::chrono::steady_clock::now()).count();if(remaining<=0)return false;
- fd_set fds;FD_ZERO(&fds);FD_SET(socket,&fds);timeval timeout{static_cast<long>(remaining/1000000),static_cast<long>(remaining%1000000)};auto result=select(static_cast<int>(socket)+1,&fds,nullptr,nullptr,&timeout);require(result>=0,AP_INTERNAL_ERROR);return result>0;
 }
 void receive_dual(Context& c){
  create_dual_streams(c);
@@ -255,6 +142,9 @@ int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
   int32_t status=negotiate(request.data(),length,c.config.versions,c.config.version_count,&c.selected,&c.upgrade);
   if(status!=AP_OK){std::array<uint8_t,8> rejection{};put32(rejection.data(),static_cast<uint32_t>(status));put32(rejection.data()+4,c.upgrade);write_tls(c,rejection.data(),rejection.size());c.rejection_sent=true;return status;}
   std::array<uint8_t,2> port{};read_tls(c,port.data(),2);require(u16(port.data())!=0,AP_FIELD);
+  if(full_requested(request.data(),length)){
+   require(c.selected==2,AP_VERSION);c.media_limits=media_limits(request.data(),length);require(size<=64&&size+30u<=c.media_limits.frame,AP_LENGTH);std::array<uint8_t,80> peer_domain{};read_tls(c,peer_domain.data(),peer_domain.size());validate_domain(c,peer_domain.data(),c.selected);std::array<uint8_t,8> ack{};put32(ack.data()+4,c.selected);write_tls(c,ack.data(),ack.size());const auto domain=control_domain(c,c.selected);write_tls(c,domain.data(),domain.size());++c.grants;run_media(c,u16(port.data()),data,size);return AP_OK;
+  }
   if(dual_requested(request.data(),length)){
    require(c.selected==2,AP_VERSION);require(size<=128,AP_LENGTH);create_dual_streams(c);std::array<uint8_t,8> ack{};put32(ack.data()+4,c.selected);write_tls(c,ack.data(),ack.size());++c.grants;transmit_dual(c,u16(port.data()),data,size);return AP_OK;
   }
@@ -271,10 +161,12 @@ int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
  uint32_t parse_version=0,parse_side=0;bool valid=negotiate(data,size,c.config.versions,c.config.version_count,&parse_version,&parse_side)==AP_OK;
  uint16_t redirect=valid?optional_port(data,size):uint16_t{0};
  std::array<uint8_t,2> port{};put16(port.data(),redirect?redirect:static_cast<uint16_t>(c.udp_port));write_tls(c,port.data(),port.size());
+ const bool full=valid&&full_requested(data,size);if(full){const auto domain=control_domain(c,parse_version);write_tls(c,domain.data(),domain.size());}
  std::array<uint8_t,8> ack{};read_tls(c,ack.data(),ack.size());uint32_t status=(uint32_t(ack[0])<<24)|(uint32_t(ack[1])<<16)|(uint32_t(ack[2])<<8)|ack[3];
  if(status){c.upgrade=(uint32_t(ack[4])<<24)|(uint32_t(ack[5])<<16)|(uint32_t(ack[6])<<8)|ack[7];return static_cast<int32_t>(status);}
  c.selected=(uint32_t(ack[4])<<24)|(uint32_t(ack[5])<<16)|(uint32_t(ack[6])<<8)|ack[7];
  uint32_t selected=0,side=0;require(negotiate(data,size,c.config.versions,c.config.version_count,&selected,&side)==AP_OK&&selected==c.selected,AP_VERSION);
+ if(full){std::array<uint8_t,80> peer_domain{};read_tls(c,peer_domain.data(),peer_domain.size());validate_domain(c,peer_domain.data(),c.selected);++c.grants;c.media_limits=media_limits(data,size);auto uplink=uplink_payload(data,size);run_media(c,redirect,uplink.data(),static_cast<uint32_t>(uplink.size()));return AP_OK;}
  if(dual_requested(data,size)){++c.grants;receive_dual(c);return AP_OK;}
  make_srtp(c);++c.grants;
  wait_socket(c,c.udp.value,false);std::array<uint8_t,1500> packet{};int n=recv(c.udp.value,reinterpret_cast<char*>(packet.data()),static_cast<int>(packet.size()),0);require(n>0,AP_TIMEOUT);
@@ -284,7 +176,7 @@ int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
  const uint8_t done=1;write_tls(c,&done,1);return AP_OK;
 }
 std::string summary(const Context& c){std::ostringstream s;s<<"{\"controlPort\":"<<c.tcp_port<<",\"udpPort\":"<<c.udp_port<<",\"status\":"<<c.result<<",\"selectedVersion\":"<<c.selected<<",\"upgradeSide\":"<<c.upgrade<<",\"grants\":"<<c.grants<<",\"sinkPackets\":"<<c.sink_packets<<",\"sinkDigest\":\""<<c.sink_digest<<"\",\"sequence\":"<<c.published<<",\"sockets\":"<<((c.listener.value!=invalid)+(c.tcp.value!=invalid)+(c.udp.value!=invalid))<<",\"threads\":0,\"stopped\":"<<(c.stopped?"true":"false")<<",\"confirmedProposals\":"<<c.confirmed_proposals<<",\"proposal\":"<<(c.proposal_json.empty()?"null":c.proposal_json)<<",\"persistentIdentity\":{\"instanceId\":"<<c.config.instance_id<<",\"displayId\":"<<c.config.display_id<<"},\"controlProgress\":"<<c.control_progress<<",\"streams\":[";
- bool comma=false;for(const auto& stream:c.streams){if(comma)s<<',';comma=true;s<<"{\"id\":"<<stream->domain.identity.stream<<",\"sent\":"<<stream->sent<<",\"received\":"<<stream->received<<",\"rejected\":"<<stream->rejected<<",\"sequence\":"<<stream->sequence<<",\"timestamp\":"<<stream->timestamp<<",\"digest\":\""<<stream->digest<<"\"}";}s<<"],\"windows\":[";comma=false;for(const auto& w:c.windows){if(comma)s<<',';comma=true;s<<"{\"round\":"<<w.round<<",\"video1\":"<<w.video1<<",\"video2\":"<<w.video2<<",\"control\":"<<w.control<<"}";}s<<"]}";return s.str();}
+ bool comma=false;for(const auto& stream:c.streams){if(comma)s<<',';comma=true;s<<"{\"id\":"<<stream->domain.identity.stream<<",\"direction\":"<<unsigned(stream->domain.direction)<<",\"sent\":"<<stream->sent<<",\"received\":"<<stream->received<<",\"rejected\":"<<stream->rejected<<",\"recovered\":"<<stream->recovered<<",\"dropped\":"<<stream->dropped<<",\"expired\":"<<stream->expired<<",\"sequence\":"<<stream->sequence<<",\"timestamp\":"<<stream->timestamp<<",\"digest\":\""<<stream->digest<<"\"}";}s<<"],\"windows\":[";comma=false;for(const auto& w:c.windows){if(comma)s<<',';comma=true;s<<"{\"round\":"<<w.round<<",\"video1\":"<<w.video1<<",\"video2\":"<<w.video2<<",\"control\":"<<w.control<<",\"audio\":"<<w.audio<<",\"mic\":"<<w.mic<<",\"camera\":"<<w.camera<<"}";}s<<"],\"fecProfile\":"<<(c.full_media?"\"rs-vandermonde-gf256-11d-v1\"":"null")<<",\"queueBytes\":"<<c.queue_bytes<<",\"peakQueueBytes\":"<<c.peak_queue_bytes<<"}";return s.str();}
 }
 extern "C" {
 int32_t aether_protocol_negotiate(const uint8_t* b,uint32_t n,const uint32_t* local,uint32_t count,uint32_t* v,uint32_t* side){return boundary([&]{return negotiate(b,n,local,count,v,side);});}

@@ -201,6 +201,14 @@ else if(process.argv.includes('--manifest')) {
   const dependencies=['libssl.lib','libcrypto.lib'].map(name=>{const p=path.join(root,'build/phase06/dependencies/openssl-install/lib',name);return {name,sha256:digest(fs.readFileSync(p))};});
   const manifest={schema:1,target:'aether_protocol_tracer',configuration,binary,sha256:digest(fs.readFileSync(binary)),library,librarySha256:digest(fs.readFileSync(library)),dependencies,
     sources:['native/protocol/CMakeLists.txt','native/protocol/include/aether/protocol.h',...fs.readdirSync(path.join(root,'native/protocol/src')).filter(n=>/\.(cpp|h)$/.test(n)).sort().map(n=>'native/protocol/src/'+n),'native/protocol/tools/tracer.cpp'].map(file=>({file,sha256:digest(fs.readFileSync(path.join(root,file)))}))};
+  if(fs.existsSync(path.join(root,'docs/phase06/FEC-REUSE-DECISION.json'))){
+    const ledger=JSON.parse(fs.readFileSync(path.join(root,'docs/phase06/FEC-ALTERNATIVES.json')));
+    manifest.fec={decisionSha256:digest(fs.readFileSync(path.join(root,'docs/phase06/FEC-REUSE-DECISION.json'))),sourceSha:ledger.selected.sourceSha,inputs:ledger.selected.sourceFiles.map(s=>({file:s.path,sha256:s.sha256}))};
+    manifest.mediaSecurity={binary:path.join(path.dirname(binary),'aether_media_security.exe'),sources:['tests/native/protocol_media_security.cpp','tests/protocol-multistream.test.cjs']};
+    manifest.mediaSecurity.sha256=digest(fs.readFileSync(manifest.mediaSecurity.binary));
+    manifest.sources.push(...manifest.mediaSecurity.sources.map(file=>({file,sha256:digest(fs.readFileSync(path.join(root,file)))})));
+    for(const name of ['aether_fec.lib','libsrtp/'+configuration+'/srtp2.lib']){const file=path.join(out,name.startsWith('libsrtp/')?name:configuration+'/'+name);dependencies.push({name,file,sha256:digest(fs.readFileSync(file))});}
+  }
   fs.writeFileSync(path.join(out,`target-manifest-${configuration}.json`),JSON.stringify(manifest,null,2)+'\n');
 } else {
   function loadTarget() {

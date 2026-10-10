@@ -69,6 +69,7 @@ int main(int argc,char** argv){
   AetherProtocolConfig c{};c.abi_version=1;c.struct_size=sizeof(c);c.role=role=="host"?1:2;c.deadline_ms=2000;
   c.peer_control_port=role=="client"?static_cast<uint32_t>(std::stoul(args.at("--peer"))):0;
   c.host_id=101;c.instance_id=102;c.display_id=103;c.stream_id=104;c.connection_id=105;c.client_id=106;c.lease_epoch=1;c.config_generation=1;c.key_generation=1;
+  if(args.contains("--key-generation")){c.key_generation=std::stoull(args.at("--key-generation"));if(c.key_generation==0)throw std::runtime_error("key generation");}
   c.certificate_file=cert.c_str();c.private_key_file=key.c_str();c.trust_file=trust.c_str();c.peer_name=peer;c.version_count=static_cast<uint32_t>(local.size());for(size_t i=0;i<local.size();++i)c.versions[i]=local[i];c.permission_read=scenario=="wrong-permission"&&role=="host"?0:1;
   auto status=aether_protocol_create(&c,event,&token);if(status!=AP_OK){std::cout<<"{\"kind\":\"create-failed\",\"status\":"<<status<<"}"<<std::endl;return 1;}
   if(scenario=="multistream"){auto other=c;other.role=1;other.connection_id=205;other.stream_id=204;if(aether_protocol_create(&other,event,&sibling)!=AP_OK)throw std::runtime_error("sibling");}
