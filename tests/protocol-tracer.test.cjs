@@ -133,6 +133,22 @@ function readDossier() {
 }
 function verifyBindings(m,includeLogs=false) {
   assert.equal(m.schema,1);assert.ok(m.materials.length>=8);
+  if(m.decision.choice==='approve-concrete') {
+    assert.equal(m.status,'approved-concrete');assert.ok(m.decision.rawResponse&&m.decision.recordedAt);
+    const archive=path.resolve(root,m.decision.reviewedArchive);assert.ok(archive.startsWith(path.join(root,'build')+path.sep));
+    const originalBytes=fs.readFileSync(path.join(archive,'docs/phase06/PROTOCOL-ADR.md'));
+    assert.equal(digest(originalBytes),m.decision.reviewedAdrSha256,'Reviewed ADR drift');
+    const original=JSON.parse(originalBytes.toString('utf8').split(dossierMarker)[1].match(/```json\s*([\s\S]*?)\s*```/)[1]);
+    assert.deepEqual(m.materials,original.materials,'Material drift');assert.deepEqual(m.evidenceManifest,original.evidenceManifest,'Evidence drift');
+    assert.equal(m.binarySha256,original.binarySha256);assert.equal(m.librarySha256,original.librarySha256);
+    for(const item of [...m.materials,...(includeLogs?m.evidenceManifest:[])]) {
+      const file=path.resolve(archive,item.path);assert.ok(file.startsWith(archive+path.sep));
+      assert.equal(digest(fs.readFileSync(file)),item.sha256,'Material drift: '+item.path);
+    }
+    assert.equal(digest(fs.readFileSync(path.join(archive,'build/phase06/windows-x64/Debug/aether_protocol_tracer.exe'))),m.binarySha256);
+    assert.equal(digest(fs.readFileSync(path.join(archive,'build/phase06/windows-x64/Debug/aether_protocol.dll'))),m.librarySha256);
+    return;
+  }
   for(const item of [...m.materials,...(includeLogs?m.evidenceManifest:[])]) {
     const resolved=path.resolve(root,item.path);assert.ok(resolved.startsWith(root+path.sep));
     assert.equal(digest(fs.readFileSync(resolved)),item.sha256,'Material drift: '+item.path);
@@ -153,6 +169,7 @@ function verifyBindings(m,includeLogs=false) {
 }
 function sealDossier() {
   const adrFile=path.join(root,'docs/phase06/PROTOCOL-ADR.md');
+  assert.equal(readDossier().decision.choice,null,'Never reseal or erase an approved historical decision');
   const adr=fs.readFileSync(adrFile,'utf8').split(dossierMarker)[0].trimEnd();
   const target=JSON.parse(fs.readFileSync(manifestFile,'utf8'));
   const materials=[...target.sources.map(s=>s.file),'tests/protocol-tracer.test.cjs','protocol/dependencies.lock.json','protocol/vectors.json','docs/PROTOCOL.md'].map(p=>({path:p,sha256:digest(fs.readFileSync(path.join(root,p)))}));
@@ -168,9 +185,10 @@ function sealDossier() {
 if(process.argv.includes('--seal-dossier')) sealDossier();
 else if(process.argv.includes('--verify-dossier')) {
   const bound=readDossier();verifyBindings(bound,true);assert.ok(bound.evidenceManifest.length>=14);
-  const report=fs.readFileSync(path.join(root,'artifacts/phase06/tracer-final.tap'),'utf8');
+  const reportRoot=bound.decision.choice==='approve-concrete'?path.join(root,bound.decision.reviewedArchive):root;
+  const report=fs.readFileSync(path.join(reportRoot,'artifacts/phase06/tracer-final.tap'),'utf8');
   for(const [label,count] of [['tests',19],['pass',19],['fail',0],['cancelled',0],['skipped',0],['todo',0]])assert.match(report,new RegExp('(?:#|\u2139) '+label+' '+count+'\\r?\\n'));
-  assert.match(fs.readFileSync(path.join(root,'artifacts/phase06/ctest-final.log'),'utf8'),/100% tests passed out of 9/);
+  assert.match(fs.readFileSync(path.join(reportRoot,'artifacts/phase06/ctest-final.log'),'utf8'),/100% tests passed out of 9/);
   console.log(JSON.stringify({adrSha256:digest(fs.readFileSync(path.join(root,'docs/phase06/PROTOCOL-ADR.md'))),status:bound.status,materialsVerified:bound.materials.length,evidenceVerified:bound.evidenceManifest.length,tests:19,ctest:9}));
 }
 else if(process.argv.includes('--prepare')) prepare().catch(e=>{console.error(e);process.exitCode=1;});
@@ -304,7 +322,8 @@ else if(process.argv.includes('--manifest')) {
     const adr=fs.readFileSync(path.join(root,'docs/phase06/PROTOCOL-ADR.md'),'utf8');
     for(const name of ['fec-percentage','lan-encryption-mode','wan-encryption-mode','packetsize','ping-timeout','port'])for(const os of ['windows10','windows11'])assert.ok(adr.includes(`case-helios-${os}-${name}`));
     const bound=readDossier();verifyBindings(bound);
-    assert.equal(bound.decision.choice,null);assert.equal(bound.decision.rawResponse,null);
+    if(bound.decision.choice===null)assert.equal(bound.decision.rawResponse,null);
+    else {assert.equal(bound.decision.choice,'approve-concrete');assert.equal(bound.decision.rawResponse,'1');assert.equal(bound.decision.reviewedAdrSha256,'0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc');}
     assert.ok(adr.includes('nanors/OBL')&&adr.includes('not linked'));
     assert.ok(adr.includes('Disabled: conflicts with D-13'));
     const lock=JSON.parse(fs.readFileSync(path.join(root,'protocol/dependencies.lock.json'),'utf8'));

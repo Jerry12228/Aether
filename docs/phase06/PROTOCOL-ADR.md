@@ -1,6 +1,6 @@
 # ADR-06-01: GameStream-Based Aether Protocol Prototype
 
-Status: candidate, awaiting 06-01-03 real human decision. Date: 2026-10-10.
+Status: scoped contract approved at 06-01-03. Date: 2026-10-10. The initial source/vector inventory retains its historical candidate label; the binding decision below records adoption, without rewriting reviewed bytes.
 
 ## Decision Scope
 
@@ -151,7 +151,7 @@ The following exact bytes are the checkpoint materials. The whole ADR digest is 
 ```json
 {
   "schema": 1,
-  "status": "awaiting-real-user-decision",
+  "status": "approved-concrete",
   "sealedAt": "2026-10-10T03:25:11.269Z",
   "binarySha256": "73318800dd1e632e36992d1f6bad912f0fc4c42ab3f2adeceaad21b11cb177bf",
   "librarySha256": "10df1288d07e31b40bbce83bfb67ae3bb1d20e492df91267343b820e4791f8e2",
@@ -308,10 +308,13 @@ The following exact bytes are the checkpoint materials. The whole ADR digest is 
     }
   ],
   "decision": {
-    "choice": null,
-    "rawResponse": null,
-    "recordedAt": null,
-    "reviewedAdrSha256": null
+    "choice": "approve-concrete",
+    "rawResponse": "1",
+    "recordedAt": "2026-10-10T03:46:30Z",
+    "reviewedAdrSha256": "0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc",
+    "reviewedCommit": "3fc54a79ed4c609e8ac9538ee1d52d11b48efcb3",
+    "reviewedArchive": "build/phase06/reviewed-06-01",
+    "scope": "Reviewed local TLS1.3/SRTP, wire/version/errors/proposals, key/FEC direction and visible mandatory-protection settings; OpenSSL3.5.9/libSRTP2.8.0 reuse only. No FEC library, platform support or system-operation authorization."
   }
 }
 ```
