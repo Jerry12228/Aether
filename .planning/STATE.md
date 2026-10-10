@@ -4,14 +4,14 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: Phase6 06-03 selected by reply1; read-only preflight93 hashes passed; command-contract prerequisite unmet before Task1; await concrete plan repair; Phase3 gate unchanged
-last_updated: "2026-10-10T10:49:12.618Z"
+stopped_at: Phase6 revision accepted by reply1; independent plan check passed; execute prerequisite06-06 then03; Phase3 gate unchanged
+last_updated: "2026-10-10T11:10:05.000Z"
 last_activity: 2026-10-10
-last_activity_desc: 完成快速任务261010-q3y，写入项目简体中文语言规则；06-03前置合同修订停点保持
+last_activity_desc: 06-06操作合同前置计划完成，独立Revision1通过；用户授权继续执行；261010-q3y语言规则保留
 progress:
   total_phases: 42
   completed_phases: 2
-  total_plans: 14
+  total_plans: 15
   completed_plans: 10
   percent: 5
 state_head: 630683a
@@ -45,13 +45,13 @@ Phase 6 — GameStream协议重构与扩展：06-01具体ADR已批准；06-02三
 
 06-01原答复1/2026-10-10T03:46:30Z、reviewedSHA256 `0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc`及历史8材料/14证据不变。FEC提案MD `3ebdf494fa77c8262d620e7eb60f874c1546564c6bb866c2c9e816b18ac3fa22`、JSON `a3157d9e6dc90e921c017d62c9ba3f88241a4aaadd9cf07ace4676fcb02451d8`已核验并存档。新复用approval3bc7810、Task2 RED e6b3e78/GREEN5fd2fea、Task3 REDdd74763/GREENcc35d12、完成摘要57fb934。候选原ASan12/12/81KAT/42阈值/1,600并发仍是独立历史研究，不冒充当前产品运行。
 
-Phase6 2/5、总10/14计划、2/42阶段；NET仍未完成。06-03已由本会话原答复`1`选择执行；只读preflight93项hash全部匹配，但既定versioned submit/action合同前置不成立：当前submit单次、内部接口为预留类型，计划排除header改动。Task1尚未开始，现于blocking-human等待[具体计划修订](../docs/phase06/06-03-PRECONDITION.md)，恢复入口为06目录`.continue-here.md`；不是重复06-02或Botan批准。06-04/05仍待其前置。权限/预算/完整恢复/诊断/真实Dart FFI、五目标及最终人审均未完成。真实设备/codec/HDR/物理时钟/产品性能未测，Apple仅实机TODO。原637能力/case/条件/owner及296映射不变，VALIDATION draft、nyquist/wave0 false，三条未分类及六条无描述符禁止项保留。
+Phase6 2/6、总10/15计划、2/42阶段；NET仍未完成。06-03已由本会话原答复`1`选择执行；只读preflight93项hash全部匹配，但既定versioned submit/action合同前置不成立：当前submit单次、内部接口为预留类型，计划排除header改动。本会话后续原答复`1`已授权具体修订并继续：新增06-06输出typed合同/provider/媒体屏障，03改为依赖06-06；Revision1独立检查0blocker/0warning，CONTROL-CONTRACT新版本3/schema1兼容保留原1/2及ABI1。历史[前置检查](../docs/phase06/06-03-PRECONDITION.md)保留，当前先执行06-06；不是重复06-02或Botan批准。06-04/05仍待其前置。权限/预算/完整恢复/诊断/真实Dart FFI、五目标及最终人审均未完成。真实设备/codec/HDR/物理时钟/产品性能未测，Apple仅实机TODO。原637能力/case/条件/owner及296映射不变，VALIDATION draft、nyquist/wave0 false，三条未分类及六条无描述符禁止项保留。
 
 为保留Phase3 blocking-human入口，不用通用state.advance-plan覆盖Current Position；phase3/plan3/status halted、Apollo条件及安装授权全部不变。用户信用中断后原文`继续，用量恢复`恢复正常审批并完成最终重编译/回归，无审批绕过。无设备/信任/网络配置/重启/关机操作。
 
 ## Performance Metrics
 
-Total plans completed: 10/14; completed phases: 2/42. Phase6 2/5;06-02 all3 tasks complete. Final Debug/ASan46/46 and fullCTest10/10 each; actuals78,826 diff-size estimate tokens, not model usage.
+Total plans completed: 10/15; completed phases: 2/42. Phase6 2/6;06-02 all3 tasks complete. Final Debug/ASan46/46 and fullCTest10/10 each; actuals78,826 diff-size estimate tokens, not model usage.
 Phase3 partial: 03-01/03-02 complete. Latest Debug/Release native builds pass; CTest11/11 each (26.54s/25.32s), CLI/process27/27 each (23.2867s/21.4822s), targeted admission/lifecycle19/19 (475.8736ms), zero skip. Revised dedicated source closes arrival cleanup and full-capacity GUID idempotence, actual WDK rebuild/signature and separate six-target InfVerif evidence retained. Native mutation code is compiled; only read-only actual device enumeration ran. 03-03 system authorization/machine matrix unperformed; VDP01/02 and Phase3 incomplete.
 
 03-03 Task1: native SetupAPI/NewDev package code, owner-protected stage/backup, side-effect journal and hash-bound readonly plan complete; Release build5,663ms, Contract35/35(1,040.4829ms TAP), CTest11/11(25.14s), zero skipped tests. Actual install/update/rollback/topology/HDR/persistence/reset remain untested. Machine win-5f5cc5dd3cf310b6, plan2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0; details in03-03-SUMMARY and HELIOS-DISPLAY-INSTALL-PLAN.md/json.
@@ -69,7 +69,7 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 ### Decisions
 
-- 2026-10-10真实原答复`1`已批准固定Botan scalar synthetic复用，FEC-REUSE-DECISION绑定审阅hash/源配置；06-02全三任务完成（cc35d12/57fb934），真实双向五流/认证后有界FEC/公开options通过Debug及ASan46/46、CTest10/10各。Phase6 2/5/NET未完成，下一06-03预算/恢复/诊断待interactive确认；不扩展Phase3系统授权。
+- 2026-10-10真实原答复`1`已批准固定Botan scalar synthetic复用，FEC-REUSE-DECISION绑定审阅hash/源配置；06-02全三任务完成（cc35d12/57fb934），真实双向五流/认证后有界FEC/公开options通过Debug及ASan46/46、CTest10/10各。Phase6 2/6/NET未完成，下一06-03预算/恢复/诊断待interactive确认；不扩展Phase3系统授权。
 
 - 历史研究停点（现由独立复用批准和06-02完成覆盖）：2026-10-10真实`2,若无则1`授权替代优先研究，若无合格替代才准备固定nanors。五候选研究后Botan固定标量子集MSVC/ASan12/12通过，形成synthetic原型提案，fallbackTriggered=false。新复用批准仍null，无FEC产品链接或系统变更；具体边界/hash见FEC-ALTERNATIVES和06-02-SUMMARY。
 
@@ -126,7 +126,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
-[Phase6 current preflight] 06-02完成，真实具体Botan复用批准有效；最终Debug/ASan46/46及完整CTest10/10各通过。本会话`1`已选择06-03，93项只读摘要匹配；Task1前发现既定submit/action合同缺失及header ownership矛盾，现blocking-human等待具体修订，见06-03-PRECONDITION及06目录.continue-here。0/3任务开始，无产品/RED提交或SUMMARY；不是06-02失败。06-04/05、五目标和最终人审未执行；Phase6 2/5、NET未完成。不重复请求已批准固定复用。
+[Phase6 current preflight] 06-02完成，真实具体Botan复用批准有效；最终Debug/ASan46/46及完整CTest10/10各通过。本会话`1`已选择06-03，93项只读摘要匹配；Task1前发现既定submit/action合同缺失及header ownership矛盾，已由本会话后续1授权修订并继续；新增06-06前置合同，独立Revision1检查通过，现先执行06-06，03再消费新增接口。0/3任务开始，无产品/RED提交或SUMMARY；不是06-02失败。06-04/05、五目标和最终人审未执行；Phase6 2/6、NET未完成。不重复请求已批准固定复用。
 
 [Phase3 current 03-03-02 blocking-human] 原安装条件授权在Apollo前置失败停止。现exact WUDF subkey修正/新包完成，等待新plan4fa13eea批准；机器安装和实际UMDF隔离均未执行。Apollo PID6820/15176与四WUDFHost、配置/二进制、20外来记录/8store文件和CCD保持；45,957ms只读窗口全部一致，0 establishedTCP不代表无UDP串流。BCD权限partial、既有安全/信任不变；历史Machine/Install假授权自动审批拒绝原样保留。WINDOWS ledger未执行矩阵仍open。SDK仍按SUMMARY存在误计9/3，已再次按halted纠正8完成、Phase3 2/3；不关闭VDP。
 
@@ -164,8 +164,8 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 ## Session Continuity
 
 Last session: 2026-10-10（Asia/Singapore）
-Stopped at: Phase6 06-03 selected by reply1; read-only preflight93 hashes passed; command-contract prerequisite unmet before Task1; await concrete plan repair; Phase3 gate unchanged
+Stopped at: Phase6 revision accepted by reply1; independent plan check passed; execute prerequisite06-06 then03; Phase3 gate unchanged
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
 
-Active Phase6 resume: `.planning/phases/06-gamestream/.continue-here.md`；本会话`1`已确认执行06-03，但Task1前置检查发现缺失既定submit/action合同，等待`docs/phase06/06-03-PRECONDITION.md`具体修订选择，再走plan-phase修订/检查。06-03任务未开始，未建SUMMARY。不能重跑06-02已完成Task1/2/3或重复固定Botan批准。Phase3 Resume file/Next action保留独立安装恢复入口，不是当前协议下一任务。
+Active Phase6 resume: `.planning/phases/06-gamestream/06-06-PLAN.md`；本会话后续`1`已授权修订并继续。新增前置06-06→原03→04→05，独立Revision1检查通过，先执行合同/dispatcher；不再假设接口已存在。06-03任务未开始，未建SUMMARY。不能重跑06-02已完成Task1/2/3或重复固定Botan批准。Phase3 Resume file/Next action保留独立安装恢复入口，不是当前协议下一任务。

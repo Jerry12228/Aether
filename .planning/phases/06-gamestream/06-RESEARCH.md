@@ -309,3 +309,13 @@ Fast：native构建后运行ctest --test-dir <owned target build> -C Debug -L pr
 官方构建来源：[CMake](https://cmake.org/cmake/help/latest/manual/cmake-toolchains.7.html)、[NDK](https://developer.android.com/ndk/guides/cmake)、[Apple](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/testing_with_xcode/chapters/08-automation.html)、[GitHub runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners)。安全来源：[RFC7714](https://www.rfc-editor.org/rfc/rfc7714.html)、[RFC6363](https://www.rfc-editor.org/rfc/rfc6363.html)、[RFC8446](https://www.rfc-editor.org/rfc/rfc8446.html)。全部为本轮官方检索。[CITED: 上列URL]
 
 research-plan与官方web检索完成；classify-confidence实际MEDIUM。仅研究，未commit/branch/STATE/product/system变更。动态版本执行前重核。
+
+## 2026-10-10 operation-contract revision appendix
+
+本节补当前06-03前置缺口，不改写上面的历史研究/候选结果、原ADR批准或Botan复用批准。本地Level0定向核验：`protocol.h`原`submit`明确one-shot，`protocol.cpp`以submitted永久拒绝第二次提交并在旧exchange直接启动媒体；`internal.h`的AuthorityAdapter/ResourceVector/RecoveryController当时仅reserved seam。已有queryVersion1不是持续命令合同；旧decoders字段不能代替host uplink/client downlink各自预算，pixel-rate缺失。`media_packetization.cpp`现有初始化条件selected==2，新增3需显式分支且保留旧2回归。这些代码事实与06-03-PRECONDITION的93输入只读摘要证据一致，不推翻06-02已完成的窄范围测试。
+
+兼容选择与具体字段见`docs/phase06/CONTROL-CONTRACT.md`：添加ControlOpen/Command及独立control_open/send/cancel_operation/query/ack，保留所有ABI1原结构/布局/符号、legacy submit/local proposal和queryVersion1。新协议3/schema1显式opt-in，HELLO TLV8及TLS上120-byte ACTL框架有独立向量；旧版本1/2原字节保持。无新crypto/RNG/TLS/FEC provider和外部库，没有安装/系统操作，也不重复要求原复用批准。合同数值是待实测有界原型限制，不是产品性能结论。
+
+HostServices由可信native coordinator持有，host-wide事务管理六维资源、pending/committed/permission/device/lease/revision；绑定与expiry/confirm复核同一锁域原子提交。attach不在C ABI，不允许Dart/peer/env设provider；产品无provider拒绝。test host通过独立static contract target含fixture，client链接实际product library，generic clock/authority/device/action场景只存在test executable。strong shared_ptr生命周期、worker/provider/state锁序、out-of-band cancel、bounded copied commands/events/caller-owned query/严格ACK和stop timeout保活均成为明确合同。HELLO不能grant，新媒体在完整CONFIRM/GRANT/ready后启动，旧连接消费/持久instance/display/foreign资源生命周期分离。
+
+计划拓扑：新增06-06 wave3（2任务各5路径）→06-03 wave4（原完整策略/恢复/diagnostics/量测/parity3任务）→06-04 wave5（typed真实FFI）→06-05 wave6（五目标含control与legacy回归/最终人审）。06-06是新增序号的前置，不在05后执行。完整多来源覆盖补充在06-06-PLAN；D-01–16与所有原适用case没有删减，既有COVERAGE来源表继续约束，只追加已证实缺口修复。test synthetic authority不声称完成Phase7或20，真实设备/codec/HDR/物理测量仍由既有后续owner负责，Apple只物理VFY TODO、目标build/run仍本阶段必需；Phase3安装检查点/禁重启关机保持。

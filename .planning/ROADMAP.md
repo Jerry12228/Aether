@@ -169,7 +169,7 @@
 1. 固定 GameStream 开源实现基线与字段/通道映射，说明保留、重构和扩展项；Aether 版本/能力协商、独立连接/流上下文和测试向量可复现。
 2. 双向模拟媒体和至少两条独立视频流通过；包大小、时间戳、FEC/丢包恢复、安全密钥/nonce边界及有界队列明确，覆盖五端原生核心构建与可运行的自动化检查，Apple 实机验证另列 TODO；不要求旧端互通。
 
-**Plans:** 5 plans — planned 2026-10-10；06-01/02完成，2/5；本会话1已选择06-03，现Task1前置合同缺口检查点，等待具体计划修订。
+**Plans:** 6 plans — 2026-10-10修订已获本会话1授权；已完成01/02不变，2/6；新增06-06前置合同，独立Revision1检查0blocker/0warning，执行顺序02→06→03→04→05。
 
 首轮三个计划的中间包涉及23文件，被独立检查器阻断。Revision 1沿同一原生协议原型验收链拆成五个顺序执行包（9/9/9/6/9文件、单任务最多5文件），作为“通常1–3计划”的容量例外；没有增加配对、真实设备/编解码、生产仲裁子系统或改变阶段依赖。第二轮检查0 blocker/0 warning，记录见 `06-PLAN-CHECK.md`。
 
@@ -183,17 +183,21 @@
 
 **Wave 3（前置：Wave 2完成）**
 
-- [ ] 06-03-PLAN.md — 完整方案确认、资源预算、恢复/诊断与限值；执行已选择，Task1前因缺既定submit/action合同及header ownership矛盾halted，任务未开始，见06-03-PRECONDITION
+- [ ] 06-06-PLAN.md — 增量typed操作合同、可信provider与confirm前启流屏障；真实产品client/测试host、取消终态和媒体服务窗口
 
-**Wave 4（前置：Wave 3完成）**
+**Wave 4（前置：06-06完成）**
+
+- [ ] 06-03-PLAN.md — 完整方案确认、资源预算、恢复/诊断与限值；修订后消费06-06新增合同，旧缺口记录保留
+
+**Wave 5（前置：06-03完成）**
 
 - [ ] 06-04-PLAN.md — Selene 真实低频 FFI 消费、停止边界与依赖总账
 
-**Wave 5（前置：Wave 4完成）**
+**Wave 6（前置：06-04完成）**
 
 - [ ] 06-05-PLAN.md — 五目标实际构建运行、独立证据与强制最终人审
 
-Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR原批准不变，新原答复1于2026-10-10T05:34:57Z批准具体Botan scalar synthetic复用并另录FEC-REUSE-DECISION，原研究/审阅字节保留、nanors回退未触发。06-02全部完成，真实双向五路synthetic媒体/逐域保护/认证后同域FEC和公开ABI/query合同通过最终Debug46/46及CTest10/10、独立ASan Release46/46及CTest10/10。2/5计划完成，本会话1已选择06-03；只读93项hash匹配，Task1前发现既定操作合同缺口，等待具体修订，见docs/phase06/06-03-PRECONDITION.md及06目录.continue-here.md。06-04/05、五目标及最终人审未执行，NET和Phase6未完成。仅Windows x64原型证据，非实机/性能/ASan完整安全认证；见MEDIA-CONTRACT/EVIDENCE及06-02-SUMMARY。
+Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR原批准不变，新原答复1于2026-10-10T05:34:57Z批准具体Botan scalar synthetic复用并另录FEC-REUSE-DECISION，原研究/审阅字节保留、nanors回退未触发。06-02全部完成，真实双向五路synthetic媒体/逐域保护/认证后同域FEC和公开ABI/query合同通过最终Debug46/46及CTest10/10、独立ASan Release46/46及CTest10/10。2/6计划完成，本会话1已授权具体修订并继续；只读93项hash匹配，原前置缺口经独立Revision1检查关闭（0blocker/0warning）。新增06-06输出接口，再执行03预算/恢复；见CONTROL-CONTRACT及06-CONTROL-PLAN-CHECK，历史PRECONDITION记录保留。06-04/05、五目标及最终人审未执行，NET和Phase6未完成。仅Windows x64原型证据，非实机/性能/ASan完整安全认证；见MEDIA-CONTRACT/EVIDENCE及06-02-SUMMARY。
 
 ### Phase 7: 配对、发现与设备权限
 
@@ -650,7 +654,7 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR原�
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 2/5 | Halted (06-03 preflight command-contract prerequisite; no task started) | - |
+| 6. GameStream 协议重构与扩展 | 2/6 | In Progress (revision checked; executing prerequisite06-06 before03) | - |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |

@@ -57,3 +57,8 @@
 | RESEARCH | project constraints | Phase3halt/no-reboot/no-shutdown/no外来删除 | 所有task及prohibitions | COVERED | 不执行系统变更 |
 
 Excluded按原已批准phase边界：生产配对/codec/真实设备/生产仲裁/动态码率为对应后续phase实现；不是删功能或新增TODO。无未计划源项。5计划/5waves严格顺序，共14任务、2具体真人关口（01-03和05-03）。这仍为同一原生协议原型子系统/验收链，是“通常1–3”的容量例外，不增加产品阶段、不减少源项。原02按安全媒体→状态事务→FFI顺序切片，原03目标证据移到05；parity文档在03更新，依赖总文档在04同步。路径数9/9/9/6/9，任务数3/3/3/2/3，各任务最多5文件，factor=1/sample_count=0/confidence=low如实保留。规划检查后才进入用户选择执行步骤。
+
+
+## 2026-10-10 前置合同修订
+
+历史五计划规划条目保留。当前6计划/6wave、16任务：已完成01/02，新增06-06（2任务）在03之前；03/04/05依赖同步。六份frontmatter共同声明NET01/02/03，必须全部完成且最终验证/人审通过才关闭。06-06新增typed schema、HostServices六维权威预算、真实产品client/test-only host、确认屏障与有界dispatcher；取消使用主机transaction_sequence权威终态，不将本地token当远端commit。D01–16归属仍完整，03/04/05真实socket/FFI/目标证据消费同合同。独立06-CONTROL-PLAN-CHECK Revision1通过，不代表代码/平台通过。原edge/prohibitions unresolved与Phase3门槛保持。

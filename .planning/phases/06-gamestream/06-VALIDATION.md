@@ -9,7 +9,7 @@ created: "2026-10-09"
 
 # Phase 06 — Validation Strategy
 
-本文件是执行期验证契约。06-01具体ADR与06-02独立Botan复用原答复1均已记录。06-02全三任务完成，最终Debug node46/46（14,213.3037ms）/CTest10/10（24.48s），独立ASan Release node46/46（16,892.4128ms）/CTest10/10（26.72s），fail/cancel/skip/TODO0。实际保护双向五synthetic流、认证后FEC、公开边界和同窗口隔离已运行；候选原12/12/81KAT/42组合/1,600并发保留独立历史研究。ASan不覆盖预编译OpenSSL，非leak/TSan认证。06-03/04/05未执行，尚不存在入口仍是目标；阶段2/5及NET未完成，保留draft/false直到全阶段执行与审计取证。
+本文件是执行期验证契约。06-01具体ADR与06-02独立Botan复用原答复1均已记录。06-02全三任务完成，最终Debug node46/46（14,213.3037ms）/CTest10/10（24.48s），独立ASan Release node46/46（16,892.4128ms）/CTest10/10（26.72s），fail/cancel/skip/TODO0。实际保护双向五synthetic流、认证后FEC、公开边界和同窗口隔离已运行；候选原12/12/81KAT/42组合/1,600并发保留独立历史研究。ASan不覆盖预编译OpenSSL，非leak/TSan认证。06-06/03/04/05未执行，尚不存在入口仍是目标；阶段2/6及NET未完成，保留draft/false直到全阶段执行与审计取证。
 
 ## Test Infrastructure
 
@@ -38,16 +38,18 @@ created: "2026-10-09"
 | 06-02-01 | 02 | 2 | NET-01/02/03 | T-06-05/09 | 真实双video、独立安全域/故障/owned清理 | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass scoped; finalDebug/ASan46/46, fullCTest10/10 each |
 | 06-02-02 | 02 | 2 | NET-01/02/03 | T-06-05/06/09/SC | audio/双向synthetic、认证后FEC、replay/key epoch/nonce exhaustion | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass integrated synthetic; real reuse reply1; Debug/ASan46/46 |
 | 06-02-03 | 02 | 2 | NET-01/02/03 | T-06-05/06/09 | 独立golden/KAT、±1/头篡改/seqwrap与公开结构 | vectors+process | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass public ABI/options,22 boundaries and exact TLV/profile refusal |
-| 06-03-01 | 03 | 3 | NET-01/02/03 | T-06-07/08/SC | 完整proposal/资源向量/原子confirm/observer预算 | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
-| 06-03-02 | 03 | 3 | NET-01/02/03 | T-06-08/10/11/18 | fresh auth/旧epoch/上行另确认/独立恢复/临时trace | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
-| 06-03-03 | 03 | 3 | NET-01/02/03 | T-06-07/10/11/18 | 真实限值量测、D阈值/全原case映射/R1 | measure+state | node --test tests/protocol-recovery.test.cjs；node tests/protocol-recovery.test.cjs --measure --evidence artifacts/phase06/limits.json | W0:06-03-01 | pending |
-| 06-04-01 | 04 | 4 | NET-01/02/03 | T-06-12/19/SC | 真实Dart FFI/独立host/socket/完整proposal | FFI+process | dart run ffigen --config protocol/ffigen.yaml；node --test tests/protocol-ffi.test.cjs | W0:06-04-01 | pending |
-| 06-04-02 | 04 | 4 | NET-01/02/03 | T-06-12/19/SC | 恢复/trace消费者、ACK/timeout/stop负例和来源总账 | FFI+process | node --test tests/protocol-ffi.test.cjs | W0:06-04-01 | pending |
-| 06-05-01 | 05 | 5 | NET-01/02/03 | T-06-13/15/17/SC | 五目标native实际build/run，iOS device与simulator分证据 | target+CI | ctest --test-dir build/phase06/windows-x64 -C Release -R protocol --output-on-failure --no-tests=error（其余目标匹配runner） | W0:06-05-01 | pending |
-| 06-05-02 | 05 | 5 | NET-01/02/03 | T-06-13–17 | 独立证据判定，known-bad/0test/skip/hash漂移拒绝 | evidence | node --test tests/protocol-evidence.test.cjs；node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json | W0:06-05-02 | pending |
-| 06-05-03 | 05 | 5 | NET-01/02/03 | T-06-01–19 | 所有门槛先过，真实最终人审精确hash | evidence+真人审阅 | node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json | W0:06-05-02 | pending |
+| 06-06-01 | 06 | 3 | NET-01/02/03 | T-06-20/21/SC | typed兼容合同/真实产品client/fixture host/confirm前零媒体 | native+process | ctest --test-dir build/phase06/windows-x64 -C Debug -R "^protocol_control$" --output-on-failure --no-tests=error | W0:06-06-01 | pending |
+| 06-06-02 | 06 | 3 | NET-01/02/03 | T-06-20/21/22 | 双PID取消仲裁/GRANT READY闭环、背压/ACK/query/stop/健康流 | native+process | ctest --test-dir build/phase06/windows-x64 -C Debug -R "^protocol_control$" --output-on-failure --no-tests=error | W0:06-06-01 | pending |
+| 06-03-01 | 03 | 4 | NET-01/02/03 | T-06-07/08/SC | 完整proposal/资源向量/原子confirm/observer预算 | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
+| 06-03-02 | 03 | 4 | NET-01/02/03 | T-06-08/10/11/18 | fresh auth/旧epoch/上行另确认/独立恢复/临时trace | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
+| 06-03-03 | 03 | 4 | NET-01/02/03 | T-06-07/10/11/18 | 真实限值量测、D阈值/全原case映射/R1 | measure+state | node --test tests/protocol-recovery.test.cjs；node tests/protocol-recovery.test.cjs --measure --evidence artifacts/phase06/limits.json | W0:06-03-01 | pending |
+| 06-04-01 | 04 | 5 | NET-01/02/03 | T-06-12/19/SC | 真实Dart FFI/独立host/socket/完整proposal | FFI+process | dart run ffigen --config protocol/ffigen.yaml；node --test tests/protocol-ffi.test.cjs | W0:06-04-01 | pending |
+| 06-04-02 | 04 | 5 | NET-01/02/03 | T-06-12/19/SC | 恢复/trace消费者、ACK/timeout/stop负例和来源总账 | FFI+process | node --test tests/protocol-ffi.test.cjs | W0:06-04-01 | pending |
+| 06-05-01 | 05 | 6 | NET-01/02/03 | T-06-13/15/17/SC | 五目标native实际build/run，iOS device与simulator分证据 | target+CI | ctest --test-dir build/phase06/windows-x64 -C Release -R protocol --output-on-failure --no-tests=error（其余目标匹配runner） | W0:06-05-01 | pending |
+| 06-05-02 | 05 | 6 | NET-01/02/03 | T-06-13–17 | 独立证据判定，known-bad/0test/skip/hash漂移拒绝 | evidence | node --test tests/protocol-evidence.test.cjs；node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json | W0:06-05-02 | pending |
+| 06-05-03 | 05 | 6 | NET-01/02/03 | T-06-01–19 | 所有门槛先过，真实最终人审精确hash | evidence+真人审阅 | node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json | W0:06-05-02 | pending |
 
-上述命令失败方向：非零exit、零tests、skip/cancel/TODO、缺具名case/目标/真实log或artifact、source/SDK/arch/dependency/binary hash漂移、timeout、资源未归零。坏证据fixture必须被拒绝；退出0但缺证明亦失败。自动化通过不能代替06-01-03具体决定和06-05-03强制真人审阅。每计划各命令立即附`fails_when`为权威细则。五个顺序wave的已创建suite依次为tracer；+multistream；+recovery；+FFI；+evidence与五目标独立verify。长量测实际30秒预热/60秒窗口/3轮，不计作fast用时。
+上述命令失败方向：非零exit、零tests、skip/cancel/TODO、缺具名case/目标/真实log或artifact、source/SDK/arch/dependency/binary hash漂移、timeout、资源未归零。坏证据fixture必须被拒绝；退出0但缺证明亦失败。自动化通过不能代替06-01-03具体决定和06-05-03强制真人审阅。每计划各命令立即附`fails_when`为权威细则。六个顺序wave的已创建suite依次为tracer；+multistream；+protocol_control native；+recovery；+FFI；+evidence与五目标独立verify。长量测实际30秒预热/60秒窗口/3轮，不计作fast用时。
 
 ## Substantive Edge Coverage（06-01/02局部实测，其余仍规划）
 
@@ -69,7 +71,7 @@ Windows/Linux/macOS：matching native CTest及不同process socket tracer；Andr
 
 ## Security Traceability
 
-T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/19→FFI；13–17→native target+evidence。T-06-SC每计划沿同一固定依赖来源门槛；编号01–19全阶段唯一（原01–17语义保留迁移，新增18有界retry、19 Dart内容边界）。ASVS5 Level1，high/critical未缓解阻断；native官方archive/hash/license/notices审计，不以不支持native的package-legitimacy CLI伪造OK。新增npm/pip/cargo安装才适用其正式gate。
+T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/19→FFI；13–17→native target+evidence。T-06-SC每计划沿同一固定依赖来源门槛；新增20–22→control；编号01–22全阶段唯一（原01–17语义保留迁移，新增18有界retry、19 Dart内容边界）。ASVS5 Level1，high/critical未缓解阻断；native官方archive/hash/license/notices审计，不以不支持native的package-legitimacy CLI伪造OK。新增npm/pip/cargo安装才适用其正式gate。
 
 ## Wave 0 Requirements
 
@@ -101,3 +103,8 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 06-01具体ADR批准已完成：真实原答复1、recordedAt2026-10-10T03:46:30Z，历史材料摘要已绑定，续跑19/19（4,749.1274ms）。本处Approval pending指全阶段验证/最终人审，不是重复请求同一ADR批准。
 
 06-01局部验证见[completed SUMMARY](06-01-SUMMARY.md)和[批准ADR](../../../docs/phase06/PROTOCOL-ADR.md)；06-02双向五流、认证后FEC/nonce/epoch/queue/public options已完成，见[completed SUMMARY](06-02-SUMMARY.md)、[MEDIA-CONTRACT](../../../docs/phase06/MEDIA-CONTRACT.md)和[实际源码二进制证据](../../../docs/phase06/MEDIA-EVIDENCE.json)。新复用原答复1与历史FEC候选账本不互相覆盖。独立候选ASan12/12及known-bad检测保留；当前Debug/ASan46/46和CTest10/10各通过，无有效用例发现并非leak/TSan/穷尽安全证明。完整权限/预算/恢复/重试/trace/FFI/五目标/最终人审仍未执行；三条edge probe和六条descriptorless禁止项不自动resolved，不因局部通过设置nyquist或wave0 true。
+
+
+## 2026-10-10 操作合同修订
+
+用户本会话1已授权修订并继续；06-06为wave3新增前置，独立Revision1计划检查0blocker/0warning。CONTROL-CONTRACT明确API/网络版本、权威取消/提交/READY闭环及双PID实际产品DLL client证据。此处pending仍为实施状态，计划检查不是产品通过；旧ABI1/v1/2回归必需。Nyquist/wave0保留false。
