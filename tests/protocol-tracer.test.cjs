@@ -122,6 +122,7 @@ else if(process.argv.includes('--manifest')) {
     return {process,closed,wait:kind=>{const m=messages.find(m=>m.kind===kind);if(m)return Promise.resolve(m);if(done)return Promise.reject(Error('Closed'));return new Promise((resolve,reject)=>waiters.push({kind,resolve,reject}));}};
   }
   const cases=[
+    {name:'complete capability plan requires explicit confirmation and preserves the active stream',scenario:'proposal',wire:'41455448000c010200010002',expected:0,proposal:true},
     {name:'different native processes exchange authenticated control and protected UDP media',scenario:'happy',wire:'41455448000c010200010002',expected:0},
     {name:'version set ordering leaves selection unchanged',scenario:'happy',wire:'41455448000c010200020001',expected:0},
     {name:'untrusted client receives no stream or sink',scenario:'wrong-trust',wire:'41455448000a01010001',expected:21},
@@ -149,9 +150,15 @@ else if(process.argv.includes('--manifest')) {
       if(spec.expected===0){assert.equal(h.code,0);assert.equal(c.code,0);assert.equal(cr.detail.sinkPackets,1);assert.equal(cr.detail.sinkDigest,digest('synthetic-phase06'));assert.equal(hr.detail.grants,1);}
       else {assert.equal(h.code,2);assert.equal(c.code,2);assert.equal(hr.detail.grants,0);assert.equal(cr.detail.grants,0);assert.equal(cr.detail.sinkPackets,0);assert.equal(cr.detail.sinkDigest,'');}
       for(const r of [h,c]){const clean=r.messages.find(m=>m.kind==='clean');assert.ok(clean);assert.equal(clean.detail.sockets,0);assert.equal(clean.detail.threads,0);assert.equal(clean.detail.stopped,true);}
+      if(spec.proposal){const p=c.messages.find(m=>m.kind==='proposal-contract');assert.ok(p,'Missing native proposal contract');assert.equal(p.checks,9);assert.equal(p.initialGrants,p.finalGrants);assert.equal(p.pending.capabilities.length,3);assert.deepEqual(p.pending.capabilities.map(v=>v.name),['camera','fps','hdr']);assert.deepEqual(p.pending.capabilities.map(v=>v.availability),[2,1,0]);assert.ok(p.pending.capabilities.every(v=>v.reason));}
       const evidence=path.join(root,'artifacts/phase06/tracer');fs.mkdirSync(evidence,{recursive:true});
       fs.writeFileSync(path.join(evidence,spec.name.replaceAll(/[^a-zA-Z0-9]+/g,'-')+'.json'),JSON.stringify({schema:1,scenario:spec.scenario,elapsedMs:Date.now()-started,targetSha256:manifest.sha256,sourceHashes:manifest.sources,host:h,client:c,synthetic:true,systemMutation:false},null,2)+'\n');
     } finally {for(const p of [host,client])if(p&&p.process.exitCode===null)p.process.kill();fs.rmSync(dir,{recursive:true,force:true});}
+  });
+  test('independent golden vectors and source lock exist and are consumed by the native parser',()=>{
+    const vectors=JSON.parse(fs.readFileSync(path.join(root,'protocol/vectors.json'),'utf8'));
+    const m=loadTarget();assert.ok(vectors.wire.length>=15);
+    for(const v of vectors.wire){const r=cp.spawnSync(m.binary,['--role','parse','--wire',v.hex,'--versions',v.local.join(',')],{encoding:'utf8',shell:false,windowsHide:true,timeout:5000});assert.equal(r.status,0,v.id);assert.deepEqual(JSON.parse(r.stdout),v.expected,v.id);}
   });
   test.after(()=>{if(fixture)fs.rmSync(fixture,{recursive:true,force:true});});
 }
