@@ -40,7 +40,7 @@ async function auditFec(){
   fs.writeFileSync(path.join(root,'docs/phase06/FEC-SOURCE-AUDIT.json'),JSON.stringify(ledger,null,2)+'\n');
   console.log(JSON.stringify({sourceSha:sha,archiveSha256:dossier.archiveSha256,files:files.map(f=>f.path),origin,status:dossier.status}));
 }
-function target(){const m=JSON.parse(fs.readFileSync(path.join(root,'build/phase06/windows-x64/target-manifest-Debug.json'),'utf8'));assert.equal(hash(fs.readFileSync(m.binary)),m.sha256);assert.equal(hash(fs.readFileSync(m.library)),m.librarySha256);for(const s of m.sources)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);if(m.fec){assert.equal(hash(fs.readFileSync(path.join(root,'docs/phase06/FEC-REUSE-DECISION.json'))),m.fec.decisionSha256);for(const s of m.fec.inputs)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);for(const d of m.dependencies)if(d.file)assert.equal(hash(fs.readFileSync(d.file)),d.sha256);assert.equal(hash(fs.readFileSync(m.mediaSecurity.binary)),m.mediaSecurity.sha256);}return m;}
+function target(){const m=JSON.parse(fs.readFileSync(process.env.AETHER_PROTOCOL_MANIFEST||path.join(root,'build/phase06/windows-x64/target-manifest-Debug.json'),'utf8'));assert.equal(hash(fs.readFileSync(m.binary)),m.sha256);assert.equal(hash(fs.readFileSync(m.library)),m.librarySha256);for(const s of m.sources)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);if(m.fec){assert.equal(hash(fs.readFileSync(path.join(root,'docs/phase06/FEC-REUSE-DECISION.json'))),m.fec.decisionSha256);for(const s of m.fec.inputs)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);for(const d of m.dependencies)if(d.file)assert.equal(hash(fs.readFileSync(d.file)),d.sha256);assert.equal(hash(fs.readFileSync(m.mediaSecurity.binary)),m.mediaSecurity.sha256);}return m;}
 function child(binary,args){
   const process=cp.spawn(binary,args,{shell:false,windowsHide:true,stdio:['ignore','pipe','pipe']});
   let buffer='',stderr='',finished=false;const messages=[],waiters=[];let resolve,reject;
@@ -128,15 +128,16 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
           if(!receiving){assert.equal(stream.sent,24);continue;}
           const missing=stream.id===104&&['fec-beyond','fec-tamper-repair','fec-late'].includes(scenario)?[2,3,4]:[];
           assert.equal(stream.received,8-missing.length);
+          assert.ok(stream.receivedPackets>=stream.received*2,'Packet and frame denominators must remain distinct');
           const name={104:'video',105:'video',106:'audio',107:'mic',108:'camera'}[stream.id];
           const rounds=[1,2,3,4,5,6,7,8].filter(r=>!missing.includes(r));
           assert.equal(stream.digest,hash(Buffer.from(rounds.map(r=>`synthetic-phase06:${name}:${stream.id}:${r}`).join(''))));
           assert.equal(stream.timestamp,(0xffffffff-3000+(name==='audio'||name==='mic'?960:3000)*7)>>>0);
-          if(scenario==='fec-queue')assert.ok(stream.rejected>=8,'Full per-stream shard queue did not reject extra repair bytes');
+          if(scenario==='fec-queue')assert.ok(stream.queueRejected>=8,'Full per-stream shard queue did not reject extra repair bytes');
           if(stream.id===104){
             if(scenario==='fec-threshold')assert.equal(stream.recovered,3);
             if(missing.length)assert.equal(stream.dropped,3);
-            if(scenario==='fec-tamper-repair')assert.ok(stream.rejected>=3);
+            if(scenario==='fec-tamper-repair')assert.ok(stream.protectionRejectedPackets>=3);
             if(scenario==='fec-late')assert.ok(stream.expired>=2);
           }
         }
@@ -171,4 +172,12 @@ if(!process.argv.includes('--audit-fec'))test('independent full-media parser bou
   const m=target(),vectors=JSON.parse(fs.readFileSync(path.join(root,'protocol/vectors.json'))).multiMedia;
   for(const vector of vectors.boundaries){const request=mediaHello({...vectors.options,...vector.changes});const r=cp.spawnSync(m.binary,['--role','parse','--wire',request.toString('hex')],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000});assert.equal(r.status,0);assert.equal(JSON.parse(r.stdout).status,vector.status,vector.id);}
   const unknown=mediaHello(vectors.options,2),r=cp.spawnSync(m.binary,['--role','parse','--wire',unknown.toString('hex')],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000});assert.equal(r.status,0);assert.equal(JSON.parse(r.stdout).status,20,'Unknown FEC profile must fail before allocation');
+  for(const delta of [-1,1]){const request=mediaHello(vectors.options);request.writeUInt16BE(20+delta,request.length-22);const result=cp.spawnSync(m.binary,['--role','parse','--wire',request.toString('hex')],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000});assert.equal(result.status,0);assert.equal(JSON.parse(result.stdout).status,24,'Exact option TLV length required');}
+});
+if(!process.argv.includes('--audit-fec'))test('public fixed-width media options validate ABI, prefix length and bounded effective result',()=>{
+ const m=target(),vectors=JSON.parse(fs.readFileSync(path.join(root,'protocol/vectors.json'))).multiMedia;
+ const run=(options,args=[])=>{const r=cp.spawnSync(m.binary,['--role','media-options','--options',optionBytes(options).toString('hex'),...args],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000});assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);};
+ assert.deepEqual(run(vectors.options),{status:0,queryVersion:1,packetBytes:240,k:2,n:3});
+ for(const v of vectors.boundaries){const result=run({...vectors.options,...v.changes});assert.equal(result.status,v.status,v.id);if(v.status)assert.equal(result.queryVersion,0,'No partially published effective values');}
+ for(const [args,status] of [[['--abi','2'],2],[['--size','27'],1],[['--size','29'],0],[['--out-abi','2'],2],[['--out-size','39'],1],[['--out-size','41'],0]])assert.equal(run(vectors.options,args).status,status);
 });

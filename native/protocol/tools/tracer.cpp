@@ -1,5 +1,6 @@
 #include "aether/protocol.h"
 #include <cstdint>
+#include <cstddef>
 #include <fstream>
 #include <iostream>
 #include <map>
@@ -58,6 +59,20 @@ int main(int argc,char** argv){
   std::map<std::string,std::string> args;
   for(int i=1;i<argc;i+=2){if(i+1>=argc||!args.emplace(argv[i],argv[i+1]).second)throw std::runtime_error("arguments");}
   std::string role=args.at("--role");auto versions=args.contains("--versions")?args.at("--versions"):"1,2";std::vector<uint32_t> local;
+  if(role=="media-options"){
+   static_assert(sizeof(AetherProtocolMediaOptions)==28&&offsetof(AetherProtocolMediaOptions,per_stream_queue_bytes)==24);
+   static_assert(sizeof(AetherProtocolEffectiveMedia)==40);
+   const auto bytes=from_hex(args.at("--options"));if(bytes.size()!=20)throw std::runtime_error("media options size");
+   const auto read16=[&](size_t i){return static_cast<uint16_t>((uint16_t(bytes[i])<<8)|bytes[i+1]);};
+   AetherProtocolMediaOptions options{1,sizeof(AetherProtocolMediaOptions),read16(0),read16(2),read16(4),read16(6),read16(8),read16(10),read16(16),read16(18),(uint32_t(bytes[12])<<24)|(uint32_t(bytes[13])<<16)|(uint32_t(bytes[14])<<8)|bytes[15]};
+   if(args.contains("--abi"))options.abi_version=static_cast<uint32_t>(std::stoul(args.at("--abi")));
+   if(args.contains("--size"))options.struct_size=static_cast<uint32_t>(std::stoul(args.at("--size")));
+   AetherProtocolEffectiveMedia out{};out.abi_version=1;out.struct_size=sizeof(out);
+   if(args.contains("--out-size"))out.struct_size=static_cast<uint32_t>(std::stoul(args.at("--out-size")));
+   if(args.contains("--out-abi"))out.abi_version=static_cast<uint32_t>(std::stoul(args.at("--out-abi")));
+   const auto status=aether_protocol_validate_media_options(&options,&out);
+   std::cout<<"{\"status\":"<<status<<",\"queryVersion\":"<<out.query_version<<",\"packetBytes\":"<<out.packet_bytes<<",\"k\":"<<out.source_shards<<",\"n\":"<<out.total_shards<<"}"<<std::endl;return 0;
+  }
   if(role=="kat"){kat(args);return 0;}
   for(size_t begin=0;;){auto end=versions.find(',',begin);auto v=std::stoul(versions.substr(begin,end-begin));if(v==0||v>65535||local.size()==8)throw std::runtime_error("versions");local.push_back(static_cast<uint32_t>(v));if(end==std::string::npos)break;begin=end+1;}
   if(role=="parse") {auto b=from_hex(args.at("--wire"));uint32_t selected=0,upgrade=0;auto s=aether_protocol_negotiate(b.data(),static_cast<uint32_t>(b.size()),local.data(),static_cast<uint32_t>(local.size()),&selected,&upgrade);std::cout<<"{\"status\":"<<s<<",\"selectedVersion\":"<<selected<<",\"upgradeSide\":"<<upgrade<<"}"<<std::endl;return 0;}

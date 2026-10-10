@@ -7,7 +7,7 @@ const cp = require('node:child_process');
 const crypto = require('node:crypto');
 const root = path.resolve(__dirname, '..');
 const directory = path.join(root, 'build/phase06/windows-x64');
-const manifestFile = path.join(directory, 'target-manifest-Debug.json');
+const manifestFile = process.env.AETHER_PROTOCOL_MANIFEST || path.join(directory, 'target-manifest-Debug.json');
 const digest = value => crypto.createHash('sha256').update(value).digest('hex');
 
 async function prepare() {
@@ -214,7 +214,7 @@ else if(process.argv.includes('--manifest')) {
   function loadTarget() {
     assert.ok(fs.existsSync(manifestFile),'Build the audited protocol tracer first');
     const m=JSON.parse(fs.readFileSync(manifestFile,'utf8'));
-    assert.equal(m.configuration,'Debug');assert.equal(m.target,'aether_protocol_tracer');
+    assert.equal(m.configuration,process.env.AETHER_PROTOCOL_CONFIGURATION||'Debug');assert.equal(m.target,'aether_protocol_tracer');
     assert.equal(digest(fs.readFileSync(m.binary)),m.sha256);assert.equal(digest(fs.readFileSync(m.library)),m.librarySha256);
     for(const s of m.sources)assert.equal(digest(fs.readFileSync(path.join(root,s.file))),s.sha256,'Source drift');
     return m;

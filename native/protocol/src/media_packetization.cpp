@@ -76,16 +76,21 @@ MediaLimits media_limits(const uint8_t* request,uint32_t size){
  bool full=false;
  for(uint32_t offset=8u+2u*request[7];offset<size;){require(size-offset>=4,AP_LENGTH);const auto type=u16(request+offset),length=u16(request+offset+2);offset+=4;require(length<=size-offset,AP_LENGTH);if(type==1&&length==1&&request[offset]==5)full=true;offset+=length;}
  if(!full)return limits;
+ bool profile=false,uplink=false;uint32_t uplink_size=0;
  for(uint32_t offset=8u+2u*request[7];offset<size;){require(size-offset>=4,AP_LENGTH);const auto type=u16(request+offset),length=u16(request+offset+2);offset+=4;require(length<=size-offset,AP_LENGTH);
+  if(type==3){require(length==2,AP_LENGTH);require(u16(request+offset)==1,AP_VERSION);profile=true;}
+  if(type==6){require(length>0&&length<=64,AP_LENGTH);uplink=true;uplink_size=length;}
   if(type==7){require(length==20,AP_LENGTH);limits.packet_size=u16(request+offset);limits.mtu=u16(request+offset+2);limits.fec_percent=u16(request+offset+4);limits.min_repair=u16(request+offset+6);limits.shard=u16(request+offset+8);limits.k=u16(request+offset+10);limits.per_stream_queue=u32(request+offset+12);limits.ttl_ms=u16(request+offset+16);require(u16(request+offset+18)==0,AP_FIELD);}
   offset+=length;
  }
+ require(profile&&uplink,AP_FIELD);
  require(limits.k>=1&&limits.k<=16&&limits.shard>=1&&limits.shard<=1024,AP_LENGTH);
  require(limits.fec_percent>=1&&limits.fec_percent<=255&&limits.min_repair<=254,AP_LENGTH);
  const auto repair=std::max<uint32_t>(limits.min_repair,(uint32_t(limits.k)*limits.fec_percent+99)/100);
  require(uint32_t(limits.k)+repair<=255,AP_LENGTH);limits.n=static_cast<uint16_t>(limits.k+repair);limits.frame=uint32_t(limits.k)*limits.shard;
  require(uint32_t(limits.n)*3<=64,AP_BUSY);
  require(limits.frame>=65&&limits.frame<=8192&&limits.per_stream_queue>=limits.frame&&limits.per_stream_queue<=13107,AP_LENGTH);
+ require(uplink_size+30<=limits.frame,AP_LENGTH);
  require(limits.ttl_ms>=1&&limits.ttl_ms<=100&&limits.mtu>=177&&limits.mtu<=1500,AP_LENGTH);
  const auto packet_limit=limits.packet_size?limits.packet_size:limits.mtu;
  require(packet_limit<=limits.mtu&&packet_limit>=header_bytes+16+limits.shard,AP_LENGTH);return limits;
@@ -101,13 +106,30 @@ class MediaScheduler {
  uint32_t round;
  std::chrono::steady_clock::time_point deadline;
  std::array<FecBlock,5> blocks;
+ void deliver(size_t index,WindowRecord& window){
+  auto& s=*context.streams[index];auto& block=blocks[index];const auto sources=context.media_limits.k;const auto frame_bytes=context.media_limits.frame;
+  if(block.owned.size()<sources||block.delivered)return;
+  if(std::chrono::steady_clock::now()>=deadline){++s.expired;return;}
+  const auto& packet=block.canonical_header;const auto id=s.domain.identity.stream;
+  const auto frame=fec_recover(block.owned,context.media_limits);const auto frame_digest=hash(frame.data(),frame.size());
+  constexpr char hex[]="0123456789abcdef";std::string expected_digest;for(size_t byte=120;byte<152;++byte){expected_digest+=hex[packet[byte]>>4];expected_digest+=hex[packet[byte]&15];}
+  const auto length=u32(frame.data());
+  if(frame_digest!=expected_digest||length==0||length>frame_bytes-4||!std::all_of(frame.begin()+4+std::min<uint32_t>(length,frame_bytes-4),frame.end(),[](auto byte){return byte==0;})){++s.rejected;return;}
+  if(std::chrono::steady_clock::now()>=deadline){++s.expired;return;}
+  require(s.authenticated_bytes.size()+length<=dual_video_rounds*maximum_stream_payload,AP_LENGTH);
+  s.authenticated_bytes.append(reinterpret_cast<const char*>(frame.data()+4),length);s.digest=hash(reinterpret_cast<const uint8_t*>(s.authenticated_bytes.data()),s.authenticated_bytes.size());++s.received;
+  for(size_t source=0;source<sources;++source)if(!block.owned.contains(source)){++s.recovered;break;}
+  s.timestamp=u32(packet.data()+4);s.sequence=block.last_sequence;block.delivered=true;
+  auto& progress=s.domain.media==1?(id==context.config.stream_id?window.video1:window.video2):s.domain.media==2?window.audio:s.domain.media==3?window.mic:window.camera;++progress;
+ }
 public:
  MediaScheduler(ConnectionContext& c,uint32_t r):context(c),round(r),deadline(std::min(c.exchange_deadline,std::chrono::steady_clock::now()+std::chrono::milliseconds(c.media_limits.ttl_ms))){}
  ~MediaScheduler(){context.queue_bytes=0;}
  WindowRecord receive(){
-  const auto sources=context.media_limits.k,total=context.media_limits.n,shard_bytes=context.media_limits.shard;const auto frame_bytes=context.media_limits.frame;
+  const auto sources=context.media_limits.k,total=context.media_limits.n,shard_bytes=context.media_limits.shard;
   WindowRecord window{round,0,0,1};uint32_t inspected=0;
-  while(inspected<64&&datagram_ready(context.udp.value,deadline)){
+  const auto receive_deadline=deadline-std::chrono::microseconds(uint32_t(context.media_limits.ttl_ms)*250);
+  while(inspected<64&&datagram_ready(context.udp.value,receive_deadline)){
    ++inspected;std::array<uint8_t,1500> buffer{};int n=recv(context.udp.value,reinterpret_cast<char*>(buffer.data()),static_cast<int>(buffer.size()),0);
 #ifdef _WIN32
    if(n<0&&WSAGetLastError()==WSAEMSGSIZE)continue;
@@ -126,25 +148,16 @@ public:
    auto& block=blocks[static_cast<size_t>(found-context.streams.begin())];
    Bytes canonical(packet.begin(),packet.begin()+header_bytes);put16(canonical.data()+2,0);canonical[18]=0;put16(canonical.data()+96,0);
    if(!block.canonical_header.empty()&&block.canonical_header!=canonical){++s.rejected;continue;}
-   if(block.delivered||block.owned.contains(share)){++s.rejected;continue;}
+   if(block.owned.contains(share)){++s.rejected;continue;}
    if(std::chrono::steady_clock::now()>=deadline){++s.expired;continue;}
-   if(block.owned.size()*shard_bytes>context.media_limits.per_stream_queue-shard_bytes){++s.rejected;continue;}
+   if(block.owned.size()*shard_bytes>context.media_limits.per_stream_queue-shard_bytes){++s.queue_rejected;++s.rejected;continue;}
+   if(block.delivered){++s.rejected;continue;}
    block.last_sequence=u16(packet.data()+2);block.canonical_header=std::move(canonical);block.owned.emplace(share,Bytes(packet.begin()+header_bytes,packet.end()));context.queue_bytes+=shard_bytes;context.peak_queue_bytes=std::max(context.peak_queue_bytes,context.queue_bytes);
+   deliver(static_cast<size_t>(found-context.streams.begin()),window);
   }
   for(size_t i=0;i<blocks.size();++i){
    auto& s=*context.streams[i];auto& block=blocks[i];if(sending(context,s))continue;
-   if(block.owned.size()<sources){++s.dropped;continue;}
-   const auto& packet=block.canonical_header;const auto id=s.domain.identity.stream;
-   const auto frame=fec_recover(block.owned,context.media_limits);const auto frame_digest=hash(frame.data(),frame.size());bool digest_ok=true;
-   constexpr char hex[]="0123456789abcdef";std::string expected_digest;for(size_t byte=120;byte<152;++byte){expected_digest+=hex[packet[byte]>>4];expected_digest+=hex[packet[byte]&15];}
-   digest_ok=frame_digest==expected_digest;const auto length=u32(frame.data());
-   if(!digest_ok||length==0||length>frame_bytes-4||!std::all_of(frame.begin()+4+std::min<uint32_t>(length,frame_bytes-4),frame.end(),[](auto byte){return byte==0;})){++s.rejected;++s.dropped;continue;}
-   require(s.authenticated_bytes.size()+length<=dual_video_rounds*maximum_stream_payload,AP_LENGTH);
-   s.authenticated_bytes.append(reinterpret_cast<const char*>(frame.data()+4),length);s.digest=hash(reinterpret_cast<const uint8_t*>(s.authenticated_bytes.data()),s.authenticated_bytes.size());++s.received;
-   for(size_t source=0;source<sources;++source)if(!block.owned.contains(source)){++s.recovered;break;}
-   s.timestamp=u32(packet.data()+4);s.sequence=block.last_sequence;block.delivered=true;
-   context.queue_bytes-=static_cast<uint32_t>(block.owned.size())*shard_bytes;block.owned.clear();
-   auto& progress=s.domain.media==1?(id==context.config.stream_id?window.video1:window.video2):s.domain.media==2?window.audio:s.domain.media==3?window.mic:window.camera;++progress;
+   if(!block.delivered)++s.dropped;
   }
   context.queue_bytes=0;return window;
  }

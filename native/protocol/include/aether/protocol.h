@@ -47,6 +47,26 @@ typedef struct AetherProtocolRequest {
  uint32_t expires_ms, capability_count;
  const AetherProtocolCapability* capabilities;
 } AetherProtocolRequest;
+enum AetherProtocolMediaDirection { AP_DOWNLINK=1, AP_UPLINK=2 };
+enum AetherProtocolMediaKind { AP_VIDEO=1, AP_AUDIO=2, AP_MICROPHONE=3, AP_CAMERA=4 };
+enum AetherProtocolShardRole { AP_SOURCE=0, AP_REPAIR=1 };
+enum AetherProtocolFecProfile { AP_RS_VANDERMONDE_GF256_11D_V1=1 };
+/* HELLO TLV7 serializes numeric fields in network order, not a memory image.
+   The validator checks the ABI/length prefix before reading field values.
+   Current bounds are synthetic prototype limits, not product settings removal. */
+typedef struct AetherProtocolMediaOptions {
+ uint32_t abi_version, struct_size;
+ uint16_t packet_size, path_mtu, fec_percent, min_repair;
+ uint16_t shard_bytes, source_shards, deadline_ms, reserved;
+ uint32_t per_stream_queue_bytes;
+} AetherProtocolMediaOptions;
+typedef struct AetherProtocolEffectiveMedia {
+ uint32_t abi_version, struct_size, query_version, header_bytes;
+ uint32_t packet_bytes, frame_bytes, queue_bytes, deadline_ms;
+ uint16_t source_shards, total_shards, shard_bytes, profile;
+} AetherProtocolEffectiveMedia;
+AETHER_PROTOCOL_API int32_t aether_protocol_validate_media_options(
+ const AetherProtocolMediaOptions*, AetherProtocolEffectiveMedia*);
 /* One bounded synchronous tracer operation per connection. Host input is an
    explicitly synthetic sink payload; client input is a HELLO wire request.
    A second submit is rejected. Native sockets belong to this handle only. */

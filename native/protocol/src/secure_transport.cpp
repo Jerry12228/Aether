@@ -113,9 +113,10 @@ std::vector<uint8_t> protect_packet(StreamContext& stream,uint8_t role,std::vect
  packet.resize(static_cast<size_t>(length));stream.sequence=u16(packet.data()+2);return packet;
 }
 bool unprotect_packet(StreamContext& stream,uint8_t role,std::vector<uint8_t>& packet){
+ ++stream.received_packets;
  if(role>1||packet.size()<28||packet.size()>1500){++stream.rejected;return false;}
  auto staged=packet;int length=static_cast<int>(staged.size());
- if(srtp_unprotect(role?stream.repair_crypto:stream.crypto,staged.data(),&length)!=srtp_err_status_ok){++stream.rejected;return false;}
+ if(srtp_unprotect(role?stream.repair_crypto:stream.crypto,staged.data(),&length)!=srtp_err_status_ok){++stream.protection_rejected;++stream.rejected;return false;}
  staged.resize(static_cast<size_t>(length));packet=std::move(staged);return true;
 }
 bool datagram_ready(Socket socket,std::chrono::steady_clock::time_point deadline){

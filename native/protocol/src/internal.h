@@ -31,6 +31,9 @@ constexpr Socket invalid=-1;
 #endif
 struct OwnedSocket {
  Socket value=invalid;
+ OwnedSocket()=default;
+ OwnedSocket(const OwnedSocket&)=delete;
+ OwnedSocket& operator=(const OwnedSocket&)=delete;
  ~OwnedSocket(){reset();}
  void reset(){if(value!=invalid){
 #ifdef _WIN32
@@ -56,7 +59,8 @@ struct StreamContext {
  srtp_t crypto=nullptr;
  srtp_t repair_crypto=nullptr;
  uint32_t sent=0,received=0,rejected=0;
- uint32_t recovered=0,dropped=0,expired=0;
+ uint32_t received_packets=0,protection_rejected=0;
+ uint32_t recovered=0,dropped=0,expired=0,queue_rejected=0;
  uint64_t next_source=1,next_repair=1;
  uint16_t sequence=0;
  uint32_t timestamp=0;
