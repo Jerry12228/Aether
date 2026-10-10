@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: Phase6 06-02 Task1 complete; alternative research done; Task2 Botan concrete reuse decision pending; Phase3 gate unchanged
-last_updated: "2026-10-10T05:15:31.000Z"
+stopped_at: Phase6 06-02 complete after real Botan reply1; final Debug/ASan46/46 and fullCTest10/10 each; next06-03 interactive confirmation; Phase3 gate unchanged
+last_updated: "2026-10-10T08:14:09.000Z"
 last_activity: 2026-10-10
-last_activity_desc: Real conditional research response recorded; five FEC alternatives audited; Botan ASan12/12; reuse approval pending
+last_activity_desc: Actual Botan reuse integrated; five synthetic protected streams and public options complete; next06-03
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 14
-  completed_plans: 9
+  completed_plans: 10
   percent: 5
-state_head: 6e386ea
+state_head: 57fb934
 ---
 
 # Project State
@@ -39,15 +39,19 @@ Progress: [█░░░░░░░░░] 5%
 
 ## Ahead-of-Sequence Execution
 
-Phase 6 — GameStream协议重构与扩展：真实原答复`1`已批准06-01具体ADR，06-02 Task1双video RED/GREEN完成。新原答复`2,若无则1`已记录并完成替代优先研究；五个固定候选中Botan3.13.0标量ZFEC形成合格的局部原型复用提案，未触发nanors回退，当前停在06-02-02独立具体复用批准。候选真实MSVC构建及ASan12/12（7,458.4689ms）、81独立KAT、42阈值丢失组合、1,600并发检查通过，非产品集成完成。最新产品回归node25/25（4,764.4872ms）；历史完整CTest10/10（13.04s）本次未重跑。原批准快照8材料/14证据保留，不以新字节冒充原批准。OpenSSL3.5.9/libSRTP2.8.0仍为仅两项链接来源，Botan/nanors均未链接。5计划/5顺序波、1/5完成，06-02仅Task1完成，NET仍未完成；原637能力/case/条件/owner及296行源映射不变。仅Windows x64 synthetic局部证据，非真实设备/codec/HDR/性能/五目标支持；VALIDATION draft、nyquist/wave0 false，三条未分类边界和六条无描述符禁止项保留。
+Phase 6 — GameStream协议重构与扩展：06-01具体ADR已批准；06-02三任务已完成并提交。真实复用原答复`1`于2026-10-10T05:34:57Z另录[FEC-REUSE-DECISION](../docs/phase06/FEC-REUSE-DECISION.json)，批准固定Botan3.13.0标量23cpp/78输入及显式协商profile，仅用于synthetic Phase6原型。新决定不覆盖原ADR或`2,若无则1`研究决定；nanors回退未触发。原审阅FEC-ALTERNATIVES字节及两项hash保持，历史awaiting字样不代表当前决定缺失。实际链接OpenSSL3.5.9/libSRTP2.8.0和新批准Botan子集；无第二crypto/RNG/TLS provider。
 
-06-01人审原答复1/approve-concrete/2026-10-10T03:46:30Z、reviewedSHA256 `0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc`不变。[FEC-DECISION](../docs/phase06/FEC-DECISION.json)另录`2,若无则1`/2026-10-10T04:55:09Z、旧准备材料hash及存档，仅研究/条件准备。当前审阅[Botan具体提案](../docs/phase06/FEC-ALTERNATIVES.md) SHA256 `3ebdf494fa77c8262d620e7eb60f874c1546564c6bb866c2c9e816b18ac3fa22`及[配置/许可/证据账本](../docs/phase06/FEC-ALTERNATIVES.json) SHA256 `a3157d9e6dc90e921c017d62c9ba3f88241a4aaadd9cf07ace4676fcb02451d8`。新选择1批准固定Botan23源/所需头/notice及显式协商profile的synthetic Phase6复用；2改为固定nanors隔离准备而非链接；3保留停点。复用回复/时间仍null，FEC-REUSE-DECISION不存在。提案不恒定时间、不与旧Cauchy逐字节兼容，必须认证source/repair及协商profile，真实媒体另评估处理/侧信道边界。[06-02-SUMMARY](phases/06-gamestream/06-02-SUMMARY.md)仍halted，06-03/04/05阻断；五目标与最终人审仍06-05-03，Apple只有实机TODO。
+两个真实PID经TLS1.3及双向UDP传两video/audio/mic/camera synthetic，逐stream/direction/source-repair/key generation保护、认证后同域FEC、界限及公开ABI/queryVersion1完成。最终Debug node46/46（14,213.3037ms）及CTest10/10（24.48s），独立ASan Release node46/46（16,892.4128ms）及CTest10/10（26.72s），fail/cancel/skip/TODO0；ASan不覆盖预编译OpenSSL、非leak/TSan认证。合同/实际二进制源码log hash见[MEDIA-CONTRACT](../docs/phase06/MEDIA-CONTRACT.md)、[MEDIA-EVIDENCE](../docs/phase06/MEDIA-EVIDENCE.json)及[完成SUMMARY](phases/06-gamestream/06-02-SUMMARY.md)。
 
-为保留Phase3 blocking-human入口，不用通用state.advance-plan覆盖Current Position；phase3/plan3/status halted、Apollo条件及安装授权不变。协议下一步从06-02-02新Botan复用决定恢复，核验两项新hash/原ADR快照，另录真实复用答复，不覆盖研究决定。Task1 RED3f189b7/GREEN5d3effd、初审d7f9ec5、研究决定037cafc、替代证据a216b42、最新halted摘要6e386ea。总计9/14计划、2/42阶段；不使用误计halted SUMMARY的通用计数。
+06-01原答复1/2026-10-10T03:46:30Z、reviewedSHA256 `0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc`及历史8材料/14证据不变。FEC提案MD `3ebdf494fa77c8262d620e7eb60f874c1546564c6bb866c2c9e816b18ac3fa22`、JSON `a3157d9e6dc90e921c017d62c9ba3f88241a4aaadd9cf07ace4676fcb02451d8`已核验并存档。新复用approval3bc7810、Task2 RED e6b3e78/GREEN5fd2fea、Task3 REDdd74763/GREENcc35d12、完成摘要57fb934。候选原ASan12/12/81KAT/42阈值/1,600并发仍是独立历史研究，不冒充当前产品运行。
+
+Phase6 2/5、总10/14计划、2/42阶段；NET仍未完成。06-03依赖已解锁，但interactive下一计划确认尚未执行；06-04/05仍待其前置。权限/预算/完整恢复/诊断/真实Dart FFI、五目标及最终人审均未完成。真实设备/codec/HDR/物理时钟/产品性能未测，Apple仅实机TODO。原637能力/case/条件/owner及296映射不变，VALIDATION draft、nyquist/wave0 false，三条未分类及六条无描述符禁止项保留。
+
+为保留Phase3 blocking-human入口，不用通用state.advance-plan覆盖Current Position；phase3/plan3/status halted、Apollo条件及安装授权全部不变。用户信用中断后原文`继续，用量恢复`恢复正常审批并完成最终重编译/回归，无审批绕过。无设备/信任/网络配置/重启/关机操作。
 
 ## Performance Metrics
 
-Total plans completed: 9/14; completed phases: 2/42. Phase6 1/5;06-02 Task1 complete,Tasks2/3 incomplete.
+Total plans completed: 10/14; completed phases: 2/42. Phase6 2/5;06-02 all3 tasks complete. Final Debug/ASan46/46 and fullCTest10/10 each; actuals78,826 diff-size estimate tokens, not model usage.
 Phase3 partial: 03-01/03-02 complete. Latest Debug/Release native builds pass; CTest11/11 each (26.54s/25.32s), CLI/process27/27 each (23.2867s/21.4822s), targeted admission/lifecycle19/19 (475.8736ms), zero skip. Revised dedicated source closes arrival cleanup and full-capacity GUID idempotence, actual WDK rebuild/signature and separate six-target InfVerif evidence retained. Native mutation code is compiled; only read-only actual device enumeration ran. 03-03 system authorization/machine matrix unperformed; VDP01/02 and Phase3 incomplete.
 
 03-03 Task1: native SetupAPI/NewDev package code, owner-protected stage/backup, side-effect journal and hash-bound readonly plan complete; Release build5,663ms, Contract35/35(1,040.4829ms TAP), CTest11/11(25.14s), zero skipped tests. Actual install/update/rollback/topology/HDR/persistence/reset remain untested. Machine win-5f5cc5dd3cf310b6, plan2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0; details in03-03-SUMMARY and HELIOS-DISPLAY-INSTALL-PLAN.md/json.
@@ -65,9 +69,11 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 ### Decisions
 
-- 2026-10-10真实`2,若无则1`授权替代优先研究，若无合格替代才准备固定nanors。五候选研究后Botan固定标量子集MSVC/ASan12/12通过，形成synthetic原型提案，fallbackTriggered=false。新复用批准仍null，无FEC产品链接或系统变更；具体边界/hash见FEC-ALTERNATIVES和06-02-SUMMARY。
+- 2026-10-10真实原答复`1`已批准固定Botan scalar synthetic复用，FEC-REUSE-DECISION绑定审阅hash/源配置；06-02全三任务完成（cc35d12/57fb934），真实双向五流/认证后有界FEC/公开options通过Debug及ASan46/46、CTest10/10各。Phase6 2/5/NET未完成，下一06-03预算/恢复/诊断待interactive确认；不扩展Phase3系统授权。
 
-- 2026-10-10 Phase6续跑06-02-01完成：独立双video25/25及原生10/10，原ADR批准不变；新FEC源码未纳入批准，研究发现默认实现及内嵌来源缺口，停于新的隔离准备决定。06-02-SUMMARY status halted，Phase6 1/5/NET未完成，无系统变更。
+- 历史研究停点（现由独立复用批准和06-02完成覆盖）：2026-10-10真实`2,若无则1`授权替代优先研究，若无合格替代才准备固定nanors。五候选研究后Botan固定标量子集MSVC/ASan12/12通过，形成synthetic原型提案，fallbackTriggered=false。新复用批准仍null，无FEC产品链接或系统变更；具体边界/hash见FEC-ALTERNATIVES和06-02-SUMMARY。
+
+- 历史Task1停点（现06-02全部完成）：2026-10-10 Phase6续跑06-02-01完成：独立双video25/25及原生10/10，原ADR批准不变；新FEC源码未纳入批准，研究发现默认实现及内嵌来源缺口，停于新的隔离准备决定。06-02-SUMMARY status halted，Phase6 1/5/NET未完成，无系统变更。
 
 - 2026-10-10真实用户原答复`1`：批准具体ADR reviewedSHA2560cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc，recordedAt2026-10-10T03:46:30Z，approve-concrete；c74cfb1记录原答复/初始8材料14证据及只两库复用范围。06-01完成，06-02解锁，Phase6 1/5；NET未完成。原审阅快照在build/phase06/reviewed-06-01，之后源码演进不能覆盖批准历史。新FEC候选仍需独立准入/具体批准，无设备/信任/网络/Phase3安装授权。
 
@@ -120,7 +126,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
-[Phase6 06-02-02 blocking-human] ADR批准不变，06-01及06-02 Task1完成。研究原答复`2,若无则1`已执行，五候选中Botan固定标量提案12/12通过，未触发nanors回退；仍待新的具体复用答复，未链接。25/25产品回归和历史10/10只证明局部双synthetic-video，候选12/12非产品auth-before-FEC验证。audio/uplink/FEC/rekey/nonce/完整queue/public向量、权限/预算/恢复/五目标未执行。Phase6 1/5，NET未完成。
+[Phase6 current readiness] 06-02完成，真实具体Botan复用批准已记录；最终Debug/ASan46/46及完整CTest10/10各通过。06-03预算/权限/恢复/诊断及测量待interactive下一计划确认，06-04/05、五目标和最终人审未执行；Phase6 2/5、NET未完成。synthetic/实机/性能范围与ASan限制见MEDIA-CONTRACT/EVIDENCE，不重复请求已批准的固定复用。
 
 [Phase3 current 03-03-02 blocking-human] 原安装条件授权在Apollo前置失败停止。现exact WUDF subkey修正/新包完成，等待新plan4fa13eea批准；机器安装和实际UMDF隔离均未执行。Apollo PID6820/15176与四WUDFHost、配置/二进制、20外来记录/8store文件和CCD保持；45,957ms只读窗口全部一致，0 establishedTCP不代表无UDP串流。BCD权限partial、既有安全/信任不变；历史Machine/Install假授权自动审批拒绝原样保留。WINDOWS ledger未执行矩阵仍open。SDK仍按SUMMARY存在误计9/3，已再次按halted纠正8完成、Phase3 2/3；不关闭VDP。
 
@@ -157,8 +163,8 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 ## Session Continuity
 
 Last session: 2026-10-10（Asia/Singapore）
-Stopped at: Phase6 06-02-02 Botan concrete reuse decision after passing alternative research; Phase3 independently halted at03-03-02 corrected install plan; no system mutation
+Stopped at: Phase6 06-02 complete after real Botan reply1; final Debug/ASan46/46 and fullCTest10/10 each; next06-03 interactive confirmation; Phase3 gate unchanged
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
 
-Active Phase6 resume: `.planning/phases/06-gamestream/06-02-PLAN.md` Task2来源门槛；读取halted06-02-SUMMARY及FEC-ALTERNATIVES.md/json，核验新hash/原ADR快照、存档审阅字节、另录FEC-REUSE-DECISION。选1批准具体Botan synthetic复用后Task2 RED/GREEN；选2仅准备固定nanors；选3保留停点。不得将研究原答复扩为复用批准，不重复06-01/06-02-01。Phase3 Resume file/Next action仅保留独立安装恢复入口，不是当前协议下一任务。
+Active Phase6 resume: `.planning/phases/06-gamestream/06-03-PLAN.md`，待interactive下一计划确认；先读06-02 completed SUMMARY、MEDIA-CONTRACT/EVIDENCE和既定internal接口，再执行预算/恢复/诊断及实测。不能重跑已完成Task1/2/3或重复固定Botan批准。Phase3 Resume file/Next action保留独立安装恢复入口，不是当前协议下一任务。

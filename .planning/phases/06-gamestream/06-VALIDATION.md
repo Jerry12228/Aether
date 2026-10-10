@@ -9,7 +9,7 @@ created: "2026-10-09"
 
 # Phase 06 — Validation Strategy
 
-本文件是执行期验证契约。2026-10-10原答复1已批准06-01，06-02-01双video完成；最新产品node25/25（4,764.4872ms），历史完整CTest10/10（13.04s）本次未重跑，原批准快照8材料/14日志保留。实际`2,若无则1`替代优先研究已执行：五固定候选中Botan标量子集MSVC/ASan12/12（7,458.4689ms）、81独立KAT/42阈值组合/1,600并发检查通过，未触发nanors回退。独立候选测试不是产品FEC/auth-before-repair通过；当前停于06-02-02具体复用批准，FEC未链接，Task2/3和后续计划未执行。尚不存在入口仍是目标，不能记为已运行。保留draft/false直到全阶段执行与审计取证。
+本文件是执行期验证契约。06-01具体ADR与06-02独立Botan复用原答复1均已记录。06-02全三任务完成，最终Debug node46/46（14,213.3037ms）/CTest10/10（24.48s），独立ASan Release node46/46（16,892.4128ms）/CTest10/10（26.72s），fail/cancel/skip/TODO0。实际保护双向五synthetic流、认证后FEC、公开边界和同窗口隔离已运行；候选原12/12/81KAT/42组合/1,600并发保留独立历史研究。ASan不覆盖预编译OpenSSL，非leak/TSan认证。06-03/04/05未执行，尚不存在入口仍是目标；阶段2/5及NET未完成，保留draft/false直到全阶段执行与审计取证。
 
 ## Test Infrastructure
 
@@ -19,7 +19,7 @@ created: "2026-10-09"
 | Config file | native/protocol/CMakeLists.txt（Wave 0 新建，独立于 Windows driver） |
 | Quick run command | node --test tests/protocol-tracer.test.cjs（06-01-01创建后；其余任务使用对应定向suite） |
 | Full suite command | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs tests/protocol-recovery.test.cjs tests/protocol-ffi.test.cjs tests/protocol-evidence.test.cjs；五目标证据另运行独立verify |
-| Estimated runtime | 首计划真实node5.038s/CTest10.48s；快速反馈目标30秒，完整故障/平台矩阵仍未测 |
+| Estimated runtime | 当前02 Debug node14.213s/CTest24.48s、ASan node16.892s/CTest26.72s；快速目标30秒，完整恢复/平台/量测仍未运行 |
 
 ## Sampling Rate
 
@@ -35,9 +35,9 @@ created: "2026-10-09"
 | 06-01-01 | 01 | 1 | NET-01/02/03 | T-06-01–04/SC | 双PID真实安全socket、共同版本/身份/长度拒绝、资源停止 | native+process | node --test tests/protocol-tracer.test.cjs | yes | pass scoped prototype |
 | 06-01-02 | 01 | 1 | NET-01/02/03 | T-06-01/02/SC | 独立golden/KAT、完整字段/原设置、D01–04/13 | vectors+process | node --test tests/protocol-tracer.test.cjs | yes | pass automated19/19; ADR candidate |
 | 06-01-03 | 01 | 1 | NET-01/02/03 | T-06-01–04/SC | 具体ADR/来源/原设置决定绑定hash | process+真人决定 | node --test tests/protocol-tracer.test.cjs | yes | pass19/19 + real reply1; reviewed hash0cdda0d2 |
-| 06-02-01 | 02 | 2 | NET-01/02/03 | T-06-05/09 | 真实双video、独立安全域/故障/owned清理 | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass scoped Task1;25/25,total CTest10/10 |
-| 06-02-02 | 02 | 2 | NET-01/02/03 | T-06-05/06/09/SC | audio/双向synthetic、认证后FEC、replay/key epoch/nonce exhaustion | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | halted before Botan concrete reuse; independent research12/12 is not Task2 integration |
-| 06-02-03 | 02 | 2 | NET-01/02/03 | T-06-05/06/09 | 独立golden/KAT、±1/头篡改/seqwrap与公开结构 | vectors+process | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | W0:06-02-01 | pending |
+| 06-02-01 | 02 | 2 | NET-01/02/03 | T-06-05/09 | 真实双video、独立安全域/故障/owned清理 | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass scoped; finalDebug/ASan46/46, fullCTest10/10 each |
+| 06-02-02 | 02 | 2 | NET-01/02/03 | T-06-05/06/09/SC | audio/双向synthetic、认证后FEC、replay/key epoch/nonce exhaustion | process+fault | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass integrated synthetic; real reuse reply1; Debug/ASan46/46 |
+| 06-02-03 | 02 | 2 | NET-01/02/03 | T-06-05/06/09 | 独立golden/KAT、±1/头篡改/seqwrap与公开结构 | vectors+process | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs | yes | pass public ABI/options,22 boundaries and exact TLV/profile refusal |
 | 06-03-01 | 03 | 3 | NET-01/02/03 | T-06-07/08/SC | 完整proposal/资源向量/原子confirm/observer预算 | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
 | 06-03-02 | 03 | 3 | NET-01/02/03 | T-06-08/10/11/18 | fresh auth/旧epoch/上行另确认/独立恢复/临时trace | process+state | node --test tests/protocol-recovery.test.cjs | W0:06-03-01 | pending |
 | 06-03-03 | 03 | 3 | NET-01/02/03 | T-06-07/10/11/18 | 真实限值量测、D阈值/全原case映射/R1 | measure+state | node --test tests/protocol-recovery.test.cjs；node tests/protocol-recovery.test.cjs --measure --evidence artifacts/phase06/limits.json | W0:06-03-01 | pending |
@@ -49,7 +49,7 @@ created: "2026-10-09"
 
 上述命令失败方向：非零exit、零tests、skip/cancel/TODO、缺具名case/目标/真实log或artifact、source/SDK/arch/dependency/binary hash漂移、timeout、资源未归零。坏证据fixture必须被拒绝；退出0但缺证明亦失败。自动化通过不能代替06-01-03具体决定和06-05-03强制真人审阅。每计划各命令立即附`fails_when`为权威细则。五个顺序wave的已创建suite依次为tracer；+multistream；+recovery；+FFI；+evidence与五目标独立verify。长量测实际30秒预热/60秒窗口/3轮，不计作fast用时。
 
-## Substantive Edge Coverage（06-01实测，其余仍规划）
+## Substantive Edge Coverage（06-01/02局部实测，其余仍规划）
 
 | Edge | Task/test | Expected boundary |
 |---|---|---|
@@ -100,4 +100,4 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 
 06-01具体ADR批准已完成：真实原答复1、recordedAt2026-10-10T03:46:30Z，历史材料摘要已绑定，续跑19/19（4,749.1274ms）。本处Approval pending指全阶段验证/最终人审，不是重复请求同一ADR批准。
 
-06-01局部验证见[completed SUMMARY](06-01-SUMMARY.md)和[批准ADR](../../../docs/phase06/PROTOCOL-ADR.md)；06-02 Task1及新复用停点见[halted SUMMARY](06-02-SUMMARY.md)。独立[FEC候选证据](../../../docs/phase06/FEC-ALTERNATIVES.json)绑定85输入/实际ASan二进制及运行时，包含已知坏访问检测；无有效输入ASan发现，但非leak/TSan/穷尽竞态证明。双video丢失隔离已实测，产品FEC/双向/nonce/key epoch/完整queue/平台/重连/trace/FFI仍未验证。三条edge probe和六条descriptorless禁止项未自动改成resolved；不因局部测试设置nyquist或wave0 true。
+06-01局部验证见[completed SUMMARY](06-01-SUMMARY.md)和[批准ADR](../../../docs/phase06/PROTOCOL-ADR.md)；06-02双向五流、认证后FEC/nonce/epoch/queue/public options已完成，见[completed SUMMARY](06-02-SUMMARY.md)、[MEDIA-CONTRACT](../../../docs/phase06/MEDIA-CONTRACT.md)和[实际源码二进制证据](../../../docs/phase06/MEDIA-EVIDENCE.json)。新复用原答复1与历史FEC候选账本不互相覆盖。独立候选ASan12/12及known-bad检测保留；当前Debug/ASan46/46和CTest10/10各通过，无有效用例发现并非leak/TSan/穷尽安全证明。完整权限/预算/恢复/重试/trace/FFI/五目标/最终人审仍未执行；三条edge probe和六条descriptorless禁止项不自动resolved，不因局部通过设置nyquist或wave0 true。

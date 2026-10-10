@@ -169,7 +169,7 @@
 1. 固定 GameStream 开源实现基线与字段/通道映射，说明保留、重构和扩展项；Aether 版本/能力协商、独立连接/流上下文和测试向量可复现。
 2. 双向模拟媒体和至少两条独立视频流通过；包大小、时间戳、FEC/丢包恢复、安全密钥/nonce边界及有界队列明确，覆盖五端原生核心构建与可运行的自动化检查，Apple 实机验证另列 TODO；不要求旧端互通。
 
-**Plans:** 5 plans — planned 2026-10-10，未执行。
+**Plans:** 5 plans — planned 2026-10-10；06-01/02完成，2/5，下一06-03待interactive确认。
 
 首轮三个计划的中间包涉及23文件，被独立检查器阻断。Revision 1沿同一原生协议原型验收链拆成五个顺序执行包（9/9/9/6/9文件、单任务最多5文件），作为“通常1–3计划”的容量例外；没有增加配对、真实设备/编解码、生产仲裁子系统或改变阶段依赖。第二轮检查0 blocker/0 warning，记录见 `06-PLAN-CHECK.md`。
 
@@ -179,7 +179,7 @@
 
 **Wave 2（前置：Wave 1完成及具体ADR批准）**
 
-- [ ] 06-02-PLAN.md — Task1双video完成；条件替代研究已执行，Botan标量候选ASan12/12；halted于Task2具体复用批准，FEC未链接，双向/Task3未执行
+- [x] 06-02-PLAN.md — 真实Botan复用reply1已记录；双向五流synthetic/认证后有界FEC/公开合同完成，Debug/ASan46/46及CTest10/10各通过
 
 **Wave 3（前置：Wave 2完成）**
 
@@ -193,7 +193,7 @@
 
 - [ ] 06-05-PLAN.md — 五目标实际构建运行、独立证据与强制最终人审
 
-Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原答复1已批准06-01 ADR0cdda0d2/两库范围，06-02 Task1完成。新原答复`2,若无则1`的替代研究已执行；五候选中Botan固定标量子集真实MSVC/ASan12/12、81独立KAT/42丢失组合/1,600并发检查通过，未触发nanors回退。当前等待FEC-ALTERNATIVES具体复用批准，不将研究选择或测试扩大为准入；FEC未链接。最新产品node25/25，历史CTest10/10未重跑。1/5计划完成，06-02 halted，06-03/04/05阻断，NET未完成；五目标与最终人审仍06-05-03。
+Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR原批准不变，新原答复1于2026-10-10T05:34:57Z批准具体Botan scalar synthetic复用并另录FEC-REUSE-DECISION，原研究/审阅字节保留、nanors回退未触发。06-02全部完成，真实双向五路synthetic媒体/逐域保护/认证后同域FEC和公开ABI/query合同通过最终Debug46/46及CTest10/10、独立ASan Release46/46及CTest10/10。2/5计划完成，下一06-03预算/恢复/诊断待interactive确认；06-04/05、五目标及最终人审未执行，NET和Phase6未完成。仅Windows x64原型证据，非实机/性能/ASan完整安全认证；见MEDIA-CONTRACT/EVIDENCE及06-02-SUMMARY。
 
 ### Phase 7: 配对、发现与设备权限
 
@@ -650,7 +650,7 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原答复1已
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 1/5 | Halted (06-02 Task2 Botan concrete reuse gate) | - |
+| 6. GameStream 协议重构与扩展 | 2/5 | In Progress (06-02 complete; next06-03 interactive confirmation) | - |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |
