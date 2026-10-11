@@ -8,7 +8,7 @@ async function runTarget(o){
  const m=JSON.parse(fs.readFileSync(manifestFile,'utf8')),directory=path.resolve(root,m.buildDirectory),began=Date.now(),commands=[];
  for(const f of [...m.sources,...m.artifacts,...m.fec.inputs,...(m.fec.targetConfiguration?.headers||[])])assert.equal(hash(fs.readFileSync(path.join(root,f.file))),f.sha256,'Exact target input drift');
  const record={schema:1,target:m.target,arch:m.arch,sdk:m.sdk,sourceCommit:m.sourceCommit,inputDigest:m.inputDigest,buildManifest:{file:o.manifest,sha256:hash(fs.readFileSync(manifestFile))},runURL:m.runURL,commands,tests:null,exitCode:null,elapsedMs:null,physical:false,synthetic:true};
- async function run(name,exe,args,cleanup=false){const remaining=cleanup?60000:o.budget-(Date.now()-began);assert.ok(remaining>0,'Target run deadline');const r=await runGroup({name,exe:resolveNative(exe),args,cwd:root,timeoutMs:remaining},{root,logDirectory:path.relative(root,path.join(directory,'run-logs'))});const log=path.join(root,r.log);commands.push({...r,output:undefined,executable:exe,args,sha256:hash(fs.readFileSync(log))});assert.equal(r.exitCode,0,`${name}: ${r.output.slice(-4000)}`);assert.ok(fs.statSync(log).size<=16*1024*1024,'Target output byte bound');return fs.readFileSync(log,'utf8').split(/\r?\n/).slice(1,-2).join('\n');}
+ async function run(name,exe,args,cleanup=false,limit=null){const remaining=cleanup?60000:o.budget-(Date.now()-began);assert.ok(remaining>0,'Target run deadline');const r=await runGroup({name,exe:path.isAbsolute(exe)?exe:resolveNative(exe),args,cwd:root,timeoutMs:Math.min(remaining,limit||remaining)},{root,logDirectory:path.relative(root,path.join(directory,'run-logs'))});const log=path.join(root,r.log);commands.push({...r,output:undefined,executable:exe,args,sha256:hash(fs.readFileSync(log))});assert.equal(r.exitCode,0,`${name}: ${r.output.slice(-4000)}`);assert.ok(fs.statSync(log).size<=16*1024*1024,'Target output byte bound');return fs.readFileSync(log,'utf8').split(/\r?\n/).slice(1,-2).join('\n');}
  let simulator=null;
  try{
   if(['windows','linux','macos'].includes(m.target)){
@@ -33,7 +33,8 @@ async function runTarget(o){
    const summary=JSON.parse(await run('xcresult-summary','xcrun',['xcresulttool','get','test-results','summary','--path',result]));
    assert.ok(summary.totalTestCount>=37);assert.equal(summary.failedTests,0);assert.equal(summary.skippedTests,0);assert.equal(summary.passedTests,summary.totalTestCount);
    record.tests={tests:summary.totalTestCount,passed:summary.passedTests,failed:summary.failedTests,skipped:summary.skippedTests,cancelled:0,xcresult:path.relative(root,result).replaceAll('\\','/')};
-  }else throw Error('Matching Android runtime runner is required; a build is insufficient');
+  }else if(m.target==='android')await require('./android-protocol-runner.cjs').runAndroid({m,record,run,root,directory,hash});
+  else throw Error('Matching target runtime runner is required; a build is insufficient');
   record.exitCode=0;
  }catch(error){record.exitCode=1;record.error=error.message;throw error;}
  finally{
