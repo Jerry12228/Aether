@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: 06-03三任务完成并通过集成检查；下一06-04待交互选择；Phase3独立安装门槛保持
-last_updated: "2026-10-10T15:28:51.473Z"
-last_activity: 2026-10-10
-last_activity_desc: 06-03三任务及摘要23b814e完成；Debug106/106、Debug/ASan CTest12/12；父级658摘要匹配及CTest12/12
+stopped_at: 06-04两任务与真实FFI回归完成；下一06-05待交互选择；Phase3独立安装门槛保持
+last_updated: "2026-10-11T04:10:55.994Z"
+last_activity: 2026-10-11
+last_activity_desc: 06-04两任务及摘要adffc87完成；当前Node107/107、Flutter22/22、协议CTest12/12、根CTest11/11；下一05待选择
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 15
-  completed_plans: 12
+  completed_plans: 13
   percent: 5
-state_head: 23b814e
+state_head: adffc87
 ---
 
 # Project State
@@ -33,7 +33,7 @@ Total Plans in Phase: 3
 Phase: 3 (虚拟显示器可行性) — two plans complete; phase and VDP requirements incomplete
 Plan: 03-03 partial — Task1 complete; old conditional choice1 recorded; correction RED5050b4a/GREENaaeda0e; Task2 blocking-human awaiting new fixed-plan install-only approval
 Status: Halted; existing Apollo preserved. Old approval binds superseded bytes and cannot authorize corrected package. No runtime authorization file or installer invocation.
-Last activity: 2026-10-10 — Phase6 06-06及06-03已完成，下一06-04待交互选择；261010-q3y中文规则与Phase3独立安装门槛保留。
+Last activity: 2026-10-11 — Phase6 06-04已完成，下一06-05待交互选择；中文规则与Phase3独立安装门槛保留。
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -45,13 +45,15 @@ Phase 6 — GameStream协议重构与扩展：06-01具体ADR已批准；06-02三
 
 06-01原答复1/2026-10-10T03:46:30Z、reviewedSHA256 `0cdda0d2750ed02e7c873412b41a0033a1fe73d72d9b57f874cf91a4b3e657cc`及历史8材料/14证据不变。FEC提案MD `3ebdf494fa77c8262d620e7eb60f874c1546564c6bb866c2c9e816b18ac3fa22`、JSON `a3157d9e6dc90e921c017d62c9ba3f88241a4aaadd9cf07ace4676fcb02451d8`已核验并存档。新复用approval3bc7810、Task2 RED e6b3e78/GREEN5fd2fea、Task3 REDdd74763/GREENcc35d12、完成摘要57fb934。候选原ASan12/12/81KAT/42阈值/1,600并发仍是独立历史研究，不冒充当前产品运行。
 
-Phase6现为4/6、总12/15计划、2/42阶段；NET仍未完成。本会话原答复`1`选择06-03，后续`1`授权具体合同修订并继续，最新「继续，用量恢复」保留该执行授权。历史[前置检查](../docs/phase06/06-03-PRECONDITION.md)及93项匹配记录保留；缺失接口已由新增06-06实际交付，Revision1独立检查0blocker/0warning，协议3/schema1与旧ABI1/版本1和2分别验证。06-06两任务及摘要d68b2a6完成，原Debug/ASan控制27场景、client445/445及父57/57和旧Node46/46回归保持。见[06-06摘要](phases/06-gamestream/06-06-SUMMARY.md)。06-03三任务实际交付全方案/六维预算、fresh-auth/逐流恢复/上行另确认和trace；RED5c3d2f6/6ce3ede/842aa20，GREEN3ec8231/f853627/bce5030，摘要23b814e。最终Debug Node106/106（旧46+恢复60）、Debug/ASan CTest12/12（108.14s/109.00s）；父级构建及CTest12/12（108.16s）再次通过，658项证据路径/hash匹配。三轮真实socket量测281648.188ms明确绑定归档f853627的13源码/4二进制，最终断线和重复reset修正另经完整回归，不改绑旧hash。见[06-03摘要](phases/06-gamestream/06-03-SUMMARY.md)、[最终证据](../docs/phase06/06-03-03-EVIDENCE.json)及[LIMITS](../docs/phase06/LIMITS.md)。下一06-04真实Dart FFI待交互选择，06-05五目标及最终人审未执行。证据限Windows x64、synthetic authority/media和真实loopback TLS/SRTP；真实设备/codec/HDR、生产仲裁和产品性能未测，ASan不覆盖预编译OpenSSL。637原case保留，12个NET设置合同与完整owner映射已追加；VALIDATION draft、nyquist/wave0 false，三条未分类及六条无描述符禁止项保留。
+Phase6现为5/6、总13/15计划、2/42阶段；NET仍未完成。本会话原答复`1`选择06-03，后续`1`授权具体合同修订并继续，最新「继续，用量恢复」保留该执行授权。历史[前置检查](../docs/phase06/06-03-PRECONDITION.md)及93项匹配记录保留；缺失接口已由新增06-06实际交付，Revision1独立检查0blocker/0warning，协议3/schema1与旧ABI1/版本1和2分别验证。06-06两任务及摘要d68b2a6完成，原Debug/ASan控制27场景、client445/445及父57/57和旧Node46/46回归保持。见[06-06摘要](phases/06-gamestream/06-06-SUMMARY.md)。06-03三任务实际交付全方案/六维预算、fresh-auth/逐流恢复/上行另确认和trace；RED5c3d2f6/6ce3ede/842aa20，GREEN3ec8231/f853627/bce5030，摘要23b814e。最终Debug Node106/106（旧46+恢复60）、Debug/ASan CTest12/12（108.14s/109.00s）；父级构建及CTest12/12（108.16s）再次通过，658项证据路径/hash匹配。三轮真实socket量测281648.188ms明确绑定归档f853627的13源码/4二进制，最终断线和重复reset修正另经完整回归，不改绑旧hash。见[06-03摘要](phases/06-gamestream/06-03-SUMMARY.md)、[最终证据](../docs/phase06/06-03-03-EVIDENCE.json)及[LIMITS](../docs/phase06/LIMITS.md)。06-04真实Dart FFI已完成，下一06-05五目标及最终人审待交互选择。证据限Windows x64、synthetic authority/media和真实loopback TLS/SRTP；真实设备/codec/HDR、生产仲裁和产品性能未测，ASan不覆盖预编译OpenSSL。637原case保留，12个NET设置合同与完整owner映射已追加；VALIDATION draft、nyquist/wave0 false，三条未分类及六条无描述符禁止项保留。
 
 为保留Phase3 blocking-human入口，不用通用state.advance-plan覆盖Current Position；phase3/plan3/status halted、Apollo条件及安装授权全部不变。用户信用中断后原文`继续，用量恢复`恢复正常审批并完成最终重编译/回归，无审批绕过。无设备/信任/网络配置/重启/关机操作。
 
+06-04按用户恢复原答复`1`核对已有三提交和未提交实现，完成两任务；正式STATUS/cancel行为RED d03b278先于修复GREEN387a052，摘要adffc87。当前完整Node107/107（101947.7632ms）包含Flutter22/22及21个独立host场景；协议Debug CTest12/12（107.06s）、根CTest11/11（27.00s）、local core 1 native+6 Dart和绑定生成通过。产品DLL/独立host/真实socket及逐场景回执、输入hash见[06-04摘要](phases/06-gamestream/06-04-SUMMARY.md)和[06-04证据](../docs/phase06/06-04-EVIDENCE.json)。fixture修复只在test-only host，不进入产品DLL；早期编译失败不计行为RED，事后基线复现不改写原TDD偏差。本次没有新ASan、五目标或真实设备证据，历史量测/批准保持原绑定。
+
 ## Performance Metrics
 
-已完成计划12/15、阶段2/42；Phase6为4/6，06-03三任务完成。最终Debug Node106/106、Debug/ASan CTest12/12各，父级集成CTest12/12（108.16s）。真实三轮量测281648.188ms，独立归档f853627；最终代码修正由完整回归覆盖。06-02历史actuals78,826、06-03 actuals249962均为diff-size估算tokens，不是模型实际用量；06-06产品交付126.24分钟、06-03墙钟108分钟均包含中断及环境处理。
+已完成计划13/15、阶段2/42；Phase6为5/6，06-04两任务完成，当前Node107/107、Flutter22/22、协议CTest12/12及根CTest11/11；06-04 actuals44760为diff字符估算，恢复墙钟37分钟。下列06-03记录为历史证据：最终Debug Node106/106、Debug/ASan CTest12/12各，父级集成CTest12/12（108.16s）。真实三轮量测281648.188ms，独立归档f853627；最终代码修正由完整回归覆盖。06-02历史actuals78,826、06-03 actuals249962均为diff-size估算tokens，不是模型实际用量；06-06产品交付126.24分钟、06-03墙钟108分钟均包含中断及环境处理。
 Phase3 partial: 03-01/03-02 complete. Latest Debug/Release native builds pass; CTest11/11 each (26.54s/25.32s), CLI/process27/27 each (23.2867s/21.4822s), targeted admission/lifecycle19/19 (475.8736ms), zero skip. Revised dedicated source closes arrival cleanup and full-capacity GUID idempotence, actual WDK rebuild/signature and separate six-target InfVerif evidence retained. Native mutation code is compiled; only read-only actual device enumeration ran. 03-03 system authorization/machine matrix unperformed; VDP01/02 and Phase3 incomplete.
 
 03-03 Task1: native SetupAPI/NewDev package code, owner-protected stage/backup, side-effect journal and hash-bound readonly plan complete; Release build5,663ms, Contract35/35(1,040.4829ms TAP), CTest11/11(25.14s), zero skipped tests. Actual install/update/rollback/topology/HDR/persistence/reset remain untested. Machine win-5f5cc5dd3cf310b6, plan2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0; details in03-03-SUMMARY and HELIOS-DISPLAY-INSTALL-PLAN.md/json.
@@ -69,7 +71,9 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 ### Decisions
 
-- 2026-10-10：06-03三任务完成（bce5030/23b814e），父级658项证据摘要及集成CTest12/12通过；已授权范围交付完毕，下一06-04待交互选择。量测保存旧f853627精确输入/二进制，最终功能修正独立回归；NET及Phase6整体仍未完成，不自动推进04/05或Phase3安装。
+- 2026-10-11：用户恢复原答复`1`授权接续06-04，GREEN387a052/摘要adffc87已封存；两任务、真实FFI22项和完整Node107项通过。Phase6为5/6，下一06-05待交互选择；NET与最终人审未完成。早期无效行为RED如实保留，新STATUS事务绑定修复具有先RED后GREEN证据；Phase3门槛不变。
+
+- 历史06-03交付停点：2026-10-10三任务完成（bce5030/23b814e），父级658项证据摘要及集成CTest12/12通过；已授权范围交付完毕，下一06-04待交互选择。量测保存旧f853627精确输入/二进制，最终功能修正独立回归；NET及Phase6整体仍未完成，不自动推进04/05或Phase3安装。
 
 - 2026-10-10：06-06两任务及中文摘要完成（ff081cf/d68b2a6），父级集成通过；本会话原答复1及最新「继续，用量恢复」授权接续06-03，无需重复确认前置或Botan批准。共享要求NET保持未完成；Phase3安装授权及禁止重启/关机不变。
 
@@ -130,7 +134,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ### Blockers/Concerns
 
-[Phase6当前执行入口] 06-06及06-03完整交付并通过父级集成，旧合同前置缺口关闭，历史PRECONDITION保留。06-03为3/3任务、SUMMARY23b814e；下一06-04真实低频FFI待交互选择，06-05五目标及最终人审未执行。Phase6为4/6、NET未完成，不重复已完成计划、固定复用或前置授权。
+[Phase6当前执行入口] 06-04两任务完整交付、SUMMARYadffc87与精确输入EVIDENCE已提交；当前Node107/107、Flutter22/22、协议CTest12/12及根CTest11/11通过。历史PRECONDITION及06-03量测原绑定保留。下一06-05五目标/独立证据/强制最终人审待交互选择；Phase6为5/6、NET未完成，不重复已完成计划、固定复用或前置授权。
 
 [Phase3 current 03-03-02 blocking-human] 原安装条件授权在Apollo前置失败停止。现exact WUDF subkey修正/新包完成，等待新plan4fa13eea批准；机器安装和实际UMDF隔离均未执行。Apollo PID6820/15176与四WUDFHost、配置/二进制、20外来记录/8store文件和CCD保持；45,957ms只读窗口全部一致，0 establishedTCP不代表无UDP串流。BCD权限partial、既有安全/信任不变；历史Machine/Install假授权自动审批拒绝原样保留。WINDOWS ledger未执行矩阵仍open。SDK仍按SUMMARY存在误计9/3，已再次按halted纠正8完成、Phase3 2/3；不关闭VDP。
 
@@ -167,9 +171,9 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-10（Asia/Singapore）
-Stopped at: 06-03三任务完成并通过集成检查；下一06-04待交互选择；Phase3独立安装门槛保持
+Last session: 2026-10-11（Asia/Singapore）
+Stopped at: 06-04两任务与真实FFI回归完成；下一06-05待交互选择；Phase3独立安装门槛保持
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
 
-Active Phase6 resume: `.planning/phases/06-gamestream/06-04-PLAN.md`；先读已完成06-06/06-03-SUMMARY、CONTROL-CONTRACT与实际最终native入口，取得下一计划交互选择后执行真实Dart FFI消费/停止边界/依赖总账。06-04/05未开始；不能重跑06-02/06-06/06-03或重复Botan批准。Phase3 Resume file/Next action保留独立安装恢复入口，不是当前协议下一任务。
+Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-04-SUMMARY/EVIDENCE和当前源码/依赖锁，取得下一计划交互选择后执行五目标实际build/run、独立证据validator及强制最终人审。06-04已完成，06-05未开始；不重跑已完成计划或重复Botan批准。Phase3 Resume file/Next action保留独立安装恢复入口，不是当前协议下一任务。
