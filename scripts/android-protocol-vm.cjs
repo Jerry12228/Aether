@@ -45,7 +45,17 @@ async function prepareAndroidVm({sdk,directory,arch,run,record}){
   if(initialUid!=='0'){await run('vm-owned-adbd-root',adb,['-s',serial,'root']);await run('vm-owned-adbd-ready',adb,['-s',serial,'wait-for-device'],false,30000);}
   assert.equal(uid(await run('vm-owned-root-uid',adb,['-s',serial,'shell','id'])),'0','Only rootable owned test images');
   for(const service of ['zygote_secondary','zygote','surfaceflinger'])await run('vm-owned-stop-'+service,adb,['-s',serial,'shell','stop',service]);
-  for(const service of ['zygote','surfaceflinger']){const state=(await run('vm-owned-state-'+service,adb,['-s',serial,'shell','getprop','init.svc.'+service])).trim();assert.equal(state,'stopped','Owned framework service must remain stopped');}
+  for(const service of ['zygote','surfaceflinger']){
+   // ctl.stop is asynchronous: observing stopping is not a failed stop.
+   // Require its actual terminal state within a bounded owned-guest wait.
+   let state='';const deadline=Date.now()+30000;
+   for(let attempt=0;Date.now()<deadline;attempt++){
+    assert.ok(processVm.exitCode===null&&processVm.signalCode===null,'Owned guest exited during service stop');
+    state=(await run('vm-owned-state-'+service+'-'+attempt,adb,['-s',serial,'shell','getprop','init.svc.'+service],false,5000)).trim();
+    if(state==='stopped')break;await pause(250);
+   }
+   assert.equal(state,'stopped','Owned framework service must reach stopped within 30s');
+  }
   if(initialUid!=='0'){await run('vm-owned-adbd-unroot',adb,['-s',serial,'unroot']);await run('vm-owned-shell-ready',adb,['-s',serial,'wait-for-device'],false,30000);assert.equal(uid(await run('vm-owned-uid-restored',adb,['-s',serial,'shell','id'])),initialUid);}
   receipt.frameworkSuspendedAt=new Date().toISOString();for(let i=0;i<2;i++){assert.ok(!launchError&&processVm.exitCode===null&&processVm.signalCode===null);await pause(5000);}return{serial,stop,destination:receipt.runtime};
  }catch(error){await stop();throw error;}

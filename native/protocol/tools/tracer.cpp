@@ -106,7 +106,10 @@ int main(int argc,char** argv){
   auto cert=fixture+"/"+(role=="host"?"host":scenario=="wrong-trust"?"untrusted":"client")+".pem";
   auto key=fixture+"/"+(role=="host"?"host":scenario=="wrong-trust"?"untrusted":"client")+".key";
   auto trust=fixture+"/trust.pem";auto peer=role=="host"?"aether-client.local":scenario=="wrong-identity"?"changed-host.local":"aether-host.local";
-  AetherProtocolConfig c{};c.abi_version=1;c.struct_size=sizeof(c);c.role=role=="host"?1:2;c.deadline_ms=2000;
+  AetherProtocolConfig c{};c.abi_version=1;c.struct_size=sizeof(c);c.role=role=="host"?1:2;
+  // The full synthetic fixture includes TLS and eight bidirectional rounds.
+  // Use the supported 3s exchange bound; each media window remains 25ms.
+  c.deadline_ms=scenario=="multistream"?3000:2000;
   c.peer_control_port=role=="client"?static_cast<uint32_t>(std::stoul(args.at("--peer"))):0;
   c.host_id=101;c.instance_id=102;c.display_id=103;c.stream_id=104;c.connection_id=105;c.client_id=106;c.lease_epoch=1;c.config_generation=1;c.key_generation=1;
   if(args.contains("--key-generation")){c.key_generation=std::stoull(args.at("--key-generation"));if(c.key_generation==0)throw std::runtime_error("key generation");}
