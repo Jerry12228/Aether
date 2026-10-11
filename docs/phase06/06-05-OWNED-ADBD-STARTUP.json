@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T16:23:36.655Z",
+  "sourceCommit": "308384731b3cd07bd4bdf3783404d432bdd81539",
+  "inputDigest": "00a4408c7ad8a8524e464d2f40162192abc8554c9822e54ae5186dae893a3a7a",
+  "target": "android-x64",
+  "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38154837552/job/114515562161",
+  "classification": "owned-vm-adbd-transport-failure-before-native-tests",
+  "stage": "vm-owned-adbd-root",
+  "actualExitCode": 1,
+  "testsExecuted": 0,
+  "observedError": "adb: unable to connect for root: closed",
+  "cause": "尚未确认adbd关闭的精确原因；不能作为产品协议失败或已完成运行。",
+  "plannedFix": "仅自有guest的root/unroot切换在30秒内有界重试，每次请求/等待/UID观测各最多5秒；即使请求连接关闭也只在实际id回读到目标UID后继续，保留每轮真实失败日志。不可root或逾期仍失败。",
+  "raw": {
+    "file": "build/phase06/06-05/android-x64-308-job.log",
+    "sha256": "aa4d3b9855055157ff02421df8f92a676b5a55658c43b4ddfe4a532303aa2fa6",
+    "bytes": 27922
+  },
+  "tasksCompleted": 0,
+  "constraints": {
+    "hostRestart": false,
+    "adbServerRestart": false,
+    "driverInstall": false,
+    "testsSkipped": false
+  }
+}
