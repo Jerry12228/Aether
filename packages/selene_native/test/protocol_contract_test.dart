@@ -24,6 +24,8 @@ class Peer {
   final Process process;
   final StringBuffer output;
   final int port;
+  OperationResult? observedReceipt;
+  int? expectedCommits, expectedActivations;
   static Future<Peer> start(String name, {Uint8List? faults}) async {
     final base = Platform.environment['AETHER_PROTOCOL_FIXTURE']!;
     final dir = Directory('$base/$name')..createSync();
@@ -37,14 +39,21 @@ class Peer {
       File('$base/$file').copySync('${dir.path}/$file');
     }
     File('${dir.path}/scenario.bin').writeAsBytesSync(faults ?? []);
-    final provider=ByteData(96);
-    provider.buffer.asUint8List().setAll(0,ascii.encode('APFX'));
-    provider.setUint32(4,1,Endian.big);
-    const capacity=[4,2,4,300000000,67108864,100000000];
-    for(var i=0;i<6;i++){provider.setUint64(8+8*i,capacity[i],Endian.big);}
-    provider.setUint64(56,7,Endian.big);provider.setUint64(64,9001,Endian.big);provider.setUint64(72,1,Endian.big);
-    provider.setUint32(80,15,Endian.big);provider.setUint32(84,3,Endian.big);
-    File('${dir.path}/provider.bin').writeAsBytesSync(provider.buffer.asUint8List());
+    final provider = ByteData(96);
+    provider.buffer.asUint8List().setAll(0, ascii.encode('APFX'));
+    provider.setUint32(4, 1, Endian.big);
+    const capacity = [4, 2, 4, 300000000, 67108864, 100000000];
+    for (var i = 0; i < 6; i++) {
+      provider.setUint64(8 + 8 * i, capacity[i], Endian.big);
+    }
+    provider.setUint64(56, 7, Endian.big);
+    provider.setUint64(64, 9001, Endian.big);
+    provider.setUint64(72, 1, Endian.big);
+    provider.setUint32(80, 15, Endian.big);
+    provider.setUint32(84, 3, Endian.big);
+    File(
+      '${dir.path}/provider.bin',
+    ).writeAsBytesSync(provider.buffer.asUint8List());
     final process = await Process.start(
       Platform.environment['AETHER_PROTOCOL_HOST']!,
       ['--host', dir.path, 'actions'],
@@ -81,8 +90,48 @@ class Peer {
       final raw = output.toString();
       File('${dir.path}/host.log').writeAsStringSync(raw);
       expect(raw, contains('owned=0'));
+      final summary = raw
+          .split('\n')
+          .firstWhere((s) => s.startsWith('HOST pid='));
+      if (expectedCommits != null) {
+        expect(
+          summary,
+          contains(
+            'commits=$expectedCommits activations=$expectedActivations owned=0',
+          ),
+        );
+      }
+      final receipts = hostReceipts(dir);
+      final result = observedReceipt;
+      if (result != null && result.resultKnown) {
+        expect(
+          receipts.any(
+            (r) =>
+                r['operationId'] == result.operationId &&
+                r['requestId'] == result.requestId &&
+                r['transactionSequence'] == result.transactionSequence &&
+                r['activationPhase'] == result.activationPhase &&
+                r['authorityTerminal'] == result.authorityTerminal,
+          ),
+          true,
+          reason:
+              'Client authority result must match an independently parsed host wire receipt.',
+        );
+      }
       print(
-        'FFIRESULT ${jsonEncode({'case': dir.path.split(Platform.pathSeparator).last, 'clientPid': pid, 'hostPid': process.pid, 'port': port, 'callbacksAfterDispose': client.callbacksAfterDispose, 'hostSummary': raw.split('\n').firstWhere((s) => s.startsWith('HOST pid=')), 'eventCount': client.diagnostics.length, 'creatorIsolate': client.creatorIsolate, 'maxQueryBytes': client.maxQueryBytes})}',
+        'FFIRESULT ${jsonEncode({
+          'case': dir.path.split(Platform.pathSeparator).last,
+          'clientPid': pid,
+          'hostPid': process.pid,
+          'port': port,
+          'callbacksAfterDispose': client.callbacksAfterDispose,
+          'hostSummary': summary,
+          'eventCount': client.diagnostics.length,
+          'creatorIsolate': client.creatorIsolate,
+          'maxQueryBytes': client.maxQueryBytes,
+          'hostReceipts': receipts,
+          'clientReceipt': result == null ? null : {'operationId': result.operationId, 'requestId': result.requestId, 'resultKnown': result.resultKnown, 'authorityTerminal': result.authorityTerminal, 'transactionSequence': result.transactionSequence, 'activationPhase': result.activationPhase, 'cancelOutcome': result.cancelOutcome},
+        })}',
       );
     } finally {
       process.kill();
@@ -100,6 +149,52 @@ class Peer {
       peerName: 'aether-host.local',
     ),
   );
+}
+
+// Independent test oracle for the host's actual outgoing ACTL receipt bytes.
+List<Map<String, int>> hostReceipts(Directory directory) {
+  final wire = File('${directory.path}/wire.hex');
+  if (!wire.existsSync()) return [];
+  final receipts = <Map<String, int>>[];
+  for (final line in wire.readAsLinesSync().where((s) => s.isNotEmpty)) {
+    expect(line.length.isEven, true);
+    final bytes = Uint8List.fromList([
+      for (var i = 0; i < line.length; i += 2)
+        int.parse(line.substring(i, i + 2), radix: 16),
+    ]);
+    final data = ByteData.sublistView(bytes);
+    expect(bytes.length, greaterThanOrEqualTo(128));
+    expect(data.getUint32(0, Endian.big), bytes.length - 4);
+    expect(ascii.decode(bytes.sublist(4, 8)), 'ACTL');
+    expect(data.getUint16(124, Endian.big), 1);
+    final fields = <int, int>{};
+    var offset = 128;
+    for (var i = 0; i < data.getUint16(126, Endian.big); i++) {
+      final kind = data.getUint16(offset, Endian.big),
+          length = data.getUint16(offset + 2, Endian.big);
+      offset += 4;
+      expect(offset + length, lessThanOrEqualTo(bytes.length));
+      if (kind == 13 || kind == 19) {
+        expect(length, 4);
+        fields[kind] = data.getUint32(offset, Endian.big);
+      }
+      if (kind == 18) {
+        expect(length, 8);
+        fields[kind] = data.getUint64(offset, Endian.big);
+      }
+      offset += length;
+    }
+    expect(offset, bytes.length);
+    if (fields.containsKey(18))
+      receipts.add({
+        'operationId': data.getUint64(20, Endian.big),
+        'requestId': data.getUint64(28, Endian.big),
+        'transactionSequence': fields[18]!,
+        'activationPhase': fields[19]!,
+        'authorityTerminal': fields[13]!,
+      });
+  }
+  return receipts;
 }
 
 Future<ProtocolState> command(ProtocolClient c, int op) =>
@@ -195,109 +290,482 @@ void main() {
       await peer.finish(c);
     }
   });
-  if(Platform.environment['AETHER_PROTOCOL_FFI_SCOPE']=='expanded')expandedTests();
+  if (Platform.environment['AETHER_PROTOCOL_FFI_SCOPE'] == 'expanded')
+    expandedTests();
 }
 
-Uint8List fault(int opcode,int phase,{bool before=false,int delay=0,int flags=0,int count=1,int request=100}) {
-  final b=ByteData(32);b.setUint32(0,opcode,Endian.big);b.setUint32(4,phase,Endian.big);b.setUint64(8,request,Endian.big);
-  b.setUint32(16,before?1:0,Endian.big);b.setUint32(20,delay,Endian.big);b.setUint32(24,flags,Endian.big);b.setUint32(28,count,Endian.big);
+Uint8List fault(
+  int opcode,
+  int phase, {
+  bool before = false,
+  int delay = 0,
+  int flags = 0,
+  int count = 1,
+  int request = 100,
+}) {
+  final b = ByteData(32);
+  b.setUint32(0, opcode, Endian.big);
+  b.setUint32(4, phase, Endian.big);
+  b.setUint64(8, request, Endian.big);
+  b.setUint32(16, before ? 1 : 0, Endian.big);
+  b.setUint32(20, delay, Endian.big);
+  b.setUint32(24, flags, Endian.big);
+  b.setUint32(28, count, Endian.big);
   return b.buffer.asUint8List();
 }
-Uint8List joined(List<List<int>> b)=>Uint8List.fromList(b.expand((s)=>s).toList());
+
+Uint8List joined(List<List<int>> b) =>
+    Uint8List.fromList(b.expand((s) => s).toList());
 
 void expandedTests() {
-  test('D-05/D-07/D-14/15/16 native recovery, trace, fresh auth and explicit upstream set',() async {
-    final peer=await Peer.start('recovery-trace'),c=peer.client();
-    try{
-      await c.connect();await command(c,c.confirm((await proposal(c)).proposal!));
-      expect(c.query().summaryStatus,0);expect(c.query().trace.enabled,false);
-      final before=c.query().streams.firstWhere((s)=>s.streamId==5).received;
-      await command(c,c.recoverStream(4,windowMs:100));expect(c.query().recovery.transient,true);
-      await until(()=>c.query().recovery.state=='healthy');
-      expect(c.query().streams.firstWhere((s)=>s.streamId==4).generation,2);
-      expect(c.query().streams.firstWhere((s)=>s.streamId==5).received,greaterThan(before));
-      await command(c,c.recoverStream(4,windowMs:900));await until(()=>c.query().recovery.state=='action-required');
-      expect(c.query().recovery.showPersistentAction,true);await until(()=>c.query().recovery.state=='healthy');
-      await command(c,c.startTrace(400));expect(c.query().trace.remainingMs,inInclusiveRange(1,400));
-      await command(c,c.extendTrace(600));expect(c.query().trace.enabled,true);
-      await command(c,c.stopTrace());expect(c.query().trace.enabled,false);
-      await command(c,c.startTrace(60));await until(()=>!c.query().trace.enabled);
-      await command(c,c.startTrace(600));await command(c,c.retryConnection());
-      final fresh=c.query();expect(fresh.connectionId,105);expect(fresh.freshAuthentications,2);expect(fresh.leaseEpoch,2);expect(fresh.keyGeneration,2);
-      expect(fresh.trace.enabled,false);expect(fresh.mediaMask&24,0);expect(fresh.instanceId,2);expect(fresh.displayId,3);
-      final up=(await command(c,c.proposeUpstream(3,requestId:101))).proposal!;
-      expect(up.streams.map((s)=>s.streamId).toSet(),{7,8});expect(c.query().mediaMask&24,0);
-      await command(c,c.confirm(up,upstream:true));await until(()=>c.query().streams.where((s)=>s.direction==2).every((s)=>s.sent>0));
-      expect(c.query().mediaMask&24,24);
-    }finally{await peer.finish(c);}
-  });
-  test('D-07 keep upstream closed is a native explicit selection',() async {
-    final peer=await Peer.start('upstream-closed'),c=peer.client();
-    try{await c.connect();await command(c,c.proposeUpstream(0,requestId:100));expect(c.query().upstreamChoice!.selectedMask,0);expect(c.query().upstreamChoice!.reason,'remain-closed');expect(c.query().mediaMask&24,0);}
-    finally{await peer.finish(c);}
-  });
-  for(final cancel in [false,true])test('D-05 refused fresh socket ${cancel?'cancel':'exhaust'} retains manual state',() async {
-    final peer=await Peer.start('retry-$cancel',faults:fault(5,0,before:true,flags:1)),c=peer.client();
-    try{
-      await c.connect();final op=c.retryConnection(requestId:100);
-      if(cancel){await until(()=>c.query().recovery.state=='reconnecting');expect(c.cancelOperation(op),0);}
-      final e=await c.waitTerminal(op);expect(e.status,cancel?28:11);final s=c.query();
-      expect(s.recovery.state,'manual');expect(s.recovery.reason,cancel?'cancelled':'retry-exhausted');expect(s.instanceId,2);expect(s.displayId,3);
-      if(!cancel)expect(s.recovery.attempts,3);
-      await command(c,c.cancelRetry());expect(c.query().recovery.reason,'cancelled');
-    }finally{await peer.finish(c);}
-  });
-  const races=['cancel-before','cancel-committed','grant-loss','ready-delay','ready-loss','readyack-delay','readyack-loss','unknown','replay'];
-  for(final race in races)test('authority race $race uses actual DLL receipts and one terminal',() async {
-    final rules=<Uint8List>[];
-    if(race=='cancel-before')rules.add(fault(2,0,before:true,delay:250));
-    if(race=='cancel-committed')rules.add(fault(2,3,delay:250));
-    if(race=='grant-loss')rules.add(fault(2,3,flags:1));
-    if(race=='ready-delay')rules.add(fault(14,0,before:true,delay:150));
-    if(race=='ready-loss')rules.add(fault(14,0,before:true,flags:1));
-    if(race=='readyack-delay')rules.add(fault(14,4,delay:150));
-    if(race=='readyack-loss')rules.add(fault(14,4,flags:1));
-    if(race=='replay')rules.add(fault(2,3,flags:2));
-    if(race=='unknown')rules.addAll([fault(2,3,flags:1),fault(14,3,flags:1,count:32),fault(3,3,flags:1,count:32)]);
-    final peer=await Peer.start('race-$race',faults:joined(rules)),c=peer.client(autoAck:false);
-    try{
-      await c.connect();final p=(await proposal(c)).proposal!;
-      final op=c.confirm(p,deadlineMs:race=='unknown'?700:1500);
-      if(race=='cancel-before'||race=='cancel-committed'||race=='unknown'){
-        final marker=race=='cancel-before'?'confirm-received':'committed';
-        await until(()=>File('${peer.dir.path}/$marker').existsSync());
-        expect(c.cancelOperation(op),0);expect(c.cancelOperation(op),0);
-        if(race=='cancel-before')expect(File('${peer.dir.path}/committed').existsSync(),false);
+  test(
+    'D-05 real transport loss reauthenticates same persistent instance without trace carryover',
+    () async {
+      final peer = await Peer.start(
+            'transport-loss',
+            faults: fault(13, 0, before: true, flags: 1, request: 101),
+          ),
+          c = peer.client();
+      try {
+        await c.connect();
+        await command(c, c.confirm((await proposal(c)).proposal!));
+        await command(c, c.startTrace(2000));
+        final envelope = ByteData(24)
+          ..setUint64(0, 5, Endian.big)
+          ..setUint64(8, 1, Endian.big)
+          ..setUint64(16, 1, Endian.big);
+        final op = c.send(
+          13,
+          requestId: 101,
+          payload: testPayload(1, envelope.buffer.asUint8List()),
+        );
+        expect((await c.waitTerminal(op)).status, isNot(0));
+        await until(() => !c.query().authenticated);
+        expect(c.query().recovery.reason, 'connection-lost');
+        expect(c.query().trace.enabled, false);
+        await command(c, c.retryConnection());
+        expect(c.query().freshAuthentications, 2);
+        expect(c.query().connectionId, 105);
+        await until(
+          () => c.query().streams.any((s) => s.streamId == 5 && s.received > 0),
+        );
+        expect(c.query().instanceId, 2);
+        expect(c.query().displayId, 3);
+        expect(c.query().mediaMask & 24, 0);
+      } finally {
+        await peer.finish(c);
       }
-      if(race=='ready-delay'||race=='readyack-delay'){await Future<void>.delayed(const Duration(milliseconds:45));expect(c.query().sinkPackets,0);}
-      final e=await c.waitTerminal(op),r=c.resultFor(op)!;
-      if(race=='unknown'){expect(e.status,11);expect(r.resultKnown,false);expect(r.authorityTerminal,isNull);expect(r.cancelOutcome,'unknown');expect(r.cancellationSucceeded,false);}
-      else if(race=='cancel-before'){expect(e.status,28);expect(r.cancellationSucceeded,true);expect(r.transactionSequence,2);expect(c.query().grants,0);}
-      else{expect(e.status,0);expect(r.resultKnown,true);expect(r.authorityTerminal,0);expect(r.activationPhase,4);expect(r.transactionSequence,3);expect(c.query().grants,1);
-        if(race=='cancel-committed')expect(r.cancelOutcome,'already-committed');
-        final count=c.query().sinkPackets;await until(()=>c.query().sinkPackets>count);}
-      expect(c.diagnostics.where((e)=>e.operationId==op&&e.terminal).length,1);
-      c.acknowledgeReceived();
-    }finally{await peer.finish(c);}
+    },
+  );
+  test(
+    'cancelling new proposal leaves existing healthy streams and authority budget intact',
+    () async {
+      final peer = await Peer.start(
+            'healthy-cancel',
+            faults: fault(2, 0, before: true, delay: 1500, request: 200),
+          ),
+          c = peer.client(autoAck: false);
+      try {
+        await c.connect();
+        await command(c, c.confirm((await proposal(c)).proposal!));
+        await until(
+          () => c.query().streams.any((s) => s.streamId == 5 && s.received > 0),
+        );
+        final p = (await proposal(c, id: 200)).proposal!;
+        final marker = File('${peer.dir.path}/confirm-received');
+        if (marker.existsSync()) marker.deleteSync();
+        final before = c
+                .query()
+                .streams
+                .firstWhere((s) => s.streamId == 5)
+                .received,
+            op = c.confirm(p, deadlineMs: 3000);
+        await until(
+          () => marker.existsSync() && marker.readAsStringSync() == '200',
+        );
+        expect(c.cancelOperation(op), 0);
+        expect((await c.waitTerminal(op)).status, 28);
+        expect(c.query().grants, 1);
+        expect(c.resultFor(op)!.cancellationSucceeded, true);
+        await until(
+          () =>
+              c.query().streams.firstWhere((s) => s.streamId == 5).received >
+              before,
+        );
+        expect(c.cancelOperation(op), 30);
+        c.acknowledgeReceived();
+      } finally {
+        await peer.finish(c);
+      }
+    },
+  );
+  for (final committed in [false, true])
+    test(
+      'D-07 upstream cancellation ${committed ? 'after' : 'before'} commit keeps healthy downlink',
+      () async {
+        final peer = await Peer.start(
+              'upstream-race-$committed',
+              faults: fault(
+                9,
+                committed ? 3 : 0,
+                before: !committed,
+                delay: committed ? 250 : 1500,
+                request: 101,
+              ),
+            ),
+            c = peer.client(autoAck: false);
+        try {
+          await c.connect();
+          await command(c, c.confirm((await proposal(c)).proposal!));
+          final p = (await command(
+            c,
+            c.proposeUpstream(3, requestId: 101),
+          )).proposal!;
+          for (final marker in ['committed', 'confirm-received']) {
+            final f = File('${peer.dir.path}/$marker');
+            if (f.existsSync()) f.deleteSync();
+          }
+          final before = c
+                  .query()
+                  .streams
+                  .firstWhere((s) => s.streamId == 5)
+                  .received,
+              op = c.confirm(p, upstream: true, deadlineMs: 3000);
+          if (committed) {
+            final marker = File('${peer.dir.path}/committed');
+            await until(
+              () => marker.existsSync() && marker.readAsStringSync() == '101',
+            );
+          } else {
+            final marker = File('${peer.dir.path}/confirm-received');
+            await until(
+              () => marker.existsSync() && marker.readAsStringSync() == '101',
+            );
+            // Observe a pending STATUS round trip before cancellation, so the
+            // authority fixture must preserve the newer CONFIRM operation ID.
+            await until(() => hostReceipts(peer.dir).any((receipt) =>
+                receipt['operationId'] == op && receipt['activationPhase'] == 1));
+          }
+          expect(c.cancelOperation(op), 0);
+          expect((await c.waitTerminal(op)).status, committed ? 0 : 28);
+          expect(
+            c.resultFor(op)!.cancelOutcome,
+            committed ? 'already-committed' : 'cancelled',
+          );
+          expect(c.query().mediaMask & 24, committed ? 24 : 0);
+          await until(
+            () =>
+                c.query().streams.firstWhere((s) => s.streamId == 5).received >
+                before,
+          );
+          c.acknowledgeReceived();
+        } finally {
+          await peer.finish(c);
+        }
+      },
+    );
+  test(
+    'T-06-19 default and trace never report rejected synthetic content',
+    () async {
+      final peer = await Peer.start('content'), c = peer.client();
+      try {
+        await c.connect();
+        await command(c, c.startTrace(1000));
+        final content = ascii.encode(
+          'AV-CONTENT-SENTINEL CLIPBOARD-SENTINEL CREDENTIAL-SENTINEL',
+        );
+        final op = c.send(
+          13,
+          requestId: 100,
+          payload: testPayload(2, Uint8List.fromList(content)),
+        );
+        expect((await c.waitTerminal(op)).status, 27);
+        expect(c.query().summaryStatus, anyOf(0, 27));
+        await command(c, c.stopTrace());
+        expect(c.query().trace.bytes, lessThanOrEqualTo(65536));
+      } finally {
+        await peer.finish(c);
+      }
+    },
+  );
+  test(
+    'D-05/D-07/D-14/15/16 native recovery, trace, fresh auth and explicit upstream set',
+    () async {
+      final peer = await Peer.start('recovery-trace'), c = peer.client();
+      try {
+        await c.connect();
+        await command(c, c.confirm((await proposal(c)).proposal!));
+        expect(c.query().summaryStatus, 0);
+        expect(c.query().trace.enabled, false);
+        final before = c
+            .query()
+            .streams
+            .firstWhere((s) => s.streamId == 5)
+            .received;
+        await command(c, c.recoverStream(4, windowMs: 100));
+        expect(c.query().recovery.transient, true);
+        await until(() => c.query().recovery.state == 'healthy');
+        expect(
+          c.query().streams.firstWhere((s) => s.streamId == 4).generation,
+          2,
+        );
+        expect(
+          c.query().streams.firstWhere((s) => s.streamId == 5).received,
+          greaterThan(before),
+        );
+        await command(c, c.recoverStream(4, windowMs: 900));
+        await until(() => c.query().recovery.state == 'action-required');
+        expect(c.query().recovery.showPersistentAction, true);
+        await until(() => c.query().recovery.state == 'healthy');
+        // Leave enough observation time when the complete native suites run in parallel.
+        await command(c, c.startTrace(3000));
+        expect(c.query().trace.remainingMs, inInclusiveRange(1, 3000));
+        await command(c, c.extendTrace(6000));
+        expect(c.query().trace.enabled, true);
+        await command(c, c.stopTrace());
+        expect(c.query().trace.enabled, false);
+        await command(c, c.startTrace(60));
+        await until(() => !c.query().trace.enabled);
+        await command(c, c.startTrace(600));
+        await command(c, c.retryConnection());
+        final fresh = c.query();
+        expect(fresh.connectionId, 105);
+        expect(fresh.freshAuthentications, 2);
+        expect(fresh.leaseEpoch, 2);
+        expect(fresh.keyGeneration, 2);
+        expect(fresh.trace.enabled, false);
+        expect(fresh.mediaMask & 24, 0);
+        expect(fresh.instanceId, 2);
+        expect(fresh.displayId, 3);
+        final up = (await command(
+          c,
+          c.proposeUpstream(3, requestId: 101),
+        )).proposal!;
+        expect(up.streams.map((s) => s.streamId).toSet(), {7, 8});
+        expect(c.query().mediaMask & 24, 0);
+        await command(c, c.confirm(up, upstream: true));
+        await until(
+          () => c
+              .query()
+              .streams
+              .where((s) => s.direction == 2)
+              .every((s) => s.sent > 0),
+        );
+        expect(c.query().mediaMask & 24, 24);
+      } finally {
+        await peer.finish(c);
+      }
+    },
+  );
+  test('D-07 keep upstream closed is a native explicit selection', () async {
+    final peer = await Peer.start('upstream-closed'), c = peer.client();
+    try {
+      await c.connect();
+      await command(c, c.proposeUpstream(0, requestId: 100));
+      expect(c.query().upstreamChoice!.selectedMask, 0);
+      expect(c.query().upstreamChoice!.reason, 'remain-closed');
+      expect(c.query().mediaMask & 24, 0);
+    } finally {
+      await peer.finish(c);
+    }
   });
-  test('T-06-12 ACK gaps, real drain timeout, retry disposal and paused observer',() async {
-    final peer=await Peer.start('drain'),c=peer.client(autoAck:false);
-    StreamSubscription<ProtocolEvent>? observer;
-    try{
-      await c.connect();observer=c.events.listen((_){});observer.pause();
-      await proposal(c);
-      expect(c.bindings.aether_protocol_control_ack(c.handle,2),1);
-      final small=calloc<Char>(2),required=calloc<Uint32>();
-      try{expect(c.bindings.aether_protocol_control_query(c.handle,small,2,required),13);expect(required.value,greaterThan(2));expect(small.cast<Uint8>()[1],0);}finally{calloc.free(small);calloc.free(required);}
-      await expectLater(c.dispose(automaticDrain:false,drainBudget:const Duration(milliseconds:30)),throwsA(isA<ProtocolException>().having((e)=>e.code,'timeout',11)));
-      expect(c.disposed,false);expect(c.bindings.aether_protocol_destroy(c.handle),5);
-      expect(()=>c.startTrace(20),throwsStateError);
-      final first=c.dispose(),second=c.dispose();expect(identical(first,second),true);await Future.wait([first,second]);
-      expect(c.disposed,true);expect(c.bindings.aether_protocol_control_ack(c.handle,1),3);
-      expect(c.callbacksAfterDispose,0);
-    }finally{await observer?.cancel();await peer.finish(c);}
-  });
-  test('protocol ABI and independent local core layout preserve native contract',(){
-    expect(sizeOf<AetherProtocolConfig>(),176);expect(sizeOf<AetherProtocolControlOpen>(),32);expect(sizeOf<AetherProtocolCommand>(),72);
-  });
+  for (final cancel in [false, true])
+    test(
+      'D-05 refused fresh socket ${cancel ? 'cancel' : 'exhaust'} retains manual state',
+      () async {
+        final peer = await Peer.start(
+              'retry-$cancel',
+              faults: fault(5, 0, before: true, flags: 1),
+            ),
+            c = peer.client();
+        try {
+          await c.connect();
+          final op = c.retryConnection(requestId: 100);
+          if (cancel) {
+            await until(() => c.query().recovery.state == 'reconnecting');
+            expect(c.cancelOperation(op), 0);
+          }
+          final e = await c.waitTerminal(op);
+          expect(e.status, cancel ? 28 : 11);
+          final s = c.query();
+          expect(s.recovery.state, 'manual');
+          expect(s.recovery.reason, cancel ? 'cancelled' : 'retry-exhausted');
+          expect(s.instanceId, 2);
+          expect(s.displayId, 3);
+          if (!cancel) expect(s.recovery.attempts, 3);
+          await command(c, c.cancelRetry());
+          expect(c.query().recovery.reason, 'cancelled');
+        } finally {
+          await peer.finish(c);
+        }
+      },
+    );
+  const races = [
+    'cancel-before',
+    'cancel-committed',
+    'grant-loss',
+    'ready-delay',
+    'ready-loss',
+    'readyack-delay',
+    'readyack-loss',
+    'unknown',
+    'replay',
+  ];
+  for (final race in races)
+    test(
+      'authority race $race uses actual DLL receipts and one terminal',
+      () async {
+        final rules = <Uint8List>[];
+        if (race == 'cancel-before')
+          rules.add(fault(2, 0, before: true, delay: 1500));
+        if (race == 'cancel-committed') rules.add(fault(2, 3, delay: 250));
+        if (race == 'grant-loss') rules.add(fault(2, 3, flags: 1));
+        if (race == 'ready-delay')
+          rules.add(fault(14, 0, before: true, delay: 150));
+        if (race == 'ready-loss')
+          rules.add(fault(14, 0, before: true, flags: 1));
+        if (race == 'readyack-delay') rules.add(fault(14, 4, delay: 150));
+        if (race == 'readyack-loss') rules.add(fault(14, 4, flags: 1));
+        if (race == 'replay') rules.add(fault(2, 3, flags: 2));
+        if (race == 'unknown')
+          rules.addAll([
+            fault(2, 3, flags: 1),
+            fault(14, 3, flags: 1, count: 32),
+            fault(3, 3, flags: 1, count: 32),
+          ]);
+        final peer = await Peer.start('race-$race', faults: joined(rules)),
+            c = peer.client(autoAck: false);
+        try {
+          await c.connect();
+          final p = (await proposal(c)).proposal!;
+          final op = c.confirm(p, deadlineMs: race == 'unknown' ? 700 : 3000);
+          if (race == 'cancel-before' ||
+              race == 'cancel-committed' ||
+              race == 'unknown') {
+            final marker = race == 'cancel-before'
+                ? 'confirm-received'
+                : 'committed';
+            await until(() => File('${peer.dir.path}/$marker').existsSync());
+            expect(c.cancelOperation(op), 0);
+            expect(c.cancelOperation(op), 0);
+            if (race == 'cancel-before')
+              expect(File('${peer.dir.path}/committed').existsSync(), false);
+          }
+          if (race == 'ready-delay' || race == 'readyack-delay') {
+            await Future<void>.delayed(const Duration(milliseconds: 45));
+            expect(c.query().sinkPackets, 0);
+          }
+          final e = await c.waitTerminal(op), r = c.resultFor(op)!;
+          peer.observedReceipt = r;
+          peer.expectedCommits = race == 'cancel-before' ? 0 : 1;
+          peer.expectedActivations =
+              race == 'cancel-before' || race == 'unknown' ? 0 : 1;
+          if (race == 'unknown') {
+            expect(e.status, 11);
+            expect(r.resultKnown, false);
+            expect(r.authorityTerminal, isNull);
+            expect(r.cancelOutcome, 'unknown');
+            expect(r.cancellationSucceeded, false);
+          } else if (race == 'cancel-before') {
+            expect(e.status, 28);
+            expect(r.cancellationSucceeded, true);
+            expect(r.transactionSequence, 2);
+            expect(c.query().grants, 0);
+          } else {
+            expect(e.status, 0);
+            expect(r.resultKnown, true);
+            expect(r.authorityTerminal, 0);
+            expect(r.activationPhase, 4);
+            expect(r.transactionSequence, 3);
+            expect(c.query().grants, 1);
+            if (race == 'cancel-committed')
+              expect(r.cancelOutcome, 'already-committed');
+            final count = c.query().sinkPackets;
+            await until(() => c.query().sinkPackets > count);
+          }
+          expect(
+            c.diagnostics
+                .where((e) => e.operationId == op && e.terminal)
+                .length,
+            1,
+          );
+          c.acknowledgeReceived();
+        } finally {
+          await peer.finish(c);
+        }
+      },
+    );
+  test(
+    'T-06-12 ACK gaps, real drain timeout, retry disposal and paused observer',
+    () async {
+      final peer = await Peer.start('drain'), c = peer.client(autoAck: false);
+      StreamSubscription<ProtocolEvent>? observer;
+      try {
+        await c.connect();
+        observer = c.events.listen((_) {});
+        observer.pause();
+        await proposal(c);
+        expect(c.bindings.aether_protocol_control_ack(c.handle, 2), 1);
+        final small = calloc<Char>(2), required = calloc<Uint32>();
+        try {
+          expect(
+            c.bindings.aether_protocol_control_query(
+              c.handle,
+              small,
+              2,
+              required,
+            ),
+            13,
+          );
+          expect(required.value, greaterThan(2));
+          expect(small.cast<Uint8>()[1], 0);
+        } finally {
+          calloc.free(small);
+          calloc.free(required);
+        }
+        await expectLater(
+          c.dispose(
+            automaticDrain: false,
+            drainBudget: const Duration(milliseconds: 30),
+          ),
+          throwsA(
+            isA<ProtocolException>().having((e) => e.code, 'timeout', 11),
+          ),
+        );
+        expect(c.disposed, false);
+        expect(c.bindings.aether_protocol_destroy(c.handle), 5);
+        expect(() => c.startTrace(20), throwsStateError);
+        final first = c.dispose(), second = c.dispose();
+        expect(identical(first, second), true);
+        await Future.wait([first, second]);
+        expect(c.disposed, true);
+        expect(c.bindings.aether_protocol_control_ack(c.handle, 1), 3);
+        expect(c.callbacksAfterDispose, 0);
+      } finally {
+        await observer?.cancel();
+        await peer.finish(c);
+      }
+    },
+  );
+  test(
+    'protocol ABI and independent local core layout preserve native contract',
+    () {
+      expect(sizeOf<AetherProtocolConfig>(), 176);
+      expect(sizeOf<AetherProtocolControlOpen>(), 32);
+      expect(sizeOf<AetherProtocolCommand>(), 72);
+    },
+  );
+}
+
+Uint8List testPayload(int kind, Uint8List envelope) {
+  final b = ByteData(16 + envelope.length);
+  b.setUint16(0, 1, Endian.big);
+  b.setUint16(2, 2, Endian.big);
+  b.setUint16(4, 16, Endian.big);
+  b.setUint16(6, 4, Endian.big);
+  b.setUint32(8, kind, Endian.big);
+  b.setUint16(12, 17, Endian.big);
+  b.setUint16(14, envelope.length, Endian.big);
+  b.buffer.asUint8List().setAll(16, envelope);
+  return b.buffer.asUint8List();
 }
