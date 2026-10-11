@@ -226,6 +226,16 @@ class TraceState {
   final int remainingMs, bytes, limitBytes;
 }
 
+class UpstreamChoice {
+  UpstreamChoice.fromJson(Map<String, dynamic> j)
+    : selectedMask = j['upstreamMask'],
+      supported = j['supported'],
+      reason = j['reason'];
+  final int selectedMask;
+  final bool supported;
+  final String reason;
+}
+
 class RecoveryState {
   RecoveryState.fromJson(Map<String, dynamic> j)
     : state = j['state'],
@@ -267,9 +277,13 @@ class ProtocolState {
       freshAuthentications = j['freshAuthentications'],
       mediaMask = j['mediaMask'],
       lastFailure = j['lastFailure'],
-      proposal = j['proposal'] == null
+      proposal = j['proposal'] == null || j['proposal']['digest'] == null
           ? null
           : Proposal.fromJson(j['proposal']),
+      upstreamChoice =
+          j['proposal'] == null || j['proposal']['upstreamMask'] == null
+          ? null
+          : UpstreamChoice.fromJson(j['proposal']),
       trace = TraceState.fromJson(j['trace']),
       recovery = RecoveryState.fromJson(j['recovery']),
       operations = List.unmodifiable(
@@ -304,6 +318,7 @@ class ProtocolState {
       displayId;
   final bool authenticated, stopped;
   final Proposal? proposal;
+  final UpstreamChoice? upstreamChoice;
   final TraceState trace;
   final RecoveryState recovery;
   final List<OperationResult> operations;
@@ -609,7 +624,7 @@ class ProtocolClient {
   Map<String, dynamic> legacyQuery() => _query(false);
   int send(
     int opcode, {
-    int requestId = 0,
+    int? requestId,
     int? streamId,
     int? expectedGeneration,
     int deadlineMs = 1500,
@@ -630,7 +645,7 @@ class ProtocolClient {
         ..opcode = opcode
         ..deadline_ms = deadlineMs
         ..operation_id = op
-        ..request_id = requestId
+        ..request_id = requestId ?? op
         ..stream_id = streamId ?? config.streamId
         ..expected_generation = expectedGeneration ?? config.configGeneration
         ..payload_bytes = data.length
@@ -681,7 +696,7 @@ class ProtocolClient {
     );
   }
 
-  int confirm(Proposal p, {bool upstream = false}) {
+  int confirm(Proposal p, {bool upstream = false, int deadlineMs = 1500}) {
     if (!RegExp(r'^[a-f0-9]{64}$').hasMatch(p.digest))
       throw ArgumentError('Proposal digest bound');
     final digest = Uint8List.fromList([
@@ -691,6 +706,7 @@ class ProtocolClient {
     return send(
       upstream ? 9 : 2,
       requestId: p.requestId,
+      deadlineMs: deadlineMs,
       payload: _payload({
         6: digest,
         7: _scalar(p.hostRevision, 8),
@@ -708,6 +724,22 @@ class ProtocolClient {
     _admit();
     return bindings.aether_protocol_control_cancel_operation(handle, op);
   }
+
+  int retryConnection({int? requestId}) =>
+      send(5, requestId: requestId, deadlineMs: 3000);
+  int cancelRetry() => send(6);
+  int recoverStream(int streamId, {required int windowMs}) =>
+      send(7, streamId: streamId, payload: _payload({9: _scalar(windowMs)}));
+  int proposeUpstream(int selectedMask, {required int requestId}) => send(
+    8,
+    requestId: requestId,
+    payload: _payload({10: _scalar(selectedMask)}),
+  );
+  int startTrace(int durationMs) =>
+      send(10, payload: _payload({11: _scalar(durationMs)}));
+  int stopTrace() => send(11);
+  int extendTrace(int durationMs) =>
+      send(12, payload: _payload({11: _scalar(durationMs)}));
 
   Future<void> dispose({
     Duration drainBudget = const Duration(seconds: 2),

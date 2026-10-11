@@ -1,0 +1,1656 @@
+{
+  "schema": 1,
+  "status": "complete-scoped-windows-ffi",
+  "recordedAt": "2026-10-11T04:06:05.628Z",
+  "recoveryDecision": {
+    "rawResponse": "1",
+    "choice": "close-existing-work",
+    "scope": "保留06-04已有实现；核验证据、修复测试、完成回归、提交与摘要；不改变Phase3授权"
+  },
+  "tests": {
+    "fullNode": {
+      "path": "build/phase06/06-04-full-final.tap",
+      "sha256": "8f189e78065df5cc44d96a8f58a4b039b9e3a9e8a315d263521b7eb030c16f78",
+      "bytes": 19715,
+      "tests": 107,
+      "passed": 107,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "durationMs": 101947.7632,
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs tests/protocol-recovery.test.cjs tests/protocol-ffi.test.cjs",
+      "ffiAtFullRun": {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/result.json",
+        "sha256": "6246ca046384504a135803451c97349cc5a4fb0823b41c47f679ff6ffb4c7df5",
+        "bytes": 31149
+      },
+      "ffiSourceAtFullRun": [
+        {
+          "file": "protocol/ffigen.yaml",
+          "sha256": "0bec865773177c407e72258283531e6a754556b23367607351d3a2bdf5cfbe2c"
+        },
+        {
+          "file": "packages/selene_native/lib/src/protocol.dart",
+          "sha256": "1e36ec6f2e94a27e3850d4ec0bce154df14a962287401cbe8be0c0c239e9995a"
+        },
+        {
+          "file": "packages/selene_native/lib/src/protocol_bindings.g.dart",
+          "sha256": "547e2fe90771842c47c91f6d9621ce424feacc59731ef98eb4a78cb40aed09bf"
+        },
+        {
+          "file": "packages/selene_native/test/protocol_contract_test.dart",
+          "sha256": "35001bc804c45de6d5b6946787b606acee21a54486cb18e4ba860927c84341e5"
+        },
+        {
+          "file": "tests/protocol-ffi.test.cjs",
+          "sha256": "9faaa6357e537d3cedeeefa0c6e07c0e127694f24601d34f068f1708aa72a919"
+        }
+      ],
+      "note": "完整107项包含22项真实Flutter检查，均绑定当前相同消费者/测试/native输入；旧失败原始日志单独保留，不重写或改绑。"
+    },
+    "ffiFinal": {
+      "path": "build/phase06/06-04-ffi-final.tap",
+      "sha256": "c993b3597b80b1f550dc3701a2eb842cd49138d8b1bf2b44eeaac4a4d1368616",
+      "bytes": 461,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "command": "node --test --test-reporter=tap tests/protocol-ffi.test.cjs",
+      "evidenceFile": {
+        "path": "build/phase06/ffi-runs/run-mHCRjF/result.json",
+        "sha256": "c64eaec186a771d7ced4ca7caa16ff800007c21e5a466ab1affdaac98fb03430",
+        "bytes": 30972
+      }
+    },
+    "protocolCTest": {
+      "path": "build/phase06/06-04-protocol-ctest-final.log",
+      "sha256": "d1d8d97e7e2f990c1fbc22b90139610ea5323662228ccd9f485b15b49bf28f86",
+      "bytes": 1455,
+      "tests": 12,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 107.06
+    },
+    "rootCTest": {
+      "path": "build/phase06/06-04-root-ctest-final.log",
+      "sha256": "14fdcd122af013ac81395aaa4b431303b58b90339c6ece5812aeed905e07cc1a",
+      "bytes": 1341,
+      "tests": 11,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 27
+    },
+    "localCore": {
+      "path": "build/phase06/06-04-resume-local-core.log",
+      "sha256": "d713ecf426b611c21ac98a45787ca850901a24769e31b307b8e4cfe346dafa51",
+      "bytes": 984,
+      "nativeSuites": 1,
+      "dartTests": 6
+    },
+    "generation": {
+      "path": "build/phase06/06-04-resume-generation.log",
+      "sha256": "faa52121f0730f3bfbc8a3798a1eb0235f2bf7a614377120fd75d6548b5fdbf0",
+      "bytes": 412
+    }
+  },
+  "ffi": {
+    "observedAt": "2026-10-11T04:03:59.058Z",
+    "scope": "expanded",
+    "name": "flutter-protocol",
+    "exitCode": 0,
+    "durationMs": 20423,
+    "timeout": false,
+    "error": null,
+    "log": "build\\phase06\\ffi-runs\\run-2N2hJI\\flutter-protocol.log",
+    "tests": 22,
+    "observations": [
+      {
+        "case": "run-2N2hJI/proposal",
+        "clientPid": 74008,
+        "hostPid": 15720,
+        "port": 11558,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=15720 commits=1 activations=1 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2614,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/modify",
+        "clientPid": 74008,
+        "hostPid": 71348,
+        "port": 11561,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=71348 commits=1 activations=1 owned=0\r",
+        "eventCount": 7,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2632,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 3,
+            "requestId": 101,
+            "transactionSequence": 4,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 2,
+            "authorityTerminal": 28
+          },
+          {
+            "operationId": 5,
+            "requestId": 102,
+            "transactionSequence": 6,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/transport-loss",
+        "clientPid": 74008,
+        "hostPid": 18480,
+        "port": 11586,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=18480 commits=1 activations=1 owned=0\r",
+        "eventCount": 9,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2646,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/healthy-cancel",
+        "clientPid": 74008,
+        "hostPid": 45336,
+        "port": 11594,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=45336 commits=1 activations=1 owned=0\r",
+        "eventCount": 6,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 3306,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 3,
+            "requestId": 200,
+            "transactionSequence": 4,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 4,
+            "requestId": 200,
+            "transactionSequence": 4,
+            "activationPhase": 1,
+            "authorityTerminal": 5
+          },
+          {
+            "operationId": 4,
+            "requestId": 200,
+            "transactionSequence": 5,
+            "activationPhase": 2,
+            "authorityTerminal": 28
+          }
+        ],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/upstream-race-false",
+        "clientPid": 74008,
+        "hostPid": 13376,
+        "port": 11601,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=13376 commits=1 activations=1 owned=0\r",
+        "eventCount": 6,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2950,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 3,
+            "requestId": 101,
+            "transactionSequence": 4,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 4,
+            "activationPhase": 1,
+            "authorityTerminal": 5
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 4,
+            "activationPhase": 1,
+            "authorityTerminal": 5
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 2,
+            "authorityTerminal": 28
+          }
+        ],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/upstream-race-true",
+        "clientPid": 74008,
+        "hostPid": 11120,
+        "port": 11607,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=11120 commits=2 activations=2 owned=0\r",
+        "eventCount": 6,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2950,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 3,
+            "requestId": 101,
+            "transactionSequence": 4,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 3,
+            "authorityTerminal": 30
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 4,
+            "requestId": 101,
+            "transactionSequence": 6,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/content",
+        "clientPid": 74008,
+        "hostPid": 59956,
+        "port": 11624,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=59956 commits=0 activations=0 owned=0\r",
+        "eventCount": 5,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 847,
+        "hostReceipts": [],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/recovery-trace",
+        "clientPid": 74008,
+        "hostPid": 58864,
+        "port": 11627,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=58864 commits=2 activations=2 owned=0\r",
+        "eventCount": 15,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2632,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 11,
+            "requestId": 101,
+            "transactionSequence": 4,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 12,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 12,
+            "requestId": 101,
+            "transactionSequence": 5,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 12,
+            "requestId": 101,
+            "transactionSequence": 6,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 12,
+            "requestId": 101,
+            "transactionSequence": 6,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/upstream-closed",
+        "clientPid": 74008,
+        "hostPid": 20788,
+        "port": 21559,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=20788 commits=0 activations=0 owned=0\r",
+        "eventCount": 3,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 896,
+        "hostReceipts": [],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/retry-false",
+        "clientPid": 74008,
+        "hostPid": 58176,
+        "port": 21561,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=58176 commits=0 activations=0 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 854,
+        "hostReceipts": [],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/retry-true",
+        "clientPid": 74008,
+        "hostPid": 67400,
+        "port": 12764,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=67400 commits=0 activations=0 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 867,
+        "hostReceipts": [],
+        "clientReceipt": null
+      },
+      {
+        "case": "run-2N2hJI/race-cancel-before",
+        "clientPid": 74008,
+        "hostPid": 72872,
+        "port": 12767,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=72872 commits=0 activations=0 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2371,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 2,
+            "authorityTerminal": 28
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": true,
+          "authorityTerminal": 28,
+          "transactionSequence": 2,
+          "activationPhase": 2,
+          "cancelOutcome": "cancelled"
+        }
+      },
+      {
+        "case": "run-2N2hJI/race-cancel-committed",
+        "clientPid": 74008,
+        "hostPid": 63636,
+        "port": 12769,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=63636 commits=1 activations=1 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2963,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 30
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": true,
+          "authorityTerminal": 0,
+          "transactionSequence": 3,
+          "activationPhase": 4,
+          "cancelOutcome": "already-committed"
+        }
+      },
+      {
+        "case": "run-2N2hJI/race-grant-loss",
+        "clientPid": 74008,
+        "hostPid": 68616,
+        "port": 12774,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=68616 commits=1 activations=1 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2950,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": true,
+          "authorityTerminal": 0,
+          "transactionSequence": 3,
+          "activationPhase": 4,
+          "cancelOutcome": "none"
+        }
+      },
+      {
+        "case": "run-2N2hJI/race-ready-delay",
+        "clientPid": 74008,
+        "hostPid": 4308,
+        "port": 12783,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=4308 commits=1 activations=1 owned=0\r",
+        "eventCount": 5,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2950,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": true,
+          "authorityTerminal": 0,
+          "transactionSequence": 3,
+          "activationPhase": 4,
+          "cancelOutcome": "none"
+        }
+      },
+      {
+        "case": "run-2N2hJI/race-ready-loss",
+        "clientPid": 74008,
+        "hostPid": 72664,
+        "port": 12790,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=72664 commits=1 activations=1 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2950,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": true,
+          "authorityTerminal": 0,
+          "transactionSequence": 3,
+          "activationPhase": 4,
+          "cancelOutcome": "none"
+        }
+      },
+      {
+        "case": "run-2N2hJI/race-readyack-delay",
+        "clientPid": 74008,
+        "hostPid": 39368,
+        "port": 12792,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=39368 commits=1 activations=1 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2953,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": true,
+          "authorityTerminal": 0,
+          "transactionSequence": 3,
+          "activationPhase": 4,
+          "cancelOutcome": "none"
+        }
+      },
+      {
+        "case": "run-2N2hJI/race-readyack-loss",
+        "clientPid": 74008,
+        "hostPid": 33808,
+        "port": 12801,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=33808 commits=1 activations=1 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2953,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": true,
+          "authorityTerminal": 0,
+          "transactionSequence": 3,
+          "activationPhase": 4,
+          "cancelOutcome": "none"
+        }
+      },
+      {
+        "case": "run-2N2hJI/race-unknown",
+        "clientPid": 74008,
+        "hostPid": 65620,
+        "port": 12814,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=65620 commits=1 activations=0 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2372,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": false,
+          "authorityTerminal": null,
+          "transactionSequence": 0,
+          "activationPhase": 1,
+          "cancelOutcome": "unknown"
+        }
+      },
+      {
+        "case": "run-2N2hJI/race-replay",
+        "clientPid": 74008,
+        "hostPid": 6584,
+        "port": 12824,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=6584 commits=1 activations=1 owned=0\r",
+        "eventCount": 4,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2950,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 2,
+            "activationPhase": 3,
+            "authorityTerminal": 0
+          },
+          {
+            "operationId": 2,
+            "requestId": 100,
+            "transactionSequence": 3,
+            "activationPhase": 4,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": {
+          "operationId": 2,
+          "requestId": 100,
+          "resultKnown": true,
+          "authorityTerminal": 0,
+          "transactionSequence": 3,
+          "activationPhase": 4,
+          "cancelOutcome": "none"
+        }
+      },
+      {
+        "case": "run-2N2hJI/drain",
+        "clientPid": 74008,
+        "hostPid": 47756,
+        "port": 12829,
+        "callbacksAfterDispose": 0,
+        "hostSummary": "HOST pid=47756 commits=0 activations=0 owned=0\r",
+        "eventCount": 3,
+        "creatorIsolate": 713135267,
+        "maxQueryBytes": 2195,
+        "hostReceipts": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "transactionSequence": 1,
+            "activationPhase": 1,
+            "authorityTerminal": 0
+          }
+        ],
+        "clientReceipt": null
+      }
+    ],
+    "manifestSha256": "19230291eb3b6c616f76706e434ef8fe827ae4ab7dc2542d1e8227de45764a03",
+    "librarySha256": "2176a44c8f45e7bb0a1eb2172582a1606ef11adac3eae3f43e531dd649353dd1",
+    "hostSha256": "cc08bd3d9037ec5327f6bf898db00c236c04f9514e26bd16364eaa44b8ee1480",
+    "headerSha256": "3e8c36e70fbfe5fd0f92b096f9702956a72a6caf87f069b1d13d07e6735eaef4",
+    "rawLogSha256": "89d4236f921c6914fe46ae32538b8b017d1d2c80637f8e538a7555e8227501e9",
+    "sources": [
+      {
+        "file": "protocol/ffigen.yaml",
+        "sha256": "0bec865773177c407e72258283531e6a754556b23367607351d3a2bdf5cfbe2c"
+      },
+      {
+        "file": "packages/selene_native/lib/src/protocol.dart",
+        "sha256": "1e36ec6f2e94a27e3850d4ec0bce154df14a962287401cbe8be0c0c239e9995a"
+      },
+      {
+        "file": "packages/selene_native/lib/src/protocol_bindings.g.dart",
+        "sha256": "547e2fe90771842c47c91f6d9621ce424feacc59731ef98eb4a78cb40aed09bf"
+      },
+      {
+        "file": "packages/selene_native/test/protocol_contract_test.dart",
+        "sha256": "35001bc804c45de6d5b6946787b606acee21a54486cb18e4ba860927c84341e5"
+      },
+      {
+        "file": "tests/protocol-ffi.test.cjs",
+        "sha256": "9faaa6357e537d3cedeeefa0c6e07c0e127694f24601d34f068f1708aa72a919"
+      }
+    ],
+    "fixtures": [
+      {
+        "case": "run-2N2hJI/proposal",
+        "hostLogSha256": "62482f74c59cebfee195e8dd0f87d2d7a6e0476417e2a90cf68417234a1d93e0",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "case": "run-2N2hJI/modify",
+        "hostLogSha256": "27dbbb334309e28d1cdd521e859bb42fac3e0ad7514ab29dfefbe3058836eb3d",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "case": "run-2N2hJI/transport-loss",
+        "hostLogSha256": "573e0fbb1f72a2e862e361690ff00c333d2aff4f20b84e9dd1605a92ef13b771",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "ee4db39affd5ca6b508616af38762cca3820eb74086c6af743b6359b2b145f43"
+      },
+      {
+        "case": "run-2N2hJI/healthy-cancel",
+        "hostLogSha256": "b9efd9aa74e13af7a3295361cd3802d29271627ea9cedcad0b0beed18c4f62da",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "c2172f874c1350bb3a5efd8b2e08bbcf906f3f08d9e4f32c4521c378df910cea"
+      },
+      {
+        "case": "run-2N2hJI/upstream-race-false",
+        "hostLogSha256": "1ee62632af5d308308403fd8cb12e6f3b32d197d264b1a048adb0d467f27b806",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "9a5bd0ed7544d4bb26598d79745034d0071ebefe20cb23a6f657000e1a7125eb"
+      },
+      {
+        "case": "run-2N2hJI/upstream-race-true",
+        "hostLogSha256": "fbbcd714135a9c7ee19249ca63e31b5d091b81f724a9edaa57bfb435b4f0adec",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "afc16eb96689cb88d4510f66f873320a6c3ec36d7e0fcacd13f5c9a3e86e3dd0"
+      },
+      {
+        "case": "run-2N2hJI/content",
+        "hostLogSha256": "e7f3ba1e94b19d5a8a459c42ad5c3f0653cb51185ce5efee8e1444a1c6732565",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "case": "run-2N2hJI/recovery-trace",
+        "hostLogSha256": "5568d25802ce3233edd0496cb39f171d37f10145c79561092de5c4c8460d86cc",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "case": "run-2N2hJI/upstream-closed",
+        "hostLogSha256": "154a5f1deb4cd901cef776d5669583b9d8071069a0a776dacfeef28693fb317e",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "case": "run-2N2hJI/retry-false",
+        "hostLogSha256": "8b61e68c2427f0b3454da2d162d1d95b972baf14ca808f50321e7098f653a74d",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "28e465dc323aa8365547d316fed5fb2f80dae818b07902919ec450696fc3670c"
+      },
+      {
+        "case": "run-2N2hJI/retry-true",
+        "hostLogSha256": "8ff3347bf56099fdead556ccdb9ffd5e186f7a18d33892bc67eecdc280bf65b1",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "28e465dc323aa8365547d316fed5fb2f80dae818b07902919ec450696fc3670c"
+      },
+      {
+        "case": "run-2N2hJI/race-cancel-before",
+        "hostLogSha256": "f13a65695b29fa3278fefe8610a207202e1652dc4c60f5d9731f7345ce488ba2",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "fe08f1725332d72fc7c713039ef0f431b4d482435812c469a933a565ad7da3a9"
+      },
+      {
+        "case": "run-2N2hJI/race-cancel-committed",
+        "hostLogSha256": "7b45a38b5692c7786c9e98a6ddd0c61438a975ee9ef8e0f2a862503fd2e3107d",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "88bb97f79072b17e0f9b33a4ffe2613052fd7abf64ea78fbcb2e7d2f2adbd7be"
+      },
+      {
+        "case": "run-2N2hJI/race-grant-loss",
+        "hostLogSha256": "fa633aa85b0ee039c4bc0aafe643fd6f3ad37b9b5316d0828b2e627f22293559",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "630b265b61529b8669670d6381ee758805708dbb13816ac2612bcb542c6ec320"
+      },
+      {
+        "case": "run-2N2hJI/race-ready-delay",
+        "hostLogSha256": "13062c5242be72a1b97cc9337f02971e64309f5b09339cb19628a5ac2610ed1c",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "4f860bced5c6397576ef67ccaa5acfd0f75cafa80ed88e954424e29eff5a35a0"
+      },
+      {
+        "case": "run-2N2hJI/race-ready-loss",
+        "hostLogSha256": "0920d93d399a5ee9ab19c141117b829955327a3a0c251c07a60ead24d879916e",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "8a395774737b37efadd18a924c743eaa1c8c2ab75c67c882abb11c9d772695d5"
+      },
+      {
+        "case": "run-2N2hJI/race-readyack-delay",
+        "hostLogSha256": "68f6fe3639bf097661447ef8499cedea652f8dbf1bf69b793fa720fc7561747b",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "1af2cd710a4d8759286698f9bb06449d258c8dc9bcaab8e4e9359c2a4c644450"
+      },
+      {
+        "case": "run-2N2hJI/race-readyack-loss",
+        "hostLogSha256": "bb974a20ce0b20fea6135bd6787932b194a1bf169ceed4e0a9427a6331245eb5",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "154effb44ba68577ddf9d49504d08b3d2222da2cc6643061b2c6e1aa51a8c497"
+      },
+      {
+        "case": "run-2N2hJI/race-unknown",
+        "hostLogSha256": "bf1cca8a7f3c3a391fb720b62ac06b078d7c8a9ab32086f08969b6788d330cb3",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "39aaf5c1022d8f8c5067907b6221231b548f3227845a05dfde348267ca220978"
+      },
+      {
+        "case": "run-2N2hJI/race-replay",
+        "hostLogSha256": "f66981d10fdc774779bbc3932767465add4a24d41e0dc336ba2984d9409c2c15",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "1b2491043be77b489253a0979aeac61424e18d077bbb5c3b1a1af61be39d0b79"
+      },
+      {
+        "case": "run-2N2hJI/drain",
+        "hostLogSha256": "5c32e7847deda9fd7b9747ee81f949d7537f08478666d7adafcf728bb1810a94",
+        "providerSha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e",
+        "faultsSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "evidenceFile": {
+      "path": "build/phase06/ffi-runs/run-2N2hJI/result.json",
+      "sha256": "6246ca046384504a135803451c97349cc5a4fb0823b41c47f679ff6ffb4c7df5",
+      "bytes": 31149
+    },
+    "fixtureWireFiles": [
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/proposal/wire.hex",
+        "sha256": "2fe9ea8d148043c310edbe6cf1c15a99cd303151e83d1719e9ff8b24135152a3",
+        "bytes": 3734,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/modify/wire.hex",
+        "sha256": "c734fbaaeefc77482e3942fefe8ec30354545a8590277337b49fda785b6f296c",
+        "bytes": 9844,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/transport-loss/wire.hex",
+        "sha256": "cc39bb65245e04c4523e3f27f392f0f89547ae4a2d25cf74d8248f0fc3f060be",
+        "bytes": 4362,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/healthy-cancel/wire.hex",
+        "sha256": "47ac3ce6d37e5330cc6daec75cbf14ac3432e8ac17625f1d463f8fcc18a50392",
+        "bytes": 7452,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/upstream-race-false/wire.hex",
+        "sha256": "b137e338b5f9c0efc806a6e057dd4868280ea1278a9e98a9b3f3b800a7f5ab1d",
+        "bytes": 6872,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/upstream-race-true/wire.hex",
+        "sha256": "436701d6c2f03803e080ac4a5539ce30c95cb66281256b46d70923d993e1e2fd",
+        "bytes": 8278,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/content/wire.hex",
+        "sha256": "0cfd09334f6cf85aa46d9bb174db7c36153d4ce5a2f60b50ad97560fe8a019a3",
+        "bytes": 918,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/recovery-trace/wire.hex",
+        "sha256": "5bb57638c81f8ca50b47d79fbfba5fc915f1666a76b533d0ad4aa163bd59b7a8",
+        "bytes": 9810,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/upstream-closed/wire.hex",
+        "sha256": "5d2889f655f1df25f8208116878c8d9224a7b38e07ba1a39b0f605eb9302e8be",
+        "bytes": 434,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/retry-false/wire.hex",
+        "present": false,
+        "reason": "该案例仅认证后断开/拒绝fresh连接，无ACTL命令回复；真实PID及native清理仍由host.log核验"
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/retry-true/wire.hex",
+        "present": false,
+        "reason": "该案例仅认证后断开/拒绝fresh连接，无ACTL命令回复；真实PID及native清理仍由host.log核验"
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-cancel-before/wire.hex",
+        "sha256": "4efff4d365e854c5ce94239dcde531f3ed03e1185c90515d82d0357d478d41ed",
+        "bytes": 3276,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-cancel-committed/wire.hex",
+        "sha256": "d8750ac24cfb86bcd909f4c18b1a2101db366896349908785004b4cd30c078f6",
+        "bytes": 4650,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-grant-loss/wire.hex",
+        "sha256": "1b3a79f2633e19984b270101468d86c970a09df8066addb0a91ff975557e8cec",
+        "bytes": 3734,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-ready-delay/wire.hex",
+        "sha256": "8efc22fdfc6fbe090ede6aadf9496a8b8ef44f6366474ddebf09a232c1373cbd",
+        "bytes": 4176,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-ready-loss/wire.hex",
+        "sha256": "2fe9ea8d148043c310edbe6cf1c15a99cd303151e83d1719e9ff8b24135152a3",
+        "bytes": 3734,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-readyack-delay/wire.hex",
+        "sha256": "8efc22fdfc6fbe090ede6aadf9496a8b8ef44f6366474ddebf09a232c1373cbd",
+        "bytes": 4176,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-readyack-loss/wire.hex",
+        "sha256": "2fe9ea8d148043c310edbe6cf1c15a99cd303151e83d1719e9ff8b24135152a3",
+        "bytes": 3734,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-unknown/wire.hex",
+        "sha256": "fabb4ac4eb30765bc25cdf0c9b766dcebba8a085556f8e0cdfeba5b8eaa2329b",
+        "bytes": 2834,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/race-replay/wire.hex",
+        "sha256": "2fe9ea8d148043c310edbe6cf1c15a99cd303151e83d1719e9ff8b24135152a3",
+        "bytes": 3734,
+        "present": true
+      },
+      {
+        "path": "build/phase06/ffi-runs/run-2N2hJI/drain/wire.hex",
+        "sha256": "fabb4ac4eb30765bc25cdf0c9b766dcebba8a085556f8e0cdfeba5b8eaa2329b",
+        "bytes": 2834,
+        "present": true
+      }
+    ]
+  },
+  "native": {
+    "manifest": {
+      "path": "build/phase06/windows-x64/target-manifest-Debug.json",
+      "sha256": "19230291eb3b6c616f76706e434ef8fe827ae4ab7dc2542d1e8227de45764a03",
+      "bytes": 19314
+    },
+    "sources": [
+      {
+        "file": "native/protocol/CMakeLists.txt",
+        "sha256": "818b0db50c7003238b6734b218396ecde734ea40313b5e08c8fc71adb77276d5"
+      },
+      {
+        "file": "native/protocol/include/aether/protocol.h",
+        "sha256": "3e8c36e70fbfe5fd0f92b096f9702956a72a6caf87f069b1d13d07e6735eaef4"
+      },
+      {
+        "file": "native/protocol/src/admission.cpp",
+        "sha256": "dd8ba0a3c2b15d1f7b2a738406d5b24ce84f466d930a55129ed49f902035ea17"
+      },
+      {
+        "file": "native/protocol/src/control.cpp",
+        "sha256": "2ce885d69adfc33bb2ca52b5459cf75791f63bf65de96c0f3ea8e89453ac8ae1"
+      },
+      {
+        "file": "native/protocol/src/diagnostics.cpp",
+        "sha256": "d69e5bdededde068bbe41a4f6fccd5144d207dd3463f9fa3dfdd36220e3a28b0"
+      },
+      {
+        "file": "native/protocol/src/internal.h",
+        "sha256": "703095fd18356281c667107679ec96176ee6db1f65aae7efb8ec27b651c93921"
+      },
+      {
+        "file": "native/protocol/src/media_packetization.cpp",
+        "sha256": "77ed54be512b828f88de7ff370d34e8a52be18328ffdeb479f9042d1446b02cb"
+      },
+      {
+        "file": "native/protocol/src/protocol.cpp",
+        "sha256": "cb8e40a4ab90e2a81210a48d41edd7b5c9fbf6263490abbf38ed646b6a7f279f"
+      },
+      {
+        "file": "native/protocol/src/secure_transport.cpp",
+        "sha256": "666649eb3cf5c157c8bdc941dc67ddc0a0cdb61af40690194d7198fde05c1360"
+      },
+      {
+        "file": "native/protocol/src/session_lifecycle.cpp",
+        "sha256": "af57e86daebcb0812e57e18de22c837bd7909f8c5afddbf0ff87d2380319b37f"
+      },
+      {
+        "file": "native/protocol/tools/tracer.cpp",
+        "sha256": "cb0253b73b049308eff8ce09a5eec6bb11a12f54a62ce32ad81c81897afaaeec"
+      },
+      {
+        "file": "tests/native/protocol_media_security.cpp",
+        "sha256": "10f9154e373ae4a56f580b21050968ccbee88af53d09e0468edb4d1e4b5d84ce"
+      },
+      {
+        "file": "tests/protocol-multistream.test.cjs",
+        "sha256": "0a8a5e6200f11cfb5db9cb3d5b8d52dbaf28002e31b0565e1a42b0872af01c24"
+      }
+    ],
+    "library": {
+      "path": "build/phase06/windows-x64/Debug/aether_protocol.dll",
+      "sha256": "2176a44c8f45e7bb0a1eb2172582a1606ef11adac3eae3f43e531dd649353dd1",
+      "bytes": 8046080
+    },
+    "host": {
+      "path": "build/phase06/windows-x64/Debug/aether_protocol_control_host.exe",
+      "sha256": "cc08bd3d9037ec5327f6bf898db00c236c04f9514e26bd16364eaa44b8ee1480",
+      "bytes": 8258560
+    },
+    "testHostSource": {
+      "path": "tests/native/protocol_control.cpp",
+      "sha256": "7ba63516753eefea6098085614306446008d53e5a7720cef9073a85977976a68",
+      "bytes": 37671
+    }
+  },
+  "sources": [
+    {
+      "path": "protocol/ffigen.yaml",
+      "sha256": "0bec865773177c407e72258283531e6a754556b23367607351d3a2bdf5cfbe2c",
+      "bytes": 730
+    },
+    {
+      "path": "packages/selene_native/lib/src/protocol.dart",
+      "sha256": "1e36ec6f2e94a27e3850d4ec0bce154df14a962287401cbe8be0c0c239e9995a",
+      "bytes": 23253
+    },
+    {
+      "path": "packages/selene_native/lib/src/protocol_bindings.g.dart",
+      "sha256": "547e2fe90771842c47c91f6d9621ce424feacc59731ef98eb4a78cb40aed09bf",
+      "bytes": 21267
+    },
+    {
+      "path": "packages/selene_native/test/protocol_contract_test.dart",
+      "sha256": "35001bc804c45de6d5b6946787b606acee21a54486cb18e4ba860927c84341e5",
+      "bytes": 27364
+    },
+    {
+      "path": "tests/protocol-ffi.test.cjs",
+      "sha256": "9faaa6357e537d3cedeeefa0c6e07c0e127694f24601d34f068f1708aa72a919",
+      "bytes": 5538
+    },
+    {
+      "path": "tests/native/protocol_control.cpp",
+      "sha256": "7ba63516753eefea6098085614306446008d53e5a7720cef9073a85977976a68",
+      "bytes": 37671
+    },
+    {
+      "path": "docs/DEPENDENCIES.md",
+      "sha256": "6d9e5824a325e0265851b89adf252058ba9fc26c87e9c9263aa3368cff9d9713",
+      "bytes": 10881
+    }
+  ],
+  "inputDigest": "7a5085bf2816f6dd9aa6b8e41e944f62dd3941fd339f558f348192edf2481854",
+  "approvedInputs": [
+    {
+      "path": "docs/phase06/PROTOCOL-ADR.md",
+      "sha256": "b50607d81ab7de1e4a16832973f3ed866b8855106444f4015a68a7d2afcc4a34",
+      "bytes": 33602
+    },
+    {
+      "path": "protocol/dependencies.lock.json",
+      "sha256": "770ecca238ba813cad0e13ae735ed0bc79d1e072c00bba78656563ef6df3fec4",
+      "bytes": 3365876
+    },
+    {
+      "path": "docs/phase06/FEC-REUSE-DECISION.json",
+      "sha256": "3297b258e96c4dbadf90b98f4dbf30a69fa2577befd14ad8282d32b26f838604",
+      "bytes": 1806
+    },
+    {
+      "path": "docs/phase06/FEC-ALTERNATIVES.md",
+      "sha256": "3ebdf494fa77c8262d620e7eb60f874c1546564c6bb866c2c9e816b18ac3fa22",
+      "bytes": 13331
+    },
+    {
+      "path": "docs/phase06/FEC-ALTERNATIVES.json",
+      "sha256": "a3157d9e6dc90e921c017d62c9ba3f88241a4aaadd9cf07ace4676fcb02451d8",
+      "bytes": 82677
+    },
+    {
+      "path": "protocol/vectors.json",
+      "sha256": "a73823d0554b34656d381cb8232457e8c050adff189b7271c1a9764ea2bb0cb4",
+      "bytes": 6230
+    }
+  ],
+  "tdd": {
+    "originalTask1": "编译/加载失败，不满足行为RED，保留流程偏差；不伪造先RED再GREEN",
+    "originalTask2": "缺方法编译失败，不满足行为RED；恢复时在隔离历史消费者上重现同一目标的实际已认证运行断言",
+    "retrospectiveBaseline": {
+      "chronology": "retrospective baseline reproduction; does not replace original compile-error history",
+      "sourceCommit": "7d2d501",
+      "actual": "7d2d501历史消费者已认证，但缺startTrace，目标Flutter expect(callFailure,isNull)断言失败",
+      "command": "node --test --test-reporter=tap build/phase06/tdd-recovery/trace-baseline.test.cjs",
+      "output": "TAP version 13\r\n# Subtest: actual historical Dart consumer exposes native trace operation\r\nnot ok 1 - actual historical Dart consumer exposes native trace operation\r\n  ---\r\n  duration_ms: 2115.9708\r\n  type: 'test'\r\n  location: 'D:\\\\WorkSpace\\\\Aether\\\\build\\\\phase06\\\\tdd-recovery\\\\trace-baseline.test.cjs:5:1'\r\n  failureType: 'testCodeFailure'\r\n  error: |-\r\n    {\"protocolVersion\":\"0.1.1\",\"runnerVersion\":null,\"pid\":65720,\"type\":\"start\",\"time\":0}\r\n    {\"suite\":{\"id\":0,\"platform\":\"vm\",\"path\":\"D:/WorkSpace/Aether/build/phase06/tdd-recovery/trace_baseline_test.dart\"},\"type\":\"suite\",\"time\":0}\r\n    {\"test\":{\"id\":1,\"name\":\"loading D:/WorkSpace/Aether/build/phase06/tdd-recovery/trace_baseline_test.dart\",\"suiteID\":0,\"groupIDs\":[],\"metadata\":{\"skip\":false,\"skipReason\":null},\"line\":null,\"column\":null,\"url\":null},\"type\":\"testStart\",\"time\":0}\r\n    {\"count\":1,\"time\":2,\"type\":\"allSuites\"}\r\n    {\"testID\":1,\"result\":\"success\",\"skipped\":false,\"hidden\":true,\"type\":\"testDone\",\"time\":1074}\r\n    {\"group\":{\"id\":2,\"suiteID\":0,\"parentID\":null,\"name\":\"\",\"metadata\":{\"skip\":false,\"skipReason\":null},\"testCount\":1,\"line\":null,\"column\":null,\"url\":null},\"type\":\"group\",\"time\":1075}\r\n    {\"test\":{\"id\":3,\"name\":\"historical Task1 consumer accepts a typed native trace command\",\"suiteID\":0,\"groupIDs\":[2],\"metadata\":{\"skip\":false,\"skipReason\":null},\"line\":7,\"column\":3,\"url\":\"file:///D:/WorkSpace/Aether/build/phase06/tdd-recovery/trace_baseline_test.dart\"},\"type\":\"testStart\",\"time\":1075}\r\n    {\"testID\":3,\"error\":\"Expected: null\\n  Actual: NoSuchMethodError:<NoSuchMethodError: Class 'ProtocolClient' has no instance method 'startTrace'.\\n          Receiver: Instance of 'ProtocolClient'\\n          Tried calling: startTrace(5000)>\\nThe actual authenticated consumer must expose the typed trace command.\\n\",\"stackTrace\":\"package:matcher                                                 expect\\npackage:flutter_test/src/widget_tester.dart 473:18              expect\\n..\\\\..\\\\build\\\\phase06\\\\tdd-recovery\\\\trace_baseline_test.dart 27:7  main.<fn>\\n\",\"isFailure\":true,\"type\":\"error\",\"time\":1254}\r\n    {\"testID\":3,\"result\":\"failure\",\"skipped\":false,\"hidden\":false,\"type\":\"testDone\",\"time\":1254}\r\n    {\"success\":false,\"type\":\"done\",\"time\":1270}\r\n    \r\n    \r\n    \r\n    1 !== 0\r\n    \r\n  code: 'ERR_ASSERTION'\r\n  name: 'AssertionError'\r\n  expected: 0\r\n  actual: 1\r\n  operator: 'strictEqual'\r\n  stack: |-\r\n    TestContext.<anonymous> (D:\\WorkSpace\\Aether\\build\\phase06\\tdd-recovery\\trace-baseline.test.cjs:13:9)\r\n    Test.runInAsyncScope (node:async_hooks:228:14)\r\n    Test.run (node:internal/test_runner/test:1118:25)\r\n    Test.start (node:internal/test_runner/test:1015:17)\r\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)\r\n  ...\r\n1..1\r\n# tests 1\r\n# suites 0\r\n# pass 0\r\n# fail 1\r\n# cancelled 0\r\n# skipped 0\r\n# todo 0\r\n# duration_ms 2186.6351\r\nmise ERROR command failed: exit code 1\r\nmise ERROR Run with --verbose or MISE_VERBOSE=1 for more information\r\n",
+      "exitCode": 1,
+      "targetTest": "actual historical Dart consumer exposes native trace operation",
+      "expected": "真实认证连接后typed startTrace返回operation并收到AP_OK terminal",
+      "classification": {
+        "verdict": "RED_EVIDENCE_OK",
+        "reason": "target_test_failed",
+        "evidence": {
+          "command": "node --test --test-reporter=tap build/phase06/tdd-recovery/trace-baseline.test.cjs",
+          "exit_code": 1,
+          "target_test": "actual historical Dart consumer exposes native trace operation",
+          "tests": 1,
+          "pass": 0,
+          "fail": 1,
+          "failing_tests": [
+            "actual historical Dart consumer exposes native trace operation"
+          ]
+        }
+      },
+      "sourceSnapshot": {
+        "path": "build/phase06/tdd-recovery/protocol-7d2d501.dart",
+        "sha256": "8f045e62c9cafe8ac0fa6ef0e1bd81a5b9af27462049878df008fd452f47b285",
+        "bytes": 22785
+      },
+      "test": {
+        "path": "build/phase06/tdd-recovery/trace_baseline_test.dart",
+        "sha256": "460f6fd21610339101b92aa281fac2215e999ad73a70b0d82573bcd6b928f503",
+        "bytes": 1828
+      },
+      "harness": {
+        "path": "build/phase06/tdd-recovery/trace-baseline.test.cjs",
+        "sha256": "9c40b56d65d9cc43848196af65c649e2cf0ed2c402be4b985b9e61739378df43",
+        "bytes": 1542
+      },
+      "green": {
+        "path": "build/phase06/06-04-task2-baseline-green-tap.log",
+        "sha256": "f32ea58ecf51a7f45f615732fa19ffd9af007c7450277dd877389133ad077909",
+        "bytes": 330
+      }
+    },
+    "statusBinding": {
+      "evidence": {
+        "path": "docs/phase06/06-04-STATUS-BINDING-RED.json",
+        "sha256": "945c74f8ac5222c683b72926605352b2b5521d8fe4b95ec509aee36e9790b586",
+        "bytes": 20810
+      },
+      "classification": {
+        "verdict": "RED_EVIDENCE_OK",
+        "reason": "target_test_failed",
+        "evidence": {
+          "command": "node --test --test-reporter=tap tests/protocol-ffi.test.cjs",
+          "exit_code": 1,
+          "target_test": "06-04 actual Flutter client loads exact production DLL and uses independent authority PID",
+          "tests": 1,
+          "pass": 0,
+          "fail": 1,
+          "failing_tests": [
+            "06-04 actual Flutter client loads exact production DLL and uses independent authority PID"
+          ]
+        }
+      },
+      "fixScope": "test-only FixtureServices在pending STATUS保留CONFIRM操作编号，并在cancel事务域绑定该编号；实际产品DLL未改"
+    }
+  },
+  "historicalLogs": [
+    {
+      "path": "build/phase06/06-04-01-final.log",
+      "sha256": "9e61a2420490a571dec9400cb0ec46311e2e8dfc0af9262e939c16666e446e2c",
+      "bytes": 298
+    },
+    {
+      "path": "build/phase06/06-04-01-green-attempt1.log",
+      "sha256": "4350eb17199d4ed61c05e2f8f70aa584aabb774211dd3bc6e103bfb514fb09d9",
+      "bytes": 4792
+    },
+    {
+      "path": "build/phase06/06-04-01-green-attempt2.log",
+      "sha256": "7e49e40b257af7ced38b4f51ce8b7e33d748c6e88d80f80b5c10636ef3ba1fa0",
+      "bytes": 4251
+    },
+    {
+      "path": "build/phase06/06-04-01-green-attempt3.log",
+      "sha256": "f269a97f2301785b259b769a7f896d0af642b75a0e30fd62d0cac8fdbb5d029c",
+      "bytes": 4411
+    },
+    {
+      "path": "build/phase06/06-04-01-green.log",
+      "sha256": "ee71ce0b775d141ba3a35c32675fc843b51f01b763051739be4f43883e319014",
+      "bytes": 299
+    },
+    {
+      "path": "build/phase06/06-04-01-red.log",
+      "sha256": "e934d563fb8aec2654ed72186530ea38e7a3e2209fd854b2e8ade1d16d61c4e3",
+      "bytes": 10859
+    },
+    {
+      "path": "build/phase06/06-04-02-green-attempt1.log",
+      "sha256": "174c68d1a5c546984e264c5ff6df5bae93b7e93d72beffb4fda2435014daf7b7",
+      "bytes": 15552
+    },
+    {
+      "path": "build/phase06/06-04-02-green-attempt2.log",
+      "sha256": "b13b64711b434dea1ac0972703b9253cb89b33be5b4b88a26733257955a56c51",
+      "bytes": 301
+    },
+    {
+      "path": "build/phase06/06-04-02-green-attempt3.log",
+      "sha256": "8b108bb855fd10450fa2db761f9d2284f35f372ab07dcde73958ed6a9644ef06",
+      "bytes": 17245
+    },
+    {
+      "path": "build/phase06/06-04-02-green-attempt4.log",
+      "sha256": "4065cbf5a7e2abe45152561b1ecabf89f129404bc8a51cff0f8aab4249c91c89",
+      "bytes": 302
+    },
+    {
+      "path": "build/phase06/06-04-02-red.log",
+      "sha256": "99a7636adc2d2c3967e2e6805771a1a05436dece05ebee2d8d1333628ac98ccf",
+      "bytes": 17303
+    },
+    {
+      "path": "build/phase06/06-04-ffi-final.tap",
+      "sha256": "c993b3597b80b1f550dc3701a2eb842cd49138d8b1bf2b44eeaac4a4d1368616",
+      "bytes": 461
+    },
+    {
+      "path": "build/phase06/06-04-full-final.tap",
+      "sha256": "8f189e78065df5cc44d96a8f58a4b039b9e3a9e8a315d263521b7eb030c16f78",
+      "bytes": 19715
+    },
+    {
+      "path": "build/phase06/06-04-generation-first.log",
+      "sha256": "9798909d03da383e3500dd129af40cac48e92913601a175af3b795f7c9acff96",
+      "bytes": 3245
+    },
+    {
+      "path": "build/phase06/06-04-generation-verbose.log",
+      "sha256": "b467037a2c0d07411eb389bff10314ca32a40411b6e884de65b82858af3cd81b",
+      "bytes": 1772
+    },
+    {
+      "path": "build/phase06/06-04-generation.log",
+      "sha256": "faa52121f0730f3bfbc8a3798a1eb0235f2bf7a614377120fd75d6548b5fdbf0",
+      "bytes": 412
+    },
+    {
+      "path": "build/phase06/06-04-protocol-ctest-final.log",
+      "sha256": "d1d8d97e7e2f990c1fbc22b90139610ea5323662228ccd9f485b15b49bf28f86",
+      "bytes": 1455
+    },
+    {
+      "path": "build/phase06/06-04-resume-ffi-receipts.log",
+      "sha256": "f5d14d3b286dd331fbbc22640cd5a047d2a7839f8a1f4b8deb90856082a5e819",
+      "bytes": 17183
+    },
+    {
+      "path": "build/phase06/06-04-resume-ffi-synchronized.log",
+      "sha256": "73438bcf345f4b32f2ea42822fd1ea6d86b28aadcbb0148bc22bf2fa07a1110b",
+      "bytes": 461
+    },
+    {
+      "path": "build/phase06/06-04-resume-format.log",
+      "sha256": "fceeb6e723b7f0626b3f17434d3d88460e87bba905f13aa9ab4a2cf6b85a8a21",
+      "bytes": 114
+    },
+    {
+      "path": "build/phase06/06-04-resume-generation.log",
+      "sha256": "faa52121f0730f3bfbc8a3798a1eb0235f2bf7a614377120fd75d6548b5fdbf0",
+      "bytes": 412
+    },
+    {
+      "path": "build/phase06/06-04-resume-local-core.log",
+      "sha256": "d713ecf426b611c21ac98a45787ca850901a24769e31b307b8e4cfe346dafa51",
+      "bytes": 984
+    },
+    {
+      "path": "build/phase06/06-04-resume-native-build.log",
+      "sha256": "b8e52ff95cab812c176ad26de83c297bf6b5911b42cf853a535fe19f7f840e65",
+      "bytes": 2265
+    },
+    {
+      "path": "build/phase06/06-04-resume-node-actual.log",
+      "sha256": "accebd87820ac7d4a78cdf325688e2f311818e86f556d22b987be34c3f75a017",
+      "bytes": 24757
+    },
+    {
+      "path": "build/phase06/06-04-resume-node-final.log",
+      "sha256": "7068011ec6cbe58ca6a246ca7c5fadb7dd8c99900907e5b7dccdb02e963aee98",
+      "bytes": 24758
+    },
+    {
+      "path": "build/phase06/06-04-resume-node.log",
+      "sha256": "0a896ba554b99e4b9c57fce7206e96e7dd34c4d3634456870bf43661e19e8955",
+      "bytes": 3507
+    },
+    {
+      "path": "build/phase06/06-04-root-ctest-final.log",
+      "sha256": "14fdcd122af013ac81395aaa4b431303b58b90339c6ece5812aeed905e07cc1a",
+      "bytes": 1341
+    },
+    {
+      "path": "build/phase06/06-04-status-binding-build.log",
+      "sha256": "352776492257280f15bfeaace3245e93ace83d6b79939f4d9572708c76ee2868",
+      "bytes": 2466
+    },
+    {
+      "path": "build/phase06/06-04-status-binding-deterministic-red.tap",
+      "sha256": "e4547664b291d60df3f91c99495b891af9b5241dc94a212ab3231ed5a9d6f57b",
+      "bytes": 17299
+    },
+    {
+      "path": "build/phase06/06-04-task2-baseline-green-tap.log",
+      "sha256": "f32ea58ecf51a7f45f615732fa19ffd9af007c7450277dd877389133ad077909",
+      "bytes": 330
+    },
+    {
+      "path": "build/phase06/06-04-task2-baseline-red-tap.log",
+      "sha256": "27184d3e6c94aa6e065472a39e0e562bf9c0d6047826ace0e4d5bc4025f14b78",
+      "bytes": 2953
+    },
+    {
+      "path": "build/phase06/06-04-task2-baseline-red.log",
+      "sha256": "0223939f4a1a7c659a56e51d06edbbc31a986fcc98dd7c712179e0df5806bd89",
+      "bytes": 952
+    }
+  ],
+  "scope": {
+    "target": "Windows x64 Debug",
+    "authority": "test-only native host",
+    "client": "actual production protocol DLL via Flutter/Dart FFI",
+    "media": "synthetic payload entirely native",
+    "transport": "actual loopback mTLS/SRTP",
+    "physicalDevices": false,
+    "productionAuthority": false,
+    "newASanRun": false,
+    "fiveTargetEvidence": "pending 06-05",
+    "phase3Installation": "halted unchanged",
+    "restartOrShutdown": "forbidden, neither executed nor scheduled"
+  }
+}
