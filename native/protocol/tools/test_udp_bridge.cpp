@@ -15,7 +15,8 @@
 
 namespace {
 struct Socket {int fd=-1;~Socket(){if(fd>=0)close(fd);}};
-void need(bool value){if(!value)throw std::runtime_error("owned UDP bridge failure");}
+void need_at(bool value,int line){if(!value)throw std::runtime_error("owned UDP bridge failure line="+std::to_string(line)+" observedErrno="+std::to_string(errno));}
+#define need(value) need_at((value),__LINE__)
 uint16_t port(int fd){sockaddr_in a{};a.sin_family=AF_INET;a.sin_addr.s_addr=htonl(INADDR_LOOPBACK);need(bind(fd,reinterpret_cast<sockaddr*>(&a),sizeof(a))==0);socklen_t size=sizeof(a);need(getsockname(fd,reinterpret_cast<sockaddr*>(&a),&size)==0);return ntohs(a.sin_port);}
 uint32_t u32(const uint8_t* p){return(uint32_t(p[0])<<24)|(uint32_t(p[1])<<16)|(uint32_t(p[2])<<8)|p[3];}
 uint16_t u16(const uint8_t* p){return(uint16_t(p[0])<<8)|p[1];}

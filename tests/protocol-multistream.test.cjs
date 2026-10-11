@@ -50,7 +50,7 @@ function child(binary,args){if(android.active)return mobileChild(binary,args);if
   childProcess.stdout.on('data',b=>{buffer+=b.toString();if(buffer.length>65536)return fail(Error('Native output bound'));let i;while((i=buffer.indexOf('\n'))>=0){const line=buffer.slice(0,i);buffer=buffer.slice(i+1);try{const m=JSON.parse(line);messages.push(m);for(const w of waiters)if(w.kind===m.kind)w.resolve(m);}catch(e){fail(e);}}});
   childProcess.stderr.on('data',b=>{stderr=(stderr+b.toString()).slice(-4096);});childProcess.on('error',fail);
   childProcess.on('close',code=>{finished=true;clearTimeout(timer);resolve({pid:childProcess.pid,code,messages,stderr});for(const w of waiters)w.reject(Error('Closed before '+w.kind));});
-  return {process:childProcess,closed,wait:kind=>{const m=messages.find(m=>m.kind===kind);if(m)return Promise.resolve(m);if(finished)return Promise.reject(Error('Already closed'));return new Promise((resolve,reject)=>waiters.push({kind,resolve,reject}));}};
+  return {process:childProcess,closed,snapshot:()=>({pid:childProcess.pid,exitCode:childProcess.exitCode,messages,stderr}),wait:kind=>{const m=messages.find(m=>m.kind===kind);if(m)return Promise.resolve(m);if(finished)return Promise.reject(Error('Already closed'));return new Promise((resolve,reject)=>waiters.push({kind,resolve,reject}));}};
 }
 function fixture(){
   const base=path.join(root,'build/phase06/fixtures');fs.mkdirSync(base,{recursive:true});const dir=fs.mkdtempSync(path.join(base,'multistream-'));
@@ -62,7 +62,7 @@ if(process.argv.includes('--audit-fec'))auditFec().catch(e=>{console.error(e);pr
 else for(const scenario of ['happy','loss-video1','cross-stream','wrong-direction','tamper-high-sequence','replay',
   'fec-happy','fec-threshold','fec-beyond','fec-tamper-repair','fec-cross-role','fec-reorder-replay','fec-late','fec-queue','fec-domain-tamper','fec-burst','fec-fresh-epoch','fec-stale-epoch','fec-contract'])test('real secure media: '+scenario,{timeout:10000},async()=>{
   const full=scenario.startsWith('fec-');
-  const m=target(),dir=fixture(),relay=(android.active||process.platform==='darwin')?android.createRelay():dgram.createSocket('udp4');let host,client,receiver=0,hostPort=0;const held=[];const relayCounts={received:0,forwarded:0,dropped:0,injected:0};let relayError;
+  const m=target(),dir=fixture(),relay=(android.active||process.platform==='darwin')?android.createRelay():dgram.createSocket('udp4');let host,client,receiver=0,hostPort=0;const held=[];const relayCounts={received:0,forwarded:0,dropped:0,injected:0};let relayError,primaryError;
   relay.on('error',e=>{relayError=e;});
   try {
     await new Promise(resolve=>relay.bind(0,'127.0.0.1',resolve));
@@ -157,7 +157,15 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
     }
     for(const r of [h,c]){const clean=r.messages.find(v=>v.kind==='clean').detail;assert.equal(clean.sockets,0);assert.equal(clean.threads,0);assert.equal(clean.stopped,true);assert.equal(clean.persistentIdentity.instanceId,102);assert.equal(clean.persistentIdentity.displayId,103);const sibling=r.messages.find(v=>v.kind==='sibling-survives');assert.ok(sibling&&sibling.detail.stopped===false&&sibling.detail.sockets===2);}
     const out=path.join(root,'artifacts/phase06/multistream');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,scenario+'.json'),JSON.stringify({schema:1,scenario,seed:601,relay:relayCounts,targetSha256:m.sha256,sources:m.sources,host:h,client:c,synthetic:true,systemMutation:false},null,2)+'\n');
-  }finally{for(const p of [host,client])if(p?.process.exitCode===null)p.process.kill();await new Promise((resolve,reject)=>relay.close(error=>error?reject(error):resolve()));fs.rmSync(dir,{recursive:true,force:true});}
+  }catch(error){primaryError=error;throw error;}finally{
+    const failure={schema:1,scenario,primaryError:primaryError?.message.slice(0,2000)||null,relayError:relayError?.message.slice(0,2000)||null,host:host?.snapshot()||null,client:client?.snapshot()||null,synthetic:true,systemMutation:false};
+    let cleanupError;try{for(const p of [host,client])if(p?.process.exitCode===null)p.process.kill();await new Promise((resolve,reject)=>relay.close(error=>error?reject(error):resolve()));}catch(error){cleanupError=error;}
+    finally{
+      if(primaryError||cleanupError){failure.cleanupError=cleanupError?.message.slice(0,2000)||null;const bytes=JSON.stringify(failure,null,2);assert.ok(Buffer.byteLength(bytes)<=65536,'Failure diagnostic byte bound');const out=path.join(root,'artifacts/phase06/android-media-attempts');fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,scenario+'-failure.json'),bytes+'\n');}
+      fs.rmSync(dir,{recursive:true,force:true});
+    }
+    if(cleanupError)throw primaryError?new AggregateError([primaryError,cleanupError],primaryError.message+'; cleanup: '+cleanupError.message):cleanupError;
+  }
 });
 if(!process.argv.includes('--audit-fec'))for(const mode of ['rollover','nonce-exhaustion','high-sequence','role-key-epoch','unchanged-retransmission','fec-golden'])test('actual native media security: '+mode,()=>{
   const m=target();assert.ok(m.mediaSecurity,'Current security test target manifest required');
@@ -183,4 +191,4 @@ if(!process.argv.includes('--audit-fec'))test('public fixed-width media options 
  for(const [args,status] of [[['--abi','2'],2],[['--size','27'],1],[['--size','29'],0],[['--out-abi','2'],2],[['--out-size','39'],1],[['--out-size','41'],0]])assert.equal(run(vectors.options,args).status,status);
 });
 
-function mobileChild(binary,args){const folder=args[args.indexOf('--fixture')+1],native=android.child(binary,[...args,'--before-submit',path.join(folder,'submit-'+args[args.indexOf('--role')+1])],folder,'media-'+(++mobileSequence),5000),messages=[],waiters=[];let pending='',stderr='',finished=false;native.p.stdout.on('data',b=>{pending+=b;let e;while((e=pending.indexOf('\n'))>=0){const l=pending.slice(0,e);pending=pending.slice(e+1);const row=JSON.parse(l);messages.push(row);for(const w of waiters)if(w.kind===row.kind)w.resolve(row);}});native.p.stderr.on('data',b=>stderr+=b);const closed=native.done.then(r=>{finished=true;for(const w of waiters)w.reject(Error('Closed before '+w.kind));return{pid:r.pid,code:r.code,messages,stderr};});closed.catch(()=>{});return{process:native.p,closed,wait:kind=>{const m=messages.find(m=>m.kind===kind);if(m)return Promise.resolve(m);if(finished)return Promise.reject(Error('Already closed'));return new Promise((resolve,reject)=>waiters.push({kind,resolve,reject}));}};}
+function mobileChild(binary,args){const folder=args[args.indexOf('--fixture')+1],native=android.child(binary,[...args,'--before-submit',path.join(folder,'submit-'+args[args.indexOf('--role')+1])],folder,'media-'+(++mobileSequence),5000),messages=[],waiters=[];let pending='',stderr='',finished=false;native.p.stdout.on('data',b=>{pending+=b;let e;while((e=pending.indexOf('\n'))>=0){const l=pending.slice(0,e);pending=pending.slice(e+1);const row=JSON.parse(l);messages.push(row);for(const w of waiters)if(w.kind===row.kind)w.resolve(row);}});native.p.stderr.on('data',b=>stderr+=b);const closed=native.done.then(r=>{finished=true;for(const w of waiters)w.reject(Error('Closed before '+w.kind));return{pid:r.pid,code:r.code,messages,stderr};});closed.catch(()=>{});return{process:native.p,closed,snapshot:()=>({pid:native.p.pid,exitCode:native.p.exitCode,messages,stderr}),wait:kind=>{const m=messages.find(m=>m.kind===kind);if(m)return Promise.resolve(m);if(finished)return Promise.reject(Error('Already closed'));return new Promise((resolve,reject)=>waiters.push({kind,resolve,reject}));}};}
