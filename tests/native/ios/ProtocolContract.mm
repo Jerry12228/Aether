@@ -101,8 +101,18 @@ extern "C" void aether_contract_scenario(const char*,const char*);
 - (void)testDuplicateField { [self runScenario:@"duplicate"]; }
 - (void)testTruncatedField { [self runScenario:@"truncated"]; }
 - (void)testSharedAuthority { [self runScenario:@"shared-provider"]; }
+- (void)testFreshRecovery { [self runScenario:@"fresh-recovery"]; }
+- (void)testIndependentStreamRecovery { [self runScenario:@"stream-recovery"]; }
+- (void)testExplicitTraceExpiry { [self runScenario:@"trace-expiry"]; }
+- (void)testPolicyScopesAndPrivacy { [self runScenario:@"policy-scopes"]; }
 - (void)runSecurity:(NSString*)mode {
- static const auto initialized=srtp_init();XCTAssertEqual(initialized,srtp_err_status_ok);
+ // Initialization belongs to the product's call_once. XCTest shares one
+ // process with prior media tests, so invoking srtp_init again is invalid.
+ NSURL* resources=[[NSBundle bundleForClass:self.class] resourceURL];std::string folder=resources.path.UTF8String;
+ std::string cert=folder+"/client.pem",key=folder+"/client.key",trust=folder+"/trust.pem";
+ AetherProtocolConfig config{};config.abi_version=1;config.struct_size=sizeof(config);config.role=2;config.deadline_ms=1000;config.host_id=config.instance_id=config.display_id=config.stream_id=config.connection_id=config.client_id=config.lease_epoch=config.config_generation=config.key_generation=1;config.certificate_file=cert.c_str();config.private_key_file=key.c_str();config.trust_file=trust.c_str();config.peer_name="aether-host.local";config.version_count=1;config.versions[0]=1;config.permission_read=1;
+ uint64_t handle=0;auto created=aether_protocol_create(&config,[](uint64_t,uint64_t,uint32_t,int32_t,uint64_t){},&handle);XCTAssertEqual(created,AP_OK);if(created!=AP_OK)return;
+ uint64_t last=0;XCTAssertEqual(aether_protocol_stop(handle,&last),AP_OK);XCTAssertEqual(aether_protocol_ack(handle,last),AP_OK);XCTAssertEqual(aether_protocol_destroy(handle),AP_OK);
  try{if([mode isEqualToString:@"fec-golden"])fec();else security(mode.UTF8String);}catch(...){XCTFail(@"Independent native security contract failed: %@",mode);}
 }
 - (void)testFecGolden { [self runSecurity:@"fec-golden"]; }
