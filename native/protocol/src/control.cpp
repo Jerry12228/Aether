@@ -130,7 +130,7 @@ void schedule(ConnectionContext& c,ControlState& s,Record out,const Reservation*
 #endif
  if(drop)return;require(s.outgoing.size()<64,AP_BUSY);s.outgoing.push_back({std::move(out),Clock::now()+std::chrono::milliseconds(delay),replay,mutation});(void)c;
 }
-void flush(ConnectionContext& c,ControlState& s){for(auto i=s.outgoing.begin();i!=s.outgoing.end();){if(Clock::now()<i->due){++i;continue;}c.exchange_deadline=Clock::now()+std::chrono::milliseconds(100);auto out=std::move(i->record);bool replay=i->replay;auto mutation=i->mutation;i=s.outgoing.erase(i);out.sequence=++s.tx;auto b=record(out);
+void flush(ConnectionContext& c,ControlState& s){for(auto i=s.outgoing.begin();i!=s.outgoing.end();){if(Clock::now()<i->due){++i;continue;}auto out=std::move(i->record);bool replay=i->replay;auto mutation=i->mutation;i=s.outgoing.erase(i);out.sequence=++s.tx;auto b=record(out);
 #ifdef AETHER_CONTROL_FIXTURE
  control_fixture_wire(b.data(),b.size());
  if(mutation==1)put32(b.data(),8313);
@@ -143,6 +143,10 @@ void flush(ConnectionContext& c,ControlState& s){for(auto i=s.outgoing.begin();i
 #else
  (void)mutation;
 #endif
+ // Control response I/O uses the validated connection deadline (1-3s).
+ // Serialization and fixture observation must not consume a 100ms media
+ // scheduling interval and turn a valid proposal into a disconnected peer.
+ c.exchange_deadline=Clock::now()+std::chrono::milliseconds(c.config.deadline_ms);
  write_tls(c,b.data(),b.size());if(replay)write_tls(c,b.data(),b.size());}}
 void host_dispatch(ConnectionContext& c,ControlState& s,const Record& in,bool resumed=false){
  auto f=fields(in.payload);command_fields(in.opcode,f);require(in.operation&&in.request,AP_FIELD);require(in.flags==0||((in.opcode==3||in.opcode==14)&&in.flags==2),AP_FIELD);
@@ -224,7 +228,7 @@ void control_worker(std::shared_ptr<ConnectionContext> context,std::vector<uint8
       std::this_thread::sleep_for(std::chrono::milliseconds(1));continue;
      }
      for(auto i=s.deferred.begin();i!=s.deferred.end();){if(Clock::now()<i->due){++i;continue;}auto record=std::move(i->record);i=s.deferred.erase(i);host_dispatch(c,s,record,true);}
-     flush(c,s);auto record=pump(c,s);if(record){c.exchange_deadline=Clock::now()+std::chrono::milliseconds(100);host_dispatch(c,s,*record);}
+     flush(c,s);auto record=pump(c,s);if(record){c.exchange_deadline=Clock::now()+std::chrono::milliseconds(c.config.deadline_ms);host_dispatch(c,s,*record);}
     }else{
      ControlState::Command command;bool available=false;{std::lock_guard lock(s.mutex);if(!s.commands.empty()){command=std::move(s.commands.front());s.commands.pop_front();s.queued_bytes-=static_cast<uint32_t>(command.payload.size());available=true;}}
      if(available){try{client_dispatch(c,s,command);}catch(Failure e){event(c,s,command.meta.operation_id,e.status,false);if(e.status==AP_LENGTH||e.status==AP_PROTECTION){connection_lost(c,s,e.status);}else if(e.status!=AP_TIMEOUT)break;}}

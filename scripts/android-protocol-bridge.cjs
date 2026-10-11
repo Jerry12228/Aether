@@ -57,7 +57,12 @@ function child(exe,args,folder,name,deadline=15000,onState){
    if(pending.trim())line(pending.replaceAll('\r',''));const r=receipt(raw);assert.ok(guestPid,'Observed native guest PID required');if(isControlHost){const actual=raw.match(/HOST pid=(\d+)/);assert.ok(actual,'Actual native host PID summary required');assert.equal(Number(actual[1]),guestPid);}
    if(!isHost&&--info.clients===0)command(['shell','touch',info.remote+'/client-done']);finish(r.status);
   }catch(error){finish(1,error);}});
-  if(isControlHost)poll=setInterval(()=>{for(const name of ['ready','ready2'])if(!fs.existsSync(path.join(folder,name))){try{const output=command(['shell','cat',info.remote+'/'+name]);if(/^\d+\s*$/.test(output)&&Number(output)>0&&Number(output)<65536)fs.writeFileSync(path.join(folder,name),output.trim());}catch{}}},20);
+  if(isControlHost)poll=setInterval(()=>{for(const name of ['ready','ready2']){
+   // The shared host publishes ready before ready2. Preserve that ordering
+   // across separate adb observations so ready2 implies both local ports.
+   if(name==='ready2'&&!fs.existsSync(path.join(folder,'ready')))break;
+   if(!fs.existsSync(path.join(folder,name))){try{const output=command(['shell','cat',info.remote+'/'+name]);if(/^\d+\s*$/.test(output)&&Number(output)>0&&Number(output)<65536)fs.writeFileSync(path.join(folder,name),output.trim());}catch{}}
+  }},20);
  });done.catch(()=>{});return {p:proxy,done};
 }
 function cleanup(){for(const [folder,info]of owned){for(const p of info.processes)if(p.exitCode===null)p.kill();assert.ok(info.remote.startsWith(active+'/recovery-'));assert.match(info.remote.slice((active+'/recovery-').length),/^(case-|multistream-)[\w-]+$/);command(['shell','rm','-rf',info.remote]);owned.delete(folder);}}
