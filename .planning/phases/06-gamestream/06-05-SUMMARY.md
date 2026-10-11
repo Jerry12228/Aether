@@ -6,7 +6,7 @@ tags: [CMake, CI, Windows, POSIX, XCTest, provenance]
 status: halted
 checkpoint: 06-05-01
 checkpoint_gate: blocking-human
-blocked_by: [remote-publication-approval]
+blocked_by: []
 requires:
   - phase: 06-04
     provides: 真实 Dart FFI、独立主机与固定协议依赖
@@ -96,3 +96,7 @@ Task1：批准发布后先取得实际 Linux socket/安全行为 RED，再完成
 待批准远端为 `https://github.com/Jerry12228/Aether.git`（公开仓库），工作分支为 `codex/phase-03-virtual-display-feasibility`。远端 main 当前本地已取记录为 `9aff292`；准备提交 `1b703af` 比 origin/main 多 106 个历史提交，包含此前未推送的 Phase3/Phase6 工作。正式请求同时披露最终元数据提交后的数量。需明确批准发布当前整个工作分支和后续同分支 Phase6 CI 修复/证据提交、运行五目标 CI；不合并 main、不 force push。当前初始 workflow 的具体字节在 reviewInputs 中绑定，可先查看实际 diff。
 
 无设备/驱动/证书信任/Apollo/网络配置变更，没有执行或安排重启/关机。Phase3 新固定安装计划的授权仍独立待定；06-04 历史证据、06-03 量测和原 ADR/FEC 批准保持原绑定。
+
+## 2026-10-11 发布批准后续记录
+
+用户真实原答复`1`批准公开Jerry12228/Aether完整当前分支（审阅327132c、比origin/main多108提交）和同分支Phase6五目标CI/修复/证据后续提交。见[独立发布决定](../../../docs/phase06/06-05-PUBLICATION-DECISION.json)。历史自动审批拒绝和准备证据保持原样，此新批准解除具体发布门槛，继续Task1；不代替最终人审或Phase3安装批准。当前status halted为历史准备停点，任务完成数待实际目标证据更新。
