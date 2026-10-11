@@ -54,6 +54,7 @@ async function runAndroid({m,record,run,root,directory,hash}){
    const request=path.join(directory,'legacy-'+version+'-request.bin');fs.writeFileSync(request,Buffer.from(version===1?'41455448000a01010001':'4145544800110102000100020001000102','hex'));
    await run('adb-legacy-'+version+'-request',adb,['-s',serial,'push',request,folder+'/request.bin']);
    const hostName='adb-legacy-'+version+'-host',hostLog=path.join(directory,'run-logs',hostName+'.log');
+   if(fs.existsSync(hostLog))fs.unlinkSync(hostLog);
    const host=nativeRun(hostName,['-s',serial,'shell',shell('aether_protocol_tracer',['--role','host','--fixture',folder,'--scenario','happy','--versions',String(version)])],false,10000).then(output=>({output}),error=>({error}));
    let ready=null;const deadline=Date.now()+4000;
    while(!ready&&Date.now()<deadline){if(fs.existsSync(hostLog)){const row=fs.readFileSync(hostLog,'utf8').split(/\r?\n/).find(l=>l.startsWith('{"kind":"ready"'));if(row)ready=JSON.parse(row);}if(!ready)await pause(10);}

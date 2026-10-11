@@ -1,0 +1,112 @@
+{
+  "schema": 1,
+  "status": "in_progress",
+  "plan": "06-05",
+  "scope": "Task1已授权自有Android虚拟机实际native测试；不是完整五目标通过",
+  "sourceCommit": "4f2a50d81ec5c8062650fc918c0239bc1e660f09",
+  "inputDigest": "7d0cef465c072384f54d424541dc27994372cef79ec3f5d61dacc0a4c2ef3558",
+  "userAuthorization": "Android Studio就绪，qemu就绪；自行创建虚拟机进行测试",
+  "targets": [
+    {
+      "arch": "arm32",
+      "api": 21,
+      "nativeBridge": "0",
+      "native": {
+        "tests": 28,
+        "passed": 28,
+        "assertions": 160,
+        "controlScenarios": 31,
+        "controlParentAssertions": 65,
+        "legacyNativePIDs": [
+          [
+            1491,
+            1494
+          ],
+          [
+            1510,
+            1513
+          ]
+        ],
+        "elapsedMs": 50928
+      },
+      "recovery": {
+        "tests": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0,
+        "elapsedMs": 150787.2576
+      },
+      "complete": false,
+      "remaining": "19个原多流故障relay场景未执行"
+    },
+    {
+      "arch": "arm64",
+      "api": 24,
+      "nativeBridge": "0",
+      "controlScenarios": 31,
+      "controlParentAssertions": 65,
+      "elapsedMs": 79543,
+      "complete": false,
+      "remaining": "legacy读取前次ready日志竞争导致实际AP_TIMEOUT；后续安全/向量未执行，完整故障/恢复未执行"
+    }
+  ],
+  "receipts": [
+    {
+      "file": "build/phase06/06-05/android-arm32-4f2a50d-first/protocol-run.json",
+      "sha256": "c80736d6eeaa5d1f88fdb44f93717cb3c4261456f66966040d6da0f00cff61ec",
+      "bytes": 49580
+    },
+    {
+      "file": "build/phase06/06-05/android-arm64-4f2a50d-warm/protocol-run.json",
+      "sha256": "0a783dc3f2729a12a8b5cfac10989537647d89a6991048957fe52b0b5f9eb586",
+      "bytes": 21092
+    },
+    {
+      "file": "build/phase06/06-05/android-vm/recovery-arm32-execution.json",
+      "sha256": "f39660ffe70e86d78328cebb2ae257672c8cef4c01e6f585b8ac46a62576a720",
+      "bytes": 3958
+    },
+    {
+      "file": "build/phase06/06-05/android-vm/recovery-arm32-logs/actual-recovery.log",
+      "sha256": "611a6f482c1bef33cc79cff72831618aeb3e0efb1fa38a258e878261b0909862",
+      "bytes": 4934
+    },
+    {
+      "file": "build/phase06/06-05/android-vm/recovery-adapter-provenance.json",
+      "sha256": "68c9b0bfecc225307d09c6bd14c2f0c8d18e038466856b8bf9b0815a1b7d89a8",
+      "bytes": 574
+    },
+    {
+      "file": "build/phase06/06-05/android-vm/arm32-image-provenance.json",
+      "sha256": "02fd7e468f98170d23a904620ee3b57c166854bca2be9e8ccb9be8a595dd7e90",
+      "bytes": 483
+    },
+    {
+      "file": "build/phase06/06-05/android-vm/image-provenance.json",
+      "sha256": "235db5c77b8ddb5d35ea2e19e80307f300b15f2068bebd3806b159557a6e8f77",
+      "bytes": 583
+    },
+    {
+      "file": "build/phase06/06-05/android-vm/emulator-provenance.json",
+      "sha256": "44a4a0b8d30a1aae868d5292ae7a0e2370d602373a28cb28e74a1f6a635ffdb4",
+      "bytes": 400
+    },
+    {
+      "file": "build/phase06/06-05/android-vm/classic-provenance.json",
+      "sha256": "6000b2c8c0c2c4a09f66e063ec572f3cf9d910d6856fc1291723f287f9d53c73",
+      "bytes": 2121
+    }
+  ],
+  "boundaries": {
+    "synthetic": true,
+    "physical": false,
+    "phase3": "halted",
+    "driverTrustPolicyChanges": false,
+    "developmentMachineRestartOrShutdown": false,
+    "tasksCompleted": 0,
+    "requirementsClosed": []
+  },
+  "recordedAt": "2026-10-11T11:03:40.996Z"
+}
