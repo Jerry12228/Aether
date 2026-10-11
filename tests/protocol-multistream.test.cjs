@@ -41,16 +41,16 @@ async function auditFec(){
   console.log(JSON.stringify({sourceSha:sha,archiveSha256:dossier.archiveSha256,files:files.map(f=>f.path),origin,status:dossier.status}));
 }
 function target(){const m=JSON.parse(fs.readFileSync(process.env.AETHER_PROTOCOL_MANIFEST||path.join(root,'build/phase06/windows-x64/target-manifest-Debug.json'),'utf8'));assert.equal(hash(fs.readFileSync(m.binary)),m.sha256);assert.equal(hash(fs.readFileSync(m.library)),m.librarySha256);for(const s of m.sources)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);if(m.fec){assert.equal(hash(fs.readFileSync(path.join(root,'docs/phase06/FEC-REUSE-DECISION.json'))),m.fec.decisionSha256);for(const s of m.fec.inputs)assert.equal(hash(fs.readFileSync(path.join(root,s.file))),s.sha256);for(const d of m.dependencies)if(d.file)assert.equal(hash(fs.readFileSync(d.file)),d.sha256);assert.equal(hash(fs.readFileSync(m.mediaSecurity.binary)),m.mediaSecurity.sha256);}return m;}
-function child(binary,args){if(android.active)return mobileChild(binary,args);
-  const process=cp.spawn(binary,args,{shell:false,windowsHide:true,stdio:['ignore','pipe','pipe']});
+function child(binary,args){if(android.active)return mobileChild(binary,args);if(process.platform==='darwin'){const folder=args[args.indexOf('--fixture')+1];args=[...args,'--before-submit',path.join(folder,'submit-'+args[args.indexOf('--role')+1])];}
+  const childProcess=cp.spawn(binary,args,{shell:false,windowsHide:true,stdio:['ignore','pipe','pipe']});
   let buffer='',stderr='',finished=false;const messages=[],waiters=[];let resolve,reject;
   const closed=new Promise((r,j)=>{resolve=r;reject=j;});closed.catch(()=>{});
-  const fail=e=>{if(!finished)process.kill();reject(e);for(const w of waiters)w.reject(e);};
+  const fail=e=>{if(!finished)childProcess.kill();reject(e);for(const w of waiters)w.reject(e);};
   const timer=setTimeout(()=>fail(Error('Owned multistream child deadline')),5000);
-  process.stdout.on('data',b=>{buffer+=b.toString();if(buffer.length>65536)return fail(Error('Native output bound'));let i;while((i=buffer.indexOf('\n'))>=0){const line=buffer.slice(0,i);buffer=buffer.slice(i+1);try{const m=JSON.parse(line);messages.push(m);for(const w of waiters)if(w.kind===m.kind)w.resolve(m);}catch(e){fail(e);}}});
-  process.stderr.on('data',b=>{stderr=(stderr+b.toString()).slice(-4096);});process.on('error',fail);
-  process.on('close',code=>{finished=true;clearTimeout(timer);resolve({pid:process.pid,code,messages,stderr});for(const w of waiters)w.reject(Error('Closed before '+w.kind));});
-  return {process,closed,wait:kind=>{const m=messages.find(m=>m.kind===kind);if(m)return Promise.resolve(m);if(finished)return Promise.reject(Error('Already closed'));return new Promise((resolve,reject)=>waiters.push({kind,resolve,reject}));}};
+  childProcess.stdout.on('data',b=>{buffer+=b.toString();if(buffer.length>65536)return fail(Error('Native output bound'));let i;while((i=buffer.indexOf('\n'))>=0){const line=buffer.slice(0,i);buffer=buffer.slice(i+1);try{const m=JSON.parse(line);messages.push(m);for(const w of waiters)if(w.kind===m.kind)w.resolve(m);}catch(e){fail(e);}}});
+  childProcess.stderr.on('data',b=>{stderr=(stderr+b.toString()).slice(-4096);});childProcess.on('error',fail);
+  childProcess.on('close',code=>{finished=true;clearTimeout(timer);resolve({pid:childProcess.pid,code,messages,stderr});for(const w of waiters)w.reject(Error('Closed before '+w.kind));});
+  return {process:childProcess,closed,wait:kind=>{const m=messages.find(m=>m.kind===kind);if(m)return Promise.resolve(m);if(finished)return Promise.reject(Error('Already closed'));return new Promise((resolve,reject)=>waiters.push({kind,resolve,reject}));}};
 }
 function fixture(){
   const base=path.join(root,'build/phase06/fixtures');fs.mkdirSync(base,{recursive:true});const dir=fs.mkdtempSync(path.join(base,'multistream-'));
@@ -62,7 +62,7 @@ if(process.argv.includes('--audit-fec'))auditFec().catch(e=>{console.error(e);pr
 else for(const scenario of ['happy','loss-video1','cross-stream','wrong-direction','tamper-high-sequence','replay',
   'fec-happy','fec-threshold','fec-beyond','fec-tamper-repair','fec-cross-role','fec-reorder-replay','fec-late','fec-queue','fec-domain-tamper','fec-burst','fec-fresh-epoch','fec-stale-epoch','fec-contract'])test('real secure media: '+scenario,{timeout:10000},async()=>{
   const full=scenario.startsWith('fec-');
-  const m=target(),dir=fixture(),relay=android.active?android.createRelay():dgram.createSocket('udp4');let host,client,receiver=0,hostPort=0;const held=[];const relayCounts={received:0,forwarded:0,dropped:0,injected:0};let relayError;
+  const m=target(),dir=fixture(),relay=(android.active||process.platform==='darwin')?android.createRelay():dgram.createSocket('udp4');let host,client,receiver=0,hostPort=0;const held=[];const relayCounts={received:0,forwarded:0,dropped:0,injected:0};let relayError;
   relay.on('error',e=>{relayError=e;});
   try {
     await new Promise(resolve=>relay.bind(0,'127.0.0.1',resolve));
@@ -111,7 +111,7 @@ else for(const scenario of ['happy','loss-video1','cross-stream','wrong-directio
     host=child(m.binary,['--role','host','--fixture',dir,'--scenario','multistream',...hostEpoch]);const ready=await host.wait('ready');
     hostPort=ready.detail.udpPort;
     client=child(m.binary,['--role','client','--peer',String(ready.detail.controlPort),'--fixture',dir,'--scenario','multistream',...clientEpoch]);receiver=(await client.wait('ready')).detail.udpPort;
-    if(relay.nativeFaults){await relay.configure(hostPort,receiver,scenario,priorProtectedSource);android.releaseMedia(dir);}
+    if(relay.nativeFaults){await relay.configure(hostPort,receiver,scenario,priorProtectedSource);if(android.active)android.releaseMedia(dir);else for(const role of ['host','client'])fs.writeFileSync(path.join(dir,'submit-'+role),'owned');}
     const [h,c]=await Promise.all([host.closed,client.closed]);if(relay.nativeFaults){Object.assign(relayCounts,await relay.snapshot());if(relay.seed)priorProtectedSource=relay.seed;fs.mkdirSync(path.join(root,'artifacts/phase06/android-media-attempts'),{recursive:true});fs.writeFileSync(path.join(root,'artifacts/phase06/android-media-attempts',scenario+'.json'),JSON.stringify({scenario,relay:relayCounts,host:h,client:c},null,2));}assert.equal(h.code,scenario==='fec-stale-epoch'?2:0,JSON.stringify(h));assert.equal(c.code,scenario==='fec-stale-epoch'?2:0,JSON.stringify(c));assert.notEqual(h.pid,c.pid);assert.ifError(relayError);
     const hs=h.messages.find(v=>v.kind==='result').detail,cs=c.messages.find(v=>v.kind==='result').detail;
     if(scenario==='fec-stale-epoch'){

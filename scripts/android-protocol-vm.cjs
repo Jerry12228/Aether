@@ -37,7 +37,16 @@ async function prepareAndroidVm({sdk,directory,arch,run,record}){
  receipt.runtime={serial,name,exe,sha256:digest(fs.readFileSync(exe)),pid:processVm.pid,args,image:{...image},configSha256:digest(Buffer.from(config))};let stopped=false;
  const stop=async()=>{if(stopped)return;stopped=true;try{if(processVm.exitCode===null&&processVm.signalCode===null)await run('vm-owned-stop',adb,['-s',serial,'emu','kill'],true,30000);}finally{if(processVm.exitCode===null&&processVm.signalCode===null){processVm.kill();await Promise.race([new Promise(resolve=>processVm.once('close',resolve)),pause(5000)]);}receipt.stoppedAt=new Date().toISOString();receipt.logSha256=digest(fs.readFileSync(log));fs.writeFileSync(path.join(directory,'android-vm.json'),JSON.stringify(receipt,null,2)+'\n');}};
  try{let ready=false;for(let i=0;i<120;i++){assert.ok(!launchError&&processVm.exitCode===null&&processVm.signalCode===null,'Owned emulator exited before native ABI readiness');try{const abi=(await run('vm-native-ready-'+i,adb,['-s',serial,'shell','getprop','ro.product.cpu.abilist'],false,5000)).trim();if(abi.split(',').includes(image.abi)){ready=true;break;}}catch{}await pause(5000);}assert.ok(ready,'Owned native Android readiness deadline');receipt.nativeReadyAt=new Date().toISOString();
-  receipt.frameworkBootCompleted=(await run('vm-framework-boot',adb,['-s',serial,'shell','getprop','sys.boot_completed'])).trim()==='1';if(arch==='arm64')for(let i=0;i<18;i++){assert.ok(!launchError&&processVm.exitCode===null&&processVm.signalCode===null);await pause(5000);}return{serial,stop,destination:receipt.runtime};
+  receipt.frameworkBootCompleted=(await run('vm-framework-boot',adb,['-s',serial,'shell','getprop','sys.boot_completed'])).trim()==='1';
+  // Only this freshly owned guest: suspend app framework churn while exercising
+  // native Bionic/NDK binaries, real sockets and the unchanged 25ms media budget.
+  receipt.frameworkScope='native-only-owned-guest';const initialUid=(await run('vm-shell-uid-before',adb,['-s',serial,'shell','id','-u'])).trim();receipt.initialShellUid=initialUid;
+  if(initialUid!=='0'){await run('vm-owned-adbd-root',adb,['-s',serial,'root']);await run('vm-owned-adbd-ready',adb,['-s',serial,'wait-for-device'],false,30000);}
+  assert.equal((await run('vm-owned-root-uid',adb,['-s',serial,'shell','id','-u'])).trim(),'0','Only rootable owned test images');
+  for(const service of ['zygote_secondary','zygote','surfaceflinger'])await run('vm-owned-stop-'+service,adb,['-s',serial,'shell','stop',service]);
+  for(const service of ['zygote','surfaceflinger']){const state=(await run('vm-owned-state-'+service,adb,['-s',serial,'shell','getprop','init.svc.'+service])).trim();assert.equal(state,'stopped','Owned framework service must remain stopped');}
+  if(initialUid!=='0'){await run('vm-owned-adbd-unroot',adb,['-s',serial,'unroot']);await run('vm-owned-shell-ready',adb,['-s',serial,'wait-for-device'],false,30000);assert.equal((await run('vm-owned-uid-restored',adb,['-s',serial,'shell','id','-u'])).trim(),initialUid);}
+  receipt.frameworkSuspendedAt=new Date().toISOString();for(let i=0;i<2;i++){assert.ok(!launchError&&processVm.exitCode===null&&processVm.signalCode===null);await pause(5000);}return{serial,stop,destination:receipt.runtime};
  }catch(error){await stop();throw error;}
 }
 module.exports={prepareAndroidVm};

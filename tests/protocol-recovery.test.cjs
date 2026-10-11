@@ -1,5 +1,6 @@
 'use strict';
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto');
+const nodeTest=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),crypto=require('node:crypto');
+const group=process.env.AETHER_RECOVERY_GROUP;if(group!==undefined)assert.match(group,/^[0-3]$/);let registered=0;const test=group===undefined?nodeTest:Object.assign((...args)=>{const index=registered++;if(index%4===Number(group))return nodeTest(...args);},nodeTest);
 const root=path.resolve(__dirname,'..'),build=process.env.AETHER_PROTOCOL_BUILD||path.join(root,'build/phase06/windows-x64/Debug');
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const android=require(path.join(root,'scripts/android-protocol-bridge.cjs'));if(process.argv.includes('--measure')&&android.active)throw Error('Android native contracts do not prove host resource measurements');

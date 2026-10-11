@@ -91,7 +91,7 @@ async function build(o){
  const bin=path.join(o.directory,o.target==='windows'?o.configuration:o.target==='ios'?o.configuration+'-'+o.sdk:'');const suffix=o.target==='windows'?'.exe':'';
  const findLibrary=o.target==='windows'?path.join(bin,'aether_protocol.dll'):o.target==='ios'?path.join(bin,'libaether_protocol.a'):path.join(bin,o.target==='macos'?'libaether_protocol.dylib':'libaether_protocol.so');
  const files=[findLibrary];if(o.target!=='ios')files.push(...['aether_protocol_tracer','aether_media_security','aether_protocol_control_client','aether_protocol_control_host'].map(n=>path.join(bin,n+suffix)));
- if(o.target==='android')files.push(path.join(bin,'aether_protocol_udp_bridge'));
+ if(['android','macos'].includes(o.target))files.push(path.join(bin,'aether_protocol_udp_bridge'));
  const artifacts=files.map(file=>{assert.ok(fs.existsSync(file),`Missing ${file}`);const bytes=fs.readFileSync(file),observedArch=o.target==='ios'?null:binaryArch(bytes);if(observedArch)assert.equal(observedArch,o.arch,'Actual target binary architecture');return {file:path.relative(root,file).replaceAll('\\','/'),sha256:hash(bytes),bytes:bytes.length,observedArch};});
  if(o.target==='ios'){const observed=(await run('ios-archive-arch','xcrun',['lipo','-archs',findLibrary])).trim();assert.equal(observed,o.arch==='x64'?'x86_64':'arm64');artifacts[0].observedArch=o.arch;}
  const dependencyFiles=[path.join(install,'lib',o.target==='windows'?'libssl.lib':'libssl.a'),path.join(install,'lib',o.target==='windows'?'libcrypto.lib':'libcrypto.a'),path.join(o.directory,'libsrtp',o.target==='windows'?o.configuration:o.target==='ios'?o.configuration+'-'+o.sdk:'',o.target==='windows'?'srtp2.lib':'libsrtp2.a')];
