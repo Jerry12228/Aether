@@ -20,7 +20,7 @@ jobs:
       - name: Build exact approved dependency sources and Linux native targets
         run: node scripts/build-protocol.cjs --target linux --arch x64 --configuration Release --build-dir build/phase06/targets/linux-x64 --budget-seconds 1800
       - name: Real Linux secure socket, legacy, multistream, recovery and authority contracts
-        run: ctest --test-dir build/phase06/targets/linux-x64 -C Release --output-on-failure --no-tests=error
+        run: node scripts/run-protocol-target.cjs --manifest build/phase06/targets/linux-x64/protocol-target-Release.json --budget-seconds 900
       - name: Retain success and failure logs without fixture credentials
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -32,6 +32,9 @@ jobs:
             build/phase06/targets/linux-x64/logs/
             build/phase06/targets/linux-x64/*manifest*.json
             build/phase06/targets/linux-x64/protocol-target-*.json
+            build/phase06/targets/linux-x64/protocol-run.json
+            build/phase06/targets/linux-x64/run-logs/
+            build/phase06/targets/linux-x64/target-ctest.xml
             build/phase06/targets/linux-x64/Testing/
             build/phase06/targets/linux-x64/libaether_protocol.so
             build/phase06/targets/linux-x64/aether_protocol_*

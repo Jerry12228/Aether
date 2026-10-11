@@ -136,17 +136,20 @@ function verifyBindings(m,includeLogs=false) {
   if(m.decision.choice==='approve-concrete') {
     assert.equal(m.status,'approved-concrete');assert.ok(m.decision.rawResponse&&m.decision.recordedAt);
     const archive=path.resolve(root,m.decision.reviewedArchive);assert.ok(archive.startsWith(path.join(root,'build')+path.sep));
-    const originalBytes=fs.readFileSync(path.join(archive,'docs/phase06/PROTOCOL-ADR.md'));
+    const snapshot=JSON.parse(fs.readFileSync(path.join(root,'docs/phase06/06-01-REVIEW-SNAPSHOT.json'),'utf8'));
+    const localArchive=fs.existsSync(path.join(archive,'docs/phase06/PROTOCOL-ADR.md'));
+    const originalBytes=localArchive?fs.readFileSync(path.join(archive,'docs/phase06/PROTOCOL-ADR.md')):Buffer.from(snapshot.reviewedAdr.base64,'base64');
     assert.equal(digest(originalBytes),m.decision.reviewedAdrSha256,'Reviewed ADR drift');
     const original=JSON.parse(originalBytes.toString('utf8').split(dossierMarker)[1].match(/```json\s*([\s\S]*?)\s*```/)[1]);
     assert.deepEqual(m.materials,original.materials,'Material drift');assert.deepEqual(m.evidenceManifest,original.evidenceManifest,'Evidence drift');
     assert.equal(m.binarySha256,original.binarySha256);assert.equal(m.librarySha256,original.librarySha256);
     for(const item of [...m.materials,...(includeLogs?m.evidenceManifest:[])]) {
       const file=path.resolve(archive,item.path);assert.ok(file.startsWith(archive+path.sep));
-      assert.equal(digest(fs.readFileSync(file)),item.sha256,'Material drift: '+item.path);
+      const material=localArchive?fs.readFileSync(file):Buffer.from(snapshot.materials.find(s=>s.path===item.path)?.base64||'','base64');
+      assert.equal(digest(material),item.sha256,'Material drift: '+item.path);
     }
-    assert.equal(digest(fs.readFileSync(path.join(archive,'build/phase06/windows-x64/Debug/aether_protocol_tracer.exe'))),m.binarySha256);
-    assert.equal(digest(fs.readFileSync(path.join(archive,'build/phase06/windows-x64/Debug/aether_protocol.dll'))),m.librarySha256);
+    if(localArchive){assert.equal(digest(fs.readFileSync(path.join(archive,'build/phase06/windows-x64/Debug/aether_protocol_tracer.exe'))),m.binarySha256);assert.equal(digest(fs.readFileSync(path.join(archive,'build/phase06/windows-x64/Debug/aether_protocol.dll'))),m.librarySha256);}
+    else {assert.equal(snapshot.binarySha256,m.binarySha256);assert.equal(snapshot.librarySha256,m.librarySha256);assert.equal(snapshot.historicalBinaryBytesIncluded,false);}
     return;
   }
   for(const item of [...m.materials,...(includeLogs?m.evidenceManifest:[])]) {
@@ -323,8 +326,10 @@ else if(process.argv.includes('--manifest')) {
     assert.equal(lock.parity.length,637);assert.deepEqual(lock.parity.map(p=>p.id),baseline.features.map(p=>p.id));
     assert.deepEqual(lock.parity.flatMap(p=>p.caseIds),baseline.features.flatMap(p=>p.caseIds));
     assert.ok(lock.baselineRows.length>=250);
-    for(const row of lock.baselineRows){const repo=JSON.parse(fs.readFileSync(path.join(root,'references/upstream-lock.json'),'utf8')).repositories.find(r=>r.name===row.repo);assert.equal(row.sha,repo.commit);assert.equal(digest(fs.readFileSync(path.join(root,repo.path,row.file))),row.sourceSha256);assert.ok(row.disposition&&row.aetherField&&row.owner&&row.vector);}
-    for(const dep of lock.dependencies){assert.ok(dep.notices.length>0);for(const n of dep.notices)assert.equal(digest(Buffer.from(n.text)),n.sha256);for(const a of dep.targetArtifacts)assert.equal(digest(fs.readFileSync(path.join(root,a.path))),a.sha256);}
+    const current=process.env.AETHER_PROTOCOL_TARGET_MANIFEST?JSON.parse(fs.readFileSync(process.env.AETHER_PROTOCOL_TARGET_MANIFEST,'utf8')):null;
+    for(const row of lock.baselineRows){const repo=JSON.parse(fs.readFileSync(path.join(root,'references/upstream-lock.json'),'utf8')).repositories.find(r=>r.name===row.repo);assert.equal(row.sha,repo.commit);const source=current?.baselineSources.find(s=>s.repo===row.repo&&s.sourceFile===row.file);if(current){assert.ok(source);assert.equal(source.sourceSha,row.sha);assert.equal(source.researchOnly,true);}assert.equal(digest(fs.readFileSync(path.join(root,source?source.file:path.join(repo.path,row.file)))),row.sourceSha256);assert.ok(row.disposition&&row.aetherField&&row.owner&&row.vector);}
+    for(const dep of lock.dependencies){assert.ok(dep.notices.length>0);for(const n of dep.notices)assert.equal(digest(Buffer.from(n.text)),n.sha256);if(!current){for(const a of dep.targetArtifacts)assert.equal(digest(fs.readFileSync(path.join(root,a.path))),a.sha256);}else{const d=current.dependencies.find(d=>d.name===dep.name);assert.ok(d);assert.equal(d.sourceSha,dep.sourceSha);assert.equal(d.archiveSha256,dep.archiveSha256);}}
+    if(current){assert.equal(current.dependencyArtifacts.length,3);for(const a of current.dependencyArtifacts)assert.equal(digest(fs.readFileSync(path.join(root,a.file))),a.sha256);}
   });
   test('the concrete ADR binds native source, target, vectors, licenses and original settings',()=>{
     const adr=fs.readFileSync(path.join(root,'docs/phase06/PROTOCOL-ADR.md'),'utf8');

@@ -206,7 +206,7 @@ if(BUILD_TESTING AND NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
   set_tests_properties(protocol_multistream PROPERTIES LABELS protocol-fast TIMEOUT 30)
   if(AETHER_PROTOCOL_TARGET)
     set_tests_properties(protocol_control protocol_tracer protocol_multistream protocol_recovery PROPERTIES
-      ENVIRONMENT "AETHER_PROTOCOL_CONFIGURATION=$<CONFIG>;AETHER_PROTOCOL_MANIFEST=${CMAKE_CURRENT_BINARY_DIR}/target-manifest-$<CONFIG>.json;AETHER_PROTOCOL_BUILD=$<TARGET_FILE_DIR:aether_protocol_tracer>;AETHER_OPENSSL_BIN=${AETHER_OPENSSL_BIN}")
+      ENVIRONMENT "AETHER_PROTOCOL_CONFIGURATION=$<CONFIG>;AETHER_PROTOCOL_MANIFEST=${CMAKE_CURRENT_BINARY_DIR}/target-manifest-$<CONFIG>.json;AETHER_PROTOCOL_TARGET_MANIFEST=${CMAKE_CURRENT_BINARY_DIR}/protocol-target-$<CONFIG>.json;AETHER_PROTOCOL_BUILD=$<TARGET_FILE_DIR:aether_protocol_tracer>;AETHER_OPENSSL_BIN=${AETHER_OPENSSL_BIN}")
   endif()
 endif()
 
@@ -233,7 +233,7 @@ if(BUILD_TESTING AND CMAKE_SYSTEM_NAME STREQUAL "iOS" AND AETHER_IOS_SDK STREQUA
     target_link_libraries(${T} PRIVATE OpenSSL::SSL libSRTP::srtp2 aether_fec)
   endforeach()
   target_sources(ProtocolContract PRIVATE $<TARGET_OBJECTS:aether_ios_control_host> $<TARGET_OBJECTS:aether_ios_control_client>)
-  target_include_directories(ProtocolContract PRIVATE include)
+  target_include_directories(ProtocolContract PRIVATE include src)
   target_compile_features(ProtocolContract PRIVATE cxx_std_20)
   target_link_libraries(ProtocolContract PRIVATE aether_ios_control_core OpenSSL::SSL libSRTP::srtp2 aether_fec)
   set_target_properties(ProtocolContract PROPERTIES XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "org.aether.phase06.tests" XCODE_ATTRIBUTE_GENERATE_INFOPLIST_FILE YES XCODE_GENERATE_SCHEME TRUE)
