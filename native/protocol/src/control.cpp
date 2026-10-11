@@ -76,19 +76,27 @@ void connection_lost(ConnectionContext& c,ControlState& s,int32_t status){std::s
 int32_t restore_authority(ConnectionContext& c,ControlState& s,const Identity& old){Identity next;auto status=c.host_services->fresh_auth_result({old,0,0,{}},next);if(status==AP_OK){require(next.connection==c.config.connection_id&&next.lease==c.config.lease_epoch&&next.key==c.config.key_generation,AP_STALE);s.authority_connection=next.connection;auto authority=c.host_services->snapshot({next,0,0,{}});std::lock_guard lock(s.mutex);s.recovery_state=authority.control_allowed?"restored":"observer";s.recovery_reason="upstream-confirmation-required";s.failure_status=AP_OK;snapshot(c,s);}else{std::lock_guard lock(s.mutex);s.active_mask=0;s.grants=0;s.recovery_state="manual";s.recovery_reason=status==AP_BUSY?"control-lease-conflict":"permission-or-auth-failed";snapshot(c,s);}return status;}
 std::optional<Record> pump(ConnectionContext& c,ControlState& s){
  if(s.incoming.empty())s.frame_deadline=Clock::now()+std::chrono::seconds(3);else require(Clock::now()<s.frame_deadline,AP_TIMEOUT);
- size_t target=s.incoming.size()<4?4:124;
- if(s.incoming.size()>=4){auto size=u32(s.incoming.data());require(size>=120&&size<=8312,AP_LENGTH);if(s.incoming.size()>=124)target=4+size;}
- if(s.incoming.size()<target){
-  if(SSL_pending(c.tls.get())==0&&!datagram_ready(c.tcp.value,Clock::now()+std::chrono::milliseconds(2)))return {};
+ // Drain an already available frame without placing a media window between
+ // its length, fixed header and payload. Fragmented peers still have a bounded
+ // number of reads per pump and the original three-second frame deadline.
+ auto read_fragment=[&](size_t target){
+  if(SSL_pending(c.tls.get())==0&&!datagram_ready(c.tcp.value,Clock::now()+std::chrono::milliseconds(2)))return false;
   require(Clock::now()<s.frame_deadline,AP_TIMEOUT);std::array<uint8_t,8316> b{};size_t got=0;ERR_clear_error();auto result=SSL_read_ex(c.tls.get(),b.data(),target-s.incoming.size(),&got);
-  if(result!=1){auto error=SSL_get_error(c.tls.get(),result);if(error==SSL_ERROR_WANT_READ||error==SSL_ERROR_WANT_WRITE)return {};throw Failure{AP_LENGTH};}
+  if(result!=1){auto error=SSL_get_error(c.tls.get(),result);if(error==SSL_ERROR_WANT_READ||error==SSL_ERROR_WANT_WRITE)return false;throw Failure{AP_LENGTH};}
   require(got>0,AP_LENGTH);s.incoming.insert(s.incoming.end(),b.begin(),b.begin()+got);
+  return true;
+ };
+ for(unsigned fragment=0;fragment<2&&s.incoming.size()<124;++fragment){
+  if(s.incoming.size()>=4){auto size=u32(s.incoming.data());require(size>=120&&size<=8312,AP_LENGTH);}
+  if(!read_fragment(s.incoming.size()<4?4:124))return {};
  }
  if(s.incoming.size()<124)return {};
- const auto h=s.incoming.data()+4;auto size=u32(s.incoming.data());require(!std::memcmp(h,"ACTL",4)&&u16(h+4)==1,AP_FIELD);require(u16(h+6)>=1&&u16(h+6)<=14&&u32(h+8)<=2,AP_FIELD);require(u32(h+12)==size-120,AP_LENGTH);
+ auto h=s.incoming.data()+4;auto size=u32(s.incoming.data());require(size>=120&&size<=8312,AP_LENGTH);require(!std::memcmp(h,"ACTL",4)&&u16(h+4)==1,AP_FIELD);require(u16(h+6)>=1&&u16(h+6)<=14&&u32(h+8)<=2,AP_FIELD);require(u32(h+12)==size-120,AP_LENGTH);
  const auto id=identity(c);std::array<uint64_t,10> expected{id.host,id.instance,id.display,u64(h+64),id.connection,id.client,id.lease,id.config,id.key,3};for(size_t i=0;i<10;++i)require(u64(h+40+8*i)==expected[i],i==9?AP_VERSION:i>=6?AP_STALE:AP_IDENTITY);
  require(!u64(h+64)||u64(h+64)==id.stream,AP_IDENTITY);
+ for(unsigned fragment=0;fragment<2&&s.incoming.size()<size+4;++fragment)if(!read_fragment(size+4))return {};
  if(s.incoming.size()!=size+4)return {};
+ h=s.incoming.data()+4;
  Record r;r.opcode=u16(h+6);r.flags=u32(h+8);r.operation=u64(h+16);r.request=u64(h+24);r.sequence=u64(h+32);r.identity=id;r.identity.stream=u64(h+64);r.payload.assign(s.incoming.begin()+124,s.incoming.end());s.incoming.clear();
  if(r.sequence<=s.rx){++s.rejected_frames;return {};}
  require(r.sequence==s.rx+1,AP_STALE);s.rx=r.sequence;(void)fields(r.payload);return r;
