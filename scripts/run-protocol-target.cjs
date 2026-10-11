@@ -29,9 +29,12 @@ async function runTarget(o){
    record.destination={uuid:simulator,runtime:runtime.identifier,runtimeVersion:runtime.version,deviceType:device.identifier,owned:true};
    await run('simulator-boot','xcrun',['simctl','boot',simulator]);await run('simulator-ready','xcrun',['simctl','bootstatus',simulator,'-b']);
    const result=path.join(directory,'ProtocolContract.xcresult');assert.ok(!fs.existsSync(result),'A fresh result bundle is required');
-   await run('xctest','xcodebuild',['test','-project',path.join(directory,'AetherProtocol.xcodeproj'),'-scheme','ProtocolContract','-configuration',m.configuration,'-destination','id='+simulator,'-parallel-testing-enabled','NO','-resultBundlePath',result,'CODE_SIGNING_ALLOWED=NO']);
+   const scheme=path.join(directory,'AetherProtocol.xcodeproj/xcshareddata/xcschemes/ProtocolContractHost.xcscheme');
+   assert.match(fs.readFileSync(scheme,'utf8'),/<TestableReference\b[\s\S]*?BlueprintName="ProtocolContract"/,'Native test host scheme must expose the XCTest bundle');
+   record.scheme={file:path.relative(root,scheme).replaceAll('\\','/'),sha256:hash(fs.readFileSync(scheme))};
+   await run('xctest','xcodebuild',['test','-project',path.join(directory,'AetherProtocol.xcodeproj'),'-scheme','ProtocolContractHost','-configuration',m.configuration,'-destination','id='+simulator,'-parallel-testing-enabled','NO','-resultBundlePath',result,'CODE_SIGNING_ALLOWED=NO']);
    const summary=JSON.parse(await run('xcresult-summary','xcrun',['xcresulttool','get','test-results','summary','--path',result]));
-   assert.ok(summary.totalTestCount>=37);assert.equal(summary.failedTests,0);assert.equal(summary.skippedTests,0);assert.equal(summary.passedTests,summary.totalTestCount);
+   assert.ok(summary.totalTestCount>=38);assert.equal(summary.failedTests,0);assert.equal(summary.skippedTests,0);assert.equal(summary.passedTests,summary.totalTestCount);
    record.tests={tests:summary.totalTestCount,passed:summary.passedTests,failed:summary.failedTests,skipped:summary.skippedTests,cancelled:0,xcresult:path.relative(root,result).replaceAll('\\','/')};
   }else if(m.target==='android')await require('./android-protocol-runner.cjs').runAndroid({m,record,run,root,directory,hash});
   else throw Error('Matching target runtime runner is required; a build is insufficient');

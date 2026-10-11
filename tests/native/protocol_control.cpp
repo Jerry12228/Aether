@@ -42,7 +42,11 @@ std::mutex event_mutex;struct Event{uint64_t seq,op;uint32_t kind;int32_t status
 std::atomic<unsigned> callback_delay{0};std::atomic<bool> callback_entered{false};
 void callback(uint64_t handle,uint64_t seq,uint32_t kind,int32_t status,uint64_t op){if(kind==11&&op==2&&callback_delay){callback_entered=true;std::this_thread::sleep_for(std::chrono::milliseconds(callback_delay.load()));}std::lock_guard lock(event_mutex);events.push_back({seq,op,kind,status,handle});}
 std::string read(const fs::path& p){std::ifstream f(p);return {std::istreambuf_iterator<char>(f),{}};}
-void write(const fs::path& p,const std::string& text){std::ofstream(p)<<text;}
+void write(const fs::path& p,const std::string& text){
+ if(p.filename()=="ready"||p.filename()=="ready2"){
+  auto temporary=p;temporary+=".tmp";{std::ofstream file(temporary);file<<text;file.flush();need(file.good(),"complete ready marker");}fs::rename(temporary,p);
+ }else std::ofstream(p)<<text;
+}
 void be16(uint8_t* b,uint16_t n){b[0]=static_cast<uint8_t>(n>>8);b[1]=static_cast<uint8_t>(n);}
 void be32(uint8_t* b,uint32_t n){for(int i=3;i>=0;--i){b[i]=static_cast<uint8_t>(n);n>>=8;}}
 void be64(uint8_t* b,uint64_t n){for(int i=7;i>=0;--i){b[i]=static_cast<uint8_t>(n);n>>=8;}}

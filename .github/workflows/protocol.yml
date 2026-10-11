@@ -52,6 +52,16 @@ jobs:
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/aether_media_security
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/Release/*.dll
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/Release/*.exe
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/CMakeCache.txt
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/CMakeFiles/*/CMakeCXXCompiler.cmake
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/fec-target-config.json
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/internal/botan/internal/target_info.h
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/internal/botan/internal/version_info.h
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/public/botan/build.h
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/openssl-install/lib/*ssl.*
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/openssl-install/lib/*crypto.*
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/libsrtp/**/srtp2.lib
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/libsrtp/libsrtp2.a
             artifacts/phase06/tracer/*.json
             artifacts/phase06/multistream/*.json
             build/phase06/control-fixtures/*/*/*.log
@@ -88,6 +98,15 @@ jobs:
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/run-logs/
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/Release-${{ matrix.sdk }}/libaether_protocol.a
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/ProtocolContract.xcresult/
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/AetherProtocol.xcodeproj/xcshareddata/xcschemes/ProtocolContractHost.xcscheme
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/CMakeCache.txt
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/CMakeFiles/*/CMakeCXXCompiler.cmake
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/fec-target-config.json
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/botan-platform-build/build/include/internal/botan/internal/target_info.h
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/botan-platform-build/build/include/internal/botan/internal/version_info.h
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/botan-platform-build/build/include/public/botan/build.h
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/openssl-install/lib/*.a
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/libsrtp/Release-${{ matrix.sdk }}/libsrtp2.a
   android:
     strategy:
       fail-fast: false
@@ -119,3 +138,12 @@ jobs:
             build/phase06/targets/android-${{ matrix.arch }}/*.so
             build/phase06/targets/android-${{ matrix.arch }}/aether_protocol_*
             build/phase06/targets/android-${{ matrix.arch }}/aether_media_security
+            build/phase06/targets/android-${{ matrix.arch }}/CMakeCache.txt
+            build/phase06/targets/android-${{ matrix.arch }}/CMakeFiles/*/CMakeCXXCompiler.cmake
+            build/phase06/targets/android-${{ matrix.arch }}/dependencies/fec-target-config.json
+            build/phase06/targets/android-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/internal/botan/internal/target_info.h
+            build/phase06/targets/android-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/internal/botan/internal/version_info.h
+            build/phase06/targets/android-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/public/botan/build.h
+            build/phase06/targets/android-${{ matrix.arch }}/dependencies/openssl-install/bin/openssl
+            build/phase06/targets/android-${{ matrix.arch }}/dependencies/openssl-install/lib/*.a
+            build/phase06/targets/android-${{ matrix.arch }}/libsrtp/libsrtp2.a

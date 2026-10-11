@@ -111,6 +111,21 @@ extern "C" void aether_contract_scenario(const char*,const char*);
 - (void)testUnauthenticatedHighSequence { [self runSecurity:@"high-sequence"]; }
 - (void)testRoleKeyEpoch { [self runSecurity:@"role-key-epoch"]; }
 - (void)testReplayAndChangedPlaintext { [self runSecurity:@"unchanged-retransmission"]; }
+- (void)testIndependentAesKnownAnswer {
+ NSURL* file=[[NSBundle bundleForClass:self.class] URLForResource:@"vectors" withExtension:@"json"];
+ NSDictionary* vectors=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:file] options:0 error:nil];
+ NSDictionary* v=[vectors[@"cryptographicKnownAnswers"] firstObject];XCTAssertNotNil(v);
+ auto decode=[](NSString* text){std::vector<uint8_t> b;for(NSUInteger i=0;i<text.length;i+=2){unsigned n=0;[[NSScanner scannerWithString:[text substringWithRange:NSMakeRange(i,2)]] scanHexInt:&n];b.push_back(static_cast<uint8_t>(n));}return b;};
+ auto key=decode(v[@"key"]),iv=decode(v[@"iv"]),plain=decode(v[@"plaintext"]),expected=decode(v[@"ciphertext"]),expectedTag=decode(v[@"tag"]);
+ XCTAssertEqual(key.size(),32u);XCTAssertEqual(iv.size(),12u);
+ auto context=EVP_CIPHER_CTX_new();XCTAssertNotEqual(context,nullptr);if(!context)return;
+ std::vector<uint8_t> cipher(plain.size()+16),tag(16);int size=0,final=0;
+ XCTAssertEqual(EVP_EncryptInit_ex(context,EVP_aes_256_gcm(),nullptr,key.data(),iv.data()),1);
+ XCTAssertEqual(EVP_EncryptUpdate(context,cipher.data(),&size,plain.data(),static_cast<int>(plain.size())),1);
+ XCTAssertEqual(EVP_EncryptFinal_ex(context,cipher.data()+size,&final),1);cipher.resize(static_cast<size_t>(size+final));
+ XCTAssertEqual(EVP_CIPHER_CTX_ctrl(context,EVP_CTRL_GCM_GET_TAG,16,tag.data()),1);EVP_CIPHER_CTX_free(context);
+ XCTAssertTrue(cipher==expected);XCTAssertTrue(tag==expectedTag);
+}
 - (void)testIndependentWireVectors {
  NSURL* file=[[NSBundle bundleForClass:self.class] URLForResource:@"vectors" withExtension:@"json"];
  NSDictionary* vectors=[NSJSONSerialization JSONObjectWithData:[NSData dataWithContentsOfURL:file] options:0 error:nil];

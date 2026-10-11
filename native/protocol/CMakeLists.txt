@@ -224,7 +224,8 @@ if(BUILD_TESTING AND CMAKE_SYSTEM_NAME STREQUAL "iOS" AND AETHER_IOS_SDK STREQUA
   target_link_libraries(ProtocolContractHost PRIVATE "-framework UIKit")
   set_target_properties(ProtocolContractHost PROPERTIES
     XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "org.aether.phase06.host"
-    XCODE_ATTRIBUTE_GENERATE_INFOPLIST_FILE YES)
+    XCODE_ATTRIBUTE_GENERATE_INFOPLIST_FILE YES
+    XCODE_GENERATE_SCHEME TRUE)
   find_package(XCTest REQUIRED)
   xctest_add_bundle(ProtocolContract ProtocolContractHost "${AETHER_ROOT}/tests/native/ios/ProtocolContract.mm")
   add_library(aether_ios_control_host OBJECT "${AETHER_ROOT}/tests/native/protocol_contract.cpp")

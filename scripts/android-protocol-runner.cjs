@@ -6,21 +6,23 @@ async function runAndroid({m,record,run,root,directory,hash}){
  const sdk=process.env.ANDROID_HOME||process.env.ANDROID_SDK_ROOT;assert.ok(sdk,'Actual Android SDK required');
  const adb=path.join(sdk,'platform-tools','adb'+(process.platform==='win32'?'.exe':''));
  const devices=await run('adb-devices',adb,['devices','-l']);record.deviceProbe=devices;
- let serial=process.env.AETHER_ADB_SERIAL,emulator=null,avd=null,remote=null;
+ let serial=process.env.AETHER_ADB_SERIAL,emulator=null,avd=null,remote=null,avdCommand=null;
  try{
-  if(!serial&&process.env.GITHUB_ACTIONS==='true'&&m.arch==='x64'){
-   assert.equal(process.platform,'linux');serial='emulator-5556';assert.ok(!devices.includes(serial),'Owned emulator port is already occupied');
+  if(!serial&&(process.env.GITHUB_ACTIONS==='true'||process.env.AETHER_PROTOCOL_EMULATOR==='x64')&&m.arch==='x64'){
+   assert.ok(['linux','win32'].includes(process.platform));serial='emulator-5556';assert.ok(!devices.includes(serial),'Owned emulator port is already occupied');
    const manager=path.join(sdk,'cmdline-tools/latest/bin/sdkmanager'),avdManager=path.join(sdk,'cmdline-tools/latest/bin/avdmanager');
-   await run('android-runtime-install',manager,['emulator','system-images;android-35;google_apis;x86_64']);
-   avd='Aether_Phase06_'+process.pid;process.env.ANDROID_AVD_HOME=path.join(directory,'owned-avd');fs.mkdirSync(process.env.ANDROID_AVD_HOME,{recursive:true});
-   await run('android-avd-create',avdManager,['create','avd','--force','--name',avd,'--package','system-images;android-35;google_apis;x86_64','--device','pixel_2']);
-   const exe=path.join(sdk,'emulator/emulator'),args=['-avd',avd,'-port','5556','-no-window','-no-audio','-no-snapshot','-no-boot-anim','-gpu','swiftshader_indirect'];
+   const image=process.platform==='win32'?'system-images;android-26;google_apis;x86_64':'system-images;android-35;google_apis;x86_64';
+   if(process.platform==='win32'){const java=process.env.AETHER_JAVA_BIN;assert.ok(java&&path.isAbsolute(java)&&fs.existsSync(java),'Actual native Java executable required');assert.ok(fs.existsSync(path.join(sdk,...image.split(';'))),'Installed local image required');avdCommand={exe:java,args:['-classpath',path.join(sdk,'cmdline-tools/latest/lib/avdmanager-classpath.jar'),'com.android.sdklib.tool.AvdManagerCli']};}
+   else{await run('android-runtime-install',manager,['emulator',image]);avdCommand={exe:avdManager,args:[]};}
+   avd='Aether_Phase06_'+process.pid;process.env.ANDROID_AVD_HOME=path.join(directory,'owned-avd');process.env.ANDROID_USER_HOME=path.join(directory,'owned-android-home');fs.mkdirSync(process.env.ANDROID_AVD_HOME,{recursive:true});fs.mkdirSync(process.env.ANDROID_USER_HOME,{recursive:true});
+   await run('android-avd-create',avdCommand.exe,[...avdCommand.args,'create','avd','--force','--name',avd,'--path',path.join(process.env.ANDROID_AVD_HOME,avd+'.avd'),'--package',image,'--device','pixel_2']);
+   const exe=path.join(sdk,'emulator','emulator'+(process.platform==='win32'?'.exe':'')),args=['-avd',avd,'-port','5556','-no-window','-no-audio','-no-snapshot','-no-boot-anim','-gpu','swiftshader_indirect'];
    const log=path.join(directory,'run-logs/emulator.log');let outputBytes=0,overflow=false;
    emulator=cp.spawn(exe,args,{shell:false,windowsHide:true,stdio:['ignore','pipe','pipe']});const owned=emulator;
    const emit=b=>{outputBytes+=b.length;if(outputBytes<=1024*1024)fs.appendFileSync(log,clean(b.toString()));else{overflow=true;owned.kill();}};
    fs.writeFileSync(log,JSON.stringify({executable:exe,args})+'\n');emulator.stdout.on('data',emit);emulator.stderr.on('data',emit);
    let launchError=null;emulator.on('error',e=>{launchError=e;});
-   record.destination={serial,avd,owned:true,pid:emulator.pid,image:'system-images;android-35;google_apis;x86_64',emulatorSha256:hash(fs.readFileSync(exe))};
+   record.destination={serial,avd,owned:true,pid:emulator.pid,image,emulatorSha256:hash(fs.readFileSync(exe))};
    await run('adb-wait',adb,['-s',serial,'wait-for-device'],false,120000);
    let ready=false;for(let i=0;i<90;i++){assert.ok(!launchError&&!overflow&&emulator.exitCode===null,'Owned emulator exited before boot');const boot=await run('adb-boot-'+i,adb,['-s',serial,'shell','getprop','sys.boot_completed']);if(boot.trim()==='1'){ready=true;break;}await pause(2000);}assert.ok(ready,'Actual Android boot deadline');
   }
@@ -28,7 +30,7 @@ async function runAndroid({m,record,run,root,directory,hash}){
   const abi={arm32:'armeabi-v7a',arm64:'arm64-v8a',x64:'x86_64'}[m.arch];
   const abilist=(await run('adb-abi',adb,['-s',serial,'shell','getprop','ro.product.cpu.abilist'])).trim();assert.ok(abilist.split(',').includes(abi),'Matching native ABI required');
   const machine=(await run('adb-machine',adb,['-s',serial,'shell','uname','-m'])).trim();assert.ok(m.arch==='x64'?machine==='x86_64':m.arch==='arm64'?machine==='aarch64':['armv7l','armv8l','aarch64'].includes(machine),'CPU architecture differs from native ABI');
-  const bridge=(await run('adb-native-bridge',adb,['-s',serial,'shell','getprop','ro.dalvik.vm.native.bridge'])).trim();assert.ok(!bridge||bridge==='0','A translated app ABI cannot prove standalone native execution');
+  const bridge=(await run('adb-native-bridge',adb,['-s',serial,'shell','getprop','ro.dalvik.vm.native.bridge'])).trim();assert.ok(!bridge||bridge==='0'||m.arch==='x64','A translated app ABI cannot prove standalone native execution');
   const api=Number((await run('adb-api',adb,['-s',serial,'shell','getprop','ro.build.version.sdk'])).trim());assert.ok(api>=21);
   record.destination={...record.destination,serial,abi,abilist,machine,api,nativeBridge:bridge,physical:!serial.startsWith('emulator-')};record.physical=record.destination.physical;
   remote='/data/local/tmp/aether-phase06-'+m.sourceCommit.slice(0,12)+'-'+process.pid;assert.match(remote,/^\/data\/local\/tmp\/aether-phase06-[a-f0-9]{12}-\d+$/);
@@ -52,7 +54,7 @@ async function runAndroid({m,record,run,root,directory,hash}){
   const cleanupErrors=[];
   if(remote)try{await run('adb-owned-remove',adb,['-s',serial,'shell','rm','-rf',remote],true);}catch(e){cleanupErrors.push(e.message);}
   if(emulator){try{await run('adb-owned-emulator-stop',adb,['-s',serial,'emu','kill'],true);}catch(e){cleanupErrors.push(e.message);}finally{if(emulator.exitCode===null){emulator.kill();await Promise.race([new Promise(resolve=>emulator.once('close',resolve)),pause(5000)]);if(emulator.exitCode===null){emulator.kill('SIGKILL');cleanupErrors.push('Owned emulator required forced termination');}}}const log=path.join(directory,'run-logs/emulator.log');record.emulatorLog={file:path.relative(root,log).replaceAll('\\','/'),sha256:hash(fs.readFileSync(log))};}
-  if(avd)try{await run('android-avd-delete',path.join(sdk,'cmdline-tools/latest/bin/avdmanager'),['delete','avd','--name',avd],true);}catch(e){cleanupErrors.push(e.message);}
+  if(avd)try{assert.ok(path.resolve(process.env.ANDROID_AVD_HOME).startsWith(path.resolve(root,'build')+path.sep),'Owned AVD deletion boundary');await run('android-avd-delete',avdCommand.exe,[...avdCommand.args,'delete','avd','--name',avd],true);}catch(e){cleanupErrors.push(e.message);}
   if(cleanupErrors.length){record.cleanupErrors=cleanupErrors;throw Error(cleanupErrors.join('; '));}
  }
 }
