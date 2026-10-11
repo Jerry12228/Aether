@@ -63,7 +63,6 @@ void realtime_frames(){
  send_frame(2,2,3);send_frame(3,0,3);receiver.exchange_deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(100);
  auto second=media_service_window(receiver,static_cast<uint16_t>(peer),&payload,1,2);
  check(receiver.streams[0]->received==3&&second.video1==1&&receiver.streams[0]->authenticated_bytes==std::string(1,'\3'));
- std::cout<<"{\"kind\":\"realtime-frame-contract\",\"queuedFrames\":2,\"deliveredFrames\":3,\"lateRepairRedelivered\":false,\"mediaTtlMs\":25}\n";
 }
 void fec(){
  MediaLimits limits;limits.shard=4;limits.frame=8;const Bytes original{0,1,2,3,4,5,6,7};const auto encoded=fec_encode(original,limits);
@@ -75,5 +74,7 @@ void fec(){
 }
 int main(int argc,char** argv){try{
  check(argc==2&&srtp_init()==srtp_err_status_ok);const std::string mode(argv[1]);if(mode=="fec-golden")fec();else security(mode);
- std::cout<<"{\"ok\":true,\"case\":\""<<mode<<"\"}\n";return 0;
+ std::cout<<"{\"ok\":true,\"case\":\""<<mode<<'"';
+ if(mode=="fec-golden")std::cout<<",\"queuedFrames\":2,\"deliveredFrames\":3,\"lateRepairRedelivered\":false,\"mediaTtlMs\":25";
+ std::cout<<"}\n";return 0;
  }catch(const std::exception& e){std::cerr<<"native media contract failure: "<<e.what()<<"\n";return 2;}catch(...){std::cerr<<"native media contract failure\n";return 2;}}
