@@ -46,8 +46,18 @@ async function build(o){
   const cpu={x64:'x86_64',arm64:'arm64',arm32:'arm32'}[o.arch];
   const configureArgs=['configure.py',`--cc=${cc}`,`--os=${o.target}`,`--cpu=${cpu}`,'--minimized-build','--enable-modules=zfec','--disable-modules=zfec_vperm,zfec_gfni,cpuid','--disable-asm','--disable-shared-library','--build-targets=static','--without-documentation','--link-method=copy',`--with-build-dir=${generated}`];
   if(cc==='msvc')configureArgs.push('--msvc-runtime=MT','--cc-min-version=19.50');
+  if(o.target==='android'){
+   const sdk=process.env.ANDROID_HOME||process.env.ANDROID_SDK_ROOT;assert.ok(sdk,'Android SDK required for target compiler probe');
+   const hostTag=process.platform==='win32'?'windows-x86_64':process.platform==='darwin'?'darwin-x86_64':'linux-x86_64';
+   const triple={arm32:'armv7a-linux-androideabi',arm64:'aarch64-linux-android',x64:'x86_64-linux-android'}[o.arch];
+   configureArgs.push('--cc-bin='+path.join(sdk,'ndk/28.2.13676358/toolchains/llvm/prebuilt',hostTag,'bin',triple+'21-clang++'+(process.platform==='win32'?'.cmd':'')));
+  }
+  if(o.target==='ios'){
+   const compiler=(await run('ios-fec-compiler','xcrun',['--sdk',o.sdk,'--find','clang++'])).trim(),sysroot=(await run('ios-fec-sdk','xcrun',['--sdk',o.sdk,'--show-sdk-path'])).trim();
+   configureArgs.push('--cc-bin='+compiler,'--cc-abi-flags=-isysroot '+sysroot+' -arch '+(o.arch==='x64'?'x86_64':'arm64')+' '+(o.sdk==='iphoneos'?'-mios-version-min=13.0':'-mios-simulator-version-min=13.0'));
+  }
   const python=process.platform==='win32'?'python':'python3';
-  await run('botan-platform-configure',python,configureArgs,source,{...process.env,GIT_CEILING_DIRECTORIES:source});
+  await run('botan-platform-configure',python,configureArgs,source,{...process.env,GIT_CEILING_DIRECTORIES:path.dirname(source)});
   const config=JSON.parse(fs.readFileSync(path.join(generated,'build/build_config.json'),'utf8'));
   // codec and misc are virtual grouping entries present in the original config.
   assert.deepEqual([...config.mod_list].sort(),['base','codec','hex','misc','rng','utils','zfec']);

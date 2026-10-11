@@ -55,6 +55,12 @@ endif()
 set(ENABLE_WARNINGS_AS_ERRORS ON CACHE BOOL "Dependency warnings are errors" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Static dependency" FORCE)
 add_subdirectory("${AETHER_DEPS}/libsrtp" "${CMAKE_CURRENT_BINARY_DIR}/libsrtp")
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
+  # Xcode injects an additional precision diagnostic absent from the fixed
+  # upstream flags. Our SRTP policies contain exactly one master key; retain
+  # upstream -Werror while removing only this generator-injected warning.
+  set_target_properties(srtp2 PROPERTIES XCODE_ATTRIBUTE_GCC_WARN_64_TO_32_BIT_CONVERSION NO)
+endif()
 if(MSVC AND TARGET srtp_driver)
   # The fixed upstream test has guarded tmp_policy initialization. MSVC 19.50
   # reports C4701 under /O2; keep /WX and compile only this KAT driver with /Od.

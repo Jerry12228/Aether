@@ -46,7 +46,7 @@ void close_transport_tls(Context& c) noexcept {
 #ifndef _WIN32
   if(c.tcp.value<0||c.tcp.value>=FD_SETSIZE)break;
 #endif
-  FD_SET(c.tcp.value,&read);timeval timeout{0,static_cast<long>(left)};
+  FD_SET(c.tcp.value,&read);timeval timeout{0,static_cast<decltype(timeval{}.tv_usec)>(left)};
   if(select(static_cast<int>(c.tcp.value)+1,&read,nullptr,nullptr,&timeout)<=0)break;
   int received=static_cast<int>(recv(c.tcp.value,discard.data(),static_cast<int>(discard.size()),0));if(received<=0)break;total+=static_cast<size_t>(received);
  }
@@ -65,7 +65,7 @@ void wait_socket(Context& c,Socket s,bool write){
  require(s>=0&&s<FD_SETSIZE,AP_BUSY);
 #endif
  auto remaining=std::chrono::duration_cast<std::chrono::microseconds>(c.exchange_deadline-std::chrono::steady_clock::now()).count();require(remaining>0,AP_TIMEOUT);
- fd_set fds;FD_ZERO(&fds);FD_SET(s,&fds);timeval timeout{static_cast<long>(remaining/1000000),static_cast<long>(remaining%1000000)};
+ fd_set fds;FD_ZERO(&fds);FD_SET(s,&fds);timeval timeout{static_cast<decltype(timeval{}.tv_sec)>(remaining/1000000),static_cast<decltype(timeval{}.tv_usec)>(remaining%1000000)};
  require(select(static_cast<int>(s)+1,write?nullptr:&fds,write?&fds:nullptr,nullptr,&timeout)>0,AP_TIMEOUT);
 }
 bool retry_tls(Context& c,int result,int32_t otherwise){
@@ -80,7 +80,7 @@ void make_socket(OwnedSocket& s,int kind,uint32_t ms){
  require(setsockopt(s.value,SOL_SOCKET,SO_RCVTIMEO,reinterpret_cast<char*>(&timeout),sizeof(timeout))==0,AP_INTERNAL_ERROR);
  require(setsockopt(s.value,SOL_SOCKET,SO_SNDTIMEO,reinterpret_cast<char*>(&timeout),sizeof(timeout))==0,AP_INTERNAL_ERROR);
 #else
- timeval timeout{static_cast<long>(ms/1000),static_cast<long>((ms%1000)*1000)};
+ timeval timeout{static_cast<decltype(timeval{}.tv_sec)>(ms/1000),static_cast<decltype(timeval{}.tv_usec)>((ms%1000)*1000)};
  require(setsockopt(s.value,SOL_SOCKET,SO_RCVTIMEO,&timeout,sizeof(timeout))==0,AP_INTERNAL_ERROR);
  require(setsockopt(s.value,SOL_SOCKET,SO_SNDTIMEO,&timeout,sizeof(timeout))==0,AP_INTERNAL_ERROR);
 #endif
@@ -185,6 +185,6 @@ bool datagram_ready(Socket socket,std::chrono::steady_clock::time_point deadline
  require(socket>=0&&socket<FD_SETSIZE,AP_BUSY);
 #endif
  auto remaining=std::chrono::duration_cast<std::chrono::microseconds>(deadline-std::chrono::steady_clock::now()).count();if(remaining<=0)return false;
- fd_set fds;FD_ZERO(&fds);FD_SET(socket,&fds);timeval timeout{static_cast<long>(remaining/1000000),static_cast<long>(remaining%1000000)};auto result=select(static_cast<int>(socket)+1,&fds,nullptr,nullptr,&timeout);require(result>=0,AP_INTERNAL_ERROR);return result>0;
+ fd_set fds;FD_ZERO(&fds);FD_SET(socket,&fds);timeval timeout{static_cast<decltype(timeval{}.tv_sec)>(remaining/1000000),static_cast<decltype(timeval{}.tv_usec)>(remaining%1000000)};auto result=select(static_cast<int>(socket)+1,&fds,nullptr,nullptr,&timeout);require(result>=0,AP_INTERNAL_ERROR);return result>0;
 }
 }
