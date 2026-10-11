@@ -224,9 +224,9 @@ else if(process.argv.includes('--manifest')) {
     if(fixture)return fixture;
     const base=path.join(root,'build/phase06/fixtures');fs.mkdirSync(base,{recursive:true});
     fixture=fs.mkdtempSync(path.join(base,'tracer-'));
-    const openssl=path.join(root,'build/phase06/dependencies/openssl-install/bin/openssl.exe');
+    const openssl=(process.env.AETHER_OPENSSL_BIN||path.join(root,'build/phase06/dependencies/openssl-install/bin/openssl.exe'));
     for(const [id,hostname] of [['host','aether-host.local'],['client','aether-client.local'],['untrusted','aether-client.local']]) {
-      const r=cp.spawnSync(openssl,['req','-x509','-newkey','ED25519','-noenc','-keyout',path.join(fixture,id+'.key'),'-out',path.join(fixture,id+'.pem'),'-subj','/CN='+hostname,'-addext','subjectAltName=DNS:'+hostname,'-days','1'],{encoding:'utf8',shell:false,windowsHide:true,timeout:5000,env:{...process.env,OPENSSL_CONF:'NUL'}});
+      const r=cp.spawnSync(openssl,['req','-x509','-newkey','ED25519','-noenc','-keyout',path.join(fixture,id+'.key'),'-out',path.join(fixture,id+'.pem'),'-subj','/CN='+hostname,'-addext','subjectAltName=DNS:'+hostname,'-days','1'],{encoding:'utf8',shell:false,windowsHide:true,timeout:5000,env:{...process.env,OPENSSL_CONF:process.platform==='win32'?'NUL':'/dev/null'}});
       assert.equal(r.status,0,'Test-only certificate generation failed');
     }
     fs.writeFileSync(path.join(fixture,'trust.pem'),Buffer.concat(['host','client'].map(id=>fs.readFileSync(path.join(fixture,id+'.pem')))));

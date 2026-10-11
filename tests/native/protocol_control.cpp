@@ -3,7 +3,17 @@
 #else
 #include "aether/protocol.h"
 #endif
+#ifdef _WIN32
 #include <windows.h>
+#else
+#include <unistd.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <dlfcn.h>
+#include <cstdlib>
+#define GetCurrentProcessId getpid
+#endif
 #include <iostream>
 #include <fstream>
 #include <filesystem>
@@ -50,7 +60,9 @@ int32_t wait_handle(uint64_t handle,uint64_t op){auto until=Clock::now()+std::ch
 void drain(uint64_t h){std::vector<Event> copy;{std::lock_guard lock(event_mutex);copy=events;}auto acknowledged=number_field(query(h),"acked");for(auto& e:copy)if(e.handle==h&&e.seq>acknowledged)need(aether_protocol_control_ack(h,e.seq)==AP_OK,"strict ack");}
 int32_t send(uint64_t h,uint64_t op,uint64_t req,uint32_t opcode,const std::vector<uint8_t>& b,uint32_t deadline=1000){AetherProtocolCommand command{1,sizeof(command),1,opcode,0,deadline,op,req,4,1,static_cast<uint32_t>(b.size()),0,b.data()};return aether_protocol_control_send(h,&command);}
 std::vector<uint8_t> confirmation(const std::string& json){Fields f;auto digest=string_field(json,"digest");std::vector<uint8_t> d;for(size_t i=0;i<digest.size();i+=2)d.push_back(static_cast<uint8_t>(std::stoul(digest.substr(i,2),nullptr,16)));f[6]=std::move(d);scalar(f,7,number_field(json,"hostRevision"),8);scalar(f,8,number_field(json,"expiryToken"),8);return payload(f);}
+#ifndef AETHER_IOS_CONTRACT
 struct Child {
+#ifdef _WIN32
  HANDLE process=nullptr,thread=nullptr;
  Child()=default;Child(const Child&)=delete;Child& operator=(const Child&)=delete;
  ~Child(){if(process)CloseHandle(process);if(thread)CloseHandle(thread);}
@@ -60,7 +72,20 @@ struct Child {
   auto ok=CreateProcessW(exe.c_str(),command.data(),nullptr,nullptr,TRUE,CREATE_NO_WINDOW,nullptr,nullptr,&start,&info);CloseHandle(out);need(ok!=FALSE,"process create");process=info.hProcess;thread=info.hThread;
  }
  DWORD join(){if(WaitForSingleObject(process,20000)!=WAIT_OBJECT_0){TerminateProcess(process,124);WaitForSingleObject(process,2000);return 124;}DWORD exit=0;need(GetExitCodeProcess(process,&exit)!=FALSE,"process exit");return exit;}
+#else
+ pid_t process=-1;
+ Child()=default;Child(const Child&)=delete;Child& operator=(const Child&)=delete;
+ ~Child(){if(process>0){kill(process,SIGKILL);waitpid(process,nullptr,0);}}
+ void launch(const fs::path& exe,const std::vector<std::string>& args,const fs::path& log){
+  std::vector<std::string> storage{exe.string()};storage.insert(storage.end(),args.begin(),args.end());
+  std::vector<char*> arguments;for(auto& arg:storage)arguments.push_back(arg.data());arguments.push_back(nullptr);
+  auto fd=open(log.c_str(),O_WRONLY|O_CREAT|O_TRUNC,0600);need(fd>=0,"log open");
+  process=fork();if(process==0){dup2(fd,STDOUT_FILENO);dup2(fd,STDERR_FILENO);close(fd);execv(exe.c_str(),arguments.data());_exit(127);}close(fd);need(process>0,"process create");
+ }
+ unsigned join(){auto until=Clock::now()+std::chrono::seconds(20);int status=0;while(Clock::now()<until){auto result=waitpid(process,&status,WNOHANG);if(result==process){process=-1;return WIFEXITED(status)?static_cast<unsigned>(WEXITSTATUS(status)):128u;}need(result>=0,"process wait");std::this_thread::sleep_for(std::chrono::milliseconds(2));}kill(process,SIGKILL);waitpid(process,&status,0);process=-1;return 124;}
+#endif
 };
+#endif
 AetherProtocolConfig config(const fs::path& base,bool host,unsigned port){static std::array<std::string,4> strings;strings={(base/(host?"host.pem":"client.pem")).string(),(base/(host?"host.key":"client.key")).string(),(base/"trust.pem").string(),host?"aether-client.local":"aether-host.local"};AetherProtocolConfig c{};c.abi_version=1;c.struct_size=sizeof(c);c.role=host?1:2;c.deadline_ms=3000;c.peer_control_port=port;c.host_id=1;c.instance_id=2;c.display_id=3;c.stream_id=4;c.connection_id=5;c.client_id=6;c.lease_epoch=1;c.config_generation=1;c.key_generation=1;c.certificate_file=strings[0].c_str();c.private_key_file=strings[1].c_str();c.trust_file=strings[2].c_str();c.peer_name=strings[3].c_str();c.version_count=1;c.versions[0]=3;c.permission_read=1;return c;}
 void scenario_rules(const fs::path& dir,const std::string& name){
  if(name=="authority-read-deny")provider_input(dir,7,0);
@@ -118,9 +143,23 @@ int host(const fs::path& base,const std::string& scenario){
  else{stop(h);std::cout<<"HOST pid="<<GetCurrentProcessId()<<" commits="<<provider->commits<<" activations="<<provider->activations<<" owned="<<provider->owned_count()<<std::endl;}return 0;
 }
 #else
-int orchestrate(const fs::path& exe,const std::string& selected){Check check;fs::path root=fs::current_path();while(!fs::exists(root/"native/protocol/CMakeLists.txt")&&root.has_parent_path()&&root!=root.parent_path())root=root.parent_path();need(fs::exists(root/"native/protocol/CMakeLists.txt"),"workspace root");auto base=root/"build/phase06/control-fixtures";fs::create_directories(base);auto run=base/std::to_string(GetCurrentProcessId());fs::create_directories(run);auto openssl=root/"build/phase06/dependencies/openssl-install/bin/openssl.exe";for(auto id:{"host","client"}){Child child;std::string hostname=std::string("aether-")+id+".local";child.launch(openssl,{"req","-x509","-newkey","ED25519","-noenc","-keyout",(run/(std::string(id)+".key")).string(),"-out",(run/(std::string(id)+".pem")).string(),"-subj","/CN="+hostname,"-addext","subjectAltName=DNS:"+hostname,"-days","1","-config","NUL"},run/(std::string(id)+"-cert.log"));need(child.join()==0,"fixture certificate");}write(run/"trust.pem",read(run/"host.pem")+read(run/"client.pem"));
- for(auto scenario:{"exact","no-provider","cancel-committed","cancel-before","grant-loss","readyall-loss","ready-delay","ready-loss","readyack-delay","readyack-loss","unknown","replay","digest","oversize","schema","sequence","required","duplicate","truncated","boundaries","stop-timeout","healthy-cancel","shared-provider","authority-read-deny","authority-capacity","authority-revision","authority-clock"}){if(!selected.empty()&&selected!=scenario)continue;auto dir=run/scenario;fs::create_directories(dir);for(auto file:{"host.pem","host.key","client.pem","client.key","trust.pem"})fs::copy_file(run/file,dir/file,fs::copy_options::overwrite_existing);scenario_rules(dir,scenario);Child host_child,client_child;host_child.launch(exe.parent_path()/"aether_protocol_control_host.exe",{"--host",dir.string(),scenario},dir/"host.log");auto until=Clock::now()+std::chrono::seconds(4);while(Clock::now()<until&&!fs::exists(dir/"ready"))std::this_thread::sleep_for(std::chrono::milliseconds(2));need(fs::exists(dir/"ready"),"host ready deadline");client_child.launch(exe,{"--client",dir.string(),scenario,read(dir/"ready")},dir/"client.log");auto client_exit=client_child.join();write(dir/"client-done","done");auto host_exit=host_child.join();auto client_log=read(dir/"client.log"),host_log=read(dir/"host.log");std::cout<<client_log<<host_log;check(client_exit==0&&host_exit==0&&client_log.find("# tests 0")==std::string::npos&&client_log.find("not ok")==std::string::npos,std::string("two-PID-real-DLL-")+scenario);check(host_log.find("owned=0")!=std::string::npos,std::string("host-six-dimensional-owned-cleanup-")+scenario);if(std::string(scenario)=="exact")check(host_log.find("commits=1 activations=1")!=std::string::npos,"provider-one-commit-one-activation");}
+#ifndef AETHER_IOS_CONTRACT
+int orchestrate(const fs::path& exe,const std::string& selected){Check check;fs::path root=fs::current_path();while(!fs::exists(root/"native/protocol/CMakeLists.txt")&&root.has_parent_path()&&root!=root.parent_path())root=root.parent_path();need(fs::exists(root/"native/protocol/CMakeLists.txt"),"workspace root");auto base=root/"build/phase06/control-fixtures";fs::create_directories(base);auto run=base/std::to_string(GetCurrentProcessId());fs::create_directories(run);auto openssl=std::getenv("AETHER_OPENSSL_BIN")?fs::path(std::getenv("AETHER_OPENSSL_BIN")):root/"build/phase06/dependencies/openssl-install/bin/openssl.exe";for(auto id:{"host","client"}){Child child;std::string hostname=std::string("aether-")+id+".local";child.launch(openssl,{"req","-x509","-newkey","ED25519","-noenc","-keyout",(run/(std::string(id)+".key")).string(),"-out",(run/(std::string(id)+".pem")).string(),"-subj","/CN="+hostname,"-addext","subjectAltName=DNS:"+hostname,"-days","1","-config",
+#ifdef _WIN32
+ "NUL"
+#else
+ "/dev/null"
+#endif
+},run/(std::string(id)+"-cert.log"));need(child.join()==0,"fixture certificate");}write(run/"trust.pem",read(run/"host.pem")+read(run/"client.pem"));
+ for(auto scenario:{"exact","no-provider","cancel-committed","cancel-before","grant-loss","readyall-loss","ready-delay","ready-loss","readyack-delay","readyack-loss","unknown","replay","digest","oversize","schema","sequence","required","duplicate","truncated","boundaries","stop-timeout","healthy-cancel","shared-provider","authority-read-deny","authority-capacity","authority-revision","authority-clock"}){if(!selected.empty()&&selected!=scenario)continue;auto dir=run/scenario;fs::create_directories(dir);for(auto file:{"host.pem","host.key","client.pem","client.key","trust.pem"})fs::copy_file(run/file,dir/file,fs::copy_options::overwrite_existing);scenario_rules(dir,scenario);Child host_child,client_child;host_child.launch(exe.parent_path()/("aether_protocol_control_host"+std::string(
+#ifdef _WIN32
+ ".exe"
+#else
+ ""
+#endif
+ )),{"--host",dir.string(),scenario},dir/"host.log");auto until=Clock::now()+std::chrono::seconds(4);while(Clock::now()<until&&!fs::exists(dir/"ready"))std::this_thread::sleep_for(std::chrono::milliseconds(2));need(fs::exists(dir/"ready"),"host ready deadline");client_child.launch(exe,{"--client",dir.string(),scenario,read(dir/"ready")},dir/"client.log");auto client_exit=client_child.join();write(dir/"client-done","done");auto host_exit=host_child.join();auto client_log=read(dir/"client.log"),host_log=read(dir/"host.log");std::cout<<client_log<<host_log;check(client_exit==0&&host_exit==0&&client_log.find("# tests 0")==std::string::npos&&client_log.find("not ok")==std::string::npos,std::string("two-PID-real-DLL-")+scenario);check(host_log.find("owned=0")!=std::string::npos,std::string("host-six-dimensional-owned-cleanup-")+scenario);if(std::string(scenario)=="exact")check(host_log.find("commits=1 activations=1")!=std::string::npos,"provider-one-commit-one-activation");}
  check(check.count>0,"selected-scenario-has-nonzero-cases");check(sizeof(AetherProtocolConfig)==176&&offsetof(AetherProtocolConfig,certificate_file)==96&&sizeof(AetherProtocolControlOpen)==32&&sizeof(AetherProtocolCommand)==72,"x64-ABI1-preserved-additive-layout");return check.finish();}
+#endif
 #endif
 }
 #ifdef AETHER_CONTROL_HOST
@@ -135,7 +174,13 @@ void control_fixture_wire(const uint8_t* b,size_t n){need(n>=128&&u32(b)==n-4&&s
 #ifndef AETHER_CONTROL_HOST
 int control_client(const fs::path& base,const std::string& scenario,unsigned port){
  Check check;uint64_t h=0;auto c=config(base,false,port);need(aether_protocol_create(&c,callback,&h)==AP_OK,"client create");
+
+#ifdef _WIN32
  auto dll=GetModuleHandleW(L"aether_protocol.dll");check(dll&&GetProcAddress(dll,"aether_protocol_control_open")&&!GetProcAddress(dll,"control_fixture_fault")&&!GetProcAddress(dll,"aether_protocol_attach_host_services"),"product-DLL-fixture-registration-not-exported");
+#elif !defined(AETHER_IOS_CONTRACT)
+ check(dlsym(RTLD_DEFAULT,"aether_protocol_control_open")&&!dlsym(RTLD_DEFAULT,"control_fixture_fault")&&!dlsym(RTLD_DEFAULT,"aether_protocol_attach_host_services"),"product-library-fixture-registration-not-exported");
+#endif
+
  const std::vector<uint8_t> hello{'A','E','T','H',0,16,1,1,0,3,0,8,0,2,0,1};AetherProtocolControlOpen open{1,sizeof(open),1,0,static_cast<uint32_t>(hello.size()),0,hello.data()};
  check(aether_protocol_control_open(h,&open)==AP_OK,"control-open-copies-hello");check(wait(0)==AP_OK,"fresh-TLS3-schema1-open");
  check(number_field(query(h),"grants")==0&&number_field(query(h),"sinkPackets")==0,"hello-never-grants-media");check(aether_protocol_submit(h,hello.data(),static_cast<uint32_t>(hello.size()))==AP_BUSY,"legacy-submit-control-mode-exclusive");
@@ -185,6 +230,16 @@ int main(int argc,char** argv){try{std::cout<<"TAP version 13\n";
 #ifdef AETHER_CONTROL_HOST
  need(argc==4&&std::string(argv[1])=="--host","host arguments");return host(argv[2],argv[3]);
 #else
- if(argc==5&&std::string(argv[1])=="--client")return control_client(argv[2],argv[3],static_cast<unsigned>(std::stoul(argv[4])));wchar_t path[MAX_PATH];need(GetModuleFileNameW(nullptr,path,MAX_PATH)>0,"exe path");need(argc==2||argc==4,"orchestrator arguments");std::string selected;if(argc==4){need(std::string(argv[2])=="--scenario","scenario option");selected=argv[3];}return orchestrate(path,selected);
+ #ifdef AETHER_IOS_CONTRACT
+ (void)argc;(void)argv;return 2;
+#else
+ if(argc==5&&std::string(argv[1])=="--client")return control_client(argv[2],argv[3],static_cast<unsigned>(std::stoul(argv[4])));
+#ifdef _WIN32
+ wchar_t path[MAX_PATH];need(GetModuleFileNameW(nullptr,path,MAX_PATH)>0,"exe path");
+#else
+ auto path=fs::canonical(argv[0]);
+#endif
+need(argc==2||argc==4,"orchestrator arguments");std::string selected;if(argc==4){need(std::string(argv[2])=="--scenario","scenario option");selected=argv[3];}return orchestrate(path,selected);
+#endif
 #endif
  }catch(const std::exception& e){std::cerr<<"fixture failure: "<<e.what()<<std::endl;return 2;}catch(...){std::cerr<<"fixture failure: native boundary\n";return 2;}}

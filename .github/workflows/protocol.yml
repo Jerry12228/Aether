@@ -1,0 +1,42 @@
+name: Phase06 protocol targets
+on:
+  push:
+    branches: ['codex/**', main]
+    paths: ['native/protocol/**', 'tests/protocol-*.cjs', 'tests/native/protocol*', 'tests/native/ios/**', 'scripts/build-protocol.cjs', 'scripts/verify-protocol.cjs', 'protocol/**', '.github/workflows/protocol.yml']
+  pull_request:
+    paths: ['native/protocol/**', 'tests/protocol-*.cjs', 'tests/native/protocol*', 'scripts/*protocol*.cjs', 'protocol/**', '.github/workflows/protocol.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  linux-tracer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          submodules: false
+          persist-credentials: false
+      - name: Build exact approved dependency sources and Linux native targets
+        run: node scripts/build-protocol.cjs --target linux --arch x64 --configuration Release --build-dir build/phase06/targets/linux-x64 --budget-seconds 1800
+      - name: Real Linux secure socket, legacy, multistream, recovery and authority contracts
+        run: ctest --test-dir build/phase06/targets/linux-x64 -C Release --output-on-failure --no-tests=error
+      - name: Retain success and failure logs without fixture credentials
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: phase06-linux-x64-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            build/phase06/targets/linux-x64/logs/
+            build/phase06/targets/linux-x64/*manifest*.json
+            build/phase06/targets/linux-x64/protocol-target-*.json
+            build/phase06/targets/linux-x64/Testing/
+            build/phase06/targets/linux-x64/libaether_protocol.so
+            build/phase06/targets/linux-x64/aether_protocol_*
+            build/phase06/targets/linux-x64/aether_media_security
+            artifacts/phase06/tracer/*.json
+            artifacts/phase06/multistream/*.json
+            build/phase06/control-fixtures/*/*/*.log
+            build/phase06/recovery-fixtures/*/*.log

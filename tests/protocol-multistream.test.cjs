@@ -54,8 +54,8 @@ function child(binary,args){
 }
 function fixture(){
   const base=path.join(root,'build/phase06/fixtures');fs.mkdirSync(base,{recursive:true});const dir=fs.mkdtempSync(path.join(base,'multistream-'));
-  const openssl=path.join(root,'build/phase06/dependencies/openssl-install/bin/openssl.exe');
-  for(const name of ['host','client']){const r=cp.spawnSync(openssl,['req','-x509','-newkey','ED25519','-noenc','-keyout',path.join(dir,name+'.key'),'-out',path.join(dir,name+'.pem'),'-subj',`/CN=aether-${name}.local`,'-addext',`subjectAltName=DNS:aether-${name}.local`,'-days','1'],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000,env:{...process.env,OPENSSL_CONF:'NUL'}});assert.equal(r.status,0);}
+  const openssl=(process.env.AETHER_OPENSSL_BIN||path.join(root,'build/phase06/dependencies/openssl-install/bin/openssl.exe'));
+  for(const name of ['host','client']){const r=cp.spawnSync(openssl,['req','-x509','-newkey','ED25519','-noenc','-keyout',path.join(dir,name+'.key'),'-out',path.join(dir,name+'.pem'),'-subj',`/CN=aether-${name}.local`,'-addext',`subjectAltName=DNS:aether-${name}.local`,'-days','1'],{shell:false,windowsHide:true,encoding:'utf8',timeout:5000,env:{...process.env,OPENSSL_CONF:process.platform==='win32'?'NUL':'/dev/null'}});assert.equal(r.status,0);}
   fs.writeFileSync(path.join(dir,'trust.pem'),Buffer.concat(['host','client'].map(n=>fs.readFileSync(path.join(dir,n+'.pem')))));return dir;
 }
 if(process.argv.includes('--audit-fec'))auditFec().catch(e=>{console.error(e);process.exitCode=1;});
