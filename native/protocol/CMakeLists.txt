@@ -55,6 +55,12 @@ endif()
 set(ENABLE_WARNINGS_AS_ERRORS ON CACHE BOOL "Dependency warnings are errors" FORCE)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Static dependency" FORCE)
 add_subdirectory("${AETHER_DEPS}/libsrtp" "${CMAKE_CURRENT_BINARY_DIR}/libsrtp")
+if(MSVC AND TARGET srtp_driver)
+  # The fixed upstream test has guarded tmp_policy initialization. MSVC 19.50
+  # reports C4701 under /O2; keep /WX and compile only this KAT driver with /Od.
+  # Production SRTP and protocol libraries retain their Release optimization.
+  target_compile_options(srtp_driver PRIVATE "$<$<CONFIG:Release>:/Od>")
+endif()
 file(READ "${AETHER_ROOT}/docs/phase06/FEC-REUSE-DECISION.json" FEC_DECISION)
 string(JSON FEC_CHOICE GET "${FEC_DECISION}" choice)
 if(NOT FEC_CHOICE STREQUAL "approve-botan-prototype-reuse")
