@@ -2,44 +2,120 @@ name: Phase06 protocol targets
 on:
   push:
     branches: ['codex/**', main]
-    paths: ['native/protocol/**', 'tests/protocol-*.cjs', 'tests/native/protocol*', 'tests/native/ios/**', 'scripts/build-protocol.cjs', 'scripts/verify-protocol.cjs', 'protocol/**', '.github/workflows/protocol.yml']
+    paths: ['native/protocol/**', 'tests/protocol-*.cjs', 'tests/native/protocol*', 'tests/native/ios/**', 'scripts/*protocol*.cjs', 'protocol/**', 'docs/phase06/06-01-REVIEW-SNAPSHOT.json', '.github/workflows/protocol.yml']
   pull_request:
     paths: ['native/protocol/**', 'tests/protocol-*.cjs', 'tests/native/protocol*', 'scripts/*protocol*.cjs', 'protocol/**', '.github/workflows/protocol.yml']
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  linux-tracer:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 40
+  desktop:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {target: linux, arch: x64, runner: ubuntu-24.04}
+          - {target: linux, arch: arm64, runner: ubuntu-24.04-arm}
+          - {target: windows, arch: x64, runner: windows-2025-vs2026}
+          - {target: windows, arch: arm64, runner: windows-11-vs2026-arm}
+          - {target: macos, arch: x64, runner: macos-26-intel}
+          - {target: macos, arch: arm64, runner: macos-26}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           submodules: false
           persist-credentials: false
-      - name: Build exact approved dependency sources and Linux native targets
-        run: node scripts/build-protocol.cjs --target linux --arch x64 --configuration Release --build-dir build/phase06/targets/linux-x64 --budget-seconds 1800
-      - name: Real Linux secure socket, legacy, multistream, recovery and authority contracts
-        run: node scripts/run-protocol-target.cjs --manifest build/phase06/targets/linux-x64/protocol-target-Release.json --budget-seconds 900
+      - name: Build exact approved dependency sources and matching native targets
+        run: node scripts/build-protocol.cjs --target ${{ matrix.target }} --arch ${{ matrix.arch }} --configuration Release --build-dir build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }} --budget-seconds 1800
+      - name: Actual secure socket, legacy, multistream, recovery and authority contracts
+        run: node scripts/run-protocol-target.cjs --manifest build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/protocol-target-Release.json --budget-seconds 900
       - name: Retain success and failure logs without fixture credentials
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: phase06-linux-x64-${{ github.sha }}
+          name: phase06-${{ matrix.target }}-${{ matrix.arch }}-${{ github.sha }}
           if-no-files-found: error
           retention-days: 14
           path: |
-            build/phase06/targets/linux-x64/logs/
-            build/phase06/targets/linux-x64/*manifest*.json
-            build/phase06/targets/linux-x64/protocol-target-*.json
-            build/phase06/targets/linux-x64/protocol-run.json
-            build/phase06/targets/linux-x64/run-logs/
-            build/phase06/targets/linux-x64/target-ctest.xml
-            build/phase06/targets/linux-x64/Testing/
-            build/phase06/targets/linux-x64/libaether_protocol.so
-            build/phase06/targets/linux-x64/aether_protocol_*
-            build/phase06/targets/linux-x64/aether_media_security
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/logs/
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/*manifest*.json
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/protocol-target-*.json
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/protocol-run.json
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/run-logs/
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/target-ctest.xml
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/Testing/
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/*.so
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/*.dylib
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/aether_protocol_*
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/aether_media_security
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/Release/*.dll
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/Release/*.exe
             artifacts/phase06/tracer/*.json
             artifacts/phase06/multistream/*.json
             build/phase06/control-fixtures/*/*/*.log
             build/phase06/recovery-fixtures/*/*.log
+  apple:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {arch: arm64, sdk: iphoneos, runner: macos-26}
+          - {arch: arm64, sdk: iphonesimulator, runner: macos-26}
+          - {arch: x64, sdk: iphonesimulator, runner: macos-26-intel}
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {submodules: false, persist-credentials: false}
+      - name: Actual SDK and native library build with deployment target 13
+        run: node scripts/build-protocol.cjs --target ios --arch ${{ matrix.arch }} --sdk ${{ matrix.sdk }} --configuration Release --build-dir build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }} --budget-seconds 1800
+      - name: XCTest on an observed owned simulator destination
+        if: matrix.sdk == 'iphonesimulator'
+        run: node scripts/run-protocol-target.cjs --manifest build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/protocol-target-Release.json --budget-seconds 900
+      - name: Retain build and XCTest logs without fixture credentials
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: phase06-ios-${{ matrix.arch }}-${{ matrix.sdk }}-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/logs/
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/protocol-target-*.json
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/protocol-run.json
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/run-logs/
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/Release-${{ matrix.sdk }}/libaether_protocol.a
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/ProtocolContract.xcresult/
+  android:
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [arm32, arm64, x64]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with: {submodules: false, persist-credentials: false}
+      - name: Install fixed NDK in the disposable runner SDK
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "ndk;28.2.13676358"'
+      - name: Actual native ABI build with Android API 21
+        run: node scripts/build-protocol.cjs --target android --arch ${{ matrix.arch }} --configuration Release --build-dir build/phase06/targets/android-${{ matrix.arch }} --budget-seconds 1800
+      - name: Require an actual matching adb native runtime
+        run: node scripts/run-protocol-target.cjs --manifest build/phase06/targets/android-${{ matrix.arch }}/protocol-target-Release.json --budget-seconds 900
+      - name: Retain actual build and runtime failures without fixture credentials
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: phase06-android-${{ matrix.arch }}-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            build/phase06/targets/android-${{ matrix.arch }}/logs/
+            build/phase06/targets/android-${{ matrix.arch }}/protocol-target-*.json
+            build/phase06/targets/android-${{ matrix.arch }}/protocol-run.json
+            build/phase06/targets/android-${{ matrix.arch }}/run-logs/
+            build/phase06/targets/android-${{ matrix.arch }}/*.so
+            build/phase06/targets/android-${{ matrix.arch }}/aether_protocol_*
+            build/phase06/targets/android-${{ matrix.arch }}/aether_media_security
