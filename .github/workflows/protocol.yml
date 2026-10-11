@@ -40,6 +40,7 @@ jobs:
           retention-days: 14
           path: |
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/logs/
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/baseline-source/
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/*manifest*.json
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/protocol-target-*.json
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/protocol-run.json
@@ -55,6 +56,7 @@ jobs:
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/CMakeCache.txt
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/CMakeFiles/*/CMakeCXXCompiler.cmake
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/fec-target-config.json
+            build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/botan-platform-build/build/build_config.json
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/internal/botan/internal/target_info.h
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/internal/botan/internal/version_info.h
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/public/botan/build.h
@@ -64,6 +66,7 @@ jobs:
             build/phase06/targets/${{ matrix.target }}-${{ matrix.arch }}/libsrtp/libsrtp2.a
             artifacts/phase06/tracer/*.json
             artifacts/phase06/multistream/*.json
+            artifacts/phase06/android-media-attempts/*.json
             build/phase06/control-fixtures/*/*/*.log
             build/phase06/recovery-fixtures/*/*.log
   apple:
@@ -93,15 +96,22 @@ jobs:
           retention-days: 14
           path: |
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/logs/
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/baseline-source/
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/protocol-target-*.json
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/protocol-run.json
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/run-logs/
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/Release-${{ matrix.sdk }}/libaether_protocol.a
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/Release-${{ matrix.sdk }}/ProtocolContractHost.app/ProtocolContractHost
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/Release-${{ matrix.sdk }}/ProtocolContractHost.app/PlugIns/ProtocolContract.xctest/ProtocolContract
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/Release-${{ matrix.sdk }}/ProtocolContractHost.app/Info.plist
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/Release-${{ matrix.sdk }}/ProtocolContractHost.app/PlugIns/ProtocolContract.xctest/Info.plist
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/**/*.xctestrun
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/ProtocolContract.xcresult/
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/AetherProtocol.xcodeproj/xcshareddata/xcschemes/ProtocolContractHost.xcscheme
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/CMakeCache.txt
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/CMakeFiles/*/CMakeCXXCompiler.cmake
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/fec-target-config.json
+            build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/botan-platform-build/build/build_config.json
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/botan-platform-build/build/include/internal/botan/internal/target_info.h
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/botan-platform-build/build/include/internal/botan/internal/version_info.h
             build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/dependencies/botan-platform-build/build/include/public/botan/build.h
@@ -132,6 +142,7 @@ jobs:
           retention-days: 14
           path: |
             build/phase06/targets/android-${{ matrix.arch }}/logs/
+            build/phase06/targets/android-${{ matrix.arch }}/baseline-source/
             build/phase06/targets/android-${{ matrix.arch }}/protocol-target-*.json
             build/phase06/targets/android-${{ matrix.arch }}/target-manifest-*.json
             build/phase06/targets/android-${{ matrix.arch }}/android-vm.json
@@ -143,6 +154,7 @@ jobs:
             build/phase06/targets/android-${{ matrix.arch }}/CMakeCache.txt
             build/phase06/targets/android-${{ matrix.arch }}/CMakeFiles/*/CMakeCXXCompiler.cmake
             build/phase06/targets/android-${{ matrix.arch }}/dependencies/fec-target-config.json
+            build/phase06/targets/android-${{ matrix.arch }}/dependencies/botan-platform-build/build/build_config.json
             build/phase06/targets/android-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/internal/botan/internal/target_info.h
             build/phase06/targets/android-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/internal/botan/internal/version_info.h
             build/phase06/targets/android-${{ matrix.arch }}/dependencies/botan-platform-build/build/include/public/botan/build.h
