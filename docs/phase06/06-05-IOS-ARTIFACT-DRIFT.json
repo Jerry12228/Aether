@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T16:09:15.593Z",
+  "sourceCommit": "0b6467dbc9c65a11456faf280c2db51bd939ca05",
+  "inputDigest": "2a3552183fb70a288cf779cac89cadeab12437ac67da54574395687d7570153f",
+  "classification": "actual-artifact-binding-failure",
+  "runtime": {
+    "target": "ios-x64-iphonesimulator",
+    "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38152495945",
+    "tests": 42,
+    "failures": 0,
+    "physical": false,
+    "synthetic": true
+  },
+  "failure": {
+    "file": "build/phase06/targets/ios-x64-iphonesimulator/libsrtp/Release-iphonesimulator/libsrtp2.a",
+    "expectedBeforeXCTest": "aa11af6739f1ba92750abb0fdbede3bc67215b8469b86a887c9ee86fffc23ca0",
+    "actualArchivedAfterXCTest": "50f6d371eba30d6f7334f577006d11198140d80a1ad347b07e21de0e2e34abb5",
+    "observed": "实际 xcodebuild test 日志包含 libSRTP CompileC 和 Libtool；测试会重新构建依赖，而旧清单绑定测试前字节。",
+    "unresolved": "不能以42项通过代替依赖产物摘要一致；当前XCTest host/test二进制也未单独绑定或归档。"
+  },
+  "retentionGaps": [
+    "baselineSources 引用的固定上游源码未随artifact保留",
+    "Botan生成build_config.json被清单引用但未归档",
+    "XCTest host/test实际可执行文件未归档"
+  ],
+  "plannedFix": "构建入口先执行build-for-testing并绑定最终库与两个测试可执行文件；运行入口改为test-without-building，在前后独立核验源码/库/测试二进制hash。补齐只读来源及生成配置归档，排除fixture PEM/key资源。",
+  "primarySource": "https://developer.apple.com/library/archive/technotes/tn2339/_index.html",
+  "raw": [
+    {
+      "file": "build/phase06/06-05/ci-38152495945/phase06-ios-x64-iphonesimulator-0b6467dbc9c65a11456faf280c2db51bd939ca05/protocol-target-Release.json",
+      "sha256": "244e76ca13a381db6c4896435f5444524d43e04dd6ad5544c9251c6ebe140f85",
+      "bytes": 59924
+    },
+    {
+      "file": "build/phase06/06-05/ci-38152495945/phase06-ios-x64-iphonesimulator-0b6467dbc9c65a11456faf280c2db51bd939ca05/libsrtp/Release-iphonesimulator/libsrtp2.a",
+      "sha256": "50f6d371eba30d6f7334f577006d11198140d80a1ad347b07e21de0e2e34abb5",
+      "bytes": 102672
+    },
+    {
+      "file": "build/phase06/06-05/ci-38152495945/phase06-ios-x64-iphonesimulator-0b6467dbc9c65a11456faf280c2db51bd939ca05/run-logs/xctest.log",
+      "sha256": "0475381e74fb8d27bb294f0650ce5c7ad1deddc23203ae82a9d9484e657c7457",
+      "bytes": 336571
+    }
+  ],
+  "tasksCompleted": 0,
+  "constraints": {
+    "hostRestart": false,
+    "driverInstall": false,
+    "assertionsChanged": false
+  }
+}
