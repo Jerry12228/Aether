@@ -99,6 +99,7 @@ void scenario_rules(const fs::path& dir,const std::string& name){
  if(name=="cancel-committed")rule(2,3,false,250,0);
  if(name=="cancel-before")rule(2,0,true,250,0);
  if(name=="grant-loss")rule(2,3,false,0,1);
+ if(name=="ready-delay"||name=="readyack-delay")write(dir/"ready-observation-required","owned");
  if(name=="ready-delay")rule(14,0,true,150,0);
  if(name=="ready-loss")rule(14,0,true,0,1);if(name=="readyall-loss")rule(14,0,true,0,1,32);
  if(name=="readyack-delay")rule(14,4,false,150,0);
@@ -170,7 +171,7 @@ int orchestrate(const fs::path& exe,const std::string& selected){Check check;fs:
 namespace aether::protocol {
 ControlFixtureFault control_fixture_fault(uint16_t opcode,uint32_t phase,uint64_t request,bool before){
  if(before&&(opcode==2||opcode==9))write(fixture_path/"confirm-received",std::to_string(request));if(!before&&phase==3)write(fixture_path/"committed",std::to_string(request));
- std::lock_guard lock(fault_mutex);for(auto& rule:fault_rules)if(rule.remaining&&rule.opcode==opcode&&rule.phase==phase&&rule.request==request&&rule.before==unsigned(before)){--rule.remaining;if(opcode==14&&((before&&phase==0)||(!before&&phase==4))&&rule.delay==150){write(fixture_path/"ready-barrier-entered","owned");auto until=Clock::now()+std::chrono::seconds(2);while(Clock::now()<until&&!fs::exists(fixture_path/"ready-barrier-release"))std::this_thread::sleep_for(std::chrono::milliseconds(2));need(fs::exists(fixture_path/"ready-barrier-release"),"owned READY observation barrier deadline");}return {rule.delay,(rule.flags&1)!=0,(rule.flags&2)!=0,rule.flags>>8};}return {};
+ std::lock_guard lock(fault_mutex);for(auto& rule:fault_rules)if(rule.remaining&&rule.opcode==opcode&&rule.phase==phase&&rule.request==request&&rule.before==unsigned(before)){--rule.remaining;if(opcode==14&&((before&&phase==0)||(!before&&phase==4))&&rule.delay==150&&fs::exists(fixture_path/"ready-observation-required")){write(fixture_path/"ready-barrier-entered","owned");auto until=Clock::now()+std::chrono::seconds(2);while(Clock::now()<until&&!fs::exists(fixture_path/"ready-barrier-release"))std::this_thread::sleep_for(std::chrono::milliseconds(2));need(fs::exists(fixture_path/"ready-barrier-release"),"owned READY observation barrier deadline");}return {rule.delay,(rule.flags&1)!=0,(rule.flags&2)!=0,rule.flags>>8};}return {};
 }
 void control_fixture_wire(const uint8_t* b,size_t n){need(n>=128&&u32(b)==n-4&&std::memcmp(b+4,"ACTL",4)==0&&u16(b+8)==1&&u64(b+116)==3,"ACTL-independent-header-layout");std::ofstream log(fixture_path/"wire.hex",std::ios::app);constexpr char digits[]="0123456789abcdef";for(size_t i=0;i<n;++i)log<<digits[b[i]>>4]<<digits[b[i]&15];log<<'\n';}
 }

@@ -86,6 +86,9 @@ async function runAndroid({m,record,run,root,directory,hash}){
   }finally{for(const [key,value]of Object.entries(priorEnv)){if(value===undefined)delete process.env[key];else process.env[key]=value;}}
  }catch(error){primaryError=error;throw error;}finally{
   const cleanupErrors=[];
+  // Retain bounded certificate diagnostics even when native orchestration fails;
+  // pull only observed .log paths, never PEM/private-key fixtures.
+  if(remote)try{const output=await run('adb-cert-log-list',adb,['-s',serial,'shell','ls '+remote+'/build/phase06/control-fixtures/*/*-cert.log'],true,5000);const paths=output.trim().split(/\r?\n/).filter(Boolean);assert.ok(paths.length<=4);for(const file of paths){assert.ok(file.startsWith(remote+'/build/phase06/control-fixtures/'));const relative=file.slice((remote+'/build/phase06/control-fixtures/').length);assert.match(relative,/^\d+\/(?:host|client)-cert\.log$/);await run('adb-cert-log-'+path.basename(file),adb,['-s',serial,'pull',file,path.join(directory,'run-logs','control-'+path.basename(file))],true,5000);}}catch(error){record.diagnosticError=error.message;}
   if(remote)try{await run('adb-owned-remove',adb,['-s',serial,'shell','rm','-rf',remote],true);}catch(e){cleanupErrors.push(e.message);}
   if(ownedVm)try{await ownedVm.stop();}catch(e){cleanupErrors.push(e.message);}
   if(emulator){try{await run('adb-owned-emulator-stop',adb,['-s',serial,'emu','kill'],true);}catch(e){cleanupErrors.push(e.message);}finally{if(emulator.exitCode===null&&emulator.signalCode===null){emulator.kill();await Promise.race([new Promise(resolve=>emulator.once('close',resolve)),pause(5000)]);if(emulator.exitCode===null&&emulator.signalCode===null){emulator.kill('SIGKILL');cleanupErrors.push('Owned emulator required forced termination');}}}const log=path.join(directory,'run-logs/emulator.log');record.emulatorLog={file:path.relative(root,log).replaceAll('\\','/'),sha256:hash(fs.readFileSync(log))};}

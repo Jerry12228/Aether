@@ -40,12 +40,12 @@ async function prepareAndroidVm({sdk,directory,arch,run,record}){
   receipt.frameworkBootCompleted=(await run('vm-framework-boot',adb,['-s',serial,'shell','getprop','sys.boot_completed'])).trim()==='1';
   // Only this freshly owned guest: suspend app framework churn while exercising
   // native Bionic/NDK binaries, real sockets and the unchanged 25ms media budget.
-  receipt.frameworkScope='native-only-owned-guest';const initialUid=(await run('vm-shell-uid-before',adb,['-s',serial,'shell','id','-u'])).trim();receipt.initialShellUid=initialUid;
+  receipt.frameworkScope='native-only-owned-guest';const uid=output=>{const match=output.trim().match(/^uid=(0|2000)(?:\([^)]{1,64}\))?\s/);assert.ok(match,'Observed owned Android uid format');return match[1];};const initialUid=uid(await run('vm-shell-uid-before',adb,['-s',serial,'shell','id']));receipt.initialShellUid=initialUid;
   if(initialUid!=='0'){await run('vm-owned-adbd-root',adb,['-s',serial,'root']);await run('vm-owned-adbd-ready',adb,['-s',serial,'wait-for-device'],false,30000);}
-  assert.equal((await run('vm-owned-root-uid',adb,['-s',serial,'shell','id','-u'])).trim(),'0','Only rootable owned test images');
+  assert.equal(uid(await run('vm-owned-root-uid',adb,['-s',serial,'shell','id'])),'0','Only rootable owned test images');
   for(const service of ['zygote_secondary','zygote','surfaceflinger'])await run('vm-owned-stop-'+service,adb,['-s',serial,'shell','stop',service]);
   for(const service of ['zygote','surfaceflinger']){const state=(await run('vm-owned-state-'+service,adb,['-s',serial,'shell','getprop','init.svc.'+service])).trim();assert.equal(state,'stopped','Owned framework service must remain stopped');}
-  if(initialUid!=='0'){await run('vm-owned-adbd-unroot',adb,['-s',serial,'unroot']);await run('vm-owned-shell-ready',adb,['-s',serial,'wait-for-device'],false,30000);assert.equal((await run('vm-owned-uid-restored',adb,['-s',serial,'shell','id','-u'])).trim(),initialUid);}
+  if(initialUid!=='0'){await run('vm-owned-adbd-unroot',adb,['-s',serial,'unroot']);await run('vm-owned-shell-ready',adb,['-s',serial,'wait-for-device'],false,30000);assert.equal(uid(await run('vm-owned-uid-restored',adb,['-s',serial,'shell','id'])),initialUid);}
   receipt.frameworkSuspendedAt=new Date().toISOString();for(let i=0;i<2;i++){assert.ok(!launchError&&processVm.exitCode===null&&processVm.signalCode===null);await pause(5000);}return{serial,stop,destination:receipt.runtime};
  }catch(error){await stop();throw error;}
 }
