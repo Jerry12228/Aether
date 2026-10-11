@@ -33,7 +33,8 @@ async function build(o){
   const python=process.platform==='win32'?'python':'python3';
   await run('botan-platform-configure',python,configureArgs,source,{...process.env,GIT_CEILING_DIRECTORIES:source});
   const config=JSON.parse(fs.readFileSync(path.join(generated,'build/build_config.json'),'utf8'));
-  assert.deepEqual([...config.mod_list].sort(),['base','hex','rng','utils','zfec']);
+  // codec and misc are virtual grouping entries present in the original config.
+  assert.deepEqual([...config.mod_list].sort(),['base','codec','hex','misc','rng','utils','zfec']);
   const approved=selected.sourceFiles.filter(f=>f.path.endsWith('.cpp')).map(f=>f.officialMatches[0].path).sort();
   assert.deepEqual(config.lib_build_info.map(f=>f.src.replaceAll('\\','/')).sort(),approved,'Same approved 23-source scalar set required');
   const headers=selected.sourceFiles.filter(f=>f.generated).map(f=>{const relative=f.path.split('/build/include/')[1],file=path.join(generated,'build/include',relative);assert.ok(fs.existsSync(file));return{file:path.relative(root,file).replaceAll('\\','/'),sha256:hash(fs.readFileSync(file))};});
