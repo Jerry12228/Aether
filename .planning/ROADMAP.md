@@ -195,9 +195,9 @@
 
 **Wave 6（前置：06-04完成）**
 
-- [ ] 06-05-PLAN.md — 五目标实际构建运行、独立证据与强制最终人审；已选/Task1本地准备完成，0/3任务，远端发布批准待定
+- [ ] 06-05-PLAN.md — 五目标实际构建运行、独立证据与强制最终人审；Task1实际CI执行中，0/3任务，完整当前工作分支发布已具体批准
 
-Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR及Botan具体复用批准、原研究/审阅字节不变，06-02历史媒体/FEC与06-06前置交付证据保留。06-03三任务实际交付（bce5030/23b814e），最终Debug Node106/106、Debug/ASan CTest12/12（108.14s/109.00s），父级再次构建/CTest12/12（108.16s）及658项证据摘要匹配。三轮真实socket量测281648.188ms绑定归档f853627二进制，最终断线/重复恢复修正另经完整回归，不改绑旧hash；637原case完整保留及12NET设置映射。06-04两任务已完成（GREEN387a052/摘要adffc87）：当前完整Node107/107、Flutter22/22及21独立host场景，协议Debug CTest12/12、根CTest11/11，local core及生成绑定通过。取消STATUS事务绑定修复仅test-only host，早期编译RED偏差保留，精确证据见06-04-EVIDENCE.json。当前5/6；用户1已选择06-05，本地Debug/Release各12/12及真实FFI22/22准备通过，任务0/3，实际五目标/独立证据/强制最终人审未完成，等待具体远端发布批准。见06-05-SUMMARY与06-05-PREPARATION.json；NET和Phase6未完成。见06-03-SUMMARY、06-03-03-EVIDENCE.json和LIMITS；历史PRECONDITION保留。证据限Windows x64、synthetic authority/media及真实loopback TLS/SRTP，不能推断真实设备、codec、产品性能或全平台支持；ASan不覆盖预编译OpenSSL。
+Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR及Botan具体复用批准、原研究/审阅字节不变，06-02历史媒体/FEC与06-06前置交付证据保留。06-03三任务实际交付（bce5030/23b814e），最终Debug Node106/106、Debug/ASan CTest12/12（108.14s/109.00s），父级再次构建/CTest12/12（108.16s）及658项证据摘要匹配。三轮真实socket量测281648.188ms绑定归档f853627二进制，最终断线/重复恢复修正另经完整回归，不改绑旧hash；637原case完整保留及12NET设置映射。06-04两任务已完成（GREEN387a052/摘要adffc87）：当前完整Node107/107、Flutter22/22及21独立host场景，协议Debug CTest12/12、根CTest11/11，local core及生成绑定通过。取消STATUS事务绑定修复仅test-only host，早期编译RED偏差保留，精确证据见06-04-EVIDENCE.json。当前5/6；用户1已选择06-05，本地Debug/Release各12/12及真实FFI22/22准备通过，任务0/3，实际五目标/独立证据/强制最终人审未完成，具体公开分支发布已由后续用户1批准，当前实际目标CI执行中。见06-05-SUMMARY与06-05-PREPARATION.json；NET和Phase6未完成。见06-03-SUMMARY、06-03-03-EVIDENCE.json和LIMITS；历史PRECONDITION保留。证据限Windows x64、synthetic authority/media及真实loopback TLS/SRTP，不能推断真实设备、codec、产品性能或全平台支持；ASan不覆盖预编译OpenSSL。
 
 ### Phase 7: 配对、发现与设备权限
 
@@ -654,7 +654,7 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR及B
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 5/6 | 进行中（06-05本地准备；远端发布批准待定，0/3任务） | - |
+| 6. GameStream 协议重构与扩展 | 5/6 | 进行中（06-05实际目标CI；公开分支发布已批准，0/3任务） | - |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |

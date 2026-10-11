@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: 06-05 Task1本地准备完成；自动审批拒绝远端推送，等待具体发布批准；Phase3独立安装门槛保持
-last_updated: "2026-10-11T04:58:00Z"
+stopped_at: 06-05 Task1自有ARM虚拟机实际测试与CPU虚拟机CI38137338723进行中；任务0/3；Phase3独立安装关口保持
+last_updated: "2026-10-11T11:58:09Z"
 last_activity: 2026-10-11
-last_activity_desc: 06-05准备1b703af/摘要951af81；本地Debug及Release各12/12、真实FFI22/22；任务0/3，远端发布批准待定
+last_activity_desc: ARM64原生28项/160断言通过；ARM32历史恢复60/60；API21提交屏障修复及CPU虚拟机CI接入；Windows12/12
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 15
   completed_plans: 13
   percent: 5
-state_head: 951af81
+state_head: 96a49e4
 ---
 
 # Project State
@@ -33,7 +33,7 @@ Total Plans in Phase: 3
 Phase: 3 (虚拟显示器可行性) — two plans complete; phase and VDP requirements incomplete
 Plan: 03-03 partial — Task1 complete; old conditional choice1 recorded; correction RED5050b4a/GREENaaeda0e; Task2 blocking-human awaiting new fixed-plan install-only approval
 Status: Halted; existing Apollo preserved. Old approval binds superseded bytes and cannot authorize corrected package. No runtime authorization file or installer invocation.
-Last activity: 2026-10-11 — Phase6 06-05已按用户1开始本地准备，等待具体远端发布批准；中文规则与Phase3独立安装门槛保留。
+Last activity: 2026-10-11 — Phase6 06-05已按用户具体发布答复1推送完整当前工作分支；五目标实际CI执行中，中文规则与Phase3独立安装门槛保留。
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -53,7 +53,9 @@ Phase6现为5/6、总13/15计划、2/42阶段；NET仍未完成。本会话原�
 
 ## Performance Metrics
 
-06-05用户本会话`1`选择执行，当前仅Task1准备（0/3完成任务）。目标入口/POSIX/XCTest初始适配ff3d776、上游KAT驱动Release修复1b703af、证据摘要951af81；Debug CTest12/12（110.04s）、新入口Release12/12（103.43s）、真实Flutter/FFI22/22及21独立host场景通过。见[停点摘要](phases/06-gamestream/06-05-SUMMARY.md)及[准备证据](../docs/phase06/06-05-PREPARATION.json)。当前workflow只有Linux x64初始链路，五目标运行/独立validator/最终人审尚未完成；编译错误不是行为RED。自动审批拒绝`git push origin HEAD`，认为用户未明确批准向公开Jerry12228/Aether远端发布源码/CI；没有推送。需批准整个当前工作分支（包括此前未发布历史）及同分支Phase6 CI执行/修复后续提交；此批准不代表最终人审或Phase3安装授权。当前5/6和NET/nyquist/wave0状态保持。
+06-05当前执行：真实用户`1`另录[公开分支发布决定](../docs/phase06/06-05-PUBLICATION-DECISION.json)，38be3d1首次推送；授权包括当前工作分支完整历史及同分支Phase6后续CI/修复/证据，不代表Phase3安装或最终人审。真实Linux mTLS拒绝权限期望23/实际24形成合格行为RED7432175（`RED_EVIDENCE_OK`），生产修复6e4cb48采用有界TLS关闭和逐socket SIGPIPE抑制。新实际CI38117210669的Linux x64/arm64各14/14；38117546197的三Android ABI实际构建和iOS device arm64实际构建完成，运行/其余目标仍需补证。原生目标生成配置只覆盖平台头，23cpp/78原批准输入、原审阅材料及637case保持；上游LF/历史CRLF精确哈希双录。当前本地Windows Debug12/12（111.36s）与Flutter22/22（21独立host场景）是Apple字段类型修复前的独立历史回归，不能冒充当前最新源码。Task1仍未完成，任务0/3；独立validator及最终人审未开始，Phase6仍5/6、NET未完成。
+
+06-05历史本地准备：目标入口/POSIX/XCTest初始适配ff3d776、上游KAT驱动Release修复1b703af、摘要951af81；Debug CTest12/12（110.04s）、新入口Release12/12（103.43s）、真实Flutter/FFI22/22及21独立host场景通过。见[执行摘要](phases/06-gamestream/06-05-SUMMARY.md)及[准备证据](../docs/phase06/06-05-PREPARATION.json)。当时自动审批因缺具体公开发布授权拒绝推送；后续真实用户`1`及独立发布决定已解除该发布门槛，不再请求重复批准。当前五目标运行/独立validator/最终人审仍未完成；编译错误不是行为RED。当前5/6和NET/nyquist/wave0状态保持。
 
 已完成计划13/15、阶段2/42；Phase6为5/6，06-04两任务完成，当前Node107/107、Flutter22/22、协议CTest12/12及根CTest11/11；06-04 actuals44760为diff字符估算，恢复墙钟37分钟。下列06-03记录为历史证据：最终Debug Node106/106、Debug/ASan CTest12/12各，父级集成CTest12/12（108.16s）。真实三轮量测281648.188ms，独立归档f853627；最终代码修正由完整回归覆盖。06-02历史actuals78,826、06-03 actuals249962均为diff-size估算tokens，不是模型实际用量；06-06产品交付126.24分钟、06-03墙钟108分钟均包含中断及环境处理。
 Phase3 partial: 03-01/03-02 complete. Latest Debug/Release native builds pass; CTest11/11 each (26.54s/25.32s), CLI/process27/27 each (23.2867s/21.4822s), targeted admission/lifecycle19/19 (475.8736ms), zero skip. Revised dedicated source closes arrival cleanup and full-capacity GUID idempotence, actual WDK rebuild/signature and separate six-target InfVerif evidence retained. Native mutation code is compiled; only read-only actual device enumeration ran. 03-03 system authorization/machine matrix unperformed; VDP01/02 and Phase3 incomplete.
@@ -73,7 +75,7 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 ### Decisions
 
-- 2026-10-11：最新用户`1`授权执行06-05，本地目标入口与Windows回归准备已保存；远端发布因自动审批拒绝而待具体批准。06-05任务0/3，Phase6仍5/6；不得将准备通过、环境存在或推送批准作为五目标/最终人审完成。Phase3安装门槛不变。
+- 2026-10-11：最新真实用户`1`具体批准公开发布完整当前工作分支及同分支Phase6后续CI/修复/证据，决定38be3d1已保存并实际推送。06-05任务0/3，Phase6仍5/6；不得将准备通过、环境存在或推送批准作为五目标/最终人审完成。Phase3安装门槛不变。
 
 - 2026-10-11：用户恢复原答复`1`授权接续06-04，GREEN387a052/摘要adffc87已封存；两任务、真实FFI22项和完整Node107项通过。Phase6为5/6，下一06-05待交互选择；NET与最终人审未完成。早期无效行为RED如实保留，新STATUS事务绑定修复具有先RED后GREEN证据；Phase3门槛不变。
 
@@ -181,3 +183,9 @@ Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
 
 Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-05-SUMMARY/06-05-PREPARATION.json及当前分支差异。06-05已选且本地准备通过，不重复下一计划选择；等待批准向https://github.com/Jerry12228/Aether.git发布整个codex/phase-03-virtual-display-feasibility分支（含未推送历史）及同分支Phase6 CI修复/证据提交与运行。获准后继续Task1实际Linux行为RED和五目标build/run、Task2独立validator与Task3最终人审；任务均未完成，不重复Botan/ADR批准。Phase3 Resume file/Next action保留独立安装恢复入口，不是当前协议下一任务。
+
+06-05最新实际进展（2026-10-11）：用户明确授权自行创建Android虚拟机，原始启动/探测/partial失败已保存。d647664的CI38128868716 Win/Linux四目标及iOS device/双sim42通过，Mac恢复取消等失败；ARM64 guest31控制场景+legacy1/2通过后JSON警告解析失败，ARM32 API21已完整启动但uname缺失导致独立target失败。先录MACOS-REDbfd28fb，再修复4f2a50d；真实Windows Release12/12（108.66s）通过，新CI38132980639执行中。同输入Android完整故障/恢复、五目标CI、独立validator和最终人审仍未完成。不得提升任务0/3、Phase6 5/6或NET状态；Phase3/plan3/status halted不变。
+
+## 06-05 当前续跑（2026-10-11）
+
+同分支修复/CI授权继续有效。05ec0e2的自有API24 ARM64实际28项/160断言（31个控制场景、legacy1/2、6个安全和全部wire/KAT）通过，完整目标仍因媒体/恢复未接入退出1。ARM32 API21历史恢复60/60已记录，不改绑最新源码。fc14fde/input21c7da3b的27项媒体实际8通过19失败，原因是API21单文件touch导致提交屏障未创建，按测试适配失败保存；逐一创建修正96a49e4已推送。当前新固定CPU虚拟机CI38137338723仍进行中，Windows本地完整12/12（92.69s、target92801ms，input7761dd7c）通过。详见docs/phase06/06-05-ANDROID-VM2.json。五目标同输入及独立validator/最终人审仍未完成，0/3任务、Phase6 5/6、NET未关闭；Phase3/plan3/halted和禁止开发机重启/关机不变。
