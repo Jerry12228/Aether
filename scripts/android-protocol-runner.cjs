@@ -29,7 +29,9 @@ async function runAndroid({m,record,run,root,directory,hash}){
   assert.ok(serial,'No selected matching adb runtime: supply AETHER_ADB_SERIAL for '+m.arch);assert.match(serial,/^[A-Za-z0-9._:-]+$/);
   const abi={arm32:'armeabi-v7a',arm64:'arm64-v8a',x64:'x86_64'}[m.arch];
   const abilist=(await run('adb-abi',adb,['-s',serial,'shell','getprop','ro.product.cpu.abilist'])).trim();assert.ok(abilist.split(',').includes(abi),'Matching native ABI required');
-  const machine=(await run('adb-machine',adb,['-s',serial,'shell','uname','-m'])).trim();assert.ok(m.arch==='x64'?machine==='x86_64':m.arch==='arm64'?machine==='aarch64':['armv7l','armv8l','aarch64'].includes(machine),'CPU architecture differs from native ABI');
+  let machine=(await run('adb-machine',adb,['-s',serial,'shell','uname','-m'])).trim();
+  if(m.arch==='arm32'&&machine==='/system/bin/sh: uname: not found'){const cpu=await run('adb-kernel-cpu',adb,['-s',serial,'shell','cat','/proc/cpuinfo']);assert.match(cpu,/CPU architecture\s*:\s*7\b/);assert.match(cpu,/ARMv7/);machine='armv7l';record.kernelCpuEvidence='adb-kernel-cpu';}
+  assert.ok(m.arch==='x64'?machine==='x86_64':m.arch==='arm64'?machine==='aarch64':['armv7l','armv8l','aarch64'].includes(machine),'CPU architecture differs from native ABI');
   const bridge=(await run('adb-native-bridge',adb,['-s',serial,'shell','getprop','ro.dalvik.vm.native.bridge'])).trim();assert.ok(!bridge||bridge==='0'||m.arch==='x64','A translated app ABI cannot prove standalone native execution');
   const api=Number((await run('adb-api',adb,['-s',serial,'shell','getprop','ro.build.version.sdk'])).trim());assert.ok(api>=21);
   record.destination={...record.destination,serial,abi,abilist,machine,api,nativeBridge:bridge,physical:!serial.startsWith('emulator-')};record.physical=record.destination.physical;
@@ -39,10 +41,12 @@ async function runAndroid({m,record,run,root,directory,hash}){
   for(const file of files)await run('adb-push-'+path.basename(file),adb,['-s',serial,'push',file,remote+'/'+path.basename(file)]);
   await run('adb-root-sentinel',adb,['-s',serial,'push',path.join(root,'native/protocol/CMakeLists.txt'),remote+'/native/protocol/CMakeLists.txt']);
   await run('adb-owned-mode',adb,['-s',serial,'shell','chmod','700',...files.map(f=>remote+'/'+path.basename(f))]);
-  const shell=(exe,args=[])=>{for(const arg of [exe,...args])assert.match(arg,/^[\w./,-]+$/,'Native shell argument');return 'cd '+remote+' && LD_LIBRARY_PATH='+remote+' AETHER_OPENSSL_BIN='+remote+'/openssl ./'+exe+' '+args.join(' ');};
-  const control=await run('adb-control',adb,['-s',serial,'shell',shell('aether_protocol_control_client',[remote+'/aether_protocol_control_client'])]);
+  const shell=(exe,args=[])=>{for(const arg of [exe,...args])assert.match(arg,/^[\w./,-]+$/,'Native shell argument');return 'cd '+remote+' && LD_LIBRARY_PATH='+remote+' AETHER_OPENSSL_BIN='+remote+'/openssl ./'+exe+' '+args.join(' ')+'; aether_exit=$?; echo AETHER_NATIVE_EXIT=$aether_exit; exit $aether_exit';};
+  const nativeRun=async(name,args,cleanup=false,limit=null)=>{const output=await run(name,adb,args,cleanup,limit);const lines=output.replaceAll('\r','').split('\n'),receipts=lines.filter(line=>/^AETHER_NATIVE_EXIT=\d+$/.test(line));assert.equal(receipts.length,1,'One actual guest native exit receipt required');assert.equal(receipts[0],'AETHER_NATIVE_EXIT=0','Actual guest native failure');return lines.filter(line=>!/^AETHER_NATIVE_EXIT=\d+$/.test(line)).join('\n');};
+  const control=await nativeRun('adb-control',['-s',serial,'shell',shell('aether_protocol_control_client',[remote+'/aether_protocol_control_client'])]);
   assert.doesNotMatch(control,/not ok\b/);const counts=[...control.matchAll(/# tests (\d+)/g)];const parentCount=Number(counts.at(-1)?.[1]||0);assert.ok(parentCount>=65);assert.equal((control.match(/two-PID-real-DLL-/g)||[]).length,31);assert.ok(control.includes('owned=0'));
-  const cases=[{id:'native-control-31-scenarios',assertions:parentCount}];
+  const cases=[];const pass=entry=>{cases.push(entry);record.tests={tests:cases.length,passed:cases.length,failed:0,skipped:0,cancelled:0,cases:[...cases],assertions:cases.reduce((n,c)=>n+c.assertions,0)};};pass({id:'native-control-31-scenarios',assertions:parentCount});
+  const nativeJson=output=>{const lines=output.trim().split(/\r?\n/).filter(Boolean);const json=[];for(const line of lines){if(line.startsWith('{'))json.push(line);else{assert.ok(line.startsWith('WARNING: linker: '+remote+'/')&&/^WARNING: linker: \/data\/local\/tmp\/aether-phase06-[a-f0-9]{12}-\d+\/[\w.-]+: unsupported flags DT_FLAGS_1=0x8000001$/.test(line),'Unexpected native output: '+line);}}assert.equal(json.length,1,'Exactly one native JSON result required');return JSON.parse(json[0]);};
   const fixturePid=(await run('adb-control-fixture-owner',adb,['-s',serial,'shell','ls',remote+'/build/phase06/control-fixtures'])).trim();assert.match(fixturePid,/^\d+$/,'One owned control fixture process');
   for(const version of [1,2]){
    const folder=remote+'/legacy-'+version;await run('adb-legacy-'+version+'-create',adb,['-s',serial,'shell','mkdir',folder]);
@@ -50,22 +54,22 @@ async function runAndroid({m,record,run,root,directory,hash}){
    const request=path.join(directory,'legacy-'+version+'-request.bin');fs.writeFileSync(request,Buffer.from(version===1?'41455448000a01010001':'4145544800110102000100020001000102','hex'));
    await run('adb-legacy-'+version+'-request',adb,['-s',serial,'push',request,folder+'/request.bin']);
    const hostName='adb-legacy-'+version+'-host',hostLog=path.join(directory,'run-logs',hostName+'.log');
-   const host=run(hostName,adb,['-s',serial,'shell',shell('aether_protocol_tracer',['--role','host','--fixture',folder,'--scenario','happy','--versions',String(version)])],false,10000).then(output=>({output}),error=>({error}));
+   const host=nativeRun(hostName,['-s',serial,'shell',shell('aether_protocol_tracer',['--role','host','--fixture',folder,'--scenario','happy','--versions',String(version)])],false,10000).then(output=>({output}),error=>({error}));
    let ready=null;const deadline=Date.now()+4000;
    while(!ready&&Date.now()<deadline){if(fs.existsSync(hostLog)){const row=fs.readFileSync(hostLog,'utf8').split(/\r?\n/).find(l=>l.startsWith('{"kind":"ready"'));if(row)ready=JSON.parse(row);}if(!ready)await pause(10);}
    if(!ready){await host;throw Error('Actual legacy '+version+' host readiness deadline');}
-   let clientOutput;try{clientOutput=await run('adb-legacy-'+version+'-client',adb,['-s',serial,'shell',shell('aether_protocol_tracer',['--role','client','--fixture',folder,'--scenario','happy','--versions',String(version),'--peer',String(ready.detail.controlPort)])],false,10000);}catch(error){await host;throw error;}
+   let clientOutput;try{clientOutput=await nativeRun('adb-legacy-'+version+'-client',['-s',serial,'shell',shell('aether_protocol_tracer',['--role','client','--fixture',folder,'--scenario','happy','--versions',String(version),'--peer',String(ready.detail.controlPort)])],false,10000);}catch(error){await host;throw error;}
    const peer=await host;if(peer.error)throw peer.error;
    const parse=output=>output.split(/\r?\n/).filter(l=>l.startsWith('{"kind":')).map(JSON.parse),clientRows=parse(clientOutput),hostRows=parse(peer.output);
    const clientReady=clientRows.find(r=>r.kind==='ready');assert.ok(Number.isInteger(ready.pid)&&Number.isInteger(clientReady?.pid));assert.notEqual(ready.pid,clientReady.pid,'Actual separate Android native PIDs');
    for(const rows of [clientRows,hostRows]){const result=rows.find(r=>r.kind==='result'),clean=rows.find(r=>r.kind==='clean');assert.equal(result?.detail.status,0);assert.equal(result.detail.selectedVersion,version);assert.equal(result.detail.grants,1);assert.equal(clean?.detail.sockets,0);assert.equal(clean.detail.threads,0);assert.equal(clean.detail.queueBytes,0);}
    const received=clientRows.find(r=>r.kind==='result').detail;if(version===1){assert.equal(received.sinkPackets,1);assert.ok(received.sinkDigest);}else{assert.equal(received.streams.length,2);for(const stream of received.streams)assert.ok(stream.received>0);}
-   cases.push({id:'legacy-'+version+'-secure-two-native-PID',assertions:version===1?16:17,hostPid:ready.pid,clientPid:clientReady.pid});
+   pass({id:'legacy-'+version+'-secure-two-native-PID',assertions:version===1?16:17,hostPid:ready.pid,clientPid:clientReady.pid});
   }
-  for(const mode of ['fec-golden','rollover','nonce-exhaustion','high-sequence','role-key-epoch','unchanged-retransmission']){const result=JSON.parse((await run('adb-security-'+mode,adb,['-s',serial,'shell',shell('aether_media_security',[mode])])).trim());assert.deepEqual(result,{ok:true,case:mode});cases.push({id:mode,assertions:1});}
+  for(const mode of ['fec-golden','rollover','nonce-exhaustion','high-sequence','role-key-epoch','unchanged-retransmission']){const result=nativeJson(await nativeRun('adb-security-'+mode,['-s',serial,'shell',shell('aether_media_security',[mode])]));assert.deepEqual(result,{ok:true,case:mode});pass({id:mode,assertions:1});}
   const vectors=JSON.parse(fs.readFileSync(path.join(root,'protocol/vectors.json'),'utf8'));assert.ok(vectors.wire.length>=15);
-  for(let i=0;i<vectors.wire.length;i++){const v=vectors.wire[i],result=JSON.parse((await run('adb-vector-'+i,adb,['-s',serial,'shell',shell('aether_protocol_tracer',['--role','parse','--wire',v.hex,'--versions',v.local.join(',')])])).trim());assert.deepEqual(result,v.expected,v.id);cases.push({id:v.id,assertions:3});}
-  const v=vectors.cryptographicKnownAnswers[0],kat=JSON.parse((await run('adb-aes-kat',adb,['-s',serial,'shell',shell('aether_protocol_tracer',['--role','kat','--key',v.key,'--iv',v.iv,'--plaintext',v.plaintext])])).trim());assert.deepEqual(kat,{ciphertext:v.ciphertext,tag:v.tag});cases.push({id:'AES-256-GCM-KAT',assertions:2});
+  for(let i=0;i<vectors.wire.length;i++){const v=vectors.wire[i],result=nativeJson(await nativeRun('adb-vector-'+i,['-s',serial,'shell',shell('aether_protocol_tracer',['--role','parse','--wire',v.hex,'--versions',v.local.join(',')])]));assert.deepEqual(result,v.expected,v.id);pass({id:v.id,assertions:3});}
+  const v=vectors.cryptographicKnownAnswers[0],kat=nativeJson(await nativeRun('adb-aes-kat',['-s',serial,'shell',shell('aether_protocol_tracer',['--role','kat','--key',v.key,'--iv',v.iv,'--plaintext',v.plaintext])]));assert.deepEqual(kat,{ciphertext:v.ciphertext,tag:v.tag});pass({id:'AES-256-GCM-KAT',assertions:2});
   record.tests={tests:cases.length,passed:cases.length,failed:0,skipped:0,cancelled:0,cases,assertions:cases.reduce((n,c)=>n+c.assertions,0)};
   record.coverageGaps=['Android full multistream fault relay and 60 recovery cases remain unexecuted'];
   throw Error('Actual Android native checks passed, but mandatory multistream/recovery coverage remains incomplete');

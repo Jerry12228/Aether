@@ -8,6 +8,7 @@
 #include <cerrno>
 #ifndef _WIN32
 #include <fcntl.h>
+#include <netinet/tcp.h>
 #endif
 namespace aether::protocol {
 using Context=ConnectionContext;
@@ -119,6 +120,8 @@ void handshake(Context& c){
 #endif
    require(getsockopt(c.tcp.value,SOL_SOCKET,SO_ERROR,reinterpret_cast<char*>(&error),&bytes)==0&&error==0,AP_TIMEOUT);
   }}else require(connect(c.tcp.value,reinterpret_cast<sockaddr*>(&a),sizeof(a))==0,AP_TIMEOUT);}
+ // Small control records must not wait for Nagle/delayed ACK coalescing.
+ int no_delay=1;require(setsockopt(c.tcp.value,IPPROTO_TCP,TCP_NODELAY,reinterpret_cast<char*>(&no_delay),sizeof(no_delay))==0,AP_INTERNAL_ERROR);
  nonblocking(c.tcp.value);
  c.tls.reset(SSL_new(c.tls_context.get()));require(c.tls!=nullptr,AP_INTERNAL_ERROR);
 #if defined(__linux__)
