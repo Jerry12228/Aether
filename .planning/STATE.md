@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: 06-04两任务与真实FFI回归完成；下一06-05待交互选择；Phase3独立安装门槛保持
-last_updated: "2026-10-11T04:10:55.994Z"
+stopped_at: 06-05 Task1本地准备完成；自动审批拒绝远端推送，等待具体发布批准；Phase3独立安装门槛保持
+last_updated: "2026-10-11T04:58:00Z"
 last_activity: 2026-10-11
-last_activity_desc: 06-04两任务及摘要adffc87完成；当前Node107/107、Flutter22/22、协议CTest12/12、根CTest11/11；下一05待选择
+last_activity_desc: 06-05准备1b703af/摘要951af81；本地Debug及Release各12/12、真实FFI22/22；任务0/3，远端发布批准待定
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 15
   completed_plans: 13
   percent: 5
-state_head: adffc87
+state_head: 951af81
 ---
 
 # Project State
@@ -33,7 +33,7 @@ Total Plans in Phase: 3
 Phase: 3 (虚拟显示器可行性) — two plans complete; phase and VDP requirements incomplete
 Plan: 03-03 partial — Task1 complete; old conditional choice1 recorded; correction RED5050b4a/GREENaaeda0e; Task2 blocking-human awaiting new fixed-plan install-only approval
 Status: Halted; existing Apollo preserved. Old approval binds superseded bytes and cannot authorize corrected package. No runtime authorization file or installer invocation.
-Last activity: 2026-10-11 — Phase6 06-04已完成，下一06-05待交互选择；中文规则与Phase3独立安装门槛保留。
+Last activity: 2026-10-11 — Phase6 06-05已按用户1开始本地准备，等待具体远端发布批准；中文规则与Phase3独立安装门槛保留。
 
 Progress: [█░░░░░░░░░] 5%
 
@@ -53,6 +53,8 @@ Phase6现为5/6、总13/15计划、2/42阶段；NET仍未完成。本会话原�
 
 ## Performance Metrics
 
+06-05用户本会话`1`选择执行，当前仅Task1准备（0/3完成任务）。目标入口/POSIX/XCTest初始适配ff3d776、上游KAT驱动Release修复1b703af、证据摘要951af81；Debug CTest12/12（110.04s）、新入口Release12/12（103.43s）、真实Flutter/FFI22/22及21独立host场景通过。见[停点摘要](phases/06-gamestream/06-05-SUMMARY.md)及[准备证据](../docs/phase06/06-05-PREPARATION.json)。当前workflow只有Linux x64初始链路，五目标运行/独立validator/最终人审尚未完成；编译错误不是行为RED。自动审批拒绝`git push origin HEAD`，认为用户未明确批准向公开Jerry12228/Aether远端发布源码/CI；没有推送。需批准整个当前工作分支（包括此前未发布历史）及同分支Phase6 CI执行/修复后续提交；此批准不代表最终人审或Phase3安装授权。当前5/6和NET/nyquist/wave0状态保持。
+
 已完成计划13/15、阶段2/42；Phase6为5/6，06-04两任务完成，当前Node107/107、Flutter22/22、协议CTest12/12及根CTest11/11；06-04 actuals44760为diff字符估算，恢复墙钟37分钟。下列06-03记录为历史证据：最终Debug Node106/106、Debug/ASan CTest12/12各，父级集成CTest12/12（108.16s）。真实三轮量测281648.188ms，独立归档f853627；最终代码修正由完整回归覆盖。06-02历史actuals78,826、06-03 actuals249962均为diff-size估算tokens，不是模型实际用量；06-06产品交付126.24分钟、06-03墙钟108分钟均包含中断及环境处理。
 Phase3 partial: 03-01/03-02 complete. Latest Debug/Release native builds pass; CTest11/11 each (26.54s/25.32s), CLI/process27/27 each (23.2867s/21.4822s), targeted admission/lifecycle19/19 (475.8736ms), zero skip. Revised dedicated source closes arrival cleanup and full-capacity GUID idempotence, actual WDK rebuild/signature and separate six-target InfVerif evidence retained. Native mutation code is compiled; only read-only actual device enumeration ran. 03-03 system authorization/machine matrix unperformed; VDP01/02 and Phase3 incomplete.
 
@@ -70,6 +72,8 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 ## Accumulated Context
 
 ### Decisions
+
+- 2026-10-11：最新用户`1`授权执行06-05，本地目标入口与Windows回归准备已保存；远端发布因自动审批拒绝而待具体批准。06-05任务0/3，Phase6仍5/6；不得将准备通过、环境存在或推送批准作为五目标/最终人审完成。Phase3安装门槛不变。
 
 - 2026-10-11：用户恢复原答复`1`授权接续06-04，GREEN387a052/摘要adffc87已封存；两任务、真实FFI22项和完整Node107项通过。Phase6为5/6，下一06-05待交互选择；NET与最终人审未完成。早期无效行为RED如实保留，新STATUS事务绑定修复具有先RED后GREEN证据；Phase3门槛不变。
 
@@ -172,8 +176,8 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 ## Session Continuity
 
 Last session: 2026-10-11（Asia/Singapore）
-Stopped at: 06-04两任务与真实FFI回归完成；下一06-05待交互选择；Phase3独立安装门槛保持
+Stopped at: 06-05 Task1本地准备完成；远端发布批准待定；Phase3独立安装门槛保持
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
 
-Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-04-SUMMARY/EVIDENCE和当前源码/依赖锁，取得下一计划交互选择后执行五目标实际build/run、独立证据validator及强制最终人审。06-04已完成，06-05未开始；不重跑已完成计划或重复Botan批准。Phase3 Resume file/Next action保留独立安装恢复入口，不是当前协议下一任务。
+Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-05-SUMMARY/06-05-PREPARATION.json及当前分支差异。06-05已选且本地准备通过，不重复下一计划选择；等待批准向https://github.com/Jerry12228/Aether.git发布整个codex/phase-03-virtual-display-feasibility分支（含未推送历史）及同分支Phase6 CI修复/证据提交与运行。获准后继续Task1实际Linux行为RED和五目标build/run、Task2独立validator与Task3最终人审；任务均未完成，不重复Botan/ADR批准。Phase3 Resume file/Next action保留独立安装恢复入口，不是当前协议下一任务。

@@ -6,7 +6,7 @@ tags: [CMake, CI, Windows, POSIX, XCTest, provenance]
 status: halted
 checkpoint: 06-05-01
 checkpoint_gate: blocking-human
-blocked_by: remote-publication-approval
+blocked_by: [remote-publication-approval]
 requires:
   - phase: 06-04
     provides: 真实 Dart FFI、独立主机与固定协议依赖
