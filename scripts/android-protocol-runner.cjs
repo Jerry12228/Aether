@@ -27,7 +27,14 @@ async function runAndroid({m,record,run,root,directory,hash}){
    let launchError=null;emulator.on('error',e=>{launchError=e;});
    record.destination={serial,avd,owned:true,pid:emulator.pid,image,emulatorSha256:hash(fs.readFileSync(exe))};
    await run('adb-wait',adb,['-s',serial,'wait-for-device'],false,120000);
-   let ready=false;for(let i=0;i<90;i++){assert.ok(!launchError&&!overflow&&emulator.exitCode===null&&emulator.signalCode===null,'Owned emulator exited before boot');const boot=await run('adb-boot-'+i,adb,['-s',serial,'shell','getprop','sys.boot_completed']);if(boot.trim()==='1'){ready=true;break;}await pause(2000);}assert.ok(ready,'Actual Android boot deadline');
+   let ready=false;const bootDeadline=Date.now()+180000;record.bootProbeFailures=[];
+   for(let i=0;i<90&&Date.now()<bootDeadline;i++){
+    assert.ok(!launchError&&!overflow&&emulator.exitCode===null&&emulator.signalCode===null,'Owned emulator exited before boot');
+    try{const boot=await run('adb-boot-'+i,adb,['-s',serial,'shell','getprop','sys.boot_completed'],false,5000);if(boot.trim()==='1'){ready=true;break;}}
+    catch(error){record.bootProbeFailures.push({attempt:i,error:error.message.slice(0,1000)});}
+    await pause(2000);
+   }
+   assert.ok(ready,'Actual Android boot deadline');
   }
   assert.ok(serial,'No selected matching adb runtime: supply AETHER_ADB_SERIAL for '+m.arch);assert.match(serial,/^[A-Za-z0-9._:-]+$/);
   const abi={arm32:'armeabi-v7a',arm64:'arm64-v8a',x64:'x86_64'}[m.arch];

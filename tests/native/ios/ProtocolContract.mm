@@ -10,6 +10,8 @@ int main(int argc,char** argv){@autoreleasepool{return UIApplicationMain(argc,ar
 #include <chrono>
 #include <vector>
 #include <atomic>
+#include <pthread.h>
+#include <pthread/qos.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <unistd.h>
@@ -38,21 +40,27 @@ extern "C" void aether_contract_scenario(const char*,const char*);
  XCTAssertEqual(aether_protocol_create(&clientConfig,callback,&client),AP_OK);if(!client){uint64_t last=0;aether_protocol_stop(server,&last);aether_protocol_ack(server,last);aether_protocol_destroy(server);return;}
  NSDictionary* clientReady=[self mediaQuery:client];
  std::vector<uint8_t> request=kind==0?std::vector<uint8_t>{0x41,0x45,0x54,0x48,0,10,1,1,0,1}:std::vector<uint8_t>{0x41,0x45,0x54,0x48,0,17,1,2,0,1,0,2,0,1,0,1,static_cast<uint8_t>(kind==1?2:5)};
- int relay=-1;std::atomic<bool> done{false};std::atomic<unsigned> relayed{0};std::thread routing;
+ int relay=-1;std::atomic<bool> done{false};std::atomic<unsigned> relayed{0};std::atomic<int> relayQos{-1},hostQos{-1};std::thread routing;
  if(kind==2){
   relay=socket(AF_INET,SOCK_DGRAM,0);sockaddr_in local{};local.sin_family=AF_INET;local.sin_addr.s_addr=htonl(INADDR_LOOPBACK);XCTAssertEqual(bind(relay,reinterpret_cast<sockaddr*>(&local),sizeof(local)),0);socklen_t size=sizeof(local);XCTAssertEqual(getsockname(relay,reinterpret_cast<sockaddr*>(&local),&size),0);timeval timeout{0,100000};setsockopt(relay,SOL_SOCKET,SO_RCVTIMEO,&timeout,sizeof(timeout));
   uint16_t port=ntohs(local.sin_port);request.insert(request.end(),{0,2,0,2,static_cast<uint8_t>(port>>8),static_cast<uint8_t>(port),0,3,0,2,0,1,0,6,0,17});std::string payload="synthetic-phase06";request.insert(request.end(),payload.begin(),payload.end());request[4]=static_cast<uint8_t>(request.size()>>8);request[5]=static_cast<uint8_t>(request.size());
   const unsigned serverPort=[serverReady[@"udpPort"] unsignedIntValue],clientPort=[clientReady[@"udpPort"] unsignedIntValue];
-  routing=std::thread([&,serverPort,clientPort]{std::array<uint8_t,1500> packet{};while(!done){int size=static_cast<int>(recv(relay,packet.data(),packet.size(),0));if(size<12)continue;auto stream=(uint32_t(packet[8])<<24)|(uint32_t(packet[9])<<16)|(uint32_t(packet[10])<<8)|packet[11];sockaddr_in destination{};destination.sin_family=AF_INET;destination.sin_addr.s_addr=htonl(INADDR_LOOPBACK);destination.sin_port=htons(static_cast<uint16_t>(stream>=107?serverPort:clientPort));if(sendto(relay,packet.data(),static_cast<size_t>(size),0,reinterpret_cast<sockaddr*>(&destination),sizeof(destination))==size)++relayed;}});
+  routing=std::thread([&,serverPort,clientPort]{relayQos=pthread_set_qos_class_self_np(QOS_CLASS_USER_INITIATED,0);std::array<uint8_t,1500> packet{};while(!done){int size=static_cast<int>(recv(relay,packet.data(),packet.size(),0));if(size<12)continue;auto stream=(uint32_t(packet[8])<<24)|(uint32_t(packet[9])<<16)|(uint32_t(packet[10])<<8)|packet[11];sockaddr_in destination{};destination.sin_family=AF_INET;destination.sin_addr.s_addr=htonl(INADDR_LOOPBACK);destination.sin_port=htons(static_cast<uint16_t>(stream>=107?serverPort:clientPort));if(sendto(relay,packet.data(),static_cast<size_t>(size),0,reinterpret_cast<sockaddr*>(&destination),sizeof(destination))==size)++relayed;}});
  }
  std::atomic<int> hostResult{-1};std::string payload="synthetic-phase06";
- std::thread exchange([&]{hostResult=aether_protocol_submit(server,reinterpret_cast<const uint8_t*>(payload.data()),static_cast<uint32_t>(payload.size()));});
+ std::thread exchange([&]{hostQos=pthread_set_qos_class_self_np(QOS_CLASS_USER_INITIATED,0);hostResult=aether_protocol_submit(server,reinterpret_cast<const uint8_t*>(payload.data()),static_cast<uint32_t>(payload.size()));});
  auto clientResult=aether_protocol_submit(client,request.data(),static_cast<uint32_t>(request.size()));exchange.join();done=true;if(routing.joinable())routing.join();if(relay>=0)close(relay);
  XCTAssertEqual(clientResult,AP_OK);XCTAssertEqual(hostResult.load(),AP_OK);
- NSDictionary* received=[self mediaQuery:client];XCTAssertEqual([received[@"grants"] unsignedIntValue],1u);
+ NSDictionary* received=[self mediaQuery:client],*sent=[self mediaQuery:server];
+ // Only query's scalar counters and digests: no payloads or fixture credentials.
+ NSDictionary* observation=@{@"kind":@"ios-media-summary",@"fixture":@(kind),@"clientStatus":@(clientResult),@"hostStatus":@(hostResult.load()),@"relayedPackets":@(relayed.load()),@"hostQosResult":@(hostQos.load()),@"relayQosResult":@(relayQos.load()),@"host":sent,@"client":received};
+ NSData* observed=[NSJSONSerialization dataWithJSONObject:observation options:0 error:nil];XCTAssertLessThanOrEqual(observed.length,65536u);
+ std::cout<<[[[NSString alloc] initWithData:observed encoding:NSUTF8StringEncoding] UTF8String]<<std::endl;
+ XCTAssertEqual(hostQos.load(),0);if(kind==2)XCTAssertEqual(relayQos.load(),0);
+ XCTAssertEqual([received[@"grants"] unsignedIntValue],1u);
  if(kind==0)XCTAssertEqual([received[@"sinkPackets"] unsignedIntValue],1u);
  else if(kind==1)XCTAssertEqual([received[@"streams"] count],2u);
- else{XCTAssertEqual([received[@"streams"] count],5u);XCTAssertEqual([received[@"controlProgress"] unsignedIntValue],8u);XCTAssertEqual(relayed.load(),120u);XCTAssertEqual([received[@"queueBytes"] unsignedIntValue],0u);for(NSDictionary* stream in received[@"streams"]){if([stream[@"direction"] unsignedIntValue]==1)XCTAssertEqual([stream[@"received"] unsignedIntValue],8u);}NSDictionary* sent=[self mediaQuery:server];for(NSDictionary* stream in sent[@"streams"]){if([stream[@"direction"] unsignedIntValue]==2)XCTAssertEqual([stream[@"received"] unsignedIntValue],8u);}}
+ else{XCTAssertEqual([received[@"streams"] count],5u);XCTAssertEqual([received[@"controlProgress"] unsignedIntValue],8u);XCTAssertEqual(relayed.load(),120u);XCTAssertEqual([received[@"queueBytes"] unsignedIntValue],0u);for(NSDictionary* stream in received[@"streams"]){if([stream[@"direction"] unsignedIntValue]==1)XCTAssertEqual([stream[@"received"] unsignedIntValue],8u);}for(NSDictionary* stream in sent[@"streams"]){if([stream[@"direction"] unsignedIntValue]==2)XCTAssertEqual([stream[@"received"] unsignedIntValue],8u);}}
  for(auto handle:{client,server}){uint64_t sequence=0;XCTAssertEqual(aether_protocol_stop(handle,&sequence),AP_OK);XCTAssertEqual(aether_protocol_ack(handle,sequence),AP_OK);NSDictionary* stopped=[self mediaQuery:handle];XCTAssertEqual([stopped[@"sockets"] unsignedIntValue],0u);XCTAssertEqual([stopped[@"threads"] unsignedIntValue],0u);XCTAssertEqual(aether_protocol_destroy(handle),AP_OK);}
 }
 - (void)testLegacyV1SecureMedia { [self runMedia:0]; }
