@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "sourceCommit": "4f2a50d81ec5c8062650fc918c0239bc1e660f09",
+  "inputDigest": "7d0cef465c072384f54d424541dc27994372cef79ec3f5d61dacc0a4c2ef3558",
+  "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38132980639",
+  "priorFixObserved": "两种macOS取消均已返回cancelled；D07另确认和D08健康流恢复通过",
+  "remaining": "两arch observer fresh-auth时provider owned未归零；arm64另fresh-auth清理和cancel-after-commit在600ms快照时非terminal，但后一快照已有真实已提交terminal",
+  "logs": [
+    {
+      "file": "build/phase06/06-05/ci-38132980639/macos-arm64/build/phase06/targets/macos-arm64/run-logs/ctest.log",
+      "sha256": "ba8487010098c8613f58b29a4f9ea4045264e48f013cd69894724e9a103df9e0"
+    },
+    {
+      "file": "build/phase06/06-05/ci-38132980639/macos-x64/build/phase06/targets/macos-x64/run-logs/ctest.log",
+      "sha256": "60bf715ec5cb2e1d911b125771636788f51aaff9ce3d19f241b4976cd0dd7e52"
+    }
+  ],
+  "proposed": "provider清理绑定实际authority connection而非失败重连临时config身份；取消测试fixture按明确deadline等待实际terminal，再保留原期望断言；Android legacy清除自有旧ready日志避免读取前一次回执",
+  "status": "actual-failure-before-fix",
+  "recordedAt": "2026-10-11T11:00:55.421Z"
+}
