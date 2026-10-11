@@ -11,6 +11,46 @@
 #endif
 namespace aether::protocol {
 using Context=ConnectionContext;
+#if defined(__linux__)
+// Scope broken-pipe protection to this connection's BIO; do not alter the
+// consuming application's process-wide SIGPIPE disposition.
+BIO* socket_bio(Socket socket){
+ static const std::unique_ptr<BIO_METHOD,decltype(&BIO_meth_free)> method{[]{
+  auto* value=BIO_meth_new(BIO_get_new_index()|BIO_TYPE_SOURCE_SINK,"Aether owned socket");
+  require(value!=nullptr,AP_INTERNAL_ERROR);
+  BIO_meth_set_create(value,[](BIO* b){BIO_set_init(b,1);return 1;});
+  BIO_meth_set_destroy(value,[](BIO* b){BIO_set_data(b,nullptr);BIO_set_init(b,0);return 1;});
+  BIO_meth_set_read(value,[](BIO* b,char* data,int size){BIO_clear_retry_flags(b);auto result=static_cast<int>(recv(static_cast<int>(reinterpret_cast<intptr_t>(BIO_get_data(b))),data,static_cast<size_t>(size),0));if(result<0&&(errno==EAGAIN||errno==EWOULDBLOCK||errno==EINTR))BIO_set_retry_read(b);return result;});
+  BIO_meth_set_write(value,[](BIO* b,const char* data,int size){BIO_clear_retry_flags(b);auto result=static_cast<int>(send(static_cast<int>(reinterpret_cast<intptr_t>(BIO_get_data(b))),data,static_cast<size_t>(size),MSG_NOSIGNAL));if(result<0&&(errno==EAGAIN||errno==EWOULDBLOCK||errno==EINTR))BIO_set_retry_write(b);return result;});
+  BIO_meth_set_ctrl(value,[](BIO*,int command,long,void*)->long{return command==BIO_CTRL_FLUSH||command==BIO_CTRL_DUP?1:0;});
+  return value;
+ }(),BIO_meth_free};
+ auto* bio=BIO_new(method.get());require(bio!=nullptr,AP_INTERNAL_ERROR);BIO_set_data(bio,reinterpret_cast<void*>(static_cast<intptr_t>(socket)));return bio;
+}
+#endif
+void close_transport_tls(Context& c) noexcept {
+ if(!c.tls||c.tcp.value==invalid)return;
+ // Send close_notify and FIN, then discard at most 64KiB for at most 20ms.
+ // A close with unread TCP bytes can reset a delivered rejection on POSIX.
+ SSL_shutdown(c.tls.get());
+#ifdef _WIN32
+ shutdown(c.tcp.value,SD_SEND);
+#else
+ shutdown(c.tcp.value,SHUT_WR);
+#endif
+ const auto deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(20);
+ std::array<char,4096> discard{};size_t total=0;
+ while(total<65536&&std::chrono::steady_clock::now()<deadline){
+  auto left=std::chrono::duration_cast<std::chrono::microseconds>(deadline-std::chrono::steady_clock::now()).count();if(left<=0)break;
+  fd_set read;FD_ZERO(&read);
+#ifndef _WIN32
+  if(c.tcp.value<0||c.tcp.value>=FD_SETSIZE)break;
+#endif
+  FD_SET(c.tcp.value,&read);timeval timeout{0,static_cast<long>(left)};
+  if(select(static_cast<int>(c.tcp.value)+1,&read,nullptr,nullptr,&timeout)<=0)break;
+  int received=static_cast<int>(recv(c.tcp.value,discard.data(),static_cast<int>(discard.size()),0));if(received<=0)break;total+=static_cast<size_t>(received);
+ }
+}
 void append64(std::vector<uint8_t>& b,uint64_t v){for(int i=7;i>=0;--i)b.push_back(static_cast<uint8_t>(v>>(i*8)));}
 sockaddr_in endpoint(uint32_t port){sockaddr_in a{};a.sin_family=AF_INET;a.sin_addr.s_addr=htonl(INADDR_LOOPBACK);a.sin_port=htons(static_cast<uint16_t>(port));return a;}
 void nonblocking(Socket s){
@@ -81,7 +121,14 @@ void handshake(Context& c){
   }}else require(connect(c.tcp.value,reinterpret_cast<sockaddr*>(&a),sizeof(a))==0,AP_TIMEOUT);}
  nonblocking(c.tcp.value);
  c.tls.reset(SSL_new(c.tls_context.get()));require(c.tls!=nullptr,AP_INTERNAL_ERROR);
+#if defined(__linux__)
+ auto* bio=socket_bio(c.tcp.value);SSL_set_bio(c.tls.get(),bio,bio);
+#else
+#ifdef SO_NOSIGPIPE
+ int suppress=1;require(setsockopt(c.tcp.value,SOL_SOCKET,SO_NOSIGPIPE,&suppress,sizeof(suppress))==0,AP_INTERNAL_ERROR);
+#endif
  require(SSL_set_fd(c.tls.get(),static_cast<int>(c.tcp.value))==1,AP_INTERNAL_ERROR);
+#endif
  if(c.config.role==2){require(SSL_set1_host(c.tls.get(),c.peer.c_str())==1,AP_INTERNAL_ERROR);SSL_set_tlsext_host_name(c.tls.get(),c.peer.c_str());}
  for(;;){ERR_clear_error();int ok=c.config.role==1?SSL_accept(c.tls.get()):SSL_connect(c.tls.get());if(ok==1)break;auto e=SSL_get_verify_result(c.tls.get());retry_tls(c,ok,e==X509_V_ERR_HOSTNAME_MISMATCH?AP_IDENTITY:AP_TRUST);}
  require(SSL_version(c.tls.get())==TLS1_3_VERSION,AP_PROTECTION);

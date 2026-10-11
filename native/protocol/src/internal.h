@@ -123,6 +123,8 @@ struct MediaLimits {
  uint16_t k=2,n=3,shard=64,packet_size=0,mtu=1500,fec_percent=50,min_repair=1,ttl_ms=25;
  uint32_t frame=128,per_stream_queue=192;
 };
+struct ConnectionContext;
+void close_transport_tls(ConnectionContext&) noexcept;
 struct ConnectionContext : Transport {
  AetherProtocolConfig config{};
  std::string cert,key,trust,peer;
@@ -146,7 +148,7 @@ struct ConnectionContext : Transport {
  std::shared_ptr<HostServices> host_services;
  std::shared_ptr<ControlState> control;
  ~ConnectionContext(){cleanup();}
- void cleanup(){for(auto& s:streams){if(s->crypto){srtp_dealloc(s->crypto);s->crypto=nullptr;}if(s->repair_crypto){srtp_dealloc(s->repair_crypto);s->repair_crypto=nullptr;}s->authenticated_bytes.clear();}queue_bytes=0;if(srtp){srtp_dealloc(srtp);srtp=nullptr;}tls.reset();tls_context.reset();listener.reset();tcp.reset();udp.reset();}
+ void cleanup(){for(auto& s:streams){if(s->crypto){srtp_dealloc(s->crypto);s->crypto=nullptr;}if(s->repair_crypto){srtp_dealloc(s->repair_crypto);s->repair_crypto=nullptr;}s->authenticated_bytes.clear();}queue_bytes=0;if(srtp){srtp_dealloc(srtp);srtp=nullptr;}close_transport_tls(*this);tls.reset();tls_context.reset();listener.reset();tcp.reset();udp.reset();}
 };
 sockaddr_in endpoint(uint32_t port);
 void make_socket(OwnedSocket& socket,int kind,uint32_t ms);
