@@ -48,5 +48,24 @@
     "hostRestart": false,
     "driverInstall": false,
     "assertionsChanged": false
-  }
+  },
+  "followupBuildFailures": [
+    {
+      "sourceCommit": "4300b356f05b3c2cdd4cb85d833e98a60ae26e60",
+      "inputDigest": "4a83a1425f3b6dae77633a92a1fea74f8286cfcd183e2ce2db46f6a0a4d332b6",
+      "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38154393149/job/114514243717",
+      "target": "ios-arm64-iphonesimulator",
+      "stage": "ios-build-for-testing",
+      "actualExitCode": 70,
+      "testsExecuted": 0,
+      "classification": "command-option-conflict-not-behavior-red",
+      "observedError": "destination implies architecture, architecture must not also be specified",
+      "fix": "移除重复-arch；保留CMAKE_OSX_ARCHITECTURES与实际Mach-O架构核验，未运行测试不记成功。",
+      "raw": {
+        "file": "build/phase06/06-05/ios-arm64-4300-job.log",
+        "sha256": "84e206cbb352a1db6cf6b5d5bce61c80a8ff866176fdf808dd300135cf824490",
+        "bytes": 18754
+      }
+    }
+  ]
 }
