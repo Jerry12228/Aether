@@ -133,6 +133,8 @@ jobs:
           path: |
             build/phase06/targets/android-${{ matrix.arch }}/logs/
             build/phase06/targets/android-${{ matrix.arch }}/protocol-target-*.json
+            build/phase06/targets/android-${{ matrix.arch }}/target-manifest-*.json
+            build/phase06/targets/android-${{ matrix.arch }}/android-vm.json
             build/phase06/targets/android-${{ matrix.arch }}/protocol-run.json
             build/phase06/targets/android-${{ matrix.arch }}/run-logs/
             build/phase06/targets/android-${{ matrix.arch }}/*.so
@@ -147,3 +149,6 @@ jobs:
             build/phase06/targets/android-${{ matrix.arch }}/dependencies/openssl-install/bin/openssl
             build/phase06/targets/android-${{ matrix.arch }}/dependencies/openssl-install/lib/*.a
             build/phase06/targets/android-${{ matrix.arch }}/libsrtp/libsrtp2.a
+            artifacts/phase06/multistream/*.json
+            artifacts/phase06/android-media-attempts/*.json
+            build/phase06/recovery-fixtures/*/*.log

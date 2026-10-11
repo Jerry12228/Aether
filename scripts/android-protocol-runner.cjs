@@ -6,8 +6,11 @@ async function runAndroid({m,record,run,root,directory,hash}){
  const sdk=process.env.ANDROID_HOME||process.env.ANDROID_SDK_ROOT;assert.ok(sdk,'Actual Android SDK required');
  const adb=path.join(sdk,'platform-tools','adb'+(process.platform==='win32'?'.exe':''));
  const devices=await run('adb-devices',adb,['devices','-l']);record.deviceProbe=devices;
- let serial=process.env.AETHER_ADB_SERIAL,emulator=null,avd=null,remote=null,avdCommand=null,primaryError=null;
+ let serial=process.env.AETHER_ADB_SERIAL,emulator=null,avd=null,remote=null,avdCommand=null,primaryError=null,ownedVm=null;
  try{
+  if(!serial&&process.env.GITHUB_ACTIONS==='true'){
+   ownedVm=await require('./android-protocol-vm.cjs').prepareAndroidVm({sdk,directory,arch:m.arch,run,record});serial=ownedVm.serial;record.destination={...ownedVm.destination,owned:true};
+  }
   if(!serial&&(process.env.GITHUB_ACTIONS==='true'||process.env.AETHER_PROTOCOL_EMULATOR==='x64')&&m.arch==='x64'){
    assert.ok(['linux','win32'].includes(process.platform));serial='emulator-5556';assert.ok(!devices.includes(serial),'Owned emulator port is already occupied');
    const manager=path.join(sdk,'cmdline-tools/latest/bin/sdkmanager'),avdManager=path.join(sdk,'cmdline-tools/latest/bin/avdmanager');
@@ -71,12 +74,20 @@ async function runAndroid({m,record,run,root,directory,hash}){
   const vectors=JSON.parse(fs.readFileSync(path.join(root,'protocol/vectors.json'),'utf8'));assert.ok(vectors.wire.length>=15);
   for(let i=0;i<vectors.wire.length;i++){const v=vectors.wire[i],result=nativeJson(await nativeRun('adb-vector-'+i,['-s',serial,'shell',shell('aether_protocol_tracer',['--role','parse','--wire',v.hex,'--versions',v.local.join(',')])]));assert.deepEqual(result,v.expected,v.id);pass({id:v.id,assertions:3});}
   const v=vectors.cryptographicKnownAnswers[0],kat=nativeJson(await nativeRun('adb-aes-kat',['-s',serial,'shell',shell('aether_protocol_tracer',['--role','kat','--key',v.key,'--iv',v.iv,'--plaintext',v.plaintext])]));assert.deepEqual(kat,{ciphertext:v.ciphertext,tag:v.tag});pass({id:'AES-256-GCM-KAT',assertions:2});
-  record.tests={tests:cases.length,passed:cases.length,failed:0,skipped:0,cancelled:0,cases,assertions:cases.reduce((n,c)=>n+c.assertions,0)};
-  record.coverageGaps=['Android full multistream fault relay and 60 recovery cases remain unexecuted'];
-  throw Error('Actual Android native checks passed, but mandatory multistream/recovery coverage remains incomplete');
+  const testEnv={AETHER_PROTOCOL_ADB:adb,AETHER_ADB_SERIAL:serial,AETHER_PROTOCOL_ADB_REMOTE:remote,AETHER_PROTOCOL_RELAY_LOGS:path.join(directory,'run-logs/native-relays'),AETHER_PROTOCOL_MANIFEST:path.join(directory,'target-manifest-'+m.configuration+'.json'),AETHER_PROTOCOL_BUILD:path.join(root,m.binaryDirectory)},priorEnv=Object.fromEntries(Object.keys(testEnv).map(key=>[key,process.env[key]]));
+  try{Object.assign(process.env,testEnv);record.supplementary=[];
+   for(const [suite,count]of [['multistream',27],['recovery',60]]){
+    const output=await run('adb-original-'+suite,process.execPath,['--test',path.join(root,'tests/protocol-'+suite+'.test.cjs')],false,600000),number=name=>Number(output.match(new RegExp('(?:#|ℹ) '+name+' (\\d+)'))?.[1]||0);
+    assert.equal(number('tests'),count);assert.equal(number('pass'),count);for(const name of ['fail','cancelled','skipped','todo'])assert.equal(number(name),0,'Original Android suite '+name);
+    const names=[...output.matchAll(/^(?:# Subtest: |✔ )(.+?)(?: \([\d.]+ms\))?$/gm)].map(match=>match[1]);assert.equal(names.length,count,'Every original Android case must be observed');for(const id of names)cases.push({id:suite+':'+id,assertions:0});
+    record.supplementary.push({suite,tests:count,passed:count,failed:0,skipped:0,cancelled:0,todo:0});record.tests={tests:cases.length,passed:cases.length,failed:0,skipped:0,cancelled:0,cases:[...cases],assertions:cases.reduce((n,c)=>n+c.assertions,0),assertionsScope:'initial native checks only; original Node assertions are independently executed but not individually counted'};
+   }
+   record.coverageGaps=[];
+  }finally{for(const [key,value]of Object.entries(priorEnv)){if(value===undefined)delete process.env[key];else process.env[key]=value;}}
  }catch(error){primaryError=error;throw error;}finally{
   const cleanupErrors=[];
   if(remote)try{await run('adb-owned-remove',adb,['-s',serial,'shell','rm','-rf',remote],true);}catch(e){cleanupErrors.push(e.message);}
+  if(ownedVm)try{await ownedVm.stop();}catch(e){cleanupErrors.push(e.message);}
   if(emulator){try{await run('adb-owned-emulator-stop',adb,['-s',serial,'emu','kill'],true);}catch(e){cleanupErrors.push(e.message);}finally{if(emulator.exitCode===null){emulator.kill();await Promise.race([new Promise(resolve=>emulator.once('close',resolve)),pause(5000)]);if(emulator.exitCode===null){emulator.kill('SIGKILL');cleanupErrors.push('Owned emulator required forced termination');}}}const log=path.join(directory,'run-logs/emulator.log');record.emulatorLog={file:path.relative(root,log).replaceAll('\\','/'),sha256:hash(fs.readFileSync(log))};}
   if(avd)try{assert.ok(path.resolve(process.env.ANDROID_AVD_HOME).startsWith(path.resolve(root,'build')+path.sep),'Owned AVD deletion boundary');await run('android-avd-delete',avdCommand.exe,[...avdCommand.args,'delete','avd','--name',avd],true);}catch(e){cleanupErrors.push(e.message);}
   if(cleanupErrors.length){record.cleanupErrors=cleanupErrors;if(!primaryError)throw Error(cleanupErrors.join('; '));}

@@ -31,8 +31,8 @@ function syncFixture(folder){
 }
 function spawnSync(exe,args,options={}){
  const folder=args.includes('--fixture')?args[args.indexOf('--fixture')+1]:null;if(folder)syncFixture(folder);
- const raw=command(['shell','cd '+active+'; '+native(exe,args,folder)+'; aether_exit=$?; echo AETHER_NATIVE_EXIT=$aether_exit; exit $aether_exit'],options.timeout||5000);
- const parsed=receipt(raw);return {...parsed,raw};
+ const r=cp.spawnSync(adb,['-s',serial,'shell','cd '+active+'; '+native(exe,args,folder)+'; aether_exit=$?; echo AETHER_NATIVE_EXIT=$aether_exit; exit $aether_exit'],{windowsHide:true,shell:false,encoding:'utf8',timeout:options.timeout||5000,maxBuffer:1024*1024});assert.ok(!r.error&&r.signal===null);const raw=r.stdout+r.stderr;
+ const parsed=receipt(raw);assert.ok(r.status===0||r.status===parsed.status,'ADB exit differs from actual guest receipt');return {...parsed,raw};
 }
 function child(exe,args,folder,name,deadline=15000,onState){
  const proxy=new EventEmitter();proxy.stdout=new PassThrough();proxy.stderr=new PassThrough();proxy.pid=null;proxy.exitCode=null;
@@ -62,7 +62,12 @@ function child(exe,args,folder,name,deadline=15000,onState){
 }
 function cleanup(){for(const [folder,info]of owned){for(const p of info.processes)if(p.exitCode===null)p.kill();assert.ok(info.remote.startsWith(active+'/recovery-'));assert.match(info.remote.slice((active+'/recovery-').length),/^(case-|multistream-)[\w-]+$/);command(['shell','rm','-rf',info.remote]);owned.delete(folder);}}
 module.exports={active,child,spawnSync,cleanup,createRelay};
-module.exports.releaseMedia=folder=>{const info=owned.get(path.resolve(folder));assert.ok(info);command(['shell','touch',info.remote+'/submit-host',info.remote+'/submit-client']);};
+module.exports.releaseMedia=folder=>{const info=owned.get(path.resolve(folder));assert.ok(info);for(const role of ['host','client'])command(['shell','touch',info.remote+'/submit-'+role]);};
+module.exports.makeCertificates=folder=>{const info=syncFixture(folder);for(const name of ['host','client']){
+ const shell='cd '+active+'; OPENSSL_CONF=/dev/null LD_LIBRARY_PATH='+active+' ./openssl req -x509 -newkey ED25519 -noenc -keyout '+info.remote+'/'+name+'.key -out '+info.remote+'/'+name+'.pem -subj /CN=aether-'+name+'.local -addext subjectAltName=DNS:aether-'+name+'.local -days 1 -config /dev/null; aether_exit=$?; echo AETHER_NATIVE_EXIT=$aether_exit; exit $aether_exit';
+ const r=cp.spawnSync(adb,['-s',serial,'shell',shell],{windowsHide:true,shell:false,encoding:'utf8',timeout:20000,maxBuffer:65536});assert.ok(!r.error&&r.signal===null);assert.equal(receipt(r.stdout+r.stderr).status,0,'Actual pinned guest OpenSSL certificate generation');
+ for(const extension of ['key','pem'])command(['pull',info.remote+'/'+name+'.'+extension,path.join(folder,name+'.'+extension)]);
+}};
 
 
 let relaySequence=0;
