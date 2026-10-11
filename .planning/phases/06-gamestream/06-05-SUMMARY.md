@@ -52,9 +52,9 @@ plan_head_after: 1b703afd1267b07aeaec412c38d27a9d3f404f95
 checkpoint_recorded: "2026-10-11T04:55:00Z"
 ---
 
-# Phase 06 Plan 05：五目标执行准备与发布批准停点
+# Phase 06 Plan 05：五目标实际执行与证据核验进行中
 
-**目标构建入口和可移植测试宿主已准备，本地 Debug/Release 与真实 FFI 回归通过；06-05 三个任务均未完成，等待具体远端发布批准。**
+**用户已批准当前工作分支的公开发布与后续 Phase6 修复/证据，实际十二目标 CI 持续执行；06-05 三个任务均未完成。最初发布停点及所有旧失败是历史记录，当前状态见文末和 06-05-EXECUTION.json。**
 
 用户本会话原答复 `1` 选择执行 06-05。此选择不改写 Phase3 的独立安装批准门槛。Phase6 仍为 5/6、全项目 13/15 计划及 2/42 阶段，NET-01/02/03 未完成。
 
@@ -152,3 +152,13 @@ CI38149010300/a405的ARM32及x64各115/115、无skip/cancel并完成自有VM清�
 1deb371先封存iOS/local原始失败；0b6467d将本地boot probe限定5秒并在3分钟内重试，为iOS test-only中继及host thread设置显式user-initiated QoS并增加仅标量/摘要的逐流日志，原因推断与实际结果分开。CI38152495945/source0b6467d/input2a355218执行中；本地Windows15/15、93159ms及真实FFI22/22、16460.2249ms、21host通过。现有Helios Release2758ms和root Debug11/11、26.65s通过，未进行真实设备操作。
 
 当前仍任务0/3、Task1未完成，Task2独立validator/known-bad RED及Task3真实最终人审尚未开始。Phase3独立修正安装关口、5/6阶段计划计数及NET未完成不变。
+
+## 2026-10-12 当前实际 AVD 通过与 XCTest 产物绑定修复
+
+0b6467d/input2a355218 的本机自建 API26 x64 AVD 实际通过115/115（175004ms，媒体27、恢复60、控制/旧版本/向量检查完整，fail/skip/cancel0），emu kill与AVD delete均退出0，后续独立adb devices为空。此回执已独立归档，不沿用导入的CI日志。该轮十二CI作业最终十一通过；iOS两模拟器各42/42，但Android x64 fec-beyond 在relay cleanup阶段失败，原始异常可能被清理异常覆盖。6aef328先封存真实失败与本机通过，15020c0仅增加原始异常/进程摘要/relay位置与observed errno诊断，原5秒child/3秒observation/25ms媒体期限及全部断言不变。
+
+15020c0/input63035efe 的本机Windows15/15、93746ms，原始产物和日志已归档；该轮Android三个ABI实际CI通过。独立归档核验随后发现0b的iOS x64 libSRTP字节与测试前构建清单不符：真实xcodebuild test执行CompileC/Libtool后再运行42项测试。a292c98记录原始摘要漂移，不能以XCTest通过关闭来源/产物绑定。固定上游源码、Botan生成build_config.json及实际XCTest可执行文件也需补齐归档。
+
+4300b35/input4a83a142 在build阶段先build-for-testing并绑定host/test实际可执行文件，run阶段使用test-without-building，所有源码/依赖/产物均在运行前后核验hash；补齐只读来源和生成配置归档，排除fixture PEM/key资源。当前实际CI38154393149执行中，本机同输入回归进行中。旧通过与失败保持各自source/inputDigest，不合并成最新矩阵通过。
+
+当前Task1仍未完成，任务0/3；独立validator的known-bad行为RED及最终真实人审未开始。Phase6仍5/6、NET与未分类/禁止项旗标不提前关闭；开发机无重启/关机、驱动/Apollo/信任或系统策略变更。
