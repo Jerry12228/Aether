@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: 06-05 Task1已建立自有Android CPU虚拟机；取消终态修复与全平台CI38140035480执行中；任务0/3；Phase3安装关口保持
-last_updated: "2026-10-11T12:39:59.017751+00:00"
+stopped_at: 06-05 Task1当前127f2a3同输入CI38150341610执行中；8b ARM64实际115/115；已封存控制响应RED并修复；任务0/3；Phase3安装关口保持
+last_updated: "2026-10-11T15:15:54.109Z"
 last_activity: 2026-10-11
-last_activity_desc: 本地Android x64历史115/115及清理误判修复；Windows当前15/15、快速23.30秒、恢复四组60项；最新同输入CI待结果
+last_activity_desc: ARM32/x64历史a405各115/115、8b ARM64实际115/115；当前控制响应期限和adb端口顺序修复重测；独立validator及人审未开始
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 15
   completed_plans: 13
   percent: 5
-state_head: 7618817
+state_head: 127f2a3
 ---
 
 # Project State
@@ -191,3 +191,5 @@ Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-
 同分支修复/CI授权继续有效。05ec0e2的自有API24 ARM64实际28项/160断言（31个控制场景、legacy1/2、6个安全和全部wire/KAT）通过，完整目标仍因媒体/恢复未接入退出1。ARM32 API21历史恢复60/60已记录，不改绑最新源码。fc14fde/input21c7da3b的27项媒体实际8通过19失败，原因是API21单文件touch导致提交屏障未创建，按测试适配失败保存；逐一创建修正96a49e4已推送。当前新固定CPU虚拟机CI38137338723仍进行中，Windows本地完整12/12（92.69s、target92801ms，input7761dd7c）通过。详见docs/phase06/06-05-ANDROID-VM2.json。五目标同输入及独立validator/最终人审仍未完成，0/3任务、Phase6 5/6、NET未关闭；Phase3/plan3/halted和禁止开发机重启/关机不变。
 
 06-05继续：96a49e4的本地自有API26 x64实际115/115（初始28、媒体27、恢复60）但runner清理退出1，不能记完整目标通过。ARM32实际原60/59捕获已接受取消后终态为信任错误，先保存ANDROID-RED a270d29再生产修复b6a9ead。b6 CI38138796842 Windows两架构、Linux两架构、Mac ARM64、iOS device及x64 sim通过；三Android媒体/其余场景、Mac x64 READY观察和iOS ARM64一项仍失败。7618817加入自有来宾框架暂停、Mac原生故障中继、READY明确观察屏障和四组恢复；本地input ce3f5b1 的Windows15/15（92.80秒）、fast23.30秒、恢复并集60无skip，见WINDOWS-GROUPED。CI38140035480待实际结果；Task1未完成、0/3任务、Phase6仍5/6，独立validator和最终人审未开始，Phase3 halted不变。
+
+2026-10-11续跑：CI38149010300/a405中ARM32及x64各实际115/115并正常清理，ARM64证书fixture失败；CI38149264704/8b中ARM64实际115/115、567153ms并清理，ARM32恢复59/60、x64恢复58/60失败。x64真实host生成容量拒绝proposal后AP_TIMEOUT、client返回AP_LENGTH；另有adb将ready2先公布而ready未同步的观察竞争。先271a14c封存[ANDROID-RESPONSE-RED](../docs/phase06/06-05-ANDROID-RESPONSE-RED.json)，127f2a3修复为现有连接1–3秒控制响应I/O期限并保持端口公布顺序；原25ms媒体/原断言不变，CI38150341610执行中。8b输入58214d27与本地Git LF已精确一致，本地Windows15/15（94425ms）、Flutter22/22（17120.4255ms）另存历史；旧CRLF输入不改绑CI LF。当前127输入12518317本地及CI重测中；任务0/3、Phase6 5/6、NET及独立validator/最终人审保持未完成。Phase3独立修正安装授权不变。

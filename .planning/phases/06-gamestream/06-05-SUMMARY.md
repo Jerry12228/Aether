@@ -134,3 +134,11 @@ Task1仍in_progress，0/3任务；原有27媒体/60恢复断言、25ms媒体期�
 b6 CI38138796842仍整体失败：Windows两架构、Linux两架构、Mac ARM64、iOS device及x64 sim成功；Android部分媒体缺帧、Mac x64 READY睡眠观察竞争、iOS ARM64一项失败。63b3b0e保存Mac实际失败；7618817将test-only宿主观察改为有界明确屏障，保留原150ms延迟及零sink/最终ACK断言；Mac使用同一原生故障中继并隐藏受保护seed字节；只在新建自有Android来宾暂停zygote/surfaceflinger，仍测试真实Bionic/NDK库、双PIDsocket及原25ms媒体期限，不能宣称框架/Flutter或物理支持。开发机配置和重启禁令保持。
 
 当前本地input ce3f5b1bf341cdcd4e1701e49ed7cdf26232498666ca61924fbb4aff8df75ae5（构建时HEAD b6）Windows15/15、92.80秒；fast两组23.30秒。原恢复60项按注册索引分四组各15，完整LastTest.log并集60且互不重复，零fail/skip；每组小于60秒，不再把原90秒恢复写入30秒fast。JUnit stdout自身默认截断，逐项分母从完整原日志核验。见WINDOWS-GROUPED。最新同提交7618817的CI38140035480执行中，所有目标同输入通过前Task1仍in_progress、0/3任务；validator/known-bad RED和最终强制人审未开始。
+
+## 2026-10-11 Android完整原套件与相同输入续跑
+
+CI38149010300/a405的ARM32及x64各115/115、无skip/cancel并完成自有VM清理，ARM64的原生证书fixture失败；该轮input18ef2915，不能合并8b的成功冒称整轮通过。CI38149264704/8b的ARM64首次完整115/115（567153ms）并完成清理，ARM32恢复59/60、x64恢复58/60。对应x64真实host已生成正确容量拒绝proposal后以AP_TIMEOUT结束，client实际返回AP_LENGTH；另一项为adapter在ready尚未同步时公布ready2。独立RED271a14c保存原始恢复日志、具体PID/状态及其SHA256，源码原因推断与日志观察分栏。127f2a3采用已经验证的连接1–3秒响应I/O期限，在序列化之后开始计时；adb保持native端口发布顺序，未改变25ms媒体期限、原用例和断言。当前同输入CI38150341610执行中。
+
+本地历史CRLF与Git/CI LF的输入哈希分别保留，不能以Git语义diff相同重新绑定旧测试。8b的Git LF/input58214d27已经重新构建，本地Release15/15、94425ms和真实Flutter22/22、17120.4255ms通过（21独立host）。127f2a3/input12518317重新构建和完整运行中；最终以同输入全部目标实际运行与独立validator为关口。执行历史汇集于06-05-EXECUTION.json，仍不是Task2总账。
+
+当前任务0/3，Task1未完成；Task2独立validator/known-bad RED、Task3强制真实人审未开始。阶段5/6、NET及Nyquist/未分类flags不提前关闭。无开发机重启/关机、驱动/Apollo/信任或系统安全策略变更。
