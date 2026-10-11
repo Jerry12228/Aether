@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: 06-05 Task1自有ARM虚拟机实际测试与CPU虚拟机CI38137338723进行中；任务0/3；Phase3独立安装关口保持
-last_updated: "2026-10-11T11:58:09Z"
+stopped_at: 06-05 Task1已建立自有Android CPU虚拟机；取消终态修复与全平台CI38140035480执行中；任务0/3；Phase3安装关口保持
+last_updated: "2026-10-11T12:39:59.017751+00:00"
 last_activity: 2026-10-11
-last_activity_desc: ARM64原生28项/160断言通过；ARM32历史恢复60/60；API21提交屏障修复及CPU虚拟机CI接入；Windows12/12
+last_activity_desc: 本地Android x64历史115/115及清理误判修复；Windows当前15/15、快速23.30秒、恢复四组60项；最新同输入CI待结果
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 15
   completed_plans: 13
   percent: 5
-state_head: 96a49e4
+state_head: 7618817
 ---
 
 # Project State
@@ -189,3 +189,5 @@ Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-
 ## 06-05 当前续跑（2026-10-11）
 
 同分支修复/CI授权继续有效。05ec0e2的自有API24 ARM64实际28项/160断言（31个控制场景、legacy1/2、6个安全和全部wire/KAT）通过，完整目标仍因媒体/恢复未接入退出1。ARM32 API21历史恢复60/60已记录，不改绑最新源码。fc14fde/input21c7da3b的27项媒体实际8通过19失败，原因是API21单文件touch导致提交屏障未创建，按测试适配失败保存；逐一创建修正96a49e4已推送。当前新固定CPU虚拟机CI38137338723仍进行中，Windows本地完整12/12（92.69s、target92801ms，input7761dd7c）通过。详见docs/phase06/06-05-ANDROID-VM2.json。五目标同输入及独立validator/最终人审仍未完成，0/3任务、Phase6 5/6、NET未关闭；Phase3/plan3/halted和禁止开发机重启/关机不变。
+
+06-05继续：96a49e4的本地自有API26 x64实际115/115（初始28、媒体27、恢复60）但runner清理退出1，不能记完整目标通过。ARM32实际原60/59捕获已接受取消后终态为信任错误，先保存ANDROID-RED a270d29再生产修复b6a9ead。b6 CI38138796842 Windows两架构、Linux两架构、Mac ARM64、iOS device及x64 sim通过；三Android媒体/其余场景、Mac x64 READY观察和iOS ARM64一项仍失败。7618817加入自有来宾框架暂停、Mac原生故障中继、READY明确观察屏障和四组恢复；本地input ce3f5b1 的Windows15/15（92.80秒）、fast23.30秒、恢复并集60无skip，见WINDOWS-GROUPED。CI38140035480待实际结果；Task1未完成、0/3任务、Phase6仍5/6，独立validator和最终人审未开始，Phase3 halted不变。

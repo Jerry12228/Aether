@@ -1,0 +1,175 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T12:39:59.015621+00:00",
+  "status": "partial-target-pass",
+  "scope": "当前输入的Windows原生15组，四组各15项互不重复且并集60项；不是全平台独立验证。JUnit stdout默认截断，逐项分母来自完整LastTest.log。",
+  "sourceAtBuild": "b6a9eadfdfaeb3999d9294444e29d53cedf88331",
+  "inputDigest": "ce3f5b1bf341cdcd4e1701e49ed7cdf26232498666ca61924fbb4aff8df75ae5",
+  "target": "windows-x64",
+  "run": {
+    "schema": 1,
+    "target": "windows",
+    "arch": "x64",
+    "sdk": null,
+    "sourceCommit": "b6a9eadfdfaeb3999d9294444e29d53cedf88331",
+    "inputDigest": "ce3f5b1bf341cdcd4e1701e49ed7cdf26232498666ca61924fbb4aff8df75ae5",
+    "buildManifest": {
+      "file": "build/phase06/targets/windows-x64/protocol-target-Release.json",
+      "sha256": "a78dcb7c450ab995c1072ed42d7f33675bd324863ee4e8759eaddb57715a06fd"
+    },
+    "buildRunURL": null,
+    "runURL": null,
+    "executedAt": "2026-10-11T12:36:00.689Z",
+    "executor": {
+      "platform": "win32",
+      "arch": "x64"
+    },
+    "commands": [
+      {
+        "name": "ctest",
+        "exitCode": 0,
+        "durationMs": 92880,
+        "timeout": false,
+        "error": null,
+        "log": "build\\phase06\\targets\\windows-x64\\run-logs\\ctest.log",
+        "executable": "ctest",
+        "args": [
+          "--test-dir",
+          "D:\\WorkSpace\\Aether\\build\\phase06\\targets\\windows-x64",
+          "-C",
+          "Release",
+          "--output-on-failure",
+          "--no-tests=error",
+          "--output-junit",
+          "D:\\WorkSpace\\Aether\\build\\phase06\\targets\\windows-x64\\target-ctest.xml"
+        ],
+        "sha256": "da99100c2763db9920480ddd45149107c72c36d8310340a9d983d3fd2b5f5483"
+      }
+    ],
+    "tests": {
+      "tests": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "junit": {
+        "file": "build/phase06/targets/windows-x64/target-ctest.xml",
+        "sha256": "5338fcbbf640a1a6509ca86e05102600b507ecac4b99d49a04258514ae6d0843"
+      }
+    },
+    "exitCode": 0,
+    "elapsedMs": 92910,
+    "physical": false,
+    "synthetic": true
+  },
+  "recoveryGroups": [
+    {
+      "name": "protocol_recovery_0",
+      "tests": 15,
+      "cases": [
+        "D-05 actual transport loss preserves bounded manual wait and same handle fresh retry",
+        "D-16 threshold neighboring requested retry windows 499",
+        "original setting contract helios-windows10 lan_encryption_mode",
+        "original setting contract helios-windows10 port",
+        "original setting contract helios-windows11 packetsize",
+        "D-15 trace duration boundary 1",
+        "D-08 stream retry window boundary 1",
+        "D-06 observer fresh authentication never gains controller permission",
+        "D-07 entire upstream confirmation rechecks {\"devices\":0}",
+        "D-06 fresh TLS authentication rotates connection lease key and preserves persistent identity",
+        "D-13 all three old policy scopes reject while current synthetic envelopes contain no logged content",
+        "D-09 six-dimensional capacity zero 1",
+        "D-09 six-dimensional capacity zero 5",
+        "D-11 desktop preserves resolution",
+        "D-11 absent video preference returns whole pending choice"
+      ]
+    },
+    {
+      "name": "protocol_recovery_1",
+      "tests": 15,
+      "cases": [
+        "D-08 repeated stream recovery advances only that stream key",
+        "D-16 threshold neighboring requested retry windows 500",
+        "original setting contract helios-windows10 wan_encryption_mode",
+        "original setting contract helios-windows11 fec_percentage",
+        "original setting contract helios-windows11 ping_timeout",
+        "D-15 trace duration boundary 60000",
+        "D-08 stream retry window boundary 3000",
+        "D-05 real refused fresh socket three attempts exhaust to manual",
+        "D-07 entire upstream confirmation rechecks {\"revision\":8}",
+        "D-07 upstream selected mask zero remains closed and a separate confirm starts mic camera",
+        "D-15 explicit trace reports monotonic remaining and expires",
+        "D-09 six-dimensional capacity zero 2",
+        "D-09 two connections share all six budgets and never evict running owner",
+        "D-11 game preserves fps",
+        "D-12 camera reduces first and inadequate audio reserve explains refusal"
+      ]
+    },
+    {
+      "name": "protocol_recovery_2",
+      "tests": 15,
+      "cases": [
+        "D-07 upstream cancel uses host transaction before commit",
+        "D-16 threshold neighboring requested retry windows 501",
+        "original setting contract helios-windows10 packetsize",
+        "original setting contract helios-windows11 lan_encryption_mode",
+        "original setting contract helios-windows11 port",
+        "D-15 trace duration boundary 60001",
+        "D-08 stream retry window boundary 3001",
+        "D-05 real refused fresh socket retry cancellation",
+        "D-06 occupied control lease explains conflict without stealing",
+        "D-08 isolated stream fault preserves healthy video2 audio control and transient disappears",
+        "D-02 one complete confirmation runs all five synthetic streams through real sockets",
+        "D-09 six-dimensional capacity zero 3",
+        "D-04 full multi-stream proposal is returned before any grant",
+        "D-09 encoder exhaustion policy 1",
+        "D-03 protection cannot be disabled and Win10 HDR returns SDR reason"
+      ]
+    },
+    {
+      "name": "protocol_recovery_3",
+      "tests": 15,
+      "cases": [
+        "D-07 upstream cancel uses host transaction after commit",
+        "original setting contract helios-windows10 fec_percentage",
+        "original setting contract helios-windows10 ping_timeout",
+        "original setting contract helios-windows11 wan_encryption_mode",
+        "D-15 trace duration boundary 0",
+        "D-08 stream retry window boundary 0",
+        "D-01 complete original NET case contract mapping retains all source cases",
+        "D-07 entire upstream confirmation rechecks {\"permissions\":3}",
+        "D-15 trace stop extend cap and all trace modes redact sentinels",
+        "D-16 persistent action appears only after 500ms and then clears",
+        "D-09 six-dimensional capacity zero 0",
+        "D-09 six-dimensional capacity zero 4",
+        "D-02 confirm activates sustained video1 video2 audio without upstream",
+        "D-09 encoder exhaustion policy 2",
+        "D-04 cancellation expiry and retry-settings preserve running grant"
+      ]
+    }
+  ],
+  "fastElapsedSeconds": 23.3,
+  "raw": [
+    {
+      "file": "build/phase06/06-05/windows-ce3f5b1-grouped/protocol-run.json",
+      "sha256": "dff9f52d10d10c8e2164a458dd8d189121fe94695169acd19674f3c05ae2b205"
+    },
+    {
+      "file": "build/phase06/06-05/windows-ce3f5b1-grouped/protocol-target-Release.json",
+      "sha256": "a78dcb7c450ab995c1072ed42d7f33675bd324863ee4e8759eaddb57715a06fd"
+    },
+    {
+      "file": "build/phase06/06-05/windows-ce3f5b1-grouped/target-ctest.xml",
+      "sha256": "5338fcbbf640a1a6509ca86e05102600b507ecac4b99d49a04258514ae6d0843"
+    },
+    {
+      "file": "build/phase06/06-05/windows-ce3f5b1-grouped/ctest.log",
+      "sha256": "da99100c2763db9920480ddd45149107c72c36d8310340a9d983d3fd2b5f5483"
+    },
+    {
+      "file": "build/phase06/06-05/windows-ce3f5b1-grouped/LastTest.log",
+      "sha256": "4a82f4eb7e227b1ac6621097874ea16a71ac41fffcac937bd47fbbe4e8e1d823"
+    }
+  ],
+  "tasksCompleted": 0
+}

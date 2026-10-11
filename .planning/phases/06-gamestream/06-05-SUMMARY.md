@@ -126,3 +126,11 @@ Android完整19多流故障与60恢复仍未运行；五目标同输入CI尚未�
 2c24053有界TLS同轮分段读取修复后，实际CI38136106760的Mac ARM64恢复60/60通过，媒体27/26仍有fec-domain-tamper整体截止超时，CTest13/14；当前没有将其豁免。96a49e4接入固定官方CPU虚拟机、自有guest OpenSSL证书、逐一创建屏障及未删减恢复60项，CI38137338723正在运行。最新Windows本地12/12、92.69s，target92801ms，input7761dd7c2f95c4d44b57d8ba8f0c431fca3000cc0598ad2a9af418c95f33a229；构建时HEAD为fc14fde，CI会核验实际96a49e4。
 
 Task1仍in_progress，0/3任务；原有27媒体/60恢复断言、25ms媒体期限、637能力case及既定来源保持。protocol-fast标签89.55s的实际差异仍未解决，不能写成30秒通过。五目标同输入、独立证据validator/known-bad RED和最后真人确认尚未完成。
+
+## 当前取消竞争修复与有界完整恢复分组
+
+96a49e4的自有API26 Android x64实际115/115，媒体27与恢复60零fail/skip；runner仅在退出清理阶段误判，原回执与日志保留在build/phase06/06-05/android-x64-96a49e4-all-checks-cleanup-failure。Android ARM32 CI原恢复60/59捕获具体取消竞争：AP_OK受理且操作尚未terminal，随后发布AP_TRUST。先封存a270d29的ANDROID-RED，再b6a9ead在同一结果锁内线性化取消与失败发布，不修改原20ms取消输入。旧源码通过不改绑最新输入。
+
+b6 CI38138796842仍整体失败：Windows两架构、Linux两架构、Mac ARM64、iOS device及x64 sim成功；Android部分媒体缺帧、Mac x64 READY睡眠观察竞争、iOS ARM64一项失败。63b3b0e保存Mac实际失败；7618817将test-only宿主观察改为有界明确屏障，保留原150ms延迟及零sink/最终ACK断言；Mac使用同一原生故障中继并隐藏受保护seed字节；只在新建自有Android来宾暂停zygote/surfaceflinger，仍测试真实Bionic/NDK库、双PIDsocket及原25ms媒体期限，不能宣称框架/Flutter或物理支持。开发机配置和重启禁令保持。
+
+当前本地input ce3f5b1bf341cdcd4e1701e49ed7cdf26232498666ca61924fbb4aff8df75ae5（构建时HEAD b6）Windows15/15、92.80秒；fast两组23.30秒。原恢复60项按注册索引分四组各15，完整LastTest.log并集60且互不重复，零fail/skip；每组小于60秒，不再把原90秒恢复写入30秒fast。JUnit stdout自身默认截断，逐项分母从完整原日志核验。见WINDOWS-GROUPED。最新同提交7618817的CI38140035480执行中，所有目标同输入通过前Task1仍in_progress、0/3任务；validator/known-bad RED和最终强制人审未开始。
