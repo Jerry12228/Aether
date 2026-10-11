@@ -121,6 +121,7 @@ class MediaScheduler {
   s.authenticated_bytes.append(reinterpret_cast<const char*>(frame.data()+4),length);s.digest=hash(reinterpret_cast<const uint8_t*>(s.authenticated_bytes.data()),s.authenticated_bytes.size());++s.received;
   for(size_t source=0;source<sources;++source)if(!block.owned.contains(source)){++s.recovered;break;}
   s.timestamp=u32(packet.data()+4);s.sequence=block.last_sequence;block.delivered=true;
+  if(context.selected==3)s.delivered_frame=u32(packet.data()+20);
   auto& progress=s.domain.media==1?(id==context.config.stream_id?window.video1:window.video2):s.domain.media==2?window.audio:s.domain.media==3?window.mic:window.camera;++progress;
  }
 public:
@@ -146,8 +147,18 @@ public:
    // Every field, including reserved bytes, is validated against the local domain after AEAD.
    auto expected=header(s,context.selected==3?u32(packet.data()+20):round,share,std::string(64,'0'),context.media_limits);std::copy(packet.begin()+120,packet.begin()+152,expected.begin()+120);put16(expected.data()+2,u16(packet.data()+2));
    if(std::memcmp(expected.data(),packet.data(),header_bytes)!=0){++s.rejected;continue;}
+   const auto incoming_frame=u32(packet.data()+20);
+   if(context.selected==3&&(!incoming_frame||incoming_frame<=s.delivered_frame)){++s.rejected;continue;}
    auto& block=blocks[static_cast<size_t>(found-context.streams.begin())];
    Bytes canonical(packet.begin(),packet.begin()+header_bytes);put16(canonical.data()+2,0);canonical[18]=0;put16(canonical.data()+96,0);
+   if(context.selected==3&&!block.canonical_header.empty()&&incoming_frame>u32(block.canonical_header.data()+20)){
+    // A realtime window can contain several authenticated frames. Its first
+    // frame must not hold the stream after delivery or block a newer frame.
+    // Only validated newer frame IDs replace the bounded per-stream block;
+    // the existing window deadline is never extended.
+    if(!block.delivered)++s.dropped;
+    context.queue_bytes-=static_cast<uint32_t>(block.owned.size()*shard_bytes);block=FecBlock{};
+   }
    if(!block.canonical_header.empty()&&block.canonical_header!=canonical){++s.rejected;continue;}
    if(block.owned.contains(share)){++s.rejected;continue;}
    if(std::chrono::steady_clock::now()>=deadline){++s.expired;continue;}
@@ -186,7 +197,7 @@ int32_t reset_stream_generation(ConnectionContext& c,uint64_t stream,uint64_t ge
   // Stage both new domains first; a failed exporter leaves the old healthy pair.
   auto domain=s.domain;domain.identity.key=generation;srtp_t source=nullptr,repair=nullptr;
   create_crypto(c.tls.get(),domain,3,&source);try{domain.role=1;create_crypto(c.tls.get(),domain,3,&repair);}catch(...){srtp_dealloc(source);throw;}
-  if(s.crypto)srtp_dealloc(s.crypto);if(s.repair_crypto)srtp_dealloc(s.repair_crypto);s.crypto=source;s.repair_crypto=repair;s.domain.identity.key=generation;s.next_source=1;s.next_repair=1;s.authenticated_bytes.clear();s.digest.clear();return AP_OK;
+  if(s.crypto)srtp_dealloc(s.crypto);if(s.repair_crypto)srtp_dealloc(s.repair_crypto);s.crypto=source;s.repair_crypto=repair;s.domain.identity.key=generation;s.next_source=1;s.next_repair=1;s.delivered_frame=0;s.authenticated_bytes.clear();s.digest.clear();return AP_OK;
  }catch(Failure e){return e.status;}catch(...){return AP_INTERNAL_ERROR;}
 }
 }

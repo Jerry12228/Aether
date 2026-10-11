@@ -69,6 +69,7 @@ struct StreamContext {
  uint64_t next_source=1,next_repair=1;
  uint16_t sequence=0;
  uint32_t timestamp=0;
+ uint32_t delivered_frame=0;
  std::string authenticated_bytes,digest;
  ~StreamContext(){if(crypto)srtp_dealloc(crypto);if(repair_crypto)srtp_dealloc(repair_crypto);}
  StreamContext()=default;
