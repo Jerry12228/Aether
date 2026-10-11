@@ -272,5 +272,58 @@
       "sha256": "5e404d0130ee85411d03ce7bd536d7eddaf27678f23d368a934179317af8f3f5"
     },
     "preliminaryFixtureCrash": "初始独立 fixture 未建立全部五个 StreamContext，发生访问异常；已修正测试前置条件。该异常不计行为 RED。"
+  },
+  "independentGreen": {
+    "executedAt": "2026-10-11T16:58:46.643Z",
+    "sourceCommit": "da0cc17b57d7e33fbaa18d9ee1af3f9df93a0c49",
+    "inputDigest": "c527f6e788052a3cd209b548e9b01ec284b2dc167f4c2f0c91a6c1cdbc8f42f6",
+    "actualExit": 0,
+    "queuedFrames": 2,
+    "deliveredFrames": 3,
+    "lateRepairRedelivered": false,
+    "mediaTtlMs": 25,
+    "raw": {
+      "file": "build/phase06/06-05/realtime-frames-green.log",
+      "sha256": "1853edcd3074fddd54a3a6a88b95124b8fde3ab8475108b600d29d7bb6255d10"
+    },
+    "scope": "真实 loopback UDP 与 SRTP 多帧复现已转绿。原CI D-08是否恢复须由本修复新CI实际运行判定；不因独立测试通过而改写原CI失败。",
+    "initialKnownBadFixture": "测试函数先修正五StreamContext前置条件，最终合格行为RED为退出2；初始访问异常不计RED。"
+  },
+  "fix": {
+    "commit": "da0cc17b57d7e33fbaa18d9ee1af3f9df93a0c49",
+    "behavior": "已认证新帧可替换窗口内前一帧；每条流/密钥代际记录已交付frame，迟到分片不再锁住窗口或重复交付。",
+    "bounded": "保留原25ms窗口期限、64包检查上限与逐流queue上限；替换释放旧block计量；仅故障流reset清空其已交付frame。",
+    "unchanged": "协议wire/公共ABI、旧1/2运行路径、D-08原100ms/300ms观察与断言不变。"
+  },
+  "localFullRegressionFailure": {
+    "sourceCommit": "da0cc17b57d7e33fbaa18d9ee1af3f9df93a0c49",
+    "inputDigest": "c527f6e788052a3cd209b548e9b01ec284b2dc167f4c2f0c91a6c1cdbc8f42f6",
+    "actualExit": 1,
+    "elapsedMs": 105771,
+    "observed": [
+      "protocol_control exceeded original 30s CTest deadline",
+      "fec-golden caller rejected two JSON lines; actual native program exit0",
+      "four original recovery groups each 15 passed"
+    ],
+    "cause": "JSON输出不兼容已确认并恢复原严格schema；control超时原因未确认。并行新建Debug依赖构建已按实际PID/创建时间/完整命令清理，随后用既有Debug目录重建并复测。",
+    "bindingLimit": "本次运行清单、原始日志、JUnit已封存；原构建清单已被后续本机重建覆盖，不能把新清单/二进制重新绑定为该失败运行。",
+    "raw": [
+      {
+        "file": "build/phase06/06-05/local-da0-failed-runtime/protocol-run.json",
+        "sha256": "f526c9c94976e6e765778f21784e226f52e80fc1065fea61eb4631f9e1f6bc48"
+      },
+      {
+        "file": "build/phase06/06-05/local-da0-failed-runtime/run-logs/ctest.log",
+        "sha256": "1331f306234edc0155e412c63e96da246bb3fab85360387f42cb8fd224b46853"
+      },
+      {
+        "file": "build/phase06/06-05/local-da0-failed-runtime/target-ctest.xml",
+        "sha256": "0a17478d70c6fd63a150ead80ddd2412165ad4c2b0c2b67fd402c272ba08eb5b"
+      }
+    ],
+    "outputFixes": [
+      "fd5b93aa9d3e4daeb869e740950829eb53d78847",
+      "9a9e060d0614263cfdf298c902bb58aaf302e402"
+    ]
   }
 }

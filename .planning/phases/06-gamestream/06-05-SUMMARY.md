@@ -162,3 +162,13 @@ CI38149010300/a405的ARM32及x64各115/115、无skip/cancel并完成自有VM清�
 4300b35/input4a83a142 在build阶段先build-for-testing并绑定host/test实际可执行文件，run阶段使用test-without-building，所有源码/依赖/产物均在运行前后核验hash；补齐只读来源和生成配置归档，排除fixture PEM/key资源。当前实际CI38154393149执行中，本机同输入回归进行中。旧通过与失败保持各自source/inputDigest，不合并成最新矩阵通过。
 
 当前Task1仍未完成，任务0/3；独立validator的known-bad行为RED及最终真实人审未开始。Phase6仍5/6、NET与未分类/禁止项旗标不提前关闭；开发机无重启/关机、驱动/Apollo/信任或系统策略变更。
+
+## 2026-10-12 Task1 同输入十二目标闭合，Task2 正在执行
+
+9a9e060/input `f7a9101f6b82670e413569ccac37d49b80d5230b375851fd2d48f78f159939f9` 的 CI38157877824 十二作业全部成功。完整产物已下载，独立核验40个精确Git输入、实际CPU/依赖/编译配置与所有命令原始日志；固定研究源码与Botan生成配置零归档缺口。Windows两架构各15、Linux/macOS各两架构17、Android三ABI各115、iOS device arm64实际构建和两模拟器各42 XCTest均完成；桌面/Android原31控制场景、27媒体、60恢复全部按原始日志核验，没有删改分母。iOS测试前后库与host/test可执行文件哈希一致，先build-for-testing、后test-without-building。本机同输入Windows15/15、94957ms和真实Flutter22/22、16798.7126ms及21独立host已独立归档。
+
+8addc26的macOS x64实际D-08失败仍保留：健康video2/audio在100ms观察中6→6，control11→14，随后媒体恢复。44f97f2独立真实SRTP/UDP排队多帧先行为RED退出2；da0cc17修复实时窗口首帧阻塞及迟到repair重复交付，新帧仅在认证和完整域校验后替换旧block，保持25ms/64包/逐流queue上限。新增测试最初未建立五个StreamContext的访问异常不计RED；完整调用回归随后揭示两条JSON输出不兼容，fd5b93a/9a9e060恢复原单一严格JSON回执。旧失败与取消运行不计最终通过；原D-08观察、期限与断言未放宽。
+
+Task1完成，当前任务1/3。Task2的独立拒绝检查先形成16项中14项真实行为失败，f0a5dd1保存RED；随后68项计数/JUnit/Node/XCTest/CPU/archive/来源/目标/覆盖缺失负例全部通过。正式target CLI已实际核验Windows15/15、94708ms及68独立检查。8579437将validator和负例测试绑定进42文件共同输入并接入实际CI38159407590；input `30fe2ea71b55fa9c53d499ad4ce9baae4e740595b445df5e079e2bc95d768979` 的本机Release/Debug实际构建2315/2657ms。新输入矩阵、TARGETS/EVIDENCE完整映射与all验证仍在执行，旧40文件成功不冒称新42文件已测。
+
+Task3强制真实人审尚未开始。Phase6仍5/6、NET未完成；六条禁止项与三个未分类edge仍flagged-unverified，Phase3修正安装关口保持halted。未执行开发机重启/关机、驱动/Apollo/系统信任或安全策略变更。
