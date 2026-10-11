@@ -1,0 +1,276 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T16:53:19.748Z",
+  "sourceCommit": "8addc26ac5d49b8d545b07efb4c0d005b5e84b39",
+  "inputDigest": "de7c63727ddf4bb68ede5cb6062811eda8d2b0474fc83ca31457c13461277595",
+  "tasksCompleted": 0,
+  "failure": {
+    "target": "macos-x64",
+    "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38155361324",
+    "case": "D-08 isolated stream fault preserves healthy video2 audio control and transient disappears",
+    "tests": 17,
+    "passed": 16,
+    "failed": 1,
+    "observed": [
+      {
+        "step": 0,
+        "elapsedMs": 68,
+        "recovery": {
+          "state": "manual",
+          "reason": "none",
+          "attempts": 0
+        },
+        "controlProgress": 0,
+        "streams": []
+      },
+      {
+        "step": 1,
+        "elapsedMs": 280,
+        "recovery": {
+          "state": "manual",
+          "reason": "none",
+          "attempts": 0
+        },
+        "controlProgress": 1,
+        "streams": [
+          {
+            "streamId": 4,
+            "mediaKind": 1,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 1,
+            "rejected": 4,
+            "dropped": 0,
+            "expired": 0
+          },
+          {
+            "streamId": 5,
+            "mediaKind": 1,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 1,
+            "rejected": 4,
+            "dropped": 0,
+            "expired": 0
+          },
+          {
+            "streamId": 6,
+            "mediaKind": 2,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 1,
+            "rejected": 4,
+            "dropped": 0,
+            "expired": 0
+          }
+        ]
+      },
+      {
+        "step": 2,
+        "elapsedMs": 663,
+        "recovery": {
+          "state": "transient",
+          "reason": "stream-retry",
+          "attempts": 0
+        },
+        "controlProgress": 11,
+        "streams": [
+          {
+            "streamId": 4,
+            "mediaKind": 1,
+            "direction": 1,
+            "generation": 2,
+            "sent": 0,
+            "received": 2,
+            "rejected": 5,
+            "dropped": 9,
+            "expired": 0
+          },
+          {
+            "streamId": 5,
+            "mediaKind": 1,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 6,
+            "rejected": 10,
+            "dropped": 5,
+            "expired": 2
+          },
+          {
+            "streamId": 6,
+            "mediaKind": 2,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 6,
+            "rejected": 12,
+            "dropped": 5,
+            "expired": 0
+          }
+        ]
+      },
+      {
+        "step": 3,
+        "elapsedMs": 763,
+        "recovery": {
+          "state": "healthy",
+          "reason": "none",
+          "attempts": 0
+        },
+        "controlProgress": 14,
+        "streams": [
+          {
+            "streamId": 4,
+            "mediaKind": 1,
+            "direction": 1,
+            "generation": 2,
+            "sent": 0,
+            "received": 2,
+            "rejected": 5,
+            "dropped": 12,
+            "expired": 0
+          },
+          {
+            "streamId": 5,
+            "mediaKind": 1,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 6,
+            "rejected": 10,
+            "dropped": 8,
+            "expired": 2
+          },
+          {
+            "streamId": 6,
+            "mediaKind": 2,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 6,
+            "rejected": 12,
+            "dropped": 8,
+            "expired": 0
+          }
+        ]
+      },
+      {
+        "step": 4,
+        "elapsedMs": 1100,
+        "recovery": {
+          "state": "healthy",
+          "reason": "none",
+          "attempts": 0
+        },
+        "controlProgress": 22,
+        "streams": [
+          {
+            "streamId": 4,
+            "mediaKind": 1,
+            "direction": 1,
+            "generation": 2,
+            "sent": 0,
+            "received": 5,
+            "rejected": 11,
+            "dropped": 17,
+            "expired": 0
+          },
+          {
+            "streamId": 5,
+            "mediaKind": 1,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 9,
+            "rejected": 16,
+            "dropped": 13,
+            "expired": 2
+          },
+          {
+            "streamId": 6,
+            "mediaKind": 2,
+            "direction": 1,
+            "generation": 1,
+            "sent": 0,
+            "received": 9,
+            "rejected": 18,
+            "dropped": 13,
+            "expired": 0
+          }
+        ]
+      }
+    ],
+    "classification": "actual-runtime-healthy-stream-progress-failure",
+    "cause": "尚未证明本次 CI 的唯一原因。源码显示实时接收窗口被首帧 canonical header 固定，后续新帧被拒；先以独立真实 UDP 排队多帧实验验证，不能把源码推断直接写成本次运行原因。"
+  },
+  "sameInputLocalAndroid": {
+    "tests": 115,
+    "passed": 115,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "elapsedMs": 175109,
+    "artifactRecheck": {
+      "before": true,
+      "after": true,
+      "files": 130
+    },
+    "physical": false,
+    "synthetic": true,
+    "cleanup": "实际 adb emu kill 与 avdmanager delete 均0；随后独立 adb devices 为空"
+  },
+  "raw": [
+    {
+      "file": "build/phase06/06-05/ci-38155361324/phase06-macos-x64-8addc26ac5d49b8d545b07efb4c0d005b5e84b39/build/phase06/recovery-fixtures/case-fcYYZk/client.log",
+      "sha256": "f05fd37bdc28b06f87dba1162f05e6b8975f27c52680ff375008fb363b86e1a7",
+      "bytes": 14916
+    },
+    {
+      "file": "build\\phase06\\06-05\\ci-38155361324\\phase06-macos-x64-8addc26ac5d49b8d545b07efb4c0d005b5e84b39\\build\\phase06\\recovery-fixtures\\case-fcYYZk\\host.log",
+      "sha256": "dfb41220219f22e89c53830764c29ed0aedd47832892d6cc6e1096a5b0cbba68",
+      "bytes": 2667
+    },
+    {
+      "file": "build/phase06/06-05/macos-x64-8add-job.log",
+      "sha256": "8937c68767e8c61b4b0a73d4caa4e34d7bedd13c6392aa04d53ce3d5a143ca68",
+      "bytes": 24345
+    },
+    {
+      "file": "build/phase06/06-05/local-8add-android-x64/protocol-run.json",
+      "sha256": "42d1e1069889c8d078a2c45c56d94c690d4f9a54f2b2ecd7c0e4bc7f42c3852a",
+      "bytes": 73127
+    }
+  ],
+  "constraints": {
+    "hostRestart": false,
+    "driverInstall": false,
+    "assertionsChanged": false,
+    "mediaTtlMs": 25
+  },
+  "independentRed": {
+    "executedAt": "2026-10-11T16:54:55.200Z",
+    "case": "fec-golden/realtime queued frames",
+    "actualExit": 2,
+    "expected": "已认证的两个排队帧在同一接收窗口均交付；下次窗口迟到repair不重复交付或挡住新帧",
+    "observed": "native media contract failure: realtime queued frames must both reach healthy sink",
+    "classification": "RED_EVIDENCE_OK",
+    "transport": "真实自有 loopback UDP + libSRTP AES-GCM source/repair 域；fixture 固定密钥只在测试可执行文件",
+    "testSource": {
+      "file": "tests/native/protocol_media_security.cpp",
+      "sha256": "83a23a0509d453746592d79adf1e27d2bd01fbf64c0aa34f6c2693337b587e2d"
+    },
+    "binary": {
+      "file": "build/phase06/targets/windows-x64/Release/aether_media_security.exe",
+      "sha256": "43a0f70ab4302d50ecb2ebb57e0cece7e64cc82afd8185c38d40ef0004bbf105"
+    },
+    "raw": {
+      "file": "build/phase06/06-05/realtime-frames-red.log",
+      "sha256": "5e404d0130ee85411d03ce7bd536d7eddaf27678f23d368a934179317af8f3f5"
+    },
+    "preliminaryFixtureCrash": "初始独立 fixture 未建立全部五个 StreamContext，发生访问异常；已修正测试前置条件。该异常不计行为 RED。"
+  }
+}
