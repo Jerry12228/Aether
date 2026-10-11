@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T15:12:14.454Z",
+  "plan": "06-05",
+  "task": "01",
+  "classification": "actual-runtime-behavior-RED",
+  "sourceCommit": "8b4ec0ea4440dd2aa8657c944f88552c6edb4c7a",
+  "inputDigest": "58214d27f5e36e94ff385cb42492bb939d2fabdeb906482d4b69998c34586283",
+  "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38149264704/job/114499058781",
+  "target": {
+    "os": "android",
+    "arch": "x64",
+    "ndkApi": 21,
+    "runtimeApi": 24,
+    "physical": false,
+    "synthetic": true
+  },
+  "suite": {
+    "tests": 60,
+    "passed": 58,
+    "failed": 2,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "exitCode": 1
+  },
+  "failures": [
+    {
+      "case": "D-09 six-dimensional capacity zero 2",
+      "expected": 5,
+      "actual": 24,
+      "clientPid": 5782,
+      "hostPid": 5766,
+      "clientElapsedMs": 263,
+      "hostFailureStatus": 11,
+      "hostProposalReason": "session-capacity-exhausted",
+      "hostOwned": 0,
+      "classification": "product-control-response-failure",
+      "interpretation": "真实host已生成正确拒绝proposal，但在发送前/发送时AP_TIMEOUT结束；client返回AP_LENGTH而非AP_BUSY。源码flush将含JSON序列化的响应限定为100ms；该期限导致失败为源码与日志联合推断，尚须修复后同用例核验。"
+    },
+    {
+      "case": "D-09 two connections share all six budgets and never evict running owner",
+      "error": "ENOENT ready after ready2 published",
+      "classification": "test-adapter-observation-race",
+      "interpretation": "native宿主先写ready后写ready2；adb轮询首次ready不存在、随后ready2存在，导致本地反序公布。"
+    }
+  ],
+  "raw": [
+    {
+      "file": "build/phase06/06-05/ci-38149264704/android-x64/phase06-android-x64-8b4ec0ea4440dd2aa8657c944f88552c6edb4c7a/build/phase06/targets/android-x64/protocol-target-Release.json",
+      "sha256": "4aaac84f9bf88d31b2ab3fc3c3f8ee5db5fca26d715e3b4ef49ef86a6aa9fb8c",
+      "bytes": 54845
+    },
+    {
+      "file": "build/phase06/06-05/ci-38149264704/android-x64/phase06-android-x64-8b4ec0ea4440dd2aa8657c944f88552c6edb4c7a/build/phase06/targets/android-x64/protocol-run.json",
+      "sha256": "c246f5d1d2321f235f873d5ba9ba6ed9a5ae7a672cb249805ef393c5146328a9",
+      "bytes": 71360
+    },
+    {
+      "file": "build/phase06/06-05/ci-38149264704/android-x64/phase06-android-x64-8b4ec0ea4440dd2aa8657c944f88552c6edb4c7a/build/phase06/targets/android-x64/run-logs/adb-original-recovery.log",
+      "sha256": "a03d432c8ffed62d545da1a03be277e0825b1dd5c4ad1d3e5c581fd0e97d4718",
+      "bytes": 12789
+    },
+    {
+      "file": "build/phase06/06-05/ci-38149264704/android-x64/phase06-android-x64-8b4ec0ea4440dd2aa8657c944f88552c6edb4c7a/build/phase06/recovery-fixtures/case-9WBmxO/client.log",
+      "sha256": "b3b704c0248e082c13ef574bd750cd78b1443d53feb02db6b1919e17391f7819",
+      "bytes": 1820
+    },
+    {
+      "file": "build/phase06/06-05/ci-38149264704/android-x64/phase06-android-x64-8b4ec0ea4440dd2aa8657c944f88552c6edb4c7a/build/phase06/recovery-fixtures/case-9WBmxO/host.log",
+      "sha256": "482561b9eef9db6329a4d93be8014ad117bfa63cdacc9b95a20a4bd18d1a5fcb",
+      "bytes": 2453
+    }
+  ],
+  "constraints": {
+    "hostRestart": false,
+    "driverInstall": false,
+    "assertionsWeakened": false,
+    "media25msUnchanged": true,
+    "tasksCompleted": 0
+  }
+}
