@@ -74,7 +74,5 @@ void fec(){
 }
 int main(int argc,char** argv){try{
  check(argc==2&&srtp_init()==srtp_err_status_ok);const std::string mode(argv[1]);if(mode=="fec-golden")fec();else security(mode);
- std::cout<<"{\"ok\":true,\"case\":\""<<mode<<'"';
- if(mode=="fec-golden")std::cout<<",\"queuedFrames\":2,\"deliveredFrames\":3,\"lateRepairRedelivered\":false,\"mediaTtlMs\":25";
- std::cout<<"}\n";return 0;
+ std::cout<<"{\"ok\":true,\"case\":\""<<mode<<"\"}\n";return 0;
  }catch(const std::exception& e){std::cerr<<"native media contract failure: "<<e.what()<<"\n";return 2;}catch(...){std::cerr<<"native media contract failure\n";return 2;}}
