@@ -44,11 +44,12 @@ async function prepareAndroidVm({sdk,directory,arch,run,record}){
   receipt.frameworkScope='native-only-owned-guest';const uid=output=>{const match=output.trim().match(/^uid=(0|2000)(?:\([^)]{1,64}\))?\s/);assert.ok(match,'Observed owned Android uid format');return match[1];};const initialUid=uid(await run('vm-shell-uid-before',adb,['-s',serial,'shell','id']));receipt.initialShellUid=initialUid;
   const switchOwnedUid=async(action,expected)=>{
    const transition={action,expected,attempts:[]};(receipt.uidTransitions||=[]).push(transition);let observed=null;const deadline=Date.now()+30000;
+   const remaining=()=>{const ms=deadline-Date.now();assert.ok(ms>0,'Owned adbd transition deadline');return Math.min(5000,ms);};
    for(let attempt=0;Date.now()<deadline;attempt++){
     assert.ok(!launchError&&processVm.exitCode===null&&processVm.signalCode===null,'Owned guest exited during adbd transition');const row={attempt,requestError:null,observationError:null,observedUid:null};transition.attempts.push(row);
-    try{await run('vm-owned-adbd-'+action+'-'+attempt,adb,['-s',serial,action],false,5000);}catch(error){row.requestError=error.message.slice(0,1000);}
-    try{await run('vm-owned-adbd-'+action+'-ready-'+attempt,adb,['-s',serial,'wait-for-device'],false,5000);observed=uid(await run('vm-owned-adbd-'+action+'-uid-'+attempt,adb,['-s',serial,'shell','id'],false,5000));row.observedUid=observed;if(observed===expected)break;}catch(error){row.observationError=error.message.slice(0,1000);}
-    await pause(1000);
+    try{await run('vm-owned-adbd-'+action+'-'+attempt,adb,['-s',serial,action],false,remaining());}catch(error){row.requestError=error.message.slice(0,1000);}
+    try{await run('vm-owned-adbd-'+action+'-ready-'+attempt,adb,['-s',serial,'wait-for-device'],false,remaining());observed=uid(await run('vm-owned-adbd-'+action+'-uid-'+attempt,adb,['-s',serial,'shell','id'],false,remaining()));row.observedUid=observed;if(observed===expected)break;}catch(error){row.observationError=error.message.slice(0,1000);}
+    await pause(Math.max(0,Math.min(1000,deadline-Date.now())));
    }
    assert.equal(observed,expected,'Owned adbd '+action+' must reach actual UID within its bounded transition');transition.actualUid=observed;
   };
