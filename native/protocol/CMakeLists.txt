@@ -192,6 +192,11 @@ if(BUILD_TESTING AND NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
     target_compile_options(aether_media_security PRIVATE /W4 /WX)
   endif()
   add_executable(aether_protocol_tracer tools/tracer.cpp)
+  if(ANDROID)
+    add_executable(aether_protocol_udp_bridge tools/test_udp_bridge.cpp)
+    target_compile_features(aether_protocol_udp_bridge PRIVATE cxx_std_20)
+    target_compile_options(aether_protocol_udp_bridge PRIVATE -Wall -Wextra -Werror)
+  endif()
   add_dependencies(aether_protocol_tracer aether_media_security)
   set_property(TARGET aether_protocol_tracer APPEND PROPERTY LINK_DEPENDS
     "${AETHER_ROOT}/tests/protocol-tracer.test.cjs" "${AETHER_ROOT}/tests/protocol-multistream.test.cjs"

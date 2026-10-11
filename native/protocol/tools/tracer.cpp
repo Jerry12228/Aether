@@ -120,6 +120,11 @@ int main(int argc,char** argv){
   auto pid=getpid();
 #endif
   std::cout<<"{\"kind\":\"ready\",\"pid\":"<<pid<<",\"detail\":"<<query(token)<<"}"<<std::endl;
+  if(args.contains("--before-submit")){
+   if(scenario!="multistream"||args.at("--before-submit")!=fixture+"/submit-"+role)throw std::runtime_error("owned submit barrier");
+   const auto until=std::chrono::steady_clock::now()+std::chrono::seconds(5);
+   while(!std::ifstream(args.at("--before-submit")).good()){if(std::chrono::steady_clock::now()>=until)throw std::runtime_error("submit barrier deadline");std::this_thread::sleep_for(std::chrono::milliseconds(1));}
+  }
   std::vector<uint8_t> input;
   if(role=="host"){const std::string synthetic="synthetic-phase06";input.assign(synthetic.begin(),synthetic.end());}
   else{std::ifstream f(fixture+"/request.bin",std::ios::binary);input.assign(std::istreambuf_iterator<char>(f),{});if(input.empty()||input.size()>1024)throw std::runtime_error("fixture size");}
