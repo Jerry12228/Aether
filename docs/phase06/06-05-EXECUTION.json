@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "recordedAt": "2026-10-11T15:14:47.040Z",
+  "recordedAt": "2026-10-11T15:48:24.901Z",
   "plan": "06-05",
   "status": "in_progress",
   "tasksCompleted": 0,
@@ -7336,18 +7336,18 @@
       "url": "https://github.com/Jerry12228/Aether/actions/runs/38149010300"
     },
     {
-      "conclusion": "",
+      "conclusion": "failure",
       "createdAt": "2026-10-11T14:57:09Z",
       "databaseId": 38149264704,
       "headSha": "8b4ec0ea4440dd2aa8657c944f88552c6edb4c7a",
       "jobs": [
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:15:26Z",
+          "conclusion": "success",
           "databaseId": 114499058529,
           "name": "apple (x64, iphonesimulator, macos-26-intel)",
           "startedAt": "2026-10-11T14:58:25Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T14:58:31Z",
@@ -7374,28 +7374,36 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:18Z",
+              "conclusion": "success",
               "name": "XCTest on an observed owned simulator destination",
               "number": 4,
               "startedAt": "2026-10-11T15:05:29Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:22Z",
+              "conclusion": "success",
               "name": "Retain build and XCTest logs without fixture credentials",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:15:18Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:23Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 10,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:15:22Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:15:24Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:15:23Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38149264704/job/114499058529"
@@ -8162,23 +8170,23 @@
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38149264704/job/114499059036"
         }
       ],
-      "status": "in_progress",
-      "updatedAt": "2026-10-11T15:08:06Z",
+      "status": "completed",
+      "updatedAt": "2026-10-11T15:15:26Z",
       "url": "https://github.com/Jerry12228/Aether/actions/runs/38149264704"
     },
     {
-      "conclusion": "",
+      "conclusion": "failure",
       "createdAt": "2026-10-11T15:12:57Z",
       "databaseId": 38150341610,
       "headSha": "127f2a3ae5726508eae380009833bd3063a8c524",
       "jobs": [
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:21:09Z",
+          "conclusion": "success",
           "databaseId": 114502304471,
           "name": "android (arm32)",
           "startedAt": "2026-10-11T15:12:59Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:01Z",
@@ -8205,47 +8213,55 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:14:56Z",
+              "conclusion": "success",
               "name": "Actual native ABI build with Android API 21",
               "number": 4,
               "startedAt": "2026-10-11T15:13:22Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:21:05Z",
+              "conclusion": "success",
               "name": "Require an actual matching adb native runtime",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:14:56Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:21:08Z",
+              "conclusion": "success",
               "name": "Retain actual build and runtime failures without fixture credentials",
               "number": 6,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:21:05Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:21:08Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 12,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:21:08Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:08Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 13,
+              "startedAt": "2026-10-11T15:21:08Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304471"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:18:52Z",
+          "conclusion": "success",
           "databaseId": 114502304624,
           "name": "desktop (macos, x64, macos-26-intel)",
           "startedAt": "2026-10-11T15:13:00Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:02Z",
@@ -8264,47 +8280,55 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:16:36Z",
+              "conclusion": "success",
               "name": "Build exact approved dependency sources and matching native targets",
               "number": 3,
               "startedAt": "2026-10-11T15:13:06Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:18:47Z",
+              "conclusion": "success",
               "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
               "number": 4,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:16:36Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:18:49Z",
+              "conclusion": "success",
               "name": "Retain success and failure logs without fixture credentials",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:18:47Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:18:50Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 10,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:18:49Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:18:50Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:18:50Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304624"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:25:02Z",
+          "conclusion": "success",
           "databaseId": 114502304642,
           "name": "apple (arm64, iphonesimulator, macos-26)",
           "startedAt": "2026-10-11T15:13:05Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:06Z",
@@ -8323,57 +8347,122 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:16:34Z",
+              "conclusion": "success",
               "name": "Actual SDK and native library build with deployment target 13",
               "number": 3,
               "startedAt": "2026-10-11T15:13:09Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:24:52Z",
+              "conclusion": "success",
               "name": "XCTest on an observed owned simulator destination",
               "number": 4,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:16:34Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:24:55Z",
+              "conclusion": "success",
               "name": "Retain build and XCTest logs without fixture credentials",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:24:52Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:24:56Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 10,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:24:55Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:25:01Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:24:56Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304642"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:19:21Z",
+          "conclusion": "success",
           "databaseId": 114502304644,
           "name": "apple (arm64, iphoneos, macos-26)",
-          "startedAt": "2026-10-11T15:12:58Z",
-          "status": "queued",
-          "steps": [],
+          "startedAt": "2026-10-11T15:15:32Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:15:33Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:15:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:15:37Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:15:33Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:19:14Z",
+              "conclusion": "success",
+              "name": "Actual SDK and native library build with deployment target 13",
+              "number": 3,
+              "startedAt": "2026-10-11T15:15:37Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:19:14Z",
+              "conclusion": "skipped",
+              "name": "XCTest on an observed owned simulator destination",
+              "number": 4,
+              "startedAt": "2026-10-11T15:19:14Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:19:15Z",
+              "conclusion": "success",
+              "name": "Retain build and XCTest logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:19:14Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:19:17Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:19:15Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:19:19Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:19:17Z",
+              "status": "completed"
+            }
+          ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304644"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:17:25Z",
+          "conclusion": "failure",
           "databaseId": 114502304703,
           "name": "desktop (macos, arm64, macos-26)",
           "startedAt": "2026-10-11T15:13:06Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:08Z",
@@ -8392,47 +8481,55 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:07Z",
+              "conclusion": "success",
               "name": "Build exact approved dependency sources and matching native targets",
               "number": 3,
               "startedAt": "2026-10-11T15:13:11Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:17:19Z",
+              "conclusion": "failure",
               "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
               "number": 4,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:15:07Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:17:22Z",
+              "conclusion": "success",
               "name": "Retain success and failure logs without fixture credentials",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:17:19Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:17:23Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 10,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:17:22Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:17:24Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:17:23Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304703"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:19:57Z",
+          "conclusion": "success",
           "databaseId": 114502304711,
           "name": "android (x64)",
           "startedAt": "2026-10-11T15:13:00Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:01Z",
@@ -8459,47 +8556,55 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:14:51Z",
+              "conclusion": "success",
               "name": "Actual native ABI build with Android API 21",
               "number": 4,
               "startedAt": "2026-10-11T15:13:37Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:19:52Z",
+              "conclusion": "success",
               "name": "Require an actual matching adb native runtime",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:14:51Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:19:55Z",
+              "conclusion": "success",
               "name": "Retain actual build and runtime failures without fixture credentials",
               "number": 6,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:19:52Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:19:55Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 12,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:19:55Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:19:55Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 13,
+              "startedAt": "2026-10-11T15:19:55Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304711"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:15:46Z",
+          "conclusion": "success",
           "databaseId": 114502304727,
           "name": "desktop (linux, x64, ubuntu-24.04)",
           "startedAt": "2026-10-11T15:12:59Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:00Z",
@@ -8526,39 +8631,47 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:43Z",
+              "conclusion": "success",
               "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
               "number": 4,
               "startedAt": "2026-10-11T15:14:22Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:45Z",
+              "conclusion": "success",
               "name": "Retain success and failure logs without fixture credentials",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:15:43Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:45Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 10,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:15:45Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:15:45Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:15:45Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304727"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:27:16Z",
+          "conclusion": "success",
           "databaseId": 114502304739,
           "name": "desktop (windows, arm64, windows-11-vs2026-arm)",
           "startedAt": "2026-10-11T15:13:00Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:03Z",
@@ -8577,47 +8690,55 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:25:23Z",
+              "conclusion": "success",
               "name": "Build exact approved dependency sources and matching native targets",
               "number": 3,
               "startedAt": "2026-10-11T15:13:15Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:27:05Z",
+              "conclusion": "success",
               "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
               "number": 4,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:25:23Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:27:09Z",
+              "conclusion": "success",
               "name": "Retain success and failure logs without fixture credentials",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:27:05Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:27:14Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 10,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:27:09Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:27:14Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:27:14Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304739"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:15:48Z",
+          "conclusion": "success",
           "databaseId": 114502304745,
           "name": "desktop (linux, arm64, ubuntu-24.04-arm)",
           "startedAt": "2026-10-11T15:13:02Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:03Z",
@@ -8644,39 +8765,47 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:45Z",
+              "conclusion": "success",
               "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
               "number": 4,
               "startedAt": "2026-10-11T15:14:22Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:47Z",
+              "conclusion": "success",
               "name": "Retain success and failure logs without fixture credentials",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:15:45Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:15:47Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 10,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:15:47Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:15:47Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:15:47Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304745"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:17:22Z",
+          "conclusion": "failure",
           "databaseId": 114502304762,
           "name": "android (arm64)",
           "startedAt": "2026-10-11T15:12:59Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:01Z",
@@ -8703,47 +8832,55 @@
               "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:14:56Z",
+              "conclusion": "success",
               "name": "Actual native ABI build with Android API 21",
               "number": 4,
               "startedAt": "2026-10-11T15:13:21Z",
-              "status": "in_progress"
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:17:18Z",
+              "conclusion": "failure",
               "name": "Require an actual matching adb native runtime",
               "number": 5,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:14:56Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:17:20Z",
+              "conclusion": "success",
               "name": "Retain actual build and runtime failures without fixture credentials",
               "number": 6,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:17:18Z",
+              "status": "completed"
             },
             {
-              "completedAt": "0001-01-01T00:00:00Z",
-              "conclusion": "",
+              "completedAt": "2026-10-11T15:17:21Z",
+              "conclusion": "success",
               "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 12,
-              "startedAt": "0001-01-01T00:00:00Z",
-              "status": "pending"
+              "startedAt": "2026-10-11T15:17:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:17:21Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 13,
+              "startedAt": "2026-10-11T15:17:21Z",
+              "status": "completed"
             }
           ],
           "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304762"
         },
         {
-          "completedAt": "0001-01-01T00:00:00Z",
-          "conclusion": "",
+          "completedAt": "2026-10-11T15:24:44Z",
+          "conclusion": "success",
           "databaseId": 114502304765,
           "name": "desktop (windows, x64, windows-2025-vs2026)",
           "startedAt": "2026-10-11T15:13:00Z",
-          "status": "in_progress",
+          "status": "completed",
           "steps": [
             {
               "completedAt": "2026-10-11T15:13:02Z",
@@ -8762,11 +8899,1062 @@
               "status": "completed"
             },
             {
+              "completedAt": "2026-10-11T15:23:02Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:13:09Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:35Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:23:02Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:40Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:24:35Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:42Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:24:40Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:42Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:24:42Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304765"
+        },
+        {
+          "completedAt": "2026-10-11T15:27:57Z",
+          "conclusion": "success",
+          "databaseId": 114502304779,
+          "name": "apple (x64, iphonesimulator, macos-26-intel)",
+          "startedAt": "2026-10-11T15:13:01Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:13:03Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:13:01Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:13:06Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:13:03Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:18:42Z",
+              "conclusion": "success",
+              "name": "Actual SDK and native library build with deployment target 13",
+              "number": 3,
+              "startedAt": "2026-10-11T15:13:06Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:27:50Z",
+              "conclusion": "success",
+              "name": "XCTest on an observed owned simulator destination",
+              "number": 4,
+              "startedAt": "2026-10-11T15:18:42Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:27:53Z",
+              "conclusion": "success",
+              "name": "Retain build and XCTest logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:27:50Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:27:54Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:27:53Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:27:55Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:27:54Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304779"
+        }
+      ],
+      "status": "completed",
+      "updatedAt": "2026-10-11T15:27:58Z",
+      "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610"
+    },
+    {
+      "conclusion": "failure",
+      "createdAt": "2026-10-11T15:21:16Z",
+      "databaseId": 38150920169,
+      "headSha": "941ad449cc93b89560cf1ab8465622e9b9a46860",
+      "jobs": [
+        {
+          "completedAt": "2026-10-11T15:29:16Z",
+          "conclusion": "success",
+          "databaseId": 114504024181,
+          "name": "android (arm32)",
+          "startedAt": "2026-10-11T15:21:18Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:20Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:21Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:41Z",
+              "conclusion": "success",
+              "name": "Install fixed NDK in the disposable runner SDK",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:14Z",
+              "conclusion": "success",
+              "name": "Actual native ABI build with Android API 21",
+              "number": 4,
+              "startedAt": "2026-10-11T15:21:41Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:10Z",
+              "conclusion": "success",
+              "name": "Require an actual matching adb native runtime",
+              "number": 5,
+              "startedAt": "2026-10-11T15:23:14Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:13Z",
+              "conclusion": "success",
+              "name": "Retain actual build and runtime failures without fixture credentials",
+              "number": 6,
+              "startedAt": "2026-10-11T15:29:10Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:14Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 12,
+              "startedAt": "2026-10-11T15:29:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:14Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 13,
+              "startedAt": "2026-10-11T15:29:14Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024181"
+        },
+        {
+          "completedAt": "2026-10-11T15:31:55Z",
+          "conclusion": "failure",
+          "databaseId": 114504024300,
+          "name": "apple (arm64, iphonesimulator, macos-26)",
+          "startedAt": "2026-10-11T15:21:22Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:23Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:22Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:25Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:23Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:24Z",
+              "conclusion": "success",
+              "name": "Actual SDK and native library build with deployment target 13",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:25Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:31:43Z",
+              "conclusion": "failure",
+              "name": "XCTest on an observed owned simulator destination",
+              "number": 4,
+              "startedAt": "2026-10-11T15:24:24Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:31:51Z",
+              "conclusion": "success",
+              "name": "Retain build and XCTest logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:31:43Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:31:52Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:31:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:31:53Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:31:52Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024300"
+        },
+        {
+          "completedAt": "2026-10-11T15:29:14Z",
+          "conclusion": "success",
+          "databaseId": 114504024309,
+          "name": "android (x64)",
+          "startedAt": "2026-10-11T15:21:18Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:20Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:22Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:22:00Z",
+              "conclusion": "success",
+              "name": "Install fixed NDK in the disposable runner SDK",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:22Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:24Z",
+              "conclusion": "success",
+              "name": "Actual native ABI build with Android API 21",
+              "number": 4,
+              "startedAt": "2026-10-11T15:22:00Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:09Z",
+              "conclusion": "success",
+              "name": "Require an actual matching adb native runtime",
+              "number": 5,
+              "startedAt": "2026-10-11T15:23:24Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:12Z",
+              "conclusion": "success",
+              "name": "Retain actual build and runtime failures without fixture credentials",
+              "number": 6,
+              "startedAt": "2026-10-11T15:29:09Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:12Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 12,
+              "startedAt": "2026-10-11T15:29:12Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:13Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 13,
+              "startedAt": "2026-10-11T15:29:12Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024309"
+        },
+        {
+          "completedAt": "2026-10-11T15:23:42Z",
+          "conclusion": "success",
+          "databaseId": 114504024322,
+          "name": "apple (arm64, iphoneos, macos-26)",
+          "startedAt": "2026-10-11T15:21:21Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:22Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:24Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:22Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:36Z",
+              "conclusion": "success",
+              "name": "Actual SDK and native library build with deployment target 13",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:24Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:36Z",
+              "conclusion": "skipped",
+              "name": "XCTest on an observed owned simulator destination",
+              "number": 4,
+              "startedAt": "2026-10-11T15:23:36Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:38Z",
+              "conclusion": "success",
+              "name": "Retain build and XCTest logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:23:36Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:39Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:23:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:39Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:23:39Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024322"
+        },
+        {
+          "completedAt": "2026-10-11T15:33:01Z",
+          "conclusion": "success",
+          "databaseId": 114504024377,
+          "name": "desktop (windows, x64, windows-2025-vs2026)",
+          "startedAt": "2026-10-11T15:21:18Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:20Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:27Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:31:20Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:27Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:32:53Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:31:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:32:58Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:32:53Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:33:00Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:32:58Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:33:00Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:33:00Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024377"
+        },
+        {
+          "completedAt": "2026-10-11T15:29:24Z",
+          "conclusion": "success",
+          "databaseId": 114504024378,
+          "name": "android (arm64)",
+          "startedAt": "2026-10-11T15:21:18Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:19Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:18Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:20Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:44Z",
+              "conclusion": "success",
+              "name": "Install fixed NDK in the disposable runner SDK",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:22:40Z",
+              "conclusion": "success",
+              "name": "Actual native ABI build with Android API 21",
+              "number": 4,
+              "startedAt": "2026-10-11T15:21:44Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:20Z",
+              "conclusion": "success",
+              "name": "Require an actual matching adb native runtime",
+              "number": 5,
+              "startedAt": "2026-10-11T15:22:40Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:23Z",
+              "conclusion": "success",
+              "name": "Retain actual build and runtime failures without fixture credentials",
+              "number": 6,
+              "startedAt": "2026-10-11T15:29:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:23Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 12,
+              "startedAt": "2026-10-11T15:29:23Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:23Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 13,
+              "startedAt": "2026-10-11T15:29:23Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024378"
+        },
+        {
+          "completedAt": "2026-10-11T15:29:31Z",
+          "conclusion": "success",
+          "databaseId": 114504024387,
+          "name": "desktop (macos, x64, macos-26-intel)",
+          "startedAt": "2026-10-11T15:23:44Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:23:46Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:23:45Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:49Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:23:46Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:27:12Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:23:49Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:24Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:27:12Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:27Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:29:24Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:28Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:29:27Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:29:29Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:29:28Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024387"
+        },
+        {
+          "completedAt": "2026-10-11T15:35:23Z",
+          "conclusion": "success",
+          "databaseId": 114504024410,
+          "name": "desktop (windows, arm64, windows-11-vs2026-arm)",
+          "startedAt": "2026-10-11T15:21:18Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:20Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:34Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:33:32Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:35:13Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:33:32Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:35:17Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:35:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:35:21Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:35:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:35:21Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:35:21Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024410"
+        },
+        {
+          "completedAt": "2026-10-11T15:24:03Z",
+          "conclusion": "success",
+          "databaseId": 114504024418,
+          "name": "desktop (linux, arm64, ubuntu-24.04-arm)",
+          "startedAt": "2026-10-11T15:21:20Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:22Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:21Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:23Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:22Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:22:37Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:23Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:59Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:22:37Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:01Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:23:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:01Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:24:01Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:02Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:24:01Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024418"
+        },
+        {
+          "completedAt": "2026-10-11T15:25:55Z",
+          "conclusion": "success",
+          "databaseId": 114504024441,
+          "name": "desktop (macos, arm64, macos-26)",
+          "startedAt": "2026-10-11T15:21:24Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:26Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:25Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:29Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:26Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:48Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:29Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:25:46Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:23:48Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:25:50Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:25:46Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:25:51Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:25:50Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:25:54Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:25:51Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024441"
+        },
+        {
+          "completedAt": "2026-10-11T15:44:10Z",
+          "conclusion": "success",
+          "databaseId": 114504024460,
+          "name": "apple (x64, iphonesimulator, macos-26-intel)",
+          "startedAt": "2026-10-11T15:25:05Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:25:07Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:25:06Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:25:13Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:25:07Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:32:37Z",
+              "conclusion": "success",
+              "name": "Actual SDK and native library build with deployment target 13",
+              "number": 3,
+              "startedAt": "2026-10-11T15:25:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:02Z",
+              "conclusion": "success",
+              "name": "XCTest on an observed owned simulator destination",
+              "number": 4,
+              "startedAt": "2026-10-11T15:32:37Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:06Z",
+              "conclusion": "success",
+              "name": "Retain build and XCTest logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:44:02Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:07Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:44:06Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:08Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:44:07Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024460"
+        },
+        {
+          "completedAt": "2026-10-11T15:24:38Z",
+          "conclusion": "success",
+          "databaseId": 114504024549,
+          "name": "desktop (linux, x64, ubuntu-24.04)",
+          "startedAt": "2026-10-11T15:21:18Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:21:19Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:21:18Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:21:20Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:21:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:23:11Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:21:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:34Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:23:11Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:36Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:24:34Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:36Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:24:36Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:24:37Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:24:36Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024549"
+        }
+      ],
+      "status": "completed",
+      "updatedAt": "2026-10-11T15:44:10Z",
+      "url": "https://github.com/Jerry12228/Aether/actions/runs/38150920169"
+    },
+    {
+      "conclusion": "",
+      "createdAt": "2026-10-11T15:43:47Z",
+      "databaseId": 38152495945,
+      "headSha": "0b6467dbc9c65a11456faf280c2db51bd939ca05",
+      "jobs": [
+        {
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "databaseId": 114508643427,
+          "name": "android (arm64)",
+          "startedAt": "2026-10-11T15:43:50Z",
+          "status": "in_progress",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:51Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:50Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:43:52Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:20Z",
+              "conclusion": "success",
+              "name": "Install fixed NDK in the disposable runner SDK",
+              "number": 3,
+              "startedAt": "2026-10-11T15:43:52Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:45:19Z",
+              "conclusion": "success",
+              "name": "Actual native ABI build with Android API 21",
+              "number": 4,
+              "startedAt": "2026-10-11T15:44:20Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Require an actual matching adb native runtime",
+              "number": 5,
+              "startedAt": "2026-10-11T15:45:19Z",
+              "status": "in_progress"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Retain actual build and runtime failures without fixture credentials",
+              "number": 6,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 12,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643427"
+        },
+        {
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "databaseId": 114508643569,
+          "name": "desktop (windows, x64, windows-2025-vs2026)",
+          "startedAt": "2026-10-11T15:43:50Z",
+          "status": "in_progress",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:51Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:50Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:43:58Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:51Z",
+              "status": "completed"
+            },
+            {
               "completedAt": "0001-01-01T00:00:00Z",
               "conclusion": "",
               "name": "Build exact approved dependency sources and matching native targets",
               "number": 3,
-              "startedAt": "2026-10-11T15:13:09Z",
+              "startedAt": "2026-10-11T15:43:58Z",
               "status": "in_progress"
             },
             {
@@ -8794,30 +9982,424 @@
               "status": "pending"
             }
           ],
-          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304765"
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643569"
+        },
+        {
+          "completedAt": "2026-10-11T15:46:22Z",
+          "conclusion": "success",
+          "databaseId": 114508643571,
+          "name": "apple (arm64, iphoneos, macos-26)",
+          "startedAt": "2026-10-11T15:43:53Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:54Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:53Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:43:56Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:54Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:17Z",
+              "conclusion": "success",
+              "name": "Actual SDK and native library build with deployment target 13",
+              "number": 3,
+              "startedAt": "2026-10-11T15:43:56Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:17Z",
+              "conclusion": "skipped",
+              "name": "XCTest on an observed owned simulator destination",
+              "number": 4,
+              "startedAt": "2026-10-11T15:46:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:18Z",
+              "conclusion": "success",
+              "name": "Retain build and XCTest logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:46:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:19Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:46:18Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:20Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:46:19Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643571"
+        },
+        {
+          "completedAt": "2026-10-11T15:46:40Z",
+          "conclusion": "success",
+          "databaseId": 114508643625,
+          "name": "desktop (linux, arm64, ubuntu-24.04-arm)",
+          "startedAt": "2026-10-11T15:43:52Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:53Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:53Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:43:54Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:53Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:45:14Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:43:54Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:37Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:45:14Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:38Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:46:37Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:39Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:46:38Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:39Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:46:39Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643625"
         },
         {
           "completedAt": "0001-01-01T00:00:00Z",
           "conclusion": "",
-          "databaseId": 114502304779,
-          "name": "apple (x64, iphonesimulator, macos-26-intel)",
-          "startedAt": "2026-10-11T15:13:01Z",
+          "databaseId": 114508643633,
+          "name": "android (x64)",
+          "startedAt": "2026-10-11T15:43:50Z",
           "status": "in_progress",
           "steps": [
             {
-              "completedAt": "2026-10-11T15:13:03Z",
+              "completedAt": "2026-10-11T15:43:51Z",
               "conclusion": "success",
               "name": "Set up job",
               "number": 1,
-              "startedAt": "2026-10-11T15:13:01Z",
+              "startedAt": "2026-10-11T15:43:50Z",
               "status": "completed"
             },
             {
-              "completedAt": "2026-10-11T15:13:06Z",
+              "completedAt": "2026-10-11T15:43:52Z",
               "conclusion": "success",
               "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
               "number": 2,
-              "startedAt": "2026-10-11T15:13:03Z",
+              "startedAt": "2026-10-11T15:43:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:13Z",
+              "conclusion": "success",
+              "name": "Install fixed NDK in the disposable runner SDK",
+              "number": 3,
+              "startedAt": "2026-10-11T15:43:52Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:45:50Z",
+              "conclusion": "success",
+              "name": "Actual native ABI build with Android API 21",
+              "number": 4,
+              "startedAt": "2026-10-11T15:44:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Require an actual matching adb native runtime",
+              "number": 5,
+              "startedAt": "2026-10-11T15:45:50Z",
+              "status": "in_progress"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Retain actual build and runtime failures without fixture credentials",
+              "number": 6,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 12,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643633"
+        },
+        {
+          "completedAt": "2026-10-11T15:46:20Z",
+          "conclusion": "success",
+          "databaseId": 114508643640,
+          "name": "desktop (linux, x64, ubuntu-24.04)",
+          "startedAt": "2026-10-11T15:43:50Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:51Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:50Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:43:53Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:58Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:43:53Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:17Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:44:58Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:19Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:46:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:19Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:46:19Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:19Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:46:19Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643640"
+        },
+        {
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "databaseId": 114508643649,
+          "name": "desktop (windows, arm64, windows-11-vs2026-arm)",
+          "startedAt": "2026-10-11T15:43:50Z",
+          "status": "in_progress",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:52Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:05Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:52Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:44:05Z",
+              "status": "in_progress"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643649"
+        },
+        {
+          "completedAt": "2026-10-11T15:48:20Z",
+          "conclusion": "success",
+          "databaseId": 114508643662,
+          "name": "desktop (macos, arm64, macos-26)",
+          "startedAt": "2026-10-11T15:43:55Z",
+          "status": "completed",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:56Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:55Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:43:59Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:56Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:46:15Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:43:59Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:48:11Z",
+              "conclusion": "success",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:46:15Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:48:15Z",
+              "conclusion": "success",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "2026-10-11T15:48:11Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:48:16Z",
+              "conclusion": "success",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "2026-10-11T15:48:15Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:48:19Z",
+              "conclusion": "success",
+              "name": "Complete job",
+              "number": 11,
+              "startedAt": "2026-10-11T15:48:16Z",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643662"
+        },
+        {
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "databaseId": 114508643690,
+          "name": "apple (x64, iphonesimulator, macos-26-intel)",
+          "startedAt": "2026-10-11T15:43:50Z",
+          "status": "in_progress",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:55Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:53Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:43:59Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:55Z",
               "status": "completed"
             },
             {
@@ -8825,7 +10407,7 @@
               "conclusion": "",
               "name": "Actual SDK and native library build with deployment target 13",
               "number": 3,
-              "startedAt": "2026-10-11T15:13:06Z",
+              "startedAt": "2026-10-11T15:43:59Z",
               "status": "in_progress"
             },
             {
@@ -8853,12 +10435,197 @@
               "status": "pending"
             }
           ],
-          "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610/job/114502304779"
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643690"
+        },
+        {
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "databaseId": 114508643756,
+          "name": "android (arm32)",
+          "startedAt": "2026-10-11T15:43:50Z",
+          "status": "in_progress",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:51Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:43:52Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:51Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:13Z",
+              "conclusion": "success",
+              "name": "Install fixed NDK in the disposable runner SDK",
+              "number": 3,
+              "startedAt": "2026-10-11T15:43:52Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:45:51Z",
+              "conclusion": "success",
+              "name": "Actual native ABI build with Android API 21",
+              "number": 4,
+              "startedAt": "2026-10-11T15:44:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Require an actual matching adb native runtime",
+              "number": 5,
+              "startedAt": "2026-10-11T15:45:51Z",
+              "status": "in_progress"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Retain actual build and runtime failures without fixture credentials",
+              "number": 6,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 12,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643756"
+        },
+        {
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "databaseId": 114508643758,
+          "name": "desktop (macos, x64, macos-26-intel)",
+          "startedAt": "2026-10-11T15:44:12Z",
+          "status": "in_progress",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:44:14Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:44:13Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:17Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:44:14Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:47:26Z",
+              "conclusion": "success",
+              "name": "Build exact approved dependency sources and matching native targets",
+              "number": 3,
+              "startedAt": "2026-10-11T15:44:17Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+              "number": 4,
+              "startedAt": "2026-10-11T15:47:26Z",
+              "status": "in_progress"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Retain success and failure logs without fixture credentials",
+              "number": 5,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643758"
+        },
+        {
+          "completedAt": "0001-01-01T00:00:00Z",
+          "conclusion": "",
+          "databaseId": 114508643861,
+          "name": "apple (arm64, iphonesimulator, macos-26)",
+          "startedAt": "2026-10-11T15:43:56Z",
+          "status": "in_progress",
+          "steps": [
+            {
+              "completedAt": "2026-10-11T15:43:57Z",
+              "conclusion": "success",
+              "name": "Set up job",
+              "number": 1,
+              "startedAt": "2026-10-11T15:43:56Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:44:00Z",
+              "conclusion": "success",
+              "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 2,
+              "startedAt": "2026-10-11T15:43:57Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "2026-10-11T15:47:37Z",
+              "conclusion": "success",
+              "name": "Actual SDK and native library build with deployment target 13",
+              "number": 3,
+              "startedAt": "2026-10-11T15:44:00Z",
+              "status": "completed"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "XCTest on an observed owned simulator destination",
+              "number": 4,
+              "startedAt": "2026-10-11T15:47:37Z",
+              "status": "in_progress"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Retain build and XCTest logs without fixture credentials",
+              "number": 5,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            },
+            {
+              "completedAt": "0001-01-01T00:00:00Z",
+              "conclusion": "",
+              "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+              "number": 10,
+              "startedAt": "0001-01-01T00:00:00Z",
+              "status": "pending"
+            }
+          ],
+          "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945/job/114508643861"
         }
       ],
-      "status": "queued",
-      "updatedAt": "2026-10-11T15:12:57Z",
-      "url": "https://github.com/Jerry12228/Aether/actions/runs/38150341610"
+      "status": "in_progress",
+      "updatedAt": "2026-10-11T15:44:13Z",
+      "url": "https://github.com/Jerry12228/Aether/actions/runs/38152495945"
     }
   ],
   "artifacts": [
@@ -9532,12 +11299,23 @@
       "file": "build/phase06/ffi-runs/run-ix7Zt5/result.json",
       "sha256": "b642b81cc535fddce8168192200097f418536b57ce9d01380001fcb1bb07b642",
       "bytes": 30263
+    },
+    {
+      "file": "build/phase06/06-05/local-941-current/receipt.json",
+      "sha256": "16e0b9bd58d83b121d80175a4bc652072f06f5f374a9e16332ce43a2ce9f1805",
+      "bytes": 632
+    },
+    {
+      "file": "build/phase06/ffi-runs/run-FzKYKx/result.json",
+      "sha256": "562a97aac3e7c20dcdf45502593cf772fd99572fbefad7dbb1e68a48aca7e302",
+      "bytes": 30263
     }
   ],
   "gaps": [
-    "当前127f2a3/input12518317同输入CI38150341610执行中；8b的ARM64实际115/115已通过；ARM32/x64因真实恢复失败未通过，已保存独立RED并修复控制响应期限及adb端口发布顺序",
-    "Task2独立validator和known-bad行为RED尚未开始",
-    "Task3强制最终人审尚未开始"
+    "941ad44 CI十二作业中十一通过；Android三ABI各115、桌面六架构及iOS device/x64sim通过；iOS ARM64五流上行两接收数7/8导致同输入整体未过",
+    "0b6467d添加iOS测试线程QoS/逐流摘要、本地Android有界boot probe，实际全矩阵CI38152495945执行中",
+    "本地941自有AVD启动probe挂起；已记录exit1/tests null/正常清理，导入CI115记录不能当本机通过；新输入本地VM重测待真实产物下载",
+    "Task2独立validator/known-bad RED、Task3强制最终人审尚未开始"
   ],
   "constraints": {
     "phase3": "halted；独立修正安装授权保持",
@@ -9546,9 +11324,9 @@
     "requirementsCompleted": []
   },
   "current": {
-    "sourceCommit": "127f2a3ae5726508eae380009833bd3063a8c524",
-    "inputDigest": "12518317e144d8e2690ad5d2d7712d02a26eded795e731838c25325d2ec5cc88",
-    "run": 38150341610
+    "sourceCommit": "0b6467dbc9c65a11456faf280c2db51bd939ca05",
+    "inputDigest": "2a3552183fb70a288cf779cac89cadeab12437ac67da54574395687d7570153f",
+    "run": 38152495945
   },
   "lineEndingAudit": {
     "description": "本地历史CRLF与Git/CI LF原始输入分别绑定；最新构建已使用Git相同LF。历史pass不得改绑新的inputDigest。",

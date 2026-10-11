@@ -4,17 +4,17 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: 06-05 Task1当前127f2a3同输入CI38150341610执行中；8b ARM64实际115/115；已封存控制响应RED并修复；任务0/3；Phase3安装关口保持
-last_updated: "2026-10-11T15:15:54.109Z"
+stopped_at: 06-05 Task1当前0b6467d同输入CI38152495945执行中；941十一作业通过，iOS ARM64五流失败；本地VM probe失败已清理；任务0/3
+last_updated: "2026-10-11T15:50:30.591Z"
 last_activity: 2026-10-11
-last_activity_desc: ARM32/x64历史a405各115/115、8b ARM64实际115/115；当前控制响应期限和adb端口顺序修复重测；独立validator及人审未开始
+last_activity_desc: 当前input2a355218本地Windows15/15及Flutter22/22；Android三ABI历史941各115/115；iOS调度摘要与本机boot probe修复重测中
 progress:
   total_phases: 42
   completed_phases: 2
   total_plans: 15
   completed_plans: 13
   percent: 5
-state_head: 127f2a3
+state_head: 0b6467d
 ---
 
 # Project State
@@ -193,3 +193,5 @@ Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-
 06-05继续：96a49e4的本地自有API26 x64实际115/115（初始28、媒体27、恢复60）但runner清理退出1，不能记完整目标通过。ARM32实际原60/59捕获已接受取消后终态为信任错误，先保存ANDROID-RED a270d29再生产修复b6a9ead。b6 CI38138796842 Windows两架构、Linux两架构、Mac ARM64、iOS device及x64 sim通过；三Android媒体/其余场景、Mac x64 READY观察和iOS ARM64一项仍失败。7618817加入自有来宾框架暂停、Mac原生故障中继、READY明确观察屏障和四组恢复；本地input ce3f5b1 的Windows15/15（92.80秒）、fast23.30秒、恢复并集60无skip，见WINDOWS-GROUPED。CI38140035480待实际结果；Task1未完成、0/3任务、Phase6仍5/6，独立validator和最终人审未开始，Phase3 halted不变。
 
 2026-10-11续跑：CI38149010300/a405中ARM32及x64各实际115/115并正常清理，ARM64证书fixture失败；CI38149264704/8b中ARM64实际115/115、567153ms并清理，ARM32恢复59/60、x64恢复58/60失败。x64真实host生成容量拒绝proposal后AP_TIMEOUT、client返回AP_LENGTH；另有adb将ready2先公布而ready未同步的观察竞争。先271a14c封存[ANDROID-RESPONSE-RED](../docs/phase06/06-05-ANDROID-RESPONSE-RED.json)，127f2a3修复为现有连接1–3秒控制响应I/O期限并保持端口公布顺序；原25ms媒体/原断言不变，CI38150341610执行中。8b输入58214d27与本地Git LF已精确一致，本地Windows15/15（94425ms）、Flutter22/22（17120.4255ms）另存历史；旧CRLF输入不改绑CI LF。当前127输入12518317本地及CI重测中；任务0/3、Phase6 5/6、NET及独立validator/最终人审保持未完成。Phase3独立修正安装授权不变。
+
+2026-10-11当前续跑：941ad44/input8c6298c0的CI38150920169十二作业中十一通过，包括三Android ABI各115/115、自有VM清理、Win/Linux/Mac六桌面及iOS device和x64sim；iOS ARM64五流测试两上行接收断言7/8，整轮仍失败。独立原始日志及原因未确认记录见06-05-IOS-MEDIA-AND-LOCAL-BOOT.json。0b6467d仅为iOS test-only host/relay显式QoS与有界逐流摘要、本地自有AVD boot probe5秒/总3分钟重试；原25ms/8帧/120包断言保留。新CI38152495945/input2a355218执行中，本地当前Windows15/15（93159ms）、FFI22/22（16460.2249ms；21host）通过。941本机AVD probe挂起而未开始native tests，已精确结束唯一probe后finally清理、adb列表空；exit1/tests null，导入CI的115记录不是本机通过。新的本机VM运行待新CI实际产物，Task1及0/3、NET/独立validator/最终人审未完成，Phase3保持halted。

@@ -142,3 +142,13 @@ CI38149010300/a405的ARM32及x64各115/115、无skip/cancel并完成自有VM清�
 本地历史CRLF与Git/CI LF的输入哈希分别保留，不能以Git语义diff相同重新绑定旧测试。8b的Git LF/input58214d27已经重新构建，本地Release15/15、94425ms和真实Flutter22/22、17120.4255ms通过（21独立host）。127f2a3/input12518317重新构建和完整运行中；最终以同输入全部目标实际运行与独立validator为关口。执行历史汇集于06-05-EXECUTION.json，仍不是Task2总账。
 
 当前任务0/3，Task1未完成；Task2独立validator/known-bad RED、Task3强制真实人审未开始。阶段5/6、NET及Nyquist/未分类flags不提前关闭。无开发机重启/关机、驱动/Apollo/信任或系统安全策略变更。
+
+## 2026-10-11 当前五目标接近闭合但仍未通过
+
+941ad44/input8c6298c0的CI38150920169最终十二作业中十一通过：三Android ABI各115/115、Win/Linux/Mac六桌面及iOS device/x64sim。macOS八轮fixture使用公开连接期限3秒（每轮25ms不变），ARM64 guest异步服务stop改为30秒内观察真正stopped后，均经实际目标运行通过。iOS ARM64五流的一项test中两上行流7/8，保持原始失败，不与x64sim或历史42pass互相替代。
+
+本机941自有AVD已经真实创建和启动，但首个getprop boot probe挂起数分钟。严格核验runner74872/唯一子adb63896/自有emulator-5556后结束该probe，runner finally记录exit1/tests null、emu kill/AVD delete0并确认adb列表空。本轮没有native运行证据；导入产物附带的CI日志曾被进度解读为本机结果，现明确更正，不能记为本机115通过。
+
+1deb371先封存iOS/local原始失败；0b6467d将本地boot probe限定5秒并在3分钟内重试，为iOS test-only中继及host thread设置显式user-initiated QoS并增加仅标量/摘要的逐流日志，原因推断与实际结果分开。CI38152495945/source0b6467d/input2a355218执行中；本地Windows15/15、93159ms及真实FFI22/22、16460.2249ms、21host通过。现有Helios Release2758ms和root Debug11/11、26.65s通过，未进行真实设备操作。
+
+当前仍任务0/3、Task1未完成，Task2独立validator/known-bad RED及Task3真实最终人审尚未开始。Phase3独立修正安装关口、5/6阶段计划计数及NET未完成不变。
