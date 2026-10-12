@@ -1,36 +1,36 @@
 {
   "schema": 1,
-  "recordedAt": "2026-10-12T05:53:42.384Z",
-  "sourceCommit": "7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22",
+  "recordedAt": "2026-10-12T06:34:18.956Z",
+  "sourceCommit": "a89a95addc9153c2c420207cceae7ae48beac264",
   "scope": "现有Helios真实Release构建和根Debug11fixture回归；不运行设备安装或生产probe",
   "systemMutation": false,
   "commands": [
     {
       "name": "Helios-Release",
       "exitCode": 0,
-      "durationMs": 3537,
+      "durationMs": 2979,
       "timeout": false,
       "error": null,
-      "log": "build\\phase06\\06-05\\root-7bcfbc1b27a5-verified\\Helios-Release.log",
-      "sha256": "62de022bad9bb50e514ba0d9308a4b6c4a85a0ba5ba134328ad70fbddb16cba8"
+      "log": "build\\phase06\\06-05\\root-a89a95addc91-verified\\Helios-Release.log",
+      "sha256": "7a6c0b3fb8f861315a58dabb78f653e56a080166dab90e7b512e71bd48c9eadb"
     },
     {
       "name": "root-Debug-build",
       "exitCode": 0,
-      "durationMs": 2809,
+      "durationMs": 2596,
       "timeout": false,
       "error": null,
-      "log": "build\\phase06\\06-05\\root-7bcfbc1b27a5-verified\\root-Debug-build.log",
-      "sha256": "d4260987d0b2e76296fa836bc8ba9d3e72d93fe6fd983c7af9ab15cc74f613ba"
+      "log": "build\\phase06\\06-05\\root-a89a95addc91-verified\\root-Debug-build.log",
+      "sha256": "a0e76c61de5f96a808a821da7bd9648a20f1aecaba0e4168caeef404511c8a11"
     },
     {
       "name": "root-Debug-ctest",
       "exitCode": 0,
-      "durationMs": 27666,
+      "durationMs": 27173,
       "timeout": false,
       "error": null,
-      "log": "build\\phase06\\06-05\\root-7bcfbc1b27a5-verified\\root-Debug-ctest.log",
-      "sha256": "80156fea92953ab05ced9b4c0508a1f96653d1f3fc555af4d5b521602a9c0ce2"
+      "log": "build\\phase06\\06-05\\root-a89a95addc91-verified\\root-Debug-ctest.log",
+      "sha256": "46c7d5fe03287438021cb18446e506243ae23c293ac026beb90b10dec7ebee64"
     }
   ],
   "counts": {
@@ -146,44 +146,44 @@
   ],
   "artifacts": [
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/Debug-aether_core.dll",
-      "sha256": "b46102a3645df9952eb015c7702a98b2dce89df2496ba71d31cf32cc106b2871"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/Debug-aether_core.dll",
+      "sha256": "016ce14a93e77cfedb98a195b3df72b5b2ec65bcbbe70c72d19ef099f529361c"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/Helios-Release-build.log",
-      "sha256": "e6e34bb2b0aac2a73dcc4e009e3aa8968aaefde51c4bf28ee19501ef4a227ade"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/Helios-Release-build.log",
+      "sha256": "7d40d899cf3eb96fd82029d584881a9920779cce84b2e2cf1700b046eb18b6f5"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/Helios-Release-configure.log",
-      "sha256": "f686a2a941504639de7179c424777a9c48c083a959ef6ed0c5236867d8417d6e"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/Helios-Release-configure.log",
+      "sha256": "87f29c6a16b1d3f69e57f0451385a135ec4136ebcbe8bcbb461513b0e6239296"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/Helios-Release.log",
-      "sha256": "62de022bad9bb50e514ba0d9308a4b6c4a85a0ba5ba134328ad70fbddb16cba8"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/Helios-Release.log",
+      "sha256": "7a6c0b3fb8f861315a58dabb78f653e56a080166dab90e7b512e71bd48c9eadb"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/LastTest.log",
-      "sha256": "3acd5cbba2e1e027e964daff07c3f86cccaefe2c489764c2048c4270f429a99c"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/LastTest.log",
+      "sha256": "817a6cd368a9b5fa7557e9adce98c2d71d484268e3089595a018219baddeef46"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/Release-aether_core.dll",
-      "sha256": "d3075ac42277f8fab7fc5c1d84d8abb47d78f0d0e2e21bf81130789bd5a17a7c"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/Release-aether_core.dll",
+      "sha256": "6e3c7a9cb339b39b8c2b49ce87e91065c75b57cd452c230e21907eadc3e1badd"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/Release-helios.exe",
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/Release-helios.exe",
       "sha256": "824a6b8b2158c9d713dc2a5eeee88721ae7eccf18786d7096d7258e94f532994"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/root-Debug-build.log",
-      "sha256": "d4260987d0b2e76296fa836bc8ba9d3e72d93fe6fd983c7af9ab15cc74f613ba"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/root-Debug-build.log",
+      "sha256": "a0e76c61de5f96a808a821da7bd9648a20f1aecaba0e4168caeef404511c8a11"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/root-Debug-ctest.log",
-      "sha256": "80156fea92953ab05ced9b4c0508a1f96653d1f3fc555af4d5b521602a9c0ce2"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/root-Debug-ctest.log",
+      "sha256": "46c7d5fe03287438021cb18446e506243ae23c293ac026beb90b10dec7ebee64"
     },
     {
-      "file": "build/phase06/06-05/root-7bcfbc1b27a5-verified/root-debug.xml",
-      "sha256": "8d799cb2bcf13f8f63ffe3bbe361aa382d418f4bf0e92537a2fd8d1cebc51a79"
+      "file": "build/phase06/06-05/root-a89a95addc91-verified/root-debug.xml",
+      "sha256": "58cd06292337cef5647cd39dbfa04c103e7db7f62a9c048f02008dd1005d7188"
     }
   ]
 }

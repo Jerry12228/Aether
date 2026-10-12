@@ -192,3 +192,9 @@ CI38159407590/source8579437实际结束：9目标成功、三个Android失败。
 Windows ARM64原invalid stoul/healthy-cancel失败以相同场景确定空ready到有效端口负例RED e37de89复现；test-only消费者03d935d在原4s核验完整1..65535端口，05760b0先释放读取句柄再在既有预算内有界原子rename。首次consumer GREEN遇Windows读句柄阻止rename实际exit2，未计GREEN；修正后4/4。核心ABI/wire/父65/31场景、media27/recovery60、637原能力和所有既定deadline未改变。
 
 当前针对性三个GREEN实际绑定05760b0/inputd3a4eb39，详见06-05-CONTROL-SEQUENCE-TLS-RED、READY-PORT-RED及CONTROL-RUNTIME-GREEN.json。Mac500ms请求实际632ms、采样已healthy为真实记录；21b4d3a设置自有控制与test-only observer QOS_CLASS_USER_INITIATED，遵循Apple官方API，仅调整线程调度，原500/900ms/25ms不变。Apple当前结果仍pending，不能以WindowsGREEN或QoS存在宣称解决。后续同输入完整CI、FFI/root/all及真正最终人审仍需完成，任务1/3/NET未关闭，Phase3 halted保持。
+
+### 2026-10-12 接续：控制终态不等待无关媒体
+
+a89/inputd3a4本机Windows15/15（94392ms）/85独立项、真实FFI22/22及21host（19460ms）、Helios Release2979ms、根Debug重建2596ms/11项27173ms通过并归档。CI38212553828 Android x64实际115通过、其他目标继续；macOS x64仍失败，QoS后D16通过但原control stream-recovery和recovery D08的首次故障采样已经healthy。原case-MN9xmq op7与100ms等待合计635ms，原query回执/日志保持。QoS不能单独作为修复结论。
+
+原所有completed操作先媒体warm再终态的实际内部helper确定行为RED2c77d6a（真实native exit2），不冒称这个unit是网络/性能。d3e88b4只对非GRANT已完成操作取消无关25ms warm，立即从真实已有counter和当前monotonic状态刷新原query schema后发布终态；GRANT的实际sink/warm仍先执行，31控制/27media/60recovery和所有25/300/500/900ms/安全门槛不变。实际native GREEN见CONTROL-MEDIA-ORDER-RED/GREEN.json，当前完整矩阵仍须重测；1/3/NET未关闭，Phase3 halted保持。
