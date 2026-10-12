@@ -206,3 +206,7 @@ a89/inputd3a4本机Windows15/15（94392ms）/85独立项、真实FFI22/22及21ho
 ## 当前本地收尾与发布阻断
 
 当前b734e8f/input2c2aefc2 Release Windows15/15（92728ms）、独立validator85/85、Flutter22/22与21host（18201ms），根CTest11/11（27194ms）及Helios Release（3140ms）实际通过。完整本地归档和SHA见CURRENT-LOCAL/ROOT-REGRESSION，标准审阅2项已修正、open0；首轮报告原字节另存。Task2仍1/3，当前新12目标CI尚未触发：自动审批两次拒绝公开git push，第二次不接受历史会话工具取证中的明确选项1。具体重新授权问题已发出，无间接发布或绕过；旧03858c1完整12/12和all0作为独立历史保留。EVIDENCE/TARGETS明确分离历史与当前；最终人审尚未开始，Phase3 halted与禁重启/关机保持。
+
+## 后续实际媒体窗口与执行器修正
+
+feb4ee3/input2c2aefc2前一矩阵实际CI38246782490为9/12、Windows fec-burst7/8、Mac D08重复window、iOS x64 cold-start总预算耗尽均保留。独立标准SRTP/UDP排队5ms负例先a0faff1真实RED、01b2a8f修复提前quarter-TTL cutoff，e0e2c0a仅调整test-only opcode100采样在原action deadline内等实际window，原断言/延迟/300/500/900ms保持；Windows15/85 GREEN。5e2418c/input70738a6c CI38250428509已通过Macx64原D08和Windowsx64，但又遇HTTP504、guest stop255和MacARM64 full组30s聚合timeout；所有失败仍独立记录。0a14023最多三次固定源下载重试、逐项owned服务stopped核验、full组60s（原计划单CTest60s，fast30和每Node10s/native5s保持）；6项隔离实际下载函数检查与Windows15/85通过。源/日志/实际数量见MEDIA-DEADLINE-RED、MEDIA-WINDOW-GREEN、INFRA-REPAIR。新共同输入完整12目标与all未完成，仍1/3，不开启最终人审或关闭NET；Phase3 halt和禁重启/关机保持。
