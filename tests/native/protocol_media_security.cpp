@@ -63,6 +63,12 @@ void realtime_frames(){
  send_frame(2,2,3);send_frame(3,0,3);receiver.exchange_deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(100);
  auto second=media_service_window(receiver,static_cast<uint16_t>(peer),&payload,1,2);
  check(receiver.streams[0]->received==3&&second.video1==1&&receiver.streams[0]->authenticated_bytes==std::string(1,'\3'));
+ // Queued authenticated shares remain admissible until the real deadline,
+ // even when less than a quarter of the configured TTL remains. No clock
+ // sleep, new timeout or scheduler-built expected packet is used here.
+ send_frame(4,0,2);receiver.exchange_deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(5);
+ const auto pending=media_service_window(receiver,static_cast<uint16_t>(peer),&payload,1,3);
+ if(receiver.streams[0]->received!=4||pending.video1!=1||receiver.streams[0]->authenticated_bytes!=std::string(1,'\4'))throw std::runtime_error("queued authenticated frame before real deadline must not lose quarter-TTL reserve");
 }
 void fec(){
  // Exercise the actual internal control sequence path with an expired write.
