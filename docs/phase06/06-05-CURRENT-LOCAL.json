@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T08:00:15.537Z",
+  "sourceCommit": "b734e8f6b5139372a62737f500cd50783c6afd1b",
+  "inputDigest": "2c2aefc244810f7662704d4395aa8b4e42db88892cb95daf5390256bdc3cd58b",
+  "windows": {
+    "tests": 15,
+    "elapsedMs": 92728,
+    "independentTests": 85,
+    "receipt": {
+      "file": "build/phase06/06-05/local-windows-b734e8f6b513/receipt.json",
+      "sha256": "58b56bbe5f4576f7b64f08b8b155abc4d106b576185b04251990bb971699d705"
+    }
+  },
+  "ffi": {
+    "tests": 22,
+    "hostCases": 21,
+    "elapsedMs": 18201,
+    "receipt": {
+      "file": "build/phase06/06-05/local-ffi-run-Vu99IB/receipt.json",
+      "sha256": "4fdeb354f66bd07e0fe84e60cfb2b96d14c622ccd7d808b495f2dba7cdfd6023"
+    }
+  },
+  "root": {
+    "file": "docs/phase06/06-05-ROOT-REGRESSION.json",
+    "sha256": "c3b3330bf8674548100d2c5d5239d9097c815a4cd2d65cb2dcebd484a54ca49d"
+  },
+  "review": {
+    "openCritical": 0,
+    "resolved": 2,
+    "matrix": "pending"
+  },
+  "systemMutation": false,
+  "humanReview": "not-started"
+}
