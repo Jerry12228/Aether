@@ -130,7 +130,10 @@ public:
  WindowRecord receive(){
   const auto sources=context.media_limits.k,total=context.media_limits.n,shard_bytes=context.media_limits.shard;
   WindowRecord window{round,0,0,1};uint32_t inspected=0;
-  const auto receive_deadline=deadline-std::chrono::microseconds(uint32_t(context.media_limits.ttl_ms)*250);
+  // Accept queued authenticated data throughout the actual bounded window.
+  // FEC delivery checks the same deadline before and after decoding, so a
+  // fixed reserve must not expire receive earlier than the negotiated TTL.
+  const auto receive_deadline=deadline;
   while(inspected<64&&datagram_ready(context.udp.value,receive_deadline)){
    ++inspected;std::array<uint8_t,1500> buffer{};int n=recv(context.udp.value,reinterpret_cast<char*>(buffer.data()),static_cast<int>(buffer.size()),0);
 #ifdef _WIN32
