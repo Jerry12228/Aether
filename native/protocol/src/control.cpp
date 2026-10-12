@@ -4,6 +4,9 @@
 #include <sstream>
 #include <optional>
 #include <openssl/err.h>
+#ifdef AETHER_CONTROL_FIXTURE
+#include <iostream>
+#endif
 namespace aether::protocol {
 using Clock=std::chrono::steady_clock;
 namespace ctl {
@@ -180,7 +183,12 @@ status=reconnect(c,s);if(status==AP_OK){Identity next;status=c.host_services->fr
 #ifdef AETHER_CONTROL_FIXTURE
 if(control_fixture_fault(13,0,in.request,true).drop)throw Failure{AP_LENGTH};
 #endif
-require(c.host_services!=nullptr,AP_PERMISSION);auto authority=c.host_services->snapshot({in.identity,in.operation,in.request,{}});const auto& envelope=f.at(17);status=AP_OK;if(!authority.control_allowed)status=AP_PERMISSION;else if(envelope.size()<24||u64(envelope.data())!=c.config.connection_id||u64(envelope.data()+8)!=c.config.lease_epoch||u64(envelope.data()+16)!=c.config.config_generation)status=AP_STALE;std::lock_guard lock(s.mutex);if(status==AP_OK)++s.policy_accepted;else ++s.policy_rejected;}
+require(c.host_services!=nullptr,AP_PERMISSION);auto authority=c.host_services->snapshot({in.identity,in.operation,in.request,{}});const auto& envelope=f.at(17);status=AP_OK;if(!authority.control_allowed)status=AP_PERMISSION;else if(envelope.size()<24||u64(envelope.data())!=c.config.connection_id||u64(envelope.data()+8)!=c.config.lease_epoch||u64(envelope.data()+16)!=c.config.config_generation)status=AP_STALE;
+#ifdef AETHER_CONTROL_FIXTURE
+// Test host scalars only: never print the envelope or its content.
+std::cerr<<"# POLICY-HOST operation="<<in.operation<<" allowed="<<authority.control_allowed<<" bytes="<<envelope.size()<<" connection="<<(envelope.size()>=24?u64(envelope.data()):0)<<" lease="<<(envelope.size()>=24?u64(envelope.data()+8):0)<<" generation="<<(envelope.size()>=24?u64(envelope.data()+16):0)<<" expected="<<c.config.connection_id<<','<<c.config.lease_epoch<<','<<c.config.config_generation<<" status="<<status<<std::endl;
+#endif
+std::lock_guard lock(s.mutex);if(status==AP_OK)++s.policy_accepted;else ++s.policy_rejected;}
  }catch(Failure e){if(in.opcode==13&&e.status==AP_LENGTH)throw;status=e.status;}
  schedule(c,s,response(c,in,status,r,proposal),r);{std::lock_guard lock(s.mutex);if(!proposal.empty()){s.proposal=proposal;if(r){s.revision=r->revision;s.expiry=r->expiry_token;}}snapshot(c,s);}
 }
