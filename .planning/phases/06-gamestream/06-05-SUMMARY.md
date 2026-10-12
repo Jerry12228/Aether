@@ -172,3 +172,7 @@ CI38149010300/a405的ARM32及x64各115/115、无skip/cancel并完成自有VM清�
 Task1完成，当前任务1/3。Task2的独立拒绝检查先形成16项中14项真实行为失败，f0a5dd1保存RED；随后68项计数/JUnit/Node/XCTest/CPU/archive/来源/目标/覆盖缺失负例全部通过。正式target CLI已实际核验Windows15/15、94708ms及68独立检查。8579437将validator和负例测试绑定进42文件共同输入并接入实际CI38159407590；input `30fe2ea71b55fa9c53d499ad4ce9baae4e740595b445df5e079e2bc95d768979` 的本机Release/Debug实际构建2315/2657ms。新输入矩阵、TARGETS/EVIDENCE完整映射与all验证仍在执行，旧40文件成功不冒称新42文件已测。
 
 Task3强制真实人审尚未开始。Phase6仍5/6、NET未完成；六条禁止项与三个未分类edge仍flagged-unverified，Phase3修正安装关口保持halted。未执行开发机重启/关机、驱动/Apollo/系统信任或安全策略变更。
+
+### 2026-10-12 接续：当前42输入Android真实失败
+
+CI38159407590/source8579437实际结束：9目标成功、三个Android失败。ARM32原fec-threshold的test-only UDP发送失败（errno1）；ARM64 policy-scopes当前scope也拒绝，父64/65、子20/24；x64原Win10 ping_timeout第二步24而期望0。原因未确认，详见docs/phase06/06-05-ANDROID-857-FAILURES.json及原始SHA。只补test-only标量状态/作用域和UDP syscall诊断，原断言、时间界限、生产权限与scope检查不变。Task1历史9a同输入12成功保留，Task2未完成；任务1/3，Phase6/NET及Phase3 halted不变。
