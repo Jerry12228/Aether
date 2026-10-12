@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T07:54:03.807Z",
+  "sourceCommit": "0685a70f92de9c8b6bd014974cae0fbf10f57a70",
+  "inputDigest": "2c2aefc244810f7662704d4395aa8b4e42db88892cb95daf5390256bdc3cd58b",
+  "fixCommit": "e9e61ac0a5de0de7f104bcab6c674d2bd0747205",
+  "testLifecycleCorrection": "0685a70f92de9c8b6bd014974cae0fbf10f57a70",
+  "buildElapsedMs": 7484,
+  "buildManifest": {
+    "file": "build/phase06/06-05/review-green-0685a70f92de/manifest.json",
+    "sha256": "3e33a331aa19b7d456f14d5ff370c33f8155f60ea1e12810c80ffce75b2bd464"
+  },
+  "actualArtifacts": [
+    {
+      "file": "build/phase06/06-05/review-green-0685a70f92de/aether_protocol.dll",
+      "sha256": "ad2a72d3b21630755c86f2c28a751624f5e4b7773b07bb73315d83a10ca862c8",
+      "bytes": 4042240,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/06-05/review-green-0685a70f92de/aether_protocol_tracer.exe",
+      "sha256": "ebce515836c7a8cc1096516db53c218b9d4e0f0f29d188d70c29dc182ddf554b",
+      "bytes": 3267072,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/06-05/review-green-0685a70f92de/aether_media_security.exe",
+      "sha256": "1c30327e467b4581d70e5b34f9c3453a5b9cc78ee36fb52abe8fafe38f8fb9ab",
+      "bytes": 3893760,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/06-05/review-green-0685a70f92de/aether_protocol_control_client.exe",
+      "sha256": "6ab9ddcab2175cbaa25b2c4848f899717d7b81f5d997c7d6663eb138efc1f449",
+      "bytes": 408064,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/06-05/review-green-0685a70f92de/aether_protocol_control_host.exe",
+      "sha256": "db886ae3811d21220a269c1bfa8aa1ca34b08e9534958daf72c0025ac1af9cf5",
+      "bytes": 4116992,
+      "observedArch": "x64"
+    }
+  ],
+  "actual": [
+    {
+      "finding": "CR-01",
+      "exitCode": 0,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "raw": {
+        "file": "build/phase06/06-05/review-green-0685a70f92de/review-fps-green-current.log",
+        "sha256": "3a2223f1ae98b36b94d550d125959f7971c3d7e378d109e4f1bb9e7dac0798b3"
+      }
+    },
+    {
+      "finding": "CR-02",
+      "exitCode": 0,
+      "childTests": 34,
+      "childPassed": 34,
+      "parentTests": 4,
+      "parentPassed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "raw": {
+        "file": "build/phase06/06-05/review-green-0685a70f92de/review-stream-base-green-current.log",
+        "sha256": "9db7ec18ab424daa9fc42e8ca342cb5b35e44fe7b80c69aa5d7d3411be8da89a"
+      }
+    }
+  ],
+  "priorGreenAttempt": {
+    "sourceCommit": "e9e61ac0a5de0de7f104bcab6c674d2bd0747205",
+    "exitCode": 1,
+    "reason": "提前拒绝断言已过；测试清理调用未打开的control query失败。改为generic ACK，不修改拒绝断言或产品。",
+    "raw": {
+      "file": "build/phase06/06-05/review-stream-base-green.log",
+      "sha256": "09400871ca78bd1a5b3950eb2d083b36f9e2816a9dc391ed6f137a605dbc0489"
+    }
+  },
+  "matrixStatus": "pending-new-input",
+  "systemMutation": false
+}

@@ -4,8 +4,8 @@ plan: "05"
 subsystem: protocol-targets
 tags: [CMake, CI, Windows, POSIX, XCTest, provenance]
 status: in_progress
-checkpoint: 06-05-01
-checkpoint_gate: target-execution
+checkpoint: 06-05-02
+checkpoint_gate: final-matrix-and-review
 blocked_by: []
 requires:
   - phase: 06-04
@@ -198,3 +198,7 @@ Windows ARM64原invalid stoul/healthy-cancel失败以相同场景确定空ready�
 a89/inputd3a4本机Windows15/15（94392ms）/85独立项、真实FFI22/22及21host（19460ms）、Helios Release2979ms、根Debug重建2596ms/11项27173ms通过并归档。CI38212553828 Android x64实际115通过、其他目标继续；macOS x64仍失败，QoS后D16通过但原control stream-recovery和recovery D08的首次故障采样已经healthy。原case-MN9xmq op7与100ms等待合计635ms，原query回执/日志保持。QoS不能单独作为修复结论。
 
 原所有completed操作先媒体warm再终态的实际内部helper确定行为RED2c77d6a（真实native exit2），不冒称这个unit是网络/性能。d3e88b4只对非GRANT已完成操作取消无关25ms warm，立即从真实已有counter和当前monotonic状态刷新原query schema后发布终态；GRANT的实际sink/warm仍先执行，31控制/27media/60recovery和所有25/300/500/900ms/安全门槛不变。实际native GREEN见CONTROL-MEDIA-ORDER-RED/GREEN.json，当前完整矩阵仍须重测；1/3/NET未关闭，Phase3 halted保持。
+
+## 恢复执行：源码审阅边界修正
+
+03858c1/input aceb5787 的实际CI38214118510已12/12成功，独立all实际exit0；该通过记录作为历史保留。标准内联审阅CR-01/CR-02各在原具名case内取得真实RED（8fbd20b），e9e61ac修复FPS宽乘法/安全窄化和typed3、legacy2 full-media授权前的固定五SSRC空间检查。通用legacy单流范围保持。新测试清理修正0685a70后实际D11 1/1及native boundaries34/34、父4/4通过，详见REVIEW-BOUNDARY-RED/GREEN。没有改变31/27/60、Android115或XCTest42分母。Task1已完成，Task2等待新共同输入完整12目标矩阵和独立all，任务仍1/3，Task3真人关口尚未开始。Phase3 halt、637原能力、六禁止及三unclassified保留。
