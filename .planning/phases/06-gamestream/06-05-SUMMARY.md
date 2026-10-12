@@ -4,8 +4,8 @@ plan: "05"
 subsystem: protocol-targets
 tags: [CMake, CI, Windows, POSIX, XCTest, provenance]
 status: in_progress
-checkpoint: 06-05-02
-checkpoint_gate: final-matrix-and-review
+checkpoint: 06-05-03
+checkpoint_gate: blocking-human-final-review
 blocked_by: []
 requires:
   - phase: 06-04
@@ -210,3 +210,7 @@ a89/inputd3a4本机Windows15/15（94392ms）/85独立项、真实FFI22/22及21ho
 ## 后续实际媒体窗口与执行器修正
 
 feb4ee3/input2c2aefc2前一矩阵实际CI38246782490为9/12、Windows fec-burst7/8、Mac D08重复window、iOS x64 cold-start总预算耗尽均保留。独立标准SRTP/UDP排队5ms负例先a0faff1真实RED、01b2a8f修复提前quarter-TTL cutoff，e0e2c0a仅调整test-only opcode100采样在原action deadline内等实际window，原断言/延迟/300/500/900ms保持；Windows15/85 GREEN。5e2418c/input70738a6c CI38250428509已通过Macx64原D08和Windowsx64，但又遇HTTP504、guest stop255和MacARM64 full组30s聚合timeout；所有失败仍独立记录。0a14023最多三次固定源下载重试、逐项owned服务stopped核验、full组60s（原计划单CTest60s，fast30和每Node10s/native5s保持）；6项隔离实际下载函数检查与Windows15/85通过。源/日志/实际数量见MEDIA-DEADLINE-RED、MEDIA-WINDOW-GREEN、INFRA-REPAIR。新共同输入完整12目标与all未完成，仍1/3，不开启最终人审或关闭NET；Phase3 halt和禁重启/关机保持。
+
+## 最终自动门槛完成，真人关口待答复
+
+2026-10-12T13:23:59.971Z：实际4edaf03/input7ca15942 CI38252266760完整12/12、正式all exit0；本机Windows15/85、FFI22/21、根11/Helios和同输入自有Android115均通过。Task1/Task2完成，2/3；标准内联审阅两项真实RED-GREEN后resolved3/open0，无外部agent。637原能力、12设置、16决定、3NET、23威胁及六禁止/三edge原样flagged已独立核对。此前公开发布阻断已由本会话明确重新授权解除，拒绝历史不删除。Task3真实答复/null，Phase6仍5/6和NET未关闭；具体最终材料包就绪，Phase3 halted及禁开发机重启/关机保持。

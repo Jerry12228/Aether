@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T13:22:59.033Z",
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "inputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "originalArchive": "build/phase06/06-05/local-ffi-run-UpFnZu",
+  "canonicalArchive": "build/phase06/06-05/local-ffi-canonical-UpFnZu",
+  "operation": "全字节复制独立不可变归档，只新增正式reader要求的经典manifest路径alias；原归档/产物/日志/源/运行记录无修改",
+  "alias": {
+    "from": "build/phase06/targets/windows-x64-debug/target-manifest-Debug.json",
+    "to": "build/phase06/windows-x64/target-manifest-Debug.json",
+    "sha256": "550df0839a7589e5f1129fca8b86412ac6a109f626f7f77f3364226fe4ca3859",
+    "bytes": 22901
+  },
+  "originalReceiptSha256": "c1e365795554a9c1f359bd1fd032d2f6fe34fd9c15da469214cc80f06852dd11",
+  "copiedReceiptSha256": "c1e365795554a9c1f359bd1fd032d2f6fe34fd9c15da469214cc80f06852dd11",
+  "actualTests": 22,
+  "actualHostCases": 21,
+  "nativeInputChanged": false,
+  "validatorChanged": false
+}

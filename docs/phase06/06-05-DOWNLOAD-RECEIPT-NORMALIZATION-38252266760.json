@@ -1,0 +1,98 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T13:19:54.734Z",
+  "run": 38252266760,
+  "scope": "自有临时下载adapter与正式receipt schema对齐；没有改变原生共同输入或降低验证",
+  "liveMetadata": {
+    "file": "build/phase06/06-05/ci-38252266760/artifact-metadata-normalization.json",
+    "sha256": "d86a33b20f594b08e0c324a9496931c84da886fd62fe444b3728c1b5bbb9f489"
+  },
+  "targets": [
+    {
+      "target": "phase06-android-arm32-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11748687894,
+      "originalSha256": "62f2a5e1d7b922d9ebf1d3174a8a3f40c66d205f0f845874f208c31dccd4f405",
+      "normalizedSha256": "e38c998e018ee22f74f864484422714b2ce9553bb9b63b65a90568575e07f715",
+      "liveDigest": "sha256:ddaae5cc9baf6e260fa49533dddb36d55055f57eea19843e201b81ca34e5408a"
+    },
+    {
+      "target": "phase06-android-arm64-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11748133936,
+      "originalSha256": "df89dc8f70454a4d0070d9785eced085777b4dd0c2c0df9fe9b16b91e3332661",
+      "normalizedSha256": "c21e10c503e178066b3f92709ae99e05f1a29aa2538b7372c4a3dd6028a60fe4",
+      "liveDigest": "sha256:a99ff347ccffd7a76c4abd015edd803155e967e90e749863a1dc7804f72db5ad"
+    },
+    {
+      "target": "phase06-android-x64-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11749446951,
+      "originalSha256": "daa7823cfb41534141b0a4bd63b094098af91e78ece386199595b3c97ff61180",
+      "normalizedSha256": "44ea0e77a831c9946300d1ed24c7ca05f11fb36376ea16144f0b34a02cf25b52",
+      "liveDigest": "sha256:264fb28d8b5072a1dd86d244687f9949f27c793f4cf228573767172e71c39d3c"
+    },
+    {
+      "target": "phase06-ios-arm64-iphoneos-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11748747141,
+      "originalSha256": "ecb0f8cb228cbf80419b034dcf31a64b2074d3dc81fc4e4510bb93d39bcc9864",
+      "normalizedSha256": "6d4b9ad635d095d0d42b21a7ab4b2d6a8652e37c339e4734b6a713ae9f6db62a",
+      "liveDigest": "sha256:6ae77b71ebfcbcdd03cf8eb5e108c222bdbc2fdb3fa201bb67932afb5441b796"
+    },
+    {
+      "target": "phase06-ios-arm64-iphonesimulator-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11749284543,
+      "originalSha256": "dc6ef180e8cbaf3d780c95a56211f645b46036a4b777943e499a6fe991c9e407",
+      "normalizedSha256": "d3bd0e6fc4ce9cd74cd6e36d89d60fd7b2452001ce9f9779c224ce8bfad99c41",
+      "liveDigest": "sha256:92e08b41d0edb8262bde60e893c9ec339de1add82a49f3a00a02c5b972b58373"
+    },
+    {
+      "target": "phase06-ios-x64-iphonesimulator-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11749018760,
+      "originalSha256": "9bc21baee0084072fd4259bf6ebd85e58dd192200240313a54c5fa48d57f305c",
+      "normalizedSha256": "bc21d16678118700482ef12da2123df8b2f0d814e2c3fad58db1e59679c3be72",
+      "liveDigest": "sha256:e33503ee8ab8b1579e693134307cf64a2591e48fcc67f843f8f7e2fed36cff0d"
+    },
+    {
+      "target": "phase06-linux-arm64-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11749066401,
+      "originalSha256": "f672eeb268ba9fe3e5f4b31fcd8021a22da4932c3b36490031cfece7fa0b985e",
+      "normalizedSha256": "caefc5911b9fe5d307c3632838e0c95d844c0e270c8d9bd7e89978efb0affb3c",
+      "liveDigest": "sha256:4ac59ff71db848194e27c98dfdc0126c9dc0e994700832a0f70f313b6407043d"
+    },
+    {
+      "target": "phase06-linux-x64-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11749086520,
+      "originalSha256": "01488b98769a69221a280b3c69258baa35e1c2528271c96f7b6d6caefd430707",
+      "normalizedSha256": "d9cacbd35f8ad596cae6d86bdc33ef9c2e004d96933bd9f34288401d133fd0a7",
+      "liveDigest": "sha256:29774327a2ad3c4d76bd952062579569965dc6dd554a5efc262be872fae6b0d5"
+    },
+    {
+      "target": "phase06-macos-arm64-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11748762270,
+      "originalSha256": "04b8b9044afca7be235d5fb54cdd9862640f7af360cdf6eb196f6c19fad0519c",
+      "normalizedSha256": "845deeb1636d18039c7cb282bb4135512140d0536296229915e062fafaef6e87",
+      "liveDigest": "sha256:544e85d21dfc3bcae21cd916524c63799af179d50fd11d5a47d27cc7fb2e9bbe"
+    },
+    {
+      "target": "phase06-macos-x64-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11748353196,
+      "originalSha256": "1a9d10f09514800d6442a6dae6cb75f5cafb7b2f74c10899894c5db24fc26b61",
+      "normalizedSha256": "edb5c7aa54eeeb31ae4ae4f7b55048fb2996450d419830d3a0a6f2a5c236aa2c",
+      "liveDigest": "sha256:6d9848fbd70b5c9c7566f8ac3f94b84623462c25d22c1c3dd574acee33f0a1ee"
+    },
+    {
+      "target": "phase06-windows-arm64-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11748519399,
+      "originalSha256": "ca3ec9f1d74dea5e94426515c6fb2540961fcae0f25a7a698e7359623e8d26ae",
+      "normalizedSha256": "96b151144e0d99e4299af5a9145a7381c9770138c9fd3b9f0d097c84cf25ec3f",
+      "liveDigest": "sha256:f6bbb1232bc6635e5ca75ede89957889c7d266f7354dc2ecc9a0931bf177cbe4"
+    },
+    {
+      "target": "phase06-windows-x64-4edaf0352ca1b875e3536fe54970e8b85585c794",
+      "id": 11748389014,
+      "originalSha256": "6d9ab4a949198f0b0be8ac9cf42c730a0fed430054c8064238eeb53c01cb3a36",
+      "normalizedSha256": "0cd1462ed7595e4aacf73c66d7f41322effc35bb0a0dc6038e876b0e66708722",
+      "liveDigest": "sha256:a79ddeeb408350d82e460ce2a72f2839207758cee9bf54890f306ae76218ac8a"
+    }
+  ],
+  "priorAll": null,
+  "systemMutation": false
+}

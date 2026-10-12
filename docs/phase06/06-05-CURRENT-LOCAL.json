@@ -1,35 +1,35 @@
 {
   "schema": 1,
-  "recordedAt": "2026-10-12T08:00:15.537Z",
-  "sourceCommit": "b734e8f6b5139372a62737f500cd50783c6afd1b",
-  "inputDigest": "2c2aefc244810f7662704d4395aa8b4e42db88892cb95daf5390256bdc3cd58b",
+  "recordedAt": "2026-10-12T13:23:59.971Z",
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "inputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
   "windows": {
     "tests": 15,
-    "elapsedMs": 92728,
+    "elapsedMs": 93001,
     "independentTests": 85,
     "receipt": {
-      "file": "build/phase06/06-05/local-windows-b734e8f6b513/receipt.json",
-      "sha256": "58b56bbe5f4576f7b64f08b8b155abc4d106b576185b04251990bb971699d705"
+      "file": "build/phase06/06-05/local-windows-4edaf0352ca1/receipt.json",
+      "sha256": "23f1a245d2c9677809723c3a29ed9721b10ca4457ab5ee27e1763d86ea390426"
     }
   },
   "ffi": {
     "tests": 22,
     "hostCases": 21,
-    "elapsedMs": 18201,
+    "elapsedMs": 18538,
     "receipt": {
-      "file": "build/phase06/06-05/local-ffi-run-Vu99IB/receipt.json",
-      "sha256": "4fdeb354f66bd07e0fe84e60cfb2b96d14c622ccd7d808b495f2dba7cdfd6023"
+      "file": "build/phase06/06-05/local-ffi-run-UpFnZu/receipt.json",
+      "sha256": "c1e365795554a9c1f359bd1fd032d2f6fe34fd9c15da469214cc80f06852dd11"
     }
   },
   "root": {
     "file": "docs/phase06/06-05-ROOT-REGRESSION.json",
-    "sha256": "c3b3330bf8674548100d2c5d5239d9097c815a4cd2d65cb2dcebd484a54ca49d"
+    "sha256": "cec0c5592f6954fee6aa984c94649759b49d19e156dce516f44cb9a1b8c1215e"
   },
   "review": {
     "openCritical": 0,
-    "resolved": 2,
-    "matrix": "pending"
+    "resolved": 3,
+    "matrix": "passed"
   },
   "systemMutation": false,
-  "humanReview": "not-started"
+  "humanReview": "pending"
 }

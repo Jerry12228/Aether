@@ -1,0 +1,751 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T13:31:40.934Z",
+  "status": "awaiting-human",
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "inputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "ci": {
+    "id": 38252266760,
+    "url": "https://github.com/Jerry12228/Aether/actions/runs/38252266760"
+  },
+  "materialDigest": "494fb0d931e585e0ea4fb83c911272890aa5cf70e72b316806fdd9e654304708",
+  "materialDigestAlgorithm": "SHA256(UTF8(ordered file + NUL + SHA256 + LF rows))",
+  "materials": [
+    {
+      "file": "docs/phase06/06-01-REVIEW-SNAPSHOT.json",
+      "sha256": "8b8a08582ca61c71ecbee2f40d447145c0ad8e37bfbe8635eab00ebcb76fe75f",
+      "bytes": 4650860,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-01-REVIEW-SNAPSHOT.json"
+    },
+    {
+      "file": "docs/phase06/06-03-01-EVIDENCE.json",
+      "sha256": "6f6d9d3f088ed107c2df872fcb35b2d5faa2218e30ef2cb7e839d0b5b6b1953f",
+      "bytes": 22829,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-03-01-EVIDENCE.json"
+    },
+    {
+      "file": "docs/phase06/06-03-01-RED.json",
+      "sha256": "7a03f107ee4a1f676f1791e3de230522b72107b736e7371bf3ec61319fc89d87",
+      "bytes": 2266,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-03-01-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-03-02-EVIDENCE.json",
+      "sha256": "bc0e684f3d70e7d61fa65876645d41e1a74ddfc943c1e207021009be5bb0f1dc",
+      "bytes": 65687,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-03-02-EVIDENCE.json"
+    },
+    {
+      "file": "docs/phase06/06-03-02-RED.json",
+      "sha256": "3c82af4f38d06a6bdd07b7fec9a7e1f05ba46766cc8e141c5b1d9a1e5d43b873",
+      "bytes": 1526,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-03-02-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-03-03-EVIDENCE.json",
+      "sha256": "a6bd0cf812e2f6b2f125f06422eae4e40de9b2d99ab348028cb05c31e12ee818",
+      "bytes": 314483,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-03-03-EVIDENCE.json"
+    },
+    {
+      "file": "docs/phase06/06-03-03-RED.json",
+      "sha256": "9cb1c4af1695738ac75618aca2cc526769c4e9cba13c0e7c0cce0f531de1f62e",
+      "bytes": 2817,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-03-03-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-03-PARITY.json",
+      "sha256": "ba1a14a579d95c3d5f329ff3b73bce8e7216336b0f5db736f9f4f61408b10589",
+      "bytes": 516678,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-03-PARITY.json"
+    },
+    {
+      "file": "docs/phase06/06-03-PRECONDITION.md",
+      "sha256": "835605fdf0b5f95ef26bd2a79f0d6eaaa6ce5b0351f437e17ee7ee2b1288c1e7",
+      "bytes": 6446,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-03-PRECONDITION.md"
+    },
+    {
+      "file": "docs/phase06/06-04-EVIDENCE.json",
+      "sha256": "f4af383b5f1f03d465102aaaf00ce675cb1394ba3160804505d2a79284d73082",
+      "bytes": 59812,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-04-EVIDENCE.json"
+    },
+    {
+      "file": "docs/phase06/06-04-STATUS-BINDING-RED.json",
+      "sha256": "945c74f8ac5222c683b72926605352b2b5521d8fe4b95ec509aee36e9790b586",
+      "bytes": 20810,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-04-STATUS-BINDING-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-7BC-RUNTIME-FAILURES.json",
+      "sha256": "9091c4ed485f5f4fb5128dc4406de97505f3183a45641a4fc374124ece8e86b1",
+      "bytes": 54143,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-7BC-RUNTIME-FAILURES.json"
+    },
+    {
+      "file": "docs/phase06/06-05-ANDROID-857-FAILURES.json",
+      "sha256": "96619bff8f54561d1ffeb244c46e91dc511890a4c12113f68b90a51e296d5db9",
+      "bytes": 42330,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-ANDROID-857-FAILURES.json"
+    },
+    {
+      "file": "docs/phase06/06-05-ANDROID-RED.json",
+      "sha256": "7f44239ea4610b53297462aa4df00aa1e88d2fd4cfb0850371fcaf0c5fe02003",
+      "bytes": 24479,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-ANDROID-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-ANDROID-RELAY-DIAGNOSTIC.json",
+      "sha256": "8e872b959bc5d1dc1a7e438b67660631d10fedf698de015731670671b063c75b",
+      "bytes": 3228,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-ANDROID-RELAY-DIAGNOSTIC.json"
+    },
+    {
+      "file": "docs/phase06/06-05-ANDROID-RESPONSE-RED.json",
+      "sha256": "7e67f3af89f823c1909fede4d068e49211a99554fab4d184f12adf29a521ab0d",
+      "bytes": 3390,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-ANDROID-RESPONSE-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-ANDROID-VM.json",
+      "sha256": "7f9749304fdaa379d5cb0f15a0b9070136b70eeac14db9cf851efe9686b150b1",
+      "bytes": 3531,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-ANDROID-VM.json"
+    },
+    {
+      "file": "docs/phase06/06-05-ANDROID-VM2.json",
+      "sha256": "11f97468f1bab2be2a6869cbe73a4a32e5425ff84c781b22bcab648e9e342777",
+      "bytes": 4962,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-ANDROID-VM2.json"
+    },
+    {
+      "file": "docs/phase06/06-05-CONTROL-MEDIA-ORDER-GREEN.json",
+      "sha256": "d2ea1b2e66956c00da894942d10a3e80615dc73e250dfef4c8511811d3e7bc9d",
+      "bytes": 2493,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-CONTROL-MEDIA-ORDER-GREEN.json"
+    },
+    {
+      "file": "docs/phase06/06-05-CONTROL-MEDIA-ORDER-RED.json",
+      "sha256": "9019ea19cb983ab7e6c8aba734911d8e42e59fddc0c920ad30fbff9554437b18",
+      "bytes": 3599,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-CONTROL-MEDIA-ORDER-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-CONTROL-RUNTIME-GREEN.json",
+      "sha256": "2901f668f64bd421144eaa36277e65bf23712b927b4cea384b0db2278c76f545",
+      "bytes": 4201,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-CONTROL-RUNTIME-GREEN.json"
+    },
+    {
+      "file": "docs/phase06/06-05-CONTROL-SEQUENCE-TLS-RED.json",
+      "sha256": "1b9105d4ca02cebcf75be8bb4ffdcaf548f58e05f46dbf105640c4d7400006e4",
+      "bytes": 3030,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-CONTROL-SEQUENCE-TLS-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-CURRENT-LOCAL.json",
+      "sha256": "cf484df50749e4177bddb90e8b37c1df33d77f362b81b481aaecc54370ff3c87",
+      "bytes": 1028,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-CURRENT-LOCAL.json"
+    },
+    {
+      "file": "docs/phase06/06-05-DOWNLOAD-RECEIPT-NORMALIZATION-38252266760.json",
+      "sha256": "59a30c27b4f30d0e0c84d6f552a597977270e4e87a6c8d20246b67332097a0d0",
+      "bytes": 5271,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-DOWNLOAD-RECEIPT-NORMALIZATION-38252266760.json"
+    },
+    {
+      "file": "docs/phase06/06-05-DOWNLOAD-RECEIPT-NORMALIZATION.json",
+      "sha256": "8119b6db1fc7a7f2d32af27c928cefc3f2b7149a2fbaba6919daa5246ff90520",
+      "bytes": 5570,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-DOWNLOAD-RECEIPT-NORMALIZATION.json"
+    },
+    {
+      "file": "docs/phase06/06-05-DOWNLOAD-RETRY-CHECK.json",
+      "sha256": "6a9318bdd795a6f9575d19aa2f96a7a2c8e788d2c72243e1326f5aae4d696860",
+      "bytes": 1580,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-DOWNLOAD-RETRY-CHECK.json"
+    },
+    {
+      "file": "docs/phase06/06-05-EXECUTION.json",
+      "sha256": "235100f60e8e957602269cb999c4cbb05e970f1372e2be02990ea4ee86484b56",
+      "bytes": 961986,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-EXECUTION.json"
+    },
+    {
+      "file": "docs/phase06/06-05-FFI-ARCHIVE-CANONICALIZATION.json",
+      "sha256": "d55ea97423218cefdb9e631682b198a033173add0a4af4c66b4fa49920b73222",
+      "bytes": 1072,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-FFI-ARCHIVE-CANONICALIZATION.json"
+    },
+    {
+      "file": "docs/phase06/06-05-FINAL-HOOKS.json",
+      "sha256": "e13227347c86297a73cc4fe48de366f7b929aaf3fbed70afbbe0ce7b29676928",
+      "bytes": 1690,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-FINAL-HOOKS.json"
+    },
+    {
+      "file": "docs/phase06/06-05-INFRA-REPAIR.json",
+      "sha256": "1775dca021941ca09e39c81dd3a878f592e3c1f455ffad01aefcfc842ad6e29f",
+      "bytes": 32822,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-INFRA-REPAIR.json"
+    },
+    {
+      "file": "docs/phase06/06-05-IOS-ARTIFACT-DRIFT.json",
+      "sha256": "765a760e1baaadfb520331241423cb50cd25060470749a1e8bdccb00d9723a11",
+      "bytes": 3575,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-IOS-ARTIFACT-DRIFT.json"
+    },
+    {
+      "file": "docs/phase06/06-05-IOS-MEDIA-AND-LOCAL-BOOT.json",
+      "sha256": "341a17e87b3e7a8832e2265598f2939c748775b083b8863b5fa25c969a1cca3c",
+      "bytes": 2456,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-IOS-MEDIA-AND-LOCAL-BOOT.json"
+    },
+    {
+      "file": "docs/phase06/06-05-LINUX-RED.json",
+      "sha256": "00d8bf8ce88f49b58f08ac30cee6f3981e2a929ae953d12399468fedc12d70b7",
+      "bytes": 12486,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-LINUX-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-LOCAL-ANDROID-03858C1.json",
+      "sha256": "4549e596ed2bf023031b824715ea89adb555d805acacdea77bed2a3338b073e5",
+      "bytes": 47341,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-LOCAL-ANDROID-03858C1.json"
+    },
+    {
+      "file": "docs/phase06/06-05-LOCAL-ANDROID-4EDAF03.json",
+      "sha256": "ec899d402a690eec790ecd4823f4db8ce322c83b0b8f2ee59c96bb7ee5594504",
+      "bytes": 46997,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-LOCAL-ANDROID-4EDAF03.json"
+    },
+    {
+      "file": "docs/phase06/06-05-LOCAL-ANDROID-7BC.json",
+      "sha256": "39694f56e0d3617c962704a99c26cb7759044f2f9a52782094b34cbcb9247020",
+      "bytes": 47169,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-LOCAL-ANDROID-7BC.json"
+    },
+    {
+      "file": "docs/phase06/06-05-MAC-OBSERVATION-RACE.json",
+      "sha256": "3d5b5dd72a27234a00c2d410e95cf299b30826d6e250b40b4e8913647cc0a275",
+      "bytes": 982,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-MAC-OBSERVATION-RACE.json"
+    },
+    {
+      "file": "docs/phase06/06-05-MACOS-RED.json",
+      "sha256": "fa9d4321773d1c08f7caf837073d9ae741a10202f79921c98520e4763fa4a56f",
+      "bytes": 3287,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-MACOS-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-MACOS-RED2.json",
+      "sha256": "994b755006b2e05d5bf89017fd85d9af24a6f48a1483a5a29c0f746311a1a8b5",
+      "bytes": 1323,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-MACOS-RED2.json"
+    },
+    {
+      "file": "docs/phase06/06-05-MACOS-RED3.json",
+      "sha256": "f1ed411f3a44c8e2c1edb6eca8cf4d111a54649180254d8bdfe22435eb2c4f67",
+      "bytes": 1241,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-MACOS-RED3.json"
+    },
+    {
+      "file": "docs/phase06/06-05-MACOS-STREAM-PROGRESS.json",
+      "sha256": "cee08cd674180b42ac0749be82b93f4053d683e799685f7e2f76199038a0b95e",
+      "bytes": 10880,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-MACOS-STREAM-PROGRESS.json"
+    },
+    {
+      "file": "docs/phase06/06-05-MEDIA-DEADLINE-RED.json",
+      "sha256": "3fbd1bd7953d63f82db853ec98c501a8db0ffa8dda8f3cdca5506a7a420d6844",
+      "bytes": 33365,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-MEDIA-DEADLINE-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-MEDIA-WINDOW-GREEN.json",
+      "sha256": "5be9eec0ee2387726c9c1f6858095c6a75d0520e0d3bf573a43f2887ad32b5f3",
+      "bytes": 42439,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-MEDIA-WINDOW-GREEN.json"
+    },
+    {
+      "file": "docs/phase06/06-05-OWNED-ADBD-STARTUP.json",
+      "sha256": "87ec83a058bc30753b57d7aca9539bd63db528e6cd96740e265ea957bbc0189f",
+      "bytes": 1245,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-OWNED-ADBD-STARTUP.json"
+    },
+    {
+      "file": "docs/phase06/06-05-PREPARATION.json",
+      "sha256": "fcf1db314ae695a6f9be59ea95d47a922e3dc02c76fa36b220a259a0c129fbee",
+      "bytes": 27005,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-PREPARATION.json"
+    },
+    {
+      "file": "docs/phase06/06-05-PUBLICATION-DECISION.json",
+      "sha256": "562d177a94e2f4b659d4023f1c4112facfc3858b7bb43ccb3390c698952a929a",
+      "bytes": 728,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-PUBLICATION-DECISION.json"
+    },
+    {
+      "file": "docs/phase06/06-05-PUBLICATION-REAFFIRMATION.json",
+      "sha256": "40f12cf779d1da442fa103a33ad3bd7cdb40f9c86661355658eee8c5318dd31b",
+      "bytes": 1386,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-PUBLICATION-REAFFIRMATION.json"
+    },
+    {
+      "file": "docs/phase06/06-05-READY-PORT-RED.json",
+      "sha256": "99db13333fe8fd994e0581aede6e120907cbccfca719fc1d47145a52b139e167",
+      "bytes": 2596,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-READY-PORT-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-REVIEW-BOUNDARY-GREEN.json",
+      "sha256": "15c24472ec84447d2c2857af43e71ecfc8c7eefad3f2f77610da2c393430d0aa",
+      "bytes": 3075,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-REVIEW-BOUNDARY-GREEN.json"
+    },
+    {
+      "file": "docs/phase06/06-05-REVIEW-BOUNDARY-RED.json",
+      "sha256": "b630d65e02d872dd6e9d5e677e4cfa9100bd7dd53d0cb605b9a476c7c70acc8d",
+      "bytes": 3105,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-REVIEW-BOUNDARY-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-ROOT-REGRESSION.json",
+      "sha256": "cec0c5592f6954fee6aa984c94649759b49d19e156dce516f44cb9a1b8c1215e",
+      "bytes": 6770,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-ROOT-REGRESSION.json"
+    },
+    {
+      "file": "docs/phase06/06-05-RUNTIME-FIXTURE-FAILURES.json",
+      "sha256": "5ad7facf0fa2c2631dd6047b88b85b7c89b96f559efedb18fcae20d025d8bd69",
+      "bytes": 2830,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-RUNTIME-FIXTURE-FAILURES.json"
+    },
+    {
+      "file": "docs/phase06/06-05-VALIDATOR-FLAGS-RED.json",
+      "sha256": "c7e729cb5ca40c87883d6b0a3f6ce177000f0b8b0a7f86c1e47a97caf6782218",
+      "bytes": 1185,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-VALIDATOR-FLAGS-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-VALIDATOR-GREEN.json",
+      "sha256": "2001d04bd1890ec95091ccbdea6e2758fbef6bc9f082a1b586270b7b8ae73139",
+      "bytes": 1419,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-VALIDATOR-GREEN.json"
+    },
+    {
+      "file": "docs/phase06/06-05-VALIDATOR-MAPPING-RED.json",
+      "sha256": "766145c111eaad3b10777fefb6071d1d548e11909888bb53449ebae107fb0eb1",
+      "bytes": 1174,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-VALIDATOR-MAPPING-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-05-WINDOWS-GROUPED.json",
+      "sha256": "40e6773b5b231cc37abc9ff7f1daeed1b4f9a8a8c7ba7d0cd78c0ca4a66c2135",
+      "bytes": 7688,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-05-WINDOWS-GROUPED.json"
+    },
+    {
+      "file": "docs/phase06/06-06-01-EVIDENCE.json",
+      "sha256": "bc78cf9874741721f57f54d2db43e5545d4f7132935eb3c7922711381f3f8278",
+      "bytes": 1626,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-06-01-EVIDENCE.json"
+    },
+    {
+      "file": "docs/phase06/06-06-01-RED.json",
+      "sha256": "26c9b660a7d6dd7df535abd894375e4351f831c9ad0b4dd78384e8674353cab1",
+      "bytes": 515,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-06-01-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-06-02-EVIDENCE.json",
+      "sha256": "551778e08c6db08bcd628572fb250e51d8ad4038a72dd850102310b50785aa29",
+      "bytes": 64032,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-06-02-EVIDENCE.json"
+    },
+    {
+      "file": "docs/phase06/06-06-02-RED.json",
+      "sha256": "39055f15c562c2165a6a68fecaac93d1849ec30320a6a4fe5c3749aa07d67223",
+      "bytes": 1480,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-06-02-RED.json"
+    },
+    {
+      "file": "docs/phase06/06-06-CONTROL-VECTORS.json",
+      "sha256": "385d99be403966f86668d286d898d1781458488c6848bb601746350fe8bf4823",
+      "bytes": 4147,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/06-06-CONTROL-VECTORS.json"
+    },
+    {
+      "file": "docs/phase06/CONTROL-CONTRACT.md",
+      "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+      "bytes": 18568,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/CONTROL-CONTRACT.md"
+    },
+    {
+      "file": "docs/phase06/EVIDENCE.md",
+      "sha256": "c728eea8ff064880620f10a434b53da51cfc2f956ec25b29cdb1b1863d8a98c7",
+      "bytes": 15149,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/EVIDENCE.md"
+    },
+    {
+      "file": "docs/phase06/FEC-ADMISSION.md",
+      "sha256": "e823f1bdf02ea36b6c374c8855b33d823711ca39d57a1106bbe0f2d9ac54c483",
+      "bytes": 6098,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/FEC-ADMISSION.md"
+    },
+    {
+      "file": "docs/phase06/FEC-ALTERNATIVES.json",
+      "sha256": "a3157d9e6dc90e921c017d62c9ba3f88241a4aaadd9cf07ace4676fcb02451d8",
+      "bytes": 82677,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/FEC-ALTERNATIVES.json"
+    },
+    {
+      "file": "docs/phase06/FEC-ALTERNATIVES.md",
+      "sha256": "3ebdf494fa77c8262d620e7eb60f874c1546564c6bb866c2c9e816b18ac3fa22",
+      "bytes": 13331,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/FEC-ALTERNATIVES.md"
+    },
+    {
+      "file": "docs/phase06/FEC-DECISION.json",
+      "sha256": "953d404520dcc17bb146747b8582e66dc50cb3a14708dc7062e29d290d37dd4a",
+      "bytes": 1154,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/FEC-DECISION.json"
+    },
+    {
+      "file": "docs/phase06/FEC-REUSE-DECISION.json",
+      "sha256": "3297b258e96c4dbadf90b98f4dbf30a69fa2577befd14ad8282d32b26f838604",
+      "bytes": 1806,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/FEC-REUSE-DECISION.json"
+    },
+    {
+      "file": "docs/phase06/FEC-SOURCE-AUDIT.json",
+      "sha256": "3b46c3c459545051b3ae9b19246246484283b6d1963c3856d6909f5636a783cd",
+      "bytes": 17366,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/FEC-SOURCE-AUDIT.json"
+    },
+    {
+      "file": "docs/phase06/LIMITS.md",
+      "sha256": "63270042fc6c2be6fc92780da88748ea0081db8a3826fcda793a230988fd6e2c",
+      "bytes": 7982,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/LIMITS.md"
+    },
+    {
+      "file": "docs/phase06/MEDIA-CONTRACT.md",
+      "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+      "bytes": 9504,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/MEDIA-CONTRACT.md"
+    },
+    {
+      "file": "docs/phase06/MEDIA-EVIDENCE.json",
+      "sha256": "2fe5b22fb69f54f641df3334330aca799454f0e3c46add44530679db32405c74",
+      "bytes": 41601,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/MEDIA-EVIDENCE.json"
+    },
+    {
+      "file": "docs/phase06/PROTOCOL-ADR.md",
+      "sha256": "b50607d81ab7de1e4a16832973f3ed866b8855106444f4015a68a7d2afcc4a34",
+      "bytes": 33602,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/PROTOCOL-ADR.md"
+    },
+    {
+      "file": "docs/phase06/TARGETS.json",
+      "sha256": "cbaf13bc72d9d03b7992cf36c69625cc960e357435fcaf0d86ff2878c2db10a3",
+      "bytes": 931251,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/phase06/TARGETS.json"
+    },
+    {
+      "file": "protocol/dependencies.lock.json",
+      "sha256": "770ecca238ba813cad0e13ae735ed0bc79d1e072c00bba78656563ef6df3fec4",
+      "bytes": 3365876,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/protocol/dependencies.lock.json"
+    },
+    {
+      "file": "protocol/vectors.json",
+      "sha256": "a73823d0554b34656d381cb8232457e8c050adff189b7271c1a9764ea2bb0cb4",
+      "bytes": 6230,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/protocol/vectors.json"
+    },
+    {
+      "file": "docs/baseline/features.json",
+      "sha256": "e70d1606e763d1cc5d914568ff047da1220b9fe8ab7f09b3907a0d9c327c1c9e",
+      "bytes": 3183619,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/baseline/features.json"
+    },
+    {
+      "file": "docs/FEATURE-PARITY.md",
+      "sha256": "a2b96a8d6f927ecb12faee78db2b1d8d6da65362c4d33e7b91fc659a58bd4381",
+      "bytes": 1376984,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/FEATURE-PARITY.md"
+    },
+    {
+      "file": "docs/ARCHITECTURE.md",
+      "sha256": "ae15e35fc107d4f54096cb346c263f43c74a202fee0bb3c29b7b5f210405b46e",
+      "bytes": 5438,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/ARCHITECTURE.md"
+    },
+    {
+      "file": "docs/SESSION-MODEL.md",
+      "sha256": "ea56bc53f916a5b135fde69ad8ca36afa2f48c049c5949c841444e9dd7a2ba56",
+      "bytes": 5144,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/docs/SESSION-MODEL.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/COVERAGE.md",
+      "sha256": "76c3bbd83ccaee5dcddf84d76609e20e36adb7b212bb622c184d5f8ae265357c",
+      "bytes": 8848,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/COVERAGE.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-CONTEXT.md",
+      "sha256": "0cdfb1c5ddc7f0254acf68f1c811a3d7969ef42dffe588074ae67bda1c23bc2b",
+      "bytes": 13734,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-CONTEXT.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-EDGE-PROBE.json",
+      "sha256": "ed57512e45af7020e7a9cf929ccd59fb9b96e2c126412ced12c8fbc705d7e2db",
+      "bytes": 907,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-EDGE-PROBE.json"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-VALIDATION.md",
+      "sha256": "ecd592e319e8a9d719be55085814df7a0675768af9a5aa2ac61477020675f718",
+      "bytes": 19377,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-VALIDATION.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-VERIFICATION.md",
+      "sha256": "64a06a403f738273aa5ba240cb6ec0572afef989afeee076c4aa26a356c0413b",
+      "bytes": 3087,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-VERIFICATION.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-REVIEW-FIRST.md",
+      "sha256": "2f28bade77b3983e1096ba43cf1b9ba076d43f58ee0d2d78c21625b08f711f1a",
+      "bytes": 4787,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-REVIEW-FIRST.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-REVIEW.md",
+      "sha256": "4b1df67d959842afe66f623872db0879bfffc8e1cd3c26ae633c4123c10af9b5",
+      "bytes": 5167,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-REVIEW.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-REVIEW-DISPOSITION.md",
+      "sha256": "24bfac0514e63524d2a9d1f80a7a7c07e137fcdbc67ab384bc6dca78a25eefd2",
+      "bytes": 1045,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-REVIEW-DISPOSITION.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "sha256": "e7e2c4f4e168887dbb4ebe9aa4d414183e844f1bf39568e3c1e9b2757ea6493a",
+      "bytes": 18638,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-01-PLAN.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-01-SUMMARY.md",
+      "sha256": "0524e1ec01c3fe2804622983e778b3532a80e22635b0750456dd9c71fbaf87c5",
+      "bytes": 12618,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-01-SUMMARY.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-02-PLAN.md",
+      "sha256": "e8edf55d0c164835c69c1c67ea9ed2f14ef7b74627ce7a791f5b3614001e9668",
+      "bytes": 15487,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-02-PLAN.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-02-SUMMARY.md",
+      "sha256": "3ce1ec9d31a01f2bddfe8c64e477aeaae93b2fc4c5d38b959554aad175ac22d1",
+      "bytes": 19161,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-02-SUMMARY.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-03-PLAN.md",
+      "sha256": "90db114c82789a0a3d7fa5b588401a35db185069447ebef88623ae5086ebb08f",
+      "bytes": 19016,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-03-PLAN.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-03-SUMMARY.md",
+      "sha256": "006f8a605eb900f422dc786665a09cb9df66d83daf154f5a612bcbefb27f73dc",
+      "bytes": 10005,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-03-SUMMARY.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-04-PLAN.md",
+      "sha256": "2adcfa89aa39d93e5f649ad7029f027074f0a59676da0192dc1af4e2e8f14902",
+      "bytes": 12035,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-04-PLAN.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-04-SUMMARY.md",
+      "sha256": "1a6053746984348ab90b3dad21aa3ca341ac43cb1483b02b0ad0c61a15912f62",
+      "bytes": 9541,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-04-SUMMARY.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "sha256": "06ddf86f5e241bc034c9fdde9aaf4138495ab2ee9f2f749bcb46dcb827d7864e",
+      "bytes": 20625,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-05-PLAN.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-05-SUMMARY.md",
+      "sha256": "426c9d352ee71723e281b2b0aacd1ec79a8e6b328c50816c9362c3fe7a4b6eed",
+      "bytes": 31861,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-05-SUMMARY.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-06-PLAN.md",
+      "sha256": "b83c81f87ef6d9ff73b61ee83edb70aa296a20cee6eb3da96e61acbf28510ce0",
+      "bytes": 15802,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-06-PLAN.md"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-06-SUMMARY.md",
+      "sha256": "ed6c64ebb29238ffe49cb060b3a8dadc6f8a323fb79b4b1e707fe836b48a9ed4",
+      "bytes": 12272,
+      "snapshot": "build/phase06/06-05/final-review-4edaf0352ca1/materials/.planning/phases/06-gamestream/06-06-SUMMARY.md"
+    }
+  ],
+  "automaticEvidence": {
+    "targets": 12,
+    "ci": "completed/success;12/12",
+    "scopeAll": {
+      "exitCode": 0,
+      "raw": {
+        "file": "build/phase06/06-05/final-4ed-all-recheck.log",
+        "sha256": "8db63d1d3e502713789ebd7f39f32a1c5c2bc34fe3be98dd329a285e06df01ee"
+      }
+    },
+    "validatorTestsPerTarget": 85,
+    "localWindowsTests": 15,
+    "ffiTests": 22,
+    "ffiHostCases": 21,
+    "ownedAndroidTests": 115,
+    "ownedAndroidElapsedMs": 189742,
+    "rootTests": 11,
+    "openReviewFindings": 0,
+    "resolvedProductFindings": 3
+  },
+  "flagged": {
+    "prohibitions": [
+      {
+        "requirement_id": "NET-01",
+        "category": "safety",
+        "statement": "MUST NOT 将断连/切换清理变成停止持久实例、应用、显示组或删除外来资源。",
+        "source": ".planning/phases/06-gamestream/06-01-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "safety",
+        "statement": "MUST NOT 以测试身份/authority 给产品增加认证绕过、观察者上行或第二控制租约。",
+        "source": ".planning/phases/06-gamestream/06-01-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "transparency",
+        "statement": "MUST NOT 把synthetic媒体、假时钟、build或模拟器记录宣传为真实设备/HDR/产品性能通过。",
+        "source": ".planning/phases/06-gamestream/06-02-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "values",
+        "statement": "MUST NOT 静默降级、先部分执行再求同意、隐藏不可用功能或挤占其他连接已有资源。",
+        "source": ".planning/phases/06-gamestream/06-03-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "safety",
+        "statement": "MUST NOT 执行或安排开发机重启/关机，或借协议验证安装驱动、改Apollo、信任及安全策略。",
+        "source": ".planning/phases/06-gamestream/06-05-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "transparency",
+        "statement": "MUST NOT 把Apple实机TODO扩展成目标构建/可运行自动检查豁免，或将缺证据、零测试、跳过记为已通过。",
+        "source": ".planning/phases/06-gamestream/06-05-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      }
+    ],
+    "edges": [
+      {
+        "requirement_id": "NET-01",
+        "category": "unclassified",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null,
+        "probe": "unclassified — review manually"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "unclassified",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null,
+        "probe": "unclassified — review manually"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "unclassified",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null,
+        "probe": "unclassified — review manually"
+      }
+    ]
+  },
+  "scope": "仅批准当前synthetic协议原型、真实loopback TLS/SRTP/FFI、五端实际native build/run及其证据/限制；保留全部637原能力及后续v1 owner",
+  "unperformed": {
+    "applePhysical": {
+      "functionality": "TODO",
+      "performance": "TODO",
+      "installation": "TODO"
+    },
+    "minimumOSValidated": false,
+    "production": "真实codec/capture/HDR/设备、生产authority、非loopback网络及产品SLO未验证；既定后续owner保留"
+  },
+  "excluded": [
+    "Phase3修正安装计划授权/设备操作",
+    "驱动/Apollo/信任/安全策略变更",
+    "开发机重启/关机",
+    "自动开始Phase7或后续全产品实现"
+  ],
+  "humanReview": {
+    "status": "pending",
+    "response": null,
+    "recordedAt": null,
+    "reviewedMaterials": null
+  },
+  "snapshotDirectory": "build/phase06/06-05/final-review-4edaf0352ca1"
+}

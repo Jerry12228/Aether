@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T13:31:40.934Z",
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "inputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "scope": "实际GSD非阻断检查；codebase drift因no-structure-md skipped，不宣称已检查结构；native行为由实际12目标/all独立证明",
+  "hooks": [
+    {
+      "name": "verify.schema-drift",
+      "result": {
+        "block": false,
+        "drift_detected": false,
+        "blocking": false,
+        "schema_files": [],
+        "orms": [],
+        "unpushed_orms": [],
+        "message": "",
+        "skipped": false
+      },
+      "raw": {
+        "file": "build/phase06/06-05/final-review-4edaf0352ca1/verify.schema-drift.json",
+        "sha256": "a197dc5a21ce01563f6b5f5d024cd4c9c390bf0c11af559d327745f30e468e11"
+      }
+    },
+    {
+      "name": "verify.codebase-drift",
+      "result": {
+        "block": false,
+        "skipped": true,
+        "reason": "no-structure-md",
+        "action_required": false,
+        "directive": "none",
+        "elements": []
+      },
+      "raw": {
+        "file": "build/phase06/06-05/final-review-4edaf0352ca1/verify.codebase-drift.json",
+        "sha256": "c1a88d16fb02e1edddfac930aef1ab8836de1061e7524d032805bf1638b23c83"
+      }
+    },
+    {
+      "name": "ui.safety-gate",
+      "result": {
+        "frontend": false,
+        "hasUiFiles": false,
+        "hasUiSpec": false,
+        "block": false
+      },
+      "raw": {
+        "file": "build/phase06/06-05/final-review-4edaf0352ca1/ui.safety-gate.json",
+        "sha256": "37d4303728f0f6236da8f4e82093baeb93379281870a2adf94135e02e098a386"
+      }
+    }
+  ]
+}

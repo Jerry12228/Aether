@@ -1,10 +1,11 @@
 ---
 phase: 06
 review_depth: standard
-reviewer: 当前Codex内联；按skill spawn restriction，无子代理或外部lane
-source_commit: b734e8f6b5139372a62737f500cd50783c6afd1b
-input_digest: 2c2aefc244810f7662704d4395aa8b4e42db88892cb95daf5390256bdc3cd58b
-status: remediation-reviewed-matrix-pending
+reviewer: 当前Codex内联；无独立agent或外部lane
+source_commit: 4edaf0352ca1b875e3536fe54970e8b85585c794
+input_digest: 7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369
+status: passed-inline-remediation
+resolved: 3
 findings:
   critical: 0
   warning: 0
@@ -43,13 +44,26 @@ files_reviewed_list:
   - .github/workflows/protocol.yml
 ---
 
-# Phase06 标准源码审阅（修正复核）
+# Phase06 标准源码审阅（最终修正复核）
 
-当前Codex内联复核；无独立agent或外部审阅lane。首轮报告完整字节保留在06-REVIEW-FIRST.md及186a8ba提交。首轮30个文件中，本次共同输入只改变admission.cpp、control.cpp、protocol.cpp、protocol_control.cpp、protocol-recovery.test.cjs；其余原范围文件无新增修改。逐项检查五文件差异、字段范围、授权顺序及清理路径，未发现新的可证明问题。当前open critical/warning/info均0，已处置2项；完整新输入CI及独立all仍待执行，不能以复核关闭Task2。
+2026-10-12T13:27:47.853Z：复核首轮30文件范围及全部后续差异，当前open critical/warning/info0、resolved3。首轮原字节保留在06-REVIEW-FIRST.md及186a8ba历史提交；中间报告保留Git历史，当前报告绑定实际12/12新矩阵4edaf03/input7ca15942，不重标旧运行。内联执行，不声称独立agent、外部审阅或TSan。
 
-| finding | 处置与证据 |
-|---|---|
-| CR-01 | e9e61ac先用uint64_t计算15×denominator；只有阈值小于当前uint32_t分子时安全窄化。8fbd20b真实D11 RED为107374182≠858993462；修正后原D11内同输入真实提案1/1通过。无字段范围/分母/原断言删改。 |
-| CR-02 | e9e61ac在typed3 control_open创建worker前核验base≤UINT32_MAX-4；legacy2 full-media双方在GRANT前核验，通用create/单流合法范围不缩小。原boundaries公开CABI负例先RED open0≠25，再GREEN child34/34、parent4/4。未打开control的fixture清理改用通用ACK/stop/destroy，首次清理失败原始日志保留。 |
+| ID | 原分类 | 修正与实际证据 |
+|---|---|---|
+| CR-01 | BLOCKER | FPS分母乘15的32位溢出。8fbd20b原D11内真实RED（107374182≠858993462）；e9e61ac先用uint64_t计算，只有阈值小于uint32_t分子时安全窄化。独立PID/TLS同例GREEN，当前全矩阵通过。 |
+| CR-02 | BLOCKER | 固定五SSRC空间迟校验。8fbd20b原boundaries公开CABI RED（open0≠25）；e9e61ac在typed3创建worker前和legacy2 full-media GRANT前校验base≤UINT32_MAX-4，通用create/legacy单流范围保留。0685a70修正新fixture未打开control时的通用ACK清理；child34/34、parent4/4 GREEN，当前全矩阵通过。 |
+| CR-03 | BLOCKER | 固定quarter-TTL reserve会早于真实deadline关闭接收。a0faff1在现有fec-golden内以独立编码、真实SRTP/UDP排队帧和5ms实际截止取得RED；01b2a8f使用真实deadline接收，解码前后过期检查、TTL25ms/64包/队列上限保持。原同例GREEN，当前全矩阵通过。 |
 
-实际RED/GREEN及产物SHA见docs/phase06/06-05-REVIEW-BOUNDARY-RED.json和06-05-REVIEW-BOUNDARY-GREEN.json。当前完整Windows15/15、独立validator85/85、真实FFI22/22与21host、根CTest11/11已过；这些本地结果不代替新输入12目标CI。原有同步/有界队列/TLS证书与身份校验/SRTP/FEC隔离无本次变更。Phase3 halted、六禁止及三unclassified保持；TSan、Apple物理、生产设备/codec/authority/SLO未验证。
+相关RED/GREEN/source/rawSHA/失败保留见REVIEW-BOUNDARY-RED/GREEN、MEDIA-DEADLINE-RED、MEDIA-WINDOW-GREEN。无参数错误、编译失败或执行器准备超时被计作行为RED。
+
+## 测试观察和执行器复核
+
+e0e2c0a的test-only opcode100避免重复缓存窗口：保留每项请求delay及原action deadline，只读取实际worker新进展，不改原断言、恢复300/500/900ms、产品query或事件。原Mac D08两个快照progress13/video2/audio9重复的真实RED保留；额外本地确定性fail-before-fix注入未做，当前Mac原D08/全部17组实际通过作为GREEN，不能宣称100ms硬SLO。
+
+0a14023对固定官方URL的429/5xx/网络请求最多3次、1/2s退避，并共享原构建总预算；每次仍SHA/size/notice强校验，404/错误hash/cache/过期预算不豁免。6项实际下载函数隔离故障检查通过（不宣称平台运行）。自有guest的zygote/surfaceflinger逐项请求stop并观察真实stopped，所有命令exit0/30s界限/UID恢复与实际退出保留；不捕获255后伪报成功。protocol-full多流27case使用计划允许60s聚合，per-case10s/native安全5s和fast30s不改。Apple执行器30分钟准备总预算仍在原45分钟job内，协议与单case时钟不改；当前两个sim各42项真实XCTest完成。
+
+停止/重连使用atomic和mutex、队列/消息/预算受检界限、mutual TLS证书/SAN/hostname及标准alert拒绝、SRTP逐方向/stream/role/key隔离和认证后FEC边界均未出现新的可证明绕过。test-only authority注册未进入产品DLL，真实FFI21host dispose后callback0/owned0。Root旧Helios/11fixtures隔离回归通过。
+
+最终实际CI38252266760 12/12、正式all exit0、本机Windows15/85、FFI22/21、自有AVD115/85及根11通过；FFI经典路径alias为原清单完全相同字节的新兼容归档，原始归档与receipt保留，无validator或原生输入变更。
+
+Task2自动门槛满足；Task3待真人确认具体材料。原六禁止与三unclassified仍flagged-unverified/null，不吸收为passed；Apple物理/真实codec/设备/生产authority/非loopback网络/minimumOS/SLO及TSan未验证，后续owner保持。Phase3 halted与禁开发机重启/关机保持。

@@ -1,6 +1,6 @@
 # Phase06 — API、假设与多来源覆盖审计
 
-本文件是规划记录，所有执行证据仍pending。API detector已对非空06-CONTEXT运行：detected=true，唯一signal为中文“不能当作网络/实例 API”的内部C ABI描述。没有远程第三方服务API集成；鉴于候选本地native库有实际外部调用面，仍明确记录其计划覆盖，不以false-positive作为忽略依赖审计理由。计划仅落实06-01具体ADR批准方案，未批准候选不自动选定。
+本文件前半部分为原规划记录；当时pending状态仅代表历史。当前实际执行审计见文末、EVIDENCE/TARGETS及06-VERIFICATION.md；最终真人与6+3flagged仍pending。API detector已对非空06-CONTEXT运行：detected=true，唯一signal为中文“不能当作网络/实例 API”的内部C ABI描述。没有远程第三方服务API集成；鉴于候选本地native库有实际外部调用面，仍明确记录其计划覆盖，不以false-positive作为忽略依赖审计理由。计划仅落实06-01具体ADR批准方案，未批准候选不自动选定。
 
 | capability | decision | reason |
 |---|---|---|
@@ -62,3 +62,7 @@ Excluded按原已批准phase边界：生产配对/codec/真实设备/生产仲�
 ## 2026-10-10 前置合同修订
 
 历史五计划规划条目保留。当前6计划/6wave、16任务：已完成01/02，新增06-06（2任务）在03之前；03/04/05依赖同步。六份frontmatter共同声明NET01/02/03，必须全部完成且最终验证/人审通过才关闭。06-06新增typed schema、HostServices六维权威预算、真实产品client/test-only host、确认屏障与有界dispatcher；取消使用主机transaction_sequence权威终态，不将本地token当远端commit。D01–16归属仍完整，03/04/05真实socket/FFI/目标证据消费同合同。独立06-CONTROL-PLAN-CHECK Revision1通过，不代表代码/平台通过。原edge/prohibitions unresolved与Phase3门槛保持。
+
+## 当前多来源实证覆盖审计
+
+固定GameStream字段/通道来源、actual target/source/Git/official dependencies/compiler/artifacts和真实socket/PID/FFI日志已由正式all对照，不以SUMMARY或API存在替代行为。共同42输入实际12目标成功，原31/27/60/42具名case保留；12设置/637原能力及全部16D/23威胁对应独立观察case，NET三项仍等待Task3真人。06-01已批准方案、Botan复用批准及原FEC材料保持；未选DTLS/ENet/QUIC/WebRTC、生产authority/codec/设备不进入本原型。原六禁止/三edge descriptor不完整，继续flagged-unverified/null；新增负例不改变其分类。证据和范围见docs/phase06/EVIDENCE.md、TARGETS.json，原文和hash可复查。

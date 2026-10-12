@@ -128,3 +128,9 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 用户最新`1`已选06-05，准备ff3d776/1b703af、摘要951af81已保存。Task1文件存在仅证明准备：当前workflow为Linux x64首链，其余目标/架构实际运行缺失，Android arm32与iOS完整媒体/FEC适配未完成。Task1行为RED尚未执行，构建失败不计RED；Task2独立validator/known-bad证据及Task3最终人审未执行。表中06-05-01/02/03仍pending，任务0/3，Phase6为5/6，NET/nyquist/wave0和3个unclassified/6个descriptorless不关闭。
 
 本地Debug CTest12/12（110.04s）、新入口Windows x64 Release12/12（103.43s）和真实Flutter22/22（20601ms、21独立host场景）通过。精确Release输入/5产物及本地日志摘要见[准备证据](../../../docs/phase06/06-05-PREPARATION.json)，不是最终TARGETS.json；Debug/FFI早于KAT编译选项修复，不与Release输入改绑。自动审批拒绝远端`git push origin HEAD`，要求具体目的地发布授权；未推送。当前等待公开Jerry12228/Aether整分支及同分支Phase6 CI提交/运行批准，获准后继续实际目标门槛，不能用本次批准关闭Task3。Phase3安装授权独立保持。
+
+## 06-05当前自动验证与最终关口
+
+2026-10-12T13:23:59.971Z：Task1/2完整同输入feb4ee3/2c2aefc2实际CI38252266760 12/12、正式all0，Windows15/85、FFI22/21、根11和自有Android115均通过。实际target SDK/CPU/source/rawlogs/owned清理、16D/3NET/23威胁/12原设置/637保留及6+3原flagged内容逐项核验。Task3真人待精确包答复；NET、Nyquist、wave0仍未关闭，six descriptorless/three unclassified保持flagged-unverified/null，Phase3独立安装门槛不变。各历史段落只代表当时source与阶段，不覆盖当前。
+
+最终父级非阻断检查：schema无漂移（无ORM/schema文件）；UI无frontend且block=false；codebase drift因no-structure-md明确skipped/action_required=false，不当成PASS。实际rawSHA在06-05-FINAL-HOOKS.json，协议schema/行为仍由原具名测试和正式all证明。
