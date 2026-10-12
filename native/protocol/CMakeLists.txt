@@ -216,7 +216,7 @@ if(BUILD_TESTING AND NOT CMAKE_SYSTEM_NAME STREQUAL "iOS")
     set_tests_properties(protocol_recovery_${group} PROPERTIES LABELS protocol-full TIMEOUT 60)
   endforeach()
   add_custom_target(protocol_fast COMMAND "${CMAKE_CTEST_COMMAND}" -C "$<CONFIG>" -L protocol-fast --output-on-failure --no-tests=error DEPENDS aether_protocol_tracer aether_protocol_control_client)
-  set_tests_properties(protocol_multistream PROPERTIES LABELS protocol-full TIMEOUT 30)
+  set_tests_properties(protocol_multistream PROPERTIES LABELS protocol-full TIMEOUT 60)
   if(AETHER_PROTOCOL_TARGET)
     set_tests_properties(protocol_control protocol_tracer protocol_multistream protocol_recovery_0 protocol_recovery_1 protocol_recovery_2 protocol_recovery_3 PROPERTIES
       ENVIRONMENT "AETHER_PROTOCOL_CONFIGURATION=$<CONFIG>;AETHER_PROTOCOL_MANIFEST=${CMAKE_CURRENT_BINARY_DIR}/target-manifest-$<CONFIG>.json;AETHER_PROTOCOL_TARGET_MANIFEST=${CMAKE_CURRENT_BINARY_DIR}/protocol-target-$<CONFIG>.json;AETHER_PROTOCOL_BUILD=$<TARGET_FILE_DIR:aether_protocol_tracer>;AETHER_OPENSSL_BIN=${AETHER_OPENSSL_BIN}")

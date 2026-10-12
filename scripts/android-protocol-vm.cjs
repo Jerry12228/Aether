@@ -55,8 +55,9 @@ async function prepareAndroidVm({sdk,directory,arch,run,record}){
   };
   if(initialUid!=='0')await switchOwnedUid('root','0');
   assert.equal(uid(await run('vm-owned-root-uid',adb,['-s',serial,'shell','id'])),'0','Only rootable owned test images');
-  for(const service of ['zygote_secondary','zygote','surfaceflinger'])await run('vm-owned-stop-'+service,adb,['-s',serial,'shell','stop',service]);
+  await run('vm-owned-stop-zygote_secondary',adb,['-s',serial,'shell','stop','zygote_secondary']);
   for(const service of ['zygote','surfaceflinger']){
+   await run('vm-owned-stop-'+service,adb,['-s',serial,'shell','stop',service]);
    // ctl.stop is asynchronous: observing stopping is not a failed stop.
    // Require its actual terminal state within a bounded owned-guest wait.
    let state='';const deadline=Date.now()+30000;
