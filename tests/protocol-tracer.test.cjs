@@ -308,6 +308,12 @@ else if(process.argv.includes('--manifest')) {
     for(const c of p.capabilities){append(c.name.length);chunks.push(Buffer.from(c.name));for(const n of [c.availability,c.reason,c.requested,c.available])append(n);}
     assert.equal(native.digest,digest(Buffer.concat(chunks)));assert.deepEqual(native.capabilities.map(c=>c.final),p.capabilities.map(c=>c.final));
   });
+  test('TCP close before TLS certificate verification is transport failure and never trust rejection',{timeout:10000},async()=>{
+    const m=loadTarget(),dir=certificates(),net=require('node:net'),sockets=new Set();let client;
+    const server=net.createServer(socket=>{sockets.add(socket);socket.on('error',()=>{});socket.once('close',()=>sockets.delete(socket));socket.destroy();});
+    try{await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);});client=child(m.binary,['--role','client','--fixture',dir,'--scenario','happy','--versions','3','--peer',String(server.address().port)]);const r=await client.closed;assert.equal(r.code,2);const result=r.messages.find(x=>x.kind==='result');assert.equal(result.detail.status,24);assert.equal(result.detail.grants,0);assert.equal(result.detail.sinkPackets,0);const clean=r.messages.find(x=>x.kind==='clean');assert.equal(clean.detail.sockets,0);assert.equal(clean.detail.threads,0);}
+    finally{if(client&&client.process.exitCode===null)client.process.kill();for(const socket of sockets)socket.destroy();await new Promise(resolve=>server.close(resolve));}
+  });
   test('an authenticated peer cannot extend the operation deadline by trickling bytes',{timeout:10000},async()=>{
     const m=loadTarget(),dir=certificates(),tls=require('node:tls');let h,socket,timer;
     const started=Date.now();

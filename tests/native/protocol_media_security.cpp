@@ -65,6 +65,12 @@ void realtime_frames(){
  check(receiver.streams[0]->received==3&&second.video1==1&&receiver.streams[0]->authenticated_bytes==std::string(1,'\3'));
 }
 void fec(){
+ // Exercise the actual internal control sequence path with an expired write.
+ // write_tls must reject before calling OpenSSL; no peer byte was emitted.
+ ConnectionContext expired;expired.exchange_deadline=std::chrono::steady_clock::now()-std::chrono::milliseconds(1);uint64_t sequence=0;bool timed_out=false;
+ try{write_control_sequence(sequence,[&](uint64_t){const uint8_t byte=0;write_tls(expired,&byte,1);});}catch(Failure f){timed_out=f.status==AP_TIMEOUT;}
+ if(!timed_out||sequence!=0)throw std::runtime_error("expired unwritten control record must not consume sequence");
+ uint64_t observed=0;write_control_sequence(sequence,[&](uint64_t next){observed=next;});check(sequence==1&&observed==1);
  MediaLimits limits;limits.shard=4;limits.frame=8;const Bytes original{0,1,2,3,4,5,6,7};const auto encoded=fec_encode(original,limits);
  check(encoded[0]==Bytes({0,1,2,3})&&encoded[1]==Bytes({4,5,6,7})&&encoded[2]==Bytes({8,9,10,11}));
  check(fec_recover({{1,encoded[1]},{2,Bytes{8,9,10,11}}},limits)==original);

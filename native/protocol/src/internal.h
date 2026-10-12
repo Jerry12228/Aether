@@ -54,6 +54,7 @@ inline uint64_t u64(const uint8_t* p){return (uint64_t(u32(p))<<32)|u32(p+4);}
 inline void put16(uint8_t* p,uint16_t v){p[0]=static_cast<uint8_t>(v>>8);p[1]=static_cast<uint8_t>(v);}
 inline void put32(uint8_t* p,uint32_t v){for(int i=3;i>=0;--i){p[i]=static_cast<uint8_t>(v);v>>=8;}}
 inline void put64(uint8_t* p,uint64_t v){for(int i=7;i>=0;--i){p[i]=static_cast<uint8_t>(v);v>>=8;}}
+template<class Writer>void write_control_sequence(uint64_t& sequence,Writer&& writer){require(sequence!=UINT64_MAX,AP_STALE);writer(++sequence);}
 struct Identity {
  uint64_t host=0,instance=0,display=0,stream=0,connection=0,client=0;
  uint64_t lease=0,config=0,key=0;
