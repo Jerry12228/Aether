@@ -143,7 +143,7 @@ int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
   if(status!=AP_OK){std::array<uint8_t,8> rejection{};put32(rejection.data(),static_cast<uint32_t>(status));put32(rejection.data()+4,c.upgrade);write_tls(c,rejection.data(),rejection.size());c.rejection_sent=true;return status;}
   std::array<uint8_t,2> port{};read_tls(c,port.data(),2);require(u16(port.data())!=0,AP_FIELD);
   if(full_requested(request.data(),length)){
-   require(c.selected==2,AP_VERSION);c.media_limits=media_limits(request.data(),length);require(size<=64&&size+30u<=c.media_limits.frame,AP_LENGTH);std::array<uint8_t,80> peer_domain{};read_tls(c,peer_domain.data(),peer_domain.size());validate_domain(c,peer_domain.data(),c.selected);std::array<uint8_t,8> ack{};put32(ack.data()+4,c.selected);write_tls(c,ack.data(),ack.size());const auto domain=control_domain(c,c.selected);write_tls(c,domain.data(),domain.size());++c.grants;run_media(c,u16(port.data()),data,size);return AP_OK;
+   require(c.selected==2,AP_VERSION);require(c.config.stream_id<=UINT32_MAX-4,AP_FIELD);c.media_limits=media_limits(request.data(),length);require(size<=64&&size+30u<=c.media_limits.frame,AP_LENGTH);std::array<uint8_t,80> peer_domain{};read_tls(c,peer_domain.data(),peer_domain.size());validate_domain(c,peer_domain.data(),c.selected);std::array<uint8_t,8> ack{};put32(ack.data()+4,c.selected);write_tls(c,ack.data(),ack.size());const auto domain=control_domain(c,c.selected);write_tls(c,domain.data(),domain.size());++c.grants;run_media(c,u16(port.data()),data,size);return AP_OK;
   }
   if(dual_requested(request.data(),length)){
    require(c.selected==2,AP_VERSION);require(size<=128,AP_LENGTH);create_dual_streams(c);std::array<uint8_t,8> ack{};put32(ack.data()+4,c.selected);write_tls(c,ack.data(),ack.size());++c.grants;transmit_dual(c,u16(port.data()),data,size);return AP_OK;
@@ -161,7 +161,7 @@ int32_t exchange(Context& c,const uint8_t* data,uint32_t size){
  uint32_t parse_version=0,parse_side=0;bool valid=negotiate(data,size,c.config.versions,c.config.version_count,&parse_version,&parse_side)==AP_OK;
  uint16_t redirect=valid?optional_port(data,size):uint16_t{0};
  std::array<uint8_t,2> port{};put16(port.data(),redirect?redirect:static_cast<uint16_t>(c.udp_port));write_tls(c,port.data(),port.size());
- const bool full=valid&&full_requested(data,size);if(full){const auto domain=control_domain(c,parse_version);write_tls(c,domain.data(),domain.size());}
+ const bool full=valid&&full_requested(data,size);if(full){require(c.config.stream_id<=UINT32_MAX-4,AP_FIELD);const auto domain=control_domain(c,parse_version);write_tls(c,domain.data(),domain.size());}
  std::array<uint8_t,8> ack{};read_tls(c,ack.data(),ack.size());uint32_t status=(uint32_t(ack[0])<<24)|(uint32_t(ack[1])<<16)|(uint32_t(ack[2])<<8)|ack[3];
  if(status){c.upgrade=(uint32_t(ack[4])<<24)|(uint32_t(ack[5])<<16)|(uint32_t(ack[6])<<8)|ack[7];return static_cast<int32_t>(status);}
  c.selected=(uint32_t(ack[4])<<24)|(uint32_t(ack[5])<<16)|(uint32_t(ack[6])<<8)|ack[7];
