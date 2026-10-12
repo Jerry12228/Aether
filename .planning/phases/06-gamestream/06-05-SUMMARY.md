@@ -184,3 +184,11 @@ CI38159407590/source8579437实际结束：9目标成功、三个Android失败。
 发现validator只比较flagged数量/来源SHA，未比条目内容，先76项/3真实行为失败，RED d76bd38，修正a3cc660。另先85项/4真实行为失败证明无关/重复/缺CI job目标及原combined content sentinel被接受，RED1a1273e，GREEN修正85/85、fail/skip/cancel/TODO0，258.5619ms。证据见06-05-VALIDATOR-FLAGS-RED/MAPPING-RED/GREEN.json。首次sandbox spawn EPERM不是行为RED。当前85测试与validator改动属于新共同输入，必须重建完整12目标、FFI及最终all后才能完成Task2。Task3原文仍null；1/3，Phase3 halted保持。
 
 诊断CI38208095100现完整12/12真实成功，三个Android各115，原857三失败不改写，原因未确认。最终source7bcfbc1/inpute198aeef（42输入、85独立项）CI38209356614执行中。当前本机Release2536ms/Debug10683ms、正式Windows15/15（94991ms）、validator85/85、Flutter22/22及21host（20659ms）、Helios Release3537ms、根Debug重建2809ms及11/11（27666ms）真实通过且已独立归档。临时根记录脚本两个包装参数错误未启动任何产品命令，不记为原生失败或行为RED；修正后正式命令/输出哈希见06-05-ROOT-REGRESSION.json。TARGETS当前仍绑定857失败历史，后续完整当前CI通过才生成最终包与all；1/3/NET未关闭。
+
+### 2026-10-12 接续：运行缺陷复现与修正
+
+7bc输入实际CI38209356614出现macOS x64 D16、Android x64原ping_timeout/拒绝重试及Windows ARM64原healthy-cancel失败；不以同产物本机新自有AVD115/115（192066ms、85独立项、实际关闭/删除后adb为空）覆盖CI。见06-05-7BC-RUNTIME-FAILURES、LOCAL-ANDROID-7BC.json。Android客户端1ms为AP_TIMEOUT11，下一合法3000ms为AP_LENGTH24，对应host AP_STALE27；写前++ACTL序号独立native确定RED后修正0b3b918，仅完整写成功才提交。真实bare TCP-close在未证书验证时AP_TRUST21而非AP_LENGTH24形成第二合格RED，标准X509/hostname/unknown-CA alert拒绝保持。两次缺request.bin、尚未握手的1!=2尝试不计行为RED；最终21!=24才合格。
+
+Windows ARM64原invalid stoul/healthy-cancel失败以相同场景确定空ready到有效端口负例RED e37de89复现；test-only消费者03d935d在原4s核验完整1..65535端口，05760b0先释放读取句柄再在既有预算内有界原子rename。首次consumer GREEN遇Windows读句柄阻止rename实际exit2，未计GREEN；修正后4/4。核心ABI/wire/父65/31场景、media27/recovery60、637原能力和所有既定deadline未改变。
+
+当前针对性三个GREEN实际绑定05760b0/inputd3a4eb39，详见06-05-CONTROL-SEQUENCE-TLS-RED、READY-PORT-RED及CONTROL-RUNTIME-GREEN.json。Mac500ms请求实际632ms、采样已healthy为真实记录；21b4d3a设置自有控制与test-only observer QOS_CLASS_USER_INITIATED，遵循Apple官方API，仅调整线程调度，原500/900ms/25ms不变。Apple当前结果仍pending，不能以WindowsGREEN或QoS存在宣称解决。后续同输入完整CI、FFI/root/all及真正最终人审仍需完成，任务1/3/NET未关闭，Phase3 halted保持。
