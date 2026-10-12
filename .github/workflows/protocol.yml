@@ -86,7 +86,10 @@ jobs:
       - name: Actual SDK and native library build with deployment target 13
         run: node scripts/build-protocol.cjs --target ios --arch ${{ matrix.arch }} --sdk ${{ matrix.sdk }} --configuration Release --build-dir build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }} --budget-seconds 1800
       - name: Independent device build checks or XCTest on an owned simulator
-        run: node scripts/verify-protocol.cjs --scope target --target ios --configuration Release --manifest build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/protocol-target-Release.json --budget-seconds 900
+        # Intel cold simulator boot and XCTest launch are executor preparation,
+        # not protocol timing. Keep the existing 45-minute job bound and the
+        # runner's 30-minute maximum; native case deadlines are unchanged.
+        run: node scripts/verify-protocol.cjs --scope target --target ios --configuration Release --manifest build/phase06/targets/ios-${{ matrix.arch }}-${{ matrix.sdk }}/protocol-target-Release.json --budget-seconds 1800
       - name: Retain build and XCTest logs without fixture credentials
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
