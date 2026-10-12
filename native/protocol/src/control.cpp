@@ -4,6 +4,10 @@
 #include <sstream>
 #include <optional>
 #include <openssl/err.h>
+#ifdef __APPLE__
+#include <pthread.h>
+#include <pthread/qos.h>
+#endif
 #ifdef AETHER_CONTROL_FIXTURE
 #include <iostream>
 #endif
@@ -226,6 +230,9 @@ void client_dispatch(ConnectionContext& c,ControlState& s,ControlState::Command 
 }
 void control_worker(std::shared_ptr<ConnectionContext> context,std::vector<uint8_t> hello_bytes){auto& c=*context;auto& s=*c.control;s.hello_bytes=hello_bytes;
  try{
+#ifdef __APPLE__
+  require(pthread_set_qos_class_self_np(QOS_CLASS_USER_INITIATED,0)==0,AP_INTERNAL_ERROR);
+#endif
   {std::lock_guard transport(s.transport_mutex);negotiate_control(c,s,hello_bytes);}
   while(!s.stopping){
    try{

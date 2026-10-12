@@ -14,6 +14,10 @@
 #include <memory>
 #include <atomic>
 #include <mutex>
+#ifdef __APPLE__
+#include <pthread.h>
+#include <pthread/qos.h>
+#endif
 #ifdef _WIN32
 #include <process.h>
 #else
@@ -63,6 +67,9 @@ void kat(const std::map<std::string,std::string>& args){
  std::cout<<"{\"ciphertext\":\""<<hex(cipher.data(),static_cast<size_t>(n+final))<<"\",\"tag\":\""<<hex(tag,16)<<"\"}"<<std::endl;
 }
 int control_actions(const std::map<std::string,std::string>& args,AetherProtocolConfig config){
+#ifdef __APPLE__
+ if(pthread_set_qos_class_self_np(QOS_CLASS_USER_INITIATED,0)!=0)throw std::runtime_error("test control observer QoS");
+#endif
  std::ifstream f(args.at("--control-actions"),std::ios::binary);std::vector<uint8_t> actions(std::istreambuf_iterator<char>(f),{});if(actions.size()<12||actions.size()>1048576||std::memcmp(actions.data(),"APAC",4)||read32(actions.data()+4)!=1||read32(actions.data()+8)>512)throw std::runtime_error("actions bounds");
  uint64_t token=0;config.host_id=1;config.instance_id=2;config.display_id=3;config.stream_id=4;config.connection_id=args.contains("--connection")?std::stoull(args.at("--connection")):5;config.client_id=args.contains("--client-id")?std::stoull(args.at("--client-id")):6;config.deadline_ms=3000;if(aether_protocol_create(&config,control_event,&token)!=AP_OK)throw std::runtime_error("control create");
  auto drain=[&]{auto s=control_query(token);auto p=s.find("\"acked\":");if(p==std::string::npos)throw std::runtime_error("acked");auto ack=std::stoull(s.substr(p+8));while(ack<control_sequence.load()){if(aether_protocol_control_ack(token,++ack)!=AP_OK)throw std::runtime_error("control ack");}};
