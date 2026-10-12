@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T07:45:01.528Z",
+  "sourceCommit": "8fbd20b88388d47a6e2280238235d166ce1d24a6",
+  "inputDigest": "c4b2e891cc11334f2a319d84b24244a4f9ae6842423122a21add8f4a4e9b4e1f",
+  "buildManifest": {
+    "file": "build/phase06/targets/windows-x64/protocol-target-Release.json",
+    "sha256": "212eb84b1739583935cd679ce20d4fd6e10695d57c7cc73b12febbefc0ee5c87"
+  },
+  "actualArtifacts": [
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "ac6946ba7b17d9c178ce4523dad93e8ec7d1da0da80e53df6fdc6f2eb3ca15d2",
+      "bytes": 4042240,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_tracer.exe",
+      "sha256": "ebce515836c7a8cc1096516db53c218b9d4e0f0f29d188d70c29dc182ddf554b",
+      "bytes": 3267072,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_media_security.exe",
+      "sha256": "1c30327e467b4581d70e5b34f9c3453a5b9cc78ee36fb52abe8fafe38f8fb9ab",
+      "bytes": 3893760,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_client.exe",
+      "sha256": "e0912f485fa72c7be2fc6c173f5c788ec56d6ee3b5a4748388672b6ace128032",
+      "bytes": 407552,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_host.exe",
+      "sha256": "30367ba56c67e45b0f54570b8f965b7f8cf4ab3f881f8603948343a0a3497b79",
+      "bytes": 4116480,
+      "observedArch": "x64"
+    }
+  ],
+  "review": {
+    "file": ".planning/phases/06-gamestream/06-REVIEW.md",
+    "sha256": "2f28bade77b3983e1096ba43cf1b9ba076d43f58ee0d2d78c21625b08f711f1a"
+  },
+  "actual": [
+    {
+      "finding": "CR-01",
+      "scope": "原D11 case内真实独立PID/TLS提案",
+      "exitCode": 1,
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "requested": {
+        "fpsNumerator": 858993462,
+        "fpsDenominator": 286331154
+      },
+      "observed": {
+        "fpsNumerator": 107374182
+      },
+      "raw": {
+        "file": "build/phase06/06-05/review-fps-red.log",
+        "sha256": "00b8d5b32ef61143706ecc3da5d66cd93b7cfe993a83697ee3fbe815b4964f54"
+      }
+    },
+    {
+      "finding": "CR-02",
+      "scope": "原native boundaries真实CABI/独立host PID；错误base开控制前应拒绝",
+      "exitCode": 1,
+      "childTests": 34,
+      "childPassed": 33,
+      "childFailed": 1,
+      "parentTests": 4,
+      "parentPassed": 3,
+      "parentFailed": 1,
+      "skipped": 0,
+      "baseStream": 4294967293,
+      "expectedOpen": 25,
+      "actualOpen": 0,
+      "raw": {
+        "file": "build/phase06/06-05/review-stream-base-red.log",
+        "sha256": "bffb508cdaa875c622b076fad069e8ff3c5c983daa5b094ed8df506a4dd61068"
+      }
+    }
+  ],
+  "fixStatus": "not-implemented-at-RED",
+  "denominators": "保留原D11具名case/60、native31/parent65、Android115及XCTest42；仅新增case内断言",
+  "systemMutation": false
+}
