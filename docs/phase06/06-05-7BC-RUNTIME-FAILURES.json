@@ -1,0 +1,1737 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T06:07:36.448Z",
+  "scope": "06-05 Task2当前真实CI失败，不用本机模拟器成功覆盖CI失败",
+  "sourceCommit": "7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22",
+  "inputDigest": "e198aeef186f89d508c69c9998485eb632a56a3087e72882f1ec1ff63d6b7fdd",
+  "ci": {
+    "conclusion": "failure",
+    "databaseId": 38209356614,
+    "headSha": "7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22",
+    "jobs": [
+      {
+        "completedAt": "2026-10-12T05:55:56Z",
+        "conclusion": "success",
+        "databaseId": 114679831954,
+        "name": "android (arm64)",
+        "startedAt": "2026-10-12T05:45:43Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:45Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:47Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:46:12Z",
+            "conclusion": "success",
+            "name": "Install fixed NDK in the disposable runner SDK",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:47:21Z",
+            "conclusion": "success",
+            "name": "Actual native ABI build with Android API 21",
+            "number": 4,
+            "startedAt": "2026-10-12T05:46:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:55:51Z",
+            "conclusion": "success",
+            "name": "Require an actual matching adb native runtime",
+            "number": 5,
+            "startedAt": "2026-10-12T05:47:21Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:55:54Z",
+            "conclusion": "success",
+            "name": "Retain actual build and runtime failures without fixture credentials",
+            "number": 6,
+            "startedAt": "2026-10-12T05:55:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:55:54Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 12,
+            "startedAt": "2026-10-12T05:55:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:55:54Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-12T05:55:54Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679831954"
+      },
+      {
+        "completedAt": "2026-10-12T05:54:18Z",
+        "conclusion": "success",
+        "databaseId": 114679832054,
+        "name": "apple (arm64, iphonesimulator, macos-26)",
+        "startedAt": "2026-10-12T05:45:48Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:50Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:53Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:34Z",
+            "conclusion": "success",
+            "name": "Actual SDK and native library build with deployment target 13",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:54:04Z",
+            "conclusion": "success",
+            "name": "Independent device build checks or XCTest on an owned simulator",
+            "number": 4,
+            "startedAt": "2026-10-12T05:49:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:54:10Z",
+            "conclusion": "success",
+            "name": "Retain build and XCTest logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T05:54:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:54:11Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T05:54:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:54:17Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T05:54:11Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832054"
+      },
+      {
+        "completedAt": "2026-10-12T05:49:46Z",
+        "conclusion": "success",
+        "databaseId": 114679832112,
+        "name": "apple (arm64, iphoneos, macos-26)",
+        "startedAt": "2026-10-12T05:45:49Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:51Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:54Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:34Z",
+            "conclusion": "success",
+            "name": "Actual SDK and native library build with deployment target 13",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:36Z",
+            "conclusion": "success",
+            "name": "Independent device build checks or XCTest on an owned simulator",
+            "number": 4,
+            "startedAt": "2026-10-12T05:49:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:41Z",
+            "conclusion": "success",
+            "name": "Retain build and XCTest logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T05:49:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:42Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T05:49:41Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:44Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T05:49:42Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832112"
+      },
+      {
+        "completedAt": "2026-10-12T05:53:29Z",
+        "conclusion": "success",
+        "databaseId": 114679832135,
+        "name": "desktop (windows, x64, windows-2025-vs2026)",
+        "startedAt": "2026-10-12T05:45:43Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:44Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:51Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:51:57Z",
+            "conclusion": "success",
+            "name": "Build exact approved dependency sources and matching native targets",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:22Z",
+            "conclusion": "success",
+            "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+            "number": 4,
+            "startedAt": "2026-10-12T05:51:57Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:26Z",
+            "conclusion": "success",
+            "name": "Retain success and failure logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T05:53:22Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:28Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T05:53:26Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:28Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T05:53:28Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832135"
+      },
+      {
+        "completedAt": "2026-10-12T06:01:02Z",
+        "conclusion": "success",
+        "databaseId": 114679832147,
+        "name": "apple (x64, iphonesimulator, macos-26-intel)",
+        "startedAt": "2026-10-12T05:45:47Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:51Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:55Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:10Z",
+            "conclusion": "success",
+            "name": "Actual SDK and native library build with deployment target 13",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:55Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T06:00:48Z",
+            "conclusion": "success",
+            "name": "Independent device build checks or XCTest on an owned simulator",
+            "number": 4,
+            "startedAt": "2026-10-12T05:53:10Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T06:00:58Z",
+            "conclusion": "success",
+            "name": "Retain build and XCTest logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T06:00:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T06:00:59Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T06:00:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T06:01:00Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T06:00:59Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832147"
+      },
+      {
+        "completedAt": "2026-10-12T05:53:44Z",
+        "conclusion": "success",
+        "databaseId": 114679832155,
+        "name": "android (arm32)",
+        "startedAt": "2026-10-12T05:45:43Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:45Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:46Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:46:03Z",
+            "conclusion": "success",
+            "name": "Install fixed NDK in the disposable runner SDK",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:47:39Z",
+            "conclusion": "success",
+            "name": "Actual native ABI build with Android API 21",
+            "number": 4,
+            "startedAt": "2026-10-12T05:46:03Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:39Z",
+            "conclusion": "success",
+            "name": "Require an actual matching adb native runtime",
+            "number": 5,
+            "startedAt": "2026-10-12T05:47:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:42Z",
+            "conclusion": "success",
+            "name": "Retain actual build and runtime failures without fixture credentials",
+            "number": 6,
+            "startedAt": "2026-10-12T05:53:39Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:42Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 12,
+            "startedAt": "2026-10-12T05:53:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:42Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-12T05:53:42Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832155"
+      },
+      {
+        "completedAt": "2026-10-12T05:56:41Z",
+        "conclusion": "failure",
+        "databaseId": 114679832203,
+        "name": "desktop (macos, x64, macos-26-intel)",
+        "startedAt": "2026-10-12T05:49:47Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:49:51Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:49:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:58Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:49:51Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:54:18Z",
+            "conclusion": "success",
+            "name": "Build exact approved dependency sources and matching native targets",
+            "number": 3,
+            "startedAt": "2026-10-12T05:49:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:56:32Z",
+            "conclusion": "failure",
+            "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+            "number": 4,
+            "startedAt": "2026-10-12T05:54:18Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:56:37Z",
+            "conclusion": "success",
+            "name": "Retain success and failure logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T05:56:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:56:38Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T05:56:37Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:56:39Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T05:56:38Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832203"
+      },
+      {
+        "completedAt": "2026-10-12T05:49:42Z",
+        "conclusion": "success",
+        "databaseId": 114679832205,
+        "name": "desktop (macos, arm64, macos-26)",
+        "startedAt": "2026-10-12T05:45:47Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:48Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:50Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:48Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:47:25Z",
+            "conclusion": "success",
+            "name": "Build exact approved dependency sources and matching native targets",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:36Z",
+            "conclusion": "success",
+            "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+            "number": 4,
+            "startedAt": "2026-10-12T05:47:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:38Z",
+            "conclusion": "success",
+            "name": "Retain success and failure logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T05:49:36Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:39Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T05:49:38Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:40Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T05:49:39Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832205"
+      },
+      {
+        "completedAt": "2026-10-12T06:00:14Z",
+        "conclusion": "failure",
+        "databaseId": 114679832274,
+        "name": "desktop (windows, arm64, windows-11-vs2026-arm)",
+        "startedAt": "2026-10-12T05:45:44Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:46Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:59Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:58:14Z",
+            "conclusion": "success",
+            "name": "Build exact approved dependency sources and matching native targets",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T06:00:03Z",
+            "conclusion": "failure",
+            "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+            "number": 4,
+            "startedAt": "2026-10-12T05:58:14Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T06:00:07Z",
+            "conclusion": "success",
+            "name": "Retain success and failure logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T06:00:03Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T06:00:12Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T06:00:07Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T06:00:12Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T06:00:12Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832274"
+      },
+      {
+        "completedAt": "2026-10-12T05:53:35Z",
+        "conclusion": "failure",
+        "databaseId": 114679832275,
+        "name": "android (x64)",
+        "startedAt": "2026-10-12T05:45:44Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:45Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:47Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:46:11Z",
+            "conclusion": "success",
+            "name": "Install fixed NDK in the disposable runner SDK",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:47:47Z",
+            "conclusion": "success",
+            "name": "Actual native ABI build with Android API 21",
+            "number": 4,
+            "startedAt": "2026-10-12T05:46:11Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:29Z",
+            "conclusion": "failure",
+            "name": "Require an actual matching adb native runtime",
+            "number": 5,
+            "startedAt": "2026-10-12T05:47:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:33Z",
+            "conclusion": "success",
+            "name": "Retain actual build and runtime failures without fixture credentials",
+            "number": 6,
+            "startedAt": "2026-10-12T05:53:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:33Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 12,
+            "startedAt": "2026-10-12T05:53:33Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:53:33Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-12T05:53:33Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832275"
+      },
+      {
+        "completedAt": "2026-10-12T05:49:03Z",
+        "conclusion": "success",
+        "databaseId": 114679832288,
+        "name": "desktop (linux, x64, ubuntu-24.04)",
+        "startedAt": "2026-10-12T05:45:43Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:45Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:44Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:46Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:47:34Z",
+            "conclusion": "success",
+            "name": "Build exact approved dependency sources and matching native targets",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:46Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:48:59Z",
+            "conclusion": "success",
+            "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+            "number": 4,
+            "startedAt": "2026-10-12T05:47:34Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:01Z",
+            "conclusion": "success",
+            "name": "Retain success and failure logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T05:48:59Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:02Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T05:49:01Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:49:02Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T05:49:02Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832288"
+      },
+      {
+        "completedAt": "2026-10-12T05:48:34Z",
+        "conclusion": "success",
+        "databaseId": 114679832296,
+        "name": "desktop (linux, arm64, ubuntu-24.04-arm)",
+        "startedAt": "2026-10-12T05:45:46Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-12T05:45:47Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-12T05:45:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:45:49Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 2,
+            "startedAt": "2026-10-12T05:45:47Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:47:06Z",
+            "conclusion": "success",
+            "name": "Build exact approved dependency sources and matching native targets",
+            "number": 3,
+            "startedAt": "2026-10-12T05:45:49Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:48:29Z",
+            "conclusion": "success",
+            "name": "Actual secure socket, legacy, multistream, recovery and authority contracts",
+            "number": 4,
+            "startedAt": "2026-10-12T05:47:06Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:48:32Z",
+            "conclusion": "success",
+            "name": "Retain success and failure logs without fixture credentials",
+            "number": 5,
+            "startedAt": "2026-10-12T05:48:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:48:32Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+            "number": 10,
+            "startedAt": "2026-10-12T05:48:32Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-12T05:48:32Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 11,
+            "startedAt": "2026-10-12T05:48:32Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614/job/114679832296"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/Jerry12228/Aether/actions/runs/38209356614",
+    "metadata": {
+      "file": "build/phase06/06-05/run-38209356614-failures.json",
+      "sha256": "eb6fd605f4cbcead9c03b223f10d36cf09334ecb724a8ba69074bdd90817daaf"
+    }
+  },
+  "raw": [
+    {
+      "file": "build/phase06/06-05/macos-x64-7bc-job.log",
+      "sha256": "4ccdf4f55ef832468c6e5ca2fca88dd95f316634a6808786210de73e6f729bf3"
+    },
+    {
+      "file": "build/phase06/06-05/android-x64-7bc-job.log",
+      "sha256": "4ea1dbc71fe22cb2a6ea7f37398fcca1e198ebae7e677d1be17227bf7ef833d1"
+    },
+    {
+      "file": "build/phase06/06-05/7bc-failure-observations.json",
+      "sha256": "fc34d978309a3c807f47be1e2bf3fe9d340faa8a53f5e918813499f382e774d7"
+    }
+  ],
+  "observed": [
+    {
+      "file": "build/phase06/06-05/ci-38209356614/phase06-android-x64-7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22/build/phase06/recovery-fixtures/case-7YnVBF/client.log",
+      "states": [
+        {
+          "step": 0,
+          "elapsed": 76,
+          "opcode": 5,
+          "status": 21,
+          "recovery": {
+            "state": "manual",
+            "reason": "identity-reverification-required",
+            "attempts": 1
+          },
+          "operations": [
+            {
+              "operationId": 1,
+              "requestId": 100,
+              "status": 21,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 21,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 0,
+          "authenticated": false,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 1,
+          "elapsed": 1095,
+          "opcode": 100,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "identity-reverification-required",
+            "attempts": 1
+          },
+          "operations": [],
+          "selected": 0,
+          "authenticated": false,
+          "control": 0,
+          "streams": []
+        }
+      ]
+    },
+    {
+      "file": "build/phase06/06-05/ci-38209356614/phase06-android-x64-7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22/build/phase06/recovery-fixtures/case-Cm8TkN/client.log",
+      "states": [
+        {
+          "step": 0,
+          "elapsed": 93,
+          "opcode": 1,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 1,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 1,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 1,
+          "elapsed": 396,
+          "opcode": 2,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 2,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 3,
+              "activationPhase": 4,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 1,
+          "streams": [
+            {
+              "id": 4,
+              "received": 3,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 5,
+              "received": 2,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 6,
+              "received": 2,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 7,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 8,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            }
+          ]
+        },
+        {
+          "step": 2,
+          "elapsed": 648,
+          "opcode": 7,
+          "status": 0,
+          "recovery": {
+            "state": "transient",
+            "reason": "stream-retry",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 3,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 9,
+          "streams": [
+            {
+              "id": 4,
+              "received": 4,
+              "sent": 0,
+              "generation": 2
+            },
+            {
+              "id": 5,
+              "received": 10,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 6,
+              "received": 10,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 7,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 8,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "elapsed": 1149,
+          "opcode": 100,
+          "status": 0,
+          "recovery": {
+            "state": "action-required",
+            "reason": "stream-retry",
+            "attempts": 0
+          },
+          "operations": [],
+          "selected": 3,
+          "authenticated": true,
+          "control": 21,
+          "streams": [
+            {
+              "id": 4,
+              "received": 4,
+              "sent": 0,
+              "generation": 2
+            },
+            {
+              "id": 5,
+              "received": 19,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 6,
+              "received": 20,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 7,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 8,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            }
+          ]
+        },
+        {
+          "step": 4,
+          "elapsed": 1551,
+          "opcode": 100,
+          "status": 0,
+          "recovery": {
+            "state": "healthy",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [],
+          "selected": 3,
+          "authenticated": true,
+          "control": 36,
+          "streams": [
+            {
+              "id": 4,
+              "received": 9,
+              "sent": 0,
+              "generation": 2
+            },
+            {
+              "id": 5,
+              "received": 32,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 6,
+              "received": 33,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 7,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 8,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "build/phase06/06-05/ci-38209356614/phase06-android-x64-7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22/build/phase06/recovery-fixtures/case-Io8aen/client.log",
+      "states": [
+        {
+          "step": 0,
+          "elapsed": 19,
+          "opcode": 11,
+          "status": 11,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 1,
+              "requestId": 100,
+              "status": 11,
+              "terminal": true,
+              "resultKnown": false,
+              "authorityTerminal": null,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 1,
+          "elapsed": 46,
+          "opcode": 11,
+          "status": 24,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 2,
+              "requestId": 100,
+              "status": 24,
+              "terminal": true,
+              "resultKnown": false,
+              "authorityTerminal": null,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 2,
+          "elapsed": 47,
+          "opcode": 11,
+          "status": 25,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        }
+      ]
+    },
+    {
+      "file": "build/phase06/06-05/ci-38209356614/phase06-android-x64-7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22/build/phase06/recovery-fixtures/case-p9kv7O/client.log",
+      "states": [
+        {
+          "step": 0,
+          "elapsed": 18,
+          "opcode": 11,
+          "status": 11,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 1,
+              "requestId": 100,
+              "status": 11,
+              "terminal": true,
+              "resultKnown": false,
+              "authorityTerminal": null,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 1,
+          "elapsed": 86,
+          "opcode": 11,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 2,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 2,
+          "elapsed": 116,
+          "opcode": 11,
+          "status": 25,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        }
+      ]
+    },
+    {
+      "file": "build/phase06/06-05/ci-38209356614/phase06-macos-x64-7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22/build/phase06/recovery-fixtures/case-JXcsXk/client.log",
+      "states": [
+        {
+          "step": 0,
+          "elapsed": 14,
+          "opcode": 11,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 1,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 1,
+          "elapsed": 68,
+          "opcode": 11,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 2,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 2,
+          "elapsed": 68,
+          "opcode": 11,
+          "status": 25,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        }
+      ]
+    },
+    {
+      "file": "build/phase06/06-05/ci-38209356614/phase06-macos-x64-7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22/build/phase06/recovery-fixtures/case-KZvA8o/client.log",
+      "states": [
+        {
+          "step": 0,
+          "elapsed": 72,
+          "opcode": 1,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 1,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 1,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 1,
+          "elapsed": 210,
+          "opcode": 2,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 2,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 3,
+              "activationPhase": 4,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 1,
+          "streams": [
+            {
+              "id": 4,
+              "received": 2,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 5,
+              "received": 2,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 6,
+              "received": 2,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 7,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 8,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            }
+          ]
+        },
+        {
+          "step": 2,
+          "elapsed": 694,
+          "opcode": 7,
+          "status": 0,
+          "recovery": {
+            "state": "transient",
+            "reason": "stream-retry",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 3,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 8,
+          "streams": [
+            {
+              "id": 4,
+              "received": 3,
+              "sent": 0,
+              "generation": 2
+            },
+            {
+              "id": 5,
+              "received": 7,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 6,
+              "received": 7,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 7,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 8,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "elapsed": 1326,
+          "opcode": 100,
+          "status": 0,
+          "recovery": {
+            "state": "healthy",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [],
+          "selected": 3,
+          "authenticated": true,
+          "control": 16,
+          "streams": [
+            {
+              "id": 4,
+              "received": 3,
+              "sent": 0,
+              "generation": 2
+            },
+            {
+              "id": 5,
+              "received": 15,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 6,
+              "received": 15,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 7,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 8,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            }
+          ]
+        },
+        {
+          "step": 4,
+          "elapsed": 1739,
+          "opcode": 100,
+          "status": 0,
+          "recovery": {
+            "state": "healthy",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [],
+          "selected": 3,
+          "authenticated": true,
+          "control": 23,
+          "streams": [
+            {
+              "id": 4,
+              "received": 8,
+              "sent": 0,
+              "generation": 2
+            },
+            {
+              "id": 5,
+              "received": 20,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 6,
+              "received": 20,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 7,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            },
+            {
+              "id": 8,
+              "received": 0,
+              "sent": 0,
+              "generation": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "build/phase06/06-05/ci-38209356614/phase06-macos-x64-7bcfbc1b27a5f57e1b3f68ea4b71e105732f1a22/build/phase06/recovery-fixtures/case-W7zmTQ/client.log",
+      "states": [
+        {
+          "step": 0,
+          "elapsed": 3,
+          "opcode": 11,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 1,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 1,
+          "elapsed": 38,
+          "opcode": 11,
+          "status": 0,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [
+            {
+              "operationId": 2,
+              "requestId": 100,
+              "status": 0,
+              "terminal": true,
+              "resultKnown": true,
+              "authorityTerminal": 0,
+              "transactionSequence": 0,
+              "activationPhase": 1,
+              "cancelOutcome": "none"
+            }
+          ],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        },
+        {
+          "step": 2,
+          "elapsed": 38,
+          "opcode": 11,
+          "status": 25,
+          "recovery": {
+            "state": "manual",
+            "reason": "none",
+            "attempts": 0
+          },
+          "operations": [],
+          "selected": 3,
+          "authenticated": true,
+          "control": 0,
+          "streams": []
+        }
+      ]
+    }
+  ],
+  "diagnosis": [
+    {
+      "issue": "1ms截止前未写出仍消耗ACTL序号",
+      "status": "code-path-identified-awaiting-deterministic-RED",
+      "evidence": "Androidcase-Io8aen客户端第一步AP_TIMEOUT11，第二步AP_LENGTH24；对应host最后AP_STALE27。transmit在write_tls截止检查之前++seq，须独立原生行为复现后修正。"
+    },
+    {
+      "issue": "证书核验前TCP关闭被归为AP_TRUST21",
+      "status": "code-path-identified-awaiting-real-socket-RED",
+      "evidence": "Androidcase-7YnVBF第一次新连接status21/attempts1/identity-reverification-required；handshake把X509_V_OK下非WANT失败默认标记AP_TRUST。需实际bare-TCP-close负例验证，不削弱真实证书/身份拒绝。"
+    },
+    {
+      "issue": "Mac D16时间采样超过原故障窗",
+      "status": "qos-hypothesis-not-confirmed",
+      "evidence": "case-KZvA8o step2 elapsed694ms/transient，step3 elapsed1326ms/healthy；请求500ms实际632ms。原500ms阈值与900ms故障窗不变；按Apple官方QoS指导核验自有线程调度，不能提高TTL或改断言。"
+    }
+  ],
+  "subsequentLocal": {
+    "file": "docs/phase06/06-05-LOCAL-ANDROID-7BC.json",
+    "sha256": "39694f56e0d3617c962704a99c26cb7759044f2f9a52782094b34cbcb9247020",
+    "tests": 115,
+    "elapsedMs": 192066,
+    "scope": "同一CI产物在本机新自有AVD/API26实际运行，不修改原CI失败；真实清理三命令0，之后adb devices为空"
+  },
+  "tasksCompleted": 1,
+  "systemMutation": false
+}
