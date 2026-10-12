@@ -897,5 +897,236 @@
   "next": "仅增加test-only标量诊断；保留31/27/60原case、assertions/deadline/security guard，继续实际匹配executor重测。",
   "systemMutation": false,
   "physical": false,
-  "tasksCompleted": 1
+  "tasksCompleted": 1,
+  "subsequentEvidence": {
+    "recordedAt": "2026-10-12T05:50:00.796Z",
+    "run": 38208095100,
+    "scope": "仅新增test-only标量诊断，同一原验收在三个matching Android owned VM真实通过；不是放宽或确认旧失败原因",
+    "targets": [
+      {
+        "target": "android-arm32",
+        "sourceCommit": "6475aeebcc7b57f8835b96dde01e6c94f48b794f",
+        "inputDigest": "7a45df56c206876babc6f1ab8db0b156637871b4a573cff3a38cb4c80f2cea85",
+        "actualTests": 115,
+        "exitCode": 0,
+        "elapsedMs": 327277,
+        "policyScalars": [
+          {
+            "operation": 3,
+            "kind": 1,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 4,
+            "kind": 1,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          },
+          {
+            "operation": 5,
+            "kind": 2,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 6,
+            "kind": 2,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          },
+          {
+            "operation": 7,
+            "kind": 3,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 8,
+            "kind": 3,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          }
+        ],
+        "logs": [
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm32-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm32/protocol-target-Release.json",
+            "sha256": "f3570e5a8321ce7cd7b1eb547e7666e40996eb76bf86a57a430ac14f464f2821"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm32-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm32/protocol-run.json",
+            "sha256": "acf5a7afc504e4db055c0d293dab443eaa14c8ad049c09c38ca77e1ed075c898"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm32-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm32/run-logs/adb-control.log",
+            "sha256": "950428105ad0f278918107f536b416210b28ac283db56ef5f175a8ef37dd6f68"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm32-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm32/run-logs/adb-original-multistream.log",
+            "sha256": "d39f5807aaaa3fb51c04e3cfa493a5723cc02e2c37dfd034ec785550f7fbb2a9"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm32-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm32/run-logs/adb-original-recovery.log",
+            "sha256": "eeb664d0b18afcc18187ad20bf79e1f8153ca01b9dae822181ebeff13d862545"
+          }
+        ]
+      },
+      {
+        "target": "android-arm64",
+        "sourceCommit": "6475aeebcc7b57f8835b96dde01e6c94f48b794f",
+        "inputDigest": "7a45df56c206876babc6f1ab8db0b156637871b4a573cff3a38cb4c80f2cea85",
+        "actualTests": 115,
+        "exitCode": 0,
+        "elapsedMs": 552299,
+        "policyScalars": [
+          {
+            "operation": 3,
+            "kind": 1,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 4,
+            "kind": 1,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          },
+          {
+            "operation": 5,
+            "kind": 2,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 6,
+            "kind": 2,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          },
+          {
+            "operation": 7,
+            "kind": 3,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 8,
+            "kind": 3,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          }
+        ],
+        "logs": [
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm64/protocol-target-Release.json",
+            "sha256": "f4ed29636adb5b805e4a5a6071f2cd0735ee9a6c48905699ce5e3d6c99adfd1a"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm64/protocol-run.json",
+            "sha256": "e309856c4577545e80f8c3eb5e6ef839e5a1e2b5eaba40a3edb285f557607fd5"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm64/run-logs/adb-control.log",
+            "sha256": "1e04a002f0a73239db23dce5ff902bbfa10a2c64898a5a20b80cc0ff4b3d1f71"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm64/run-logs/adb-original-multistream.log",
+            "sha256": "fb70d21223bcedabd71724341e8110718fbe7645abb8b5ac200b086aa4d64537"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-arm64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-arm64/run-logs/adb-original-recovery.log",
+            "sha256": "a5b05bf905a9de20c37977a12ca4d0041120e8bac37258b6de18e4d95543d09f"
+          }
+        ]
+      },
+      {
+        "target": "android-x64",
+        "sourceCommit": "6475aeebcc7b57f8835b96dde01e6c94f48b794f",
+        "inputDigest": "7a45df56c206876babc6f1ab8db0b156637871b4a573cff3a38cb4c80f2cea85",
+        "actualTests": 115,
+        "exitCode": 0,
+        "elapsedMs": 346822,
+        "policyScalars": [
+          {
+            "operation": 3,
+            "kind": 1,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 4,
+            "kind": 1,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          },
+          {
+            "operation": 5,
+            "kind": 2,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 6,
+            "kind": 2,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          },
+          {
+            "operation": 7,
+            "kind": 3,
+            "connection": 4,
+            "send": 0,
+            "terminal": 27
+          },
+          {
+            "operation": 8,
+            "kind": 3,
+            "connection": 5,
+            "send": 0,
+            "terminal": 0
+          }
+        ],
+        "logs": [
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-x64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-x64/protocol-target-Release.json",
+            "sha256": "81b8498bf64698fd2eb3d4f987e1e3ebcb69383c95165da7053111f13618fc80"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-x64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-x64/protocol-run.json",
+            "sha256": "3f35d5bdba17f62f09db977805aede05f667ba46228f5e0433ab9352e2052e33"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-x64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-x64/run-logs/adb-control.log",
+            "sha256": "4a727783859066f4f15f24b0ed56a23636492e462a3b60b5480efce1fc0c363b"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-x64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-x64/run-logs/adb-original-multistream.log",
+            "sha256": "d422b4506f6f8a9ef8e7c01d3b898be2531e2ccd8625674e57e85a193463379d"
+          },
+          {
+            "file": "build/phase06/06-05/ci-38208095100/phase06-android-x64-6475aeebcc7b57f8835b96dde01e6c94f48b794f/build/phase06/targets/android-x64/run-logs/adb-original-recovery.log",
+            "sha256": "c0aedc07678b444189c1b5a4a5ccda8e3683346182dadaa42e147a7b8a0f920e"
+          }
+        ]
+      }
+    ],
+    "causeStatus": "unconfirmed",
+    "remaining": "最终validator85项共同输入仍需另一次完整CI；不替代最终包"
+  }
 }

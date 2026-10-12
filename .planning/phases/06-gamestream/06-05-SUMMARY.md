@@ -182,3 +182,5 @@ CI38159407590/source8579437实际结束：9目标成功、三个Android失败。
 诊断版本6475aee/input7a45df56本机Windows15/15（101327ms），独立68项通过，完整归档local-windows-6475aeebcc7b。CI38208095100三个Android ABI各115/115，当前11目标成功、iOS x64 simulator仍执行；不改写857三项失败或猜测原因。TARGETS/EVIDENCE已经按857实际归档创建12条，明确9成功/3失败、637原owner和12个逐设置case、D01–16、NET01–03、23威胁与6+3原flagged；独立all实际exit1拒绝失败CI，当前包不是最终审阅。
 
 发现validator只比较flagged数量/来源SHA，未比条目内容，先76项/3真实行为失败，RED d76bd38，修正a3cc660。另先85项/4真实行为失败证明无关/重复/缺CI job目标及原combined content sentinel被接受，RED1a1273e，GREEN修正85/85、fail/skip/cancel/TODO0，258.5619ms。证据见06-05-VALIDATOR-FLAGS-RED/MAPPING-RED/GREEN.json。首次sandbox spawn EPERM不是行为RED。当前85测试与validator改动属于新共同输入，必须重建完整12目标、FFI及最终all后才能完成Task2。Task3原文仍null；1/3，Phase3 halted保持。
+
+诊断CI38208095100现完整12/12真实成功，三个Android各115，原857三失败不改写，原因未确认。最终source7bcfbc1/inpute198aeef（42输入、85独立项）CI38209356614执行中。当前本机Release2536ms/Debug10683ms、正式Windows15/15（94991ms）、validator85/85、Flutter22/22及21host（20659ms）、Helios Release3537ms、根Debug重建2809ms及11/11（27666ms）真实通过且已独立归档。临时根记录脚本两个包装参数错误未启动任何产品命令，不记为原生失败或行为RED；修正后正式命令/输出哈希见06-05-ROOT-REGRESSION.json。TARGETS当前仍绑定857失败历史，后续完整当前CI通过才生成最终包与all；1/3/NET未关闭。
