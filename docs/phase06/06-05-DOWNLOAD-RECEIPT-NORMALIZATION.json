@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T07:18:31.921Z",
+  "run": 38214118510,
+  "scope": "自有临时下载adapter与正式receipt schema对齐；没有改变原生共同输入或降低验证",
+  "liveMetadata": {
+    "file": "build/phase06/06-05/ci-38214118510/artifact-metadata-normalization.json",
+    "sha256": "4e613e41b019a71096edc39c592477cd8c3130245c82d70ec04fd3558870bbca"
+  },
+  "targets": [
+    {
+      "target": "phase06-android-arm32-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11732255450,
+      "originalSha256": "62efd8225080ed9284d3b52a2a36634ac044f664315f2e22e9916463aaba3df1",
+      "normalizedSha256": "c7bc6c761d83a37c27abce8237b31829b00d0668a758f3d4daf617c68cdeb582",
+      "liveDigest": "sha256:3cb39f24bdea8bccae87bab0dc2ea6c39c99a4eeb13252b936acad0af0bd0716"
+    },
+    {
+      "target": "phase06-android-arm64-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11732216000,
+      "originalSha256": "b0c42042a19da4dff78cd07321fc578c40a53df48d2e14a7cef3298761f39f59",
+      "normalizedSha256": "41ccf866b1ceb09aff90aab4b098e99457dd341e52c05b7d5aa3d31b30f67ad6",
+      "liveDigest": "sha256:4eca24af2223700adfead04b504d90f761d347641e2c359cf5d930402300fbfd"
+    },
+    {
+      "target": "phase06-android-x64-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11732150095,
+      "originalSha256": "2416b8c3eb6a5f24e510b880942b2a662fbf76640cd3f8efaeb7c4c0d2a75f3a",
+      "normalizedSha256": "605d87df3fb8807c8922be4475e3b7649381aa89aa46da823ad4505fc86520ae",
+      "liveDigest": "sha256:8cdab99bdae81ae195e6979f3101627dee1e4a55f24999946a72b6fa9d6cf25a"
+    },
+    {
+      "target": "phase06-ios-arm64-iphoneos-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11731065435,
+      "originalSha256": "611fdb3693d12633897559a0d01810831acfd57c09150a29276965dbf89ee82a",
+      "normalizedSha256": "bc282217c16ac70390302f9989e4c61df9d75378c00f9ef510826ebdf6530ad7",
+      "liveDigest": "sha256:0d0e0d327e0fe15921a08f181c15df19cc688586e0b4fb8ab2daebfa07670146"
+    },
+    {
+      "target": "phase06-ios-arm64-iphonesimulator-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11732265682,
+      "originalSha256": "0873fbe1aa4a3e4f1c79cc02bd1fec4a60c9b5566b77c0349df5f5f03b0cfd42",
+      "normalizedSha256": "d55c72d32cd9dc3822e15c4e6be3f8cefc34174dc316841d8aa4492fd53acbd5",
+      "liveDigest": "sha256:3e9d20e88e1ba0ec9f4af31b3e68343006719df590cba4a9ca6ca3b80dfdc574"
+    },
+    {
+      "target": "phase06-ios-x64-iphonesimulator-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11732306847,
+      "originalSha256": "2f3fe4ef95684da223185ab66be86c7bb61a080ab665a795055318d0dac4c5a8",
+      "normalizedSha256": "32db0806ed6688071f429cef69116e865a9f0888804b02730c41e8ab8a1be003",
+      "liveDigest": "sha256:44bdf6ecefe31e4931237bc38ae3bb97fab2e96cd22a181e71346bfbea0e4265"
+    },
+    {
+      "target": "phase06-linux-arm64-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11731560614,
+      "originalSha256": "623688cc66426c4183875e3fb4334787e92bf2b8391f3c204533d4b341ed81c1",
+      "normalizedSha256": "833356df6f2a25012e068ebb438a7080011b778cc0e734ce83c82b8d152aabc7",
+      "liveDigest": "sha256:d022a0cbf97f3bc16b3280738f0c42b5d5a95b64910ac2c5f18e26e0730cf1a3"
+    },
+    {
+      "target": "phase06-linux-x64-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11731100044,
+      "originalSha256": "d7f0ad8cc7b77a681463cfe4f04af4b59a0d4944fac2c198a7d5d8d32ffc56fe",
+      "normalizedSha256": "09c110c9520a515d8ea71e497c9e6125234c44b76bdd115df71ee3ad115bbf90",
+      "liveDigest": "sha256:5431f209423805fa306968a76be74e2173d875de9d1f58d8f8163e3e0ed1b085"
+    },
+    {
+      "target": "phase06-macos-arm64-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11731870030,
+      "originalSha256": "09d72765df870b10156d6a9b5dddeb28873229dff7b982507de3f70a4f0fc12d",
+      "normalizedSha256": "6f68b893d128406f1ac8a9779d0242f5d2ade41df7f6c86cf96f71992fc20daf",
+      "liveDigest": "sha256:602e46b577d932176500eb83786581fa8fbcc1d8fdec0f492b12950b1c6e0a6d"
+    },
+    {
+      "target": "phase06-macos-x64-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11732050285,
+      "originalSha256": "3796b10509644d5cb03932bfb23450c729f321561faedc72f6172142d6e22d61",
+      "normalizedSha256": "2cf493758a0425439eddca2bf68a96a1a4a96ce2e11c920504ba1b074cbfc785",
+      "liveDigest": "sha256:f7585e67c747df5782eeafd21aa21c52fcc1e9f6eb2b1149dbea61ac195b5c20"
+    },
+    {
+      "target": "phase06-windows-arm64-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11732296497,
+      "originalSha256": "a77362aace8e966c54d50ccb0498869e7a9083d7e99d43fca9d6eca28f6ef398",
+      "normalizedSha256": "811cd87d88e4b776780024aaf1aa996ed68b6a204a3ef735822b34ed7fb6dd8b",
+      "liveDigest": "sha256:5a20fdd160a81a9694d7c293de24fe5d5b65d9fb7b32f179fe001cb596fc3b40"
+    },
+    {
+      "target": "phase06-windows-x64-03858c115dd215feaa260e73ea14a62be57df7be",
+      "id": 11732051209,
+      "originalSha256": "e1709876439da739efdc417790bd2327d8d8eb8746ac6f1f1f16ba6cce044047",
+      "normalizedSha256": "cb13db1daee36574faa3ab7f34ce1aaff47d577dce23745e1247444ce084c00c",
+      "liveDigest": "sha256:5ea56e4f2293570864c8ec39421c499c361729ef56f2dc8b89adf7a38079b8f4"
+    }
+  ],
+  "priorAll": {
+    "exitCode": 1,
+    "raw": {
+      "file": "build/phase06/06-05/all-current-038.log",
+      "sha256": "b628275c57bee9356b9bddfe0efc8991d6e5b7e12453373352cd718ecc0851b9"
+    },
+    "reason": "临时工具回执仅artifact.id，正式row.artifactId/receipt.id缺失；独立validator正确拒绝"
+  },
+  "systemMutation": false
+}
