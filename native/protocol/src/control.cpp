@@ -224,7 +224,7 @@ void client_dispatch(ConnectionContext& c,ControlState& s,ControlState::Command 
   if(side_effect&&Clock::now()>=next_status&&retries<3){c.exchange_deadline=deadline;transmit(c,status_request(c,command,14,transaction,activation_sent),s.tx);++retries;next_status=Clock::now()+std::chrono::milliseconds(100);}
   std::this_thread::sleep_for(std::chrono::milliseconds(1));
  }
- if(completed){auto until=std::min(deadline,Clock::now()+std::chrono::milliseconds(25));while(Clock::now()<until){video_window(c,s);std::this_thread::sleep_for(std::chrono::milliseconds(1));}event(c,s,m.operation_id,terminal_status,true,transaction,phase);}
+ if(completed)complete_control_operation(side_effect,[&]{auto until=std::min(deadline,Clock::now()+std::chrono::milliseconds(25));while(Clock::now()<until){video_window(c,s);std::this_thread::sleep_for(std::chrono::milliseconds(1));}},[&]{event(c,s,m.operation_id,terminal_status,true,transaction,phase);});
  else{{std::lock_guard lock(s.mutex);s.results.at(m.operation_id).cancel=cancel_sent?"unknown":"none";s.unresolved.emplace(m.operation_id,command);}event(c,s,m.operation_id,s.stopping?AP_STOPPED:AP_TIMEOUT,false,transaction,phase);}
  (void)authority;
 }

@@ -71,6 +71,8 @@ void fec(){
  try{write_control_sequence(sequence,[&](uint64_t){const uint8_t byte=0;write_tls(expired,&byte,1);});}catch(Failure f){timed_out=f.status==AP_TIMEOUT;}
  if(!timed_out||sequence!=0)throw std::runtime_error("expired unwritten control record must not consume sequence");
  uint64_t observed=0;write_control_sequence(sequence,[&](uint64_t next){observed=next;});check(sequence==1&&observed==1);
+ bool terminal=false,warmed=false;complete_control_operation(false,[&]{warmed=true;},[&]{if(warmed)throw std::runtime_error("completed control must not wait for unrelated media warming");terminal=true;});check(terminal&&!warmed);
+ terminal=false;complete_control_operation(true,[&]{check(!terminal);warmed=true;},[&]{check(warmed);terminal=true;});check(terminal);
  MediaLimits limits;limits.shard=4;limits.frame=8;const Bytes original{0,1,2,3,4,5,6,7};const auto encoded=fec_encode(original,limits);
  check(encoded[0]==Bytes({0,1,2,3})&&encoded[1]==Bytes({4,5,6,7})&&encoded[2]==Bytes({8,9,10,11}));
  check(fec_recover({{1,encoded[1]},{2,Bytes{8,9,10,11}}},limits)==original);
