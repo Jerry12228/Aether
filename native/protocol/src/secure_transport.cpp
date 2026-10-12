@@ -133,7 +133,7 @@ void handshake(Context& c){
  require(SSL_set_fd(c.tls.get(),static_cast<int>(c.tcp.value))==1,AP_INTERNAL_ERROR);
 #endif
  if(c.config.role==2){require(SSL_set1_host(c.tls.get(),c.peer.c_str())==1,AP_INTERNAL_ERROR);SSL_set_tlsext_host_name(c.tls.get(),c.peer.c_str());}
- for(;;){ERR_clear_error();int ok=c.config.role==1?SSL_accept(c.tls.get()):SSL_connect(c.tls.get());if(ok==1)break;auto e=SSL_get_verify_result(c.tls.get());retry_tls(c,ok,e==X509_V_ERR_HOSTNAME_MISMATCH?AP_IDENTITY:AP_TRUST);}
+ for(;;){ERR_clear_error();int ok=c.config.role==1?SSL_accept(c.tls.get()):SSL_connect(c.tls.get());if(ok==1)break;auto e=SSL_get_verify_result(c.tls.get());retry_tls(c,ok,e==X509_V_ERR_HOSTNAME_MISMATCH?AP_IDENTITY:e!=X509_V_OK?AP_TRUST:AP_LENGTH);}
  require(SSL_version(c.tls.get())==TLS1_3_VERSION,AP_PROTECTION);
  require(SSL_get_verify_result(c.tls.get())==X509_V_OK,AP_TRUST);
  std::unique_ptr<X509,decltype(&X509_free)> peer{SSL_get1_peer_certificate(c.tls.get()),X509_free};
