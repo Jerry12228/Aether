@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T06:43:02.285Z",
+  "sourceCommit": "2c77d6a4f6f0c5371af70089aa5ccab932c2bf8b",
+  "inputDigest": "f5e8770d467b90013d56acea3e1bbe899c0c1c705805d0dcffb4ae0b177b6042",
+  "buildManifest": {
+    "file": "build/phase06/targets/windows-x64/protocol-target-Release.json",
+    "sha256": "a4b7ae5ee7380d477f99318c10ac559847f3cdb452256e54578cec44bcdf29f4"
+  },
+  "actualArtifacts": [
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "a1c43cbb8a0aace88ab8ac6e969a5409f0e9bcef61754798a1f0094a7b7e2df7",
+      "bytes": 4042240,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_tracer.exe",
+      "sha256": "ebce515836c7a8cc1096516db53c218b9d4e0f0f29d188d70c29dc182ddf554b",
+      "bytes": 3267072,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_media_security.exe",
+      "sha256": "6ed12bce11ddfd0e08b44894b037f2539d2b5c907c500b3468af3c359eccb3b7",
+      "bytes": 3819008,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_client.exe",
+      "sha256": "7e142d7d4fe0beeaa23b8f0165ebec6b4b4cb6e048b62433bb28616f27692744",
+      "bytes": 406528,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_host.exe",
+      "sha256": "aeb4b07326fc97a083f8de82e3ce15b8bf99392e9090d9d61a2c7ffc9478b9db",
+      "bytes": 4116480,
+      "observedArch": "x64"
+    }
+  ],
+  "actual": {
+    "exitCode": 2,
+    "case": "非GRANT已完成控制终态不应等待无关媒体warm",
+    "raw": {
+      "file": "build/phase06/06-05/control-media-order-red.log",
+      "sha256": "98ab1aae9fc29c1bba59498bd955a97ab1e4547db200258f0e879c0570acdd20"
+    },
+    "scope": "与产品同一内部完成顺序helper原生执行，明确为回调/阻塞顺序unit，不冒称网络或性能"
+  },
+  "matchingMac": {
+    "sourceCommit": "a89a95addc9153c2c420207cceae7ae48beac264",
+    "run": 38212553828,
+    "raw": [
+      {
+        "file": "build/phase06/06-05/macos-x64-a89-job.log",
+        "sha256": "d019860e34bf16b933362ccfb38e9e06bcc1864124168102a9637a492a8333e0"
+      },
+      {
+        "file": "build/phase06/06-05/ci-38212553828/phase06-macos-x64-a89a95addc9153c2c420207cceae7ae48beac264/build/phase06/targets/macos-x64/target-ctest.xml",
+        "sha256": "20af4e5f0fa8b413447dfa61b63488f34abcc316341bc68db156dd43b554f986"
+      },
+      {
+        "file": "build/phase06/06-05/ci-38212553828/phase06-macos-x64-a89a95addc9153c2c420207cceae7ae48beac264/build/phase06/targets/macos-x64/Testing/Temporary/LastTest.log",
+        "sha256": "7a8e217939a9a0ffcff8fc35f2915885387aaaca2c98afed8940402db26da34b"
+      },
+      {
+        "file": "build/phase06/06-05/ci-38212553828/phase06-macos-x64-a89a95addc9153c2c420207cceae7ae48beac264/build/phase06/recovery-fixtures/case-MN9xmq/client.log",
+        "sha256": "d0b3d9e2b1c834b7685eeb603f1ca5008131c81c0401629cb26227f259f1505f"
+      }
+    ],
+    "observed": "QoS后D16通过，但原control stream-recovery子断言19和原recovery D08仍失败：首次故障后的状态已healthy，step2 elapsed1018而step1为383，操作+100ms观察共635ms。所有原断言和300/500/900/25ms保持。",
+    "cause": "已完成终态统一先warm25ms的代码顺序独立RED确认；它是否完全解释Mac调度和网络延迟仍待当前全矩阵原案例证明。"
+  },
+  "fixStatus": "not-implemented-at-RED",
+  "systemMutation": false
+}
