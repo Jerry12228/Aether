@@ -176,3 +176,9 @@ Task3强制真实人审尚未开始。Phase6仍5/6、NET未完成；六条禁止
 ### 2026-10-12 接续：当前42输入Android真实失败
 
 CI38159407590/source8579437实际结束：9目标成功、三个Android失败。ARM32原fec-threshold的test-only UDP发送失败（errno1）；ARM64 policy-scopes当前scope也拒绝，父64/65、子20/24；x64原Win10 ping_timeout第二步24而期望0。原因未确认，详见docs/phase06/06-05-ANDROID-857-FAILURES.json及原始SHA。只补test-only标量状态/作用域和UDP syscall诊断，原断言、时间界限、生产权限与scope检查不变。Task1历史9a同输入12成功保留，Task2未完成；任务1/3，Phase6/NET及Phase3 halted不变。
+
+### 2026-10-12 接续：独立校验85项与实际映射
+
+诊断版本6475aee/input7a45df56本机Windows15/15（101327ms），独立68项通过，完整归档local-windows-6475aeebcc7b。CI38208095100三个Android ABI各115/115，当前11目标成功、iOS x64 simulator仍执行；不改写857三项失败或猜测原因。TARGETS/EVIDENCE已经按857实际归档创建12条，明确9成功/3失败、637原owner和12个逐设置case、D01–16、NET01–03、23威胁与6+3原flagged；独立all实际exit1拒绝失败CI，当前包不是最终审阅。
+
+发现validator只比较flagged数量/来源SHA，未比条目内容，先76项/3真实行为失败，RED d76bd38，修正a3cc660。另先85项/4真实行为失败证明无关/重复/缺CI job目标及原combined content sentinel被接受，RED1a1273e，GREEN修正85/85、fail/skip/cancel/TODO0，258.5619ms。证据见06-05-VALIDATOR-FLAGS-RED/MAPPING-RED/GREEN.json。首次sandbox spawn EPERM不是行为RED。当前85测试与validator改动属于新共同输入，必须重建完整12目标、FFI及最终all后才能完成Task2。Task3原文仍null；1/3，Phase3 halted保持。
