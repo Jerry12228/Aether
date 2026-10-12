@@ -43,12 +43,12 @@ std::atomic<unsigned> callback_delay{0};std::atomic<bool> callback_entered{false
 void callback(uint64_t handle,uint64_t seq,uint32_t kind,int32_t status,uint64_t op){if(kind==11&&op==2&&callback_delay){callback_entered=true;std::this_thread::sleep_for(std::chrono::milliseconds(callback_delay.load()));}std::lock_guard lock(event_mutex);events.push_back({seq,op,kind,status,handle});}
 std::string read(const fs::path& p){std::ifstream f(p);return {std::istreambuf_iterator<char>(f),{}};}
 unsigned ready_port(const fs::path& p,Clock::time_point until){
- while(Clock::now()<until){std::ifstream file(p,std::ios::binary);std::array<char,6> bytes{};file.read(bytes.data(),bytes.size());const auto size=file.gcount();unsigned port=0;bool valid=size>0&&size<=5;for(std::streamsize i=0;i<size&&valid;++i){valid=bytes[i]>='0'&&bytes[i]<='9';if(valid)port=10*port+static_cast<unsigned>(bytes[i]-'0');}if(valid&&port>0&&port<=65535)return port;std::this_thread::sleep_for(std::chrono::milliseconds(2));}
+ while(Clock::now()<until){std::ifstream file(p,std::ios::binary);std::array<char,6> bytes{};file.read(bytes.data(),bytes.size());const auto size=file.gcount();file.close();unsigned port=0;bool valid=size>0&&size<=5;for(std::streamsize i=0;i<size&&valid;++i){valid=bytes[i]>='0'&&bytes[i]<='9';if(valid)port=10*port+static_cast<unsigned>(bytes[i]-'0');}if(valid&&port>0&&port<=65535)return port;std::this_thread::sleep_for(std::chrono::milliseconds(2));}
  need(false,"actual complete ready port deadline");return 0;
 }
 void write(const fs::path& p,const std::string& text){
  if(p.filename()=="ready"||p.filename()=="ready2"){
-  auto temporary=p;temporary+=".tmp";{std::ofstream file(temporary);file<<text;file.flush();need(file.good(),"complete ready marker");}fs::rename(temporary,p);
+  auto temporary=p;temporary+=".tmp";{std::ofstream file(temporary);file<<text;file.flush();need(file.good(),"complete ready marker");}std::error_code error;const auto until=Clock::now()+std::chrono::seconds(4);do{fs::rename(temporary,p,error);if(!error)break;std::this_thread::sleep_for(std::chrono::milliseconds(2));}while(Clock::now()<until);need(!error,"atomic ready marker publication deadline");
  }else std::ofstream(p)<<text;
 }
 void be16(uint8_t* b,uint16_t n){b[0]=static_cast<uint8_t>(n>>8);b[1]=static_cast<uint8_t>(n);}
