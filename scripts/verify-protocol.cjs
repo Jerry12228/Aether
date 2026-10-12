@@ -5,6 +5,7 @@ const root=path.resolve(__dirname,'..'),sha=b=>crypto.createHash('sha256').updat
 const requiredTargets=['windows-x64','windows-arm64','linux-x64','linux-arm64','macos-x64','macos-arm64','android-arm32','android-arm64','android-x64','ios-arm64-iphoneos','ios-arm64-iphonesimulator','ios-x64-iphonesimulator'];
 const key=m=>[m.target,m.arch,...(m.sdk?[m.sdk]:[])].join('-');
 const positive=n=>Number.isSafeInteger(n)&&n>0;
+function validateContent(text){assert.doesNotMatch(text,/AV-CONTENT-SENTINEL|CLIPBOARD-SENTINEL|CREDENTIAL-SENTINEL|-----BEGIN (?:[A-Z ]*PRIVATE KEY)-----/,'Forbidden content in actual output');}
 function parseNode(text,expected){
  const out={};for(const field of ['tests','pass','fail','cancelled','skipped','todo']){const matches=[...text.matchAll(new RegExp('^(?:#|ℹ) '+field+' (\\d+)\\r?$','gm'))];assert.equal(matches.length,1,'One original suite total: '+field);out[{pass:'passed',fail:'failed'}[field]||field]=Number(matches[0][1]);}
  const names=[...text.replaceAll('\r','').matchAll(/^(?:# Subtest: |✔ )(.+?)(?: \([\d.]+ms\))?$/gm)].map(x=>x[1]);assert.equal(names.length,expected);assert.equal(new Set(names).size,expected);return {...out,names};
@@ -94,7 +95,7 @@ function validateRuntime(m,r,read,manifestHash){
   observed={tests:10+vectors.wire.length+media.tests+recovery.tests,passed:10+vectors.wire.length+media.passed+recovery.passed,failed:0,skipped:0,cancelled:0,todo:0};assert.equal(r.tests.cases.length,115);assert.equal(new Set(r.tests.cases.map(x=>x.id)).size,115);
  }
  validateCounts(r,observed,m.target==='android'?115:m.target==='ios'?42:m.target==='windows'?15:17);
- for(const output of outputs.values())assert.doesNotMatch(output,/AV-CONTENT-SENTINEL|CLIPBOARD-SENTINEL|CREDENTIAL-SENTINEL|-----BEGIN (?:[A-Z ]*PRIVATE KEY)-----/,'Forbidden content in actual command output');
+ for(const output of outputs.values())validateContent(output);
  return {target:key(m),sourceCommit:m.sourceCommit,inputDigest:m.inputDigest,tests:observed.tests,elapsedMs:r.elapsedMs,suites,observedCases:observed.names||null};
 }
 function validateCounts(record,observed,expected){
@@ -120,6 +121,10 @@ function validateCoverage(e,results){
  assert.equal(e.unverified.applePhysical.functionality,'TODO');assert.equal(e.unverified.applePhysical.performance,'TODO');assert.equal(e.unverified.applePhysical.installation,'TODO');assert.equal(e.unverified.minimumOSValidated,false);
  assert.equal(e.flagged.prohibitions.length,6);assert.equal(e.flagged.edges.length,3);for(const row of [...e.flagged.prohibitions,...e.flagged.edges]){assert.equal(row.status,'flagged-unverified');assert.equal(row.verification,null);assert.equal(row.resolution,null);}
  assert.ok(e.flagged.sources.length>=2);for(const row of e.flagged.sources)assert.equal(sha(fs.readFileSync(path.join(root,safeFile(row.file)))),row.sha256,'Flagged source was changed');
+ const sourceFiles=['06-01-PLAN.md','06-02-PLAN.md','06-03-PLAN.md','06-05-PLAN.md'].map(n=>'.planning/phases/06-gamestream/'+n),expected=[];
+ for(const file of sourceFiles){assert.ok(e.flagged.sources.some(r=>r.file===file),'Original prohibition source required');const text=fs.readFileSync(path.join(root,file),'utf8');for(const m of text.matchAll(/    - requirement_id: (NET-\d+)\r?\n      category: (\w+)\r?\n      status: unresolved\r?\n      verification: null\r?\n      resolution: null\r?\n      reason: null\r?\n      statement: "([^"\r\n]+)"/g))expected.push({requirement_id:m[1],category:m[2],statement:m[3],source:file,status:'flagged-unverified',verification:null,resolution:null,reason:null});}
+ assert.equal(expected.length,6);assert.deepEqual(e.flagged.prohibitions,expected,'Exact original unresolved prohibition entries required');
+ const edgeFile='.planning/phases/06-gamestream/06-EDGE-PROBE.json';assert.ok(e.flagged.sources.some(r=>r.file===edgeFile),'Original edge source required');assert.deepEqual(e.flagged.edges,json(edgeFile).items.map(x=>({...x,status:'flagged-unverified'})),'Exact original unclassified edges required');
 }
 function localReader(file){safeFile(file);assert.ok(file.startsWith('build/'),'Owned actual target artifacts required');const resolved=path.join(root,file);assert.equal(fs.realpathSync(resolved),path.resolve(resolved),'Evidence symlinks forbidden');return fs.readFileSync(resolved);}
 function validateCI(meta,source){assert.equal(meta.status,'completed');assert.equal(meta.conclusion,'success');assert.equal(meta.headSha,source);assert.equal(meta.jobs.length,12);assert.ok(meta.jobs.every(j=>j.status==='completed'&&j.conclusion==='success'));}
@@ -129,8 +134,8 @@ function validateFFI(e){
  for(const row of m.artifacts){const bytes=bound(row,read);assert.equal(binaryArch(bytes),'x64');}const log=bound({file:result.log.replaceAll('\\','/'),sha256:result.rawLogSha256},read).toString(),messages=[];for(const line of log.split(/\r?\n/)){try{messages.push(JSON.parse(line));}catch{}}
  const done=messages.filter(x=>x.type==='testDone'&&!x.hidden);assert.equal(done.length,22);assert.ok(done.every(x=>x.result==='success'&&x.skipped===false));const actual=messages.filter(x=>x.type==='print'&&x.message.startsWith('FFIRESULT ')).map(x=>JSON.parse(x.message.slice(10)));assert.deepEqual(actual,result.observations);assert.equal(new Set(actual.map(x=>x.case)).size,21);
  for(const row of actual){assert.ok(positive(row.clientPid)&&positive(row.hostPid));assert.notEqual(row.clientPid,row.hostPid);assert.equal(row.callbacksAfterDispose,0);assert.ok(row.port>0&&row.port<65536);assert.match(row.hostSummary,/owned=0/);}assert.equal(result.fixtures.length,21);
- for(const f of result.fixtures){const prefix='build/phase06/ffi-runs/'+safeFile(f.case);for(const [name,hash]of [['host.log',f.hostLogSha256],['provider.bin',f.providerSha256],['scenario.bin',f.faultsSha256]])bound({file:prefix+'/'+name,sha256:hash},read);assert.doesNotMatch(read(prefix+'/host.log').toString(),/AV-CONTENT-SENTINEL|CLIPBOARD-SENTINEL|CREDENTIAL-SENTINEL|-----BEGIN .*PRIVATE KEY/);}
- assert.doesNotMatch(log,/AV-CONTENT-SENTINEL|CLIPBOARD-SENTINEL|CREDENTIAL-SENTINEL|-----BEGIN .*PRIVATE KEY/);return {target:'local-flutter',tests:22,observedCases:actual.map(x=>x.case)};
+ for(const f of result.fixtures){const prefix='build/phase06/ffi-runs/'+safeFile(f.case);for(const [name,hash]of [['host.log',f.hostLogSha256],['provider.bin',f.providerSha256],['scenario.bin',f.faultsSha256]])bound({file:prefix+'/'+name,sha256:hash},read);validateContent(read(prefix+'/host.log').toString());}
+ validateContent(log);return {target:'local-flutter',tests:22,observedCases:actual.map(x=>x.case)};
 }
 async function verifyTarget(o){
  safeFile(o.manifest);assert.ok(o.manifest.startsWith('build/'));const bytes=fs.readFileSync(path.join(root,o.manifest)),m=JSON.parse(bytes);if(o.target)assert.equal(m.target,o.target);if(o.configuration)assert.equal(m.configuration,o.configuration);
@@ -151,5 +156,5 @@ async function verifyAll(o){
  results.push(validateFFI(e));validateCoverage(e,results);assert.equal(e.securityHighOpen,0);console.log(JSON.stringify({sourceCommit:e.sourceCommit,inputDigest:e.inputDigest,ci:e.ci.url,targets:results.map(r=>({target:r.target,tests:r.tests})),humanReview:e.humanReview?.status||'pending'}));return results;
 }
 function options(args){const out={scope:'target'};for(let i=0;i<args.length;i+=2){assert.ok(['--scope','--target','--configuration','--manifest','--evidence','--budget-seconds'].includes(args[i])&&args[i+1]);out[args[i].slice(2)]=args[i+1];}assert.ok(['target','all'].includes(out.scope));if(out.scope==='target')assert.ok(out.manifest);else assert.ok(out.evidence);return out;}
-module.exports={validateCounts,parseNode,parseJUnit,parseXCTest,binaryArch,validateManifest,validateRuntime,validateMatrix,validateCoverage,validateCI,bound,reader,sha,requiredTargets,verifyTarget,verifyAll};
+module.exports={validateCounts,validateContent,parseNode,parseJUnit,parseXCTest,binaryArch,validateManifest,validateRuntime,validateMatrix,validateCoverage,validateCI,bound,reader,sha,requiredTargets,verifyTarget,verifyAll};
 if(require.main===module){const o=options(process.argv.slice(2));(o.scope==='all'?verifyAll(o):verifyTarget(o)).catch(e=>{console.error(e.stack);process.exitCode=1;});}
