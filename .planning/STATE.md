@@ -5,7 +5,7 @@ current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
 stopped_at: Phase6规范完成，NET01/02/03关闭；Phase3 plan3 halted独立安装关口保持
-last_updated: "2026-10-13T07:40:42.631Z"
+last_updated: "2026-10-13T08:56:45.897Z"
 last_activity: 2026-10-13
 last_activity_desc: Phase6六计划及自主验收完成，24显式edge/108测试/all通过；3judgment advisories保留
 progress:
@@ -171,6 +171,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 | 261010-q3y | 项目文档与用户沟通默认简体中文，保留技术标识与原始证据 | 2026-10-10 | 630683a | [261010-q3y-project-language-zh-cn](./quick/261010-q3y-project-language-zh-cn/) |
 | 5 | 启用阶段独立分支策略，开始或恢复阶段前核对对应分支，保留已有混合历史与用户修改 | 2026-10-13 | — | — |
 | 261013-lfl | Phase6中文分类提示补证、24显式edge/108检查与规范关闭；Phase3 halted保持 | 2026-10-13 | — | [261013-lfl-phase6-edge](./quick/261013-lfl-phase6-edge/) |
+| 261013-neh | Phase6迁移到独立codex/phase-06-gamestream；保留历史、用户工作与规范完成 | 2026-10-13 | — | [261013-neh-phase6-codex-phase-06-gamestream](./quick/261013-neh-phase6-codex-phase-06-gamestream/) |
 
 ## Deferred Items
 
@@ -219,5 +220,11 @@ Phase6规范human_needed与NET Pending保留，原3+6投影保持；恢复需补
 
 通用transition的Current Position改写已恢复Phase3/plan3/halted及原安装Resume入口，仅保留规范Phase6完成与进度数据。Apollo/独立系统操作授权、开发机禁执行/安排重启关机持续有效；此会话未改其他会话Phase7资料或启动Phase7实施。
 
-
 关闭后计数复核：GSD按SUMMARY文件存在误计completed_plans=15，但03-03-SUMMARY明确status halted、Task2 blocking-human未执行；已按真实完成纠正14/15，Phase3仍2/3计划、不关闭VDP。state.json的Phase6 complete保留，next提示改回03-03已有计划的具体授权恢复入口，不伪报Phase3需要重新计划。
+
+
+## 2026-10-13 Phase6独立分支迁移（当前）
+
+用户“迁移phase6到新规则要求的独立分支；完成phase6”已执行。当前工作分支codex/phase-06-gamestream从859507d完整继承Phase6完成状态；旧codex/phase-03-virtual-display-feasibility指针与混合历史不重写。所有迁移记录只提交新分支，切换前用户diff/index与Phase7 checkpoint hash保持，未混入。
+
+迁移后42产品输入匹配、closeout gate及GSD共同完成谓词通过，Phase6/NET三个Complete、UAT10/10，原108与十二目标证据不重标新HEAD。三个judgment advisory及所有既定生产/实机限制保持。主Phase3/plan3/halted、Apollo具体安装批准恢复入口保持；详见docs/phase06/BRANCH-MIGRATION.md/json。
