@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T06:45:26.638Z",
+  "sourceCommit": "d3e88b45546bead6f341b911e3c8e8051537423b",
+  "inputDigest": "aceb57872dd46c4decce3cda2f0fe1bbfb5baf36ce67287e61eb4a922fe38fe1",
+  "buildManifest": {
+    "file": "build/phase06/targets/windows-x64/protocol-target-Release.json",
+    "sha256": "95186e9486b0a9ae070267830f23876ce10d0193a5dee969f4c04fb4789e7b02"
+  },
+  "actualArtifacts": [
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "ac6946ba7b17d9c178ce4523dad93e8ec7d1da0da80e53df6fdc6f2eb3ca15d2",
+      "bytes": 4042240,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_tracer.exe",
+      "sha256": "ebce515836c7a8cc1096516db53c218b9d4e0f0f29d188d70c29dc182ddf554b",
+      "bytes": 3267072,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_media_security.exe",
+      "sha256": "1c30327e467b4581d70e5b34f9c3453a5b9cc78ee36fb52abe8fafe38f8fb9ab",
+      "bytes": 3893760,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_client.exe",
+      "sha256": "7e142d7d4fe0beeaa23b8f0165ebec6b4b4cb6e048b62433bb28616f27692744",
+      "bytes": 406528,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_host.exe",
+      "sha256": "a448b32caeeadcce2308076186e2d4350c40856a3c13312b2eb691791ddcd05e",
+      "bytes": 4116480,
+      "observedArch": "x64"
+    }
+  ],
+  "actual": {
+    "exitCode": 0,
+    "raw": {
+      "file": "build/phase06/06-05/control-media-order-green.log",
+      "sha256": "cf9446ce5f124d0d67feefb998961e72157ec0cf49f0612f702116e4a3e41eb8"
+    },
+    "scope": "真实native完成顺序helper：非GRANT不调用warm、终态立即；GRANT仍先warm；同时既有序号/FEC/真实SRTP-UDP窗口通过"
+  },
+  "red": {
+    "file": "docs/phase06/06-05-CONTROL-MEDIA-ORDER-RED.json",
+    "sha256": "9019ea19cb983ab7e6c8aba734911d8e42e59fddc0c920ad30fbff9554437b18"
+  },
+  "change": "已完成非GRANT操作不再等待25ms媒体warm；只从真实已有StreamContext counters和当前monotonic状态刷新同一query schema，再发布原终态。GRANT的实际media门槛及所有25/300/500/900ms、31/27/60分母、ABI/wire/权限保持。",
+  "matrixStatus": "pending-current-full-CI",
+  "systemMutation": false,
+  "tasksCompleted": 1
+}

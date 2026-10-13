@@ -67,3 +67,36 @@ No open finding remains in this review scope. This report is the focused review
 of authored lifecycle/source/tooling boundaries; generated non-Windows runners
 retain inventory/source checks and unsupported statuses. It is not a target
 support, actual-CI or final human-review sign-off.
+
+## CI continuation review
+
+Reviewed the 6d59a78 correction in scripts/prepare-flutter.ps1 and its two test
+inputs (tests/build-tools.test.cjs and tests/plugin-link-probe.ps1) inline. The
+guard still admits only Junction/SymbolicLink paths to the reviewed local package.
+It now resolves relative targets from the link parent and trims terminal directory
+separators; a foreign research target remains rejected. The fixture substitutes
+metadata only and does not replace the real link or restore dependencies.
+The actual entry-point regression failed before the correction (RED_EVIDENCE_OK),
+all 12 tool tests passed after it, and clean HEAD 0617a3e passed four product builds
+plus all 19 mandatory groups / 138 recorded cases. No open finding was added.
+Actual second Actions run 37732241885 and final human review remain separate gates.
+
+Further continuation review covers validate-baseline.cjs and its real Git path
+regressions, presentation.h/.cpp, plugin diagnostic fields, the native WARP probe,
+its explicit CMake/verify/UI integration, and the actual-engine label assertion.
+Realpath comparisons keep independent-root/remote/SHA/blob/dirty-tree checks;
+native OS normalization and platform path semantics accept equivalent Windows
+aliases while rejecting the parent repository. The first casing-only fix did not
+resolve the hosted alias failure; fourth-run evidence remains failed. The final
+native-path correction passed all 96 baseline/tool tests locally.
+Known Microsoft Basic Render identity and software flags combine without changing
+device selection, drawing, lifetime or StopInstance semantics. Actual fourth-run
+software labeling, two WARP configurations and zero source cleanup pass. The
+actual CI-record RED and later same-witness GREEN retain their input hashes;
+initial local WARP GREEN and sandbox load failure are not RED evidence.
+No new open finding remains in this source review. Latest clean 08a005c passed
+four builds and all 19 groups / 142 recorded cases, including the new software
+probes. Fifth actual run37741148365 passed four builds and all19 groups/142
+records; uploaded Release hashes and exact clean/CI source equivalence pass.
+Final human reply “确认” now approves the repository/native boundary and
+evidence limits; no new source change or open review finding is introduced.

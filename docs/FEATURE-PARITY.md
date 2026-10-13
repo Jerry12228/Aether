@@ -1,5 +1,7 @@
 # 原功能保留基线
 
+2026-10-08明确范围例外：[用户需求修订R1](phase03/SUDOVDA-REQUIREMENTS-REVISION.md)取消Win10主机HDR必需项，Win11与客户端HDR能力仍保留。以下固定原行为和历史case不改写为不存在；涉及Win10 HDR的case应记录not-required-by-R1与原因，不能记成已通过。其余原能力仍适用。
+
 基线日期：2026-10-07。平台盘点已展开，语义穷尽性仍待最终人审。结构校验 PASS；产品功能均未实现/实测。固定来源见 [来源审计](SOURCE-AUDIT.md)，正式数据见 [features.json](baseline/features.json)。
 
 “不砍功能”以指定五平台及 Windows 10/11 服务端的适用原用户能力为边界。保留 GameStream 重构基础、单一 Flutter UI、原生实时路径、主机唯一控制租约；断连/切换保留实例和显示组，只有显式停止才清理。本阶段不批准源码生产复用。
@@ -8522,3 +8524,22 @@ moonlight-qt / selene-windows / packaging / `README.md`；reviewed=true；invent
 - **android-api21-23-framework-floor** (decided)：固定 Android 原构建 minSdk21；Flutter3.44 官方声明从 API24 开始，不能静默删除原 API21–23 用户范围，也不能宣称 Flutter 已支持。约束：Flutter单一Selene app与原能力保留；具体最低客户端范围须人审及原型；选项：推荐：API24作为框架声明候选，同时API21–23保留v1差异；Phase2/14/28–29验证更低API适配与原生路径，未证明前不宣称支持；修订：具体说明最低范围及可执行适配路线；不能自动删除或转TODO。
 
 Phase 37 逐行复审，Phase 42 最终验收。BASE-01 edge flag 仍 unclassified/unresolved；descriptor-less prohibitions 仍 flagged-unverified。结构 PASS 不代替语义穷尽性、人审、构建或硬件验证。
+
+## Phase 06-03 协议合同与原 NET case 追踪
+
+完整机器可读映射见 [06-03-PARITY.json](phase06/06-03-PARITY.json)，输入仍为原始 `docs/baseline/features.json` 的全部 637 features/cases，SHA256 `e70d1606e763d1cc5d914568ff047da1220b9fe8ab7f09b3907a0d9c327c1c9e`。筛选 `requirementIds` 中的 NET 条目得到 12 个 case：Win10/Win11 各自六个原设置。全部 case 和原 owner 保留；其余每项保留 `orig/<featureId>` extension、条件、原因与 owner，没有删原 case 或转入 TODO。
+
+| 原设置（Win10/Win11 分别保留 case） | 当前合同及原型证据 | 后续范围 |
+|---|---|---|
+| fec_percentage | 保留 1..255；明确 scheme/k/n/repair 与预算；真实 DLL options 验证 0/1/255/256，五流 synthetic FEC socket sink | 实际链路/编码质量仍待后续媒体阶段 |
+| lan_encryption_mode | 0/1 明确 disabled、reason26；给出 2/TLS1.3/SRTP 安全替代，真实 proposal 中保留理由 | 生产权限/配对与网络场景在 07/20 |
+| wan_encryption_mode | 与 LAN 相同；网络位置不允许降低认证与保护；两项分别具名测试 | 真实 WAN/生产产品设置仍未验收 |
+| packetsize | 保留 0 自动及显式界限；独立 DLL 0/239/240/1501 与完整 MTU/FEC 边界；重新计算头/tag/repair | 生产 PMTU/协商、MTU 发现仍待 07 |
+| ping_timeout | 原无限等待意图明确禁用并给有限替代；命令 1..3000ms，三次 fresh socket 尝试各 250ms，退避 50/100/200ms；实例寿命独立 | 生产 liveness 设置及远程环境仍待 07/20 |
+| port | 原 base+offset 合同保留，每通道 1..65535；真实 owned ephemeral loopback 端口和 65536 拒绝分别验证 | 生产 offset、碰撞及网络配置未实现；没有授权系统配置 |
+
+`tests/protocol-recovery.test.cjs` 的 `original setting contract <platform> <setting>` 为这 12 项各自提供独立测试。这里的 platform 是原 case 归属；实际执行环境是当前 Windows x64 工作站，不能把两份合同映射写成 Win10/Win11 两台实机验收。详细状态、原始分母和真实三轮量测见 [LIMITS.md](phase06/LIMITS.md) 与阶段证据。
+
+codec、HDR、444/color、多声道、input/feedback、input-only、observer、capture-source 及其全部原 owner/条件保留在完整映射。当前只有获授权 observer 的 synthetic 控制/预算隔离和 typed 协议边界经过真实双进程测试；没有实际输入、capture/codec 或五客户端产品实现。Win10 按 R1 请求返回 SDR/OS reason；七 SDR 显示器实机门槛独立保留。Win11 D2 HDR 目标仍保留，模拟 `hdr=unverified` 不是实测 HDR 支持。06-05 将另行核对同输入五目标，不由本计划构造目标成功证据。
+
+三个 unclassified 与六个 descriptorless 禁止项继续 `flagged-unverified`；本阶段手工边界证明、结构测试和 synthetic 量测均不关闭它们，也不关闭跨计划 NET-01/02/03 总需求。

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "status": "verified",
+  "recordedAt": "2026-10-09T12:07:53.369Z",
+  "scope": "pre-install single INF grouping correction; no runtime isolation or Apollo stream success claim",
+  "previousDossier": {
+    "path": "docs/phase03/PROVIDER-ADMISSION-03-02-HISTORY.json",
+    "length": 43780,
+    "sha256": "8a7035268e5da7f8881d83abf7bb0f9bb5a48ed910cf8d0235c8c0db6513e850",
+    "fixture": false
+  },
+  "previousPackage": "b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae",
+  "sourceManifest": {
+    "path": "artifacts/phase03/derived-research/helios-1791547416299/research-source.json",
+    "length": 4620,
+    "sha256": "c7609a0efbe7731f1b04e22fa9cc1857819d6518f7cbb5335a83a7aafb5a06f7",
+    "fixture": false
+  },
+  "build": {
+    "path": "artifacts/phase03/apollo-install-preflight/helios-1791547416299/driver-build.log",
+    "length": 4355,
+    "sha256": "38c192eb53d5524c7f4d6feab3035e8ed14d6df7b631c9c330d64fcba9727da3",
+    "fixture": false
+  },
+  "infChecks": {
+    "path": "artifacts/phase03/apollo-install-preflight/helios-1791547416299/inf-results.json",
+    "length": 871,
+    "sha256": "f984d51249b3dd6f4d1b6ffc25e9d8630f222780874c742e9a0db25d3b6facde",
+    "fixture": false
+  },
+  "buildDiagnostic": "Existing bundled InfVerif DLL loader exception retained; six independent installed x64 InfVerif checks pass. First wrong /osver argument failure retained separately.",
+  "unchangedCompiledInputs": [
+    "Common/Include/AdapterOption.h",
+    "Common/Include/sudovda-ioctl.h",
+    "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+    "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+    "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+    "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+    "Virtual Display Driver (HDR)/SudoVDA/edid.h"
+  ],
+  "rights": {
+    "status": "verified",
+    "prior": {
+      "path": "docs/phase03/HELIOS-DISPLAY-LIFECYCLE-EVIDENCE.json",
+      "length": 4908,
+      "sha256": "c2d17352f29046df41ead774231b51f3b84f724deed78dbbe86f74bc3f1fd849",
+      "fixture": false
+    },
+    "basis": "Seven compiled inputs identical; independently authored INF correction only. All prior MS-PL/CC0 notices retained.",
+    "notices": [
+      {
+        "path": "artifacts/phase03/selfsigned-research/helios-1791547543587/licenses/Microsoft-MS-PL.txt",
+        "length": 2665,
+        "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a",
+        "fixture": false
+      },
+      {
+        "path": "artifacts/phase03/selfsigned-research/helios-1791547543587/licenses/SudoVDA-README.txt",
+        "length": 3663,
+        "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+        "fixture": false
+      },
+      {
+        "path": "artifacts/phase03/selfsigned-research/helios-1791547543587/licenses/CC0-1.0.txt",
+        "length": 7048,
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+        "fixture": false
+      },
+      {
+        "path": "artifacts/phase03/selfsigned-research/helios-1791547543587/licenses/HeliosDisplay-NOTICE.txt",
+        "length": 1813,
+        "sha256": "11400757633fe771d348a7b37f6c0858d65bca23ef08fc3a674e8a8c73999931",
+        "fixture": false
+      }
+    ]
+  },
+  "acl": {
+    "status": "verified",
+    "actual": {
+      "path": "docs/phase03/HELIOS-DISPLAY-ACL-AUDIT.json",
+      "length": 2116,
+      "sha256": "2766a73167a24322aa26039f3bbc2e24947f2953200a0f68adf8570325c74bca",
+      "fixture": false
+    },
+    "priorBridge": {
+      "path": "docs/phase03/HELIOS-DISPLAY-ACL-BRIDGE.json",
+      "length": 2483,
+      "sha256": "371bc5a3a4494429dbeb350888e77a776b26228c4b5d183aed5bd7f98ade94bc",
+      "fixture": false
+    },
+    "scope": "source correspondence only: device ACL, WDF DeviceAdd, IOCTL access/header/query and all driver code unchanged; runtime corrected UMDF grouping remains untested",
+    "profile": {
+      "watchdog": 0,
+      "testMode": 0,
+      "maxMonitors": 10
+    },
+    "deviceCreationAndIoctlImplementationUnchanged": true
+  },
+  "signature": {
+    "path": "artifacts/phase03/selfsigned-research/helios-1791547543587/signature-verification.json",
+    "length": 1362,
+    "sha256": "51826b7ff1552b1e5819cb945c905fdcc9c18f4efb8cd56e53bff6f8de5145af",
+    "fixture": false
+  },
+  "archive": {
+    "path": "artifacts/phase03/selfsigned-research/helios-1791547543587/HeliosDisplayResearch.zip",
+    "length": 1029893,
+    "sha256": "da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12",
+    "fixture": false
+  },
+  "sources": [
+    "https://github.com/microsoft/Windows-driver-samples/blob/main/video/IndirectDisplay/IddSampleDriver/IddSampleDriver.inf",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/wdf/using-device-pooling-in-umdf-drivers"
+  ],
+  "driverInstalled": false,
+  "machineMutationAuthorized": false,
+  "limitations": [
+    "Corrected grouping must be read back only after separately approved installation",
+    "No actual Win10/11 seven-screen/HDR/persistence/update evidence",
+    "No reboot/shutdown or scheduling"
+  ]
+}

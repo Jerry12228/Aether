@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T06:14:16.101Z",
+  "sourceCommit": "8dae57e81fad4f15e3ffd7a7940d97ef873149aa",
+  "inputDigest": "262e68daedc13b875905b344f36cacfc06097898178c4b1c329799269fd5a810",
+  "buildManifest": {
+    "file": "build/phase06/targets/windows-x64/protocol-target-Release.json",
+    "sha256": "d948cd7806c7c0509be43be2522a5cd98a8f173617df5b92075024e0f37f3f5a"
+  },
+  "actualArtifacts": [
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "7f2afe8ad4d0b77dadbb728eec3d41ceb2eee3038d739c6024b555d9103ebe5d",
+      "bytes": 4041728,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_tracer.exe",
+      "sha256": "6efd65154345532ddbe74c18bc133a05412c958cd79a96de2dba06dff9244e14",
+      "bytes": 3267072,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_media_security.exe",
+      "sha256": "aac83aa22d029720932d413647761ac9cc650ff313cd0e73c17687be0f4bbba7",
+      "bytes": 3819008,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_client.exe",
+      "sha256": "60c77d78748bfe5191cda2912601860d75b8255727fe0585b40004abe6762b4b",
+      "bytes": 404992,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_host.exe",
+      "sha256": "f5eb87a5f026ed9878dc07c4fabf9cd159733cef7c07c94ffd3215712e557d78",
+      "bytes": 4115968,
+      "observedArch": "x64"
+    }
+  ],
+  "actual": [
+    {
+      "case": "原生过期write_tls之前不应消耗ACTL序号",
+      "exitCode": 2,
+      "raw": {
+        "file": "build/phase06/06-05/control-sequence-red.log",
+        "sha256": "36e0cccc5604aad2c829e209297411359ab263f34336e4be4f54ffb2340de236"
+      },
+      "scope": "调用产品同一内部sequence helper及真实write_tls过期检查；控制steady_clock已过期且未触达OpenSSL/peer，不冒称该unit为真实网络或性能"
+    },
+    {
+      "case": "真实独立TCP关闭且尚无证书核验必须是传输AP_LENGTH24",
+      "exitCode": 1,
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "observedStatus": 21,
+      "expectedStatus": 24,
+      "raw": {
+        "file": "build/phase06/06-05/tls-close-red.log",
+        "sha256": "34db45d061ec729f2ba45cadc596c7f38325a289317f4797374104d7e155d7e5"
+      },
+      "scope": "真实native产品DLL client与独立loopback TCP peer；身份/信任核验未放宽"
+    }
+  ],
+  "invalidAttempts": "新增TCP负例前两次缺request.bin，native返回1而未握手；不作为行为RED。修正请求文件后的21!=24才计本记录。",
+  "linkedCI": {
+    "file": "docs/phase06/06-05-7BC-RUNTIME-FAILURES.json",
+    "sha256": "9091c4ed485f5f4fb5128dc4406de97505f3183a45641a4fc374124ece8e86b1"
+  },
+  "fixStatus": "not-implemented-at-RED",
+  "systemMutation": false
+}

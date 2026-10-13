@@ -1,0 +1,57 @@
+{
+  "productDLL": {
+    "path": "build/phase06/windows-x64/Debug/aether_protocol.dll",
+    "sha256": "517e3fb9c0e684f10a439114321de349d0e672eec3e1fe5975b16530206247da"
+  },
+  "schema": 1,
+  "legacy": {
+    "cancelled": 0,
+    "total": 46,
+    "elapsedMs": 14269.3451,
+    "failed": 0,
+    "todo": 0,
+    "skipped": 0,
+    "passed": 46
+  },
+  "systemMutation": false,
+  "control": {
+    "ctestPassed": 1,
+    "clientAssertions": 25,
+    "elapsedSeconds": 0.47,
+    "parentAssertions": 6,
+    "actualTwoPID": true,
+    "failed": 0,
+    "ctestTotal": 1,
+    "skipped": 0
+  },
+  "task": 1,
+  "build": {
+    "exit": 0,
+    "configuration": "Debug"
+  },
+  "plan": "06-06",
+  "limits": "仅synthetic控制合同与loopback；真实配对、provider设备与完整预算/恢复待后续计划",
+  "synthetic": true,
+  "sourceHashes": [
+    {
+      "path": "native/protocol/include/aether/protocol.h",
+      "sha256": "3e8c36e70fbfe5fd0f92b096f9702956a72a6caf87f069b1d13d07e6735eaef4"
+    },
+    {
+      "path": "native/protocol/src/internal.h",
+      "sha256": "bfec3f7ff925297a61e069e91c1ce413c1e3c622aed708428013b9552ad5b31f"
+    },
+    {
+      "path": "native/protocol/src/protocol.cpp",
+      "sha256": "7ae79e5aa0e3310f25f4141872d0766ad75f0978bde18cce01831e76e6d96c2c"
+    },
+    {
+      "path": "native/protocol/CMakeLists.txt",
+      "sha256": "66affbb53dbd21d50446dfc5315abcd3ae466171d03fb1160042730d222ff9aa"
+    },
+    {
+      "path": "tests/native/protocol_control.cpp",
+      "sha256": "4efaca84e8848f0ac154a99bdcfde7ec995eaede0bfed5ad6bd626ba827eb0ba"
+    }
+  ]
+}

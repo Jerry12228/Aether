@@ -1,0 +1,189 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T12:58:58.340Z",
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "scope": "现有Helios真实Release构建和根Debug11fixture回归；不运行设备安装或生产probe",
+  "systemMutation": false,
+  "commands": [
+    {
+      "name": "Helios-Release",
+      "exitCode": 0,
+      "durationMs": 3318,
+      "timeout": false,
+      "error": null,
+      "log": "build\\phase06\\06-05\\root-4edaf0352ca1-verified\\Helios-Release.log",
+      "sha256": "a3be0a0441a32a80a69194e95d34c1dde94b03774cc261365c98e25a9ed16446"
+    },
+    {
+      "name": "root-Debug-build",
+      "exitCode": 0,
+      "durationMs": 2886,
+      "timeout": false,
+      "error": null,
+      "log": "build\\phase06\\06-05\\root-4edaf0352ca1-verified\\root-Debug-build.log",
+      "sha256": "c3cedb7446fab8ea32036df5ef1670345ec296f5a4a32051633b7a5853dd0ed1"
+    },
+    {
+      "name": "root-Debug-ctest",
+      "exitCode": 0,
+      "durationMs": 27015,
+      "timeout": false,
+      "error": null,
+      "log": "build\\phase06\\06-05\\root-4edaf0352ca1-verified\\root-Debug-ctest.log",
+      "sha256": "f63ee728aff5ff9785d6e4a87e65bd2229a226ba5fa0ef8b4aaf25ed9d4c0ee7"
+    }
+  ],
+  "counts": {
+    "tests": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "names": [
+      "virtual_display_probe",
+      "virtual_display_tracer",
+      "virtual_display_registry",
+      "virtual_display_topology",
+      "virtual_display_failure",
+      "virtual_display_recovery",
+      "virtual_display_pattern",
+      "virtual_display_security",
+      "core_tracer",
+      "core_lifecycle",
+      "core_adapters"
+    ]
+  },
+  "inputs": [
+    {
+      "file": "CMakeLists.txt",
+      "sha256": "246d0625a892d287cf26ff02a4383a9a9519f3e371aa47af24907a62e5227f4a"
+    },
+    {
+      "file": "CMakePresets.json",
+      "sha256": "73f0f944d3026b60c1067ad57d534f2441f951a8ba55e3dca4a815eecd842b56"
+    },
+    {
+      "file": "apps/helios/display_commands.cpp",
+      "sha256": "dc267a74aed6c4094613b59f91aa8efc9822cf9c52ecd351c3c0766a72444678"
+    },
+    {
+      "file": "apps/helios/display_json.h",
+      "sha256": "e3133104cfa811abe6bb2b6dc714f5a67364f5f5809e4098437cd400c8a38869"
+    },
+    {
+      "file": "apps/helios/display_registry.cpp",
+      "sha256": "aa467172f95949525bbf19c4b03d3352e9b4766a456fcedd34adafae41ae6499"
+    },
+    {
+      "file": "apps/helios/display_registry.h",
+      "sha256": "1e143099417c4f08f81000f9dd5834b516f190a2eb84e2bf39179e4f1ffcb8e4"
+    },
+    {
+      "file": "apps/helios/display_test_pattern.cpp",
+      "sha256": "7cd2e3f4fd132c61364d1c37cf92afa80c09461ec4d4ca9bb2c89070dff639fe"
+    },
+    {
+      "file": "apps/helios/main.cpp",
+      "sha256": "d06df7b46914994faddbe02e66fd36b3bb5e8d8bda7bfdd5c3c32a70bfca8633"
+    },
+    {
+      "file": "native/core/include/aether/core.h",
+      "sha256": "c67aecf11c4832c5d40fe7dd35b4edc504304aefc846f1059ccc3869a6f6fee7"
+    },
+    {
+      "file": "native/core/src/core.cpp",
+      "sha256": "f969df8d0b83e7de52e04173b5e68a17138b2a424ad31edcacc53afb63738432"
+    },
+    {
+      "file": "native/platform/include/aether/platform.h",
+      "sha256": "c0669362c13f809a3a8d7a861efdf1142dbf1b4959d48354e00cdaed8c43fdb6"
+    },
+    {
+      "file": "native/platform/include/aether/presentation.h",
+      "sha256": "af7d9f14443c67f49f281e53fd82130049a13957ab44e619ed6808185920ee3c"
+    },
+    {
+      "file": "native/platform/include/aether/virtual_display.h",
+      "sha256": "752efff266eeda46006ab0b57c3825f540ac026e7e2aeca03bab62c014a65e5f"
+    },
+    {
+      "file": "native/platform/platform.cpp",
+      "sha256": "30b55a69cf3628871949a940094a5b43217505a6a53806224a120f7342c722a8"
+    },
+    {
+      "file": "native/platform/windows/driver_package.cpp",
+      "sha256": "24d235fc004aa8829cec2caa06dadb459f36ca2c728f33bc331523893a4c056a"
+    },
+    {
+      "file": "native/platform/windows/driver_package.h",
+      "sha256": "9159040042008a268ef96e3b059d333be5d67ab3fe5fa53e4e9dfab04c0205e2"
+    },
+    {
+      "file": "native/platform/windows/helios_display_pin.h",
+      "sha256": "1f212c54f9d9a3340afe6621257435b59a7e8804d78a7c65ec52e3f1ad6342c8"
+    },
+    {
+      "file": "native/platform/windows/presentation.cpp",
+      "sha256": "7bababe72fb21517fba8b833bf5d839852dd5631b1de73ed9266b2b863ba535c"
+    },
+    {
+      "file": "native/platform/windows/virtual_display_mutation.cpp",
+      "sha256": "2dd04e3368f8a0d46d4fc1cbbe144c32fae376b3abed9ac93461863686fed241"
+    },
+    {
+      "file": "native/platform/windows/virtual_display_provider.cpp",
+      "sha256": "ae45a38ba67881cc4e7f33b2ab64659789d8b41e0098e6340344e8a156944ec6"
+    },
+    {
+      "file": "scripts/build.cjs",
+      "sha256": "aa5da590751491379917a36434e9548a7a930bb3bf1740b361a7627fb552b674"
+    },
+    {
+      "file": "scripts/build.ps1",
+      "sha256": "f3c7956ef65c47744045c29ee0d699a0abcb46dcbc679c572fa617b28890f088"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/Debug-aether_core.dll",
+      "sha256": "83f8c4f2a450b25142c9e32dd8b9d529f7dc14da0f39059e278c4e678c3539d6"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/Helios-Release-build.log",
+      "sha256": "0d8f4080990c654b2cdba464f07c653445c7f1ca237373ca0a1a4ea71826e1e2"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/Helios-Release-configure.log",
+      "sha256": "0c670d552c631c017a156df94a22124a9d00bfed2b76c8ff7678bf3a294f9179"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/Helios-Release.log",
+      "sha256": "a3be0a0441a32a80a69194e95d34c1dde94b03774cc261365c98e25a9ed16446"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/LastTest.log",
+      "sha256": "683dbaa5d74daa0b037331f9fca7a6effe5f6fb06a0e6a833644581a786c8253"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/Release-aether_core.dll",
+      "sha256": "a2b69e6842e9599dfcc76234587ef0774ad965c3c848e4fb9e7b46619ca80c50"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/Release-helios.exe",
+      "sha256": "824a6b8b2158c9d713dc2a5eeee88721ae7eccf18786d7096d7258e94f532994"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/root-Debug-build.log",
+      "sha256": "c3cedb7446fab8ea32036df5ef1670345ec296f5a4a32051633b7a5853dd0ed1"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/root-Debug-ctest.log",
+      "sha256": "f63ee728aff5ff9785d6e4a87e65bd2229a226ba5fa0ef8b4aaf25ed9d4c0ee7"
+    },
+    {
+      "file": "build/phase06/06-05/root-4edaf0352ca1-verified/root-debug.xml",
+      "sha256": "934ec82d6afecd985e91feec655390a5e6925e150cdc78533615e1c078bf91ac"
+    }
+  ]
+}

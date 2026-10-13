@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T12:53:29.336Z",
+  "scope": "实际build-protocol download函数的独立故障响应驱动；不声称网络/平台运行，不替代85项validator或当前CI",
+  "sourceSha256": "d77c3c207c33fc5811b93cafebb2ec7796c1f925b6d1ddcc55563cbd50956854",
+  "tests": 6,
+  "passed": 6,
+  "failed": 0,
+  "skipped": 0,
+  "actual": [
+    {
+      "name": "transient-504",
+      "calls": 2,
+      "cancelled": 1,
+      "success": true,
+      "error": null
+    },
+    {
+      "name": "permanent-404",
+      "calls": 1,
+      "cancelled": 1,
+      "success": false,
+      "error": "Official archive response"
+    },
+    {
+      "name": "bounded-three",
+      "calls": 3,
+      "cancelled": 3,
+      "success": false,
+      "error": "Official archive response"
+    },
+    {
+      "name": "hash-is-never-bypassed",
+      "calls": 1,
+      "cancelled": 0,
+      "success": false,
+      "error": "Archive hash\n+ actual - expected\n\n+ '7d81dc5863a41346710fe5bccd3cb93e91fc17265a7c9eef2a2aaeda0ca7206d'\n- '0000000000000000000000000000000000000000000000000000000000000000'\n"
+    },
+    {
+      "name": "wrong-cache",
+      "calls": 0,
+      "cancelled": 0,
+      "success": false,
+      "error": "Cached archive drift\n+ actual - expected\n\n+ '75466c3850032a0a986333ebb4a626de0368225f59992b865b7a942ea7cab29d'\n- '7d81dc5863a41346710fe5bccd3cb93e91fc17265a7c9eef2a2aaeda0ca7206d'\n"
+    },
+    {
+      "name": "expired-total-budget",
+      "calls": 0,
+      "cancelled": 0,
+      "success": false,
+      "error": "Official download deadline"
+    }
+  ]
+}

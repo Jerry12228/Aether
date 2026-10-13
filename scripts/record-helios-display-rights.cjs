@@ -1,0 +1,53 @@
+'use strict';
+// Bounded source-expression/notice audit. No installer or certificate operations.
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'..');
+const sourceRoot='artifacts/phase03/derived-research/helios-1791524690800';
+const signedRoot='artifacts/phase03/selfsigned-research/helios-1791525277849';
+const read=p=>fs.readFileSync(path.join(root,p));
+const text=p=>read(p).toString('utf8').replace(/^\ufeff/,'');
+const json=p=>JSON.parse(text(p));
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const receipt=p=>({path:p,length:read(p).length,sha256:sha(read(p)),fixture:false});
+const check=(ok,reason)=>{if(!ok)throw Error(reason);};
+const normalize=s=>s.replace(/\s/g,'');
+function blame(name){let author,lineNumber;const result=[];
+ for(const line of text(`artifacts/phase03/admission-followup/blame-copy-${name}.txt`).split(/\r?\n/)){
+  const header=/^[a-f0-9]{40} \d+ (\d+)(?: \d+)?$/.exec(line);
+  if(header)lineNumber=Number(header[1]);
+  else if(line.startsWith('author '))author=line.slice(7);
+  else if(line.startsWith('\t'))result.push({author,line:lineNumber,text:line.slice(1)});
+ }return result;
+}
+const source=json(sourceRoot+'/research-source.json'),signing=json(signedRoot+'/signing-state.json');
+check(source.sourceRevision===2&&source.files.length===8&&source.independentInputs.length===7,'Reconstructed source boundary mismatch');
+for(const f of source.files)check(sha(read(sourceRoot+'/'+f.outputPath))===f.sha256,'Prepared source bytes changed');
+for(const f of source.independentInputs)check(sha(read(f.path))===f.sha256,'Independent source input changed');
+for(const f of signing.members)check(sha(read(signedRoot+'/HeliosDisplayX64/'+f.name))===f.sha256,'Signed package bytes changed');
+const microsoftFiles=['Driver.cpp','Driver.h','Trace.h'].map(name=>`artifacts/phase03/admission-followup/ms-initial-${name}.raw`);
+const microsoft=new Set(microsoftFiles.flatMap(p=>text(p).split(/\r?\n/).map(normalize)));
+const original=text('artifacts/phase03/sudovda-followup/Driver.cpp').split(/\r?\n/);
+const settingsStart=original.findIndex(l=>l.startsWith('void LoadSettings() {'))+1;
+const settingsEnd=original.findIndex((l,i)=>i>=settingsStart&&l.startsWith('void DisconnectAllMonitors()'));
+const includeStart=original.findIndex(l=>l==='#include "Driver.h"')+1;
+const includeEnd=original.findIndex(l=>l==='using namespace std;');
+check(settingsStart>0&&settingsEnd>settingsStart&&includeStart>0&&includeEnd>includeStart,'Historical replacement boundaries missing');
+const driver=text(sourceRoot+'/Virtual Display Driver (HDR)/SudoVDA/Driver.cpp');
+check(driver.includes(text('tools/helios-display-research/HeliosDisplaySettings.cpp.inc')),'Independent settings reader not in compiled source');
+check(driver.includes(text('tools/helios-display-research/HeliosDriverIncludes.cpp.inc')),'Independent dependency block not in compiled source');
+const audit=['Driver.cpp','Driver.h'].map(name=>{
+ const rows=blame(name),earlier=rows.filter(r=>r.author!=='Yukino Song');
+ const replaced=earlier.filter(r=>name==='Driver.cpp'&&((r.line>=settingsStart&&r.line<=settingsEnd)||(r.line>=includeStart&&r.line<=includeEnd)));
+ const remaining=earlier.filter(r=>!replaced.includes(r));
+ const unmatched=remaining.filter(r=>!microsoft.has(normalize(r.text)));
+ check(unmatched.length===0,`Unlicensed reference expressions remain in ${name}: ${JSON.stringify(unmatched)}`);
+ return {name,rows:rows.length,authors:rows.reduce((m,r)=>(m[r.author]=(m[r.author]||0)+1,m),{}),independentlyReplacedOriginalLines:replaced,licensedReferenceExpressions:remaining.length,unmatched,blame:receipt(`artifacts/phase03/admission-followup/blame-copy-${name}.txt`)};
+});
+const originalTrace=text('artifacts/phase03/sudovda-followup/Trace.h').split(/\r?\n/);
+check(originalTrace.slice(0,59).every(l=>microsoft.has(normalize(l))),'Trace licensed reference mismatch');
+const noticeNames=['Microsoft-MS-PL.txt','SudoVDA-README.txt','CC0-1.0.txt','HeliosDisplay-NOTICE.txt'];
+for(const name of noticeNames)check(sha(read('docs/phase03/licenses/'+name))===sha(read(signedRoot+'/licenses/'+name)),'Packaged notice changed');
+check(text('docs/phase03/licenses/CC0-1.0.txt').includes('CC0 1.0 Universal'),'CC0 terms absent');
+const report={schemaVersion:1,status:'verified',recordedAt:new Date().toISOString(),scope:'independent redistribution basis for this eight-input standalone driver source/package; no monorepo license selection or production release approval',sourceCommit:source.sourceCommit,sourceManifest:receipt(sourceRoot+'/research-source.json'),packageRoot:signedRoot,packageArchive:receipt(signedRoot+'/HeliosDisplayResearch.zip'),licensedMicrosoftReference:{repository:'https://github.com/microsoft/Windows-driver-samples',commit:'d43983a97c79e5e7eafb4948fd2678f5e709838b',basis:'MS-PL grant for the available Microsoft sample expressions, independently matched after replacing unresolved earlier configuration/helper bodies; exact 2017 Git ancestry is not claimed',files:microsoftFiles.map(receipt),license:receipt('docs/phase03/licenses/Microsoft-MS-PL.txt')},yukinoChanges:{basis:'Only Yukino/SudoMaker-authored changes use the author-modification CC0/public-domain option; never a blanket relicense',declaration:receipt('docs/phase03/licenses/SudoVDA-README.txt'),terms:receipt('docs/phase03/licenses/CC0-1.0.txt')},independentInputs:source.independentInputs,audit,trace:{licensedOriginalLines:59,legacyConditionalReplaced:true,identityIndependentlyChanged:true},excludedOriginalInputs:source.excludedHistoricalInputs,packageNotices:noticeNames.map(name=>receipt(signedRoot+'/licenses/'+name)),requiredDistributionConditions:['Retain full MS-PL, Microsoft copyright and all source notices.','Keep standalone driver source under MS-PL and compiled distribution compliant; no claim that the monorepo license is now selected.','Retain SudoMaker declaration and original attribution material; external EDID/GPL templates are excluded.'],productionReleaseApproved:false};
+fs.writeFileSync(path.join(root,'docs/phase03/HELIOS-DISPLAY-RIGHTS-CLOSED.json'),JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({status:report.status,unmatchedEarlierExpressions:0,sourceInputs:source.files.length,independentInputs:source.independentInputs.length,packagedNotices:noticeNames.length}));

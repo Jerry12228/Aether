@@ -1,0 +1,860 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T12:15:09.070Z",
+  "sourceCommit": "96a49e4087b55e901c9ff0cb8f54df35227cf07d",
+  "inputDigest": "7761dd7c2f95c4d44b57d8ba8f0c431fca3000cc0598ad2a9af418c95f33a229",
+  "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38137338723",
+  "arm32": {
+    "initialNative": {
+      "tests": 55,
+      "passed": 55,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "cases": [
+        {
+          "id": "native-control-31-scenarios",
+          "assertions": 65
+        },
+        {
+          "id": "legacy-1-secure-two-native-PID",
+          "assertions": 16,
+          "hostPid": 1296,
+          "clientPid": 1300
+        },
+        {
+          "id": "legacy-2-secure-two-native-PID",
+          "assertions": 17,
+          "hostPid": 1318,
+          "clientPid": 1321
+        },
+        {
+          "id": "fec-golden",
+          "assertions": 1
+        },
+        {
+          "id": "rollover",
+          "assertions": 1
+        },
+        {
+          "id": "nonce-exhaustion",
+          "assertions": 1
+        },
+        {
+          "id": "high-sequence",
+          "assertions": 1
+        },
+        {
+          "id": "role-key-epoch",
+          "assertions": 1
+        },
+        {
+          "id": "unchanged-retransmission",
+          "assertions": 1
+        },
+        {
+          "id": "single-common",
+          "assertions": 3
+        },
+        {
+          "id": "highest-common",
+          "assertions": 3
+        },
+        {
+          "id": "remote-permutation",
+          "assertions": 3
+        },
+        {
+          "id": "local-permutation",
+          "assertions": 3
+        },
+        {
+          "id": "upgrade-remote",
+          "assertions": 3
+        },
+        {
+          "id": "upgrade-local",
+          "assertions": 3
+        },
+        {
+          "id": "empty-version-set",
+          "assertions": 3
+        },
+        {
+          "id": "truncated",
+          "assertions": 3
+        },
+        {
+          "id": "trailing-byte",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-required-message",
+          "assertions": 3
+        },
+        {
+          "id": "zero-version",
+          "assertions": 3
+        },
+        {
+          "id": "duplicate-version",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-optional-field",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-required-field",
+          "assertions": 3
+        },
+        {
+          "id": "duplicate-optional-field",
+          "assertions": 3
+        },
+        {
+          "id": "tlv-length-overflow",
+          "assertions": 3
+        },
+        {
+          "id": "declared-size-minus-one",
+          "assertions": 3
+        },
+        {
+          "id": "declared-size-plus-one",
+          "assertions": 3
+        },
+        {
+          "id": "AES-256-GCM-KAT",
+          "assertions": 2
+        },
+        {
+          "id": "multistream:real secure media: happy",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: loss-video1",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: cross-stream",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: wrong-direction",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: tamper-high-sequence",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: replay",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-happy",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-threshold",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-beyond",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-tamper-repair",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-cross-role",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-reorder-replay",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-late",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-queue",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-domain-tamper",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-burst",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-fresh-epoch",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-stale-epoch",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-contract",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: rollover",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: nonce-exhaustion",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: high-sequence",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: role-key-epoch",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: unchanged-retransmission",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: fec-golden",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:independent full-media parser boundaries and profile negotiation",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:public fixed-width media options validate ABI, prefix length and bounded effective result",
+          "assertions": 0
+        }
+      ],
+      "assertions": 160,
+      "assertionsScope": "initial native checks only; original Node assertions are independently executed but not individually counted"
+    },
+    "supplementary": [
+      {
+        "suite": "multistream",
+        "tests": 27,
+        "passed": 27,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      }
+    ],
+    "recovery": {
+      "tests": 60,
+      "passed": 59,
+      "failed": 1,
+      "skipped": 0,
+      "raw": {
+        "file": "build/phase06/06-05/ci-38137338723/android-arm32/build/phase06/targets/android-arm32/run-logs/adb-original-recovery.log",
+        "sha256": "d582b68b7b6898041d5402e87b14d1e40fc91a0cb870b640dd5ab7703869c1b1"
+      }
+    },
+    "case": "D-05 real refused fresh socket retry cancellation",
+    "expected": "受理返回AP_OK后，尚未terminal的retry应以cancelled结束",
+    "actual": [
+      {
+        "opcode": 5,
+        "status": 0,
+        "elapsedMs": 21,
+        "recovery": {
+          "state": "manual",
+          "reason": "identity-reverification-required",
+          "attempts": 1
+        },
+        "operations": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "status": 5,
+            "terminal": false,
+            "resultKnown": false,
+            "authorityTerminal": null,
+            "transactionSequence": 0,
+            "activationPhase": 1,
+            "cancelOutcome": "none"
+          }
+        ]
+      },
+      {
+        "opcode": 103,
+        "status": 0,
+        "elapsedMs": 23,
+        "recovery": {
+          "state": "manual",
+          "reason": "identity-reverification-required",
+          "attempts": 1
+        },
+        "operations": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "status": 5,
+            "terminal": false,
+            "resultKnown": false,
+            "authorityTerminal": null,
+            "transactionSequence": 0,
+            "activationPhase": 1,
+            "cancelOutcome": "none"
+          }
+        ]
+      },
+      {
+        "opcode": 100,
+        "status": 0,
+        "elapsedMs": 1024,
+        "recovery": {
+          "state": "manual",
+          "reason": "identity-reverification-required",
+          "attempts": 1
+        },
+        "operations": [
+          {
+            "operationId": 1,
+            "requestId": 100,
+            "status": 21,
+            "terminal": true,
+            "resultKnown": true,
+            "authorityTerminal": 21,
+            "transactionSequence": 0,
+            "activationPhase": 1,
+            "cancelOutcome": "none"
+          }
+        ]
+      }
+    ],
+    "nativeClient": {
+      "file": "build/phase06/06-05/ci-38137338723/android-arm32/build/phase06/recovery-fixtures/case-c9gq5G/client.log",
+      "sha256": "5d2674ada64fa1518570e509a8b22e53eb054d68a025f6a9840eb102955ff27d"
+    },
+    "interpretation": "真实产品竞争：23ms取消返回0，操作仍terminal=false；随后以AP_TRUST=21结束且reason仍identity-reverification-required。不得通过改变原20ms步骤或删除断言规避。"
+  },
+  "x64": {
+    "scope": "本地自有API26 SDK虚拟机，同96a49e4/input7761dd7c产物",
+    "tests": {
+      "tests": 115,
+      "passed": 115,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "cases": [
+        {
+          "id": "native-control-31-scenarios",
+          "assertions": 65
+        },
+        {
+          "id": "legacy-1-secure-two-native-PID",
+          "assertions": 16,
+          "hostPid": 4558,
+          "clientPid": 4570
+        },
+        {
+          "id": "legacy-2-secure-two-native-PID",
+          "assertions": 17,
+          "hostPid": 4595,
+          "clientPid": 4598
+        },
+        {
+          "id": "fec-golden",
+          "assertions": 1
+        },
+        {
+          "id": "rollover",
+          "assertions": 1
+        },
+        {
+          "id": "nonce-exhaustion",
+          "assertions": 1
+        },
+        {
+          "id": "high-sequence",
+          "assertions": 1
+        },
+        {
+          "id": "role-key-epoch",
+          "assertions": 1
+        },
+        {
+          "id": "unchanged-retransmission",
+          "assertions": 1
+        },
+        {
+          "id": "single-common",
+          "assertions": 3
+        },
+        {
+          "id": "highest-common",
+          "assertions": 3
+        },
+        {
+          "id": "remote-permutation",
+          "assertions": 3
+        },
+        {
+          "id": "local-permutation",
+          "assertions": 3
+        },
+        {
+          "id": "upgrade-remote",
+          "assertions": 3
+        },
+        {
+          "id": "upgrade-local",
+          "assertions": 3
+        },
+        {
+          "id": "empty-version-set",
+          "assertions": 3
+        },
+        {
+          "id": "truncated",
+          "assertions": 3
+        },
+        {
+          "id": "trailing-byte",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-required-message",
+          "assertions": 3
+        },
+        {
+          "id": "zero-version",
+          "assertions": 3
+        },
+        {
+          "id": "duplicate-version",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-optional-field",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-required-field",
+          "assertions": 3
+        },
+        {
+          "id": "duplicate-optional-field",
+          "assertions": 3
+        },
+        {
+          "id": "tlv-length-overflow",
+          "assertions": 3
+        },
+        {
+          "id": "declared-size-minus-one",
+          "assertions": 3
+        },
+        {
+          "id": "declared-size-plus-one",
+          "assertions": 3
+        },
+        {
+          "id": "AES-256-GCM-KAT",
+          "assertions": 2
+        },
+        {
+          "id": "multistream:real secure media: happy",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: loss-video1",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: cross-stream",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: wrong-direction",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: tamper-high-sequence",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: replay",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-happy",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-threshold",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-beyond",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-tamper-repair",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-cross-role",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-reorder-replay",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-late",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-queue",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-domain-tamper",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-burst",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-fresh-epoch",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-stale-epoch",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:real secure media: fec-contract",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: rollover",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: nonce-exhaustion",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: high-sequence",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: role-key-epoch",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: unchanged-retransmission",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:actual native media security: fec-golden",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:independent full-media parser boundaries and profile negotiation",
+          "assertions": 0
+        },
+        {
+          "id": "multistream:public fixed-width media options validate ABI, prefix length and bounded effective result",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-05 actual transport loss preserves bounded manual wait and same handle fresh retry",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-08 repeated stream recovery advances only that stream key",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-07 upstream cancel uses host transaction before commit",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-07 upstream cancel uses host transaction after commit",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-16 threshold neighboring requested retry windows 499",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-16 threshold neighboring requested retry windows 500",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-16 threshold neighboring requested retry windows 501",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows10 fec_percentage",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows10 lan_encryption_mode",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows10 wan_encryption_mode",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows10 packetsize",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows10 ping_timeout",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows10 port",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows11 fec_percentage",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows11 lan_encryption_mode",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows11 wan_encryption_mode",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows11 packetsize",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows11 ping_timeout",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:original setting contract helios-windows11 port",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-15 trace duration boundary 0",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-15 trace duration boundary 1",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-15 trace duration boundary 60000",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-15 trace duration boundary 60001",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-08 stream retry window boundary 0",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-08 stream retry window boundary 1",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-08 stream retry window boundary 3000",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-08 stream retry window boundary 3001",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-01 complete original NET case contract mapping retains all source cases",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-06 observer fresh authentication never gains controller permission",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-05 real refused fresh socket three attempts exhaust to manual",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-05 real refused fresh socket retry cancellation",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-07 entire upstream confirmation rechecks {\"permissions\":3}",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-07 entire upstream confirmation rechecks {\"devices\":0}",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-07 entire upstream confirmation rechecks {\"revision\":8}",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-06 occupied control lease explains conflict without stealing",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-15 trace stop extend cap and all trace modes redact sentinels",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-06 fresh TLS authentication rotates connection lease key and preserves persistent identity",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-07 upstream selected mask zero remains closed and a separate confirm starts mic camera",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-08 isolated stream fault preserves healthy video2 audio control and transient disappears",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-16 persistent action appears only after 500ms and then clears",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-13 all three old policy scopes reject while current synthetic envelopes contain no logged content",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-15 explicit trace reports monotonic remaining and expires",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-02 one complete confirmation runs all five synthetic streams through real sockets",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 six-dimensional capacity zero 0",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 six-dimensional capacity zero 1",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 six-dimensional capacity zero 2",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 six-dimensional capacity zero 3",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 six-dimensional capacity zero 4",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 six-dimensional capacity zero 5",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 two connections share all six budgets and never evict running owner",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-04 full multi-stream proposal is returned before any grant",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-02 confirm activates sustained video1 video2 audio without upstream",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-11 desktop preserves resolution",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-11 game preserves fps",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 encoder exhaustion policy 1",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-09 encoder exhaustion policy 2",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-11 absent video preference returns whole pending choice",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-12 camera reduces first and inadequate audio reserve explains refusal",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-03 protection cannot be disabled and Win10 HDR returns SDR reason",
+          "assertions": 0
+        },
+        {
+          "id": "recovery:D-04 cancellation expiry and retry-settings preserve running grant",
+          "assertions": 0
+        }
+      ],
+      "assertions": 160,
+      "assertionsScope": "initial native checks only; original Node assertions are independently executed but not individually counted"
+    },
+    "supplementary": [
+      {
+        "suite": "multistream",
+        "tests": 27,
+        "passed": 27,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      {
+        "suite": "recovery",
+        "tests": 60,
+        "passed": 60,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      }
+    ],
+    "record": {
+      "file": "build/phase06/06-05/android-x64-96a49e4-all-checks-cleanup-failure/protocol-run.json",
+      "sha256": "6da78e8a1669339131c452d87973696b16da56ae52f51c7ba65331ecd7b45079"
+    },
+    "exitCode": 1,
+    "error": "Owned emulator required forced termination",
+    "cleanup": {
+      "adbEmulatorStop": {
+        "file": "build/phase06/06-05/android-x64-96a49e4-all-checks-cleanup-failure/run-logs/adb-owned-emulator-stop.log",
+        "sha256": "b88ce4615b480b0a920d0c518a6c0dadc26d07aa9255f6abc32e30b1027c6510"
+      },
+      "ownedAvdDelete": {
+        "file": "build/phase06/06-05/android-x64-96a49e4-all-checks-cleanup-failure/run-logs/android-avd-delete.log",
+        "sha256": "9f140b6d43ff0c2ad88d9cf5e97fa80451ec77c3031eec76d0f12e56c36a2c97"
+      },
+      "interpretation": "115项全部通过；adb emu kill与自有AVD删除实际返回0；runner仍报forced termination。保留退出1，不冒充目标成功。"
+    }
+  },
+  "requirementsComplete": false,
+  "systemMutation": false
+}

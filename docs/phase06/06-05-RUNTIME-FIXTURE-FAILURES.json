@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T15:21:04.834Z",
+  "sourceCommit": "127f2a3ae5726508eae380009833bd3063a8c524",
+  "inputDigest": "12518317e144d8e2690ad5d2d7712d02a26eded795e731838c25325d2ec5cc88",
+  "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38150341610",
+  "tasksCompleted": 0,
+  "scope": "真实执行环境/fixture期限失败；不作为生产行为RED",
+  "failures": [
+    {
+      "target": "android-arm64",
+      "classification": "owned-guest-asynchronous-stop-observation",
+      "beforeNativeTests": true,
+      "expected": "stopped",
+      "actual": "stopping",
+      "fix": "保留终态断言，用30秒有界轮询观察异步ctl.stop完成；开发机无服务变更。"
+    },
+    {
+      "target": "macos-arm64",
+      "classification": "synthetic-full-exchange-fixture-deadline",
+      "suite": {
+        "tests": 27,
+        "passed": 26,
+        "failed": 1,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "case": "real secure media: fec-domain-tamper",
+      "durationMs": 2112.313291,
+      "hostPid": 36557,
+      "hostStatus": 11,
+      "hostControlProgress": 7,
+      "hostMicReceived": 8,
+      "hostCameraReceived": 8,
+      "contextDeadlineMs": 2000,
+      "interpretation": "八轮与双向所有接收完成，host等待末轮控制ACK时超过整个exchange配置的2秒，正确返回AP_TIMEOUT。不能据此认定25ms媒体或密码算法故障。fixture改用公开已验证最大连接期限3秒，仍按8轮、25ms窗口和原计数/摘要断言验收。"
+    }
+  ],
+  "raw": [
+    {
+      "file": "build/phase06/06-05/ci-38150341610/macos-arm64/phase06-macos-arm64-127f2a3ae5726508eae380009833bd3063a8c524/build/phase06/targets/macos-arm64/Testing/Temporary/LastTest.log",
+      "sha256": "f609e6baa924fd4f8b4f0df2390d0e1ef87bbbd5c1fbca3c2917efca9242f80e",
+      "bytes": 227978
+    },
+    {
+      "file": "build/phase06/06-05/ci-38150341610/macos-arm64/phase06-macos-arm64-127f2a3ae5726508eae380009833bd3063a8c524/build/phase06/targets/macos-arm64/run-logs/ctest.log",
+      "sha256": "759b2fb44ce9cb84448c46d0673696547134458a0671a97efef11f0175a6e686",
+      "bytes": 10943
+    },
+    {
+      "file": "build/phase06/06-05/ci-38150341610/macos-arm64/phase06-macos-arm64-127f2a3ae5726508eae380009833bd3063a8c524/build/phase06/targets/macos-arm64/protocol-target-Release.json",
+      "sha256": "7b9271ba41bca7e2641d1d1b45ce581800c233b631122be134a4716fbdf9efd0",
+      "bytes": 54960
+    },
+    {
+      "file": "build/phase06/06-05/android-arm64-127.log",
+      "sha256": "c433a06af0114320a0e2ead3605e11d569f1397838a07e19b9c1696e2d3a4983",
+      "bytes": 27810
+    }
+  ],
+  "limits": {
+    "productDeadlineRangeMs": [
+      1000,
+      3000
+    ],
+    "mediaWindowMs": 25,
+    "caseAssertions": "未删除/跳过/弱化",
+    "hostRestart": false
+  }
+}

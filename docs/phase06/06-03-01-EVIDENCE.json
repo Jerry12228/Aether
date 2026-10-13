@@ -1,0 +1,835 @@
+{
+  "schema": 1,
+  "scope": "Windows x64 synthetic authority/media；真实loopback TLS/SRTP；无系统变更",
+  "tests": 18,
+  "fail": 0,
+  "skip": 0,
+  "controlRegression": {
+    "scenarios": 27,
+    "ctest": 1,
+    "elapsedSeconds": 19.89
+  },
+  "legacy": {
+    "tests": 46,
+    "fail": 0,
+    "elapsedMs": 14440.4485
+  },
+  "runs": [
+    {
+      "dir": "build/phase06/recovery-fixtures/case-4m02dG",
+      "clientPid": 56756,
+      "hostPid": 14220,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        },
+        {
+          "opcode": 2,
+          "status": 0,
+          "grants": 1,
+          "sinkPackets": 12,
+          "mediaMask": 31
+        },
+        {
+          "opcode": 100,
+          "status": 0,
+          "grants": 1,
+          "sinkPackets": 21,
+          "mediaMask": 31
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "5813182fcb0a8e546560fb1a91940eaecbd154b684cbb1089ef7d74169934055"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "d9979a0540a9dbebfb9ca731a20c0c145031e11893fd94fd69afa4ffde86ecf3"
+        },
+        {
+          "path": "host.log",
+          "sha256": "aa1253ad878f0980e5aec486e756066aface0598b42ce4abe7bc0fedfeede243"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-n9Xvqn",
+      "clientPid": 53024,
+      "hostPid": 59264,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 5,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "c127b404771838a5ae009f8892279cacd9c839b24be74f3ea4503ff586e18c93"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "86d80da015943274e3c9536a93aa634cb5eecd7ac25a8e544633ae55e07e517e"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "b02ff0dfd6bb6aba2b08b46f7d39bd2c5754a93a557ea36839a1f8b22c50f042"
+        },
+        {
+          "path": "host.log",
+          "sha256": "ee6f268d14e76d7b5cc52bfa080663a3a42e20c4a90962810a13c7302456fccb"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-c3C9ug",
+      "clientPid": 69280,
+      "hostPid": 69216,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 5,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "fca627749337a069c8db1c97d0609ad68bcea34e172a69808e32d359f10f5e6c"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "86d80da015943274e3c9536a93aa634cb5eecd7ac25a8e544633ae55e07e517e"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "b02ff0dfd6bb6aba2b08b46f7d39bd2c5754a93a557ea36839a1f8b22c50f042"
+        },
+        {
+          "path": "host.log",
+          "sha256": "2c43ae86e87a6571fd4b144d03cc2441e5fdab45b737e93834217cfd8b565de5"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-2wnJeq",
+      "clientPid": 69532,
+      "hostPid": 69468,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 5,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "d47740e79a7835177330425fbf5fee50fab180ed53b1ca5b60848ff3681b2e13"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "86d80da015943274e3c9536a93aa634cb5eecd7ac25a8e544633ae55e07e517e"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "b02ff0dfd6bb6aba2b08b46f7d39bd2c5754a93a557ea36839a1f8b22c50f042"
+        },
+        {
+          "path": "host.log",
+          "sha256": "c7dfcae5cc684d95c6b7224878271996af5eca37cc88fbba4811231c4f2f1efd"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-lbyRJM",
+      "clientPid": 68624,
+      "hostPid": 25272,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 5,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "6c8389dc282cfe3d3bf6ce54865acc1f06dfe05f197811f470ac202c8e7e8c86"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "86d80da015943274e3c9536a93aa634cb5eecd7ac25a8e544633ae55e07e517e"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "b362593eab8611818971dc9e91b736e99bdb062167227e4b7d3554c47203af32"
+        },
+        {
+          "path": "host.log",
+          "sha256": "a58c232dc4ff94c3cc2c93329698f4ea8a478dff72006a5ba7d0172007ed62c1"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-niNWsK",
+      "clientPid": 67828,
+      "hostPid": 53836,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 5,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "310df46fea02bc2baa3a2ff70d37b9233bcdda06d0e843b2d8afcc223b261793"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "86d80da015943274e3c9536a93aa634cb5eecd7ac25a8e544633ae55e07e517e"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "b362593eab8611818971dc9e91b736e99bdb062167227e4b7d3554c47203af32"
+        },
+        {
+          "path": "host.log",
+          "sha256": "700db5b6685801cf5dd944b8e7bb304e81d5f6681a06f739ec23ba2b0e40f350"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-J1QD31",
+      "clientPid": 68988,
+      "hostPid": 68656,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 5,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "bc8b0bfd9f5f1c57209c9dd3f4bdb976658630fe3164502aa523a69bdaaabd2c"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "86d80da015943274e3c9536a93aa634cb5eecd7ac25a8e544633ae55e07e517e"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "1e585f6870d4e294e34aa4f88f49733b7d6cb58938549521ab6cb044a97eeeda"
+        },
+        {
+          "path": "host.log",
+          "sha256": "229be34db71c568a6c696e1b47dd3e4aa6cd091c83ad53b9faad6de0906f5c29"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-Oz2anW",
+      "clientPid": 69012,
+      "hostPid": 68848,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "cc9e551165f08ac65db2130d82df00c2015dc5003cfae5042d2180d93ee53fa9"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "ed5f54d5e7dedd731694130083c25449213b6db5f3d7b5ccad3141b4b0037f51"
+        },
+        {
+          "path": "host.log",
+          "sha256": "18a9809849dcf0fa94fdaae3a2ab2292410d654b86a890ea8fc77e2c254747b8"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-NnMWfG",
+      "clientPid": 69312,
+      "hostPid": 69276,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        },
+        {
+          "opcode": 2,
+          "status": 0,
+          "grants": 1,
+          "sinkPackets": 18,
+          "mediaMask": 7
+        },
+        {
+          "opcode": 100,
+          "status": 0,
+          "grants": 1,
+          "sinkPackets": 33,
+          "mediaMask": 7
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "2751d77c2358b953cb08ac02fb93a9fc1d9792a057520e89877d45774ba8f68a"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "8d910603fe5a990051241f106ead6620efed265e56400fc070648771cb4dac5f"
+        },
+        {
+          "path": "host.log",
+          "sha256": "b720011a4a3c140f64d17c7da370579e8be918653c6e000e4532d564d5b1fadf"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-u0GPlb",
+      "clientPid": 69532,
+      "hostPid": 62468,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "4e940d9032666e6801710b251348976d2cee3bfd4b1ce089813507e5775cbf80"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "cc9e551165f08ac65db2130d82df00c2015dc5003cfae5042d2180d93ee53fa9"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "fd1edd799881506893450648dfc7221d7bd0f46cc827c8274c80d6c146bb9928"
+        },
+        {
+          "path": "host.log",
+          "sha256": "c22806e693852777a104e0bc4649a5ec7a19f6df8803ffbb2bd44aa0c1f9dd90"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-Rhmsxl",
+      "clientPid": 67472,
+      "hostPid": 69172,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "4e940d9032666e6801710b251348976d2cee3bfd4b1ce089813507e5775cbf80"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "9078e11f2909916465b11772178cb7f95c22b06a2facdee4585473b7cffa723b"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "eef470ac51c1700da1b4dfbfa4cf4fb1bed5b5cbaebfc945568ca27ff1269de7"
+        },
+        {
+          "path": "host.log",
+          "sha256": "a5254653ca1427f6b6303459a75237babd69373287c625ca7ce74862ee80f406"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-ISx7Ug",
+      "clientPid": 60948,
+      "hostPid": 67828,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "924d9b31f0ee09b0374cf5e6afdfc0eeb78997b29aa14c7c7c2331e05df03895"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "9398b9c147329dfd360a194f794564ce190792f9fe54962ce3a5a3664d219a8e"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "e825b0c431f4c0c0cd453abdfafabdce87042bd72300add12a38876f0844a1b1"
+        },
+        {
+          "path": "host.log",
+          "sha256": "b1aafcc713c5bb0790bee9f840bab7cff50e17b66f8db1b8d2a58010f3ea7117"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-HQp1uQ",
+      "clientPid": 67252,
+      "hostPid": 468,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 5,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "924d9b31f0ee09b0374cf5e6afdfc0eeb78997b29aa14c7c7c2331e05df03895"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "6146f1fdd09270fe03613a427833e96ff6c4fa78c68d66676a4e70602159d5d3"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "c5d44196565ea7a946a114bcefa8ac462e4e9ab7100e159b5155a5318e01208a"
+        },
+        {
+          "path": "host.log",
+          "sha256": "4f990ba5ef90d189a9f869a6a5af31e415aaa125230403a8a5071196583ca03b"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-JFpT2F",
+      "clientPid": 55052,
+      "hostPid": 68596,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 25,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "efb3cba3f469fa6e358b240271ef1e6c62f9de0c20b7b7af9585d578ff7d8b18"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "13d1129fca20807f187abfa90f7a4ea1ffd8d56319bfe70f52eb94bf7a10c8b2"
+        },
+        {
+          "path": "host.log",
+          "sha256": "d5fc465151e20f7c34318ef92096e4d866b3d0b598e0ec3007b2a50fd36eeb19"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-RxErsl",
+      "clientPid": 60916,
+      "hostPid": 68708,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "659b5e4c105c027bda3e14b4a3b4af4c46ff3e8feac61fc3a0a4f71bd2530f33"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "1fdb90999fd6c8bbecac6531d64019d24e2d377ceb69ebc2e0ccc14ca796ec90"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "e82606d5755bf34ae4bebd0344df0601beb1be39fa26321ca126999a4791828f"
+        },
+        {
+          "path": "host.log",
+          "sha256": "0b461bebdcb00f4a5a4dc0167b67a6a8caa4b32c634f3bc99a93388e6aaa992a"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-1Evkit",
+      "clientPid": 69008,
+      "hostPid": 68820,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 5,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "bc68a131b59bc7d19d7baf9aeb2b351338e58307e661f8145981b324110079e6"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "cc9e551165f08ac65db2130d82df00c2015dc5003cfae5042d2180d93ee53fa9"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "4c11dcca24749137749200b94f87cb449fb3fcf45e58f7186e94e486e4d0b5a4"
+        },
+        {
+          "path": "host.log",
+          "sha256": "5305a9a91b9eda29dc6845e3dab26dd80855214100af6896a05847de3602f854"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-59V1iU",
+      "clientPid": 61412,
+      "hostPid": 69340,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "401e902a6320198cfff179cec56ea79bd97c87966f824e4707f0e92ca4a8fc69"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "a017008b211b15ac4eea10ea82478de1375c08e69b2abb76f66726b8031293df"
+        },
+        {
+          "path": "host.log",
+          "sha256": "afb2ead3f7188b3fa094acdda14ea5b2e933d11a13bb29e6ecfbbf5084449ba1"
+        }
+      ]
+    },
+    {
+      "dir": "build/phase06/recovery-fixtures/case-MEjkzJ",
+      "clientPid": 53136,
+      "hostPid": 69044,
+      "steps": [
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 0,
+          "sinkPackets": 0,
+          "mediaMask": 0
+        },
+        {
+          "opcode": 2,
+          "status": 0,
+          "grants": 1,
+          "sinkPackets": 6,
+          "mediaMask": 7
+        },
+        {
+          "opcode": 1,
+          "status": 0,
+          "grants": 1,
+          "sinkPackets": 30,
+          "mediaMask": 7
+        },
+        {
+          "opcode": 2,
+          "status": 29,
+          "grants": 1,
+          "sinkPackets": 51,
+          "mediaMask": 7
+        },
+        {
+          "opcode": 4,
+          "status": 0,
+          "grants": 1,
+          "sinkPackets": 75,
+          "mediaMask": 7
+        },
+        {
+          "opcode": 3,
+          "status": 28,
+          "grants": 1,
+          "sinkPackets": 96,
+          "mediaMask": 7
+        },
+        {
+          "opcode": 100,
+          "status": 0,
+          "grants": 1,
+          "sinkPackets": 102,
+          "mediaMask": 7
+        }
+      ],
+      "inputs": [
+        {
+          "path": "provider.bin",
+          "sha256": "066bdad45212d756e1e57b01d9f25236e83fc8819defe37c047224f59384783e"
+        },
+        {
+          "path": "scenario.bin",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "actions.bin",
+          "sha256": "8e5ec5d6c49b1ac386c3d3ff41c4a9e5b2c982be889cb47d6676feaeb6d3bfc9"
+        }
+      ],
+      "rawLogs": [
+        {
+          "path": "client.log",
+          "sha256": "e624655b41284fb47b58cb5a2346884ce474a200f3f1457f04523ab54bde90de"
+        },
+        {
+          "path": "host.log",
+          "sha256": "4e2cc4d5212498bc757383f10c2a6f8945a10b7a2c1fea5e3f7259ab056b0e57"
+        }
+      ]
+    }
+  ],
+  "logs": [
+    {
+      "path": "build/phase06/06-03-01-green-recorded.log",
+      "sha256": "7a8bfaa57d0426ce536a4f6395218ed0184122ad73805f0eb7b4ca76f65a1e1c"
+    },
+    {
+      "path": "build/phase06/06-03-01-control-regression.log",
+      "sha256": "72d965d4987036d9575dc50ee24332eab9ca2135f54082a93d2f5e040a61d4b1"
+    },
+    {
+      "path": "build/phase06/06-03-01-legacy.log",
+      "sha256": "0e44d49a6fff3831501e41182e4d1acd3c113463ff58ad0906cba72d183fb4f0"
+    }
+  ],
+  "sources": [
+    {
+      "path": "native/protocol/CMakeLists.txt",
+      "sha256": "8dc8342cd7a01d370081870bda38cd0829ae92d55e74d75cab3dd39b835da0f7"
+    },
+    {
+      "path": "native/protocol/src/control.cpp",
+      "sha256": "f8ad5216cdb0eebaceb6e223479dea36fd5f44aed7dc6ebc1f876b7fcc0eb0ea"
+    },
+    {
+      "path": "native/protocol/src/admission.cpp",
+      "sha256": "dd8ba0a3c2b15d1f7b2a738406d5b24ce84f466d930a55129ed49f902035ea17"
+    },
+    {
+      "path": "native/protocol/src/internal.h",
+      "sha256": "7a6efe3b6a09037144d789c679726f92f202bdf8bfa06923c737f7eb2abf26b1"
+    },
+    {
+      "path": "native/protocol/src/media_packetization.cpp",
+      "sha256": "77ed54be512b828f88de7ff370d34e8a52be18328ffdeb479f9042d1446b02cb"
+    },
+    {
+      "path": "native/protocol/tools/tracer.cpp",
+      "sha256": "ae006d0447d6c0e8fa505a0d86310f4eea052bf6aad77ead134bb680200d87a2"
+    },
+    {
+      "path": "tests/native/protocol_control.cpp",
+      "sha256": "1c3976fa58d74e8c42f008a66f024f3bc47c35fe9279268ffa6be621b0a01ac5"
+    },
+    {
+      "path": "tests/protocol-recovery.test.cjs",
+      "sha256": "e33cafcedba20f75f9b3132323711da88019acae46311a626a972ae037158ce6"
+    }
+  ],
+  "binaries": [
+    {
+      "path": "build/phase06/windows-x64/Debug/aether_protocol.dll",
+      "sha256": "12d4a12b0883431869714da142d1932d46e9fc15f0c67ace239d3b49ee691bc1"
+    },
+    {
+      "path": "build/phase06/windows-x64/Debug/aether_protocol_tracer.exe",
+      "sha256": "15b4a173a9eb2c731464a7aadfe9d51e043b23fc9f0644d5879f7eaea0a0f6ed"
+    },
+    {
+      "path": "build/phase06/windows-x64/Debug/aether_protocol_control_host.exe",
+      "sha256": "1c35ccfeab0eac3e919649bdd108163f3ac300ababc5b60f9cd676f41ce99a7e"
+    }
+  ]
+}

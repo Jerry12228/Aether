@@ -1,0 +1,1130 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-13T07:31:44.740Z",
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "inputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "authorization": {
+    "statement": "自行推进完成6",
+    "prior": "你自行验证，包括之后项",
+    "mode": "autonomous-scoped-closeout",
+    "fabricatedHumanApproval": false
+  },
+  "scope": "Phase6 synthetic protocol prototype",
+  "originalProbe": {
+    "file": ".planning/phases/06-gamestream/06-EDGE-PROBE.json",
+    "sha256": "ed57512e45af7020e7a9cf929ccd59fb9b96e2c126412ced12c8fbc705d7e2db"
+  },
+  "originalTargets": {
+    "file": "docs/phase06/TARGETS.json",
+    "sha256": "03fe5086eb1d15701c149f2c15a31da49dcd41fb0c60f09ae7c177d62d68f0dc"
+  },
+  "classifier": {
+    "explanation": "English-only shape cues did not classify the Chinese input",
+    "originalShapeCount": 0,
+    "requirements": [
+      {
+        "id": "NET-01",
+        "text": "双端使用基于 NVIDIA GameStream 重构扩展的协议，协商 Aether 版本与能力，使用 instance/display/stream ID、租约 epoch 和明确错误码。"
+      },
+      {
+        "id": "NET-02",
+        "text": "维护者能查阅 GameStream 基线与扩展映射、通道/安全重构 ADR，以及双向媒体、多流、丢包原型和五平台目标构建/可运行的自动化证据；Apple 实机验证另列 TODO。"
+      },
+      {
+        "id": "NET-03",
+        "text": "连接具有标准安全机制保护的可靠控制与实时媒体通道，错误版本/超限消息被拒绝。"
+      }
+    ],
+    "module": {
+      "file": "build/phase06/closeout/gsd-edge-probe.cjs",
+      "sha256": "9f1a29bfd4c4cbce03eb124faf6f1ee851923e35e94027f7f8aadcb90173dea3"
+    },
+    "runtime": "@opengsd/gsd-core 1.15.0",
+    "researchOnly": true
+  },
+  "historicalResolution": {
+    "items": [
+      {
+        "requirement_id": "NET-01",
+        "category": "unclassified",
+        "status": "dismissed",
+        "verification": null,
+        "resolution": null,
+        "reason": "官方分类器仅有英文word-boundary shape cues，原中文需求无text_en/shapes导致未命中；这不是已定义的产品失败假设。原信号经审查退役，后续显式合同分类和具名实际证据完整接续，原件保留。",
+        "probe": "unclassified — review manually"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "unclassified",
+        "status": "dismissed",
+        "verification": null,
+        "resolution": null,
+        "reason": "官方分类器仅有英文word-boundary shape cues，原中文需求无text_en/shapes导致未命中；这不是已定义的产品失败假设。原信号经审查退役，后续显式合同分类和具名实际证据完整接续，原件保留。",
+        "probe": "unclassified — review manually"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "unclassified",
+        "status": "dismissed",
+        "verification": null,
+        "resolution": null,
+        "reason": "官方分类器仅有英文word-boundary shape cues，原中文需求无text_en/shapes导致未命中；这不是已定义的产品失败假设。原信号经审查退役，后续显式合同分类和具名实际证据完整接续，原件保留。",
+        "probe": "unclassified — review manually"
+      }
+    ],
+    "coverage": {
+      "applicable": 3,
+      "resolved": 3,
+      "unresolved": 0,
+      "unclassified": 3,
+      "byVerification": {
+        "explicit": 0,
+        "backstop": 0
+      }
+    }
+  },
+  "definitions": [
+    {
+      "requirement": "NET-01",
+      "category": "boundary",
+      "trigger": "控制帧或媒体参数达到界限或相邻越界值",
+      "expected": "分配/grant前拒绝越界，合法界限按固定版本合同接受",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/CONTROL-CONTRACT.md",
+          "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+          "anchor": "HostServices"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "oversized control frame is rejected before allocation/grant"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "public fixed-width media options validate ABI, prefix length and bounded effective result"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-01",
+      "category": "adjacency",
+      "trigger": "版本重复或流身份域相邻/重叠",
+      "expected": "重复版本拒绝，逐stream/direction/key身份域隔离，不误用另一流身份",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/CONTROL-CONTRACT.md",
+          "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+          "anchor": "HostServices"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "duplicate versions are rejected"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "real secure media: cross-stream"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-01",
+      "category": "empty",
+      "trigger": "版本交集为空或必需字段/authority缺失",
+      "expected": "解释升级或权限/字段拒绝，零grant/sink，不推定默认支持",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/CONTROL-CONTRACT.md",
+          "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+          "anchor": "HostServices"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "no common version explains the older peer"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "two-PID-real-DLL-no-provider"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-01",
+      "category": "encoding",
+      "trigger": "独立wire向量的endian/长度/schema与真实解析器比较",
+      "expected": "采用显式编码及固定宽度，畸形/未知必需字段拒绝，不memcpy原生内存映像",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/CONTROL-CONTRACT.md",
+          "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+          "anchor": "HostServices"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "independent golden vectors and source lock exist and are consumed by the native parser"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-01",
+      "category": "ordering",
+      "trigger": "相同版本集合顺序变化或乱序/重放操作",
+      "expected": "选择保持确定性，操作回执和媒体重放按协议顺序约束处理",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/CONTROL-CONTRACT.md",
+          "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+          "anchor": "HostServices"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "version set ordering leaves selection unchanged"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "real secure media: replay"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-01",
+      "category": "precision",
+      "trigger": "公开媒体选项前缀/ABI/整数上限及资源算术",
+      "expected": "有界有效结果，checked arithmetic，无溢出转小值后授权",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/CONTROL-CONTRACT.md",
+          "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+          "anchor": "HostServices"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "public fixed-width media options validate ABI, prefix length and bounded effective result"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "D-11 desktop preserves resolution"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-01",
+      "category": "idempotency",
+      "trigger": "确认/取消/READY或停止重复调用",
+      "expected": "同绑定不重复预算/激活/原操作terminal，ACK/stop保留生命周期安全",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/CONTROL-CONTRACT.md",
+          "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+          "anchor": "HostServices"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "one-terminal-per-accepted-confirm"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "provider-one-commit-one-activation"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-01",
+      "category": "concurrency",
+      "trigger": "多个连接并发预算/恢复/停止与当前owner竞争",
+      "expected": "同host事务域不挤占原grant或抢控制租约，只释放自有资源",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/CONTROL-CONTRACT.md",
+          "sha256": "fe274627fbb2b1fec0b6941151b0206f29946c6353ef1254e4b4e1f6bd7776b9",
+          "anchor": "HostServices"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "D-09 two connections share all six budgets and never evict running owner"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "host-releases-only-first-owned-budget"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-02",
+      "category": "boundary",
+      "trigger": "构建/运行证据发生零计数或阈值错误",
+      "expected": "实际测试计数/运行时间必须为正且无fail/skip；device build单列不得伪造runtime",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/EVIDENCE.md",
+          "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4",
+          "anchor": "精确输入和实际矩阵"
+        },
+        {
+          "file": "scripts/verify-protocol.cjs",
+          "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de",
+          "anchor": "validateRuntime"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/uat-20261013/uat-independent-evidence.log",
+          "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00",
+          "case": "known-bad counts rejected: zero tests"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-02",
+      "category": "adjacency",
+      "trigger": "构建/运行证据发生目标SDK/ABI混用",
+      "expected": "目标arch/SDK身份精确对应，不能把device与sim或相邻ABI产物混用",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/EVIDENCE.md",
+          "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4",
+          "anchor": "精确输入和实际矩阵"
+        },
+        {
+          "file": "scripts/verify-protocol.cjs",
+          "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de",
+          "anchor": "validateRuntime"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/uat-20261013/uat-independent-evidence.log",
+          "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00",
+          "case": "known-bad target identity rejected: sdk"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-02",
+      "category": "empty",
+      "trigger": "构建/运行证据发生必需产物缺失",
+      "expected": "缺任一必需目标/日志/具名用例则证据拒绝，Apple物理TODO不豁免构建",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/EVIDENCE.md",
+          "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4",
+          "anchor": "精确输入和实际矩阵"
+        },
+        {
+          "file": "scripts/verify-protocol.cjs",
+          "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de",
+          "anchor": "validateRuntime"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/uat-20261013/uat-independent-evidence.log",
+          "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00",
+          "case": "required target absence rejected: ios-arm64-iphoneos"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-02",
+      "category": "encoding",
+      "trigger": "构建/运行证据发生实际二进制编码与元数据不符",
+      "expected": "独立读PE/ELF/Mach-O实际CPU与CTest/Node/XCTest原计数/方法名，hash按原bytes",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/EVIDENCE.md",
+          "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4",
+          "anchor": "精确输入和实际矩阵"
+        },
+        {
+          "file": "scripts/verify-protocol.cjs",
+          "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de",
+          "anchor": "validateRuntime"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/uat-20261013/uat-independent-evidence.log",
+          "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00",
+          "case": "binary parser reads ELF CPU bytes independently of reports"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-02",
+      "category": "ordering",
+      "trigger": "构建/运行证据发生重复或漏掉具名用例",
+      "expected": "具名case唯一，目标集合完整且按身份比较，不靠展示排序漏掉/重复目标",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/EVIDENCE.md",
+          "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4",
+          "anchor": "精确输入和实际矩阵"
+        },
+        {
+          "file": "scripts/verify-protocol.cjs",
+          "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de",
+          "anchor": "validateRuntime"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/uat-20261013/uat-independent-evidence.log",
+          "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00",
+          "case": "duplicate Node case names rejected"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-02",
+      "category": "precision",
+      "trigger": "构建/运行证据发生计数分母或时间单位错误",
+      "expected": "计数/分母/耗时按安全整数和实际单位核对，错误分母及零耗时拒绝",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/EVIDENCE.md",
+          "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4",
+          "anchor": "精确输入和实际矩阵"
+        },
+        {
+          "file": "scripts/verify-protocol.cjs",
+          "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de",
+          "anchor": "validateRuntime"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/uat-20261013/uat-independent-evidence.log",
+          "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00",
+          "case": "known-bad counts rejected: wrong denominator"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-02",
+      "category": "idempotency",
+      "trigger": "构建/运行证据发生重复审计时材料变化",
+      "expected": "重复审计只接受相同归档bytes/hash；新文档提交不重标产品sourceCommit",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/EVIDENCE.md",
+          "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4",
+          "anchor": "精确输入和实际矩阵"
+        },
+        {
+          "file": "scripts/verify-protocol.cjs",
+          "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de",
+          "anchor": "validateRuntime"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/uat-20261013/uat-independent-evidence.log",
+          "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00",
+          "case": "tampered retained log rejected against independently bound bytes"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-02",
+      "category": "concurrency",
+      "trigger": "构建/运行证据发生完整CI有失败/取消目标",
+      "expected": "完整CI各job须success，取消/部分成功/未退出自有guest不能关闭矩阵",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/EVIDENCE.md",
+          "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4",
+          "anchor": "精确输入和实际矩阵"
+        },
+        {
+          "file": "scripts/verify-protocol.cjs",
+          "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de",
+          "anchor": "validateRuntime"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/uat-20261013/uat-independent-evidence.log",
+          "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00",
+          "case": "all actual CI jobs must succeed; unit fixture makes no CI claim"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-03",
+      "category": "boundary",
+      "trigger": "控制帧或媒体参数达到界限或相邻越界值",
+      "expected": "完整媒体解析在packet/frame/shard/profile界限及相邻越界时按合同接受或拒绝，保护失败不产生grant",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/MEDIA-CONTRACT.md",
+          "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+          "anchor": "SRTP"
+        },
+        {
+          "file": "native/protocol/src/secure_transport.cpp",
+          "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6",
+          "anchor": "SSL_get_verify_result"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "independent full-media parser boundaries and profile negotiation"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-03",
+      "category": "adjacency",
+      "trigger": "版本重复或流身份域相邻/重叠",
+      "expected": "来自另一stream的受保护packet不能进入当前流sink或修复域",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/MEDIA-CONTRACT.md",
+          "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+          "anchor": "SRTP"
+        },
+        {
+          "file": "native/protocol/src/secure_transport.cpp",
+          "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6",
+          "anchor": "SSL_get_verify_result"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "real secure media: cross-stream"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-03",
+      "category": "empty",
+      "trigger": "版本交集为空或必需字段/authority缺失",
+      "expected": "未获读权限的已认证请求不能获得媒体grant",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/MEDIA-CONTRACT.md",
+          "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+          "anchor": "SRTP"
+        },
+        {
+          "file": "native/protocol/src/secure_transport.cpp",
+          "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6",
+          "anchor": "SSL_get_verify_result"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "read permission denial cannot grant a stream"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-03",
+      "category": "encoding",
+      "trigger": "独立wire向量的endian/长度/schema与真实解析器比较",
+      "expected": "固定OpenSSL实际AES-256-GCM结果等于独立已知答案向量的ciphertext/tag",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/MEDIA-CONTRACT.md",
+          "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+          "anchor": "SRTP"
+        },
+        {
+          "file": "native/protocol/src/secure_transport.cpp",
+          "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6",
+          "anchor": "SSL_get_verify_result"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "actual pinned native crypto matches independent AES-256-GCM known answer"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-03",
+      "category": "ordering",
+      "trigger": "相同版本集合顺序变化或乱序/重放操作",
+      "expected": "重放受保护packet被拒绝，不能作为新的有效媒体消费",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/MEDIA-CONTRACT.md",
+          "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+          "anchor": "SRTP"
+        },
+        {
+          "file": "native/protocol/src/secure_transport.cpp",
+          "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6",
+          "anchor": "SSL_get_verify_result"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "real secure media: replay"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-03",
+      "category": "precision",
+      "trigger": "公开媒体选项前缀/ABI/整数上限及资源算术",
+      "expected": "nonce/序号耗尽在溢出前拒绝继续使用同key，不能静默wrap重用nonce",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/MEDIA-CONTRACT.md",
+          "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+          "anchor": "SRTP"
+        },
+        {
+          "file": "native/protocol/src/secure_transport.cpp",
+          "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6",
+          "anchor": "SSL_get_verify_result"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "actual native media security: nonce-exhaustion"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-03",
+      "category": "idempotency",
+      "trigger": "确认/取消/READY或停止重复调用",
+      "expected": "同一受保护packet的合法重传沿既有不可变密文，不重新用同nonce产生不同密文",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/MEDIA-CONTRACT.md",
+          "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+          "anchor": "SRTP"
+        },
+        {
+          "file": "native/protocol/src/secure_transport.cpp",
+          "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6",
+          "anchor": "SSL_get_verify_result"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "actual native media security: unchanged-retransmission"
+        }
+      ]
+    },
+    {
+      "requirement": "NET-03",
+      "category": "concurrency",
+      "trigger": "多个连接并发预算/恢复/停止与当前owner竞争",
+      "expected": "已有控制租约占用时fresh-auth恢复解释冲突，不抢占或产生第二控制租约",
+      "verification": "explicit",
+      "contracts": [
+        {
+          "file": "docs/phase06/MEDIA-CONTRACT.md",
+          "sha256": "97363e917d8382b4ae0b0481b63f99f28daadcbb5dda4a2f6b2fcf73bac4320a",
+          "anchor": "SRTP"
+        },
+        {
+          "file": "native/protocol/src/secure_transport.cpp",
+          "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6",
+          "anchor": "SSL_get_verify_result"
+        }
+      ],
+      "observations": [
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693",
+          "case": "D-06 occupied control lease explains conflict without stealing"
+        }
+      ]
+    }
+  ],
+  "canonical": {
+    "items": [
+      {
+        "requirement_id": "NET-01",
+        "category": "boundary",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "分配/grant前拒绝越界，合法界限按固定版本合同接受",
+        "reason": null,
+        "probe": "What happens exactly at each min/max/threshold — and one step either side?"
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "adjacency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "重复版本拒绝，逐stream/direction/key身份域隔离，不误用另一流身份",
+        "reason": null,
+        "probe": "When two things are exactly equal or just touch, do they merge, collide, or separate?"
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "empty",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "解释升级或权限/字段拒绝，零grant/sink，不推定默认支持",
+        "reason": null,
+        "probe": "What is the result for empty, single-element, or null input?"
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "encoding",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "采用显式编码及固定宽度，畸形/未知必需字段拒绝，不memcpy原生内存映像",
+        "reason": null,
+        "probe": "Whose definition of length/equality applies — bytes, code points, grapheme clusters, or normalized form?"
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "ordering",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "选择保持确定性，操作回执和媒体重放按协议顺序约束处理",
+        "reason": null,
+        "probe": "When elements compare equal, is output order specified and stable?"
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "precision",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "有界有效结果，checked arithmetic，无溢出转小值后授权",
+        "reason": null,
+        "probe": "Where can precision loss, overflow, or rounding/tie-breaking occur — and what is the exact contract (e.g. half-up vs half-to-even, ceil/floor/truncate)?"
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "idempotency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "同绑定不重复预算/激活/原操作terminal，ACK/stop保留生命周期安全",
+        "reason": null,
+        "probe": "What happens if this runs twice on the same input?"
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "concurrency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "同host事务域不挤占原grant或抢控制租约，只释放自有资源",
+        "reason": null,
+        "probe": "If interrupted or run in parallel, what is guaranteed?"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "boundary",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "实际测试计数/运行时间必须为正且无fail/skip；device build单列不得伪造runtime",
+        "reason": null,
+        "probe": "What happens exactly at each min/max/threshold — and one step either side?"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "adjacency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "目标arch/SDK身份精确对应，不能把device与sim或相邻ABI产物混用",
+        "reason": null,
+        "probe": "When two things are exactly equal or just touch, do they merge, collide, or separate?"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "empty",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "缺任一必需目标/日志/具名用例则证据拒绝，Apple物理TODO不豁免构建",
+        "reason": null,
+        "probe": "What is the result for empty, single-element, or null input?"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "encoding",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "独立读PE/ELF/Mach-O实际CPU与CTest/Node/XCTest原计数/方法名，hash按原bytes",
+        "reason": null,
+        "probe": "Whose definition of length/equality applies — bytes, code points, grapheme clusters, or normalized form?"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "ordering",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "具名case唯一，目标集合完整且按身份比较，不靠展示排序漏掉/重复目标",
+        "reason": null,
+        "probe": "When elements compare equal, is output order specified and stable?"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "precision",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "计数/分母/耗时按安全整数和实际单位核对，错误分母及零耗时拒绝",
+        "reason": null,
+        "probe": "Where can precision loss, overflow, or rounding/tie-breaking occur — and what is the exact contract (e.g. half-up vs half-to-even, ceil/floor/truncate)?"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "idempotency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "重复审计只接受相同归档bytes/hash；新文档提交不重标产品sourceCommit",
+        "reason": null,
+        "probe": "What happens if this runs twice on the same input?"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "concurrency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "完整CI各job须success，取消/部分成功/未退出自有guest不能关闭矩阵",
+        "reason": null,
+        "probe": "If interrupted or run in parallel, what is guaranteed?"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "boundary",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "完整媒体解析在packet/frame/shard/profile界限及相邻越界时按合同接受或拒绝，保护失败不产生grant",
+        "reason": null,
+        "probe": "What happens exactly at each min/max/threshold — and one step either side?"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "adjacency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "来自另一stream的受保护packet不能进入当前流sink或修复域",
+        "reason": null,
+        "probe": "When two things are exactly equal or just touch, do they merge, collide, or separate?"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "empty",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "未获读权限的已认证请求不能获得媒体grant",
+        "reason": null,
+        "probe": "What is the result for empty, single-element, or null input?"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "encoding",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "固定OpenSSL实际AES-256-GCM结果等于独立已知答案向量的ciphertext/tag",
+        "reason": null,
+        "probe": "Whose definition of length/equality applies — bytes, code points, grapheme clusters, or normalized form?"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "ordering",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "重放受保护packet被拒绝，不能作为新的有效媒体消费",
+        "reason": null,
+        "probe": "When elements compare equal, is output order specified and stable?"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "precision",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "nonce/序号耗尽在溢出前拒绝继续使用同key，不能静默wrap重用nonce",
+        "reason": null,
+        "probe": "Where can precision loss, overflow, or rounding/tie-breaking occur — and what is the exact contract (e.g. half-up vs half-to-even, ceil/floor/truncate)?"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "idempotency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "同一受保护packet的合法重传沿既有不可变密文，不重新用同nonce产生不同密文",
+        "reason": null,
+        "probe": "What happens if this runs twice on the same input?"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "concurrency",
+        "status": "resolved",
+        "verification": "explicit",
+        "resolution": "已有控制租约占用时fresh-auth恢复解释冲突，不抢占或产生第二控制租约",
+        "reason": null,
+        "probe": "If interrupted or run in parallel, what is guaranteed?"
+      }
+    ],
+    "coverage": {
+      "applicable": 24,
+      "resolved": 24,
+      "unresolved": 0,
+      "unclassified": 0,
+      "byVerification": {
+        "explicit": 24,
+        "backstop": 0
+      }
+    }
+  },
+  "prohibitions": [
+    {
+      "requirement_id": "NET-01",
+      "category": "safety",
+      "statement": "MUST NOT 将断连/切换清理变成停止持久实例、应用、显示组或删除外来资源。",
+      "source": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "status": "resolved",
+      "verification": "test",
+      "resolution": "MUST NOT 将断连/切换清理变成停止持久实例、应用、显示组或删除外来资源。（本次仅既定协议原型范围）",
+      "reason": null,
+      "originalStatus": "flagged-unverified",
+      "scope": "当前Phase6协议原型与已审计证据/操作边界，不扩展成真实系统设备或外部全部历史保证",
+      "evidence": [
+        {
+          "file": "docs/phase06/06-UAT-AUDIT.json",
+          "sha256": "056705b49b3fbf5e25899dfc7fe9b66f72f207714f9a4a6a4f5d190d38eb399b"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693"
+        }
+      ],
+      "cases": [
+        "one-terminal-per-accepted-confirm",
+        "D-09 two connections share all six budgets and never evict running owner"
+      ],
+      "result": "verified-scoped-test",
+      "authority": "observed-native-tests",
+      "review": "reviewed-autonomously",
+      "flag": null
+    },
+    {
+      "requirement_id": "NET-03",
+      "category": "safety",
+      "statement": "MUST NOT 以测试身份/authority 给产品增加认证绕过、观察者上行或第二控制租约。",
+      "source": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "status": "resolved",
+      "verification": "test",
+      "resolution": "MUST NOT 以测试身份/authority 给产品增加认证绕过、观察者上行或第二控制租约。（本次仅既定协议原型范围）",
+      "reason": null,
+      "originalStatus": "flagged-unverified",
+      "scope": "当前Phase6协议原型与已审计证据/操作边界，不扩展成真实系统设备或外部全部历史保证",
+      "evidence": [
+        {
+          "file": "docs/phase06/06-UAT-AUDIT.json",
+          "sha256": "056705b49b3fbf5e25899dfc7fe9b66f72f207714f9a4a6a4f5d190d38eb399b"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693"
+        }
+      ],
+      "cases": [
+        "read permission denial cannot grant a stream",
+        "D-06 occupied control lease explains conflict without stealing"
+      ],
+      "result": "verified-scoped-test",
+      "authority": "observed-native-tests",
+      "review": "reviewed-autonomously",
+      "flag": null
+    },
+    {
+      "requirement_id": "NET-02",
+      "category": "transparency",
+      "statement": "MUST NOT 把synthetic媒体、假时钟、build或模拟器记录宣传为真实设备/HDR/产品性能通过。",
+      "source": ".planning/phases/06-gamestream/06-02-PLAN.md",
+      "status": "resolved",
+      "verification": "judgment",
+      "resolution": "MUST NOT 把synthetic媒体、假时钟、build或模拟器记录宣传为真实设备/HDR/产品性能通过。（本次仅既定协议原型范围）",
+      "reason": null,
+      "originalStatus": "flagged-unverified",
+      "scope": "当前Phase6协议原型与已审计证据/操作边界，不扩展成真实系统设备或外部全部历史保证",
+      "evidence": [
+        {
+          "file": "docs/phase06/06-UAT-AUDIT.json",
+          "sha256": "056705b49b3fbf5e25899dfc7fe9b66f72f207714f9a4a6a4f5d190d38eb399b"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693"
+        }
+      ],
+      "cases": [],
+      "result": "reviewed-scoped-judgment",
+      "authority": "NON-AUTHORITATIVE LLM-judge",
+      "review": "reviewed-autonomously",
+      "flag": "unverified-prohibition — human review recommended"
+    },
+    {
+      "requirement_id": "NET-01",
+      "category": "values",
+      "statement": "MUST NOT 静默降级、先部分执行再求同意、隐藏不可用功能或挤占其他连接已有资源。",
+      "source": ".planning/phases/06-gamestream/06-03-PLAN.md",
+      "status": "resolved",
+      "verification": "test",
+      "resolution": "MUST NOT 静默降级、先部分执行再求同意、隐藏不可用功能或挤占其他连接已有资源。（本次仅既定协议原型范围）",
+      "reason": null,
+      "originalStatus": "flagged-unverified",
+      "scope": "当前Phase6协议原型与已审计证据/操作边界，不扩展成真实系统设备或外部全部历史保证",
+      "evidence": [
+        {
+          "file": "docs/phase06/06-UAT-AUDIT.json",
+          "sha256": "056705b49b3fbf5e25899dfc7fe9b66f72f207714f9a4a6a4f5d190d38eb399b"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693"
+        }
+      ],
+      "cases": [
+        "D-09 two connections share all six budgets and never evict running owner"
+      ],
+      "result": "verified-scoped-test",
+      "authority": "observed-native-tests",
+      "review": "reviewed-autonomously",
+      "flag": null
+    },
+    {
+      "requirement_id": "NET-02",
+      "category": "safety",
+      "statement": "MUST NOT 执行或安排开发机重启/关机，或借协议验证安装驱动、改Apollo、信任及安全策略。",
+      "source": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "status": "resolved",
+      "verification": "judgment",
+      "resolution": "MUST NOT 执行或安排开发机重启/关机，或借协议验证安装驱动、改Apollo、信任及安全策略。（本次仅既定协议原型范围）",
+      "reason": null,
+      "originalStatus": "flagged-unverified",
+      "scope": "当前Phase6协议原型与已审计证据/操作边界，不扩展成真实系统设备或外部全部历史保证",
+      "evidence": [
+        {
+          "file": "docs/phase06/06-UAT-AUDIT.json",
+          "sha256": "056705b49b3fbf5e25899dfc7fe9b66f72f207714f9a4a6a4f5d190d38eb399b"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693"
+        }
+      ],
+      "cases": [],
+      "result": "reviewed-scoped-judgment",
+      "authority": "NON-AUTHORITATIVE LLM-judge",
+      "review": "reviewed-autonomously",
+      "flag": "unverified-prohibition — human review recommended"
+    },
+    {
+      "requirement_id": "NET-02",
+      "category": "transparency",
+      "statement": "MUST NOT 把Apple实机TODO扩展成目标构建/可运行自动检查豁免，或将缺证据、零测试、跳过记为已通过。",
+      "source": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "status": "resolved",
+      "verification": "judgment",
+      "resolution": "MUST NOT 把Apple实机TODO扩展成目标构建/可运行自动检查豁免，或将缺证据、零测试、跳过记为已通过。（本次仅既定协议原型范围）",
+      "reason": null,
+      "originalStatus": "flagged-unverified",
+      "scope": "当前Phase6协议原型与已审计证据/操作边界，不扩展成真实系统设备或外部全部历史保证",
+      "evidence": [
+        {
+          "file": "docs/phase06/06-UAT-AUDIT.json",
+          "sha256": "056705b49b3fbf5e25899dfc7fe9b66f72f207714f9a4a6a4f5d190d38eb399b"
+        },
+        {
+          "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+          "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693"
+        }
+      ],
+      "cases": [],
+      "result": "reviewed-scoped-judgment",
+      "authority": "NON-AUTHORITATIVE LLM-judge",
+      "review": "reviewed-autonomously",
+      "flag": "unverified-prohibition — human review recommended"
+    }
+  ],
+  "advisories": [
+    {
+      "statement": "MUST NOT 把synthetic媒体、假时钟、build或模拟器记录宣传为真实设备/HDR/产品性能通过。",
+      "flag": "unverified-prohibition — human review recommended"
+    },
+    {
+      "statement": "MUST NOT 执行或安排开发机重启/关机，或借协议验证安装驱动、改Apollo、信任及安全策略。",
+      "flag": "unverified-prohibition — human review recommended"
+    },
+    {
+      "statement": "MUST NOT 把Apple实机TODO扩展成目标构建/可运行自动检查豁免，或将缺证据、零测试、跳过记为已通过。",
+      "flag": "unverified-prohibition — human review recommended"
+    }
+  ],
+  "preserved": {
+    "phase3": 3,
+    "plan3": 3,
+    "status": "halted",
+    "systemMutation": false,
+    "productInputChanged": false
+  }
+}

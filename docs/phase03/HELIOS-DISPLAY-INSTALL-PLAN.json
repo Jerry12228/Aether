@@ -1,0 +1,528 @@
+{
+  "schemaVersion": 1,
+  "status": "awaiting-specific-authorization",
+  "recordedAt": "2026-10-09T12:10:06.886Z",
+  "inputCommit": "5050b4adef9d06b8702c007d977f0ba64d29ab71",
+  "systemMutation": false,
+  "evidenceScope": "native-contract-and-machine-readonly",
+  "planSha256": "4fa13eea427d0a90b3075f85e6813d2f246463dadb41e259d309660e4e77a60a",
+  "nativePlan": {
+    "path": "artifacts/phase03/package-contract-isolation/install-plan.json",
+    "sha256": "21efd90d623a327d8a1c97912d781422893c5832d108d2aa180c10d5e9e1fb46",
+    "length": 10025
+  },
+  "manifestHash": "78324da77c8ff2936337e3da948d8358105c7392792cecb679ccc92b948ea00d",
+  "package": {
+    "architecture": "x64",
+    "length": 1029893,
+    "license": "MS-PL driver; CC0 changes; retained notices",
+    "manifestHash": "78324da77c8ff2936337e3da948d8358105c7392792cecb679ccc92b948ea00d",
+    "members": [
+      {
+        "length": 6396,
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayX64/HeliosDisplay.inf",
+        "sha256": "f7f0f524897bfb0557eb003cb8a57d4919ef369eee05d8d1e968c772c98cb21e"
+      },
+      {
+        "length": 130744,
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayX64/HeliosDisplay.dll",
+        "sha256": "52d977d8057629236ce8e707dce26ceda295bb0dff3d731b15da56f46d0338d2"
+      },
+      {
+        "length": 8988,
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayX64/heliosdisplay.cat",
+        "sha256": "b7ad78d5ca1af7daa2ac06f4d24c17e991895ccab39ab24d7601da80ccd71f7f"
+      },
+      {
+        "length": 7048,
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\licenses/CC0-1.0.txt",
+        "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+      },
+      {
+        "length": 1813,
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\licenses/HeliosDisplay-NOTICE.txt",
+        "sha256": "11400757633fe771d348a7b37f6c0858d65bca23ef08fc3a674e8a8c73999931"
+      },
+      {
+        "length": 2665,
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\licenses/Microsoft-MS-PL.txt",
+        "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a"
+      },
+      {
+        "length": 3663,
+        "path": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\licenses/SudoVDA-README.txt",
+        "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2"
+      }
+    ],
+    "origin": "local-derived",
+    "profile": {
+      "hdrBits": {
+        "origin": "compiled-default",
+        "value": 10
+      },
+      "maxMonitors": {
+        "origin": "compiled-default",
+        "value": 10
+      },
+      "sdrBits": {
+        "origin": "compiled-default",
+        "value": 8
+      },
+      "testMode": {
+        "origin": "compiled-default",
+        "value": 0
+      },
+      "watchdog": {
+        "origin": "compiled-default",
+        "value": 0
+      }
+    },
+    "sha256": "da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12",
+    "signature": "current-local-Windows-authenticode-and-CAT",
+    "source": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayResearch.zip",
+    "status": "verified",
+    "trustChanges": false,
+    "version": "0.1.0.0"
+  },
+  "machineId": "win-5f5cc5dd3cf310b6",
+  "osBuild": 26100,
+  "observedMachine": {
+    "os": {
+      "build": "26100",
+      "caption": "Microsoft Windows 11 企业版 LTSC",
+      "version": "10.0.26100"
+    },
+    "gpu": [
+      {
+        "Name": "SudoMaker Virtual Display Adapter",
+        "DriverVersion": "0.22.37.632",
+        "PNPDeviceID": "ROOT\\DISPLAY\\0000"
+      },
+      {
+        "Name": "OrayIddDriver Device",
+        "DriverVersion": "17.50.19.949",
+        "PNPDeviceID": "ROOT\\DISPLAY\\0001"
+      },
+      {
+        "Name": "NVIDIA GeForce RTX 5080",
+        "DriverVersion": "32.0.15.9579",
+        "PNPDeviceID": "PCI\\VEN_10DE&DEV_2C02&SUBSYS_20961B4C&REV_A1\\88DF64EAE12DB04800"
+      },
+      {
+        "Name": "AMD Radeon(TM) Graphics",
+        "DriverVersion": "32.0.13036.4",
+        "PNPDeviceID": "PCI\\VEN_1002&DEV_13C0&SUBSYS_88771043&REV_C1\\4&1EBE6A9C&0&0041"
+      }
+    ],
+    "deviceGuard": {
+      "VirtualizationBasedSecurityStatus": 0,
+      "SecurityServicesConfigured": [
+        0
+      ],
+      "SecurityServicesRunning": [
+        0
+      ]
+    },
+    "patches": [
+      {
+        "HotFixID": "KB5120710",
+        "InstalledOn": "2026-08-13T00:00:00"
+      },
+      {
+        "HotFixID": "KB5121003",
+        "InstalledOn": "2026-08-13T00:00:00"
+      },
+      {
+        "HotFixID": "KB5123304",
+        "InstalledOn": "2026-08-13T00:00:00"
+      }
+    ],
+    "secureBootRegistry": 1,
+    "codeIntegrity": 0,
+    "privateProfile": null,
+    "trustedRoot": [
+      {
+        "Thumbprint": "E3ED742C3D08188A117AFF7B6C1BB207523EB4DB"
+      }
+    ],
+    "trustedPublisher": [
+      {
+        "Thumbprint": "E3ED742C3D08188A117AFF7B6C1BB207523EB4DB"
+      }
+    ],
+    "recordedAt": "2026-10-09T12:10:06.6878267+00:00"
+  },
+  "securityClassification": "partial observed existing policy; no security settings changed; BCD query access denied; existing approved local self-sign trust only",
+  "rebootPolicy": "prohibited",
+  "installer": {
+    "exe": "D:\\WorkSpace\\Aether\\build\\native\\Release\\helios.exe",
+    "argv": [
+      "vdisplay",
+      "driver",
+      "install",
+      "--approve-plan",
+      "4fa13eea427d0a90b3075f85e6813d2f246463dadb41e259d309660e4e77a60a",
+      "--json"
+    ],
+    "sha256": "824a6b8b2158c9d713dc2a5eeee88721ae7eccf18786d7096d7258e94f532994",
+    "elevation": "Administrator token required; CLI does not trigger UAC"
+  },
+  "actions": [
+    {
+      "api": "SetupCopyOEMInfW",
+      "flags": "SP_COPY_NOOVERWRITE",
+      "infExecution": "Verified protected stage path persisted in driver-install-effects.v1.json before native calls",
+      "infSha256": "f7f0f524897bfb0557eb003cb8a57d4919ef369eee05d8d1e968c772c98cb21e",
+      "infSource": "D:/WorkSpace/Aether\\artifacts/phase03/selfsigned-research/helios-1791547543587\\HeliosDisplayX64/HeliosDisplay.inf"
+    },
+    {
+      "api": "SetupDiCallClassInstaller(DIF_REGISTERDEVICE)",
+      "hardwareId": "Root\\Aether\\HeliosDisplay",
+      "when": "no private adapter"
+    },
+    {
+      "api": "UpdateDriverForPlugAndPlayDevicesW",
+      "flags": "INSTALLFLAG_FORCE|INSTALLFLAG_NONINTERACTIVE",
+      "hardwareId": "Root\\Aether\\HeliosDisplay"
+    }
+  ],
+  "ownedDevices": [],
+  "groups": [],
+  "foreignDevices": [
+    {
+      "class": "Display",
+      "instanceId": "ROOT\\DISPLAY\\0000"
+    },
+    {
+      "class": "Display",
+      "instanceId": "ROOT\\DISPLAY\\0001"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID256"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID257"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID258"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID259"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID260"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID261"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID262"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID263"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID264"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\SMKD1CE\\1&28A6823A&2&UID265"
+    },
+    {
+      "class": "Display",
+      "instanceId": "PCI\\VEN_10DE&DEV_2C02&SUBSYS_20961B4C&REV_A1\\88DF64EAE12DB04800"
+    },
+    {
+      "class": "Display",
+      "instanceId": "PCI\\VEN_1002&DEV_13C0&SUBSYS_88771043&REV_C1\\4&1EBE6A9C&0&0041"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\AOC2367\\5&2545D48B&0&UID4352"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\DEFAULT_MONITOR\\1&C528B8A&1&UID256"
+    },
+    {
+      "class": "Display",
+      "instanceId": "SWD\\REMOTEDISPLAYENUM\\RDPIDD_INDIRECTDISPLAY&SESSIONID_0001"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\DEFAULT_MONITOR\\5&2545D48B&0&UID0"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\AOC2367\\1&8713BCA&0&UID0"
+    },
+    {
+      "class": "Monitor",
+      "instanceId": "DISPLAY\\LGD046F\\5&2545D48B&0&UID4353"
+    }
+  ],
+  "topology": {
+    "actual": [
+      {
+        "advancedColorEnabled": false,
+        "advancedColorSupported": true,
+        "colorError": 0,
+        "hdrVerified": null,
+        "height": 1400,
+        "identity": {
+          "adapterLuid": "0:145065",
+          "deviceName": "\\\\.\\DISPLAY10",
+          "monitorPath": "\\\\?\\DISPLAY#SMKD1CE#1&28a6823a&2&UID256#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}",
+          "sourceId": 0,
+          "targetId": 256
+        },
+        "identityError": 0,
+        "outputTechnology": 5,
+        "ownedByAether": false,
+        "refresh": {
+          "denominator": 1000,
+          "numerator": 30000
+        },
+        "width": 2240,
+        "x": 0,
+        "y": 0
+      }
+    ],
+    "attempts": 1,
+    "capacity": null,
+    "devices": [
+      {
+        "description": "SudoMaker Virtual Display Adapter",
+        "devNodeStatus": 25174027,
+        "instanceId": "ROOT\\DISPLAY\\0000",
+        "problem": 0,
+        "providerHint": "apollo-sudovda",
+        "service": "WUDFRd"
+      },
+      {
+        "description": "OrayIddDriver Device",
+        "devNodeStatus": 25174027,
+        "instanceId": "ROOT\\DISPLAY\\0001",
+        "problem": 0,
+        "providerHint": null,
+        "service": "WUDFRd"
+      },
+      {
+        "description": "NVIDIA GeForce RTX 5080",
+        "devNodeStatus": 25174026,
+        "instanceId": "PCI\\VEN_10DE&DEV_2C02&SUBSYS_20961B4C&REV_A1\\88DF64EAE12DB04800",
+        "problem": 0,
+        "providerHint": null,
+        "service": "nvlddmkm"
+      },
+      {
+        "description": "AMD Radeon(TM) Graphics",
+        "devNodeStatus": 25174026,
+        "instanceId": "PCI\\VEN_1002&DEV_13C0&SUBSYS_88771043&REV_C1\\4&1EBE6A9C&0&0041",
+        "problem": 0,
+        "providerHint": null,
+        "service": "amduw23g"
+      }
+    ],
+    "group": null,
+    "identity": null,
+    "osEnumeration": true,
+    "osError": 0,
+    "protocol": null,
+    "providerStatus": "not_admitted",
+    "realityDiff": null,
+    "reason": "Read-only Windows CCD and present display-class devices; no ownership inferred",
+    "requested": null,
+    "schemaVersion": 1,
+    "status": "ok",
+    "watchdog": null
+  },
+  "unknownPrivateResources": [],
+  "backup": {
+    "directory": "${LOCALAPPDATA}/Aether/phase03",
+    "package": "copy all old store members and verify CAT; no foreign package removal",
+    "registry": "exact protected snapshot; last-success retained"
+  },
+  "rollback": {
+    "freshInstall": "remove only root ID created by this transaction and its new OEM package, no force deletion",
+    "unknownEffects": "retain pending; no assumed rollback success",
+    "update": "restore verified complete old package; registry stays unchanged; group recovery explicit"
+  },
+  "maintenance": {
+    "groupsHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "impact": "shared private adapter: all its groups may disappear; foreign providers never deliberately altered",
+    "recovery": "query then explicitly recover each approved group; no automatic topology restoration",
+    "required": false
+  },
+  "budgets": {
+    "installSeconds": 180,
+    "lockSeconds": 2,
+    "packageSeconds": 120
+  },
+  "scenarioChoices": [
+    {
+      "id": "win11-install",
+      "status": "awaiting-authorization",
+      "actions": "Install only the fixed dedicated root adapter and package; no configuration/trust changes; failure removes only newly created root/OEM resources"
+    },
+    {
+      "id": "win11-topology-persistence-delete",
+      "status": "awaiting-authorization",
+      "actions": "After successful install: create A/B/C/D seven slots, show/close explicit patterns, query after all owners exit within recorded observation window, delete/recreate B, explicit named group recovery only"
+    },
+    {
+      "id": "win11-reset-recovery",
+      "status": "not-yet-reviewable",
+      "reason": "New root instance ID and all created group/slot IDs must be observed after installation before exact reset plan and approval; shared adapter affects all its groups"
+    },
+    {
+      "id": "win11-update-rollback",
+      "status": "not-yet-reviewable",
+      "reason": "No dedicated installed old package or groups yet; capture verified old driver-store package, registry/system mapping and concrete maintenance plan after installation before separate approval"
+    },
+    {
+      "id": "win10-matrix",
+      "status": "environment-unavailable",
+      "reason": "No independent approved Win10 machine supplied; seven SDR remains mandatory"
+    },
+    {
+      "id": "reboot-shutdown",
+      "status": "prohibited",
+      "reason": "Never execute or schedule either operation; reboot-required exits pending"
+    }
+  ],
+  "authorization": {
+    "status": "awaiting-new-fixed-plan-approval",
+    "priorConditionalAuthorization": {
+      "path": "docs/phase03/HELIOS-DISPLAY-APOLLO-CONDITIONAL-AUTHORIZATION.json",
+      "sha256": "e052ca3992fadda6505e508f98d3d8d38ed3ccb19de2b3325dd2c6bd63db2413",
+      "length": 1683,
+      "fixture": false
+    },
+    "approvedPlanHash": null,
+    "gateFileCreated": false,
+    "reason": "Original approved fixed bytes failed Apollo isolation preflight; no authorization transfer to new bytes"
+  },
+  "humanReview": null,
+  "artifacts": [
+    {
+      "path": "artifacts/phase03/package-contract-isolation/install-plan.json",
+      "sha256": "21efd90d623a327d8a1c97912d781422893c5832d108d2aa180c10d5e9e1fb46",
+      "length": 10025
+    },
+    {
+      "path": "artifacts/phase03/package-contract-isolation/runner-result.json",
+      "sha256": "476e25a16f0594642294e8b4d5faaad20daaf7262b3dc1099b8c0156408bef88",
+      "length": 1462
+    },
+    {
+      "path": "artifacts/phase03/package-contract-isolation/machine-readonly.json",
+      "sha256": "d97a7e700033e1ab27c3d27d63dae815b659a6850fa851d509f6fd67761a7e19",
+      "length": 1621
+    },
+    {
+      "path": "artifacts/phase03/package-contract-isolation/readonly-plan.log",
+      "sha256": "60db72389825c855527871cab70a3d087c6ad6e2685eb7a959c598f61f2b21c4",
+      "length": 7872
+    },
+    {
+      "path": "artifacts/phase02/tooling/Display-Release-package-contract.log",
+      "sha256": "68d50d16544d819a59edd9c0af2ac9e625e8357817eeec57c0e7c64c86cae632",
+      "length": 3792
+    },
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "246d0625a892d287cf26ff02a4383a9a9519f3e371aa47af24907a62e5227f4a",
+      "length": 5826
+    },
+    {
+      "path": "apps/helios/main.cpp",
+      "sha256": "d06df7b46914994faddbe02e66fd36b3bb5e8d8bda7bfdd5c3c32a70bfca8633",
+      "length": 4285
+    },
+    {
+      "path": "apps/helios/display_registry.cpp",
+      "sha256": "aa467172f95949525bbf19c4b03d3352e9b4766a456fcedd34adafae41ae6499",
+      "length": 35985
+    },
+    {
+      "path": "apps/helios/display_registry.h",
+      "sha256": "1e143099417c4f08f81000f9dd5834b516f190a2eb84e2bf39179e4f1ffcb8e4",
+      "length": 1616
+    },
+    {
+      "path": "native/platform/windows/driver_package.cpp",
+      "sha256": "24d235fc004aa8829cec2caa06dadb459f36ca2c728f33bc331523893a4c056a",
+      "length": 35321
+    },
+    {
+      "path": "native/platform/windows/driver_package.h",
+      "sha256": "9159040042008a268ef96e3b059d333be5d67ab3fe5fa53e4e9dfab04c0205e2",
+      "length": 675
+    },
+    {
+      "path": "native/platform/windows/helios_display_pin.h",
+      "sha256": "1f212c54f9d9a3340afe6621257435b59a7e8804d78a7c65ec52e3f1ad6342c8",
+      "length": 468
+    },
+    {
+      "path": "scripts/check-virtual-display.ps1",
+      "sha256": "294677adfb87965bb1943891dbcf0d88016e08ca789f9b7293a2e68aa38617f4",
+      "length": 680
+    },
+    {
+      "path": "scripts/virtual-display-package-runner.cjs",
+      "sha256": "30f368e45450b6230d4280b4753a73f882dd2329f1b01dc04f99999cd0f28f90",
+      "length": 5225
+    },
+    {
+      "path": "tests/native/driver_package_contract.cpp",
+      "sha256": "9dda970dfb2b86ed6857400f19f4074d522ce3cdf4b65453521a559a11bc82fe",
+      "length": 4249
+    },
+    {
+      "path": "tests/virtual-display-package.test.cjs",
+      "sha256": "86023e330ff5ff1b8d49fa294fb70698557a4f5161ab14ded682b8812f2376dc",
+      "length": 17420
+    }
+  ],
+  "gaps": [
+    "New fixed plan installation authorization absent after original preflight was blocked",
+    "Win10 machine absent",
+    "No actual package install/topology/HDR/persistence/reset/update/rollback result",
+    "BCD policy query not obtained",
+    "Final mandatory human review pending"
+  ],
+  "approvalReviewRejection": {
+    "action": "Machine/Install with fake authorization hash",
+    "executed": false,
+    "reason": "Automatic approval review rejected the capable installation entry point because current authorization excludes real system installation; not retried or bypassed"
+  },
+  "requirementsCompleted": [],
+  "apolloConstraint": {
+    "text": "不得影响主机已有的Apollo运行",
+    "preflight": {
+      "path": "docs/phase03/HELIOS-DISPLAY-APOLLO-PREFLIGHT.json",
+      "sha256": "afcb6144ec763d2fd8c73f61f3fbe7ac440ebf9da2c6b666af5e1bbdbf25b728",
+      "length": 4470,
+      "fixture": false
+    },
+    "correctedSource": {
+      "path": "docs/phase03/HELIOS-DISPLAY-UMDF-ISOLATION-EVIDENCE.json",
+      "sha256": "f3820e23ebaed1578bc78ae897b02e14dc4f68b84aa00f6d4d5132e449eb8eb6",
+      "length": 5082,
+      "fixture": false
+    },
+    "requiredBeforeMutation": "Repeat complete immediate baseline and fail closed on differences; verify corrected per-device WUDF group after install",
+    "runtimeIsolationVerified": false
+  }
+}

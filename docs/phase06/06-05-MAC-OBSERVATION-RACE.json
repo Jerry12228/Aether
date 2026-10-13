@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T12:35:38.154483+00:00",
+  "classification": "fixture-observation-race",
+  "sourceCommit": "b6a9eadfdfaeb3999d9294444e29d53cedf88331",
+  "inputDigest": "ded149397088cf01a53a22ecda3b73ff63f65e5d904a5a04440984329331c1f1",
+  "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38138796842",
+  "target": "macos-x64",
+  "observation": "readyack-delay 的 client-sink-stays-closed-before-READY-ACK 失败；原测试仅 sleep(50ms)，宿主调度暂停可以越过150ms注入延迟。失败日志保留，不认定为产品提前开放媒体的行为RED。",
+  "repair": "test-only host在原故障点发布进入屏障，客户端实际观察零sink后释放；原ACK和终态断言不删减，原150ms延迟保留。",
+  "rawLog": {
+    "file": "build/phase06/06-05/mac-readyack-before-barrier/client.log",
+    "sha256": "8c160556ad21f3a045a9effa2217c31d53c0e87eaae240f99ae82d893d790749"
+  },
+  "tasksCompleted": 0
+}

@@ -1,0 +1,608 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T15:37:40.068Z",
+  "scope": "private research preparation; no provider admission or distribution",
+  "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+  "decision": {
+    "userText": "1",
+    "dossierSha256": "0e2010bd2143013fbbc62d0be3cad622020024594562c8521370ff36bcf0d116"
+  },
+  "machineConstraint": {
+    "userText": "严禁重启、关闭开发机",
+    "restartPermitted": false,
+    "shutdownPermitted": false
+  },
+  "build": {
+    "configuration": "Release",
+    "platform": "x64",
+    "msbuild": "C:/Program Files/Microsoft Visual Studio/18/Enterprise/MSBuild/Current/Bin/amd64/MSBuild.exe",
+    "wdk": "10.0.28000.0",
+    "wdkAssembly": "10.0.28000.2526",
+    "version": "0.1.0.0",
+    "signMode": "Off",
+    "enableTestSign": false,
+    "generateTestCertificate": false,
+    "driverDeployment": false,
+    "preFastEnabled": true,
+    "exitCode": 0,
+    "infWarning2084": true,
+    "inf2CatErrors": 0,
+    "inf2CatWarnings": 0,
+    "installed": false,
+    "runtimeVerified": false,
+    "compilerCommand": {
+      "localPath": "artifacts/phase03/derived-research/helios-1791473836343/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA.tlog/CL.command.1.tlog",
+      "sha256": "2ae4b0399ea909e65f08d45c45f2559ed42169099d144dfdb947a42ca15be4c4",
+      "warningsAsErrors": true,
+      "analyze": true
+    },
+    "msbuildVersion": "18.10.1.42706",
+    "msvcDirectory": "14.51.36231",
+    "clFileVersion": "19.51.36257.0",
+    "finalLog": "artifacts/phase03/derived-research/helios-reviewed-build.log"
+  },
+  "preparedSource": {
+    "localPath": "artifacts/phase03/derived-research/helios-1791473836343",
+    "manifestSha256": "4a5accd9cb736f6421a2ad26a80e395471c39762b62a25c610c5c0f4d4727a61",
+    "helperSha256": "b55fd5bcb5385d9ee5da73e819d621472db8039ddb40696f42c291a23a2c6ba9",
+    "files": [
+      {
+        "sourcePath": "Common/Include/AdapterOption.h",
+        "sourceSha256": "5948e1cceb8d2e659328a056ada1ef7be7732dc65f845dd6ce96fcba0e8baa75",
+        "outputPath": "Common/Include/AdapterOption.h",
+        "sha256": "5948e1cceb8d2e659328a056ada1ef7be7732dc65f845dd6ce96fcba0e8baa75",
+        "changed": false
+      },
+      {
+        "sourcePath": "Common/Include/sudovda-ioctl.h",
+        "sourceSha256": "dd924c9bd3918f75bdc1c1153ed16f23ae1658fde890d76f5f4f35397062dd73",
+        "outputPath": "Common/Include/sudovda-ioctl.h",
+        "sha256": "28ceced23ab8fd677ec5e98b9143bece5b1f7f4918e21e48da8ac6c6654b65a0",
+        "changed": true
+      },
+      {
+        "sourcePath": "README.md",
+        "sourceSha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+        "outputPath": "README.md",
+        "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+        "sourceSha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb",
+        "outputPath": "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+        "sha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA.sln",
+        "sourceSha256": "012f97c290c69b9e5cbed0e086b53b35f919029d84d548dbeb037b3dc5ad9dc1",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA.sln",
+        "sha256": "012f97c290c69b9e5cbed0e086b53b35f919029d84d548dbeb037b3dc5ad9dc1",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+        "sourceSha256": "10a555cd3acd83ddd3deda51e321b8514b296b238df43e8a1249af4b0f458e48",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+        "sha256": "4122f6e62b326aecef395f2878a7919d3cd1f6f22e13dc1939009f8736a22291",
+        "changed": true
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+        "sourceSha256": "41b9fb6b227a43ca988af8ade5b420efa6093ca85f52444b479fe7c8a4e853d9",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+        "sha256": "41b9fb6b227a43ca988af8ade5b420efa6093ca85f52444b479fe7c8a4e853d9",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+        "sourceSha256": "69ac02df77374edf50832f97464c6781cdd74938699c1dd114821e5c2990f0ca",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+        "sha256": "69ac02df77374edf50832f97464c6781cdd74938699c1dd114821e5c2990f0ca",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.inf",
+        "sourceSha256": "78247e9455fccca65fa1745664fc60dfb76eb3d59737b71cb1b8b3007bd41817",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/HeliosDisplay.inf",
+        "sha256": "99d140b8626a7ccd2f84d8fe9447b2fda612d863690f3bc7b1de0593612b34ea",
+        "changed": true
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+        "sourceSha256": "3a80623d503632f06e28e22cbe3bdc3c7227b1e84142ad27727086f354594822",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+        "sha256": "bc1af3f4c9fce7cb0b94b38016560c82d04ef442484991408e000fe70bd1a889",
+        "changed": true
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+        "sourceSha256": "3eca4dd904e24723e6c47546d91a7eb91f2c3e06323fb5a152c74174acd0f2d1",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+        "sha256": "8499559036175a17727ca10d27e292ae6adbdeecf20f21026f31f8dc8d7adfcb",
+        "changed": true
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/SudoVDA/edid.h",
+        "sourceSha256": "41993d6c0365b4b6f6dd97fa6d57d3687d3b399ff9e263e3fceb1b8be9b1df0e",
+        "outputPath": "Virtual Display Driver (HDR)/SudoVDA/edid.h",
+        "sha256": "41993d6c0365b4b6f6dd97fa6d57d3687d3b399ff9e263e3fceb1b8be9b1df0e",
+        "changed": false
+      },
+      {
+        "sourcePath": "Virtual Display Driver (HDR)/option.txt",
+        "sourceSha256": "67ebdd5ebcbd0f8b8ff5c7deff0811dcaf2c8fe40fff88b036de57fac2fd80b4",
+        "outputPath": "Virtual Display Driver (HDR)/option.txt",
+        "sha256": "67ebdd5ebcbd0f8b8ff5c7deff0811dcaf2c8fe40fff88b036de57fac2fd80b4",
+        "changed": false
+      }
+    ]
+  },
+  "members": [
+    {
+      "name": "HeliosDisplay.inf",
+      "localPath": "artifacts/phase03/derived-research/helios-1791473836343/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.inf",
+      "length": 3886,
+      "sha256": "9c31e7430585af2422044d80ba9525d26f587cd64b2f31ef82544645685a6a00"
+    },
+    {
+      "name": "HeliosDisplay.dll",
+      "localPath": "artifacts/phase03/derived-research/helios-1791473836343/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/HeliosDisplay.dll",
+      "length": 129536,
+      "sha256": "40db0d38b0e838d67c0514737a85fd383e39311ac010784671f238278db8f203"
+    },
+    {
+      "name": "heliosdisplay.cat",
+      "localPath": "artifacts/phase03/derived-research/helios-1791473836343/Virtual Display Driver (HDR)/SudoVDA/x64/Release/SudoVDA/heliosdisplay.cat",
+      "length": 1336,
+      "sha256": "302e70d60cd869f3effaeee3b0eb67f9e636a670dd80f658ac4060209cca57d0"
+    }
+  ],
+  "logs": [
+    {
+      "localPath": "artifacts/phase03/derived-research/baseline-build.log",
+      "length": 1174,
+      "sha256": "3098c7782c754a9ebda0facbac76ab13263f7d47ef6849133e9911f358de171f",
+      "exitCode": 1
+    },
+    {
+      "localPath": "artifacts/phase03/derived-research/baseline-amd64-build.log",
+      "length": 1164,
+      "sha256": "983ea4176f027923e3f5472d21ec9987065907689d14ae58cb474f242058ad06",
+      "exitCode": 1
+    },
+    {
+      "localPath": "artifacts/phase03/derived-research/helios-build.log",
+      "length": 1509,
+      "sha256": "0e9ebbff7c4876daf9256dc80b948e599222227799cdf787c3b3d072df8fe85a",
+      "exitCode": 1
+    },
+    {
+      "localPath": "artifacts/phase03/derived-research/helios-v2-build.log",
+      "length": 1411,
+      "sha256": "50549574b3895413e5ff234953053be3991876e40a33c29249698dfcd3623fd2",
+      "exitCode": 1
+    },
+    {
+      "localPath": "artifacts/phase03/derived-research/helios-v3-build.log",
+      "length": 1235,
+      "sha256": "739851e3b0bd23e784b489c3fa0c9e7816ef426b333d0796f91acbf69e36c19b",
+      "exitCode": 1
+    },
+    {
+      "localPath": "artifacts/phase03/derived-research/helios-v4-build.log",
+      "length": 1527,
+      "sha256": "9b63f3d47c30cfbe54af54eb58470287b042c352cf0223689545ed2901d9f56d",
+      "exitCode": 0
+    },
+    {
+      "localPath": "artifacts/phase03/derived-research/helios-final-build.log",
+      "length": 1533,
+      "sha256": "955e152bbc49882e3a98c3b88162e18105fae9fea63d71f502a46dddee53967d",
+      "exitCode": 0
+    },
+    {
+      "localPath": "artifacts/phase03/derived-research/helios-reviewed-build.log",
+      "length": 1533,
+      "sha256": "9be56bd5873b909c4d403690a7a8510098888fe0304a64a7cca5a6dc900d4c08",
+      "exitCode": 0
+    }
+  ],
+  "licenseComparisons": [
+    {
+      "name": "Driver.cpp",
+      "url": "https://raw.githubusercontent.com/microsoft/Windows-driver-samples/2dc3fd3a0cc84a2933f2194e7ec0871584979071/video/IndirectDisplay/IddSampleDriver/Driver.cpp",
+      "localPath": "artifacts/phase03/derived-research/microsoft-Driver.cpp",
+      "sha256": "b6e9320291372a3f041e0bea716e15e7bc3d8df6359169e822d3eb3a281bdf3f",
+      "length": 30671,
+      "method": "Consecutive nonempty lines with whitespace normalized; evidence of shared text, not exact ancestor or legal conclusion",
+      "matches": [
+        {
+          "nonemptyLines": 55,
+          "sudoStart": 568,
+          "sudoEnd": 634,
+          "microsoftStart": 289,
+          "microsoftEnd": 355,
+          "normalizedSha256": "559e6204083d98c3aeac0fbffa643dc28bf01d4020382195607b70623af8fb9b"
+        },
+        {
+          "nonemptyLines": 45,
+          "sudoStart": 723,
+          "sudoEnd": 773,
+          "microsoftStart": 428,
+          "microsoftEnd": 478,
+          "normalizedSha256": "5f55e82f62458e4bb2cfab63b05e23cc5f22e43962afd4b15d305ab144992d87"
+        },
+        {
+          "nonemptyLines": 31,
+          "sudoStart": 254,
+          "sudoEnd": 290,
+          "microsoftStart": 139,
+          "microsoftEnd": 176,
+          "normalizedSha256": "0b12a5c1f4dd3d2bd84aebf9e1324c6db15469d3fdf6d0c254a685345c04d4dd"
+        },
+        {
+          "nonemptyLines": 30,
+          "sudoStart": 691,
+          "sudoEnd": 720,
+          "microsoftStart": 396,
+          "microsoftEnd": 425,
+          "normalizedSha256": "82baccc013447edf67c46ec5202b6582f1c7ee53baac669b578f099c15a25f7c"
+        },
+        {
+          "nonemptyLines": 27,
+          "sudoStart": 637,
+          "sudoEnd": 669,
+          "microsoftStart": 358,
+          "microsoftEnd": 390,
+          "normalizedSha256": "9df718342d3c75e20727e2f6d9967fa2c2db8740a7312923f591069e948f3879"
+        }
+      ]
+    },
+    {
+      "name": "Driver.h",
+      "url": "https://raw.githubusercontent.com/microsoft/Windows-driver-samples/2dc3fd3a0cc84a2933f2194e7ec0871584979071/video/IndirectDisplay/IddSampleDriver/Driver.h",
+      "localPath": "artifacts/phase03/derived-research/microsoft-Driver.h",
+      "sha256": "1e9a431342cb57e3cc14e9d9f671c4def164eeaaa0b99dc33f00de1e37487c0c",
+      "length": 3394,
+      "method": "Consecutive nonempty lines with whitespace normalized; evidence of shared text, not exact ancestor or legal conclusion",
+      "matches": [
+        {
+          "nonemptyLines": 33,
+          "sudoStart": 40,
+          "sudoEnd": 78,
+          "microsoftStart": 51,
+          "microsoftEnd": 89,
+          "normalizedSha256": "d861de895885b39c02692623580fc29805639a6560adbd474c120a8a038b41ca"
+        },
+        {
+          "nonemptyLines": 16,
+          "sudoStart": 18,
+          "sudoEnd": 35,
+          "microsoftStart": 18,
+          "microsoftEnd": 35,
+          "normalizedSha256": "b10e105da189ee632511bbd2f5b6549e42b1950511fb89e583105dd24ac973b9"
+        },
+        {
+          "nonemptyLines": 12,
+          "sudoStart": 1,
+          "sudoEnd": 15,
+          "microsoftStart": 1,
+          "microsoftEnd": 15,
+          "normalizedSha256": "33e1442a9d9af74d8c44c84d0b13427975bb629ab3a9183914efe3621c6b02a2"
+        },
+        {
+          "nonemptyLines": 9,
+          "sudoStart": 105,
+          "sudoEnd": 114,
+          "microsoftStart": 91,
+          "microsoftEnd": 100,
+          "normalizedSha256": "1885278f2ed7c27ac670d1e03be2037b160f1663077c59f75add21bfa487b7e2"
+        }
+      ]
+    },
+    {
+      "name": "Trace.h",
+      "url": "https://raw.githubusercontent.com/microsoft/Windows-driver-samples/2dc3fd3a0cc84a2933f2194e7ec0871584979071/video/IndirectDisplay/IddSampleDriver/Trace.h",
+      "localPath": "artifacts/phase03/derived-research/microsoft-Trace.h",
+      "sha256": "937ed3725943d90aa20543400791ac8611d004fe4cabfc363671bde2b9827ce4",
+      "length": 2005,
+      "method": "Consecutive nonempty lines with whitespace normalized; evidence of shared text, not exact ancestor or legal conclusion",
+      "matches": [
+        {
+          "nonemptyLines": 44,
+          "sudoStart": 1,
+          "sudoEnd": 59,
+          "microsoftStart": 1,
+          "microsoftEnd": 59,
+          "normalizedSha256": "7d6dc5d6539fae2568c9621321ea62b2f153e04b7652a5d810bfe6e025192bc0"
+        }
+      ]
+    }
+  ],
+  "licenseFiles": [
+    {
+      "path": "Common/Include/AdapterOption.h",
+      "sha256": "5948e1cceb8d2e659328a056ada1ef7be7732dc65f845dd6ce96fcba0e8baa75",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Author changes statement exists; establish exact contributor provenance and complete license/attribution notice before production reuse"
+    },
+    {
+      "path": "Common/Include/sudovda-ioctl.h",
+      "sha256": "dd924c9bd3918f75bdc1c1153ed16f23ae1658fde890d76f5f4f35397062dd73",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Author changes statement exists; establish exact contributor provenance and complete license/attribution notice before production reuse"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4eb82511c7e07056809bbda35ca7190551b8e3e604111eeff525fda51e011ea2",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Author changes statement exists; establish exact contributor provenance and complete license/attribution notice before production reuse"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/8K240HzHDR.edid",
+      "sha256": "b849def8d88ab29cd59475a93975a39c215b273ff15ea7c686609b233f8851bb",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Determine template/generator/helper provenance or replace with independently authored EDID; GPL license of tool alone does not settle output licensing"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA.sln",
+      "sha256": "012f97c290c69b9e5cbed0e086b53b35f919029d84d548dbeb037b3dc5ad9dc1",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Retain Microsoft and other original notices; establish exact ancestor/contributor licenses and per-file MS-PL obligations before production reuse"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Driver.cpp",
+      "sha256": "10a555cd3acd83ddd3deda51e321b8514b296b238df43e8a1249af4b0f458e48",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [
+        {
+          "nonemptyLines": 55,
+          "sudoStart": 568,
+          "sudoEnd": 634,
+          "microsoftStart": 289,
+          "microsoftEnd": 355,
+          "normalizedSha256": "559e6204083d98c3aeac0fbffa643dc28bf01d4020382195607b70623af8fb9b"
+        },
+        {
+          "nonemptyLines": 45,
+          "sudoStart": 723,
+          "sudoEnd": 773,
+          "microsoftStart": 428,
+          "microsoftEnd": 478,
+          "normalizedSha256": "5f55e82f62458e4bb2cfab63b05e23cc5f22e43962afd4b15d305ab144992d87"
+        },
+        {
+          "nonemptyLines": 31,
+          "sudoStart": 254,
+          "sudoEnd": 290,
+          "microsoftStart": 139,
+          "microsoftEnd": 176,
+          "normalizedSha256": "0b12a5c1f4dd3d2bd84aebf9e1324c6db15469d3fdf6d0c254a685345c04d4dd"
+        },
+        {
+          "nonemptyLines": 30,
+          "sudoStart": 691,
+          "sudoEnd": 720,
+          "microsoftStart": 396,
+          "microsoftEnd": 425,
+          "normalizedSha256": "82baccc013447edf67c46ec5202b6582f1c7ee53baac669b578f099c15a25f7c"
+        },
+        {
+          "nonemptyLines": 27,
+          "sudoStart": 637,
+          "sudoEnd": 669,
+          "microsoftStart": 358,
+          "microsoftEnd": 390,
+          "normalizedSha256": "9df718342d3c75e20727e2f6d9967fa2c2db8740a7312923f591069e948f3879"
+        }
+      ],
+      "productionReuseApproved": false,
+      "resolution": "Retain Microsoft and other original notices; establish exact ancestor/contributor licenses and per-file MS-PL obligations before production reuse"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Driver.h",
+      "sha256": "41b9fb6b227a43ca988af8ade5b420efa6093ca85f52444b479fe7c8a4e853d9",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [
+        {
+          "nonemptyLines": 33,
+          "sudoStart": 40,
+          "sudoEnd": 78,
+          "microsoftStart": 51,
+          "microsoftEnd": 89,
+          "normalizedSha256": "d861de895885b39c02692623580fc29805639a6560adbd474c120a8a038b41ca"
+        },
+        {
+          "nonemptyLines": 16,
+          "sudoStart": 18,
+          "sudoEnd": 35,
+          "microsoftStart": 18,
+          "microsoftEnd": 35,
+          "normalizedSha256": "b10e105da189ee632511bbd2f5b6549e42b1950511fb89e583105dd24ac973b9"
+        },
+        {
+          "nonemptyLines": 12,
+          "sudoStart": 1,
+          "sudoEnd": 15,
+          "microsoftStart": 1,
+          "microsoftEnd": 15,
+          "normalizedSha256": "33e1442a9d9af74d8c44c84d0b13427975bb629ab3a9183914efe3621c6b02a2"
+        },
+        {
+          "nonemptyLines": 9,
+          "sudoStart": 105,
+          "sudoEnd": 114,
+          "microsoftStart": 91,
+          "microsoftEnd": 100,
+          "normalizedSha256": "1885278f2ed7c27ac670d1e03be2037b160f1663077c59f75add21bfa487b7e2"
+        }
+      ],
+      "productionReuseApproved": false,
+      "resolution": "Retain Microsoft and other original notices; establish exact ancestor/contributor licenses and per-file MS-PL obligations before production reuse"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.filters",
+      "sha256": "69ac02df77374edf50832f97464c6781cdd74938699c1dd114821e5c2990f0ca",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Retain Microsoft and other original notices; establish exact ancestor/contributor licenses and per-file MS-PL obligations before production reuse"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.inf",
+      "sha256": "78247e9455fccca65fa1745664fc60dfb76eb3d59737b71cb1b8b3007bd41817",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Retain Microsoft and other original notices; establish exact ancestor/contributor licenses and per-file MS-PL obligations before production reuse"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/SudoVDA.vcxproj",
+      "sha256": "3a80623d503632f06e28e22cbe3bdc3c7227b1e84142ad27727086f354594822",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Retain Microsoft and other original notices; establish exact ancestor/contributor licenses and per-file MS-PL obligations before production reuse"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/Trace.h",
+      "sha256": "3eca4dd904e24723e6c47546d91a7eb91f2c3e06323fb5a152c74174acd0f2d1",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [
+        {
+          "nonemptyLines": 44,
+          "sudoStart": 1,
+          "sudoEnd": 59,
+          "microsoftStart": 1,
+          "microsoftEnd": 59,
+          "normalizedSha256": "7d6dc5d6539fae2568c9621321ea62b2f153e04b7652a5d810bfe6e025192bc0"
+        }
+      ],
+      "productionReuseApproved": false,
+      "resolution": "Retain Microsoft and other original notices; establish exact ancestor/contributor licenses and per-file MS-PL obligations before production reuse"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/SudoVDA/edid.h",
+      "sha256": "41993d6c0365b4b6f6dd97fa6d57d3687d3b399ff9e263e3fceb1b8be9b1df0e",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Determine template/generator/helper provenance or replace with independently authored EDID; GPL license of tool alone does not settle output licensing"
+    },
+    {
+      "path": "Virtual Display Driver (HDR)/option.txt",
+      "sha256": "67ebdd5ebcbd0f8b8ff5c7deff0811dcaf2c8fe40fff88b036de57fac2fd80b4",
+      "authorStatement": "README grants only its author changes; no complete per-file contributor mapping",
+      "microsoftSharedText": [],
+      "productionReuseApproved": false,
+      "resolution": "Author changes statement exists; establish exact contributor provenance and complete license/attribution notice before production reuse"
+    }
+  ],
+  "admission": {
+    "qualified": false,
+    "licenseClosed": false,
+    "signatureTrusted": false,
+    "deviceAclRuntimeVerified": false,
+    "windows10Verified": false,
+    "windows11HdrVerified": false,
+    "sevenDisplayPersistenceVerified": false
+  },
+  "signatureObservation": {
+    "localPath": "artifacts/phase03/derived-research/unsigned-signatures.json",
+    "sha256": "870f55e0a14b0f3aba26fdbc9211ed93fb56c9f7b02f7e999aa3549dd5544415",
+    "results": [
+      {
+        "member": "HeliosDisplay.inf",
+        "status": "UnknownError",
+        "signerPresent": false
+      },
+      {
+        "member": "HeliosDisplay.dll",
+        "status": "NotSigned",
+        "signerPresent": false
+      },
+      {
+        "member": "heliosdisplay.cat",
+        "status": "NotSigned",
+        "signerPresent": false
+      }
+    ]
+  },
+  "signingPrerequisites": {
+    "hardwareDevCenterAccount": "unknown; user question pending",
+    "associatedValidEvCertificate": "unknown; user question pending",
+    "officialSubmissionPerformed": false
+  },
+  "licenseSources": [
+    {
+      "name": "microsoft-license",
+      "url": "https://raw.githubusercontent.com/microsoft/Windows-driver-samples/2dc3fd3a0cc84a2933f2194e7ec0871584979071/LICENSE",
+      "localPath": "artifacts/phase03/r1-recheck/microsoft-license.txt",
+      "length": 2665,
+      "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a",
+      "recordedAt": "2026-10-08T14:27:18.247Z"
+    },
+    {
+      "name": "microsoft-driver",
+      "url": "https://raw.githubusercontent.com/microsoft/Windows-driver-samples/2dc3fd3a0cc84a2933f2194e7ec0871584979071/video/IndirectDisplay/IddSampleDriver/Driver.cpp",
+      "localPath": "artifacts/phase03/r1-recheck/microsoft-driver.txt",
+      "length": 30671,
+      "sha256": "b6e9320291372a3f041e0bea716e15e7bc3d8df6359169e822d3eb3a281bdf3f",
+      "recordedAt": "2026-10-08T14:27:18.243Z"
+    },
+    {
+      "name": "edid-license",
+      "url": "https://api.github.com/repos/akatrevorjay/edid-generator/license?ref=476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8",
+      "localPath": "artifacts/phase03/r1-recheck/edid-license.txt",
+      "length": 49582,
+      "sha256": "e63ecbea37d1fe0cd7df8b4b21acff31722f25accfa7a57be85e80981e823a68",
+      "license": {
+        "spdx": "GPL-3.0",
+        "url": "https://github.com/akatrevorjay/edid-generator/blob/476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8/LICENSE",
+        "textSha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2"
+      },
+      "recordedAt": "2026-10-08T14:27:18.387Z"
+    }
+  ],
+  "verification": {
+    "artifactDigestsVerified": 47,
+    "localLinksChecked": 11,
+    "sourceDriftRejected": true,
+    "legacyAndR1DecisionPass": true,
+    "candidates": [
+      {
+        "providerId": "apollo-sudovda",
+        "rejected": true
+      },
+      {
+        "providerId": "virtualdrivers-vdd",
+        "rejected": true
+      },
+      {
+        "providerId": "microsoft-idd-sample",
+        "rejected": true
+      },
+      {
+        "providerId": "molotovcherry-vdrs",
+        "rejected": true
+      },
+      {
+        "providerId": "parsec-vdd",
+        "rejected": true
+      }
+    ],
+    "systemAuthorizationRejected": true
+  }
+}

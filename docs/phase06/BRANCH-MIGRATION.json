@@ -1,0 +1,35 @@
+{
+  "sourceBranch": "codex/phase-03-virtual-display-feasibility",
+  "sourceHead": "859507d4420fda8cb3abb28f369423a794aec7ff",
+  "destinationBranch": "codex/phase-06-gamestream",
+  "sourceBranchHeadAfter": "859507d4420fda8cb3abb28f369423a794aec7ff",
+  "recordedAt": "2026-10-13T08:52:39.3326620Z",
+  "identicalProductTree": true,
+  "dirtyPatchPreserved": true,
+  "stagedPatchPreserved": true,
+  "userUntrackedFiles": [
+    {
+      "path": ".planning/phases/07-pairing-discovery-permissions/07-DISCUSS-CHECKPOINT.json",
+      "sha256": "492571e7e8eb5ea391e1b4e66cfb310903ce03eed372839c515277364f6a3e6f"
+    }
+  ],
+  "historyRewritten": false,
+  "verification": {
+    "productInputHashesMatched": 42,
+    "phase6": "complete",
+    "NET": [
+      "NET-01",
+      "NET-02",
+      "NET-03"
+    ],
+    "uat": "10/10",
+    "canonicalVerification": "passed",
+    "existingMatrixRerun": false,
+    "judgmentAdvisories": 3,
+    "phase3": {
+      "phase": 3,
+      "plan": 3,
+      "status": "halted"
+    }
+  }
+}

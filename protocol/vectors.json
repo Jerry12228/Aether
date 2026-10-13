@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "status": "candidate-unapproved",
+  "versions": {"product": "0.1.0", "localCoreAbi": 1, "protocolAbi": 1, "wireSet": [1,2]},
+  "multiMedia": {
+    "profile": "rs-vandermonde-gf256-11d-v1",
+    "source": "Botan fixed ZFEC / independent GF256 polynomial0x11d closed-form points0,2,4; repair=3*a XOR2*b",
+    "fec": {"k":2,"n":3,"shardBytes":4,"inputHex":"0001020304050607","sharesHex":["00010203","04050607","08090a0b"],"survivors":[1,2],"recoveredHex":"0001020304050607"},
+    "options": {"packetSize":0,"mtu":1500,"fecPercent":50,"minRepair":1,"shardBytes":64,"k":2,"perStreamQueue":192,"ttlMs":25,"reserved":0},
+    "boundaries": [
+      {"id":"packet-exact-mtu","changes":{"packetSize":240,"mtu":240},"status":0},
+      {"id":"packet-minus-one","changes":{"packetSize":239},"status":24},
+      {"id":"packet-plus-mtu","changes":{"packetSize":241,"mtu":240},"status":24},
+      {"id":"mtu-minus-one","changes":{"mtu":239},"status":24},
+      {"id":"mtu-plus-one","changes":{"mtu":1501},"status":24},
+      {"id":"k-zero","changes":{"k":0},"status":24},
+      {"id":"k-plus-one","changes":{"k":17},"status":24},
+      {"id":"shard-zero","changes":{"shardBytes":0},"status":24},
+      {"id":"shard-plus-one","changes":{"shardBytes":1025},"status":24},
+      {"id":"frame-minus-one","changes":{"shardBytes":32},"status":24},
+      {"id":"frame-plus-one","changes":{"k":9,"shardBytes":1024,"perStreamQueue":10000},"status":24},
+      {"id":"queue-exact-frame","changes":{"perStreamQueue":128},"status":0},
+      {"id":"queue-minus-one","changes":{"perStreamQueue":127},"status":24},
+      {"id":"queue-plus-one","changes":{"perStreamQueue":13108},"status":24},
+      {"id":"ttl-zero","changes":{"ttlMs":0},"status":24},
+      {"id":"ttl-plus-one","changes":{"ttlMs":101},"status":24},
+      {"id":"fec-zero","changes":{"fecPercent":0},"status":24},
+      {"id":"fec-plus-one","changes":{"fecPercent":256},"status":24},
+      {"id":"fec-255-retained","changes":{"fecPercent":255},"status":0},
+      {"id":"repair-plus-one","changes":{"minRepair":255},"status":24},
+      {"id":"repair-resource-refusal","changes":{"minRepair":21},"status":5},
+      {"id":"reserved","changes":{"reserved":1},"status":25}
+    ]
+  },
+  "wire": [
+    {"id":"single-common","hex":"41455448000a01010001","local":[1,2],"expected":{"status":0,"selectedVersion":1,"upgradeSide":0}},
+    {"id":"highest-common","hex":"41455448000c010200010002","local":[1,2],"expected":{"status":0,"selectedVersion":2,"upgradeSide":0}},
+    {"id":"remote-permutation","hex":"41455448000c010200020001","local":[1,2],"expected":{"status":0,"selectedVersion":2,"upgradeSide":0}},
+    {"id":"local-permutation","hex":"41455448000c010200010002","local":[2,1],"expected":{"status":0,"selectedVersion":2,"upgradeSide":0}},
+    {"id":"upgrade-remote","hex":"41455448000a01010001","local":[2],"expected":{"status":20,"selectedVersion":0,"upgradeSide":1}},
+    {"id":"upgrade-local","hex":"41455448000a01010003","local":[1,2],"expected":{"status":20,"selectedVersion":0,"upgradeSide":2}},
+    {"id":"empty-version-set","hex":"4145544800080100","local":[1,2],"expected":{"status":24,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"truncated","hex":"41455448000c01020001","local":[1,2],"expected":{"status":24,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"trailing-byte","hex":"41455448000c01020001000200","local":[1,2],"expected":{"status":24,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"unknown-required-message","hex":"41455448000a02010001","local":[1,2],"expected":{"status":25,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"zero-version","hex":"41455448000a01010000","local":[1,2],"expected":{"status":25,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"duplicate-version","hex":"41455448000c010200010001","local":[1,2],"expected":{"status":25,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"unknown-optional-field","hex":"41455448000f0101000100070001ff","local":[1,2],"expected":{"status":0,"selectedVersion":1,"upgradeSide":0}},
+    {"id":"unknown-required-field","hex":"41455448000f0101000180070001ff","local":[1,2],"expected":{"status":25,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"duplicate-optional-field","hex":"414554480012010100010007000000070000","local":[1,2],"expected":{"status":25,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"tlv-length-overflow","hex":"41455448000e010100010007ffff","local":[1,2],"expected":{"status":24,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"declared-size-minus-one","hex":"41455448000901010001","local":[1,2],"expected":{"status":24,"selectedVersion":0,"upgradeSide":0}},
+    {"id":"declared-size-plus-one","hex":"41455448000b01010001","local":[1,2],"expected":{"status":24,"selectedVersion":0,"upgradeSide":0}}
+  ],
+  "cryptographicKnownAnswers": [
+    {"id":"nist-aes256-gcm-zero","source":"NIST SP 800-38D / GCM known-answer zero block","key":"0000000000000000000000000000000000000000000000000000000000000000","iv":"000000000000000000000000","plaintext":"00000000000000000000000000000000","ciphertext":"cea7403d4d606b6e074ec5d3baf39d18","tag":"d0d1c8a799996bf0265b98b5d48ab919"},
+    {"id":"libsrtp-aead-kat","source":"cisco/libsrtp@24b3bf8f19b6f5ab4cd2bcceb4f4064efca86fd5/crypto/cipher/cipher_test_cases.c","runner":"cipher_driver -v and srtp_driver -v","expected":"exit 0; AES GCM 256 self-tests passed"}
+  ],
+  "proposal": {
+    "hostId":101,"instanceId":102,"displayId":103,"streamId":104,"connectionId":105,"clientId":106,
+    "configGeneration":1,"keyGeneration":1,"requestId":1,"budgetRevision":7,"leaseEpoch":1,"expiresMs":1000,
+    "capabilities":[
+      {"name":"camera","availability":2,"reason":3,"requested":1,"available":0,"final":0},
+      {"name":"fps","availability":1,"reason":2,"requested":120,"available":60,"final":60},
+      {"name":"hdr","availability":0,"reason":1,"requested":1,"available":0,"final":0}
+    ],
+    "evidenceScope":"Test-only capability fixture: Win10 SDR alternative, camera unverified, synthetic fps budget. No physical HDR or device claim."
+  },
+  "media": {"rtpHeaderHex":"8060000100015f9000000068","payload":"synthetic-phase06","ssrc":104,"clock":90000,"direction":1,"type":1,"sequence":1,"protection":"AEAD_AES_256_GCM SRTP; 16-byte tag"}
+}

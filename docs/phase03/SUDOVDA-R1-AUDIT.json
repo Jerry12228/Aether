@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-08T14:31:06.268Z",
+  "scope": "read-only source/package audit; not an admitted driver, production license clearance, system authorization or machine proof",
+  "sourceObservations": [
+    {
+      "name": "sudovda-head",
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/commits/master",
+      "sha256": "9d1fb596f81bc1f70d786bd07433841538e02f3a266ccdfc941219afdc4719c2",
+      "length": 10569,
+      "commit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+      "recordedAt": "2026-10-08T14:23:46.696Z"
+    },
+    {
+      "name": "sudovda-releases",
+      "url": "https://api.github.com/repos/SudoMaker/SudoVDA/releases?per_page=10",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "length": 2,
+      "releaseCount": 0,
+      "recordedAt": "2026-10-08T14:23:46.692Z"
+    },
+    {
+      "name": "apollo-release",
+      "url": "https://api.github.com/repos/ClassicOldSong/Apollo/releases/latest",
+      "sha256": "2431e044fa47f2c470326addd92823c636130262565637deb9d62346f9a3f0c4",
+      "length": 7078,
+      "tag": "v0.4.6",
+      "assets": [
+        {
+          "name": "Apollo-0.4.6.exe",
+          "size": 17529901,
+          "url": "https://github.com/ClassicOldSong/Apollo/releases/download/v0.4.6/Apollo-0.4.6.exe",
+          "digest": "sha256:42b2aefaacb3474511517a56b96ee9f0517f30ac38b5dd2fda9fd5b478f5021a"
+        }
+      ],
+      "recordedAt": "2026-10-08T14:23:46.829Z"
+    },
+    {
+      "name": "microsoft-head",
+      "url": "https://api.github.com/repos/microsoft/Windows-driver-samples/commits/main",
+      "sha256": "73a461c6e283330c7ca4c962cf5dfc520b4b533b2bd3d41db7d7e9603d05b572",
+      "length": 20533,
+      "commit": "2dc3fd3a0cc84a2933f2194e7ec0871584979071",
+      "recordedAt": "2026-10-08T14:23:46.697Z"
+    },
+    {
+      "name": "edid-head",
+      "url": "https://api.github.com/repos/akatrevorjay/edid-generator/commits/master",
+      "sha256": "1df23cb8a7762e8b9878ff6a60b13c083f55d16e8817dc3995b5040789ff1cf7",
+      "length": 5429,
+      "commit": "476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8",
+      "recordedAt": "2026-10-08T14:23:46.798Z"
+    }
+  ],
+  "download": {
+    "scope": "static-only; not executed or installed",
+    "url": "https://github.com/ClassicOldSong/Apollo/releases/download/v0.4.6/Apollo-0.4.6.exe",
+    "localPath": "artifacts/phase03/r1-recheck/Apollo-0.4.6.exe",
+    "length": 17529901,
+    "sha256": "42b2aefaacb3474511517a56b96ee9f0517f30ac38b5dd2fda9fd5b478f5021a",
+    "durationMs": 28741,
+    "recordedAt": "2026-10-08T14:24:56.462Z",
+    "budget": {
+      "maxBytes": 20971520,
+      "deadlineSeconds": 30
+    }
+  },
+  "files": [
+    {
+      "name": "SudoVDA.inf",
+      "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/SudoVDA.inf",
+      "length": 3644,
+      "sha256": "ad69ac682756f0cf339b081fac7e6e8159fdf2ca01ca69df8945c7246c286925",
+      "catalogRequired": true,
+      "referenceMatch": true
+    },
+    {
+      "name": "SudoVDA.dll",
+      "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/SudoVDA.dll",
+      "length": 83216,
+      "sha256": "47ee263cb5de9382c6630a2d7f3dafec4a49419f953beec869ca5dd0c460ff63",
+      "catalogRequired": true,
+      "referenceMatch": "not-present-in-fixed-tree"
+    },
+    {
+      "name": "sudovda.cat",
+      "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/sudovda.cat",
+      "length": 2425,
+      "sha256": "2f9189de5604bec9d86f51640cc540639e394d9ad0f8e689129375e95f2d22f8",
+      "catalogRequired": false,
+      "referenceMatch": true
+    },
+    {
+      "name": "sudovda.cer",
+      "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/sudovda.cer",
+      "length": 772,
+      "sha256": "6accdcd519f6179d967db4eaa20ecf25a732ba30e87f4cffebc768b2c13c9007",
+      "catalogRequired": false,
+      "referenceMatch": true
+    },
+    {
+      "name": "install.bat",
+      "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/install.bat",
+      "length": 871,
+      "sha256": "1453b042afce9046f04fbc7a200b708084ae1c22b0d21c49613c3a7bb2dfc219",
+      "catalogRequired": false,
+      "referenceMatch": true
+    },
+    {
+      "name": "uninstall.bat",
+      "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/uninstall.bat",
+      "length": 168,
+      "sha256": "ebacfadc202e69f642e63237a8cec816a99cf92ef9db6d5559763c15147c046b",
+      "catalogRequired": false,
+      "referenceMatch": true
+    }
+  ],
+  "signature": {
+    "tool": "Windows SDK 10.0.28000.0 x64 signtool",
+    "policy": "umdf-authenticode /pa",
+    "infExitCode": 1,
+    "dllExitCode": 1,
+    "observedReason": "certificate chain terminated in untrusted root",
+    "signer": "CN=sudovda@su.mk",
+    "timestampPresent": false,
+    "policyVerified": false,
+    "catalogMembersVerified": false
+  },
+  "licenses": [
+    {
+      "name": "microsoft-license",
+      "url": "https://raw.githubusercontent.com/microsoft/Windows-driver-samples/2dc3fd3a0cc84a2933f2194e7ec0871584979071/LICENSE",
+      "localPath": "artifacts/phase03/r1-recheck/microsoft-license.txt",
+      "length": 2665,
+      "sha256": "07639618c7b94ab9953cc61715f6325877e1854dca611ed9b1bd54497cf5e93a",
+      "recordedAt": "2026-10-08T14:27:18.247Z"
+    },
+    {
+      "name": "microsoft-driver",
+      "url": "https://raw.githubusercontent.com/microsoft/Windows-driver-samples/2dc3fd3a0cc84a2933f2194e7ec0871584979071/video/IndirectDisplay/IddSampleDriver/Driver.cpp",
+      "localPath": "artifacts/phase03/r1-recheck/microsoft-driver.txt",
+      "length": 30671,
+      "sha256": "b6e9320291372a3f041e0bea716e15e7bc3d8df6359169e822d3eb3a281bdf3f",
+      "recordedAt": "2026-10-08T14:27:18.243Z"
+    },
+    {
+      "name": "edid-license",
+      "url": "https://api.github.com/repos/akatrevorjay/edid-generator/license?ref=476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8",
+      "localPath": "artifacts/phase03/r1-recheck/edid-license.txt",
+      "length": 49582,
+      "sha256": "e63ecbea37d1fe0cd7df8b4b21acff31722f25accfa7a57be85e80981e823a68",
+      "license": {
+        "spdx": "GPL-3.0",
+        "url": "https://github.com/akatrevorjay/edid-generator/blob/476a016d8b488df749bf6d6efbf7b9fbfb2e3cb8/LICENSE",
+        "textSha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2"
+      },
+      "recordedAt": "2026-10-08T14:27:18.387Z"
+    }
+  ],
+  "logs": [
+    {
+      "localPath": "artifacts/phase03/r1-recheck/archive-list.log",
+      "length": 27039,
+      "sha256": "2834305330e000dd3b0b84695c8d4f0821a87d34885949151acd6cbb5d52e942"
+    },
+    {
+      "localPath": "artifacts/phase03/r1-recheck/extract.log",
+      "length": 516,
+      "sha256": "4c52543afb12484591cca6c46fce0c5aa44114c0335249e96a25819cc893bfd0"
+    },
+    {
+      "localPath": "artifacts/phase03/r1-recheck/signature-inf.log",
+      "length": 812,
+      "sha256": "5a39d9c4d439d81d11b3f3adc148b9c0a2488c4cbb5e7bd86e9418dfad5aff3f"
+    },
+    {
+      "localPath": "artifacts/phase03/r1-recheck/signature-dll.log",
+      "length": 812,
+      "sha256": "f6429e40644597174e9555486072af21cbc48ac446234ade3a635bb9ca740777"
+    }
+  ],
+  "systemActions": [],
+  "productReuse": [],
+  "routeProposal": "docs/phase03/SUDOVDA-R1-ROUTE.md"
+}

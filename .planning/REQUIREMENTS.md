@@ -17,13 +17,13 @@
 
 ### Monorepo 与 Flutter/原生骨架
 
-- [ ] **CORE-01**: 维护者能从主仓库入口构建 Helios 和唯一 Selene Flutter 应用，共享模块和版本来源。
-- [ ] **CORE-02**: Selene 能通过有所有权/线程/取消契约的 C ABI 获取原生事件和能力，不传递逐帧媒体到 Dart。
-- [ ] **CORE-03**: 维护者能运行共享契约检查及 Windows 构建 CI，查看五平台 adapter 的统一接口。
+- [x] **CORE-01**: 维护者能从主仓库入口构建 Helios 和唯一 Selene Flutter 应用，共享模块和版本来源。
+- [x] **CORE-02**: Selene 能通过有所有权/线程/取消契约的 C ABI 获取原生事件和能力，不传递逐帧媒体到 Dart。
+- [x] **CORE-03**: 维护者能运行共享契约检查及 Windows 构建 CI，查看五平台 adapter 的统一接口。
 
 ### 虚拟显示器可行性
 
-- [ ] **VDP-01**: 用户能在 Win10/11 原型中创建两个独立标识的虚拟显示器组并观察不同内容。
+- [ ] **VDP-01**: 用户能在Win10/11原型中创建四组七屏并观察独立内容；Win10全部SDR，Win11的D2要求HDR，其余SDR。精确规格与SudoVDA适配见[需求修订R1](../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)。
 - [ ] **VDP-02**: 维护者能验证 provider 的稳定 ID、操作接口、签名/再分发路径与失败恢复。
 
 ### 系统虚拟麦克风可行性
@@ -38,9 +38,9 @@
 
 ### GameStream 协议重构与扩展
 
-- [ ] **NET-01**: 双端使用基于 NVIDIA GameStream 重构扩展的协议，协商 Aether 版本与能力，使用 instance/display/stream ID、租约 epoch 和明确错误码。
-- [ ] **NET-02**: 维护者能查阅 GameStream 基线与扩展映射、通道/安全重构 ADR，以及双向媒体、多流、丢包原型和五平台目标构建/可运行的自动化证据；Apple 实机验证另列 TODO。
-- [ ] **NET-03**: 连接具有标准安全机制保护的可靠控制与实时媒体通道，错误版本/超限消息被拒绝。
+- [x] **NET-01**: 双端使用基于 NVIDIA GameStream 重构扩展的协议，协商 Aether 版本与能力，使用 instance/display/stream ID、租约 epoch 和明确错误码。
+- [x] **NET-02**: 维护者能查阅 GameStream 基线与扩展映射、通道/安全重构 ADR，以及双向媒体、多流、丢包原型和五平台目标构建/可运行的自动化证据；Apple 实机验证另列 TODO。
+- [x] **NET-03**: 连接具有标准安全机制保护的可靠控制与实时媒体通道，错误版本/超限消息被拒绝。
 
 ### 配对、发现与设备权限
 
@@ -87,7 +87,7 @@
 
 ### HDR、4:4:4 与色彩呈现
 
-- [ ] **COLOR-01**: 支持的主机/显示器/客户端能传输并正确呈现 HDR/10-bit 与色彩元数据。
+- [ ] **COLOR-01**: 支持的主机/显示器/客户端能传输并正确呈现HDR/10-bit与色彩元数据；Win10主机不要求HDR，Win11及客户端按实际能力协商，见[需求修订R1](../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)。
 - [ ] **COLOR-02**: 支持的双端能使用 YUV 4:4:4，桌面文字和色彩内容正确，条件不足时明确说明。
 
 ### 游戏手柄、触摸与高级输入
@@ -278,18 +278,18 @@
 | BASE-01 | Phase 1 | Complete |
 | BASE-02 | Phase 1 | Complete |
 | BASE-03 | Phase 1 | Complete |
-| CORE-01 | Phase 2 | In Progress |
-| CORE-02 | Phase 2 | In Progress |
-| CORE-03 | Phase 2 | In Progress |
+| CORE-01 | Phase 2 | Complete |
+| CORE-02 | Phase 2 | Complete |
+| CORE-03 | Phase 2 | Complete |
 | VDP-01 | Phase 3 | Pending |
 | VDP-02 | Phase 3 | Pending |
 | MIC-01 | Phase 4 | Pending |
 | MIC-02 | Phase 4 | Pending |
 | CAM-01 | Phase 5 | Pending |
 | CAM-02 | Phase 5 | Pending |
-| NET-01 | Phase 6 | Pending |
-| NET-02 | Phase 6 | Pending |
-| NET-03 | Phase 6 | Pending |
+| NET-01 | Phase 6 | Complete |
+| NET-02 | Phase 6 | Complete |
+| NET-03 | Phase 6 | Complete |
 | AUTH-01 | Phase 7 | Pending |
 | AUTH-02 | Phase 7 | Pending |
 | AUTH-03 | Phase 7 | Pending |
@@ -387,3 +387,16 @@
 - Unmapped: 0
 
 *Last updated: 2026-10-07 after Phase 1 source feature inventory (ORIG-01–10 added; all product requirements remain Pending)*
+
+## 2026-10-13 Phase6执行完成与验证边界
+
+06-05三任务、全部六计划及精确包真人审阅完成；当前十二目标CI、独立all及本机回归通过。NET-01/02/03的自动行为证据与已测范围审阅成立，但阶段规范验证仍human_needed，六禁止项和三未分类edge保持未验证并进入06-UAT.md。需求复选框和Pending追踪保留；精确包“确认”不替代九项逐项UAT。Phase3安装关口保持halted。
+
+## 2026-10-13 Phase6自行验收续记（历史停点）
+
+NET-01/02/03保持Pending。用户已委托当前代理核验后续项：UAT7项scoped pass/3条缺定义blocked，后者只有unclassified占位及null字段；不能从要求ID反推原假设。本次formal all/85项检查及23原登记安全缓解通过仅说明既定协议原型范围，原flags投影不改；没有新增产品缺陷或自动关闭需求。见docs/phase06/06-UAT-AUDIT.md。
+
+
+## 2026-10-13 NET规范关闭（当前）
+
+NET-01/02/03由GSD phase.complete实际置Complete，对应已批准Phase6 synthetic协议原型目标。三条中文分类器未命中提示合法退役并接续24显式边界，UAT10/10、108测试及新旧gate通过。三个自主judgment advisory和所有既定后续生产/设备/真实网络/Apple物理义务保持；不是豁免原能力或整个产品已交付。规范报告见docs/phase06/06-CLOSEOUT.md、06-COMPLETION.json。

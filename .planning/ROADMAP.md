@@ -19,11 +19,11 @@
 ## Phases
 
 - [x] **Phase 1: 来源、原功能与环境基线** - 建立可追溯的原功能全集和真实工具/平台验证矩阵 (completed 2026-10-07)
-- [ ] **Phase 2: Monorepo 与 Flutter/原生骨架** - 从一个主仓库构建 Helios 和 Selene Windows 骨架
+- [x] **Phase 2: Monorepo 与 Flutter/原生骨架** - 从一个主仓库构建 Helios 和 Selene Windows 骨架 (completed 2026-10-08)
 - [ ] **Phase 3: 虚拟显示器可行性** - 在 Win10/11 验证可生产接入的多组虚拟屏 provider
 - [ ] **Phase 4: 系统虚拟麦克风可行性** - 证明 PCM 可注入 Win10/11 普通软件的 capture endpoint
 - [ ] **Phase 5: Win10/11 系统摄像头可行性** - 证明两个 Windows 版本上的普通软件能选择虚拟摄像头
-- [ ] **Phase 6: GameStream 协议重构与扩展** - 基于 GameStream 验证双向、多流、安全与版本化扩展
+- [x] **Phase 6: GameStream 协议重构与扩展** - 基于 GameStream 验证双向、多流、安全与版本化扩展 (completed 2026-10-13)
 - [ ] **Phase 7: 配对、发现与设备权限** - 用户可安全添加、配对并撤销 Helios
 - [ ] **Phase 8: 持久实例登记与应用生命周期** - 用户能独立创建、运行和显式停止多个应用会话
 - [ ] **Phase 9: Windows 捕获与 H.264 基础流** - Helios 可捕获真实桌面并发送基础 H.264 视频
@@ -97,7 +97,7 @@
 1. Windows 双端骨架从干净 checkout 可构建，核心不依赖 Qt 或 Flutter。
 2. 跨边界句柄创建/释放、错误回调和停止均有契约验证，记录 texture/surface 原型结论。
 
-**Plans:** 2/3 plans complete（02-01/02 已完成；02-03 最终本地/干净双端检查通过，实际 CI 与最终人审仍待完成）
+**Plans:** 3/3 plans complete（本地/干净双端、实际 Windows CI 和最终人审均完成；CORE-01/02/03 骨架范围满足）
 
 **Wave 1**
 
@@ -107,9 +107,9 @@
 
 - [x] 02-02-PLAN.md — 原生 GPU Texture/native surface、验证面板与退出行为
 
-**Wave 3** *(local checks passed; actual Windows CI and human checkpoint pending)*
+**Wave 3** *(complete: clean/actual Windows CI passed; final human response “确认”)*
 
-- [ ] 02-03-PLAN.md — 单目标构建、独立验证、干净 Windows CI 与最终人审
+- [x] 02-03-PLAN.md — 单目标构建、独立验证、干净 Windows CI 与最终人审
 
 ### Phase 3: 虚拟显示器可行性
 
@@ -118,10 +118,22 @@
 **Requirements:** VDP-01, VDP-02
 **Success Criteria**:
 
-1. 两组创建、重开、删一组不影响另一组；记录分辨率/刷新率/HDR条件。
+1. 四组七屏按已批准规格创建、重开、删一组不影响其他组；全部请求60 Hz，记录请求与实际分辨率/刷新率及D组SDR/HDR条件，严格拒绝不得冒充七屏通过。
 2. 原型与正式分发差异清楚；仅测试签名或来源不明不能通过生产可行性结论。
 
-**Plans:** TBD（规划时拆为1–3个小计划）
+**Plans:** 2/3 plans executed（03-01/03-02完成；03-03 Task1及Apollo前置INF修正完成，新包/plan可审阅；旧条件安装批准前置失败未安装，新固定计划授权、实机矩阵及最终人审保留）
+
+**Wave 1**
+
+- [x] 03-01-PLAN.md — 固定provider准入、真实只读状态与具体候选决定（aether-helios-display 准入；来源/许可、x64 构建、自签本机信任和实际 ACL 对应证据闭合；未完成 Phase3 实机验收）
+
+**Wave 2** *(depends on 03-01)*
+
+- [x] 03-02-PLAN.md — 原生适配、持久事务、四组七屏严格拓扑与独立图案
+
+**Wave 3** *(depends on 03-02)*
+
+- [ ] 03-03-PLAN.md — Task1代码及Apollo前置修正/新包计划完成；halted于Task2新固定计划批准，未安装，Win10/11矩阵与最终人审未完成
 
 ### Phase 4: 系统虚拟麦克风可行性
 
@@ -157,7 +169,35 @@
 1. 固定 GameStream 开源实现基线与字段/通道映射，说明保留、重构和扩展项；Aether 版本/能力协商、独立连接/流上下文和测试向量可复现。
 2. 双向模拟媒体和至少两条独立视频流通过；包大小、时间戳、FEC/丢包恢复、安全密钥/nonce边界及有界队列明确，覆盖五端原生核心构建与可运行的自动化检查，Apple 实机验证另列 TODO；不要求旧端互通。
 
-**Plans:** TBD（规划时拆为1–3个小计划）
+**Plans:** 6/6 plans complete — 全部计划、精确包真人审阅与后续自主收尾完成；UAT10/10、规范passed、NET01/02/03 Complete。24显式edge及108校验通过，三个judgment advisory保留。
+
+首轮三个计划的中间包涉及23文件，被独立检查器阻断。Revision 1沿同一原生协议原型验收链拆成五个顺序执行包（9/9/9/6/9文件、单任务最多5文件），作为“通常1–3计划”的容量例外；没有增加配对、真实设备/编解码、生产仲裁子系统或改变阶段依赖。第二轮检查0 blocker/0 warning，记录见 `06-PLAN-CHECK.md`。
+
+**Wave 1**
+
+- [x] 06-01-PLAN.md — 真实安全双进程 tracer、固定基线/向量及真实具体ADR批准完成（原答复1，reviewed hash0cdda0d2）
+
+**Wave 2（前置：Wave 1完成及具体ADR批准）**
+
+- [x] 06-02-PLAN.md — 真实Botan复用reply1已记录；双向五流synthetic/认证后有界FEC/公开合同完成，Debug/ASan46/46及CTest10/10各通过
+
+**Wave 3（前置：Wave 2完成）**
+
+- [x] 06-06-PLAN.md — 增量typed操作合同、可信provider与confirm前启流屏障；真实产品client/测试host、取消终态和媒体服务窗口；Debug/ASan各27场景通过
+
+**Wave 4（前置：06-06完成）**
+
+- [x] 06-03-PLAN.md — 完整方案确认、六维预算、fresh-auth/逐流恢复/上行另确认、诊断与限值；三任务及SUMMARY23b814e完成，Debug106/106、Debug/ASan CTest12/12及三轮实测通过
+
+**Wave 5（前置：06-03完成）**
+
+- [x] 06-04-PLAN.md — Selene 真实低频 FFI、恢复/trace/安全停止及依赖总账；摘要adffc87
+
+**Wave 6（前置：06-04完成）**
+
+- [x] 06-05-PLAN.md — 实际十二目标CI/独立all/本机回归与精确100项材料人审完成3/3；自主UAT10/10及规范关闭完成，三个judgment advisory保留
+
+Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原ADR/FEC批准、637原能力与12设置映射及所有历史失败保持。当前source4edaf03/input7ca15942十二目标CI38252266760通过，正式all退出0，本机Windows15/15、FFI22/22、owned Android115/115、根11/11；真实用户确认100项材料包。计划6/6和全项目14/15已完成，Phase6与NET规范关闭；原flags作为历史投影保留，新24条explicit合同与合法分类器dismissal接续，见06-VERIFICATION.md、06-UAT.md和docs/phase06/06-CLOSEOUT.md。Apple物理及生产能力边界保持，不自动开始Phase7。
 
 ### Phase 7: 配对、发现与设备权限
 
@@ -610,11 +650,11 @@
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. 来源、原功能与环境基线 | 3/3 | Complete    | 2026-10-07 |
-| 2. Monorepo 与 Flutter/原生骨架 | 2/3 | In Progress | Actual CI and final human review pending |
-| 3. 虚拟显示器可行性 | 0/TBD | Not started | - |
+| 2. Monorepo 与 Flutter/原生骨架 | 3/3 | Complete    | 2026-10-08 |
+| 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 0/TBD | Not started | - |
+| 6. GameStream 协议重构与扩展 | 6/6 | Complete    | 2026-10-13 |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |
@@ -653,3 +693,12 @@
 | 42. 完整版本端到端验收与文档 | 0/TBD | Not started | - |
 
 *Last updated: 2026-10-07; approved by user*
+
+## 2026-10-13 Phase6自行验收记录（历史停点）
+
+用户授权之后项自行核验；06-UAT partial：7项scoped pass、3条原空probe insufficient_spec blocked。本次formal all与85/85通过、安全原登记23closed/open0、UI N/A；原flagged投影保留。Phase6/NET不关闭，不启动Phase7；Phase3 halted保持。详见docs/phase06/06-UAT-AUDIT.md及06-VERIFICATION。
+
+
+## 2026-10-13 Phase6规范完成
+
+用户“自行推进完成6”授权自主收尾。当前GSD phase.complete已实际执行：Phase6 Complete、NET01/02/03 Complete、3/42阶段完成。UAT10/10、108/108、新24显式edge gate及原formal all通过；SECURITY23/0、Nyquist/Wave0 true。三个NON-AUTHORITATIVE judgment advisory保留并醒目标注，原6+3投影/审阅快照不改。Phase3 03-03 summary为halted，阶段计划实际14/15完成，不能按SUMMARY存在误计15/15。Phase3独立安装关口保持，其他会话的Phase7准备不被本会话修改或启动实施。

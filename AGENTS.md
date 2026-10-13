@@ -13,7 +13,7 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 - **仓库**：Aether 单主仓库，Helios/Selene 单一产品版本体系；平台差异在仓库内适配。
 - **技术**：Selene Flutter；Dart 负责界面、设置、会话操作；媒体热路径和系统集成在原生层。
 - **协议**：在 NVIDIA GameStream 基础上重构扩展，以固定版本 Moonlight/Sunshine 源码核验基线；不可自行切换为从零选择 WebRTC/QUIC 整体替代。
-- **兼容**：服务端 Windows 10/11 是硬要求；具体最低 build 在 Phase 1/3–5 验证后锁定，不能借参考上游提高最低版本。
+- **兼容**：服务端 Windows 10/11 是硬要求；Win10 不要求 HDR，Win11 保留 HDR 能力目标（docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md）；具体最低 build 在 Phase 1/3–5 验证后锁定，不能借参考上游提高最低版本。
 - **能力**：不能以“重构”为由删除原功能；设备/OS 不支持时需能力协商、说明与证据。
 - **资源**：并行流数受 GPU 编码会话、解码器、显存和带宽限制；需事前协商和可解释拒绝。
 - **工作流**：细粒度阶段，通常每阶段 1–3 个计划；超过单一子系统或验收链路就拆阶段。
@@ -82,13 +82,23 @@ Do not make direct repo edits outside a GSD workflow unless the user explicitly 
 > This section is managed by `generate-claude-profile` -- do not edit manually.
 <!-- GSD:profile-end -->
 
+## 项目语言规则
+
+- 新建或实质更新的项目文档默认使用简体中文，包括 GSD 规划、研究、计划检查、执行摘要、验证报告、交接记录、设计说明和证据解读。
+- 面向用户的说明、问题及进度更新使用简体中文。
+- 代码标识、API 名称、命令、路径、版本号、哈希、机器可读字段及枚举值保持原样；必要技术术语可保留英文。
+- 外部来源的原文引用、许可证、第三方 notices、原始日志及固定审阅快照保持原样，不因语言统一破坏证据。
+
 ## Aether Repository Rules
 
-- Start with [.planning/STATE.md](.planning/STATE.md), then the current phase and its directly relevant documents. The user approved the roadmap on 2026-10-07; Phase 1 baseline audit and final human review are complete. Phase 2 is ready to plan; no product implementation phase has run.
+- 阶段开发使用各自独立的 `codex/phase-{phase}-{slug}` 分支，阶段号补齐两位；同一阶段的多个计划共用该阶段分支。开始或恢复阶段的研究、规划、执行及验收前，核对并创建或切换到对应分支，不因当前分支已有依赖代码而把新阶段提交写入其他阶段分支。新分支可继承所需依赖阶段的提交；已有混合历史保留，不自动重写。切换前检查未提交修改，不覆盖、丢弃或混入用户修改。
+- Start with [.planning/STATE.md](.planning/STATE.md), then the current phase and its directly relevant documents. The user approved the roadmap on 2026-10-07; Phase 1 baseline and Phase 2 Windows local skeleton, actual CI and final human review are complete. Phase 3 is ready to discuss/plan; no virtual-device or full remote-streaming implementation phase has run.
 - Use [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/SESSION-MODEL.md](docs/SESSION-MODEL.md) for design boundaries. This is a greenfield repo, so there are no production code patterns to infer yet.
+- Apply the user-approved 2026-10-08 [SudoVDA requirement revision R1](docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md): Windows 10 host HDR is not required; Phase 3 uses seven SDR displays on Win10 and D2 HDR on Win11. SudoVDA is preferred, but admission/security/evidence gates remain.
 - Preserve the entire applicable [original feature matrix](docs/FEATURE-PARITY.md). Newly discovered missing original abilities enter v1, not the TODO backlog by default.
 - Keep Flutter UI and native realtime/system paths separate; one Selene app and shared contracts live in the Aether monorepo.
 - Reference checkouts under references/upstream are ignored research material. Do not commit them as submodules, edit them as product code, or route GSD product commits to them.
 - All virtual display groups and instances persist across disconnect/switch until explicit stop; host control lease is globally unique in the shared Windows login desktop.
 - Work in small phases and request only concrete critical decisions. Current workflow is interactive, sequential, with research, plan checks and verification enabled; do not automatically start all phases or spawn agents without applicable authorization.
+- User explicitly forbids restarting or shutting down the development machine. Do not execute or schedule either operation; record checks that require them as unperformed.
 - Keep candidate technologies distinguishable from user-confirmed constraints and tested outcomes. Do not mark a platform/driver supported solely because an API exists or a Flutter skeleton runs.

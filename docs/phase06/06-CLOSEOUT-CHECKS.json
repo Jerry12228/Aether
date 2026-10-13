@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-13T07:33:43.372Z",
+  "commands": [
+    {
+      "name": "closeout-all",
+      "exitCode": 0,
+      "durationMs": 8125,
+      "timeout": false,
+      "error": null,
+      "log": "build\\phase06\\closeout\\closeout-all.log",
+      "sha256": "fccc50cdac28c2249535f5538a51b48dbf24f9b65c6c35ce8255773731f991e4"
+    },
+    {
+      "name": "closeout-negative-tests",
+      "exitCode": 0,
+      "durationMs": 418,
+      "timeout": false,
+      "error": null,
+      "log": "build\\phase06\\closeout\\closeout-negative-tests.log",
+      "sha256": "8b610d9acbb1f2c370530e9adcc5b7833a2eb0c5c2d8576e2b6487e6150d2ad9"
+    },
+    {
+      "name": "closeout-explicit",
+      "exitCode": 0,
+      "durationMs": 117,
+      "timeout": false,
+      "error": null,
+      "log": "build\\phase06\\closeout\\closeout-explicit.log",
+      "sha256": "7cb899d550aabb54616f44e2bfc2460b5719ccbbc20fc9529026626057145068"
+    }
+  ],
+  "toolInputs": [
+    {
+      "file": "scripts/verify-phase06-closeout.cjs",
+      "sha256": "f414d8d6d347889e809869c0b1d0f3ad6b376a59abcdddbeeb12274eec55ce10"
+    },
+    {
+      "file": "tests/phase06-closeout.test.cjs",
+      "sha256": "09c672ffc15d6a1c29e9037ad077495bbb13887d0b04d46b7a8e66792fd06117"
+    },
+    {
+      "file": "docs/phase06/06-CLOSEOUT.json",
+      "sha256": "8e517e03dae5a7475193cbaa0ad2e74d70bcec0d493a015fd0ceb3f0c2ea0738"
+    }
+  ],
+  "productSourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "productInputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "systemMutation": false
+}

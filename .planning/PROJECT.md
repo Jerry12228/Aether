@@ -13,8 +13,10 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 ### Validated
 
 - ✓ BASE-01/02/03：固定来源与逐文件许可/渠道审计、七平台原功能与独立计划案例、真实环境及测量方法、两个人审检查点 — Phase 1。
+- ✓ CORE-01/02/03：单主仓库/统一版本的 Windows 双端骨架、独立 C++20/C ABI 与真实 Dart 所有权/停止契约、五平台能力接口及实际 Windows CI — Phase 2，用户最终原文“确认”。
+- ✓ NET-01/02/03：固定GameStream协议基线/通道映射、版本/能力/身份、真实安全双进程双向synthetic多流与FEC/恢复/预算、真实Dart FFI及五平台十二目标证据 — Phase 6；精确包真人确认与后续自主规范收尾完成，24显式edge，108校验测试，三个judgment advisory明确保留。
 
-这是基线审计交付；所有产品功能仍未实现，生产复用许可、目标构建、硬件和性能支持尚无批准或实测结果。
+已交付基线审计、Windows本地骨架和协议原型：真实DLL/FFI、静态GPU Texture/native surface、面板/控制台生命周期，以及协议五平台原生目标构建/匹配执行证据通过。完整远程串流产品、生产authority/设备/codec/HDR、生产许可、主机最低build、驱动和产品性能仍按后续阶段实施/核验；Apple物理验收独立TODO。
 
 ### Active
 
@@ -53,7 +55,7 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 - **仓库**：Aether 单主仓库，Helios/Selene 单一产品版本体系；平台差异在仓库内适配。
 - **技术**：Selene Flutter；Dart 负责界面、设置、会话操作；媒体热路径和系统集成在原生层。
 - **协议**：在 NVIDIA GameStream 基础上重构扩展，以固定版本 Moonlight/Sunshine 源码核验基线；不可自行切换为从零选择 WebRTC/QUIC 整体替代。
-- **兼容**：服务端 Windows 10/11 是硬要求；具体最低 build 在 Phase 1/3–5 验证后锁定，不能借参考上游提高最低版本。
+- **兼容**：服务端Windows10/11是硬要求；Win10不要求HDR，Win11保留HDR能力目标，见[用户需求修订R1](../docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md)。具体最低build在Phase1/3–5验证后锁定，不能借参考上游提高最低版本。
 - **能力**：不能以“重构”为由删除原功能；设备/OS 不支持时需能力协商、说明与证据。
 - **资源**：并行流数受 GPU 编码会话、解码器、显存和带宽限制；需事前协商和可解释拒绝。
 - **工作流**：细粒度阶段，通常每阶段 1–3 个计划；超过单一子系统或验收链路就拆阶段。
@@ -65,14 +67,16 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | Aether Monorepo；Helios/Selene 命名 | 用户指定，减少仓库与契约分叉 | 已确认 |
-| Flutter UI + 共享原生核心 + 薄平台层 | 统一交互，同时保留低延迟和平台硬件能力 | 边界已确认；技术原型待验证 |
+| Flutter UI + 共享原生核心 + 薄平台层 | 统一交互，同时保留低延迟和平台硬件能力 | Phase2本地骨架/真实FFI及双GPU路径通过；完整媒体/五端实现待后续 |
 | 基于 NVIDIA GameStream 重构扩展，无旧端兼容承诺 | 用户于审阅时明确协议基础；在现有串流分层上扩展双向媒体、多流及控制权 | 已确认 |
 | 实例生命周期独立于连接生命周期 | 断连、切换后继续运行 | 已确认 |
 | 主机全局控制租约，0–1 实例被控 | 同一登录桌面的系统输入/焦点共享 | 已确认 |
 | 麦克风和摄像头均接入系统设备 | 会议软件和游戏能直接使用 | 已确认 |
 | 先 Windows 垂直闭环，五端均为 v1 必须项 | 降低前期集成风险，不缩小最终范围 | 已确认 |
 | iOS/iPadOS、macOS 仅实机验证延后 | 用户无实机；两端实现、构建和可运行的自动化检查保留，真实硬件结果不冒充完成 | 已确认 |
-| 原生核心候选 C++20 + C ABI | 参考实现和 Windows/媒体 SDK 复用成本低 | 建议；Phase 2 锁定 |
+| C++20 + C ABI，CMake；Dart FFI与薄平台通道 | Windows独立DLL、标量事件/ACK、所有权与线程契约有实际验证 | Phase2确认；ffigen21/ffi2.2兼容锁定，Pigeon未选用 |
+| GPU Texture与原生surface并行保留 | 同源静态BGRA8原型、实际像素/留边与清理可复核 | Phase2通过；未锁定完整媒体/HDR最终呈现路线 |
+| 单目标build与独立verify、必需Windows CI | 避免隐式构建另一端或空/跳过测试记通过 | Phase2四构建/19组/142记录及最终人审完成 |
 | GameStream 重构细节、驱动供应、具体生产许可证/渠道 | 协议基础已确定；Phase1已提供来源证据及路线意向，实际通道/驱动/生产选用仍待原型和清单核验 | 待 Phase 2–6及生产选用前决定 |
 | compatible-open-source与retain-candidates | 用户选择兼容开源复用路线、暂不考虑发行；GPL-3.0-or-later仍候选，未知许可/签名/渠道阻碍保留 | Phase1已确认意向，未批准具体生产复用 |
 | 经授权只读观察者、唯一控制租约 | 保留Apollo适用原能力；观察者不输入/上行/改变会话，预算独立协商，断连仅释放本流 | Phase1人审确认；Phase6/20/37实施验证 |
@@ -84,4 +88,4 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 每个阶段完成后更新已验证需求、阶段证据、关键决策和阻碍；不能把源码研究当作产品验证。里程碑结束时完整审视范围和原功能对照。新增差异必须同时更新需求、路线图、能力矩阵及测试，TODO 进入 docs/BACKLOG.md。
 
 ---
-*Last updated: 2026-10-07 after Phase 1 baseline execution and final human review*
+*最后更新：2026-10-13，Phase6协议原型规范完成；Phase3独立安装关口保持。*

@@ -1,0 +1,30 @@
+HeliosDisplay dedicated research driver, based on SudoVDA commit
+a4b09fa2aa731a964d0cb5d139cb1e6240e4da12 and licensed Microsoft sample expressions.
+
+Copyright (c) Microsoft Corporation.
+Microsoft reference source: Windows-driver-samples commit
+d43983a97c79e5e7eafb4948fd2678f5e709838b, video/IndirectDisplay.
+Retain the complete accompanying Microsoft-MS-PL.txt and source notices.
+The standalone reconstructed driver source is provided under MS-PL;
+compiled redistribution must comply with that license. This does not select
+or change the license for the Aether monorepo, Helios server or Selene client.
+
+Yukino Song / SudoMaker: original author-modification waiver is preserved in
+SudoVDA-README.txt. This package relies on its offered CC0/public-domain route
+only for that author's changes, never as a blanket relicense of earlier work.
+CC0-1.0.txt provides the unmodified CC0 legal terms.
+
+Independent Aether research contributions: GPU selection helper, EDID arrays
+and generator, registry reader, dependency declarations, INF and WDK project,
+private identity/IOCTL permission changes, defensive cleanup/build corrections.
+These driver contributions are provided under the accompanying MS-PL.
+
+Inherited configuration/helper/template bodies with unresolved earlier authors
+were replaced or excluded. Remaining shared Microsoft sample expressions use
+the fixed Microsoft licensed reference above. Exact 2017 Git ancestry is not
+claimed. Original source credits are retained for historical attribution.
+
+No external 384-byte EDID or GPL edid-generator template is a build input.
+ZZZ is a research EDID manufacturer placeholder, not an assigned Aether ID.
+This is a self-signed local research package, not Microsoft certification,
+retail distribution approval, or proof of Win10/11 seven-screen/HDR behavior.

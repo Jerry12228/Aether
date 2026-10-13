@@ -35,11 +35,19 @@ explicit physical validation TODOs are deferred. All applicable original feature
 matrix capabilities remain in scope. Windows static tests do not close host-floor,
 codec, driver, HDR, input, upstream-device or remote-session gaps.
 
-Required Windows CI remains separate: the current repository has no remote.
+Required Windows CI remains separate: the user authorized public origin
+Jerry12228/Aether main, and the reviewed source was pushed without force.
 The audited windows-2025-vs2026 image lists SDK 26100, while the build contract
 requires 28000. bootstrap-ci.ps1 requests that exact component only on an ephemeral
 hosted runner using the signature-verified Microsoft installer, then checks the
-actual SDK. That installation has not been exercised. A trusted manually selected
+actual SDK. First Actions run 37721726261 installed SDK28000 successfully, then
+failed the fourth build's plugin-link validation. The correction is running in
+37741148365. Runs 37732241885/37734973473 passed four builds and 18/19 checks,
+but baseline checkout identity failed. Fifth run37741148365 passed all four builds
+and all19 required groups/142 records, including software GPU pixels, WARP and
+cleanup. This is Windows Server2025 software functional evidence, not a Win10
+floor, other-platform or physical GPU performance claim. Actual
+metadata, failed-run logs and hashes are in CI-RESULTS.json. A trusted manually selected
 self-hosted Windows x64 GUI executor with existing VS2026/SDK28000 is the alternative;
 it also must execute the real workflow, and is not automatically installed/registered.
 A real workflow run with dual builds and every mandatory check is required

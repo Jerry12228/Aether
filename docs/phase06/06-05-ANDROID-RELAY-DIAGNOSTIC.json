@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T16:00:48.363Z",
+  "sourceCommit": "0b6467dbc9c65a11456faf280c2db51bd939ca05",
+  "inputDigest": "2a3552183fb70a288cf779cac89cadeab12437ac67da54574395687d7570153f",
+  "tasksCompleted": 0,
+  "failure": {
+    "target": "android-x64",
+    "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38152495945",
+    "case": "real secure media: fec-beyond",
+    "suiteTests": 27,
+    "passed": 26,
+    "failed": 1,
+    "originalRecoveryExecuted": false,
+    "observedError": "Native relay cleanup failed; actual guest relay exit=1; raw relay reports only owned UDP bridge failure",
+    "classification": "actual-runtime-failure-with-masked-primary-error",
+    "cause": "尚未确认。清理异常可能覆盖更早异常，当前原始日志不足以区分宿主期限、relay socket 或其他原因；不能把调度推断写成已确认事实。",
+    "next": "保留原始异常与清理异常、失败时逐进程观测摘要，并记录 native relay 失败位置和 observed errno；不放宽5秒子进程/3秒relay observation/25ms媒体期限。"
+  },
+  "sameInputObservations": {
+    "localAndroidX64": {
+      "tests": 115,
+      "passed": 115,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "elapsedMs": 175004,
+      "physical": false,
+      "synthetic": true,
+      "cleanup": "本轮 adb emu kill、AVD delete 均退出0；随后独立 adb devices 为空"
+    },
+    "iosArm64Simulator": {
+      "tests": 42,
+      "passed": 42,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedMs": 432148,
+      "physical": false,
+      "synthetic": true,
+      "scope": "真实XCTest及120包/各接收流8帧；QoS调用0；旧941失败仍保留，原因不因本轮通过而改写"
+    }
+  },
+  "raw": [
+    {
+      "file": "build/phase06/06-05/ci-38152495945/phase06-android-x64-0b6467dbc9c65a11456faf280c2db51bd939ca05/build/phase06/targets/android-x64/protocol-run.json",
+      "sha256": "a86e5fdf8c0dda2e7dd906882ab31b4cad76a43e033732716c1361af4b69e666",
+      "bytes": 67684
+    },
+    {
+      "file": "build/phase06/06-05/ci-38152495945/phase06-android-x64-0b6467dbc9c65a11456faf280c2db51bd939ca05/build/phase06/targets/android-x64/run-logs/adb-original-multistream.log",
+      "sha256": "0fea5c90931176b671d8f70593c81582bd54fa8766be91a5d68d594fb01a706e",
+      "bytes": 5339
+    },
+    {
+      "file": "build/phase06/06-05/ci-38152495945/phase06-android-x64-0b6467dbc9c65a11456faf280c2db51bd939ca05/build/phase06/targets/android-x64/run-logs/native-relays/relay-9.log",
+      "sha256": "5d4848f1abeba3a191697ac08918b9ccd3197187ff9f4d1ddcc93334456abe6d",
+      "bytes": 288
+    },
+    {
+      "file": "build/phase06/06-05/local-0b-android-x64/protocol-run.json",
+      "sha256": "fe5116f32ad9cfb701ef43a409e2120dafe0b47814370f5cbc0cd5e18483982e",
+      "bytes": 73044
+    },
+    {
+      "file": "build/phase06/06-05/ci-38152495945/phase06-ios-arm64-iphonesimulator-0b6467dbc9c65a11456faf280c2db51bd939ca05/run-logs/xctest.log",
+      "sha256": "b112efec6c478e394a82d7b7d299813daace53def22bb3d9dbc785adfe48793c",
+      "bytes": 337506
+    }
+  ],
+  "constraints": {
+    "hostRestart": false,
+    "driverInstall": false,
+    "assertionsChanged": false
+  }
+}

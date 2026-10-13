@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-13T07:42:22.544Z",
+  "authorization": "自行推进完成6",
+  "phaseCompleteResult": {
+    "completed_phase": "6",
+    "phase_name": "gamestream",
+    "plans_executed": "6/6",
+    "next_phase": "3",
+    "next_phase_name": "虚拟显示器可行性",
+    "is_last_phase": false,
+    "date": "2026-10-13",
+    "roadmap_updated": true,
+    "state_updated": true,
+    "requirements_updated": true,
+    "auto_pruned": false,
+    "warnings": [
+      "06-03-SUMMARY.md: references 1 file(s) not on disk: 06-03-01/02/03-RED.json"
+    ],
+    "has_warnings": true,
+    "verification_stale_check_indeterminate": false,
+    "milestone_conflict": null,
+    "preservation_warnings": []
+  },
+  "preservedPrimaryCheckpoint": {
+    "phase": 3,
+    "plan": 3,
+    "status": "halted"
+  },
+  "productSourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "productInputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "judgmentAdvisories": 3,
+  "systemMutation": false,
+  "metadataCorrection": {
+    "file": ".planning/phases/06-gamestream/06-03-SUMMARY.md",
+    "historicalGitCommit": "adbda4fe6e7b0a7981c8dc96b25fe23e0a8334fa",
+    "previousSha256": "006f8a605eb900f422dc786665a09cb9df66d83daf154f5a612bcbefb27f73dc",
+    "currentSha256": "c52c97954a11ac1acf9d4d332f598fde24c5bc51871c8d473b62b09b35ae4e90",
+    "reason": "原反引号合并缩写06-03-01/02/03-RED.json被SDK误当单一路径；改为三个真实文件链接，所有原RED字节/运行结果不变",
+    "actualFiles": [
+      {
+        "file": "docs/phase06/06-03-01-RED.json",
+        "sha256": "7a03f107ee4a1f676f1791e3de230522b72107b736e7371bf3ec61319fc89d87"
+      },
+      {
+        "file": "docs/phase06/06-03-02-RED.json",
+        "sha256": "3c82af4f38d06a6bdd07b7fec9a7e1f05ba46766cc8e141c5b1d9a1e5d43b873"
+      },
+      {
+        "file": "docs/phase06/06-03-03-RED.json",
+        "sha256": "9cb1c4af1695738ac75618aca2cc526769c4e9cba13c0e7c0cce0f531de1f62e"
+      }
+    ]
+  },
+  "progress": {
+    "completedPhases": 3,
+    "totalPhases": 42,
+    "completedPlans": 14,
+    "totalPlans": 15,
+    "phase3PlansCompleted": 2,
+    "phase3PlansTotal": 3
+  }
+}

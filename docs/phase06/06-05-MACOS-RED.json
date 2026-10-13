@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T10:33:51.510Z",
+  "sourceCommit": "d6476646449c64910bade21f20bac307714495ac",
+  "inputDigest": "bfef80f6c489a61ab6706d1d2cc88b0c6093b1fb1a44f89ad10a39605f1a25f7",
+  "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38128868716",
+  "classification": "actual-native-behavior-failure",
+  "expected": "AP_CANCELLED；recovery.reason=cancelled；D07另确认返回AP_OK；D08健康流和control在采样窗继续前进",
+  "actual": "两种macOS均取消返回retry-exhausted；arm64另有D07确认AP_TIMEOUT11、D08短窗健康流不前进",
+  "targets": [
+    {
+      "arch": "x64",
+      "ctest": {
+        "tests": 14,
+        "passed": 13,
+        "failed": 1
+      },
+      "recovery": {
+        "tests": 60,
+        "passed": 59,
+        "failed": 1,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0,
+        "elapsedMs": 56480.798192
+      }
+    },
+    {
+      "arch": "arm64",
+      "ctest": {
+        "tests": 14,
+        "passed": 13,
+        "failed": 1
+      },
+      "recovery": {
+        "tests": 60,
+        "passed": 57,
+        "failed": 3,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0,
+        "elapsedMs": 61741.160542
+      }
+    }
+  ],
+  "rawLogs": [
+    {
+      "file": "build/phase06/06-05/macos-arm-fifth.log",
+      "sha256": "e8f7ccd0162180d640599b82e565630a217b9ee0d9b923264d0a1ad3f0452a75",
+      "bytes": 25064
+    },
+    {
+      "file": "build/phase06/06-05/macos-x64-fifth.log",
+      "sha256": "1a17f13be30e8ebe6ce69b714e05aab1af22a0b63f65cb4de6993a95209c8c4c",
+      "bytes": 24465
+    }
+  ],
+  "buildManifest": {
+    "file": "build/phase06/06-05/ci-38128868716/macos-arm64/build/phase06/targets/macos-arm64/protocol-target-Release.json",
+    "sha256": "35a6b859f23c18578e00b72026f11ede5402f5d69b9b045d732c55aa8a55727c"
+  },
+  "artifacts": [
+    {
+      "file": "build/phase06/targets/macos-arm64/libaether_protocol.dylib",
+      "sha256": "7cda5c7b1f7368ff132fe6da2bd387d5621213e1fcce594aca2e16afc2bc71d0",
+      "bytes": 4585928,
+      "observedArch": "arm64"
+    },
+    {
+      "file": "build/phase06/targets/macos-arm64/aether_protocol_tracer",
+      "sha256": "64bf3afe6e9753cf1e4c54346101c828939ab903b915d9db65bb757f279cf97c",
+      "bytes": 102824,
+      "observedArch": "arm64"
+    },
+    {
+      "file": "build/phase06/targets/macos-arm64/aether_media_security",
+      "sha256": "6afb9b3072bd4aeb445390160c792b260661e86465d1186770bd05200b294c9e",
+      "bytes": 4415048,
+      "observedArch": "arm64"
+    },
+    {
+      "file": "build/phase06/targets/macos-arm64/aether_protocol_control_client",
+      "sha256": "a4a5aace93ab651e78cb9904fb57ed287f1ed0906533d5a4f9dce420c86cc7a3",
+      "bytes": 175456,
+      "observedArch": "arm64"
+    },
+    {
+      "file": "build/phase06/targets/macos-arm64/aether_protocol_control_host",
+      "sha256": "c58d012daf7e4556c6daf63c06cd87e21621115510bc9c6ab53c41483328e032",
+      "bytes": 4634576,
+      "observedArch": "arm64"
+    }
+  ],
+  "proposedCause": "取消在worker进入reconnect前被接受，但随后retry_cancel被复位；小TLS control记录尚未关闭Nagle，延迟是否改善须由新实际CI证明",
+  "scope": "保留失败历史；不是完成证据，不改变60项原断言或最终人审门槛"
+}

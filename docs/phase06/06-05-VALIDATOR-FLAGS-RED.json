@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T05:35:30.201Z",
+  "scope": "06-05 Task2独立证据校验行为RED；fixture不宣称平台执行",
+  "baseSource": "6475aeebcc7b57f8835b96dde01e6c94f48b794f",
+  "testSource": {
+    "file": "tests/protocol-evidence.test.cjs",
+    "sha256": "09530e5146541716737b97fe98eee1bb3e34a1fb769b46ca3e22818406f351e1"
+  },
+  "validatorSource": {
+    "file": "scripts/verify-protocol.cjs",
+    "sha256": "cc23906198ae0e377daf47b254cbfa1c9acb24066e8f619a229968451aea5da9"
+  },
+  "actual": {
+    "exitCode": 1,
+    "tests": 76,
+    "passed": 73,
+    "failed": 3,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "raw": {
+      "file": "build/phase06/06-05/validator-flags-red.log",
+      "sha256": "71f1b3ff7467d3b7022f53ad6e024e4cad1364432e6cf69b4d4a7ee5579fbd4f"
+    }
+  },
+  "failures": [
+    "原禁止项statement伪造仍被接受",
+    "禁止项source替换仍被接受",
+    "原unclassified edge requirement替换仍被接受"
+  ],
+  "invalidAttempt": "首次sandbox node:test spawn EPERM不是行为RED；escalated原生运行的assert.throws失败才计本记录",
+  "fixStatus": "not-implemented-at-RED",
+  "systemMutation": false
+}

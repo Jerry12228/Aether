@@ -17,6 +17,8 @@
 
 架构列指CPU指令集，性能级别、内存门槛和各codec/HDR最低硬件未实测。历史来源是官方框架范围声明，不是Aether端到端支持；最低候选不授权删除较旧原用户范围。原Qt Windows manifest的7/8/8.1兼容标签也不等于已验证其最低版本。本次平台差异必须在 [全基线审阅](BASELINE-REVIEW.md) 明确处理。
 
+2026-10-08用户[需求修订R1](phase03/SUDOVDA-REQUIREMENTS-REVISION.md)：Win10主机不要求HDR，Phase3四组七屏全部SDR；Win11保留D2 HDR，具体build/设备条件单独验证。SudoVDA作为优先适配候选，不等于包准入或实机通过；Win10/11主机范围仍保留。
+
 ## 当前环境与机器缺口
 
 [environment.json](baseline/environment.json) 记录15项只读查询、7个平台、11个机器/GPU条目及明确缺口；所有平台 buildEvidence/hardwareEvidence 为空。Quick约1.5秒完成，Node24.14/Git2.54/pwsh7.6.3/CMake4.4.3/Ninja1.12、VC组件、缓存Flutter/Dart、JDK17及AndroidSDK/NDK可查询；SDK19041/22621/26100/28000同版本headers/libs/tools配套存在；WDK10.0.28000.0头文件、x64库、x64 StampInf和同版本x86 Inf2Cat均存在，VS2026 Enterprise的v180内核/用户驱动toolset和WDK导入文件已核验。以上不是完成目标构建或许可审计。

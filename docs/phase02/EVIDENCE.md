@@ -1,38 +1,38 @@
 # Phase 2 execution evidence
 
-Local implementation and final clean checkout passed; phase completion is pending
-a real passing Windows Actions run and the final human checkpoint. No Phase 3
+Local implementation, latest clean checkout and actual Windows Actions passed;
+final human checkpoint was confirmed with exact reply “确认” on2026-10-08. No Phase 3
 started. Exact commands, durations, counters, binary/log digests and failed attempts
 are preserved in [EVIDENCE-RESULTS.json](EVIDENCE-RESULTS.json).
 
-Final tested source: `4a718df4972a59842814140678a5c86f584c7ed8`; product `0.1.0`, ABI `1`.
-The checkout was `build\clean-checkouts\Aether clean space FjrxlY`, contained only committed tracked inputs,
+Final tested source: `08a005ca5a3e2137345e2dbd2f5153bb6c37cade`; product `0.1.0`, ABI `1`.
+The checkout was `build\clean-checkouts\Aether clean space AmpqVY`, contained only committed tracked inputs,
 and had no references/upstream, prior build or app cache. Normal installed SDK,
 compiler, SHA-verified external libclang and ordinary locked pub restoration were
-used. Four explicit target builds and All verify completed in 304.585s.
+used. Four explicit target builds and All verify completed in 309.474s.
 All evidence was copied back before the checked owned directory was deleted.
 
 | Mandatory group | Result | Seconds | Test cases / suites |
 |---|---|---:|---:|
-| source-check | PASS | 5.161 | — |
-| platform-check | PASS | 0.062 | — |
-| planning-check | PASS | 0.071 | — |
-| tool-baseline-tests | PASS | 46.288 | 93 |
-| flutter-analyze | PASS | 3.382 | — |
-| test-targets-Debug | PASS | 7.177 | — |
-| test-targets-Release | PASS | 7.041 | — |
-| native-tracer-fixture | PASS | 0.166 | 1 |
-| core-Tracer-Debug | PASS | 5.454 | 3 |
-| core-Lifecycle-Debug | PASS | 4.685 | 7 |
-| core-Adapters-Debug | PASS | 2.233 | 4 |
-| core-Tracer-Release | PASS | 2.267 | 3 |
-| core-Lifecycle-Release | PASS | 4.620 | 7 |
-| core-Adapters-Release | PASS | 2.276 | 4 |
-| ui-Panel | PASS | 64.866 | 5 |
-| ui-Lifecycle | PASS | 78.492 | 6 |
-| helios-Debug | PASS | 0.766 | 2 |
-| helios-Release | PASS | 0.773 | 2 |
-| binary-versions | PASS | 0.296 | — |
+| source-check | PASS | 4.675 | — |
+| platform-check | PASS | 0.064 | — |
+| planning-check | PASS | 0.075 | — |
+| tool-baseline-tests | PASS | 46.983 | 96 |
+| flutter-analyze | PASS | 3.837 | — |
+| test-targets-Debug | PASS | 8.728 | — |
+| test-targets-Release | PASS | 8.532 | — |
+| native-tracer-fixture | PASS | 0.173 | 1 |
+| core-Tracer-Debug | PASS | 5.464 | 3 |
+| core-Lifecycle-Debug | PASS | 4.565 | 7 |
+| core-Adapters-Debug | PASS | 2.245 | 4 |
+| core-Tracer-Release | PASS | 2.190 | 3 |
+| core-Lifecycle-Release | PASS | 4.658 | 7 |
+| core-Adapters-Release | PASS | 2.350 | 4 |
+| ui-Panel | PASS | 64.595 | 7 |
+| ui-Lifecycle | PASS | 78.876 | 6 |
+| helios-Debug | PASS | 0.755 | 2 |
+| helios-Release | PASS | 0.768 | 2 |
+| binary-versions | PASS | 0.284 | — |
 
 Core counts combine one real native suite with the actual Dart cases per group.
 Native suite assertions are separately counted by the contract binary; they are
@@ -45,14 +45,14 @@ the tracked JSON retains their SHA256 manifest and executable hashes.
 
 | Executable / actual DLL | SHA256 |
 |---|---|
-| build/native/Debug/aether_core.dll | `a8f194dbd5854afe6759ff353714f12f7c2fb08ee00a5311187deb862a39f979` |
-| build/native/Release/aether_core.dll | `c6237e4dcd823e2bcd3fe8de422f98576301e8fa2ee03ba3dafb6c94fe781abd` |
-| build/native/Debug/helios.exe | `48a634d21fee0fbf79ffcb1445432180c9bccab43eae0a924d35c6988391207e` |
-| build/native/Release/helios.exe | `128191c65b631fc92dc65892564c14aabb4f02ee32e4cd7f236331a294ea4975` |
-| apps/selene/build/windows/x64/runner/Debug/selene.exe | `9724980d2ebd9111859bbc220549aa7aa25052b535c6faa971421153763af202` |
-| apps/selene/build/windows/x64/runner/Debug/aether_core.dll | `210c01a93bd2a7ce943abbe2a7dd05121296b8b74789a3861f770059a6da706b` |
-| apps/selene/build/windows/x64/runner/Release/selene.exe | `cefb2795b108f20b23f3648fc7217174ddf23ddcba49f1f24b93287f2f5fcb43` |
-| apps/selene/build/windows/x64/runner/Release/aether_core.dll | `96d3e92aaa73674caec8c53a0f017b884811dbc6cf6aca008197429931c3d745` |
+| build/native/Debug/aether_core.dll | `4a2c268f354c285874011e7eab00ab5b466d8e011c42a30ad66b791ef66f3ad6` |
+| build/native/Release/aether_core.dll | `5d3ef5cd8441815add3990f708f0b6467026181ee1477d66a7886073f868fae6` |
+| build/native/Debug/helios.exe | `8d5a8f82c1b42e60328347a76724e8738292fde882bda80df623bf4adfbc0e05` |
+| build/native/Release/helios.exe | `af297d7ff9e2d8af9eb31b5b18d6f56637f0e37939113139a300747c0d63f6f2` |
+| apps/selene/build/windows/x64/runner/Debug/selene.exe | `9e262f851c68a3a0c7b4c858a3d704fd6d332daa1991b559d886a44fec2b0bdc` |
+| apps/selene/build/windows/x64/runner/Debug/aether_core.dll | `a1043db4eb6b80db80e8ac93372262ef74067c7d1e406e7d3aac43d0f59ec662` |
+| apps/selene/build/windows/x64/runner/Release/selene.exe | `3a5739f57cfad372bd30eda083de5c7cfcb6630bb1618bc69967d0839c4b7e74` |
+| apps/selene/build/windows/x64/runner/Release/aether_core.dll | `c83ba614dd0cebc7a999841fdd8f46a8782fea0f7148632303ca5b5e4b62b4e4` |
 
 ## Lifecycle and presentation
 
@@ -115,18 +115,70 @@ reproduced as a real TAP failure and accepted by the GSD RED gate. Fix 6d59a78
 normalizes link-parent-relative full paths and trailing separators, while rejecting
 foreign targets. Twelve tooling tests and two actual sequential restores passed.
 [Actual second run](https://github.com/Jerry12228/Aether/actions/runs/37732241885)
-is in progress on 6d59a78734a457f2cdb1b6d11c399c344f45775e.
+passed all four builds and 18/19 verification groups, but failed baseline fixture
+checkout identity. Drive-casing normalization reproduced a separate real path
+comparison defect; it alone did not resolve hosted path aliases. Third run
+37734251073 was cancelled before completion to include a discovered software
+adapter-label correction. Fourth run 37734973473 again passed four builds and
+18/19 groups, including actual Debug/Release WARP, GPU pixels and software labels;
+baseline alias rejection remained. Native OS realpath normalization (9aff292)
+passed a real namespace-alias regression and all 96 baseline/tool tests locally.
+The latest clean rerun (08a005c, containing all corrections) passed four builds,
+all 19 groups and 142 recorded cases/native suites in 309.474s. The local table
+above and JSON carry its exact timings, binary versions and SHA256 manifests.
+[Actual fifth run](https://github.com/Jerry12228/Aether/actions/runs/37741148365)
+passed on 9aff29216833d786b7fc0877ab544fb4df68ce5f. All four explicit Debug/Release
+Helios/Selene builds and all 19 mandatory groups / 142 recorded cases pass,
+with no missing/skipped required check. Actual binary versions are0.1.0/ABI1.
+The verified image is windows-2025-vs2026 / 20260925.250.1; VS18.10.12217.157,
+MSVC14.51.36231, SDK10.0.28000.0, Flutter3.44.0/Dart3.12.0, root CMake4.4.3
+and Flutter-used CMake4.3.1-msvc1. The runner is Windows Server2025; this does
+not prove the Windows10 host floor. Basic Render Driver is software, not local
+physical GPU performance. Final sources/registrations/descriptors are zero.
+[Uploaded evidence and Release binaries](https://github.com/Jerry12228/Aether/actions/runs/37741148365/artifacts/11534761493)
+have archive digest `fac207958cbe0aa8515858223babd5256a670de916cde83236e39034edc9a8f7`.
+All four downloaded Release binary SHA256 values match the actual verify report;
+git diff confirms clean08a005c and CI9aff292 product/tool/test/lock inputs match.
 [CI ledger](CI-RESULTS.json) retains actual API results, image/tool metadata and
 downloaded file hashes; the first failure is not changed to a pass.
-Complete passing counts/outcomes and uploaded
-log/artifact links are still required. No local result or human approval waives that requirement.
-02-03-02/CORE-03/D-17 and the phase therefore remain incomplete.
+Complete actual counts/outcomes, run metadata and uploaded artifact/file hashes
+are retained. Technical task02-03-02 is complete; final task02-03-03 is now ready.
+CORE-01/02/03 meet the scoped skeleton requirements. Final human response is
+“确认”, recorded2026-10-08T08:15:03Z, approving the repository/native boundary
+and evidence limits. No new physical keyboard/device observations are claimed.
 
-After actual CI passes, present the full evidence for the final human checkpoint:
+Final pre-review guard, 2026-10-08: `node scripts/check-sources.cjs --check`
+exited0/PASS, checking49 hosted packages,50 product source files, real
+ffigen21/audited libclang18.1.1 bindings and version/lock/license drift.
+`node scripts/validate-planning.cjs` exited0/PASS, with105/105 v1 requirements
+mapped across42 phases and valid local links. `git diff --check` passed.
+
+Final human checkpoint (confirmed; retained review scope):
 patterns/DPI/resize/retry/close, real console Ctrl+C/final key behavior, local-only
 resource boundaries, all five platform duties and the three unclassified CORE
 assumptions plus six descriptor-less prohibitions (still flagged-unverified).
 Do not automatically start Phase 3.
+
+Review the panel's color bars/grid/text, resize/DPI letterbox, error/retry and
+close behavior using the actual screenshots and negative-test logs. For a real
+interactive console, run `build/native/Release/helios.exe`, press Ctrl+C after
+initialization, check zero counters and the final-key wait, then press a key.
+Success final-key can also be checked with `helios.exe --self-test`; failure
+final-key uses the test-only `build/native/Release/aether_helios_test.exe --test-init-error`.
+Automation and isolated Ctrl+C are already tested; a physical key observation
+must not be invented. Confirm this Phase2 repository/native boundary and these
+evidence limits, or identify a concrete discrepancy.
+
+Actual fourth-run Microsoft Basic Render Driver (vendor 5140/device 140) is
+software rendering, now correctly reported as softwareAdapter=true. Known Basic
+Render identity is retained even when the legacy adapter interface reports zero
+software flags. Its real engine record passed the same hash-verified TAP witness
+that failed on second-run output. The local WARP probe was initially GREEN and
+was not accepted as RED; a sandbox spawn failure was also not accepted. Only the
+distinct actual-CI-record assertion failure received RED_EVIDENCE_OK. Both local
+WARP configurations render and release all sources; both CI paths and counters
+pass. These are software functional checks, not physical GPU performance evidence.
+Microsoft's identity/flags reference is the [DXGI overview](https://learn.microsoft.com/en-us/windows/win32/direct3ddxgi/d3d10-graphics-programming-guide-dxgi).
 
 [Platform duties](PLATFORM-GAPS.md) preserve original Android API21–23, Linux
 ARM32/RISC-V/boards, Win10/11 floor pending Phases3–5, Windows ARM and Apple

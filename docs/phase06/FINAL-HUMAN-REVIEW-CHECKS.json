@@ -1,0 +1,114 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-13T05:00:27.461Z",
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "inputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "humanReview": {
+    "file": "docs/phase06/FINAL-HUMAN-REVIEW.json",
+    "sha256": "ab6d9cdeeb766860e2d0619eb42072472dbf987883117f3cacfe6bb91e128861"
+  },
+  "reviewedPackageSHA256": "48271d2aed1e62fa22af9d988681c5909e673a1a3fe87c15f8aace7445d48dbc",
+  "frozenMaterialsMatched": 100,
+  "retainedFlagged": {
+    "prohibitions": 6,
+    "unclassified": 3,
+    "state": "flagged-unverified",
+    "verification": null,
+    "resolution": null
+  },
+  "phase3": "phase3/plan3/status halted",
+  "phase6Verification": "human_needed",
+  "pendingUAT": 9,
+  "checks": [
+    {
+      "name": "protocol-all",
+      "command": [
+        "C:\\Users\\Jerry\\AppData\\Local\\mise\\installs\\node\\24.14.0\\node.exe",
+        "scripts/verify-protocol.cjs",
+        "--scope",
+        "all",
+        "--evidence",
+        "docs/phase06/TARGETS.json"
+      ],
+      "startedAt": "2026-10-13T05:00:20.726Z",
+      "elapsedMs": 6645,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "build/phase06/06-05/final-human-review-checks/protocol-all.log",
+        "sha256": "53b9ebfb02b65eec3f40356bda6b118addf7f79007cfdf3298cd73583a677c2c"
+      },
+      "stderr": {
+        "file": "build/phase06/06-05/final-human-review-checks/protocol-all.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "planning",
+      "command": [
+        "C:\\Users\\Jerry\\AppData\\Local\\mise\\installs\\node\\24.14.0\\node.exe",
+        "scripts/validate-planning.cjs"
+      ],
+      "startedAt": "2026-10-13T05:00:27.371Z",
+      "elapsedMs": 90,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "build/phase06/06-05/final-human-review-checks/planning.log",
+        "sha256": "e751023fac6ade09d8e28052602b3397d3bb1946adf67af4fdda9109f8551fde"
+      },
+      "stderr": {
+        "file": "build/phase06/06-05/final-human-review-checks/planning.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "planningGateChecks": [
+    {
+      "name": "summary",
+      "command": [
+        "C:\\Users\\Jerry\\AppData\\Local\\mise\\installs\\node\\24.14.0\\node.exe",
+        "C:/Users/Jerry/.codex/gsd-core/bin/gsd-tools.cjs",
+        "verify-summary",
+        ".planning/phases/06-gamestream/06-05-SUMMARY.md"
+      ],
+      "exitCode": 0,
+      "file": "build/phase06/06-05/final-human-review-checks/summary.json",
+      "sha256": "83c87b3746592867c5b1ea0684f635ed7a57421845dd8f38390d441bc056f3c2",
+      "interpretation": "valid"
+    },
+    {
+      "name": "coverage",
+      "command": [
+        "C:\\Users\\Jerry\\AppData\\Local\\mise\\installs\\node\\24.14.0\\node.exe",
+        "C:/Users/Jerry/.codex/gsd-core/bin/gsd-tools.cjs",
+        "uat",
+        "classify-coverage",
+        "--summary",
+        ".planning/phases/06-gamestream/06-05-SUMMARY.md"
+      ],
+      "exitCode": 0,
+      "file": "build/phase06/06-05/final-human-review-checks/coverage.json",
+      "sha256": "93485a1a626910a625182aa387d8badfdc5e1806dc485d74537c29cb09489e6a",
+      "interpretation": "valid"
+    },
+    {
+      "name": "phase-completion-gate",
+      "command": [
+        "C:\\Users\\Jerry\\AppData\\Local\\mise\\installs\\node\\24.14.0\\node.exe",
+        "C:/Users/Jerry/.codex/gsd-core/bin/gsd-tools.cjs",
+        "phase",
+        "uat-passed",
+        "6",
+        "--require-verification"
+      ],
+      "exitCode": 0,
+      "file": "build/phase06/06-05/final-human-review-checks/phase-completion-gate.json",
+      "sha256": "afae1d3b15f9beeb18cea7d2eeba584ba29829ffbf0e4a948df2136d403dfee6",
+      "interpretation": "expected-pending：1项pass/9项pending，保留human_needed，不完成阶段"
+    }
+  ],
+  "planningGateRecordedAt": "2026-10-13T05:01:45.357Z"
+}

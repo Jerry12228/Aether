@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T15:42:51.180Z",
+  "sourceCommit": "941ad449cc93b89560cf1ab8465622e9b9a46860",
+  "inputDigest": "8c6298c01642f3c5e5f62c57f4c20c9ba8892c398059645aec292e9a7c4b917b",
+  "tasksCompleted": 0,
+  "failures": [
+    {
+      "target": "ios-arm64-iphonesimulator",
+      "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38150920169/job/114504024300",
+      "suiteTests": 42,
+      "failedTest": "testBidirectionalFiveStreamFec",
+      "failureAssertions": 2,
+      "expectedReceivingFrames": 8,
+      "actualReceivingFrames": 7,
+      "classification": "actual-media-runtime-failure",
+      "cause": "尚未确认；跨测试宿主的调度推断不作为产品原因事实",
+      "diagnosticGap": "旧fixture只断言接收数，没有输出逐流/逐窗口计数或relay/host工作线程QoS；下一轮增加有界摘要并给这两个自有test-only线程显式user-initiated QoS，不改变25ms/8帧/120包断言。"
+    },
+    {
+      "target": "local-android-x64-owned-avd",
+      "classification": "boot-probe-hang-before-native-tests",
+      "nativeTestsExecuted": 0,
+      "probe": "adb-boot-0 getprop sys.boot_completed",
+      "runnerPid": 74872,
+      "probePid": 63896,
+      "ownedSerial": "emulator-5556",
+      "probeTermination": "严格核验父PID/node入口/adb命令/序列号后结束唯一挂起probe，让runner finally正常删除自有AVD；未结束adb server或其他进程。",
+      "cleanup": "adb emu kill及AVD delete退出0；后续adb devices为空",
+      "localLogCorrection": "导入的CI日志不是本轮本地结果；本轮exit1/tests null，不能沿用CI115通过为本机通过。"
+    }
+  ],
+  "raw": [
+    {
+      "file": "build/phase06/06-05/ci-38150920169/phase06-ios-arm64-iphonesimulator-941ad449cc93b89560cf1ab8465622e9b9a46860/run-logs/xctest.log",
+      "sha256": "f4a375f30eef9452b6025afb0902a79d895db4b2c62d8e1b9d87f965f89710b7",
+      "bytes": 329151
+    },
+    {
+      "file": "build/phase06/06-05/local-941-boot-probe-failure/protocol-run.json",
+      "sha256": "f684961494903d1b316e643e2d970a103312620d76ca48daeb2e5bd69287b601",
+      "bytes": 5091
+    }
+  ],
+  "qosPrimarySource": "https://developer.apple.com/library/archive/documentation/Performance/Conceptual/EnergyGuide-iOS/PrioritizeWorkWithQoS.html",
+  "constraints": {
+    "hostRestart": false,
+    "adbServerRestart": false,
+    "driverInstall": false,
+    "assertionsChanged": false
+  }
+}

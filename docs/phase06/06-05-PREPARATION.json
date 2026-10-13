@@ -1,0 +1,638 @@
+{
+  "schema": 1,
+  "status": "preparation-only",
+  "recordedAt": "2026-10-11T04:54:51.414Z",
+  "plan": "06-05",
+  "taskCompletion": 0,
+  "sourceCommit": "1b703afd1267b07aeaec412c38d27a9d3f404f95",
+  "inputDigest": "2a60c360b9102367f1c7dcdc44f8376ae6daff76f5dd757e849443a8a5bb9164",
+  "manifest": {
+    "file": "build/phase06/targets/windows-x64/protocol-target-Release.json",
+    "sha256": "edb4e68c6b85b04abc0bd4404a7624217a044a27e64a6099080076da24855eca",
+    "bytes": 24586
+  },
+  "sources": [
+    {
+      "file": "scripts/build-protocol.cjs",
+      "sha256": "e5cd0af1a909a2fab9885a18ea7275e8df53e7bb89babb47b7138fc38e702271"
+    },
+    {
+      "file": "native/protocol/CMakeLists.txt",
+      "sha256": "83da04be80356337309f485a108e610f3c580500775a4b6a6cf6b90766a6b700"
+    },
+    {
+      "file": "native/protocol/include/aether/protocol.h",
+      "sha256": "3e8c36e70fbfe5fd0f92b096f9702956a72a6caf87f069b1d13d07e6735eaef4"
+    },
+    {
+      "file": "native/protocol/src/admission.cpp",
+      "sha256": "dd8ba0a3c2b15d1f7b2a738406d5b24ce84f466d930a55129ed49f902035ea17"
+    },
+    {
+      "file": "native/protocol/src/control.cpp",
+      "sha256": "2ce885d69adfc33bb2ca52b5459cf75791f63bf65de96c0f3ea8e89453ac8ae1"
+    },
+    {
+      "file": "native/protocol/src/diagnostics.cpp",
+      "sha256": "d69e5bdededde068bbe41a4f6fccd5144d207dd3463f9fa3dfdd36220e3a28b0"
+    },
+    {
+      "file": "native/protocol/src/internal.h",
+      "sha256": "703095fd18356281c667107679ec96176ee6db1f65aae7efb8ec27b651c93921"
+    },
+    {
+      "file": "native/protocol/src/media_packetization.cpp",
+      "sha256": "77ed54be512b828f88de7ff370d34e8a52be18328ffdeb479f9042d1446b02cb"
+    },
+    {
+      "file": "native/protocol/src/protocol.cpp",
+      "sha256": "cb8e40a4ab90e2a81210a48d41edd7b5c9fbf6263490abbf38ed646b6a7f279f"
+    },
+    {
+      "file": "native/protocol/src/secure_transport.cpp",
+      "sha256": "666649eb3cf5c157c8bdc941dc67ddc0a0cdb61af40690194d7198fde05c1360"
+    },
+    {
+      "file": "native/protocol/src/session_lifecycle.cpp",
+      "sha256": "af57e86daebcb0812e57e18de22c837bd7909f8c5afddbf0ff87d2380319b37f"
+    },
+    {
+      "file": "native/protocol/tools/tracer.cpp",
+      "sha256": "cb0253b73b049308eff8ce09a5eec6bb11a12f54a62ce32ad81c81897afaaeec"
+    },
+    {
+      "file": "tests/native/protocol_contract.cpp",
+      "sha256": "52fc4bf4079b19c9700c0e30960c311cc2a2d9d8626ca459f6bd077b4b1b86a9"
+    },
+    {
+      "file": "tests/native/protocol_control.cpp",
+      "sha256": "59caba99da0b07ccf8354611aa2663c5f3fa6ddc7de24cd4677be11e6c515a14"
+    },
+    {
+      "file": "tests/native/protocol_media_security.cpp",
+      "sha256": "10f9154e373ae4a56f580b21050968ccbee88af53d09e0468edb4d1e4b5d84ce"
+    },
+    {
+      "file": "tests/native/ios/ProtocolContract.mm",
+      "sha256": "728f1275b5b93ba2b5c0baf0756448052723e59d96692e0d33f99609b3995652"
+    },
+    {
+      "file": "protocol/vectors.json",
+      "sha256": "a73823d0554b34656d381cb8232457e8c050adff189b7271c1a9764ea2bb0cb4"
+    },
+    {
+      "file": "protocol/dependencies.lock.json",
+      "sha256": "770ecca238ba813cad0e13ae735ed0bc79d1e072c00bba78656563ef6df3fec4"
+    },
+    {
+      "file": "docs/phase06/FEC-REUSE-DECISION.json",
+      "sha256": "3297b258e96c4dbadf90b98f4dbf30a69fa2577befd14ad8282d32b26f838604"
+    },
+    {
+      "file": "docs/phase06/FEC-ALTERNATIVES.json",
+      "sha256": "a3157d9e6dc90e921c017d62c9ba3f88241a4aaadd9cf07ace4676fcb02451d8"
+    },
+    {
+      "file": "docs/phase06/FEC-ALTERNATIVES.md",
+      "sha256": "3ebdf494fa77c8262d620e7eb60f874c1546564c6bb866c2c9e816b18ac3fa22"
+    },
+    {
+      "file": "tests/protocol-tracer.test.cjs",
+      "sha256": "f9ad1fc3be98b054ff0dc8dcf8a430843699fcf88b72ca0b4803caa84ba03361"
+    },
+    {
+      "file": "tests/protocol-multistream.test.cjs",
+      "sha256": "bebd7ce9c46162e1a697a5a409be8b4e65a299db0693d9128c5a2b3f52671b77"
+    },
+    {
+      "file": "tests/protocol-recovery.test.cjs",
+      "sha256": "8945e118b59ffdded59bbe8564adaa84648b511f064b896fde417dde3daba88d"
+    },
+    {
+      "file": "tests/protocol-ffi.test.cjs",
+      "sha256": "9faaa6357e537d3cedeeefa0c6e07c0e127694f24601d34f068f1708aa72a919"
+    },
+    {
+      "file": "packages/selene_native/lib/src/protocol.dart",
+      "sha256": "1e36ec6f2e94a27e3850d4ec0bce154df14a962287401cbe8be0c0c239e9995a"
+    },
+    {
+      "file": "packages/selene_native/lib/src/protocol_bindings.g.dart",
+      "sha256": "547e2fe90771842c47c91f6d9621ce424feacc59731ef98eb4a78cb40aed09bf"
+    },
+    {
+      "file": "protocol/ffigen.yaml",
+      "sha256": "0bec865773177c407e72258283531e6a754556b23367607351d3a2bdf5cfbe2c"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "7a6490b5d55aa2a719472d5cc9e01d932aad391102655ea5b8b9b14baf6630c0",
+      "bytes": 4038656
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_tracer.exe",
+      "sha256": "b8233672fd408ffc6bca927fd394f9b2549f9ef6a8b4d624eee8cf23fecf8e77",
+      "bytes": 3265024
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_media_security.exe",
+      "sha256": "110e7524449d249da2a3d28813ba572fb46e585fa6618addfa9e8a3a7e16e02c",
+      "bytes": 3860480
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_client.exe",
+      "sha256": "dab1614988b9e77b733070eb2534c4599df9e1e373c0998e77995e44da424ef1",
+      "bytes": 389120
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_host.exe",
+      "sha256": "29ab9009c0ed6cf5840f6932e7ea6016771b81a14e578679392ff564522a1e1e",
+      "bytes": 4108800
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "openssl",
+      "sourceSha": "45e844fa2a14ec92d146bd8f5778ac130b6625fb",
+      "archiveSha256": "603f5602e2eef00d77fbd429d34dcd5822bb301757a1bc9cdb24c670f1eb859a"
+    },
+    {
+      "name": "libsrtp",
+      "sourceSha": "24b3bf8f19b6f5ab4cd2bcceb4f4064efca86fd5",
+      "archiveSha256": "031bf6c0b38c02c3425bf8b4a24386f953ec4ab3df203adb6c22234d2a63f1ba"
+    }
+  ],
+  "fec": {
+    "sourceSha": "2a81eef56c96c237e590c27f9a75e60317c9c700",
+    "archiveSha256": "714d6c52c6d752808e8784df21c146e176e91c57c99ee72c08eff4439fcff872",
+    "inputs": [
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/alignment_buffer.h",
+        "sha256": "b502d1f7258ed17b03dad62bafa9df14c13fd0d255a07f556d5575de2e14b610"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/bit_ops.h",
+        "sha256": "f8f5b8c00e4becad0c85ef502ad52f391586ca3376e03514a8685bc8533f6559"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/bswap.h",
+        "sha256": "3a77ffb26f04d6b9031d581134051b22562aca94d4ff84ebc252febe10557501"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/buffer_slicer.h",
+        "sha256": "2c88f5c127332596ef300d7f44feff53c5567691d0343922aafce1bfd8ad7a69"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/buffer_stuffer.h",
+        "sha256": "8f66cc873405245640bed03e45e887cd3530fae5c37f5b6cf562b6f0b9608e57"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/calendar.h",
+        "sha256": "073ae10be6586054e741b7a90029790a196e34496232dac6529e6f00efaf3500"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/charset.h",
+        "sha256": "a69040b2dace169da9e5592e93e5365fcc8ef75e9cbb086a87cf2faf5263cd15"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/codec_base.h",
+        "sha256": "40c91bcca6b977451af19dafaac2a9887c7a21dce2c5f22e9fa68cd0fd08fd75"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/concat_util.h",
+        "sha256": "e9c5f732a26c6ea1a75d1d9871fe3a97b6d798d59d5ecc47cb1da1a8c4737230"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/ct_utils.h",
+        "sha256": "1116f375636ce65e72d5b116c59c686e3cf2b4f17771f406d7293bbf1895af9e"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/donna128.h",
+        "sha256": "6cafb8e83e08a2f2dada78d0329a842bd2f835902cdc7e2b39971f4339557361"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/filesystem.h",
+        "sha256": "4892876d8580bb1ef54cf5090ad02454e91689c7cebef76ed7279d7c717d1571"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/fmt.h",
+        "sha256": "f88c264db06aa22ae54ae64127ef20308abf75dcc648b22b6619dc3c7145691c"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/gfni_utils.h",
+        "sha256": "e79655dfc0089440c9b4c4221fc654df83f452f2111a208c2fd296a7b7a5f888"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/int_utils.h",
+        "sha256": "bf415a9fcd53295f216b15eba9e08726ed8309e45733235f6808b611e9f97dd2"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/isa_extn.h",
+        "sha256": "708ae8e4652841684cc6ef8bfc4b49e2cecc4117805610fac03748df2a190f45"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/loadstor.h",
+        "sha256": "1520983742f5ca66936ad81f6909aab08a24b518c7a71da195a6e9ffa90504fc"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/mem_utils.h",
+        "sha256": "627b1220f9fc1856c1c26231a4a7b4abe9144d61dd6930e02c2071ff5402bd42"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/mul128.h",
+        "sha256": "0d33b358e84ba7a8b4a3a2b9498a547777026b4c8e94102121746797aee06eaa"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/parsing.h",
+        "sha256": "beaaf5b418d9e361a7f6595e195fa6052b7d9ee3efcc2bb918ecf200be4b6987"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/prefetch.h",
+        "sha256": "4b1dd702b0f196d8d40e21125eb9104a7501a47625f836bcb6e730dfe873c82d"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/rotate.h",
+        "sha256": "30ac4ce3676a71a6e618f47fdf407bb13ac4defae7b20969f836a077abc33f9f"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/rounding.h",
+        "sha256": "3ab1b15f627a6cb3cc6430b043e0f5227f3bfac4f3dd64921206d1c1a2cb4f28"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/scan_name.h",
+        "sha256": "5c4d7251f05ae5f2f9f52080dcce7efe26b6a9306e2afdbc6022d3a67852d3c8"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/scoped_cleanup.h",
+        "sha256": "942e1da33c2790ef84406f1556e5ac3ed98bc2f4f0ca2c8f64e77a048886d792"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/stack_scrubbing.h",
+        "sha256": "3d5af7c43a6d5cc5d842d4e93baba5382077a2cb39a68731ea9f209f8ffd7934"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/stl_util.h",
+        "sha256": "57ac4eb8807e833d8500814f4fa1ab657df9846aea397970ba54681f2289f771"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/target_info.h",
+        "sha256": "33578923d33039d1df623f91d0cd8363b4beb0200232572024d845214d4226cf"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/time_utils.h",
+        "sha256": "c4737b6efef58ea3eabadcbfddd12ad575e0bc65551809b3638a514fb6812712"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/value_barrier.h",
+        "sha256": "f1545aabe5ca5c962a89db96831acc6c40422c497b132705d7f2b36be9957a92"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/internal/botan/internal/version_info.h",
+        "sha256": "46a7d7b6c7110a68637d0119f5f3c8fb9113b74cbe80baa9a9687f2cea9b16a6"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/allocator.h",
+        "sha256": "f16a075684e8aa468d05041824b8efc4a09015b3374087ccd9df03d236964043"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/api.h",
+        "sha256": "122f14f91a499be40d88c35f0aff3b686a876a60635af2178cd68e13fee1896d"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/assert.h",
+        "sha256": "9c2e66ee9f4ddb0c26f3f6dbe51e6fef00d46f2b44050332512101ac38672a28"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/buf_comp.h",
+        "sha256": "cef7f09b0c3004dc09098be7547a0e7dfec7766ec0f2742c8b67d843a869e360"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/build.h",
+        "sha256": "1211c5d0dca9358224cb420006f1651ce62ce4ea1f107a0c905801d40d0eb643"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/compiler.h",
+        "sha256": "7a64c689a1e90848716cd4cd5ddc6a95eee5eafa9de9dd941ae375da1e4c1660"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/concepts.h",
+        "sha256": "66c8dd7b61d4e2714b191d3ade303b146069897f6c75d985b5bd68b56ca111fb"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/data_src.h",
+        "sha256": "2eaf4b95be34e0aa8277f7ddbf205ec775a73645f811800ede1baf1d867f1833"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/database.h",
+        "sha256": "df7ed342373af29cf04bdcff7ae1e186c1e41b87f62f275afc90756a2008b707"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/exceptn.h",
+        "sha256": "a37b079ccec6101d2b231931c7c118420144f027b6d163cf19a09ed6272157fb"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/hex.h",
+        "sha256": "70c640e47f85f9719354bfe9aec5a242003d2709b804519aba340f39a10b9583"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/mem_ops.h",
+        "sha256": "35e0ac5b699bd4d32e0376737c69f9008245612fa7084d62d774b19a308a849d"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/mutex.h",
+        "sha256": "3ff2bf5386044a05562bd3faec60cde6f038616bfed4b0dc2ac9ac220f9c8e92"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/range_concepts.h",
+        "sha256": "1cbd0c7b1978a014d61043969996bc322140aac437e4d0027f8ef7078545a47f"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/rng.h",
+        "sha256": "7a2be46dce67731cceefca6e61668bda8c0c2f58895e42e324ba1efdb91dff2c"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/secmem.h",
+        "sha256": "03fa33503ef5c130b7dfc580092419c05cb357eb6dd2548c6d02c351dcebbb08"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/strong_type.h",
+        "sha256": "8e374a90c9d7c49e914967a9b6497389db1cbea1c13de8eff605c1096f0e825a"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/sym_algo.h",
+        "sha256": "622aaba927ce3a501b682c5088dc10eeaa71f2c82b3f7c3d88a90b3dfe715b6d"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/symkey.h",
+        "sha256": "4ca6bd61e7c734196c8ca559aa5af9be65cb4b86115b5bc9370e0c2a9970b0fb"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/types.h",
+        "sha256": "7df061b2c549c74eb4c3b72d0c5b57785d7f641b3b1b699fd2b6afae08e7a7f4"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/version.h",
+        "sha256": "60c0634c4ebfef09c80598e2feb81edcff176df096b9765a303aa3a71f1bbfc0"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan-build/build/include/public/botan/zfec.h",
+        "sha256": "66bdbd9ef2d9830c7551ebca384de8b386014af3fe8f1d6d192576f4ad4b0e8f"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/base/buf_comp.cpp",
+        "sha256": "1fe886397dc5984f2c7fa462289e05adab854d0fa02ab85cc91a8af81125edbd"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/base/sym_algo.cpp",
+        "sha256": "9b6049a638aa2e94fde74ee8bfcca3ec342f964bbd365f67ed11f9efb6f5416a"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/base/symkey.cpp",
+        "sha256": "8337ad29af980e4737ccdf13a4b598a6ae82c249ed7e0f82659f305ea2161e64"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/codec/hex/hex.cpp",
+        "sha256": "d1ede125c2ef2ecd488172234e3b1cd3dd9eba1d3119ddfa3636680aaa37ac30"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/misc/zfec/info.txt",
+        "sha256": "1aab40e09820a82dc85306868e7b7f4a2ab61d68c68ed9a2a4d2c1c42507b1dc"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/misc/zfec/zfec.cpp",
+        "sha256": "7750990c9b8ec59430c45265b58e0fc27304abadecb87a0c701776332879198b"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/rng/rng.cpp",
+        "sha256": "6f60f4ef37338e1987bc48580276106525b250c98b1f4d13d42376da2373b229"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/allocator.cpp",
+        "sha256": "6d396eac7e4a6184c045d73f8e1f855ea09ab2e8a6bda3cff0e57922e83aa2a3"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/assert.cpp",
+        "sha256": "0cf1a7996d330aff749b712a88b0f8c742e0a925aa3b5a78a8c3ea379d52ddf1"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/calendar.cpp",
+        "sha256": "6d65504df65d94f563e12b4c3297f2af428ae1768e37dd3f3c79df4f259bf637"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/charset.cpp",
+        "sha256": "a13a5d363e71f268ec7899f89cc382bf641370fcfb663d07df4da2d02e346f9d"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/ct_utils.cpp",
+        "sha256": "1caa1a7910823ec2d25e9301e3fb5a50c6a54c92c03f20affe48b7c9265bf9f7"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/data_src.cpp",
+        "sha256": "9315bf0ede9e5b2c6ed88a53c59f8684720b841bed7ab35733e90af5a3200d73"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/database.cpp",
+        "sha256": "488d023b80642c62bb52d48f6b5135ccbc15ac81f474c45c2b86e1160138743e"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/exceptn.cpp",
+        "sha256": "2b8332726cc2b7a3e3a856960b0aa3f049777132e49167b0de83bc31076e630c"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/filesystem.cpp",
+        "sha256": "ec54d29b4c54fa71bfb5ee99e4cc1a9f593573626e1107faa33b7673b09f02aa"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/mem_ops.cpp",
+        "sha256": "2955f08e081897872fae1e5d75d334c69d3a38ec9432b4eb15f57f6f63926f89"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/mem_utils.cpp",
+        "sha256": "60164d6f85e229e9e9d2bae04396f43dc012a0dc525b923b3e59a39311c2f3c5"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/parsing.cpp",
+        "sha256": "73836b7d6b71f1f278f403c66f7871a3074326bc0b2c1151a965de81fb62c64c"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/prefetch.cpp",
+        "sha256": "082a1b0c72b50372c770ec99047bff94779233a6ea75fe89229ea16030bb536f"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/read_cfg.cpp",
+        "sha256": "0caf26e3a15280f780f4c2a1bc850025ff15b05f97593aeb580bd7f768c108ca"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/read_kv.cpp",
+        "sha256": "ce8fa17aac8254059888637c9ae2eaca8b4a9f70fb32ddbcffc67fdf1a2ac81d"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/scan_name.cpp",
+        "sha256": "f19007bd6dfe180145b8ae65c3473de8283beb70a56086e9acc750d2bfcbe15b"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/lib/utils/version.cpp",
+        "sha256": "f458a247fe6e806d8fcdd48cddbd2d770e16141ff76cf620e288c6703aaa1766"
+      },
+      {
+        "file": "build/phase06/fec-alternatives/botan/src/tests/data/zfec.vec",
+        "sha256": "61ea41ea10d9a23b949f83e3e8063ad0b83ad8d45bd93ee7997f9bc2acd80e83"
+      }
+    ]
+  },
+  "localRuns": [
+    {
+      "configuration": "Debug",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 110.04,
+      "log": {
+        "file": "build/phase06/06-05/local-debug-ctest.log",
+        "sha256": "d9dbc7e9c26c15c71883e43cd298ed8d917b9c14d7198f0a03d95a15aafb8a27",
+        "bytes": 1455
+      }
+    },
+    {
+      "configuration": "Release",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "elapsedSeconds": 103.43,
+      "log": {
+        "file": "build/phase06/06-05/local-release-ctest.log",
+        "sha256": "ca8436b6022787cf5a3e7999a82470ee61f5e1eed85b6a12fe26c13381b5cf8c",
+        "bytes": 1463
+      }
+    }
+  ],
+  "ffi": {
+    "tests": 22,
+    "observations": 21,
+    "exitCode": 0,
+    "durationMs": 20601,
+    "distinctHostClientPids": true,
+    "callbacksAfterDispose": 0,
+    "finalOwned": 0,
+    "evidence": {
+      "file": "build/phase06/ffi-runs/run-1a9IKd/result.json",
+      "sha256": "9968e45c5b630bc3d7756975cbe1b62743e6f74ceaaf41702ec53bf57d08fef9",
+      "bytes": 31153
+    },
+    "log": {
+      "file": "build\\phase06\\ffi-runs\\run-1a9IKd\\flutter-protocol.log",
+      "sha256": "ea861ab9078f3e367446db67dbc54866f0d961277adc2f2fad144e86f7d8dd35",
+      "bytes": 27779
+    },
+    "wrapper": {
+      "file": "build/phase06/06-05/local-ffi.tap",
+      "sha256": "3c9dd9217edea6b534660b277b7287ca4fce7dbe27d070738800a2816aa1894d",
+      "bytes": 461
+    }
+  },
+  "logs": [
+    {
+      "file": "build/phase06/06-05/local-debug-build.log",
+      "sha256": "4f53dd782231a7bf257f6a50b3b44355ffd454bc2711edc86aab85382d11e55d",
+      "bytes": 2470
+    },
+    {
+      "file": "build/phase06/06-05/build-entry-release-failed.log",
+      "sha256": "b7bf4bd3c44239760ef77fde56233464e4b6f51e88b348aef1d145323e9f42eb",
+      "bytes": 3449
+    },
+    {
+      "file": "build/phase06/06-05/release-compile-failed.log",
+      "sha256": "c649e2f63e6bfb22dff1d2773e296549649ad092efe6e7291e646497d2a92ca0",
+      "bytes": 15138
+    },
+    {
+      "file": "build/phase06/06-05/build-entry-release.log",
+      "sha256": "c62eb159b177f73f0cffde9a27873f5083ddf774f18c26e004e4b81b602cb5c8",
+      "bytes": 243
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/logs/openssl-build.log",
+      "sha256": "a623f0d96de793df6310f1e8949fdc5fef5f6bbb644f13e2909a0b4084e40041",
+      "bytes": 1891174
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/logs/configure.log",
+      "sha256": "3ddab17d00491812ad7aa8ef51924ea60f3fa83cf72220992a376a3c7646ce9c",
+      "bytes": 1937
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/logs/compile.log",
+      "sha256": "d2482a17744647b36bd1b7cda2a9691a8c3721ae3d90dd60b0c04e2ff2718c9e",
+      "bytes": 3359
+    }
+  ],
+  "reviewInputs": [
+    {
+      "file": ".github/workflows/protocol.yml",
+      "sha256": "948c5126e955fd873df8ff5b75bb34ae08a2a8f963c22b6316023ac274f8a0ee",
+      "bytes": 2141
+    },
+    {
+      "file": "scripts/tool-runner.cjs",
+      "sha256": "a6adc2578c7c0557ed20127966c74754f3d66aa1833143e576640a435953b670",
+      "bytes": 6105
+    },
+    {
+      "file": "scripts/doctor.cjs",
+      "sha256": "dc76152495f8908c0fc170a37a94e8d094d583788864ab30d61b2425239014c5",
+      "bytes": 32559
+    },
+    {
+      "file": "packages/selene_native/test/protocol_contract_test.dart",
+      "sha256": "35001bc804c45de6d5b6946787b606acee21a54486cb18e4ba860927c84341e5",
+      "bytes": 27364
+    },
+    {
+      "file": "packages/selene_native/pubspec.yaml",
+      "sha256": "20cc6af270b5911fdcde315f3ae8b6ee96b7ec82898dcda2d2e39a4686443796",
+      "bytes": 385
+    },
+    {
+      "file": "pubspec.lock",
+      "sha256": "9a2e1bc9ac1c675a388cb32d8cbc2396e005e16c3703813dfa03e00484522f39",
+      "bytes": 12053
+    }
+  ],
+  "actuals": {
+    "diffCharacters": 75487,
+    "estimatedTokens": 18872,
+    "tasks": 0,
+    "commits": 2
+  },
+  "publication": {
+    "remote": "https://github.com/Jerry12228/Aether.git",
+    "branch": "codex/phase-03-virtual-display-feasibility",
+    "pushed": false,
+    "approval": "pending",
+    "rejection": "自动审批认为执行06-05尚未明确授权向该具体远端发布源码和CI工作流；拒绝了git push origin HEAD所在命令。"
+  },
+  "remaining": [
+    "Task1 Linux实际socket行为RED及运行尚未执行；编译失败不是合格行为RED",
+    "Task1 当前workflow仅Linux x64初始链路，其他架构与四目标CI尚未完成",
+    "Task1 macOS/iOS仅准备代码，无目标构建/XCTest运行证据；iOS尚缺完整媒体/FEC套件",
+    "Task1 Android无实际目标执行；arm32布局断言待适配",
+    "Task2 独立validator及known-bad行为RED、TARGETS/EVIDENCE尚未执行",
+    "Task3 所有目标门槛后强制人审尚未开放"
+  ],
+  "boundaries": {
+    "physical": false,
+    "synthetic": true,
+    "targetsPassed": [
+      "local-windows-x64"
+    ],
+    "phaseComplete": false,
+    "requirementsComplete": [],
+    "phase3AuthorizationUnchanged": true,
+    "rebootOrShutdown": false
+  }
+}

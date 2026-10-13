@@ -1,0 +1,101 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T06:25:07.370Z",
+  "sourceCommit": "05760b0f54d5d83122449062a6d5ae38c6708025",
+  "inputDigest": "d3a4eb3905a441e2a7c4935446d92e56e369505ffcec94424207c62239553969",
+  "buildManifest": {
+    "file": "build/phase06/targets/windows-x64/protocol-target-Release.json",
+    "sha256": "73dc1de2a33e23160ca2939edcaeda0d63ce9b1ee68031564c1eb4bcdb19198b"
+  },
+  "actualArtifacts": [
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "a89f948b891c0f2b1ccf3ceb7c97aa13ce16c48bf4b0f7b7ab91482c443d912a",
+      "bytes": 4041728,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_tracer.exe",
+      "sha256": "ebce515836c7a8cc1096516db53c218b9d4e0f0f29d188d70c29dc182ddf554b",
+      "bytes": 3267072,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_media_security.exe",
+      "sha256": "3596170ec704530ad872a4299cb46855a74acba64707219d28735cad570a6240",
+      "bytes": 3893760,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_client.exe",
+      "sha256": "7e142d7d4fe0beeaa23b8f0165ebec6b4b4cb6e048b62433bb28616f27692744",
+      "bytes": 406528,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_host.exe",
+      "sha256": "69436e7150f2cc61851404581caea4007a90d878d9fcf70f3b34ae5f680cfe61",
+      "bytes": 4116480,
+      "observedArch": "x64"
+    }
+  ],
+  "actual": [
+    {
+      "case": "过期未写出控制记录不消耗序号与现有FEC/真实SRTP实时窗口",
+      "exitCode": 0,
+      "raw": {
+        "file": "build/phase06/06-05/control-sequence-green.log",
+        "sha256": "cf9446ce5f124d0d67feefb998961e72157ec0cf49f0612f702116e4a3e41eb8"
+      }
+    },
+    {
+      "case": "真实证书验证前TCP关闭AP_LENGTH24、grants/sink0与owned socket/thread0",
+      "exitCode": 0,
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "raw": {
+        "file": "build/phase06/06-05/tls-close-green.log",
+        "sha256": "60c260ce7ddfe8e157c33bf0441637f90effbb6c2bb35b4e7fc1a7616510aa4f"
+      }
+    },
+    {
+      "case": "原healthy-cancel场景空ready到真实端口与四秒有界原子publish/read",
+      "exitCode": 0,
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "raw": {
+        "file": "build/phase06/06-05/ready-read-green.log",
+        "sha256": "a5b50aecd0aff36cd77b5e38fa90a0fc6262af63fb9b2b12f86a443ba99389d3"
+      }
+    }
+  ],
+  "reds": [
+    {
+      "file": "docs/phase06/06-05-CONTROL-SEQUENCE-TLS-RED.json",
+      "sha256": "1b9105d4ca02cebcf75be8bb4ffdcaf548f58e05f46dbf105640c4d7400006e4"
+    },
+    {
+      "file": "docs/phase06/06-05-READY-PORT-RED.json",
+      "sha256": "99db13333fe8fd994e0581aede6e120907cbccfca719fc1d47145a52b139e167"
+    }
+  ],
+  "changes": [
+    "ACTL tx sequence仅在完整write_tls成功后提交；未写出AP_TIMEOUT不造成下一条sequence跳跃，overflow拒绝保留。",
+    "真实X509核验失败/hostname/标准unknown-CA等alert仍AP_TRUST/AP_IDENTITY；X509_V_OK下TCP关闭归AP_LENGTH并保持有界fresh retry，无保护降级。",
+    "test-only消费者不以文件exists为有效端口证据；读取句柄在等待前释放，原子rename在既有4s预算内有界重试。"
+  ],
+  "apple": {
+    "status": "pending-current-CI",
+    "change": "自有native control线程与test-only control-actions观察线程设置QOS_CLASS_USER_INITIATED；require返回0，原500/900ms/25ms不变，不能把WindowsGREEN当Apple结果。",
+    "primarySource": "https://developer.apple.com/library/archive/documentation/Performance/Conceptual/power_efficiency_guidelines_osx/PrioritizeWorkAtTheTaskLevel.html"
+  },
+  "invalidGreenAttempt": "第一次ready consumer GREEN遇Windows读取句柄阻止rename；实际exit2未记GREEN，释放句柄/有界原子发布修正后4/4。原OS短时ready读取异常根因未确认。",
+  "tasksCompleted": 1,
+  "systemMutation": false
+}

@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T06:19:36.525Z",
+  "sourceCommit": "e37de896c4d9e8e1ad73cc8bd619954b36254dda",
+  "inputDigest": "54c851763d596faaa70411dbfdc15ecf45b10ca1bc8cfe4bf05aab1411639953",
+  "buildManifest": {
+    "file": "build/phase06/targets/windows-x64/protocol-target-Release.json",
+    "sha256": "87bac601e6fe1477c22f15bb000f4770a92fbeb73167c6fa4ac47c5a06199203"
+  },
+  "actualArtifacts": [
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "c3a3ca93763ead075e63d2807f587f9dd763df076caee7e7bd4199b86a7652cf",
+      "bytes": 4041728,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_tracer.exe",
+      "sha256": "6efd65154345532ddbe74c18bc133a05412c958cd79a96de2dba06dff9244e14",
+      "bytes": 3267072,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_media_security.exe",
+      "sha256": "3596170ec704530ad872a4299cb46855a74acba64707219d28735cad570a6240",
+      "bytes": 3893760,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_client.exe",
+      "sha256": "2fe75ee60fbc033b97c45028e6b355065f83ae59cd0261711069a9c1326b3438",
+      "bytes": 405504,
+      "observedArch": "x64"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol_control_host.exe",
+      "sha256": "f9b480cb630c9f2698ac5bb4af7f87c4c705856dec0e41fd94b744251d708f03",
+      "bytes": 4116992,
+      "observedArch": "x64"
+    }
+  ],
+  "actual": {
+    "exitCode": 1,
+    "tests": 4,
+    "passed": 3,
+    "failed": 1,
+    "skipped": 0,
+    "raw": {
+      "file": "build/phase06/06-05/ready-read-red.log",
+      "sha256": "98e928ae79b85f7fbdc3a6a1c6a915be25c8eb3c16d202e5d3cdff7431f2671e"
+    },
+    "scenario": "healthy-cancel",
+    "fixture": "仅native desktop/Android原场景增加暂存空ready和100ms后实际有效端口；保持原4s ready、原cancel/媒体断言、原31场景和parent65分母"
+  },
+  "linkedFailure": {
+    "file": "build/phase06/06-05/windows-arm64-7bc-job.log",
+    "sha256": "52ae3baebbec862f88ba53ef27ed89dcf0fea986a7c0c5279022f95428fa7f58"
+  },
+  "observed": "真实Windows ARM64 CI原invalid stoul导致healthy-cancel false；独立native二PID确定复现present-but-empty marker仍传入空argv端口。操作系统为何短时读不到原原子marker的根因尚未确认，修正consumer必须核验实际完整端口。",
+  "fixStatus": "not-implemented-at-RED",
+  "systemMutation": false
+}

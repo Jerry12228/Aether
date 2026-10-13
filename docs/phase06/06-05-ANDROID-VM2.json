@@ -1,0 +1,177 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-11T11:56:16.399Z",
+  "status": "in_progress",
+  "tasksCompleted": 0,
+  "tasksTotal": 3,
+  "userAuthorization": "Android Studio就绪，qemu就绪；自行创建虚拟机进行测试",
+  "scope": "自有临时目录内的原生协议检查；不是完整 Android/Flutter 应用或实机功能证据",
+  "arm64": {
+    "sourceCommit": "05ec0e2428cda6ceddb024ea4e54ed8ef36d88d8",
+    "inputDigest": "588476efac2d6e78e96b6702493dd4ef6e1d9440c6e72817457523a90322490d",
+    "destination": {
+      "serial": "emulator-5558",
+      "abi": "arm64-v8a",
+      "abilist": "arm64-v8a",
+      "machine": "aarch64",
+      "api": 24,
+      "nativeBridge": "0",
+      "physical": false
+    },
+    "tests": {
+      "tests": 28,
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "cases": [
+        {
+          "id": "native-control-31-scenarios",
+          "assertions": 65
+        },
+        {
+          "id": "legacy-1-secure-two-native-PID",
+          "assertions": 16,
+          "hostPid": 3346,
+          "clientPid": 3357
+        },
+        {
+          "id": "legacy-2-secure-two-native-PID",
+          "assertions": 17,
+          "hostPid": 3399,
+          "clientPid": 3408
+        },
+        {
+          "id": "fec-golden",
+          "assertions": 1
+        },
+        {
+          "id": "rollover",
+          "assertions": 1
+        },
+        {
+          "id": "nonce-exhaustion",
+          "assertions": 1
+        },
+        {
+          "id": "high-sequence",
+          "assertions": 1
+        },
+        {
+          "id": "role-key-epoch",
+          "assertions": 1
+        },
+        {
+          "id": "unchanged-retransmission",
+          "assertions": 1
+        },
+        {
+          "id": "single-common",
+          "assertions": 3
+        },
+        {
+          "id": "highest-common",
+          "assertions": 3
+        },
+        {
+          "id": "remote-permutation",
+          "assertions": 3
+        },
+        {
+          "id": "local-permutation",
+          "assertions": 3
+        },
+        {
+          "id": "upgrade-remote",
+          "assertions": 3
+        },
+        {
+          "id": "upgrade-local",
+          "assertions": 3
+        },
+        {
+          "id": "empty-version-set",
+          "assertions": 3
+        },
+        {
+          "id": "truncated",
+          "assertions": 3
+        },
+        {
+          "id": "trailing-byte",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-required-message",
+          "assertions": 3
+        },
+        {
+          "id": "zero-version",
+          "assertions": 3
+        },
+        {
+          "id": "duplicate-version",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-optional-field",
+          "assertions": 3
+        },
+        {
+          "id": "unknown-required-field",
+          "assertions": 3
+        },
+        {
+          "id": "duplicate-optional-field",
+          "assertions": 3
+        },
+        {
+          "id": "tlv-length-overflow",
+          "assertions": 3
+        },
+        {
+          "id": "declared-size-minus-one",
+          "assertions": 3
+        },
+        {
+          "id": "declared-size-plus-one",
+          "assertions": 3
+        },
+        {
+          "id": "AES-256-GCM-KAT",
+          "assertions": 2
+        }
+      ],
+      "assertions": 160
+    },
+    "exitCode": 1,
+    "elapsedMs": 89390,
+    "record": {
+      "file": "build/phase06/06-05/android-arm64-05ec0e2-pass/protocol-run.json",
+      "sha256": "b387da422e95d80a9752dfced63a320f43006b2b0cb6ed6f587ea085e716208c"
+    },
+    "interpretation": "28 项原生检查、31 个控制场景及 legacy1/2 已实际通过；当时原有 27 项媒体与 60 项恢复未接入，目标整体仍退出1"
+  },
+  "arm32Media": {
+    "sourceCommit": "fc14fde0a9dce988967f44d11a4eda2e8f540189",
+    "inputDigest": "21c7da3b637bc5be870f0d41e223b5d01a08902cf60a9a0162d43147b6c7589f",
+    "counts": {
+      "tests": 27,
+      "passed": 8,
+      "failed": 19
+    },
+    "exitCode": 1,
+    "record": {
+      "file": "build/phase06/06-05/android-vm/media-arm32-single-file-touch-failure/media-arm32-execution.json",
+      "sha256": "66cfb3665f6fcf6f56120e75201b3f9c020e0e82426eca8f298dbf6ba017390b"
+    },
+    "raw": {
+      "file": "build/phase06/06-05/android-vm/media-arm32-single-file-touch-failure/media-arm32-logs/actual-media.log",
+      "sha256": "dd0903bd06954c3fe50afb10d01911492b8a165f4eb8bb950bcc54aab04741a4"
+    },
+    "interpretation": "API21 toolbox touch 不接受一次创建两个文件，19 项媒体用例停于提交屏障；8 项安全/边界通过。测试适配失败，不是产品行为RED"
+  },
+  "fix": "逐一创建屏障；原生故障处理与端口提交屏障保留原有25ms媒体期限和27项断言；恢复60项无删减接入，固定CPU虚拟机CI入口已推送，尚待实际运行证明",
+  "requirementsComplete": false,
+  "systemMutation": false
+}

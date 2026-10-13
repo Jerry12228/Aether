@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "sourceCommit": "05ec0e2428cda6ceddb024ea4e54ed8ef36d88d8",
+  "inputDigest": "588476efac2d6e78e96b6702493dd4ef6e1d9440c6e72817457523a90322490d",
+  "runURL": "https://github.com/Jerry12228/Aether/actions/runs/38134296783",
+  "rawLog": {
+    "file": "build/phase06/06-05/ci-38134296783/macos-arm64/build/phase06/targets/macos-arm64/run-logs/ctest.log",
+    "sha256": "1a8fe873c3f2d27f2f28246f9776e97c072f4a5bc73b7ad9bbcb864bb68dedee"
+  },
+  "observedFixes": "取消/回执和fresh-auth authority清理已通过",
+  "remaining": {
+    "multistream": {
+      "tests": 27,
+      "passed": 26,
+      "failed": 1,
+      "case": "fec-reorder-replay",
+      "expected": 8,
+      "actual": 7
+    },
+    "recovery": {
+      "tests": 60,
+      "passed": 58,
+      "failed": 2,
+      "cases": [
+        "D07单独上行确认 AP_TIMEOUT11",
+        "D08短窗健康流未前进"
+      ]
+    }
+  },
+  "hypothesis": "control pump把已在SSL缓冲中的prefix/header/payload分隔到不同媒体窗口，增加控制响应时延；同时Node经25ms媒体TTL外relay受executor调度影响，后者须用真实native relay补证而非放宽原断言",
+  "status": "actual-failure-before-fix",
+  "recordedAt": "2026-10-11T11:26:52.209Z"
+}

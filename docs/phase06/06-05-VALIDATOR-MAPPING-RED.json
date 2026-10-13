@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-12T05:43:52.879Z",
+  "scope": "06-05 Task2外部CI job身份与原综合synthetic sentinel独立校验RED；unit fixture无平台执行声明",
+  "validatorSource": {
+    "commit": "a3cc660b83199ec89019bd8127cc4ef5f71b6974",
+    "file": "scripts/verify-protocol.cjs",
+    "sha256": "be8558ad35c4df76ac189a89e841e9f02878278183a833d48fcdc304976aaa51"
+  },
+  "testSource": {
+    "file": "tests/protocol-evidence.test.cjs",
+    "sha256": "71eef1a0eac99f14b4db42d3bad896e05005d34e66f521ff8cddcf5e9491ee6f"
+  },
+  "actual": {
+    "exitCode": 1,
+    "tests": 85,
+    "passed": 81,
+    "failed": 4,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "raw": {
+      "file": "build/phase06/06-05/validator-mapping-content-red.log",
+      "sha256": "48db44dc7a1f7a2efe5271491f6ccd6282a52344cace391f8562bf02524d91a5"
+    }
+  },
+  "failures": [
+    "12作业均success但其中一个与目标无关仍接受",
+    "12作业目标身份重复仍接受",
+    "真实目标job name缺失仍接受",
+    "原combined credential/clipboard/audio/video sentinel仍接受"
+  ],
+  "fixStatus": "not-implemented-at-RED",
+  "systemMutation": false
+}

@@ -1,0 +1,28 @@
+# Paths are resolved relative to this configuration file by ffigen 21.
+name: ProtocolBindings
+llvm-path:
+  - build/audited-libclang/libclang.dll
+description: Independent protocol ABI 1, additive control protocol 3/schema 1.
+compiler-opts:
+  - '-x'
+  - 'c'
+output: ../packages/selene_native/lib/src/protocol_bindings.g.dart
+headers:
+  entry-points:
+    - ../native/protocol/include/aether/protocol.h
+  include-directives:
+    - '**/aether/protocol.h'
+functions:
+  include:
+    - 'aether_protocol_.*'
+structs:
+  include:
+    - 'AetherProtocol.*'
+enums:
+  include:
+    - 'AetherProtocol.*'
+typedefs:
+  include:
+    - 'AetherProtocol.*'
+preamble: |
+  // Header SHA256: 3e8c36e70fbfe5fd0f92b096f9702956a72a6caf87f069b1d13d07e6735eaef4

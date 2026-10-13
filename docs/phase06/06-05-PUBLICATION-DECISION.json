@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "rawReply": "1",
+  "recordedAt": "2026-10-11T05:04:23Z",
+  "choice": "approve-current-branch-and-phase06-ci",
+  "reviewedHead": "327132c1054dce0a1cfdc7f733289e4894eb0908",
+  "reviewedAheadOfOriginMain": 108,
+  "remote": "https://github.com/Jerry12228/Aether.git",
+  "repositoryVisibility": "public",
+  "branch": "codex/phase-03-virtual-display-feasibility",
+  "scope": ["发布当前完整分支及此前Phase3/Phase6历史", "同分支Phase6五目标CI执行", "同分支Phase6修复与证据提交及推送"],
+  "excluded": ["合并main", "force push", "Phase3安装授权", "最终Phase6人审", "驱动或信任策略变更", "执行或安排重启/关机"],
+  "priorAutoReviewRejectionPreserved": true
+}

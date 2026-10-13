@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "status": "conditional-authorization-blocked-before-install",
+  "userText": "1\n不得影响主机已有的Apollo运行",
+  "userMessageDate": "2026-10-09",
+  "recordedAt": "2026-10-09T12:07:54.135Z",
+  "timestampScope": "Receipt time; no exact human message timestamp was supplied",
+  "providerId": "aether-helios-display",
+  "machineId": "win-5f5cc5dd3cf310b6",
+  "approvedPlanHash": "2df29cc5eac710f30e142a27178a7a23ca36f3083abe42fe423822934d66f8c0",
+  "packageSha256": "b3ce3b4427e0e3a1f11d76ef1759429f8f3ca478c4431b716995865114d9a4ae",
+  "installerSha256": "c9f214a654d8866f539d55144c9402486aace631c839157845e73c503c807c2b",
+  "commands": [
+    "driver-install"
+  ],
+  "constraints": [
+    "Preserve running Apollo",
+    "No monitor/topology/config/reset/update/trust operation",
+    "No reboot/shutdown or scheduling"
+  ],
+  "preflight": {
+    "status": "blocked",
+    "reason": "Pinned INF places DeviceGroupId at HKR root instead of WUDF subkey; intended UMDF process isolation cannot be established",
+    "snapshot": {
+      "path": "artifacts/phase03/apollo-install-preflight/before-fix/snapshot.json",
+      "sha256": "ca647461afbec65691b9e3d8476de6f5c0387248612a06629b6c2667f1508d30"
+    },
+    "apolloServicePid": 6820,
+    "apolloProcessPid": 15176,
+    "observedApolloGroup": "SudoVDAGroup",
+    "observedOrayGroup": "OrayIddDriverGroup"
+  },
+  "runtimeAuthorizationFileCreated": false,
+  "installerInvoked": false,
+  "systemMutation": false,
+  "authorizationTransfersToRebuiltPackage": false,
+  "requirementsCompleted": [],
+  "recordedAtMeaning": "Durable record written after prerequisite preflight; exact human message time unavailable"
+}

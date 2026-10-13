@@ -1,0 +1,1272 @@
+{
+  "schemaVersion": 2,
+  "capturedAt": "2026-10-09T12:07:53.369Z",
+  "purpose": "03-03 WUDF isolation correction; prior conditional installation approval is blocked and cannot transfer to these bytes",
+  "selectedProviderId": "aether-helios-display",
+  "constraints": {
+    "strictNoDowngrade": true,
+    "windows10And11": true,
+    "sharedDesktop": true,
+    "noImplicitInstallation": true,
+    "noAutomaticRecovery": true
+  },
+  "candidates": [
+    {
+      "providerId": "apollo-sudovda",
+      "officialRepository": "https://github.com/ClassicOldSong/Apollo",
+      "sourceCommit": "adc5c5a0bd80831ce495434bb16aee2cd4175fb8",
+      "fixture": false,
+      "package": {
+        "url": "https://github.com/ClassicOldSong/Apollo/releases/download/v0.4.6/Apollo-0.4.6.exe",
+        "version": "v0.4.6",
+        "architecture": "x64",
+        "length": 17529901,
+        "sha256": "42b2aefaacb3474511517a56b96ee9f0517f30ac38b5dd2fda9fd5b478f5021a",
+        "localPath": "artifacts/phase03/r1-recheck/Apollo-0.4.6.exe",
+        "complete": true,
+        "infVersion": "1.10.9.289",
+        "members": [
+          {
+            "name": "SudoVDA.inf",
+            "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/SudoVDA.inf",
+            "length": 3644,
+            "sha256": "ad69ac682756f0cf339b081fac7e6e8159fdf2ca01ca69df8945c7246c286925",
+            "catalogRequired": true
+          },
+          {
+            "name": "SudoVDA.dll",
+            "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/SudoVDA.dll",
+            "length": 83216,
+            "sha256": "47ee263cb5de9382c6630a2d7f3dafec4a49419f953beec869ca5dd0c460ff63",
+            "catalogRequired": true
+          },
+          {
+            "name": "sudovda.cat",
+            "localPath": "artifacts/phase03/r1-recheck/package/drivers/sudovda/sudovda.cat",
+            "length": 2425,
+            "sha256": "2f9189de5604bec9d86f51640cc540639e394d9ad0f8e689129375e95f2d22f8",
+            "catalogRequired": false
+          }
+        ],
+        "signature": {
+          "policyVerified": false,
+          "catalogMembersVerified": false,
+          "timestampVerified": false,
+          "evidence": null,
+          "policy": "umdf-authenticode",
+          "observedStatus": "untrusted-root",
+          "signer": "CN=sudovda@su.mk",
+          "audit": {
+            "path": "docs/phase03/SUDOVDA-R1-AUDIT.json",
+            "sha256": "735202c2e9c5dad4fe812f35842a2c77bbe6a7bf97c0765b5ab314f0f1f0cb83",
+            "fixture": false
+          }
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": "umdf"
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "OpenDevice",
+            "decision": "OPT-OUT",
+            "reason": "现有wrapper要求GENERIC_READ|GENERIC_WRITE；未核验驱动打开副作用，不调用"
+          },
+          {
+            "name": "AddVirtualDisplay",
+            "decision": "INTEGRATE",
+            "reason": "逐GUID候选合同，待准入"
+          },
+          {
+            "name": "RemoveVirtualDisplay",
+            "decision": "INTEGRATE",
+            "reason": "逐GUID候选合同，待准入"
+          },
+          {
+            "name": "SetRenderAdapter",
+            "decision": "OPT-OUT",
+            "reason": "共享adapter选择可能影响外来组；先固定现状"
+          },
+          {
+            "name": "GetWatchdogTimeout",
+            "decision": "INTEGRATE",
+            "reason": "公开driver GET_WATCHDOG不重置倒计时；对应正式包行为仍未证明，当前未调用"
+          },
+          {
+            "name": "GetProtocolVersion",
+            "decision": "INTEGRATE",
+            "reason": "固定公开driver在分派前重置watchdog；不是无副作用查询，当前未调用"
+          },
+          {
+            "name": "isProtocolCompatible",
+            "decision": "INTEGRATE",
+            "reason": "纯Major/Minor比较，尚未接入"
+          },
+          {
+            "name": "CheckProtocolCompatible",
+            "decision": "INTEGRATE",
+            "reason": "固定公开driver在分派前重置watchdog；不是无副作用查询，当前未调用"
+          },
+          {
+            "name": "PingDriver",
+            "decision": "OPT-OUT",
+            "reason": "持续Ping与短CLI合同冲突；须提交常驻owner架构决定"
+          },
+          {
+            "name": "GetAddedDisplayName",
+            "decision": "INTEGRATE",
+            "reason": "需同时核验LUID/TargetId，不能仅target匹配"
+          }
+        ],
+        "findings": [
+          "Apollo固定wrapper commit仍为adc5c5a0bd80831ce495434bb16aee2cd4175fb8；新公开driver实现固定a4b09fa2aa731a964d0cb5d139cb1e6240e4da12，二者与正式包的构建对应未闭合",
+          "Apollo v0.4.6 archive官方digest匹配；INF/CAT与固定参考对应，DLL已取得，但不推断源码/二进制对应",
+          "INF all-users读写ACL + FILE_ANY_ACCESS仍为high；Helios鉴权不能抵消第三方绕过",
+          "INF/DLL /pa /c分别退出1：untrusted root；无时间戳。没有导入证书，不宣称默认安全安装通过",
+          "公开driver默认watchdog=3秒且耗尽移除全表；启动前watchdog=0是R1允许的显式配置，未操作foreign设备/配置，实际持久性仍未证明",
+          "R1明确Win10七屏SDR，Win11 D2 HDR；允许回读60000/1000，拒绝60000/1001；公开源码的默认10屏和HDR声明不能代替机器证明",
+          "作者修改许可声明、固定微软MS-PL与EDID工具GPLv3入口已定位；逐文件继承/notices与整包许可仍未闭合"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-02",
+          "severity": "high",
+          "status": "open",
+          "reason": "all-users设备读写/FILE_ANY_ACCESS未缓解"
+        },
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "DLL已取得，但构建对应/独立包许可/默认可信签名仍缺"
+        },
+        {
+          "id": "PERSISTENCE",
+          "severity": "high",
+          "status": "open",
+          "reason": "R1允许显式配置watchdog=0；对应已准入包与跨进程机器保活证据尚缺"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "正式包字节已取得；sourceCorrespondence/独立许可与适用签名政策未闭合，未知字段仍保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        }
+      ],
+      "driverImplementation": {
+        "officialRepository": "https://github.com/SudoMaker/SudoVDA",
+        "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+        "manifest": {
+          "path": "docs/phase03/SUDOVDA-SOURCE-EVIDENCE.json",
+          "sha256": "08f7ec33c8583057b5e65b16d8a4cc9677b0c0e99ad8cecf030fb5e12a8189fb",
+          "fixture": false
+        },
+        "binaryCorrespondence": "not-proven"
+      }
+    },
+    {
+      "providerId": "virtualdrivers-vdd",
+      "officialRepository": "https://github.com/VirtualDrivers/Virtual-Display-Driver",
+      "sourceCommit": "d7244969b2aa8bb38e76d79505eda217996cefea",
+      "fixture": false,
+      "package": {
+        "url": "https://github.com/VirtualDrivers/Virtual-Display-Driver/releases/download/25.7.23/VirtualDisplayDriver-x86.Driver.Only.zip",
+        "version": "25.7.23",
+        "architecture": "x64",
+        "length": 132118,
+        "sha256": "e24210692b442b39af763536330ce78b423f19342b7a7792c26de3944e418b3a",
+        "localPath": "artifacts/phase03/vdd-25.7.23.zip",
+        "complete": true,
+        "infVersion": "11.30.4.434",
+        "members": [
+          {
+            "name": "mttvdd.cat",
+            "length": 13017,
+            "sha256": "08a0093fc9b2e32b287a6f8a77ca4de0a31830d29fc33d2b13a918dc859468f6",
+            "catalogRequired": false,
+            "localPath": "artifacts/phase03/vdd-package/mttvdd.cat"
+          },
+          {
+            "name": "MttVDD.dll",
+            "length": 251640,
+            "sha256": "c9ca837f57a98fbd43bc416a7f535a95843626e7759eaf85cf0cd7ce334dbb05",
+            "catalogRequired": true,
+            "localPath": "artifacts/phase03/vdd-package/MttVDD.dll"
+          },
+          {
+            "name": "MttVDD.inf",
+            "length": 4132,
+            "sha256": "550d211fe481e74dfe3f9d724ed78be48b3a9113405965d683d9373e8d672f5d",
+            "catalogRequired": true,
+            "localPath": "artifacts/phase03/vdd-package/MttVDD.inf"
+          },
+          {
+            "name": "vdd_settings.xml",
+            "length": 2779,
+            "sha256": "edb2501d6d5da17f66d15d4b97a6f4a3f0d8963165ac4a6a6259d95118288020",
+            "catalogRequired": false,
+            "localPath": "artifacts/phase03/vdd-package/vdd_settings.xml"
+          }
+        ],
+        "signature": {
+          "authenticodeStatus": "Valid",
+          "subject": "CN=SignPath Foundation, O=SignPath Foundation, L=Lewes, S=Delaware, C=US",
+          "timestampSubject": "CN=DigiCert Timestamp 2024, O=DigiCert, C=US",
+          "policyVerified": false,
+          "catalogMembersVerified": true,
+          "timestampVerified": true,
+          "kernelPolicyExit": 1,
+          "memberAuthenticodeExits": {
+            "MttVDD.inf": 0,
+            "MttVDD.dll": 0,
+            "vdd_settings.xml": 1
+          },
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": "umdf"
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "IDDCXVERSION",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "GETASSIGNEDGPU",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "GETALLGPUS",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "GETSETTINGS",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "PING",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "RELOAD_DRIVER",
+            "decision": "OPT-OUT",
+            "reason": "全局reload/count不得作为单组删除；显式故障测试另需授权"
+          },
+          {
+            "name": "SETDISPLAYCOUNT",
+            "decision": "OPT-OUT",
+            "reason": "全局reload/count不得作为单组删除；显式故障测试另需授权"
+          },
+          {
+            "name": "LOG_DEBUG",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "LOGGING",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "HDRPLUS",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "SDR10",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "CUSTOMEDID",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "PREVENTSPOOF",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "CEAOVERRIDE",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "HARDWARECURSOR",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "D3DDEVICEGPU",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "SETGPU",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          }
+        ],
+        "findings": [
+          "固定Driver.cpp:2075–2253全部17个pipe command已列；adapter初始化按全局count循环CreateMonitor，CoCreateGuid随机container，共享monitorModes",
+          "SETDISPLAYCOUNT更新XML并ReloadDriver；无固定逐slot新增/移除合同，不能用全局数量冒充组隔离",
+          "官方25.7.23 Driver.Only包已实际取得；文件名x86而INF NTamd64，本次明确记录x64，DriverVer 12/24/2024,11.30.4.434",
+          "发行包早于本次固定源码；精确源码对应与包独立notices未闭合",
+          "Get-AuthenticodeSignature CAT Valid，SignPath Foundation签名、DigiCert Timestamp 2024；signtool /pa /c对INF和DLL为0，XML不在CAT",
+          "signtool /kp CAT为1（Signing Cert does not chain to a Microsoft Root Cert）；这不是默认安全UMDF安装/运行证据，也不推断所有机器均不兼容",
+          "XML有独立archive/member hash，作为配置不冒充CAT成员；设备/pipe ACL、七屏、持久identity与实际Win10/11均待证"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "对应源码与独立包许可/适用驱动签名政策未闭合"
+        },
+        {
+          "id": "T-03-02",
+          "severity": "high",
+          "status": "open",
+          "reason": "pipe/device ACL无核验"
+        },
+        {
+          "id": "ISOLATION",
+          "severity": "high",
+          "status": "open",
+          "reason": "全局count/reload不能满足逐组删除隔离"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        }
+      ]
+    },
+    {
+      "providerId": "microsoft-idd-sample",
+      "officialRepository": "https://github.com/microsoft/Windows-driver-samples",
+      "sourceCommit": null,
+      "fixture": false,
+      "package": {
+        "url": null,
+        "version": null,
+        "architecture": null,
+        "length": null,
+        "sha256": null,
+        "localPath": null,
+        "complete": false,
+        "infVersion": null,
+        "members": [],
+        "signature": {
+          "policyVerified": false,
+          "catalogMembersVerified": false,
+          "timestampVerified": false,
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": null
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "SwDeviceCreate",
+            "decision": "INTEGRATE",
+            "reason": "教学所有权参考，未作为provider固定"
+          },
+          {
+            "name": "SwDeviceSetLifetime ParentPresent",
+            "decision": "INTEGRATE",
+            "reason": "候选持久枚举路线；不构成自研驱动授权"
+          },
+          {
+            "name": "SwDeviceClose",
+            "decision": "INTEGRATE",
+            "reason": "需证明关闭全部CLI句柄后的枚举"
+          },
+          {
+            "name": "IddCx monitor callbacks",
+            "decision": "INTEGRATE",
+            "reason": "教学驱动创建/到达/离开/模式/swapchain合同；无正式provider包"
+          }
+        ],
+        "findings": [
+          "官方样例不是正式provider；若进一步采用须固定源码/完整DDI面/许可/签名与target builds"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "未固定源码及正式发布包"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        },
+        {
+          "field": "sourceCommit",
+          "reason": "研究声明来源未固定，不能准入"
+        }
+      ]
+    },
+    {
+      "providerId": "molotovcherry-vdrs",
+      "officialRepository": "https://github.com/MolotovCherry/virtual-display-rs",
+      "sourceCommit": null,
+      "fixture": false,
+      "package": {
+        "url": null,
+        "version": null,
+        "architecture": null,
+        "length": null,
+        "sha256": null,
+        "localPath": null,
+        "complete": false,
+        "infVersion": null,
+        "members": [],
+        "signature": {
+          "policyVerified": false,
+          "catalogMembersVerified": false,
+          "timestampVerified": false,
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": null
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "declared monitor mode/enable/disable control",
+            "decision": "INTEGRATE",
+            "reason": "仅README声明，完整方法面未知，需要固定源码逐项重审"
+          },
+          {
+            "name": "certificate import installer",
+            "decision": "OPT-OUT",
+            "reason": "不能作为生产正式签名路径"
+          }
+        ],
+        "findings": [
+          "官方README声明最多10屏、Win10 2004+ x64；不证明HDR/短进程持久性或完整接口，未新增Rust栈"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "源码/包未固定，证书导入路线不构成生产准入"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        },
+        {
+          "field": "sourceCommit",
+          "reason": "研究声明来源未固定，不能准入"
+        }
+      ]
+    },
+    {
+      "providerId": "parsec-vdd",
+      "officialRepository": "https://parsec.app",
+      "sourceCommit": null,
+      "fixture": false,
+      "package": {
+        "url": null,
+        "version": null,
+        "architecture": null,
+        "length": null,
+        "sha256": null,
+        "localPath": null,
+        "complete": false,
+        "infVersion": null,
+        "members": [],
+        "signature": {
+          "policyVerified": false,
+          "catalogMembersVerified": false,
+          "timestampVerified": false,
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": null
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "product additional virtual displays",
+            "decision": "OPT-OUT",
+            "reason": "产品最多3个附加虚拟屏声明；不推断底层上限，未取得Aether接口/授权"
+          }
+        ],
+        "findings": [
+          "付费产品声明不等于独立驱动API、七屏/HDR与再分发授权；完整方法面不可审计"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "未取得独立许可、对应源码与包"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        },
+        {
+          "field": "sourceCommit",
+          "reason": "研究声明来源未固定，不能准入"
+        }
+      ]
+    },
+    {
+      "providerId": "aether-helios-display",
+      "officialRepository": "https://github.com/Jerry12228/Aether",
+      "sourceCommit": "a4b09fa2aa731a964d0cb5d139cb1e6240e4da12",
+      "fixture": false,
+      "package": {
+        "url": null,
+        "version": "0.1.0.0",
+        "infVersion": "0.1.0.0",
+        "architecture": "x64",
+        "kind": "umdf",
+        "localPath": "artifacts/phase03/selfsigned-research/helios-1791547543587/HeliosDisplayResearch.zip",
+        "length": 1029893,
+        "sha256": "da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12",
+        "complete": true,
+        "origin": {
+          "kind": "local-derived",
+          "sourceManifest": {
+            "path": "artifacts/phase03/derived-research/helios-1791547416299/research-source.json",
+            "length": 4620,
+            "sha256": "c7609a0efbe7731f1b04e22fa9cc1857819d6518f7cbb5335a83a7aafb5a06f7",
+            "fixture": false
+          },
+          "buildEvidence": {
+            "path": "artifacts/phase03/apollo-install-preflight/helios-1791547416299/driver-build.log",
+            "length": 4355,
+            "sha256": "38c192eb53d5524c7f4d6feab3035e8ed14d6df7b631c9c330d64fcba9727da3",
+            "fixture": false
+          }
+        },
+        "members": [
+          {
+            "name": "heliosdisplay.cat",
+            "length": 8988,
+            "sha256": "b7ad78d5ca1af7daa2ac06f4d24c17e991895ccab39ab24d7601da80ccd71f7f",
+            "localPath": "artifacts/phase03/selfsigned-research/helios-1791547543587/HeliosDisplayX64/heliosdisplay.cat",
+            "catalogRequired": false
+          },
+          {
+            "name": "HeliosDisplay.dll",
+            "length": 130744,
+            "sha256": "52d977d8057629236ce8e707dce26ceda295bb0dff3d731b15da56f46d0338d2",
+            "localPath": "artifacts/phase03/selfsigned-research/helios-1791547543587/HeliosDisplayX64/HeliosDisplay.dll",
+            "catalogRequired": true
+          },
+          {
+            "name": "HeliosDisplay.inf",
+            "length": 6396,
+            "sha256": "f7f0f524897bfb0557eb003cb8a57d4919ef369eee05d8d1e968c772c98cb21e",
+            "localPath": "artifacts/phase03/selfsigned-research/helios-1791547543587/HeliosDisplayX64/HeliosDisplay.inf",
+            "catalogRequired": true
+          },
+          {
+            "name": "HeliosDisplay.pdb",
+            "length": 3723264,
+            "sha256": "0902e5b4402b5d615a2587145855db3b5916eb27a389f9d3516ef90c84ba2502",
+            "localPath": "artifacts/phase03/selfsigned-research/helios-1791547543587/HeliosDisplayX64/HeliosDisplay.pdb",
+            "catalogRequired": false
+          }
+        ],
+        "signature": {
+          "policy": "umdf-authenticode",
+          "policyVerified": true,
+          "catalogMembersVerified": true,
+          "timestampVerified": true,
+          "path": "artifacts/phase03/selfsigned-research/helios-1791547543587/signature-verification.json",
+          "length": 1362,
+          "sha256": "51826b7ff1552b1e5819cb945c905fdcc9c18f4efb8cd56e53bff6f8de5145af",
+          "fixture": false
+        },
+        "licenseEvidence": {
+          "status": "verified",
+          "path": "docs/phase03/HELIOS-DISPLAY-UMDF-ISOLATION-EVIDENCE.json",
+          "length": 5082,
+          "sha256": "f3820e23ebaed1578bc78ae897b02e14dc4f68b84aa00f6d4d5132e449eb8eb6",
+          "fixture": false
+        },
+        "sourceCorrespondence": {
+          "status": "verified",
+          "path": "docs/phase03/HELIOS-DISPLAY-UMDF-ISOLATION-EVIDENCE.json",
+          "length": 5082,
+          "sha256": "f3820e23ebaed1578bc78ae897b02e14dc4f68b84aa00f6d4d5132e449eb8eb6",
+          "fixture": false
+        }
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "verified",
+          "scope": "pre-install source/build feasibility only; physical matrix pending",
+          "path": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+          "length": 4289,
+          "sha256": "40f7a5673d5774179392c173dfd90d5ac9347908e0b08d05fddcdb9271089bf2",
+          "fixture": false
+        },
+        "stableIdentity": {
+          "status": "verified",
+          "scope": "pre-install source/build feasibility only; physical matrix pending",
+          "path": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+          "length": 4289,
+          "sha256": "40f7a5673d5774179392c173dfd90d5ac9347908e0b08d05fddcdb9271089bf2",
+          "fixture": false
+        },
+        "sevenSlotCapacity": {
+          "status": "verified",
+          "scope": "pre-install source/build feasibility only; physical matrix pending",
+          "path": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+          "length": 4289,
+          "sha256": "40f7a5673d5774179392c173dfd90d5ac9347908e0b08d05fddcdb9271089bf2",
+          "fixture": false
+        },
+        "shortProcessPersistence": {
+          "status": "verified",
+          "scope": "pre-install source/build feasibility only; physical matrix pending",
+          "path": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+          "length": 4289,
+          "sha256": "40f7a5673d5774179392c173dfd90d5ac9347908e0b08d05fddcdb9271089bf2",
+          "fixture": false
+        },
+        "strictModes": {
+          "status": "verified",
+          "scope": "pre-install source/build feasibility only; physical matrix pending",
+          "path": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+          "length": 4289,
+          "sha256": "40f7a5673d5774179392c173dfd90d5ac9347908e0b08d05fddcdb9271089bf2",
+          "fixture": false
+        },
+        "win10Route": {
+          "status": "verified",
+          "scope": "pre-install source/build feasibility only; physical matrix pending",
+          "path": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+          "length": 4289,
+          "sha256": "40f7a5673d5774179392c173dfd90d5ac9347908e0b08d05fddcdb9271089bf2",
+          "fixture": false
+        },
+        "win11Route": {
+          "status": "verified",
+          "scope": "pre-install source/build feasibility only; physical matrix pending",
+          "path": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+          "length": 4289,
+          "sha256": "40f7a5673d5774179392c173dfd90d5ac9347908e0b08d05fddcdb9271089bf2",
+          "fixture": false
+        },
+        "acl": {
+          "status": "verified",
+          "scope": "source correspondence only: device ACL, WDF DeviceAdd, IOCTL access/header/query and all driver code unchanged; runtime corrected UMDF grouping remains untested",
+          "path": "docs/phase03/HELIOS-DISPLAY-UMDF-ISOLATION-EVIDENCE.json",
+          "length": 5082,
+          "sha256": "f3820e23ebaed1578bc78ae897b02e14dc4f68b84aa00f6d4d5132e449eb8eb6",
+          "fixture": false
+        },
+        "methods": [
+          {
+            "name": "OpenDevice",
+            "decision": "INTEGRATE",
+            "reason": "Private BA/SY interface; actual filtered/elevated caller tests passed and identical boundary correspondence verified."
+          },
+          {
+            "name": "AddVirtualDisplay",
+            "decision": "INTEGRATE",
+            "reason": "Per-GUID create; private read/write IOCTL, implementation only after admission."
+          },
+          {
+            "name": "RemoveVirtualDisplay",
+            "decision": "INTEGRATE",
+            "reason": "Per-GUID explicit stop; departure status checked, no implicit disconnect deletion."
+          },
+          {
+            "name": "SetRenderAdapter",
+            "decision": "OPT-OUT",
+            "reason": "Adapter-wide mutation risks other groups; fixed configured adapter is the Phase03 boundary."
+          },
+          {
+            "name": "GetWatchdogTimeout",
+            "decision": "INTEGRATE",
+            "reason": "Read access required; dedicated GET does not refresh watchdog."
+          },
+          {
+            "name": "GetProtocolVersion",
+            "decision": "INTEGRATE",
+            "reason": "Read access required; dedicated GET does not refresh watchdog."
+          },
+          {
+            "name": "isProtocolCompatible",
+            "decision": "INTEGRATE",
+            "reason": "Private protocol 0.3.0; old 0.2.x access bits are incompatible."
+          },
+          {
+            "name": "CheckProtocolCompatible",
+            "decision": "INTEGRATE",
+            "reason": "Private read-only version query; actual same-boundary protocol 0.3.0 tested; final DLL installation not asserted."
+          },
+          {
+            "name": "PingDriver",
+            "decision": "OPT-OUT",
+            "reason": "No persistent ping owner; research/default watchdog is zero."
+          },
+          {
+            "name": "GetAddedDisplayName",
+            "decision": "INTEGRATE",
+            "reason": "Match adapter LUID and target ID together; deferred until admitted implementation."
+          }
+        ]
+      },
+      "risks": [
+        {
+          "id": "T-03-02",
+          "severity": "high",
+          "status": "mitigated",
+          "reason": "Actual isolated BA/SY device/IOCTL tests and exact source correspondence; required zero-watchdog/test profile."
+        },
+        {
+          "id": "arrival-cleanup",
+          "severity": "medium",
+          "status": "mitigated",
+          "reason": "Reviewed independent lifecycle patch, failing-before source guards and actual WDK rebuild; machine behavior still pending."
+        },
+        {
+          "id": "full-capacity-idempotence",
+          "severity": "medium",
+          "status": "mitigated",
+          "reason": "Reviewed independent lifecycle patch, failing-before source guards and actual WDK rebuild; machine behavior still pending."
+        },
+        {
+          "id": "umdf-device-group-location",
+          "severity": "high",
+          "status": "mitigated",
+          "reason": "Corrected WUDF subkey, failing-before source regression, actual WDK rebuild and six independent INF checks; no runtime isolation claim."
+        }
+      ],
+      "admission": {
+        "status": "admitted",
+        "scope": "03-02 source implementation admitted; no system mutation authorized"
+      },
+      "gaps": [
+        {
+          "field": "package.url",
+          "reason": "Local derived artifact has no upstream release URL."
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "status": "eligible-candidate",
+    "eligibleProviderIds": [
+      "aether-helios-display"
+    ]
+  },
+  "decision": {
+    "status": "admitted-provider",
+    "providerId": "aether-helios-display",
+    "userText": "推进直到准入\n证书自签即可，效仿Apollo\n$gsd-execute-phase 3",
+    "recordedAt": "2026-10-09T12:07:53.369Z",
+    "authorizationBasis": "Existing phase execution authorization; preserve exact conditional user text in HELIOS-DISPLAY-APOLLO-CONDITIONAL-AUTHORIZATION.json; do not fabricate new hash approval",
+    "scope": "Existing dedicated-route/self-sign and execute-phase authorization permits prerequisite correction; no new fixed-package installation approved",
+    "dossierSha256": "78324da77c8ff2936337e3da948d8358105c7392792cecb679ccc92b948ea00d"
+  },
+  "machineAuthorization": {
+    "status": "not-authorized",
+    "providerId": "aether-helios-display",
+    "reason": "Prior install-only authorization applied to old fixed plan and required Apollo noninterference; old preflight failed. New package/plan needs concrete approval."
+  },
+  "productionEvidence": {
+    "status": "pending",
+    "records": []
+  },
+  "readOnlyObservation": {
+    "os": {
+      "caption": "Windows 11 Enterprise LTSC",
+      "version": "10.0.26100",
+      "build": 26100
+    },
+    "activeDisplays": 1,
+    "mode": {
+      "width": 2240,
+      "height": 1400,
+      "refresh": {
+        "numerator": 30000,
+        "denominator": 1000
+      },
+      "advancedColorSupported": true,
+      "advancedColorEnabled": false,
+      "hdrVerified": null
+    },
+    "devices": [
+      {
+        "id": "ROOT\\DISPLAY\\0000",
+        "description": "SudoMaker Virtual Display Adapter",
+        "inf": "oem44.inf",
+        "version": "0.22.37.632",
+        "cimIsSigned": false,
+        "cimSigner": null
+      },
+      {
+        "id": "ROOT\\DISPLAY\\0001",
+        "description": "OrayIddDriver Device",
+        "inf": "oem88.inf",
+        "version": "17.50.19.949",
+        "cimIsSigned": true,
+        "cimSigner": "Microsoft Windows Hardware Compatibility Publisher"
+      }
+    ],
+    "ownership": "foreign/unattributed; Aether owns none",
+    "stateUnchangedAcrossQueries": true,
+    "interfaceIoctlsIssued": 0
+  },
+  "systemPlan": {
+    "conflicts": [
+      "Existing SudoMaker differs from fixed reference; never update/remove based on friendly name",
+      "Existing Oray and active DISPLAY10 are foreign; preserve resources and topology"
+    ],
+    "package": {
+      "path": "artifacts/phase03/selfsigned-research/helios-1791547543587/HeliosDisplayResearch.zip",
+      "length": 1029893,
+      "sha256": "da25eeab4bdba29f440a89ec698aa8c5e66811001e3976ef47d93bba15eeaa12",
+      "fixture": false
+    },
+    "profile": {
+      "watchdog": 0,
+      "testMode": 0,
+      "maxMonitors": 10
+    },
+    "scope": "No system operation now; prepare a separate exact install/update/rollback plan before any later authorization",
+    "rollback": "Exact new instance ID and new OEM INF only; retain foreign devices and preserve preexisting configuration; prior research experiment is already fully cleaned.",
+    "reboot": "manual-only",
+    "powerOperationPolicy": "User forbids executing or scheduling any reboot/shutdown; required checks remain unperformed."
+  },
+  "gaps": [
+    {
+      "field": "productionEvidence",
+      "reason": "Win10/11 seven-screen/HDR/persistence/update matrix and exact minimum build remain later obligations."
+    },
+    {
+      "field": "machineAuthorization",
+      "reason": "No final-package or later machine installation authorized."
+    },
+    {
+      "field": "phase03",
+      "reason": "03-02 in progress; VDP-01/02 and Phase3 incomplete pending 03-03 machine validation."
+    }
+  ],
+  "recommendation": {
+    "providerId": "aether-helios-display",
+    "reason": "Approved dedicated derivation with closed bounded source/package/signature/interface/ACL gates",
+    "proposal": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+    "proposalEvidence": {
+      "path": "docs/phase03/HELIOS-DISPLAY-ADMISSION.md",
+      "length": 4289,
+      "sha256": "40f7a5673d5774179392c173dfd90d5ac9347908e0b08d05fddcdb9271089bf2",
+      "fixture": false
+    }
+  },
+  "requestedByPlatform": {
+    "windows10": [
+      {
+        "group": "A",
+        "slot": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "A",
+        "slot": 2,
+        "width": 2560,
+        "height": 1440,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "B",
+        "slot": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "C",
+        "slot": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "C",
+        "slot": 2,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "D",
+        "slot": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "D",
+        "slot": 2,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      }
+    ],
+    "windows11": [
+      {
+        "group": "A",
+        "slot": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "A",
+        "slot": 2,
+        "width": 2560,
+        "height": 1440,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "B",
+        "slot": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "C",
+        "slot": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "C",
+        "slot": 2,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "D",
+        "slot": 1,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "SDR"
+      },
+      {
+        "group": "D",
+        "slot": 2,
+        "width": 1920,
+        "height": 1080,
+        "refresh": {
+          "numerator": 60,
+          "denominator": 1
+        },
+        "color": "HDR"
+      }
+    ]
+  },
+  "requirementRevision": {
+    "id": "R1",
+    "path": "docs/phase03/SUDOVDA-REQUIREMENTS-REVISION.md",
+    "sha256": "1f62b1fcf6570aaa81c72b40bd8b29eb06ca73a3ac9682483b101e3deeeda423",
+    "fixture": false
+  },
+  "priorDossier": {
+    "path": "docs/phase03/PROVIDER-ADMISSION.json",
+    "dossierSha256": "fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8",
+    "decisionScope": "Historical user response 2 is preserved; it is not an approval of this changed dossier"
+  },
+  "continuation": {
+    "userText": "继续，需求已更新",
+    "recordedAt": "2026-10-08T14:31:06.268Z",
+    "scope": "Resume R1 source/package admission work; no admitted provider or machine operation authorized"
+  },
+  "preferredProviderId": "apollo-sudovda"
+}

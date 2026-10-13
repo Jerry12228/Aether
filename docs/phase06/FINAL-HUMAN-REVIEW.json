@@ -1,0 +1,134 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-13T04:58:32.036Z",
+  "userDate": "2026-10-13",
+  "timezone": "Asia/Singapore",
+  "status": "approved",
+  "response": "确认",
+  "authority": "本会话真实用户对已展示精确材料包的答复",
+  "reviewedMaterials": {
+    "file": "docs/phase06/FINAL-REVIEW-PACKAGE.json",
+    "sha256": "48271d2aed1e62fa22af9d988681c5909e673a1a3fe87c15f8aace7445d48dbc",
+    "materialDigest": "494fb0d931e585e0ea4fb83c911272890aa5cf70e72b316806fdd9e654304708",
+    "count": 100,
+    "snapshotDirectory": "build/phase06/06-05/final-review-4edaf0352ca1",
+    "validation": "写入本决定前100项当前原件和独立快照逐字节长度/SHA256匹配，材料摘要匹配"
+  },
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "inputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "ci": {
+    "id": 38252266760,
+    "url": "https://github.com/Jerry12228/Aether/actions/runs/38252266760"
+  },
+  "scope": "仅批准当前synthetic协议原型、真实loopback TLS/SRTP/FFI、五端实际native build/run及其证据/限制；保留全部637原能力及后续v1 owner",
+  "excluded": [
+    "Phase3修正安装计划授权/设备操作",
+    "驱动/Apollo/信任/安全策略变更",
+    "开发机重启/关机",
+    "自动开始Phase7或后续全产品实现"
+  ],
+  "unperformed": {
+    "applePhysical": {
+      "functionality": "TODO",
+      "performance": "TODO",
+      "installation": "TODO"
+    },
+    "minimumOSValidated": false,
+    "production": "真实codec/capture/HDR/设备、生产authority、非loopback网络及产品SLO未验证；既定后续owner保留"
+  },
+  "flagged": {
+    "prohibitions": [
+      {
+        "requirement_id": "NET-01",
+        "category": "safety",
+        "statement": "MUST NOT 将断连/切换清理变成停止持久实例、应用、显示组或删除外来资源。",
+        "source": ".planning/phases/06-gamestream/06-01-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "safety",
+        "statement": "MUST NOT 以测试身份/authority 给产品增加认证绕过、观察者上行或第二控制租约。",
+        "source": ".planning/phases/06-gamestream/06-01-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "transparency",
+        "statement": "MUST NOT 把synthetic媒体、假时钟、build或模拟器记录宣传为真实设备/HDR/产品性能通过。",
+        "source": ".planning/phases/06-gamestream/06-02-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-01",
+        "category": "values",
+        "statement": "MUST NOT 静默降级、先部分执行再求同意、隐藏不可用功能或挤占其他连接已有资源。",
+        "source": ".planning/phases/06-gamestream/06-03-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "safety",
+        "statement": "MUST NOT 执行或安排开发机重启/关机，或借协议验证安装驱动、改Apollo、信任及安全策略。",
+        "source": ".planning/phases/06-gamestream/06-05-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "transparency",
+        "statement": "MUST NOT 把Apple实机TODO扩展成目标构建/可运行自动检查豁免，或将缺证据、零测试、跳过记为已通过。",
+        "source": ".planning/phases/06-gamestream/06-05-PLAN.md",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null
+      }
+    ],
+    "edges": [
+      {
+        "requirement_id": "NET-01",
+        "category": "unclassified",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null,
+        "probe": "unclassified — review manually"
+      },
+      {
+        "requirement_id": "NET-02",
+        "category": "unclassified",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null,
+        "probe": "unclassified — review manually"
+      },
+      {
+        "requirement_id": "NET-03",
+        "category": "unclassified",
+        "status": "flagged-unverified",
+        "verification": null,
+        "resolution": null,
+        "reason": null,
+        "probe": "unclassified — review manually"
+      }
+    ]
+  },
+  "effect": "完成06-05-03精确包真人审阅；不把六条禁止项/三条未分类edge判为验证通过或已解决。Phase6规范验证保持human_needed，NET保持未完成，Phase3保持halted。",
+  "immutablePackage": "原FINAL-REVIEW-PACKAGE.json及100份审阅快照保持原字节；其中pending是审阅前状态，本独立决定记录后续真实批准。"
+}

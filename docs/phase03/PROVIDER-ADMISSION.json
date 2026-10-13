@@ -1,0 +1,889 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-10-08T12:41:05.206Z",
+  "purpose": "Phase03 pre-install provider admission; no production approval",
+  "selectedProviderId": null,
+  "requested": [
+    {
+      "group": "A",
+      "slot": 1,
+      "width": 1920,
+      "height": 1080,
+      "refresh": {
+        "numerator": 60,
+        "denominator": 1
+      },
+      "color": "SDR"
+    },
+    {
+      "group": "A",
+      "slot": 2,
+      "width": 2560,
+      "height": 1440,
+      "refresh": {
+        "numerator": 60,
+        "denominator": 1
+      },
+      "color": "SDR"
+    },
+    {
+      "group": "B",
+      "slot": 1,
+      "width": 1920,
+      "height": 1080,
+      "refresh": {
+        "numerator": 60,
+        "denominator": 1
+      },
+      "color": "SDR"
+    },
+    {
+      "group": "C",
+      "slot": 1,
+      "width": 1920,
+      "height": 1080,
+      "refresh": {
+        "numerator": 60,
+        "denominator": 1
+      },
+      "color": "SDR"
+    },
+    {
+      "group": "C",
+      "slot": 2,
+      "width": 1920,
+      "height": 1080,
+      "refresh": {
+        "numerator": 60,
+        "denominator": 1
+      },
+      "color": "SDR"
+    },
+    {
+      "group": "D",
+      "slot": 1,
+      "width": 1920,
+      "height": 1080,
+      "refresh": {
+        "numerator": 60,
+        "denominator": 1
+      },
+      "color": "SDR"
+    },
+    {
+      "group": "D",
+      "slot": 2,
+      "width": 1920,
+      "height": 1080,
+      "refresh": {
+        "numerator": 60,
+        "denominator": 1
+      },
+      "color": "HDR"
+    }
+  ],
+  "constraints": {
+    "strictNoDowngrade": true,
+    "windows10And11": true,
+    "sharedDesktop": true,
+    "noImplicitInstallation": true,
+    "noAutomaticRecovery": true
+  },
+  "candidates": [
+    {
+      "providerId": "apollo-sudovda",
+      "officialRepository": "https://github.com/ClassicOldSong/Apollo",
+      "sourceCommit": "adc5c5a0bd80831ce495434bb16aee2cd4175fb8",
+      "fixture": false,
+      "package": {
+        "url": null,
+        "version": null,
+        "architecture": null,
+        "length": null,
+        "sha256": null,
+        "localPath": null,
+        "complete": false,
+        "infVersion": null,
+        "members": [],
+        "signature": {
+          "policyVerified": false,
+          "catalogMembersVerified": false,
+          "timestampVerified": false,
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": null
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "OpenDevice",
+            "decision": "OPT-OUT",
+            "reason": "现有wrapper要求GENERIC_READ|GENERIC_WRITE；未核验驱动打开副作用，不调用"
+          },
+          {
+            "name": "AddVirtualDisplay",
+            "decision": "INTEGRATE",
+            "reason": "逐GUID候选合同，待准入"
+          },
+          {
+            "name": "RemoveVirtualDisplay",
+            "decision": "INTEGRATE",
+            "reason": "逐GUID候选合同，待准入"
+          },
+          {
+            "name": "SetRenderAdapter",
+            "decision": "OPT-OUT",
+            "reason": "共享adapter选择可能影响外来组；先固定现状"
+          },
+          {
+            "name": "GetWatchdogTimeout",
+            "decision": "INTEGRATE",
+            "reason": "只读IOCTL意图，底层对应源码/实际接口未核验，当前不调用"
+          },
+          {
+            "name": "GetProtocolVersion",
+            "decision": "INTEGRATE",
+            "reason": "只读协议意图，底层对应源码未取得，当前不调用"
+          },
+          {
+            "name": "isProtocolCompatible",
+            "decision": "INTEGRATE",
+            "reason": "纯Major/Minor比较，尚未接入"
+          },
+          {
+            "name": "CheckProtocolCompatible",
+            "decision": "INTEGRATE",
+            "reason": "封装GET_PROTOCOL，尚未接入"
+          },
+          {
+            "name": "PingDriver",
+            "decision": "OPT-OUT",
+            "reason": "持续Ping与短CLI合同冲突；须提交常驻owner架构决定"
+          },
+          {
+            "name": "GetAddedDisplayName",
+            "decision": "INTEGRATE",
+            "reason": "需同时核验LUID/TargetId，不能仅target匹配"
+          }
+        ],
+        "findings": [
+          "sudovda.h / sudovda-ioctl.h 固定源码含6个IOCTL及版本0.2.1 TestBuild=true；不是实际已安装协议",
+          "固定INF DriverVer 07/14/2025,1.10.9.289、NTamd64、IddCx0102；引用DLL但固定树不含DLL",
+          "固定INF D:P(A;;GA;;;SY)(A;;GA;;;BA)(A;;GRGW;;;WD) 与FILE_ANY_ACCESS允许第三方直接设备访问；CLI ACL不能修复",
+          "CAT 2425 bytes sha256 2f9189de5604bec9d86f51640cc540639e394d9ad0f8e689129375e95f2d22f8；本机Get-AuthenticodeSignature不受信任，自签CN=sudovda@su.mk，无时间戳证书",
+          "install.bat导入root和TrustedPublisher证书；本次未运行，独立许可/完整driver源码未知",
+          "本机SudoMaker ROOT\\DISPLAY\\0000版本0.22.37.632 oem44.inf；CIM报告IsSigned=false/Signer=null，不能据此对所有签名策略作结论；不等于固定INF版本",
+          "GUID输入/返回LUID+TargetId不保证跨reset稳定；七屏容量和60/1、混合HDR、Timeout实测未知"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-02",
+          "severity": "high",
+          "status": "open",
+          "reason": "all-users设备读写/FILE_ANY_ACCESS未缓解"
+        },
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "缺DLL/对应源码/独立包许可/正式信任链"
+        },
+        {
+          "id": "PERSISTENCE",
+          "severity": "high",
+          "status": "open",
+          "reason": "watchdog持续Ping依赖未闭合"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        }
+      ]
+    },
+    {
+      "providerId": "virtualdrivers-vdd",
+      "officialRepository": "https://github.com/VirtualDrivers/Virtual-Display-Driver",
+      "sourceCommit": "d7244969b2aa8bb38e76d79505eda217996cefea",
+      "fixture": false,
+      "package": {
+        "url": "https://github.com/VirtualDrivers/Virtual-Display-Driver/releases/download/25.7.23/VirtualDisplayDriver-x86.Driver.Only.zip",
+        "version": "25.7.23",
+        "architecture": "x64",
+        "length": 132118,
+        "sha256": "e24210692b442b39af763536330ce78b423f19342b7a7792c26de3944e418b3a",
+        "localPath": "artifacts/phase03/vdd-25.7.23.zip",
+        "complete": true,
+        "infVersion": "11.30.4.434",
+        "members": [
+          {
+            "name": "mttvdd.cat",
+            "length": 13017,
+            "sha256": "08a0093fc9b2e32b287a6f8a77ca4de0a31830d29fc33d2b13a918dc859468f6",
+            "catalogRequired": false,
+            "localPath": "artifacts/phase03/vdd-package/mttvdd.cat"
+          },
+          {
+            "name": "MttVDD.dll",
+            "length": 251640,
+            "sha256": "c9ca837f57a98fbd43bc416a7f535a95843626e7759eaf85cf0cd7ce334dbb05",
+            "catalogRequired": true,
+            "localPath": "artifacts/phase03/vdd-package/MttVDD.dll"
+          },
+          {
+            "name": "MttVDD.inf",
+            "length": 4132,
+            "sha256": "550d211fe481e74dfe3f9d724ed78be48b3a9113405965d683d9373e8d672f5d",
+            "catalogRequired": true,
+            "localPath": "artifacts/phase03/vdd-package/MttVDD.inf"
+          },
+          {
+            "name": "vdd_settings.xml",
+            "length": 2779,
+            "sha256": "edb2501d6d5da17f66d15d4b97a6f4a3f0d8963165ac4a6a6259d95118288020",
+            "catalogRequired": false,
+            "localPath": "artifacts/phase03/vdd-package/vdd_settings.xml"
+          }
+        ],
+        "signature": {
+          "authenticodeStatus": "Valid",
+          "subject": "CN=SignPath Foundation, O=SignPath Foundation, L=Lewes, S=Delaware, C=US",
+          "timestampSubject": "CN=DigiCert Timestamp 2024, O=DigiCert, C=US",
+          "policyVerified": false,
+          "catalogMembersVerified": true,
+          "timestampVerified": true,
+          "kernelPolicyExit": 1,
+          "memberAuthenticodeExits": {
+            "MttVDD.inf": 0,
+            "MttVDD.dll": 0,
+            "vdd_settings.xml": 1
+          },
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": "umdf"
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "IDDCXVERSION",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "GETASSIGNEDGPU",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "GETALLGPUS",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "GETSETTINGS",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "PING",
+            "decision": "INTEGRATE",
+            "reason": "固定pipe声明/源码只读候选；未核验运行pipe ACL与协议，不调用"
+          },
+          {
+            "name": "RELOAD_DRIVER",
+            "decision": "OPT-OUT",
+            "reason": "全局reload/count不得作为单组删除；显式故障测试另需授权"
+          },
+          {
+            "name": "SETDISPLAYCOUNT",
+            "decision": "OPT-OUT",
+            "reason": "全局reload/count不得作为单组删除；显式故障测试另需授权"
+          },
+          {
+            "name": "LOG_DEBUG",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "LOGGING",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "HDRPLUS",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "SDR10",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "CUSTOMEDID",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "PREVENTSPOOF",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "CEAOVERRIDE",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "HARDWARECURSOR",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "D3DDEVICEGPU",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          },
+          {
+            "name": "SETGPU",
+            "decision": "OPT-OUT",
+            "reason": "全局设置/设备变更不属于本阶段逐组短命令合同，禁止隐式修改"
+          }
+        ],
+        "findings": [
+          "固定Driver.cpp:2075–2253全部17个pipe command已列；adapter初始化按全局count循环CreateMonitor，CoCreateGuid随机container，共享monitorModes",
+          "SETDISPLAYCOUNT更新XML并ReloadDriver；无固定逐slot新增/移除合同，不能用全局数量冒充组隔离",
+          "官方25.7.23 Driver.Only包已实际取得；文件名x86而INF NTamd64，本次明确记录x64，DriverVer 12/24/2024,11.30.4.434",
+          "发行包早于本次固定源码；精确源码对应与包独立notices未闭合",
+          "Get-AuthenticodeSignature CAT Valid，SignPath Foundation签名、DigiCert Timestamp 2024；signtool /pa /c对INF和DLL为0，XML不在CAT",
+          "signtool /kp CAT为1（Signing Cert does not chain to a Microsoft Root Cert）；这不是默认安全UMDF安装/运行证据，也不推断所有机器均不兼容",
+          "XML有独立archive/member hash，作为配置不冒充CAT成员；设备/pipe ACL、七屏、持久identity与实际Win10/11均待证"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "对应源码与独立包许可/适用驱动签名政策未闭合"
+        },
+        {
+          "id": "T-03-02",
+          "severity": "high",
+          "status": "open",
+          "reason": "pipe/device ACL无核验"
+        },
+        {
+          "id": "ISOLATION",
+          "severity": "high",
+          "status": "open",
+          "reason": "全局count/reload不能满足逐组删除隔离"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        }
+      ]
+    },
+    {
+      "providerId": "microsoft-idd-sample",
+      "officialRepository": "https://github.com/microsoft/Windows-driver-samples",
+      "sourceCommit": null,
+      "fixture": false,
+      "package": {
+        "url": null,
+        "version": null,
+        "architecture": null,
+        "length": null,
+        "sha256": null,
+        "localPath": null,
+        "complete": false,
+        "infVersion": null,
+        "members": [],
+        "signature": {
+          "policyVerified": false,
+          "catalogMembersVerified": false,
+          "timestampVerified": false,
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": null
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "SwDeviceCreate",
+            "decision": "INTEGRATE",
+            "reason": "教学所有权参考，未作为provider固定"
+          },
+          {
+            "name": "SwDeviceSetLifetime ParentPresent",
+            "decision": "INTEGRATE",
+            "reason": "候选持久枚举路线；不构成自研驱动授权"
+          },
+          {
+            "name": "SwDeviceClose",
+            "decision": "INTEGRATE",
+            "reason": "需证明关闭全部CLI句柄后的枚举"
+          },
+          {
+            "name": "IddCx monitor callbacks",
+            "decision": "INTEGRATE",
+            "reason": "教学驱动创建/到达/离开/模式/swapchain合同；无正式provider包"
+          }
+        ],
+        "findings": [
+          "官方样例不是正式provider；若进一步采用须固定源码/完整DDI面/许可/签名与target builds"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "未固定源码及正式发布包"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        },
+        {
+          "field": "sourceCommit",
+          "reason": "研究声明来源未固定，不能准入"
+        }
+      ]
+    },
+    {
+      "providerId": "molotovcherry-vdrs",
+      "officialRepository": "https://github.com/MolotovCherry/virtual-display-rs",
+      "sourceCommit": null,
+      "fixture": false,
+      "package": {
+        "url": null,
+        "version": null,
+        "architecture": null,
+        "length": null,
+        "sha256": null,
+        "localPath": null,
+        "complete": false,
+        "infVersion": null,
+        "members": [],
+        "signature": {
+          "policyVerified": false,
+          "catalogMembersVerified": false,
+          "timestampVerified": false,
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": null
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "declared monitor mode/enable/disable control",
+            "decision": "INTEGRATE",
+            "reason": "仅README声明，完整方法面未知，需要固定源码逐项重审"
+          },
+          {
+            "name": "certificate import installer",
+            "decision": "OPT-OUT",
+            "reason": "不能作为生产正式签名路径"
+          }
+        ],
+        "findings": [
+          "官方README声明最多10屏、Win10 2004+ x64；不证明HDR/短进程持久性或完整接口，未新增Rust栈"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "源码/包未固定，证书导入路线不构成生产准入"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        },
+        {
+          "field": "sourceCommit",
+          "reason": "研究声明来源未固定，不能准入"
+        }
+      ]
+    },
+    {
+      "providerId": "parsec-vdd",
+      "officialRepository": "https://parsec.app",
+      "sourceCommit": null,
+      "fixture": false,
+      "package": {
+        "url": null,
+        "version": null,
+        "architecture": null,
+        "length": null,
+        "sha256": null,
+        "localPath": null,
+        "complete": false,
+        "infVersion": null,
+        "members": [],
+        "signature": {
+          "policyVerified": false,
+          "catalogMembersVerified": false,
+          "timestampVerified": false,
+          "evidence": null,
+          "policy": null
+        },
+        "licenseEvidence": null,
+        "sourceCorrespondence": null,
+        "kind": null
+      },
+      "interfaceEvidence": {
+        "perSlotOperations": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "stableIdentity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "sevenSlotCapacity": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "shortProcessPersistence": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "strictModes": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win10Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "win11Route": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "acl": {
+          "status": "unverified",
+          "evidence": null
+        },
+        "methods": [
+          {
+            "name": "product additional virtual displays",
+            "decision": "OPT-OUT",
+            "reason": "产品最多3个附加虚拟屏声明；不推断底层上限，未取得Aether接口/授权"
+          }
+        ],
+        "findings": [
+          "付费产品声明不等于独立驱动API、七屏/HDR与再分发授权；完整方法面不可审计"
+        ]
+      },
+      "admission": {
+        "status": "not-admitted"
+      },
+      "risks": [
+        {
+          "id": "T-03-01",
+          "severity": "high",
+          "status": "open",
+          "reason": "未取得独立许可、对应源码与包"
+        }
+      ],
+      "gaps": [
+        {
+          "field": "package",
+          "reason": "未取得完整、对应源码及独立许可均闭合的正式包；具体未知项保留null"
+        },
+        {
+          "field": "interfaceEvidence",
+          "reason": "源码/声明事实不等于已满足准入合同；逐slot/安全/容量/短命令持久性/OS条件分别待证"
+        },
+        {
+          "field": "sourceCommit",
+          "reason": "研究声明来源未固定，不能准入"
+        }
+      ]
+    }
+  ],
+  "admission": {
+    "status": "no-qualified-candidate",
+    "eligibleProviderIds": []
+  },
+  "decision": {
+    "status": "no-qualified-provider",
+    "providerId": null,
+    "userText": "2",
+    "choiceContext": "2. 无合格 provider；补 SudoVDA 来源、独立许可、ACL 与持久性证据",
+    "recordedAt": "2026-10-08T13:55:18Z",
+    "dossierSha256": "fe4ab0c03e59eda9a0b3ee655ca0152900b3d20d24e775cae2d6972b501e6ea8",
+    "nextAction": "固定审计 SudoMaker/SudoVDA 实现来源、独立许可、设备 ACL 与无需常驻 Ping 的持久性；对应正式包、安全和 Win10 HDR 缺口未闭合时保持不准入",
+    "followup": "docs/phase03/SUDOVDA-EVIDENCE-FOLLOWUP.md"
+  },
+  "machineAuthorization": {
+    "status": "not-authorized",
+    "machineId": null,
+    "scenarios": [],
+    "providerId": null,
+    "planSha256": null,
+    "userText": null,
+    "recordedAt": null
+  },
+  "productionEvidence": {
+    "status": "pending",
+    "records": []
+  },
+  "readOnlyObservation": {
+    "os": {
+      "caption": "Windows 11 Enterprise LTSC",
+      "version": "10.0.26100",
+      "build": 26100
+    },
+    "activeDisplays": 1,
+    "mode": {
+      "width": 2240,
+      "height": 1400,
+      "refresh": {
+        "numerator": 30000,
+        "denominator": 1000
+      },
+      "advancedColorSupported": true,
+      "advancedColorEnabled": false,
+      "hdrVerified": null
+    },
+    "devices": [
+      {
+        "id": "ROOT\\DISPLAY\\0000",
+        "description": "SudoMaker Virtual Display Adapter",
+        "inf": "oem44.inf",
+        "version": "0.22.37.632",
+        "cimIsSigned": false,
+        "cimSigner": null
+      },
+      {
+        "id": "ROOT\\DISPLAY\\0001",
+        "description": "OrayIddDriver Device",
+        "inf": "oem88.inf",
+        "version": "17.50.19.949",
+        "cimIsSigned": true,
+        "cimSigner": "Microsoft Windows Hardware Compatibility Publisher"
+      }
+    ],
+    "ownership": "foreign/unattributed; Aether owns none",
+    "stateUnchangedAcrossQueries": true,
+    "interfaceIoctlsIssued": 0
+  },
+  "systemPlan": {
+    "status": "reviewable-preparation-only; no installable qualified route",
+    "targetMachine": "current-workstation Win11 26100; independent Win10 target unavailable",
+    "conflicts": [
+      "Existing SudoMaker differs from fixed reference; never update/remove based on friendly name",
+      "Existing Oray and active DISPLAY10 are foreign; preserve resources and topology"
+    ],
+    "downloadBudget": {
+      "maxBytes": 1048576,
+      "deadlineSeconds": 30,
+      "scope": "one official driver-only package; larger replacement requires revised concrete plan"
+    },
+    "installBudget": {
+      "deadlineSeconds": 60,
+      "administrativeActions": "Only exact qualified INF/package/device IDs after 03-03-02 authorization; no certificate import or safety-policy change"
+    },
+    "update": "Explicit --update only; refuse with active registered groups/unknown ownership; do not update foreign adapters",
+    "rollback": "Keep exact admitted previous package with source/signature hashes before update; none obtained now, so update remains refused",
+    "reset": "Explicit machine/scenario authorization; report shared-driver blast radius; no current authorization",
+    "reboot": "manual-only",
+    "postReboot": "helios vdisplay driver check --json; verify exact installed package and reality against last successful identities before explicit group recovery"
+  },
+  "gaps": [
+    "No qualified provider or human route decision",
+    "Win10 and Win11 original seven-screen/D2 HDR proof absent; known IddCx HDR path begins with Win11 22H2, must not raise host floor",
+    "System installation/update/reset authorization absent",
+    "Stable identity, per-slot isolation, watchdog expiry persistence and exact 60/1 capacity untested",
+    "Pre-install query observes foreign state only, not product display functionality"
+  ],
+  "recommendation": {
+    "status": "no-qualified-provider-proposed",
+    "nextAction": "Prefer replacing/adapting open-source per-slot provider with restricted device/pipe ACL and persistent ownership contract; submit exact architecture/source/signature route for decision before implementation",
+    "alternatives": [
+      "Obtain SudoVDA full driver source/independent package license and upstream ACL fix plus persistence evidence",
+      "Fixed-source audit of alternate provider; retain all seven slots and Win10/11 requirement"
+    ]
+  }
+}
