@@ -23,7 +23,7 @@
 - [ ] **Phase 3: 虚拟显示器可行性** - 在 Win10/11 验证可生产接入的多组虚拟屏 provider
 - [ ] **Phase 4: 系统虚拟麦克风可行性** - 证明 PCM 可注入 Win10/11 普通软件的 capture endpoint
 - [ ] **Phase 5: Win10/11 系统摄像头可行性** - 证明两个 Windows 版本上的普通软件能选择虚拟摄像头
-- [ ] **Phase 6: GameStream 协议重构与扩展** - 基于 GameStream 验证双向、多流、安全与版本化扩展
+- [x] **Phase 6: GameStream 协议重构与扩展** - 基于 GameStream 验证双向、多流、安全与版本化扩展 (completed 2026-10-13)
 - [ ] **Phase 7: 配对、发现与设备权限** - 用户可安全添加、配对并撤销 Helios
 - [ ] **Phase 8: 持久实例登记与应用生命周期** - 用户能独立创建、运行和显式停止多个应用会话
 - [ ] **Phase 9: Windows 捕获与 H.264 基础流** - Helios 可捕获真实桌面并发送基础 H.264 视频
@@ -169,7 +169,7 @@
 1. 固定 GameStream 开源实现基线与字段/通道映射，说明保留、重构和扩展项；Aether 版本/能力协商、独立连接/流上下文和测试向量可复现。
 2. 双向模拟媒体和至少两条独立视频流通过；包大小、时间戳、FEC/丢包恢复、安全密钥/nonce边界及有界队列明确，覆盖五端原生核心构建与可运行的自动化检查，Apple 实机验证另列 TODO；不要求旧端互通。
 
-**Plans:** 6 plans — 全部计划完成6/6；06-05三任务和精确包真人审阅完成，Phase6规范验证human_needed，UAT7项scoped pass/3项定义不足blocked，NET未关闭。
+**Plans:** 6/6 plans complete — 全部计划、精确包真人审阅与后续自主收尾完成；UAT10/10、规范passed、NET01/02/03 Complete。24显式edge及108校验通过，三个judgment advisory保留。
 
 首轮三个计划的中间包涉及23文件，被独立检查器阻断。Revision 1沿同一原生协议原型验收链拆成五个顺序执行包（9/9/9/6/9文件、单任务最多5文件），作为“通常1–3计划”的容量例外；没有增加配对、真实设备/编解码、生产仲裁子系统或改变阶段依赖。第二轮检查0 blocker/0 warning，记录见 `06-PLAN-CHECK.md`。
 
@@ -195,9 +195,9 @@
 
 **Wave 6（前置：06-04完成）**
 
-- [x] 06-05-PLAN.md — 实际十二目标CI/独立all/本机回归与精确100项材料人审完成3/3；九项flags待阶段UAT
+- [x] 06-05-PLAN.md — 实际十二目标CI/独立all/本机回归与精确100项材料人审完成3/3；自主UAT10/10及规范关闭完成，三个judgment advisory保留
 
-Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原ADR/FEC批准、637原能力与12设置映射及所有历史失败保持。当前source4edaf03/input7ca15942十二目标CI38252266760通过，正式all退出0，本机Windows15/15、FFI22/22、owned Android115/115、根11/11；真实用户确认100项材料包。计划6/6和全项目14/15已完成，Phase6与NET整体仍未关闭：六禁止项及三unclassified edge保持flagged-unverified/null，见06-VERIFICATION.md和06-UAT.md。Apple物理及生产能力边界保持，不自动开始Phase7。
+Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原ADR/FEC批准、637原能力与12设置映射及所有历史失败保持。当前source4edaf03/input7ca15942十二目标CI38252266760通过，正式all退出0，本机Windows15/15、FFI22/22、owned Android115/115、根11/11；真实用户确认100项材料包。计划6/6和全项目14/15已完成，Phase6与NET规范关闭；原flags作为历史投影保留，新24条explicit合同与合法分类器dismissal接续，见06-VERIFICATION.md、06-UAT.md和docs/phase06/06-CLOSEOUT.md。Apple物理及生产能力边界保持，不自动开始Phase7。
 
 ### Phase 7: 配对、发现与设备权限
 
@@ -654,7 +654,7 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原ADR/FEC批
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 6/6 | 执行完成；UAT partial7/3，规范human_needed | - |
+| 6. GameStream 协议重构与扩展 | 6/6 | Complete    | 2026-10-13 |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |
@@ -694,7 +694,11 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原ADR/FEC批
 
 *Last updated: 2026-10-07; approved by user*
 
-
-## 2026-10-13 Phase6自行验收记录
+## 2026-10-13 Phase6自行验收记录（历史停点）
 
 用户授权之后项自行核验；06-UAT partial：7项scoped pass、3条原空probe insufficient_spec blocked。本次formal all与85/85通过、安全原登记23closed/open0、UI N/A；原flagged投影保留。Phase6/NET不关闭，不启动Phase7；Phase3 halted保持。详见docs/phase06/06-UAT-AUDIT.md及06-VERIFICATION。
+
+
+## 2026-10-13 Phase6规范完成
+
+用户“自行推进完成6”授权自主收尾。当前GSD phase.complete已实际执行：Phase6 Complete、NET01/02/03 Complete、3/42阶段完成。UAT10/10、108/108、新24显式edge gate及原formal all通过；SECURITY23/0、Nyquist/Wave0 true。三个NON-AUTHORITATIVE judgment advisory保留并醒目标注，原6+3投影/审阅快照不改。Phase3 03-03 summary为halted，阶段计划实际14/15完成，不能按SUMMARY存在误计15/15。Phase3独立安装关口保持，其他会话的Phase7准备不被本会话修改或启动实施。

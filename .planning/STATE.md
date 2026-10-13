@@ -4,23 +4,23 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: Phase6自行UAT 7项scoped pass、3项空probe定义不足blocked；安全23/0、formal all与85通过；Phase3 halted保持
-last_updated: "2026-10-13T05:56:29.160Z"
+stopped_at: Phase6规范完成，NET01/02/03关闭；Phase3 plan3 halted独立安装关口保持
+last_updated: "2026-10-13T07:40:42.631Z"
 last_activity: 2026-10-13
-last_activity_desc: 用户委托后续自行核验；UAT partial7/3，定义不足阻止关闭NET，无系统变更
+last_activity_desc: Phase6六计划及自主验收完成，24显式edge/108测试/all通过；3judgment advisories保留
 progress:
   total_phases: 42
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 15
   completed_plans: 14
-  percent: 5
+  percent: 7
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-10-08)
+See: .planning/PROJECT.md (updated 2026-10-13)
 
 **Core value:** 五端低延迟可靠访问Windows，桌面与游戏并重，切换/断连后实例持续运行。
 **Current focus:** Phase 03 — 03-01/03-02完成；03-03旧单独安装条件授权因Apollo前置缺陷阻断，修正包已就绪；新计划授权、安装/矩阵及最终人审未完成。
@@ -34,7 +34,7 @@ Plan: 03-03 partial — Task1 complete; old conditional choice1 recorded; correc
 Status: Halted; existing Apollo preserved. Old approval binds superseded bytes and cannot authorize corrected package. No runtime authorization file or installer invocation.
 Last activity: 2026-10-13 — 06-05任务3/3完成，十二目标与最终精确包人审通过；Phase6规范验证human_needed，九项flags待UAT，Phase3独立安装门槛保持。
 
-Progress: [█░░░░░░░░░] 5%
+Progress: [█░░░░░░░░░] 7%
 
 ## Ahead-of-Sequence Execution
 
@@ -170,6 +170,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 | 261009-fns | 03-01独立源许可重构、自签信任与实际ACL补证后准入aether-helios-display；03-02/03-03未启动 | 2026-10-09 | 1488cf4 | [261009-fns-03-01-close-derived-source-rights-and-pr](./quick/261009-fns-03-01-close-derived-source-rights-and-pr/) |
 | 261010-q3y | 项目文档与用户沟通默认简体中文，保留技术标识与原始证据 | 2026-10-10 | 630683a | [261010-q3y-project-language-zh-cn](./quick/261010-q3y-project-language-zh-cn/) |
 | 5 | 启用阶段独立分支策略，开始或恢复阶段前核对对应分支，保留已有混合历史与用户修改 | 2026-10-13 | — | — |
+| 261013-lfl | Phase6中文分类提示补证、24显式edge/108检查与规范关闭；Phase3 halted保持 | 2026-10-13 | — | [261013-lfl-phase6-edge](./quick/261013-lfl-phase6-edge/) |
 
 ## Deferred Items
 
@@ -177,7 +178,7 @@ VPN、文件、打印、Linux/macOS服务端及iOS/macOS客户端实机验证（
 
 ## Session Continuity
 
-Last session: 2026-10-11（Asia/Singapore）
+Last session: 2026-10-13（Asia/Singapore）；Phase6规范完成，Phase3原安装恢复入口保留
 Stopped at: 06-05 Task1本地准备完成；远端发布批准待定；Phase3独立安装门槛保持
 Resume file: .planning/phases/03-virtual-display-feasibility/03-03-PLAN.md
 Next action: 03-03-02读取最新SUMMARY、新plan及Apollo条件/补证，取得新固定plan4fa13eea的单独安装具体批准；即时只读Apollo基线/计划保持通过后才创建owner/SYSTEM保护的真实OS identity授权文件和请求安装UAC。只执行明确批准的driver-install，随后只读核对Apollo/foreign/CCD和实际WUDF组/宿主；发现变化不宣称成功。Win10、其余矩阵、Task4仍未完成；禁止执行/安排重启/关机。
@@ -209,3 +210,14 @@ Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-
 本次正式all实际0/7670ms，在线核验原CI12目标及固定产物/原始具名日志和FFI；独立85/85/324ms，零fail/skip/cancel/TODO。实际产品compile无fixture宏、DLL16导出无注入/内嵌PEM；16任务自动入口、23登记威胁和summary窗口核对。安全post-hook23closed/open0仅synthetic；UI N/A；Validation为validated-partial、Wave0 true、Nyquist false。证据见docs/phase06/06-UAT-AUDIT.md/json、06-UAT/SECURITY/UI-REVIEW/VALIDATION。
 
 Phase6规范human_needed与NET Pending保留，原3+6投影保持；恢复需补原probe定义或按规划修订识别无描述符占位，不能编造case。Phase3/plan3/status halted及Apollo安装关口保持；未执行/安排开发机重启关机，无设备/trust/网络更改，无Phase7启动。references/upstream-lock.json的已有用户修改不在此次提交中。
+
+## 2026-10-13 Phase6规范完成（当前）
+
+用户“自行推进完成6”授权完成。原三中文分类器提示由官方core合法退役，24条合同/实际具名证据接续；UAT10/10、108/108、新gate及formal all0，SECURITY23/0，UI N/A，Nyquist/Wave0 true，共同UAT+verification passed。GSD phase.complete实际执行并关闭Phase6、NET01/02/03；目前完成3/42阶段、14/15阶段计划（quick任务单独追踪）。
+
+三个自主judgment明确保留NON-AUTHORITATIVE LLM-judge/advisory，原flags投影与人审快照不改，不冒充生产设备/codec/HDR/全局仲裁/产品SLO或Apple实机通过。具体补证见docs/phase06/06-CLOSEOUT.md/json/CHECKS。
+
+通用transition的Current Position改写已恢复Phase3/plan3/halted及原安装Resume入口，仅保留规范Phase6完成与进度数据。Apollo/独立系统操作授权、开发机禁执行/安排重启关机持续有效；此会话未改其他会话Phase7资料或启动Phase7实施。
+
+
+关闭后计数复核：GSD按SUMMARY文件存在误计completed_plans=15，但03-03-SUMMARY明确status halted、Task2 blocking-human未执行；已按真实完成纠正14/15，Phase3仍2/3计划、不关闭VDP。state.json的Phase6 complete保留，next提示改回03-03已有计划的具体授权恢复入口，不伪报Phase3需要重新计划。

@@ -31,7 +31,7 @@
     {
       "number": "6",
       "name": "GameStream 协议重构与扩展",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "number": "7",
@@ -215,9 +215,9 @@
     }
   ],
   "next": {
-    "command": "/gsd:progress --next",
-    "label": "Advance to the next step",
-    "reason": "Phase 3 of 42 · 5% · executing"
+    "command": "/gsd:execute-phase 3",
+    "label": "恢复Phase3 03-03具体安装批准检查点",
+    "reason": "03-03 halted/blocking-human；修正精确包仍等待具体安装授权，不自动安装或重启"
   },
-  "updated_at": "2026-10-09T08:58:21.936Z"
+  "updated_at": "2026-10-13T07:42:22.544Z"
 }

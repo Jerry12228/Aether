@@ -14,8 +14,9 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 
 - ✓ BASE-01/02/03：固定来源与逐文件许可/渠道审计、七平台原功能与独立计划案例、真实环境及测量方法、两个人审检查点 — Phase 1。
 - ✓ CORE-01/02/03：单主仓库/统一版本的 Windows 双端骨架、独立 C++20/C ABI 与真实 Dart 所有权/停止契约、五平台能力接口及实际 Windows CI — Phase 2，用户最终原文“确认”。
+- ✓ NET-01/02/03：固定GameStream协议基线/通道映射、版本/能力/身份、真实安全双进程双向synthetic多流与FEC/恢复/预算、真实Dart FFI及五平台十二目标证据 — Phase 6；精确包真人确认与后续自主规范收尾完成，24显式edge，108校验测试，三个judgment advisory明确保留。
 
-已交付基线审计和 Windows 本地骨架：真实 DLL/FFI、静态 GPU Texture/native surface、面板和控制台生命周期通过。完整远程串流产品功能、生产复用许可、其他目标构建、主机最低 build、驱动及产品性能支持仍需后续实施/核验。
+已交付基线审计、Windows本地骨架和协议原型：真实DLL/FFI、静态GPU Texture/native surface、面板/控制台生命周期，以及协议五平台原生目标构建/匹配执行证据通过。完整远程串流产品、生产authority/设备/codec/HDR、生产许可、主机最低build、驱动和产品性能仍按后续阶段实施/核验；Apple物理验收独立TODO。
 
 ### Active
 
@@ -87,4 +88,4 @@ Aether 从零重构 Moonlight/Sunshine 所覆盖的远程桌面与游戏串流�
 每个阶段完成后更新已验证需求、阶段证据、关键决策和阻碍；不能把源码研究当作产品验证。里程碑结束时完整审视范围和原功能对照。新增差异必须同时更新需求、路线图、能力矩阵及测试，TODO 进入 docs/BACKLOG.md。
 
 ---
-*Last updated: 2026-10-08 after Phase 2 scoped skeleton execution and final human review*
+*最后更新：2026-10-13，Phase6协议原型规范完成；Phase3独立安装关口保持。*

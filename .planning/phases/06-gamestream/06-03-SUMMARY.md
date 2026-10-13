@@ -74,7 +74,7 @@ completed: 2026-10-10
 | 2 恢复/临时 trace | `6ce3ede` | `f853627` | 32/32，43336.5986ms；旧 control 回归通过 |
 | 3 限值/原 case 映射 | `842aa20` | `bce5030` | 最终 recovery 60/60，完整回归及三轮量测通过 |
 
-三项 RED 都是目标行为断言失败，对应 `06-03-01/02/03-RED.json` 经 `check tdd-red-evidence` 得到 `RED_EVIDENCE_OK` 后才实现 GREEN。Task3 RED 为缺失 12 个原 NET case 映射的断言；沙盒 EPERM、一次证据写入命令错误不计作 RED。没有独立 REFACTOR 提交，正常 hooks 未绕过。
+三项 RED 都是目标行为断言失败，对应 [06-03-01-RED.json](../../../docs/phase06/06-03-01-RED.json)、[06-03-02-RED.json](../../../docs/phase06/06-03-02-RED.json)、[06-03-03-RED.json](../../../docs/phase06/06-03-03-RED.json)，经 `check tdd-red-evidence` 得到 `RED_EVIDENCE_OK` 后才实现 GREEN。Task3 RED 为缺失 12 个原 NET case 映射的断言；沙盒 EPERM、一次证据写入命令错误不计作 RED。没有独立 REFACTOR 提交，正常 hooks 未绕过。
 
 提交数从 `.git/gsd-plan-head-before-06-03` 测量，`before..after` 为 6，覆盖 20 个文件；摘要元数据提交不计入上述产品任务区间。`tokens=ceil(diff 字符数/4)=249962`，字符数 999847，与计划估算采用同尺度，主要包含完整 case 映射和原始结构化证据，非模型 token 用量。108min 为计划基线提交 13:22:41Z 至统计时间 15:10:56Z 的墙钟覆盖范围，包含中断/恢复等待，不是 CPU 时间。
 

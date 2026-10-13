@@ -1,6 +1,6 @@
 ---
 phase: 06-gamestream
-verified: 2026-10-13T07:36:49.900Z
+verified: 2026-10-13T07:43:57.585Z
 status: passed
 score: 2/2-roadmap-observable-truths-automatically-verified
 source_commit: 4edaf0352ca1b875e3536fe54970e8b85585c794
@@ -60,3 +60,6 @@ NET-01/02/03自动参考具名case验证；原637parity与12设置保留，23威
 新独立gate24项通过，108/108测试零fail/skip/cancel/TODO，formal all0/8125ms在线核验12目标及FFI。源码/实际DLL/日志绑定和原SECURITY23项缓解保持。当前UAT10/10；16任务自动入口和24显式边界齐全，Nyquist/Wave0 true。详见docs/phase06/06-CLOSEOUT.md/json及06-CLOSEOUT-CHECKS.json。
 
 三个judgment项已自主review，保留NON-AUTHORITATIVE LLM-judge与unverified-prohibition — human review recommended，完成模式completed with 3 flagged judgment advisories；不会静默吸收或伪造逐项真人认可。规范status passed仅覆盖本阶段既定synthetic协议原型目标与证据门槛。生产authority/设备/codec/HDR/非loopback产品性能/最低OS和Apple实机均仍按既定owner/TODO，不扩大支持声明。Phase3/plan3/halted及禁止开发机重启/关机保持。
+
+
+完成后规范复核：42产品输入hash仍精确匹配原manifest；24定义gate再次通过；更新Summary中三个真实RED链接仅属元数据修复。重做目标核对后刷新verified时间，产品source/input保持原4edaf03/7ca15942，不冒充重新构建。

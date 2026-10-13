@@ -38,9 +38,9 @@
 
 ### GameStream 协议重构与扩展
 
-- [ ] **NET-01**: 双端使用基于 NVIDIA GameStream 重构扩展的协议，协商 Aether 版本与能力，使用 instance/display/stream ID、租约 epoch 和明确错误码。
-- [ ] **NET-02**: 维护者能查阅 GameStream 基线与扩展映射、通道/安全重构 ADR，以及双向媒体、多流、丢包原型和五平台目标构建/可运行的自动化证据；Apple 实机验证另列 TODO。
-- [ ] **NET-03**: 连接具有标准安全机制保护的可靠控制与实时媒体通道，错误版本/超限消息被拒绝。
+- [x] **NET-01**: 双端使用基于 NVIDIA GameStream 重构扩展的协议，协商 Aether 版本与能力，使用 instance/display/stream ID、租约 epoch 和明确错误码。
+- [x] **NET-02**: 维护者能查阅 GameStream 基线与扩展映射、通道/安全重构 ADR，以及双向媒体、多流、丢包原型和五平台目标构建/可运行的自动化证据；Apple 实机验证另列 TODO。
+- [x] **NET-03**: 连接具有标准安全机制保护的可靠控制与实时媒体通道，错误版本/超限消息被拒绝。
 
 ### 配对、发现与设备权限
 
@@ -287,9 +287,9 @@
 | MIC-02 | Phase 4 | Pending |
 | CAM-01 | Phase 5 | Pending |
 | CAM-02 | Phase 5 | Pending |
-| NET-01 | Phase 6 | Pending |
-| NET-02 | Phase 6 | Pending |
-| NET-03 | Phase 6 | Pending |
+| NET-01 | Phase 6 | Complete |
+| NET-02 | Phase 6 | Complete |
+| NET-03 | Phase 6 | Complete |
 | AUTH-01 | Phase 7 | Pending |
 | AUTH-02 | Phase 7 | Pending |
 | AUTH-03 | Phase 7 | Pending |
@@ -392,7 +392,11 @@
 
 06-05三任务、全部六计划及精确包真人审阅完成；当前十二目标CI、独立all及本机回归通过。NET-01/02/03的自动行为证据与已测范围审阅成立，但阶段规范验证仍human_needed，六禁止项和三未分类edge保持未验证并进入06-UAT.md。需求复选框和Pending追踪保留；精确包“确认”不替代九项逐项UAT。Phase3安装关口保持halted。
 
-
-## 2026-10-13 Phase6自行验收续记
+## 2026-10-13 Phase6自行验收续记（历史停点）
 
 NET-01/02/03保持Pending。用户已委托当前代理核验后续项：UAT7项scoped pass/3条缺定义blocked，后者只有unclassified占位及null字段；不能从要求ID反推原假设。本次formal all/85项检查及23原登记安全缓解通过仅说明既定协议原型范围，原flags投影不改；没有新增产品缺陷或自动关闭需求。见docs/phase06/06-UAT-AUDIT.md。
+
+
+## 2026-10-13 NET规范关闭（当前）
+
+NET-01/02/03由GSD phase.complete实际置Complete，对应已批准Phase6 synthetic协议原型目标。三条中文分类器未命中提示合法退役并接续24显式边界，UAT10/10、108测试及新旧gate通过。三个自主judgment advisory和所有既定后续生产/设备/真实网络/Apple物理义务保持；不是豁免原能力或整个产品已交付。规范报告见docs/phase06/06-CLOSEOUT.md、06-COMPLETION.json。
