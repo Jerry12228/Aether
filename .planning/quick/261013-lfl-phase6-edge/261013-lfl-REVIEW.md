@@ -1,0 +1,7 @@
+# 实现与证据复核
+
+当前代理内联复核，非独立代理。新gate只读取源码/日志及补证JSON，边界分类使用官方core生成，未引入可执行远端输入或shell插值。safeFile拒绝绝对/越级/反斜杠路径；被测原件、typed合同anchor与实际日志须SHA一致。分类与canonical唯一性、owner/source和人工授权类型均独立核对。
+
+初审发现canonical重复项、历史dismissal重复owner及prohibition owner未被独立拒绝，已在最终门槛中补齐；新增五负例实际通过。它们是本轮新审计工具加固，不是旧协议产品缺陷或TDD行为RED。原强制all/85 tests仍保留且实际通过。
+
+最终open0。24条中文预期人工内联核对其原合同和具名测试：NET03nonce/重传/跨域等分别用专属实际case，不由同一泛化文字推定所有安全属性；NET01整数精度追加原64位FPS回归，持久/幂等/并发追加实际host回执；NET02unit fixture只证明validator负例，实际矩阵另由formal all核验。三项自主judgment保持明确advisory，不能据此认证全产品/系统历史。

@@ -2,14 +2,14 @@
 phase: "06"
 slug: gamestream
 status: validated
-nyquist_compliant: false
+nyquist_compliant: true
 wave_0_complete: true
 created: "2026-10-09"
 ---
 
 # Phase 06 — 验证策略
 
-本文件是执行期验证契约。2026-10-13按gsd-validate-phase复核：六计划16任务有实际自动入口；同输入12目标CI及本机FFI的具名用例、产物和raw日志由formal all重新核验通过，独立证据85/85。Wave0入口完整且已实际执行，wave_0_complete=true。三条unclassified probe缺行为定义，不能生成有语义的测试或宣称全覆盖，nyquist_compliant保持false。UAT为7项scoped pass/3项blocked，NET与Phase6未关闭。历史运行和审批保留原绑定。
+本文件是执行期验证契约。2026-10-13按gsd-validate-phase复核：六计划16任务有实际自动入口；同输入12目标CI及本机FFI的具名用例、产物和raw日志由formal all重新核验通过，独立证据85/85。Wave0入口完整且已实际执行，wave_0_complete=true。原三条中文分类提示已由官方core合法退役并接续24类显式边界/实际用例，nyquist_compliant=true。当前UAT10/10，旧partial记录在历史章节保留。历史运行和审批保留原绑定。
 
 ## Test Infrastructure
 
@@ -96,9 +96,9 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 - [x] 无连续三个任务缺自动验证；命令都说明可观察失败方向。
 - [x] Wave 0 覆盖所有缺失入口；五目标证据分别追踪，不伪造通过。
 - [x] 无 watch-mode；实际反馈时长有独立记录。
-- [ ] 三条空probe定义尚未闭合，Nyquist保持partial/false；Wave0实际完成为true。
+- [x] 三条原分类提示合法退役，24显式边界完整；新108测试及新旧gate通过，Nyquist/Wave0 true。
 
-**Approval:** validated-partial（2026-10-13）；不是阶段完成批准。
+**Approval:** validated（2026-10-13）；本阶段synthetic协议原型范围，三个自主judgment advisory保留。
 
 06-01具体ADR批准与06-05精确包真人确认均已完成并独立留档；本轮partial只表示三条原空probe缺定义及原flags边界，不重复请求历史ADR或包确认。
 
@@ -159,3 +159,8 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 三条定义缺口是规划输入不足，不作为代码失败或自动resolved；保留原06-EDGE-PROBE/TARGETS投影。用户已授权“你自行验证，包括之后项”，本次没有新增真人答复，原ADR/精确包人审另录。各任务自动入口/原始hash、23威胁和summary提交窗口复核见docs/phase06/06-UAT-AUDIT.json。06-06 commits4窗口匹配；其余无顶层commits声明的历史SUMMARY只记录测得窗口和legacy warning，不猜测提交数量。
 
 当前Approval：validated-partial；需要为三条probe提供具体假设或按规划修订认定无描述符占位后再审计。Phase3/plan3/halted及开发机禁重启/关机保持。
+
+
+## Validation Closure 2026-10-13（当前）
+
+用户“自行推进完成6”授权自主收尾。三条原提示根因是英文分类器未命中中文文本；官方core合法dismiss3，当前author shapes分类24 resolved/explicit、unresolved0。24条trigger/expected/contract/raw log及源摘要由verify-phase06-closeout独立核验，新增23+既有85共108/108；formal all0保留真实12目标/FFI原证据。16任务全部自动入口和具体边界已有通过证据，缺口0，Nyquist/Wave0 true。此前7/3是历史停点，不改原快照或造新产品测试结果。

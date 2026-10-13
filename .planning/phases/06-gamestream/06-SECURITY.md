@@ -69,3 +69,8 @@ auditor: 当前Codex内联，无独立子代理
 | 2026-10-13 | 23 | 23 | 0 | 当前Codex内联，gsd-secure-phase L1 |
 
 安全post-hook完成；Phase6整体仍受UAT第8–10项insufficient_spec及原flag边界约束，不自动推进。
+
+
+## 自主收尾补记
+
+新分类补证门槛及108负例通过，原协议/依赖/产物未变，23项安全缓解状态不变。三原edge由24显式合同接续且无未决项目；三个judgment仍保留advisory，不算known high threat。用户“自行推进完成6”授权自主完成，不新增风险接受或全产品安全承诺。
