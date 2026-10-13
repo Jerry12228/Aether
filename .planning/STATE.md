@@ -7,7 +7,7 @@ status: halted
 stopped_at: Phase6规范完成，NET01/02/03关闭；Phase3 plan3 halted独立安装关口保持
 last_updated: "2026-10-13T08:56:45.897Z"
 last_activity: 2026-10-13
-last_activity_desc: Phase6六计划及自主验收完成，24显式edge/108测试/all通过；3judgment advisories保留
+last_activity_desc: Phase6已推送独立分支并创建PR1至main；合并冲突已解决，集成CI待完成，Phase3安装关口保持
 progress:
   total_phases: 42
   completed_phases: 3
@@ -32,7 +32,7 @@ Total Plans in Phase: 3
 Phase: 3 (虚拟显示器可行性) — two plans complete; phase and VDP requirements incomplete
 Plan: 03-03 partial — Task1 complete; old conditional choice1 recorded; correction RED5050b4a/GREENaaeda0e; Task2 blocking-human awaiting new fixed-plan install-only approval
 Status: Halted; existing Apollo preserved. Old approval binds superseded bytes and cannot authorize corrected package. No runtime authorization file or installer invocation.
-Last activity: 2026-10-13 — 06-05任务3/3完成，十二目标与最终精确包人审通过；Phase6规范验证human_needed，九项flags待UAT，Phase3独立安装门槛保持。
+Last activity: 2026-10-13 — Phase6六计划及UAT10/10完成，规范验证passed；独立分支PR1已发布，Phase3独立安装门槛保持。
 
 Progress: [█░░░░░░░░░] 7%
 
@@ -229,3 +229,9 @@ Phase6规范human_needed与NET Pending保留，原3+6投影保持；恢复需补
 用户“迁移phase6到新规则要求的独立分支；完成phase6”已执行。当前工作分支codex/phase-06-gamestream从859507d完整继承Phase6完成状态；旧codex/phase-03-virtual-display-feasibility指针与混合历史不重写。所有迁移记录只提交新分支，切换前用户diff/index与Phase7 checkpoint hash保持，未混入。
 
 迁移后42产品输入匹配、closeout gate及GSD共同完成谓词通过，Phase6/NET三个Complete、UAT10/10，原108与十二目标证据不重标新HEAD。三个judgment advisory及所有既定生产/实机限制保持。主Phase3/plan3/halted、Apollo具体安装批准恢复入口保持；详见docs/phase06/BRANCH-MIGRATION.md/json。
+
+## 2026-10-13 Phase6主线发布
+
+用户“你来执行”授权推送、PR、CI和主线合并。已发布[PR #1](https://github.com/Jerry12228/Aether/pull/1)，codex/phase-06-gamestream→main。master独有规则提交d7fd12c通过merge commit764f1b9整合；唯一STATE冲突保留两侧记录，Phase3/plan3/halted与Phase6 Complete保持。
+
+本次集成复核formal all退出0、108/108回归、24显式edge gate及42阶段/105需求规划检查通过，原产品输入/日志/人审快照未改绑。当前记录时PR实际CI尚在执行；最终合并状态与对应CI以PR实时结果为准，不把已发布等同CI或合并完成。使用merge commit保留旧证据历史；不创建远程master。用户上游锁文件和Phase7 checkpoint未加入提交。
