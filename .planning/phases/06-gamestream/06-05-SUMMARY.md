@@ -3,56 +3,75 @@ phase: 06-gamestream
 plan: "05"
 subsystem: protocol-targets
 tags: [CMake, CI, Windows, POSIX, XCTest, provenance]
-status: in_progress
-checkpoint: 06-05-03
-checkpoint_gate: blocking-human-final-review
+status: complete
+checkpoint: null
+checkpoint_gate: null
 blocked_by: []
 requires:
   - phase: 06-04
-    provides: 真实 Dart FFI、独立主机与固定协议依赖
+    provides: 真实Dart FFI、独立主机与固定协议依赖
 provides:
-  - 明确目标的隔离构建入口和初始 Linux CI 准备
-  - POSIX 子进程测试宿主及 iOS XCTest 初始适配
-  - 本地 Windows Debug/Release 与真实 FFI 准备证据
-affects: [06-05-target-matrix, 06-05-evidence-validator, 06-05-human-review]
+  - 同一42输入的十二目标真实CI、Apple device构建与simulator XCTest
+  - 独立85项known-bad validator及正式all证据核验
+  - 本机Windows、FFI、owned Android和根回归的真实证据
+  - 100项精确材料包的真实用户确认与保留flags的独立UAT
+affects: [protocol, native-targets, evidence, human-review]
 tech-stack:
   added: []
-  patterns: [目标隔离依赖, 固定标量输入, 真实运行证据与准备状态分离]
+  patterns: [目标隔离依赖, 固定标量输入, 原始日志与独立校验, 精确材料人审]
 key-files:
-  created: [scripts/build-protocol.cjs, .github/workflows/protocol.yml, tests/native/protocol_contract.cpp, tests/native/ios/ProtocolContract.mm, docs/phase06/06-05-PREPARATION.json]
-  modified: [native/protocol/CMakeLists.txt, tests/native/protocol_control.cpp, tests/protocol-tracer.test.cjs, tests/protocol-multistream.test.cjs, tests/protocol-recovery.test.cjs]
+  created: [scripts/build-protocol.cjs, scripts/verify-protocol.cjs, .github/workflows/protocol.yml, tests/native/protocol_contract.cpp, tests/native/ios/ProtocolContract.mm, docs/phase06/TARGETS.json, docs/phase06/FINAL-HUMAN-REVIEW.json]
+  modified: [native/protocol/CMakeLists.txt, tests/native/protocol_control.cpp, tests/protocol-tracer.test.cjs, tests/protocol-multistream.test.cjs, tests/protocol-recovery.test.cjs, docs/phase06/EVIDENCE.md]
 key-decisions:
-  - 自动审批拒绝远端发布后只完成本地准备，不以其他入口上传。
-  - 编译错误不计行为 RED；五目标、独立 validator 和最终人审均未通过。
-  - 仅固定上游 SRTP KAT 驱动使用 /Od，保留 /WX 与生产 Release 优化。
+  - 公开分支推送及同分支Phase6修复和证据由当前真实用户明确授权。
+  - 构建失败不当行为RED；保留合格RED和所有失败历史及TDD偏差。
+  - 当前source4edaf03/input7ca15942实际十二目标及正式all通过；用户确认精确100项材料包。
+  - 包确认完成本计划，不把九项flags转成passed；Phase6规范验证与NET仍等待UAT。
 requirements-completed: []
 requirements-contributed: [NET-01, NET-02, NET-03]
 coverage:
   - id: local-preparation-regression
-    description: 已准备入口的本地 Windows Release 和原 Debug/FFI 回归
+    description: 当前Windows/FFI/owned Android/根回归
     verification:
       - kind: integration
-        ref: docs/phase06/06-05-PREPARATION.json
+        ref: docs/phase06/06-05-CURRENT-LOCAL.json
         status: pass
     human_judgment: false
   - id: five-target-closure
-    description: 五目标实际产物、运行、独立 validator 与最终人审
+    description: 五目标十二作业真实产物、运行及独立validator
     verification:
-      - kind: other
-        ref: .planning/phases/06-gamestream/06-05-PLAN.md
-        status: unknown
+      - kind: integration
+        ref: docs/phase06/TARGETS.json
+        status: pass
+    human_judgment: false
+  - id: exact-final-review
+    description: 真实用户确认精确100项材料包及原型范围
+    verification:
+      - kind: manual_procedural
+        ref: docs/phase06/FINAL-HUMAN-REVIEW.json
+        status: pass
     human_judgment: true
-    rationale: 当前仅本地准备通过；必须先取得实际目标证据，不能以人工承认缺口代替自动门槛。
+    rationale: 原文确认仅绑定展示包；九项原flags保留，进入独立UAT且不关闭NET。
 actuals:
-  tokens: 18872
-  tasks: 0
-  commits: 2
-plan_head_before: b598ee92b87cf4547fff51854a738ed152710afc
-plan_head_after: 1b703afd1267b07aeaec412c38d27a9d3f404f95
-checkpoint_recorded: "2026-10-11T04:55:00Z"
+  tokens: null
+  tasks: 3
+  commits: null
+actuals_note: 历史准备18872为diff字符估算，非模型实际用量；不伪造全计划tokens或提交总数。
+source_commit: 4edaf0352ca1b875e3536fe54970e8b85585c794
+input_digest: 7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369
+completed: "2026-10-13T04:58:32.036Z"
 ---
 
-# Phase 06 Plan 05：五目标实际执行与证据核验进行中
+# Phase 06 Plan 05：五目标执行、证据和精确包人审完成
+
+**任务3/3完成。当前CI12/12、本机Android115/115、FFI22/22与根11/11通过；用户原文“确认”绑定100项材料包。Phase6规范验证仍human_needed：九项flags进入UAT，NET未关闭，Phase3保持halted。**
+
+被测源码`4edaf0352ca1b875e3536fe54970e8b85585c794`，共同输入`7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369`；[CI运行](https://github.com/Jerry12228/Aether/actions/runs/38252266760)、[最终证据](../../../docs/phase06/EVIDENCE.md)、[真实人审](../../../docs/phase06/FINAL-HUMAN-REVIEW.json)。Apple device ARM64仅构建，simulator两架构各42 XCTest；物理功能/性能/安装、minimumOS、生产authority/codec/设备/网络/SLO未测。六禁止项、三未分类edge状态原样保留。
+
+## 以下为各时点历史执行记录
+
+
+## 历史：Phase 06 Plan 05五目标执行与证据核验准备
 
 **用户已批准当前工作分支的公开发布与后续 Phase6 修复/证据，实际十二目标 CI 持续执行；06-05 三个任务均未完成。最初发布停点及所有旧失败是历史记录，当前状态见文末和 06-05-EXECUTION.json。**
 
@@ -214,3 +233,9 @@ feb4ee3/input2c2aefc2前一矩阵实际CI38246782490为9/12、Windows fec-burst7
 ## 最终自动门槛完成，真人关口待答复
 
 2026-10-12T13:23:59.971Z：实际4edaf03/input7ca15942 CI38252266760完整12/12、正式all exit0；本机Windows15/85、FFI22/21、根11/Helios和同输入自有Android115均通过。Task1/Task2完成，2/3；标准内联审阅两项真实RED-GREEN后resolved3/open0，无外部agent。637原能力、12设置、16决定、3NET、23威胁及六禁止/三edge原样flagged已独立核对。此前公开发布阻断已由本会话明确重新授权解除，拒绝历史不删除。Task3真实答复/null，Phase6仍5/6和NET未关闭；具体最终材料包就绪，Phase3 halted及禁开发机重启/关机保持。
+
+## 2026-10-13 最终材料包真实批准
+
+真实用户原文“确认”，记录时间2026-10-13T04:58:32.036Z；批准包SHA256为`48271d2aed1e62fa22af9d988681c5909e673a1a3fe87c15f8aace7445d48dbc`，100项材料摘要为`494fb0d931e585e0ea4fb83c911272890aa5cf70e72b316806fdd9e654304708`。写入批准前100原件及100独立快照长度/SHA256全部匹配。独立决定见[FINAL-HUMAN-REVIEW](../../../docs/phase06/FINAL-HUMAN-REVIEW.json)，决定SHA256 `ab6d9cdeeb766860e2d0619eb42072472dbf987883117f3cacfe6bb91e128861`。原包和原快照保持原字节；批准后的TARGETS/EVIDENCE及规划状态是新记录，不回写审阅快照。
+
+06-05三个任务全部完成，Phase6计划6/6、全项目14/15计划；规范目标验证保持human_needed，Phase6与NET未关闭。六条无描述符禁止项和三条unclassified edge仍flagged-unverified，verification/resolution/reason仍null；没有将范围确认解释为逐项验证通过。已保存[06-UAT](06-UAT.md)，其中精确包审阅1项pass、九项flags pending，后续通过`$gsd-verify-work 6`逐项处理。Phase3/plan3/status halted保持，未启动Phase7。

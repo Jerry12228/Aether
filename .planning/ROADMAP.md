@@ -169,7 +169,7 @@
 1. 固定 GameStream 开源实现基线与字段/通道映射，说明保留、重构和扩展项；Aether 版本/能力协商、独立连接/流上下文和测试向量可复现。
 2. 双向模拟媒体和至少两条独立视频流通过；包大小、时间戳、FEC/丢包恢复、安全密钥/nonce边界及有界队列明确，覆盖五端原生核心构建与可运行的自动化检查，Apple 实机验证另列 TODO；不要求旧端互通。
 
-**Plans:** 6 plans — 2026-10-10修订已获本会话1授权；01/02/06/03/04已完成，5/6；前置及预算/恢复/诊断实际交付，独立Revision1检查0blocker/0warning，执行顺序02→06→03→04→05。
+**Plans:** 6 plans — 全部计划完成6/6；06-05三任务和精确包真人审阅完成，Phase6规范验证human_needed，九项flags待UAT，NET未关闭。
 
 首轮三个计划的中间包涉及23文件，被独立检查器阻断。Revision 1沿同一原生协议原型验收链拆成五个顺序执行包（9/9/9/6/9文件、单任务最多5文件），作为“通常1–3计划”的容量例外；没有增加配对、真实设备/编解码、生产仲裁子系统或改变阶段依赖。第二轮检查0 blocker/0 warning，记录见 `06-PLAN-CHECK.md`。
 
@@ -195,9 +195,9 @@
 
 **Wave 6（前置：06-04完成）**
 
-- [ ] 06-05-PLAN.md — 五目标实际构建运行、独立证据与强制最终人审；Task1实际CI执行中，0/3任务，完整当前工作分支发布已具体批准
+- [x] 06-05-PLAN.md — 实际十二目标CI/独立all/本机回归与精确100项材料人审完成3/3；九项flags待阶段UAT
 
-Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR及Botan具体复用批准、原研究/审阅字节不变，06-02历史媒体/FEC与06-06前置交付证据保留。06-03三任务实际交付（bce5030/23b814e），最终Debug Node106/106、Debug/ASan CTest12/12（108.14s/109.00s），父级再次构建/CTest12/12（108.16s）及658项证据摘要匹配。三轮真实socket量测281648.188ms绑定归档f853627二进制，最终断线/重复恢复修正另经完整回归，不改绑旧hash；637原case完整保留及12NET设置映射。06-04两任务已完成（GREEN387a052/摘要adffc87）：当前完整Node107/107、Flutter22/22及21独立host场景，协议Debug CTest12/12、根CTest11/11，local core及生成绑定通过。取消STATUS事务绑定修复仅test-only host，早期编译RED偏差保留，精确证据见06-04-EVIDENCE.json。当前5/6；用户1已选择06-05，本地Debug/Release各12/12及真实FFI22/22准备通过，任务0/3，实际五目标/独立证据/强制最终人审未完成，具体公开分支发布已由后续用户1批准，当前实际目标CI执行中。见06-05-SUMMARY与06-05-PREPARATION.json；NET和Phase6未完成。见06-03-SUMMARY、06-03-03-EVIDENCE.json和LIMITS；历史PRECONDITION保留。证据限Windows x64、synthetic authority/media及真实loopback TLS/SRTP，不能推断真实设备、codec、产品性能或全平台支持；ASan不覆盖预编译OpenSSL。
+Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原ADR/FEC批准、637原能力与12设置映射及所有历史失败保持。当前source4edaf03/input7ca15942十二目标CI38252266760通过，正式all退出0，本机Windows15/15、FFI22/22、owned Android115/115、根11/11；真实用户确认100项材料包。计划6/6和全项目14/15已完成，Phase6与NET整体仍未关闭：六禁止项及三unclassified edge保持flagged-unverified/null，见06-VERIFICATION.md和06-UAT.md。Apple物理及生产能力边界保持，不自动开始Phase7。
 
 ### Phase 7: 配对、发现与设备权限
 
@@ -654,7 +654,7 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。06-01 ADR及B
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 5/6 | 进行中（06-05实际目标CI；公开分支发布已批准，0/3任务） | - |
+| 6. GameStream 协议重构与扩展 | 6/6 | 执行完成；规范验证human_needed，九项flags待UAT | - |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |

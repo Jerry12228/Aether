@@ -1,6 +1,6 @@
 # Phase06 协议原型最终自动验证证据
 
-06-05 Task1/Task2已完成，任务2/3；全部自动门槛通过，Task3最终人审待真实答复。Phase6仍5/6，NET-01/02/03未关闭。Phase3仍phase3/plan3/status halted，原独立安装门槛不变。
+06-05任务3/3完成；全部自动门槛通过，真实用户“确认”已绑定原100项精确材料包，见[最终人审决定](FINAL-HUMAN-REVIEW.json)。Phase6计划6/6完成，但规范验证仍human_needed，六禁止项和三未分类edge仍待[逐项UAT](../../.planning/phases/06-gamestream/06-UAT.md)，NET-01/02/03未关闭。Phase3仍phase3/plan3/status halted，原独立安装门槛不变。
 
 ## 精确输入和实际矩阵
 
@@ -94,3 +94,11 @@ Linux mTLS、Android取消线性化、iOS构建/产物冻结、owned relay/adbd�
 ## 强制最终人审
 
 humanReview：pending；response/recordedAt/reviewedMaterials为null。具体最终材料SHA256封存清单见[FINAL-REVIEW-PACKAGE](FINAL-REVIEW-PACKAGE.json)。06-05 Task3必须取得真人对该包已测范围的确认，不复用历史选项1或Phase2确认；确认只覆盖协议原型，不授权Phase3安装或自动开始后续实现。六禁止与三edge仍flagged，Apple物理及其余范围按以上证据限制保留。
+
+## 2026-10-13 最终材料包真实批准
+
+真实用户原文“确认”，记录时间2026-10-13T04:58:32.036Z；批准包SHA256为`48271d2aed1e62fa22af9d988681c5909e673a1a3fe87c15f8aace7445d48dbc`，100项材料摘要为`494fb0d931e585e0ea4fb83c911272890aa5cf70e72b316806fdd9e654304708`。写入批准前100原件及100独立快照长度/SHA256全部匹配。独立决定见[FINAL-HUMAN-REVIEW](FINAL-HUMAN-REVIEW.json)，决定SHA256 `ab6d9cdeeb766860e2d0619eb42072472dbf987883117f3cacfe6bb91e128861`。原包和原快照保持原字节；批准后的TARGETS/EVIDENCE及规划状态是新记录，不回写审阅快照。
+
+06-05三个任务全部完成，Phase6计划6/6、全项目14/15计划；规范目标验证保持human_needed，Phase6与NET未关闭。六条无描述符禁止项和三条unclassified edge仍flagged-unverified，verification/resolution/reason仍null；没有将范围确认解释为逐项验证通过。已保存[06-UAT](../../.planning/phases/06-gamestream/06-UAT.md)，其中精确包审阅1项pass、九项flags pending，后续通过`$gsd-verify-work 6`逐项处理。Phase3/plan3/status halted保持，未启动Phase7。
+
+批准后正式all实际exit0、stdout SHA256 `53b9ebfb02b65eec3f40356bda6b118addf7f79007cfdf3298cd73583a677c2c`；规划校验actual exit0。100份冻结快照及原包再次核验匹配，九项原flags与其source哈希保持；原始命令、耗时、日志/决定哈希见[批准后核验](FINAL-HUMAN-REVIEW-CHECKS.json)。
