@@ -84,6 +84,7 @@ Do not make direct repo edits outside a GSD workflow unless the user explicitly 
 
 ## Aether Repository Rules
 
+- 阶段开发使用各自独立的 `codex/phase-{phase}-{slug}` 分支，阶段号补齐两位；同一阶段的多个计划共用该阶段分支。开始或恢复阶段的研究、规划、执行及验收前，核对并创建或切换到对应分支，不因当前分支已有依赖代码而把新阶段提交写入其他阶段分支。新分支可继承所需依赖阶段的提交；已有混合历史保留，不自动重写。切换前检查未提交修改，不覆盖、丢弃或混入用户修改。
 - Start with [.planning/STATE.md](.planning/STATE.md), then the current phase and its directly relevant documents. The user approved the roadmap on 2026-10-07; Phase 1 baseline and Phase 2 Windows local skeleton, actual CI and final human review are complete. Phase 3 is ready to discuss/plan; no virtual-device or full remote-streaming implementation phase has run.
 - Use [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/SESSION-MODEL.md](docs/SESSION-MODEL.md) for design boundaries. This is a greenfield repo, so there are no production code patterns to infer yet.
 - Preserve the entire applicable [original feature matrix](docs/FEATURE-PARITY.md). Newly discovered missing original abilities enter v1, not the TODO backlog by default.
