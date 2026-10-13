@@ -1,0 +1,1066 @@
+{
+  "schema": 1,
+  "recordedAt": "2026-10-13T05:30:56.393Z",
+  "sourceCommit": "4edaf0352ca1b875e3536fe54970e8b85585c794",
+  "inputDigest": "7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369",
+  "authorization": "你自行验证，包括之后项",
+  "mode": "delegated-evidence-verification",
+  "commands": [
+    {
+      "name": "uat-all-evidence",
+      "exitCode": 0,
+      "durationMs": 7670,
+      "timeout": false,
+      "error": null,
+      "log": "build\\phase06\\uat-20261013\\uat-all-evidence.log",
+      "output": "{\"sourceCommit\":\"4edaf0352ca1b875e3536fe54970e8b85585c794\",\"inputDigest\":\"7ca1594252b56ee2fe36d99d13ad1b63e4f2ca69eead8784a29503d714ce2369\",\"ci\":\"https://github.com/Jerry12228/Aether/actions/runs/38252266760\",\"targets\":[{\"target\":\"android-arm32\",\"tests\":115},{\"target\":\"android-arm64\",\"tests\":115},{\"target\":\"android-x64\",\"tests\":115},{\"target\":\"ios-arm64-iphoneos\",\"tests\":null},{\"target\":\"ios-arm64-iphonesimulator\",\"tests\":42},{\"target\":\"ios-x64-iphonesimulator\",\"tests\":42},{\"target\":\"linux-arm64\",\"tests\":17},{\"target\":\"linux-x64\",\"tests\":17},{\"target\":\"macos-arm64\",\"tests\":17},{\"target\":\"macos-x64\",\"tests\":17},{\"target\":\"windows-arm64\",\"tests\":15},{\"target\":\"windows-x64\",\"tests\":15},{\"target\":\"local-flutter\",\"tests\":22}],\"humanReview\":\"approved\"}\n",
+      "sha256": "47bb2b7fea5fbab6c407722433571746dcab66ad0285a59dcef33de7e187c495"
+    },
+    {
+      "name": "uat-independent-evidence",
+      "exitCode": 0,
+      "durationMs": 324,
+      "timeout": false,
+      "error": null,
+      "log": "build\\phase06\\uat-20261013\\uat-independent-evidence.log",
+      "output": "✔ validator unit fixture accepts exact positive observed counts; no actual platform claim (1.3537ms)\n✔ known-bad counts rejected: zero tests (0.5312ms)\n✔ known-bad counts rejected: reported skip (0.1105ms)\n✔ known-bad counts rejected: reported cancellation (0.0747ms)\n✔ known-bad counts rejected: failed execution (0.065ms)\n✔ known-bad counts rejected: failed case (0.1837ms)\n✔ known-bad counts rejected: missing count (0.1807ms)\n✔ known-bad counts rejected: wrong denominator (0.1322ms)\n✔ known-bad counts rejected: synthetic mislabeled physical (0.127ms)\n✔ known-bad counts rejected: zero elapsed (0.1852ms)\n✔ independent raw count mismatch rejected: tests (0.1431ms)\n✔ independent raw count mismatch rejected: passed (0.0704ms)\n✔ independent raw count mismatch rejected: failed (0.053ms)\n✔ independent raw count mismatch rejected: skipped (0.0391ms)\n✔ independent raw count mismatch rejected: cancelled (0.0362ms)\n✔ independent raw count mismatch rejected: todo (0.0327ms)\n✔ independent JUnit parser requires actual case names and exact denominator (0.6417ms)\n✔ known-bad JUnit rejected: missing tests (0.1448ms)\n✔ known-bad JUnit rejected: zero (0.0898ms)\n✔ known-bad JUnit rejected: reported skipped (0.0453ms)\n✔ known-bad JUnit rejected: failure element (0.0311ms)\n✔ known-bad JUnit rejected: skipped element (0.0334ms)\n✔ known-bad JUnit rejected: no actual cases (0.0505ms)\n✔ independent Node parser reads original case names and counters (0.321ms)\n✔ missing raw Node counter rejected: tests (0.0936ms)\n✔ missing raw Node counter rejected: pass (0.0677ms)\n✔ missing raw Node counter rejected: fail (0.061ms)\n✔ missing raw Node counter rejected: cancelled (0.0498ms)\n✔ missing raw Node counter rejected: skipped (0.053ms)\n✔ missing raw Node counter rejected: todo (0.061ms)\n✔ duplicate Node case names rejected (0.088ms)\n✔ binary parser reads ELF CPU bytes independently of reports (0.2432ms)\n✔ known-bad native bytes rejected: unrecognized object (0.0979ms)\n✔ known-bad native bytes rejected: wrong ELF class (0.0731ms)\n✔ known-bad native bytes rejected: truncated PE (0.0398ms)\n✔ known-bad native bytes rejected: truncated archive (2.3624ms)\n✔ every archive code member is checked; malformed code cannot hide beside valid CPU (0.1954ms)\n✔ mixed real CPU headers in one archive rejected (0.1375ms)\n✔ matrix unit fixture includes device and both simulator architectures (0.1671ms)\n✔ required target absence rejected: ios-arm64-iphoneos (0.0925ms)\n✔ required target absence rejected: ios-arm64-iphonesimulator (0.0454ms)\n✔ required target absence rejected: ios-x64-iphonesimulator (0.0321ms)\n✔ required target absence rejected: android-arm32 (0.0391ms)\n✔ known-bad target identity rejected: sourceCommit (0.1756ms)\n✔ known-bad target identity rejected: inputDigest (0.0583ms)\n✔ known-bad target identity rejected: arch (0.2862ms)\n✔ known-bad target identity rejected: sdk (0.1174ms)\n✔ known-bad target identity rejected: physical (0.0512ms)\n✔ tampered retained log rejected against independently bound bytes (0.4062ms)\n✔ missing retained artifact rejected (0.0675ms)\n✔ unsafe source/artifact path rejected before reading (0.3606ms)\n✔ XCTest parser requires all 42 unique passed method names (0.124ms)\n✔ known-bad XCTest rejected: zero test summary (0.0759ms)\n✔ known-bad XCTest rejected: failed actual summary (0.0457ms)\n✔ known-bad XCTest rejected: missing method (0.0467ms)\n✔ known-bad XCTest rejected: actual skipped method (0.1724ms)\n✔ all actual CI jobs must succeed; unit fixture makes no CI claim (0.3239ms)\n✔ known-bad CI identity rejected: pending (0.1016ms)\n✔ known-bad CI identity rejected: cancelled (0.0546ms)\n✔ known-bad CI identity rejected: failed target (0.1362ms)\n✔ known-bad CI identity rejected: missing target (0.0556ms)\n✔ known-bad CI identity rejected: different commit (0.0495ms)\n✔ known-bad coverage rejected before later fields: missing D (0.3391ms)\n✔ known-bad coverage rejected before later fields: missing NET (0.1848ms)\n✔ known-bad coverage rejected before later fields: missing threat (0.1603ms)\n✔ known-bad coverage rejected before later fields: open high risk (0.0957ms)\n✔ known-bad coverage rejected before later fields: unobserved case (0.0576ms)\n✔ known-bad coverage rejected before later fields: no concrete case (0.0514ms)\n✔ complete coverage unit fixture preserves original parity and unresolved flags; no platform claim (22.2366ms)\n✔ known-bad complete coverage rejected: missing original NET case (20.2648ms)\n✔ known-bad complete coverage rejected: another setting substituted (17.1441ms)\n✔ known-bad complete coverage rejected: original capability removed (32.6721ms)\n✔ known-bad complete coverage rejected: source case denominator changed (17.5352ms)\n✔ known-bad complete coverage rejected: prohibition statement forged (18.029ms)\n✔ known-bad complete coverage rejected: prohibition source forged (19.9483ms)\n✔ known-bad complete coverage rejected: edge requirement forged (17.7204ms)\n✔ known-bad actual CI job mapping rejected: unrelated successful job (0.1927ms)\n✔ known-bad actual CI job mapping rejected: duplicated target job (0.1408ms)\n✔ known-bad actual CI job mapping rejected: missing target job identity (0.0884ms)\n✔ allowlisted scalar diagnostics contain no forbidden content (0.1122ms)\n✔ known-bad logged content rejected: media (0.0907ms)\n✔ known-bad logged content rejected: clipboard (0.0322ms)\n✔ known-bad logged content rejected: credential (0.0273ms)\n✔ known-bad logged content rejected: original combined content (0.0277ms)\n✔ known-bad logged content rejected: private key (0.0294ms)\nℹ tests 85\nℹ suites 0\nℹ pass 85\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 262.5038\n",
+      "sha256": "d3e5a9bb7de1559609efbd45f819127691065697324fa636fade493c612b6b00"
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "passed": 7,
+    "blocked": 3,
+    "issues": 0,
+    "pending": 0
+  },
+  "freshChecks": {
+    "independentTests": 85,
+    "targets": [
+      {
+        "target": "android-arm32",
+        "tests": 115
+      },
+      {
+        "target": "android-arm64",
+        "tests": 115
+      },
+      {
+        "target": "android-x64",
+        "tests": 115
+      },
+      {
+        "target": "ios-arm64-iphoneos",
+        "tests": null
+      },
+      {
+        "target": "ios-arm64-iphonesimulator",
+        "tests": 42
+      },
+      {
+        "target": "ios-x64-iphonesimulator",
+        "tests": 42
+      },
+      {
+        "target": "linux-arm64",
+        "tests": 17
+      },
+      {
+        "target": "linux-x64",
+        "tests": 17
+      },
+      {
+        "target": "macos-arm64",
+        "tests": 17
+      },
+      {
+        "target": "macos-x64",
+        "tests": 17
+      },
+      {
+        "target": "windows-arm64",
+        "tests": 15
+      },
+      {
+        "target": "windows-x64",
+        "tests": 15
+      },
+      {
+        "target": "local-flutter",
+        "tests": 22
+      }
+    ],
+    "allExitCode": 0
+  },
+  "observations": [
+    {
+      "name": "untrusted client receives no stream or sink",
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "line": 958,
+      "raw": "✔ untrusted client receives no stream or sink (95.0695ms)"
+    },
+    {
+      "name": "D-06 observer fresh authentication never gains controller permission",
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "line": 1054,
+      "raw": "✔ D-06 observer fresh authentication never gains controller permission (3181.4542ms)"
+    },
+    {
+      "name": "D-06 occupied control lease explains conflict without stealing",
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "line": 1131,
+      "raw": "✔ D-06 occupied control lease explains conflict without stealing (278.8854ms)"
+    },
+    {
+      "name": "D-04 full multi-stream proposal is returned before any grant",
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "line": 1135,
+      "raw": "✔ D-04 full multi-stream proposal is returned before any grant (277.5358ms)"
+    },
+    {
+      "name": "D-03 protection cannot be disabled and Win10 HDR returns SDR reason",
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "line": 1137,
+      "raw": "✔ D-03 protection cannot be disabled and Win10 HDR returns SDR reason (279.5732ms)"
+    },
+    {
+      "name": "D-09 two connections share all six budgets and never evict running owner",
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "line": 1097,
+      "raw": "✔ D-09 two connections share all six budgets and never evict running owner (2067.6752ms)"
+    },
+    {
+      "name": "D-04 cancellation expiry and retry-settings preserve running grant",
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "line": 1175,
+      "raw": "✔ D-04 cancellation expiry and retry-settings preserve running grant (1390.3429ms)"
+    },
+    {
+      "name": "D-11 absent video preference returns whole pending choice",
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "line": 1061,
+      "raw": "✔ D-11 absent video preference returns whole pending choice (277.4322ms)"
+    }
+  ],
+  "productBoundary": {
+    "actualCompileCommand": "build/phase06/targets/windows-x64/aether_protocol.dir/Release/aether_protocol_MD.tlog/CL.command.1.tlog",
+    "fixtureMacro": false,
+    "dll": {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "3d77a3ef1530aa25c0ea44ff32595d82d194d3b371f69a0420d2671a979ccbf6",
+      "exports": [
+        "aether_protocol_ack",
+        "aether_protocol_cancel",
+        "aether_protocol_confirm",
+        "aether_protocol_control_ack",
+        "aether_protocol_control_cancel_operation",
+        "aether_protocol_control_open",
+        "aether_protocol_control_query",
+        "aether_protocol_control_send",
+        "aether_protocol_create",
+        "aether_protocol_destroy",
+        "aether_protocol_negotiate",
+        "aether_protocol_propose",
+        "aether_protocol_query",
+        "aether_protocol_stop",
+        "aether_protocol_submit",
+        "aether_protocol_validate_media_options"
+      ]
+    },
+    "embeddedPEM": false,
+    "systemDeviceMutationAPIs": false
+  },
+  "taskMap": [
+    {
+      "plan": "06-01-PLAN.md",
+      "task": 1,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "cmake -S native/protocol -B build/phase06/windows-x64 -G \"Visual Studio 18 2026\" -A x64"
+    },
+    {
+      "plan": "06-01-PLAN.md",
+      "task": 2,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "node --test tests/protocol-tracer.test.cjs"
+    },
+    {
+      "plan": "06-01-PLAN.md",
+      "task": 3,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "node --test tests/protocol-tracer.test.cjs"
+    },
+    {
+      "plan": "06-02-PLAN.md",
+      "task": 1,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "cmake --build build/phase06/windows-x64 --config Debug"
+    },
+    {
+      "plan": "06-02-PLAN.md",
+      "task": 2,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "cmake --build build/phase06/windows-x64 --config Debug"
+    },
+    {
+      "plan": "06-02-PLAN.md",
+      "task": 3,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs"
+    },
+    {
+      "plan": "06-03-PLAN.md",
+      "task": 1,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "cmake --build build/phase06/windows-x64 --config Debug"
+    },
+    {
+      "plan": "06-03-PLAN.md",
+      "task": 2,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "cmake --build build/phase06/windows-x64 --config Debug"
+    },
+    {
+      "plan": "06-03-PLAN.md",
+      "task": 3,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "node --test tests/protocol-recovery.test.cjs"
+    },
+    {
+      "plan": "06-04-PLAN.md",
+      "task": 1,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "dart run ffigen --config protocol/ffigen.yaml"
+    },
+    {
+      "plan": "06-04-PLAN.md",
+      "task": 2,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "node --test tests/protocol-ffi.test.cjs"
+    },
+    {
+      "plan": "06-05-PLAN.md",
+      "task": 1,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "node scripts/build-protocol.cjs --target windows --arch x64 --configuration Release --build-dir build/phase06/windows-x64"
+    },
+    {
+      "plan": "06-05-PLAN.md",
+      "task": 2,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "node --test tests/protocol-evidence.test.cjs"
+    },
+    {
+      "plan": "06-05-PLAN.md",
+      "task": 3,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json"
+    },
+    {
+      "plan": "06-06-PLAN.md",
+      "task": 1,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "cmake --build build/phase06/windows-x64 --config Debug"
+    },
+    {
+      "plan": "06-06-PLAN.md",
+      "task": 2,
+      "requirements": [
+        "NET-01",
+        "NET-02",
+        "NET-03"
+      ],
+      "automated": "cmake --build build/phase06/windows-x64 --config Debug"
+    }
+  ],
+  "threats": [
+    {
+      "id": "T-06-01",
+      "category": "S",
+      "component": "secure handshake",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "TLS标准身份/trust核验、wrong-cert/identity及权限失败真实socket负例，D-13",
+      "plan": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "references": {
+        "id": "T-06-01",
+        "status": "mitigated-synthetic",
+        "references": [
+          "protocol_tracer"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-02",
+      "category": "T",
+      "component": "parser/negotiation",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "显式byte order、整数/长度/必需字段界限、golden与±1畸形向量；认证后变更",
+      "plan": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "references": {
+        "id": "T-06-02",
+        "status": "mitigated-synthetic",
+        "references": [
+          "independent full-media parser boundaries and profile negotiation",
+          "schema",
+          "oversize"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-03",
+      "category": "E",
+      "component": "fixture/C ABI",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "test authority只编入独立tracer，产品符号检查；独立句柄/ACK/stop/输出所有权",
+      "plan": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "references": {
+        "id": "T-06-03",
+        "status": "mitigated-synthetic",
+        "references": [
+          "no-provider",
+          "boundaries"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-04",
+      "category": "D",
+      "component": "control admission",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "解析/消息/队列/child deadline界限，超限先拒绝；结束只回收自己的PID/socket",
+      "plan": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "references": {
+        "id": "T-06-04",
+        "status": "mitigated-synthetic",
+        "references": [
+          "boundaries",
+          "stop-timeout"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-SC",
+      "category": "Tampering",
+      "component": "native source-build dependencies",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "official pin/hash/逐文件license/notices gate；npm/pip/cargo安装若新增必须先合法性gate；未知不链接",
+      "plan": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "references": {
+        "id": "T-06-SC",
+        "status": "mitigated-synthetic",
+        "references": [
+          "actual native media security: fec-golden",
+          "cipher_driver",
+          "test_srtp"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "各manifest原始Git/依赖/compiler/binary/日志，85项已知坏独立validator和CI外部状态门槛"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-05",
+      "category": "T",
+      "component": "key/replay domain",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "exporter规范域/逐方向stream/role/key generation；KAT、nonce exhaustion/rekey/replay/seqwrap负例",
+      "plan": ".planning/phases/06-gamestream/06-02-PLAN.md",
+      "references": {
+        "id": "T-06-05",
+        "status": "mitigated-synthetic",
+        "references": [
+          "actual native media security: nonce-exhaustion",
+          "actual native media security: role-key-epoch",
+          "real secure media: replay"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-06",
+      "category": "T",
+      "component": "FEC queue",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "逐shard认证后同域修复；受保护身份/参数；auth-fail erasure、跨域/repair篡改拒绝",
+      "plan": ".planning/phases/06-gamestream/06-02-PLAN.md",
+      "references": {
+        "id": "T-06-06",
+        "status": "mitigated-synthetic",
+        "references": [
+          "real secure media: fec-tamper-repair",
+          "real secure media: fec-cross-role",
+          "real secure media: fec-threshold"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-09",
+      "category": "D",
+      "component": "media/queue",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "packet/frame/shard/parse/queue/deadline界限；故障窗口健康计数、超限分配前拒绝",
+      "plan": ".planning/phases/06-gamestream/06-02-PLAN.md",
+      "references": {
+        "id": "T-06-09",
+        "status": "mitigated-synthetic",
+        "references": [
+          "real secure media: fec-queue",
+          "real secure media: fec-burst",
+          "public fixed-width media options validate ABI, prefix length and bounded effective result"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-07",
+      "category": "E",
+      "component": "admission",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "digest/revision/identity/epoch/expiry原子确认；竞态/取消重放零grant、不挤占已有grant",
+      "plan": ".planning/phases/06-gamestream/06-03-PLAN.md",
+      "references": {
+        "id": "T-06-07",
+        "status": "mitigated-synthetic",
+        "references": [
+          "cancel-before",
+          "cancel-committed",
+          "digest",
+          "authority-revision"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-08",
+      "category": "E",
+      "component": "session_lifecycle",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "fresh-auth新epoch、占用不抢、observer不升权、上行另confirm/permission/device复查",
+      "plan": ".planning/phases/06-gamestream/06-03-PLAN.md",
+      "references": {
+        "id": "T-06-08",
+        "status": "mitigated-synthetic",
+        "references": [
+          "D-06 observer fresh authentication never gains controller permission",
+          "D-06 occupied control lease explains conflict without stealing",
+          "D-06 fresh TLS authentication rotates connection lease key and preserves persistent identity",
+          "D-07 upstream cancel uses host transaction before commit",
+          "D-07 upstream cancel uses host transaction after commit",
+          "D-07 entire upstream confirmation rechecks {\"permissions\":3}",
+          "D-07 entire upstream confirmation rechecks {\"devices\":0}",
+          "D-07 entire upstream confirmation rechecks {\"revision\":8}",
+          "D-07 upstream selected mask zero remains closed and a separate confirm starts mic camera"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-10",
+      "category": "I",
+      "component": "route/log/trace",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "旧route/buffer清空；所有模式allowlist+content sentinel；trace bytes/expiry/断连关闭",
+      "plan": ".planning/phases/06-gamestream/06-03-PLAN.md",
+      "references": {
+        "id": "T-06-10",
+        "status": "mitigated-synthetic",
+        "references": [
+          "D-13 all three old policy scopes reject while current synthetic envelopes contain no logged content",
+          "D-15 trace stop extend cap and all trace modes redact sentinels",
+          "D-15 trace duration boundary 0",
+          "D-15 trace duration boundary 1",
+          "D-15 trace duration boundary 60000",
+          "D-15 trace duration boundary 60001",
+          "D-15 trace stop extend cap and all trace modes redact sentinels",
+          "D-15 explicit trace reports monotonic remaining and expires"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-11",
+      "category": "R",
+      "component": "diagnostic evidence",
+      "severity": "medium",
+      "disposition": "mitigate",
+      "mitigation": "每流分母/seed/drop和单调状态记录，真实量测与fake clock分开，失败历史保留",
+      "plan": ".planning/phases/06-gamestream/06-03-PLAN.md",
+      "references": {
+        "id": "T-06-11",
+        "status": "mitigated-synthetic",
+        "references": [
+          "D-16 threshold neighboring requested retry windows 499",
+          "D-16 threshold neighboring requested retry windows 500",
+          "D-16 threshold neighboring requested retry windows 501",
+          "D-16 persistent action appears only after 500ms and then clears",
+          "protocol_multistream"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-18",
+      "category": "D",
+      "component": "recovery retry",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "连接/单流有界重试、cancel/manual和明确整体失效；同窗口健康计数及阈值量测",
+      "plan": ".planning/phases/06-gamestream/06-03-PLAN.md",
+      "references": {
+        "id": "T-06-18",
+        "status": "mitigated-synthetic",
+        "references": [
+          "D-05 actual transport loss preserves bounded manual wait and same handle fresh retry",
+          "D-05 real refused fresh socket three attempts exhaust to manual",
+          "D-05 real refused fresh socket retry cancellation",
+          "D-08 repeated stream recovery advances only that stream key",
+          "D-08 stream retry window boundary 0",
+          "D-08 stream retry window boundary 1",
+          "D-08 stream retry window boundary 3000",
+          "D-08 stream retry window boundary 3001",
+          "D-08 isolated stream fault preserves healthy video2 audio control and transient disappears",
+          "real secure media: loss-video1"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-12",
+      "category": "D",
+      "component": "C ABI/Dart disposal",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "连续ACK、stop barrier/timeout保留listener、真实FFI负例与owned资源清零",
+      "plan": ".planning/phases/06-gamestream/06-04-PLAN.md",
+      "references": {
+        "id": "T-06-12",
+        "status": "mitigated-synthetic",
+        "references": [
+          "stop-timeout",
+          "boundaries"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-19",
+      "category": "I",
+      "component": "Dart status consumer",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "仅低频allowlist、所有模式secret/content sentinel、无frame/PCM payload",
+      "plan": ".planning/phases/06-gamestream/06-04-PLAN.md",
+      "references": {
+        "id": "T-06-19",
+        "status": "mitigated-synthetic",
+        "references": [
+          "D-13 all three old policy scopes reject while current synthetic envelopes contain no logged content",
+          "D-15 trace stop extend cap and all trace modes redact sentinels"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-13",
+      "category": "T",
+      "component": "CI source/build inputs",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "pinned source/actions/deps/input hash，actual target artifact与command/runURL对照",
+      "plan": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "references": {
+        "id": "T-06-13",
+        "status": "mitigated-synthetic",
+        "references": [
+          "protocol_tracer"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "各manifest原始Git/依赖/compiler/binary/日志，85项已知坏独立validator和CI外部状态门槛"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-14",
+      "category": "R",
+      "component": "evidence validator",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "外部runner exit/count/rawlogs独立核验；known-bad zero/skip/篡改/source mismatch先RED",
+      "plan": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "references": {
+        "id": "T-06-14",
+        "status": "mitigated-synthetic",
+        "references": [
+          "protocol_tracer"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "各manifest原始Git/依赖/compiler/binary/日志，85项已知坏独立validator和CI外部状态门槛"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-15",
+      "category": "E",
+      "component": "mobile/child runner",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "target ABI/SDK/observed UUID匹配，owned bounded process清理；无系统信任/安全修改",
+      "plan": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "references": {
+        "id": "T-06-15",
+        "status": "mitigated-synthetic",
+        "references": [
+          "stop-timeout",
+          "protocol_control"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-16",
+      "category": "I",
+      "component": "CI diagnostic artifacts",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "默认摘要/trace同D14/15 allowlist，content sentinel、log bytes cap、无凭据artifact",
+      "plan": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "references": {
+        "id": "T-06-16",
+        "status": "mitigated-synthetic",
+        "references": [
+          "D-13 all three old policy scopes reject while current synthetic envelopes contain no logged content",
+          "D-15 trace stop extend cap and all trace modes redact sentinels"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-17",
+      "category": "D",
+      "component": "full matrix completion",
+      "severity": "medium",
+      "disposition": "mitigate",
+      "mitigation": "per-step/job deadlines、必需case/目标缺失阻断；环境gap不会转成skip pass",
+      "plan": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "references": {
+        "id": "T-06-17",
+        "status": "mitigated-synthetic",
+        "references": [
+          "protocol_control",
+          "protocol_multistream"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-20",
+      "category": "E",
+      "component": "control mode/provider",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "无provider拒绝、仅native pre-open attach、fixture-only host/实际产品client隔离",
+      "plan": ".planning/phases/06-gamestream/06-06-PLAN.md",
+      "references": {
+        "id": "T-06-20",
+        "status": "mitigated-synthetic",
+        "references": [
+          "no-provider"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-21",
+      "category": "T",
+      "component": "ACTL framing/binding",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "schema/length/身份/epoch/sequence/digest界限及独立golden/重放负例",
+      "plan": ".planning/phases/06-gamestream/06-06-PLAN.md",
+      "references": {
+        "id": "T-06-21",
+        "status": "mitigated-synthetic",
+        "references": [
+          "schema",
+          "sequence",
+          "digest",
+          "replay",
+          "required",
+          "truncated"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    },
+    {
+      "id": "T-06-22",
+      "category": "D",
+      "component": "dispatcher/stop barrier",
+      "severity": "high",
+      "disposition": "mitigate",
+      "mitigation": "bounded32/256/256KiB、out-of-band cancel、terminal线性化、2秒stop timeout保留引用",
+      "plan": ".planning/phases/06-gamestream/06-06-PLAN.md",
+      "references": {
+        "id": "T-06-22",
+        "status": "mitigated-synthetic",
+        "references": [
+          "boundaries",
+          "stop-timeout"
+        ],
+        "scope": "当前完整12目标CI与真实socket合同；仅mitigated-synthetic，未宣称生产或物理验证",
+        "additionalEvidence": "真实产品client/test-only authority及独立用例"
+      },
+      "result": "closed-scoped-synthetic"
+    }
+  ],
+  "summaryChecks": [
+    {
+      "file": ".planning/phases/06-gamestream/06-01-SUMMARY.md",
+      "before": "b25b555",
+      "after": "c74cfb1",
+      "claimed": null,
+      "measured": 7,
+      "status": "legacy-warning"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-02-SUMMARY.md",
+      "before": "1fe26a2",
+      "after": "cc35d12",
+      "claimed": null,
+      "measured": 14,
+      "status": "legacy-warning"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-03-SUMMARY.md",
+      "before": "57018702301df87e756263a248f22eb67fba5923",
+      "after": "bce5030c8269a1abc5db0946f70d4d3cc9b08a8b",
+      "claimed": null,
+      "measured": 6,
+      "status": "legacy-warning"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-04-SUMMARY.md",
+      "before": "d9775ecb470ba59aad13c3d290560bf3b67442ff",
+      "after": "387a0528c6c5c629645246d809b8dc8f23809b67",
+      "claimed": null,
+      "measured": 5,
+      "status": "legacy-warning"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-05-SUMMARY.md",
+      "claimed": null,
+      "measured": null,
+      "status": "legacy-warning"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-06-SUMMARY.md",
+      "before": "4bc7f58224507628e66954f3b0c6fd1e5c947d25",
+      "after": "ff081cf601f59e0fd3705f0df786f1d553d021e2",
+      "claimed": 4,
+      "measured": 4,
+      "status": "matched"
+    }
+  ],
+  "definitionGaps": [
+    {
+      "test": 8,
+      "requirement": "NET-01",
+      "result": "blocked",
+      "classification": "insufficient_spec",
+      "reason": "原项只有占位probe，无具体触发条件、边界预期或可观测判据；既有实质测试不替代缺失定义。"
+    },
+    {
+      "test": 9,
+      "requirement": "NET-02",
+      "result": "blocked",
+      "classification": "insufficient_spec",
+      "reason": "原项只有占位probe，无具体触发条件、边界预期或可观测判据；既有实质测试不替代缺失定义。"
+    },
+    {
+      "test": 10,
+      "requirement": "NET-03",
+      "result": "blocked",
+      "classification": "insufficient_spec",
+      "reason": "原项只有占位probe，无具体触发条件、边界预期或可观测判据；既有实质测试不替代缺失定义。"
+    }
+  ],
+  "originalFlagsChanged": false,
+  "systemMutation": false,
+  "sourceRefs": [
+    {
+      "file": "native/protocol/src/admission.cpp",
+      "sha256": "a8a25b67204a7a67cb3b1c590f1a8bde18ee1cfca8437760822e0b1fc116532f"
+    },
+    {
+      "file": "native/protocol/src/control.cpp",
+      "sha256": "fdd924b070900af63f49553195bdb7d9cc0f7597110b9591b1021f5ec8fd4686"
+    },
+    {
+      "file": "native/protocol/src/diagnostics.cpp",
+      "sha256": "d69e5bdededde068bbe41a4f6fccd5144d207dd3463f9fa3dfdd36220e3a28b0"
+    },
+    {
+      "file": "native/protocol/src/internal.h",
+      "sha256": "22df432491ea680ae5eda6a730115430d1f8a933a45d960f23f3fbca63c593cb"
+    },
+    {
+      "file": "native/protocol/src/media_packetization.cpp",
+      "sha256": "bbd0caa779515e1fd000815bcbc7f0ccbb881666f098befe515ce08c5fcbc6fe"
+    },
+    {
+      "file": "native/protocol/src/protocol.cpp",
+      "sha256": "dcfc329337df33c96e45c9236bbcf2d43354038e72a224048700d6f2a6f461e9"
+    },
+    {
+      "file": "native/protocol/src/secure_transport.cpp",
+      "sha256": "e7e21ca421556663f739718ecb189a89af7efdf4f94c921ff77620560031b3f6"
+    },
+    {
+      "file": "native/protocol/src/session_lifecycle.cpp",
+      "sha256": "af57e86daebcb0812e57e18de22c837bd7909f8c5afddbf0ff87d2380319b37f"
+    },
+    {
+      "file": "native/protocol/CMakeLists.txt",
+      "sha256": "9a0f8ac517864e05c0eb19632969059be90aabd92da1683c4d15690c4de5fc10"
+    },
+    {
+      "file": "packages/selene_native/lib/src/protocol.dart",
+      "sha256": "1e36ec6f2e94a27e3850d4ec0bce154df14a962287401cbe8be0c0c239e9995a"
+    },
+    {
+      "file": "scripts/verify-protocol.cjs",
+      "sha256": "a3627071ae726084e0dfcc0374e017693dc51c7d8022b7091f02553af13f80de"
+    },
+    {
+      "file": "scripts/run-protocol-target.cjs",
+      "sha256": "526904ab5e952f560f56893c87a3e7d2f65f6af9ca933253e35278fca744c889"
+    },
+    {
+      "file": "tests/protocol-recovery.test.cjs",
+      "sha256": "dda3b54299bc128157fcd7d9d4ce78e4b8716926c17cb3b981b42a6d26cf8c24"
+    },
+    {
+      "file": "tests/protocol-evidence.test.cjs",
+      "sha256": "71eef1a0eac99f14b4db42d3bad896e05005d34e66f521ff8cddcf5e9491ee6f"
+    },
+    {
+      "file": "docs/phase06/EVIDENCE.md",
+      "sha256": "787a3cbbd2d14d85f8d8a5bb057e6f8422fbb2f68f8fdf4927193e342e69d0f4"
+    },
+    {
+      "file": "docs/phase06/LIMITS.md",
+      "sha256": "63270042fc6c2be6fc92780da88748ea0081db8a3826fcda793a230988fd6e2c"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-EDGE-PROBE.json",
+      "sha256": "ed57512e45af7020e7a9cf929ccd59fb9b96e2c126412ced12c8fbc705d7e2db"
+    },
+    {
+      "file": "docs/phase06/06-05-CURRENT-LOCAL.json",
+      "sha256": "cf484df50749e4177bddb90e8b37c1df33d77f362b81b481aaecc54370ff3c87"
+    },
+    {
+      "file": "docs/phase06/06-05-ROOT-REGRESSION.json",
+      "sha256": "cec0c5592f6954fee6aa984c94649759b49d19e156dce516f44cb9a1b8c1215e"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Testing/Temporary/LastTest.log",
+      "sha256": "2da9af4b9145df3df3440c57a0d04ed73aa1911e9fe3b5da88ccf023fb203693"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/aether_protocol.dir/Release/aether_protocol_MD.tlog/CL.command.1.tlog",
+      "sha256": "4b8817a27d86b0f1afaf7da0fbfc41224ce114d9ee75d18a80e71a7b8cc06893"
+    },
+    {
+      "file": "build/phase06/targets/windows-x64/Release/aether_protocol.dll",
+      "sha256": "3d77a3ef1530aa25c0ea44ff32595d82d194d3b371f69a0420d2671a979ccbf6"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-01-PLAN.md",
+      "sha256": "e7e2c4f4e168887dbb4ebe9aa4d414183e844f1bf39568e3c1e9b2757ea6493a"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-02-PLAN.md",
+      "sha256": "e8edf55d0c164835c69c1c67ea9ed2f14ef7b74627ce7a791f5b3614001e9668"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-03-PLAN.md",
+      "sha256": "90db114c82789a0a3d7fa5b588401a35db185069447ebef88623ae5086ebb08f"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-04-PLAN.md",
+      "sha256": "2adcfa89aa39d93e5f649ad7029f027074f0a59676da0192dc1af4e2e8f14902"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-05-PLAN.md",
+      "sha256": "06ddf86f5e241bc034c9fdde9aaf4138495ab2ee9f2f749bcb46dcb827d7864e"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-06-PLAN.md",
+      "sha256": "b83c81f87ef6d9ff73b61ee83edb70aa296a20cee6eb3da96e61acbf28510ce0"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-01-SUMMARY.md",
+      "sha256": "0524e1ec01c3fe2804622983e778b3532a80e22635b0750456dd9c71fbaf87c5"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-02-SUMMARY.md",
+      "sha256": "3ce1ec9d31a01f2bddfe8c64e477aeaae93b2fc4c5d38b959554aad175ac22d1"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-03-SUMMARY.md",
+      "sha256": "006f8a605eb900f422dc786665a09cb9df66d83daf154f5a612bcbefb27f73dc"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-04-SUMMARY.md",
+      "sha256": "1a6053746984348ab90b3dad21aa3ca341ac43cb1483b02b0ad0c61a15912f62"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-05-SUMMARY.md",
+      "sha256": "11e6d2e212649a3b50e5e40c0b933473752dd87ca63c8129a04e22f1c1910a63"
+    },
+    {
+      "file": ".planning/phases/06-gamestream/06-06-SUMMARY.md",
+      "sha256": "ed6c64ebb29238ffe49cb060b3a8dadc6f8a323fb79b4b1e707fe836b48a9ed4"
+    }
+  ],
+  "limitations": [
+    "本次重跑85项证据校验器与正式all；原生行为依赖已绑定原始CI/本机运行日志，本次未重跑媒体/设备。",
+    "五项自行核验是evidence-backed scoped verdict，非逐项真人原文或无限安全证明；原flagged投影与快照保留。",
+    "真实应用/显示组/生产authority/codec/HDR/非loopback性能及Apple实机未新增证据。"
+  ],
+  "documentationChecks": {
+    "planning": {
+      "status": "PASS",
+      "phases": 42,
+      "requirements": 105,
+      "mapped": 105
+    },
+    "sourceHashesMatched": 34,
+    "localLinksValid": 43,
+    "uatPredicate": {
+      "passed": false,
+      "blockedTests": [
+        8,
+        9,
+        10
+      ],
+      "status": "partial"
+    },
+    "phase6": "human_needed",
+    "phase3": "halted",
+    "originalFlagsChanged": false
+  }
+}

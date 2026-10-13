@@ -1,15 +1,15 @@
 ---
 phase: "06"
 slug: gamestream
-status: draft
+status: validated
 nyquist_compliant: false
-wave_0_complete: false
+wave_0_complete: true
 created: "2026-10-09"
 ---
 
-# Phase 06 — Validation Strategy
+# Phase 06 — 验证策略
 
-本文件是执行期验证契约。06-01/02批准与历史证据、06-06前置交付保留。06-03三任务已完成，最终Debug Node106/106、Debug/ASan CTest12/12（108.14s/109.00s）；父级构建/CTest12/12（108.16s）及658项证据摘要匹配。三轮真实socket量测281648.188ms绑定f853627归档；最终恢复修正另经完整回归。ASan不覆盖预编译OpenSSL，非leak/TSan认证。06-04已完成：当前完整Node107/107、真实Flutter22/22及21独立host场景，协议Debug CTest12/12、根CTest11/11和local core/绑定生成通过。06-05五目标及最终人审尚未完成，尚不存在入口仍是目标；阶段5/6及NET未完成，保留draft/false直到全阶段执行与审计取证。
+本文件是执行期验证契约。2026-10-13按gsd-validate-phase复核：六计划16任务有实际自动入口；同输入12目标CI及本机FFI的具名用例、产物和raw日志由formal all重新核验通过，独立证据85/85。Wave0入口完整且已实际执行，wave_0_complete=true。三条unclassified probe缺行为定义，不能生成有语义的测试或宣称全覆盖，nyquist_compliant保持false。UAT为7项scoped pass/3项blocked，NET与Phase6未关闭。历史运行和审批保留原绑定。
 
 ## Test Infrastructure
 
@@ -19,7 +19,7 @@ created: "2026-10-09"
 | Config file | native/protocol/CMakeLists.txt（Wave 0 新建，独立于 Windows driver） |
 | Quick run command | node --test tests/protocol-tracer.test.cjs（06-01-01创建后；其余任务使用对应定向suite） |
 | Full suite command | node --test tests/protocol-tracer.test.cjs tests/protocol-multistream.test.cjs tests/protocol-recovery.test.cjs tests/protocol-ffi.test.cjs tests/protocol-evidence.test.cjs；五目标证据另运行独立verify |
-| Estimated runtime | 当前04完整Node101.948s、FFI20.423s、协议CTest107.06s；快速目标30秒；03历史量测281.648s，五目标检查尚未运行 |
+| Estimated runtime | 当前同输入Windows15/15为93.001s；FFI22为18.538s；本次formal all7.670s、evidence85为0.324s；历史三轮量测独立绑定f853627 |
 
 ## Sampling Rate
 
@@ -45,9 +45,9 @@ created: "2026-10-09"
 | 06-03-03 | 03 | 4 | NET-01/02/03 | T-06-07/10/11/18 | 真实限值量测、D阈值/全原case映射/R1 | measure+state | node --test tests/protocol-recovery.test.cjs；node tests/protocol-recovery.test.cjs --measure --evidence artifacts/phase06/limits.json | yes | 已通过；三轮281648.188ms归档量测、637原case保留及12NET设置映射 |
 | 06-04-01 | 04 | 5 | NET-01/02/03 | T-06-12/19/SC | 真实Dart FFI/独立host/socket/完整proposal | FFI+process | dart run ffigen --config protocol/ffigen.yaml；node --test tests/protocol-ffi.test.cjs | yes | 已通过；生成绑定不漂移，真实产品DLL/双PID方案交互；最终Flutter22/22 |
 | 06-04-02 | 04 | 5 | NET-01/02/03 | T-06-12/19/SC | 恢复/trace消费者、ACK/timeout/stop负例和来源总账 | FFI+process | node --test tests/protocol-ffi.test.cjs | yes | 已通过；真实22检查/21host、实际STATUS/cancel回执核对，完整Node107/107及local core1+6 |
-| 06-05-01 | 05 | 6 | NET-01/02/03 | T-06-13/15/17/SC | 五目标native实际build/run，iOS device与simulator分证据 | target+CI | ctest --test-dir build/phase06/windows-x64 -C Release -R protocol --output-on-failure --no-tests=error（其余目标匹配runner） | W0:06-05-01 | pending |
-| 06-05-02 | 05 | 6 | NET-01/02/03 | T-06-13–17 | 独立证据判定，known-bad/0test/skip/hash漂移拒绝 | evidence | node --test tests/protocol-evidence.test.cjs；node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json | W0:06-05-02 | pending |
-| 06-05-03 | 05 | 6 | NET-01/02/03 | T-06-01–19 | 所有门槛先过，真实最终人审精确hash | evidence+真人审阅 | node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json | W0:06-05-02 | pending |
+| 06-05-01 | 05 | 6 | NET-01/02/03 | T-06-13/15/17/SC | 五目标native实际build/run，iOS device与simulator分证据 | target+CI | ctest --test-dir build/phase06/windows-x64 -C Release -R protocol --output-on-failure --no-tests=error（其余目标匹配runner） | yes | pass scoped；同输入12目标actual CI/raw logs已核验 |
+| 06-05-02 | 05 | 6 | NET-01/02/03 | T-06-13–17 | 独立证据判定，known-bad/0test/skip/hash漂移拒绝 | evidence | node --test tests/protocol-evidence.test.cjs；node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json | yes | pass；85/85与formal all0，原精确包真人确认另录 |
+| 06-05-03 | 05 | 6 | NET-01/02/03 | T-06-01–19 | 所有门槛先过，真实最终人审精确hash | evidence+真人审阅 | node scripts/verify-protocol.cjs --scope all --evidence docs/phase06/TARGETS.json | yes | pass；85/85与formal all0，原精确包真人确认另录 |
 
 上述命令失败方向：非零exit、零tests、skip/cancel/TODO、缺具名case/目标/真实log或artifact、source/SDK/arch/dependency/binary hash漂移、timeout、资源未归零。坏证据fixture必须被拒绝；退出0但缺证明亦失败。自动化通过不能代替06-01-03具体决定和06-05-03强制真人审阅。每计划各命令立即附`fails_when`为权威细则。六个顺序wave的已创建suite依次为tracer；+multistream；+protocol_control native；+recovery；+FFI；+evidence与五目标独立verify。长量测实际30秒预热/60秒窗口/3轮，不计作fast用时。
 
@@ -76,11 +76,11 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 ## Wave 0 Requirements
 
 - [x] 独立 native/protocol 合同构建根、真实 socket 双进程 tracer 与独立 golden wire/密码已知答案向量（Windows x64 Debug scoped；不代表五端完成）。
-- [ ] 正式库准入：official SHA、archive hash、LICENSE/NOTICE、平台构建选项和产物；引用源码不能进入产品构建。
-- [ ] test-only authority/设备 fixture、单调假时钟、有限 userspace loss relay；固定seed及丢包位置，不改系统网络。
-- [ ] packet/frame/shard/queue/parse/deadline界限、重试和trace上限；native sink digest、丢失/恢复/认证失败统计。
-- [ ] Android runner/emulator 与 Apple SDK/XCTest simulator；iOS device库真实构建；Windows/Linux/macOS native运行。
-- [ ] Node process/evidence测试入口和有界进程清理；Selene低频FFI消费者合同。（04的process/FFI部分已通过；05独立evidence入口仍待建。）
+- [x] 正式库准入：official SHA、archive hash、LICENSE/NOTICE、平台构建选项和产物；引用源码不能进入产品构建。
+- [x] test-only authority/设备 fixture、单调假时钟、有限 userspace loss relay；固定seed及丢包位置，不改系统网络。
+- [x] packet/frame/shard/queue/parse/deadline界限、重试和trace上限；native sink digest、丢失/恢复/认证失败统计。
+- [x] Android runner/emulator 与 Apple SDK/XCTest simulator；iOS device库真实构建；Windows/Linux/macOS native运行。
+- [x] Node process/evidence测试入口和有界进程清理；Selene低频FFI消费者合同。（04/05均有实际执行证据；本次formal all/85项重核验。）
 
 ## Manual-Only Verifications
 
@@ -92,15 +92,17 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 
 ## Validation Sign-Off
 
-- [ ] 所有任务有 automated 或已安排 Wave 0。
-- [ ] 无连续三个任务缺自动验证；命令都说明可观察失败方向。
-- [ ] Wave 0 覆盖所有缺失入口；五目标证据分别追踪，不伪造通过。
-- [ ] 无 watch-mode；真实反馈时长已测。
-- [ ] 执行后完成审计才设置 nyquist_compliant/wave_0_complete。
+- [x] 所有16任务有 automated，自动入口已创建且实际执行。
+- [x] 无连续三个任务缺自动验证；命令都说明可观察失败方向。
+- [x] Wave 0 覆盖所有缺失入口；五目标证据分别追踪，不伪造通过。
+- [x] 无 watch-mode；实际反馈时长有独立记录。
+- [ ] 三条空probe定义尚未闭合，Nyquist保持partial/false；Wave0实际完成为true。
 
-**Approval:** pending
+**Approval:** validated-partial（2026-10-13）；不是阶段完成批准。
 
-06-01具体ADR批准已完成：真实原答复1、recordedAt2026-10-10T03:46:30Z，历史材料摘要已绑定，续跑19/19（4,749.1274ms）。本处Approval pending指全阶段验证/最终人审，不是重复请求同一ADR批准。
+06-01具体ADR批准与06-05精确包真人确认均已完成并独立留档；本轮partial只表示三条原空probe缺定义及原flags边界，不重复请求历史ADR或包确认。
+
+## 以下为历史执行记录
 
 06-01局部验证见[completed SUMMARY](06-01-SUMMARY.md)和[批准ADR](../../../docs/phase06/PROTOCOL-ADR.md)；06-02双向五流、认证后FEC/nonce/epoch/queue/public options已完成，见[completed SUMMARY](06-02-SUMMARY.md)、[MEDIA-CONTRACT](../../../docs/phase06/MEDIA-CONTRACT.md)和[实际源码二进制证据](../../../docs/phase06/MEDIA-EVIDENCE.json)。新复用原答复1与历史FEC候选账本不互相覆盖。独立候选ASan12/12及known-bad检测保留；当前Debug/ASan46/46和CTest10/10各通过，无有效用例发现并非leak/TSan/穷尽安全证明。当时完整权限/预算/恢复/重试/trace/FFI/五目标/最终人审仍未执行；03/04的后续交付见下方独立记录；三条edge probe和六条descriptorless禁止项不自动resolved，不因局部通过设置nyquist或wave0 true。
 
@@ -140,3 +142,20 @@ T-06-01–04→tracer；05/06/09→multistream；07/08/10/11/18→recovery；12/
 真实用户原文“确认”，记录时间2026-10-13T04:58:32.036Z；批准包SHA256为`48271d2aed1e62fa22af9d988681c5909e673a1a3fe87c15f8aace7445d48dbc`，100项材料摘要为`494fb0d931e585e0ea4fb83c911272890aa5cf70e72b316806fdd9e654304708`。写入批准前100原件及100独立快照长度/SHA256全部匹配。独立决定见[FINAL-HUMAN-REVIEW](../../../docs/phase06/FINAL-HUMAN-REVIEW.json)，决定SHA256 `ab6d9cdeeb766860e2d0619eb42072472dbf987883117f3cacfe6bb91e128861`。原包和原快照保持原字节；批准后的TARGETS/EVIDENCE及规划状态是新记录，不回写审阅快照。
 
 06-05三个任务全部完成，Phase6计划6/6、全项目14/15计划；规范目标验证保持human_needed，Phase6与NET未关闭。六条无描述符禁止项和三条unclassified edge仍flagged-unverified，verification/resolution/reason仍null；没有将范围确认解释为逐项验证通过。已保存[06-UAT](06-UAT.md)，其中精确包审阅1项pass、九项flags pending，后续通过`$gsd-verify-work 6`逐项处理。Phase3/plan3/status halted保持，未启动Phase7。
+
+
+## Validation Audit 2026-10-13
+
+| 指标 | 数量/状态 |
+|---|---|
+| 计划/任务 | 6/16；每任务自动入口已存在 |
+| 当前具名行为测试覆盖 | NET-01/02/03的已定义协议原型行为COVERED；所有原control/media/recovery、FFI、目标证据见06-UAT-AUDIT.json |
+| Wave0缺入口 | 0；全部有真实构建/运行和校验 |
+| 新行为测试缺口 | 0；未生成镜像实现或无预期的测试 |
+| 不可测试定义缺口 | 3；NET-01/02/03空probe，insufficient_spec，UAT8–10 blocked |
+| 本次实际执行 | formal all exit0/7670ms；独立85/85/324ms，零fail/skip/cancel/TODO |
+| scope | 固定源4edaf03/input7ca15942，既有synthetic/native/FFI原日志复核；不是新设备/媒体运行 |
+
+三条定义缺口是规划输入不足，不作为代码失败或自动resolved；保留原06-EDGE-PROBE/TARGETS投影。用户已授权“你自行验证，包括之后项”，本次没有新增真人答复，原ADR/精确包人审另录。各任务自动入口/原始hash、23威胁和summary提交窗口复核见docs/phase06/06-UAT-AUDIT.json。06-06 commits4窗口匹配；其余无顶层commits声明的历史SUMMARY只记录测得窗口和legacy warning，不猜测提交数量。
+
+当前Approval：validated-partial；需要为三条probe提供具体假设或按规划修订认定无描述符占位后再审计。Phase3/plan3/halted及开发机禁重启/关机保持。

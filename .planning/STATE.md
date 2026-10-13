@@ -4,10 +4,10 @@ current_phase: 3
 current_phase_name: 虚拟显示器可行性
 current_plan: 3
 status: halted
-stopped_at: 06-05三任务完成；4edaf03/input7ca15942实际12目标/all通过且精确包获确认；Phase6九项flags待UAT，Phase3保持halted
-last_updated: "2026-10-13T04:58:32.036Z"
+stopped_at: Phase6自行UAT 7项scoped pass、3项空probe定义不足blocked；安全23/0、formal all与85通过；Phase3 halted保持
+last_updated: "2026-10-13T05:30:56.393Z"
 last_activity: 2026-10-13
-last_activity_desc: 06-05完成3/3、Phase6计划6/6；精确包人审批准，九项flags待UAT，NET未关闭
+last_activity_desc: 用户委托后续自行核验；UAT partial7/3，定义不足阻止关闭NET，无系统变更
 progress:
   total_phases: 42
   completed_phases: 2
@@ -201,3 +201,12 @@ Active Phase6 resume: `.planning/phases/06-gamestream/06-05-PLAN.md`；先读06-
 真实用户原文“确认”，记录时间2026-10-13T04:58:32.036Z；批准包SHA256为`48271d2aed1e62fa22af9d988681c5909e673a1a3fe87c15f8aace7445d48dbc`，100项材料摘要为`494fb0d931e585e0ea4fb83c911272890aa5cf70e72b316806fdd9e654304708`。写入批准前100原件及100独立快照长度/SHA256全部匹配。独立决定见[FINAL-HUMAN-REVIEW](../docs/phase06/FINAL-HUMAN-REVIEW.json)，决定SHA256 `ab6d9cdeeb766860e2d0619eb42072472dbf987883117f3cacfe6bb91e128861`。原包和原快照保持原字节；批准后的TARGETS/EVIDENCE及规划状态是新记录，不回写审阅快照。
 
 06-05三个任务全部完成，Phase6计划6/6、全项目14/15计划；规范目标验证保持human_needed，Phase6与NET未关闭。六条无描述符禁止项和三条unclassified edge仍flagged-unverified，verification/resolution/reason仍null；没有将范围确认解释为逐项验证通过。已保存[06-UAT](phases/06-gamestream/06-UAT.md)，其中精确包审阅1项pass、九项flags pending，后续通过`$gsd-verify-work 6`逐项处理。Phase3/plan3/status halted保持，未启动Phase7。
+
+
+## 2026-10-13 Phase6自行验收收尾
+
+用户原文“你自行验证，包括之后项”授权第3及后续项由当前Codex核验。UAT现partial：7项scoped pass、0产品issue、0pending、3项blocked（NET01/02/03原空probe缺触发/预期/判据），不会继续逐项等待确认。第1/2真人原答复保持，3–7项为证据判断，原flags投影及快照不改。
+
+本次正式all实际0/7670ms，在线核验原CI12目标及固定产物/原始具名日志和FFI；独立85/85/324ms，零fail/skip/cancel/TODO。实际产品compile无fixture宏、DLL16导出无注入/内嵌PEM；16任务自动入口、23登记威胁和summary窗口核对。安全post-hook23closed/open0仅synthetic；UI N/A；Validation为validated-partial、Wave0 true、Nyquist false。证据见docs/phase06/06-UAT-AUDIT.md/json、06-UAT/SECURITY/UI-REVIEW/VALIDATION。
+
+Phase6规范human_needed与NET Pending保留，原3+6投影保持；恢复需补原probe定义或按规划修订识别无描述符占位，不能编造case。Phase3/plan3/status halted及Apollo安装关口保持；未执行/安排开发机重启关机，无设备/trust/网络更改，无Phase7启动。references/upstream-lock.json的已有用户修改不在此次提交中。

@@ -169,7 +169,7 @@
 1. 固定 GameStream 开源实现基线与字段/通道映射，说明保留、重构和扩展项；Aether 版本/能力协商、独立连接/流上下文和测试向量可复现。
 2. 双向模拟媒体和至少两条独立视频流通过；包大小、时间戳、FEC/丢包恢复、安全密钥/nonce边界及有界队列明确，覆盖五端原生核心构建与可运行的自动化检查，Apple 实机验证另列 TODO；不要求旧端互通。
 
-**Plans:** 6 plans — 全部计划完成6/6；06-05三任务和精确包真人审阅完成，Phase6规范验证human_needed，九项flags待UAT，NET未关闭。
+**Plans:** 6 plans — 全部计划完成6/6；06-05三任务和精确包真人审阅完成，Phase6规范验证human_needed，UAT7项scoped pass/3项定义不足blocked，NET未关闭。
 
 首轮三个计划的中间包涉及23文件，被独立检查器阻断。Revision 1沿同一原生协议原型验收链拆成五个顺序执行包（9/9/9/6/9文件、单任务最多5文件），作为“通常1–3计划”的容量例外；没有增加配对、真实设备/编解码、生产仲裁子系统或改变阶段依赖。第二轮检查0 blocker/0 warning，记录见 `06-PLAN-CHECK.md`。
 
@@ -654,7 +654,7 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原ADR/FEC批
 | 3. 虚拟显示器可行性 | 2/3 | In Progress|  |
 | 4. 系统虚拟麦克风可行性 | 0/TBD | Not started | - |
 | 5. Win10/11 系统摄像头可行性 | 0/TBD | Not started | - |
-| 6. GameStream 协议重构与扩展 | 6/6 | 执行完成；规范验证human_needed，九项flags待UAT | - |
+| 6. GameStream 协议重构与扩展 | 6/6 | 执行完成；UAT partial7/3，规范human_needed | - |
 | 7. 配对、发现与设备权限 | 0/TBD | Not started | - |
 | 8. 持久实例登记与应用生命周期 | 0/TBD | Not started | - |
 | 9. Windows 捕获与 H.264 基础流 | 0/TBD | Not started | - |
@@ -693,3 +693,8 @@ Phase3独立安装gate仍halted；Phase6只依赖已完成Phase2。原ADR/FEC批
 | 42. 完整版本端到端验收与文档 | 0/TBD | Not started | - |
 
 *Last updated: 2026-10-07; approved by user*
+
+
+## 2026-10-13 Phase6自行验收记录
+
+用户授权之后项自行核验；06-UAT partial：7项scoped pass、3条原空probe insufficient_spec blocked。本次formal all与85/85通过、安全原登记23closed/open0、UI N/A；原flagged投影保留。Phase6/NET不关闭，不启动Phase7；Phase3 halted保持。详见docs/phase06/06-UAT-AUDIT.md及06-VERIFICATION。
