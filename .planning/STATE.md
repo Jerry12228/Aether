@@ -92,6 +92,7 @@ Full baseline suite80/80（61.712s）；最终doctor28/28（2.106s），planning
 
 - 2026-10-10 Phase6按用户`$gsd-execute-phase 6`内联顺序执行至06-01-03：安全单包原型和完整具体ADR已提交；自动测试不代表批准，decision原答复/选择/时间仍null。独立原生proposal确认只记批准计数，不提交生产预算；多流/FEC/恢复/FFI/其余目标未执行。未改变Phase3系统授权，无设备/信任/网络配置修改或执行/安排重启/关机。
 
+- 2026-10-13：用户要求各阶段独立分支，并将策略提交到 master 以影响后续工作；`git.branching_strategy` 改为 `phase`，分支模板为 `codex/phase-{phase}-{slug}`。开始或恢复阶段前核对对应分支，既有混合历史保留；本次仅同步工作流策略，不改变 master 已记录的阶段进度。
 - Aether Monorepo；Helios Windows10/11；Selene Flutter 五端。
 - 麦克风/摄像头必须作为Windows系统设备供普通软件使用。
 - 独立应用实例/显示组，同桌面最多一个实例被控，断连和切换均保活。
